@@ -232,6 +232,17 @@
   <!-- =============================================
        NAVIGATIE
   ============================================= -->
+  <!-- Progress bar -->
+  <div id="nc-progress" style="position:fixed;top:0;left:0;height:3px;width:0%;background:#9c28b1;z-index:9999;transition:width .1s linear;"></div>
+
+  <!-- Scroll to top knop -->
+  <button id="nc-totop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Terug naar boven" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:#9c28b1;color:#fff;border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(156,40,177,.4);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:999;">↑</button>
+
+  <style>
+    #nc-totop.visible { opacity:1; pointer-events:auto; }
+    #nc-totop:hover { transform:translateY(-3px); background:#7a1e8e; }
+  </style>
+
   <nav class="nc-nav" id="nc-nav">
     <a href="index.html" class="nc-nav__logo">
       <img src="images/Logo-NailCraft-Platform.png" alt="NailCraft Platform">
@@ -1255,9 +1266,17 @@
       document.readyState==='loading' ? document.addEventListener('DOMContentLoaded',observe) : observe();
     })();
 
-    /* Nav scroll effect */
+    /* Nav scroll effect + progress bar + scroll-to-top */
     window.addEventListener('scroll', function(){
       document.getElementById('nc-nav').classList.toggle('scrolled', window.scrollY > 20);
+
+      /* Progress bar */
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = (window.scrollY / docHeight) * 100;
+      document.getElementById('nc-progress').style.width = progress + '%';
+
+      /* Scroll-to-top knop */
+      document.getElementById('nc-totop').classList.toggle('visible', window.scrollY > 400);
     });
 
     /* Mobiel menu toggle */
