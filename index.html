@@ -165,6 +165,17 @@
       .nc-nav__toggle { display: flex; }
     }
 
+    /* Globale override: alle secundaire knoppen altijd paars */
+    .nc-btn-secondary {
+      color: #9c28b1 !important;
+      border-color: #9c28b1 !important;
+      background: transparent !important;
+    }
+    .nc-btn-secondary:hover {
+      background: #9c28b1 !important;
+      color: #fff !important;
+    }
+
     /* Ruimte voor vaste nav */
     body > *:not(.nc-nav):first-of-type,
     .nc-hero { padding-top: 70px !important; }
@@ -629,7 +640,7 @@
           <h3 class="nc-course-card__title">Veilig &amp; Snel Affrezen van Kunstnagels</h3>
           <p class="nc-course-card__desc">Leer hoe je kunstnagels veilig en snel affreest zonder schade aan de echte nagel. Direct te starten, volledig gratis.</p>
           <div class="nc-course-card__meta"><span>⏱️ Korte training</span><span>🆓 Gratis</span></div>
-          <div class="nc-course-card__cta"><a href="https://naillraftplatform.kennis.shop/pay/veiligaffrezen" class="nc-btn-secondary" target="_blank" rel="noopener">Start gratis →</a></div>
+          <div class="nc-course-card__cta"><a href="https://naillraftplatform.kennis.shop/pay/veiligaffrezen" class="nc-btn-secondary" target="_blank" rel="noopener" style="color:#9c28b1 !important;border-color:#9c28b1 !important;">Start gratis →</a></div>
         </div>
       </div>
     </div>
