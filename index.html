@@ -212,20 +212,18 @@
     .nc-footer__bottom a { color: rgba(255,255,255,.5); transition: color .2s; }
     .nc-footer__bottom a:hover { color: var(--nc-accent); }
     @media(max-width: 768px) {
-      .nc-footer { padding: 30px 5vw 20px; }
-      .nc-footer__grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.2rem;
-        padding-bottom: 1.5rem;
-        margin-bottom: 1rem;
-      }
-      .nc-footer__col:first-child { grid-column: 1 / -1; }
-      .nc-footer__tagline { display: none; }
-      .nc-footer__logo { height: 32px; margin-bottom: .5rem; }
-      .nc-footer__col h4 { margin-bottom: .5rem; }
-      .nc-footer__col ul li { margin-bottom: .3rem; }
-      .nc-footer__col ul li a { font-size: .82rem; }
+      .nc-footer { padding: 32px 5vw 20px; }
+      .nc-footer__grid { display: none; }
+      .nc-footer__mobile { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,.2); margin-bottom: 1rem; }
+      .nc-footer__mobile img { height: 36px; }
+      .nc-footer__mobile p { font-size: .85rem; color: rgba(255,255,255,.85); line-height: 1.6; max-width: 280px; }
+      .nc-footer__mobile-links { display: flex; gap: 1.5rem; justify-content: center; }
+      .nc-footer__mobile-links a { font-size: .88rem; color: rgba(255,255,255,.85); font-weight: 600; }
       .nc-footer__bottom { flex-direction: column; text-align: center; font-size: .75rem; }
+    }
+    @media(min-width: 769px) {
+      .nc-footer__mobile { display: none; }
+      .nc-footer__mobile-links { display: none; }
     }
   </style>
 </head>
@@ -1194,6 +1192,15 @@
        FOOTER
   ============================================= -->
   <footer class="nc-footer">
+    <!-- Mobiele footer -->
+    <div class="nc-footer__mobile">
+      <img src="images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
+      <p>Online nagelschool voor iedereen die dunne, sterke en duurzame kunstnagels wil leren plaatsen.</p>
+      <div class="nc-footer__mobile-links">
+        <a href="online-opleidingen.html">Online Opleidingen</a>
+        <a href="blog.html">Blog</a>
+      </div>
+    </div>
     <div class="nc-footer__grid">
       <div>
         <img class="nc-footer__logo" src="images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
@@ -1229,11 +1236,7 @@
       </div>
     </div>
     <div class="nc-footer__bottom">
-      <span>© 2025 NailCraft Platform — Tabitha Windels</span>
-      <div style="display:flex;gap:1.5rem;">
-        <a href="#">Privacybeleid</a>
-        <a href="#">Algemene voorwaarden</a>
-      </div>
+      <span>© 2026 NailCraft Platform — Tabitha Windels</span>
     </div>
   </footer>
 
