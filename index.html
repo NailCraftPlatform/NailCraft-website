@@ -177,8 +177,9 @@
     }
 
     /* Ruimte voor vaste nav */
-    body > *:not(.nc-nav):first-of-type,
     .nc-hero { padding-top: 70px !important; }
+    /* Progress bar nooit hoogte krijgen */
+    #nc-progress { padding: 0 !important; margin: 0 !important; }
 
     /* =============================================
        FOOTER
@@ -233,7 +234,7 @@
        NAVIGATIE
   ============================================= -->
   <!-- Progress bar -->
-  <div id="nc-progress" style="position:fixed;top:70px;left:0;height:1px;width:0%;background:#9c28b1;z-index:999;transition:width .1s linear;pointer-events:none;"></div>
+  <div id="nc-progress" style="position:fixed;top:70px;left:0;height:1px !important;width:0%;background:#9c28b1;z-index:999;transition:width .25s linear;pointer-events:none;padding:0 !important;margin:0 !important;display:block;"></div>
   <style>
     @media(max-width:768px){
       #nc-progress { height:1px !important; }
