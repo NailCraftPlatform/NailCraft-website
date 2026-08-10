@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Opleidingen – Nagelcursussen voor Stylisten | NailCraft Platform</title>
+  <meta name="description" content="Bekijk alle online nagelcursussen van NailCraft Platform. Videotrainingen en e-books voor elke stylist: van beginner tot pro. Manicure Pro, Easy Nails, Upperforms en meer.">
+  <meta name="keywords" content="online nagelcursus, nageltraining België, kunstnagels leren, upperforms cursus, manicure pro, easy nails, NailCraft Platform">
+  <meta name="author" content="Tabitha Windels">
+  <link rel="canonical" href="https://nailcraft.be/online-opleidingen/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nailcraft.be/online-opleidingen/">
+  <meta property="og:title" content="Online Opleidingen – Nagelcursussen | NailCraft Platform">
+  <meta property="og:description" content="Videotrainingen en e-books voor nagelstylis­ten. Leer op jouw tempo. 14 cursussen beschikbaar.">
+  <meta property="og:image" content="https://nailcraft.be/wp-content/uploads/2025/01/Logo-NailCraft-Platform.png">
+  <meta property="og:locale" content="nl_BE">
+  <meta property="og:site_name" content="NailCraft Platform">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Online Nagelcursussen – NailCraft Platform">
+  <meta name="twitter:description" content="14 cursussen beschikbaar. Videotrainingen & e-books voor nagelstylis­ten. Direct starten.">
+  <meta name="twitter:image" content="https://nailcraft.be/wp-content/uploads/2025/01/Logo-NailCraft-Platform.png">
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Online Nagelcursussen – NailCraft Platform",
+    "url": "https://nailcraft.be/online-opleidingen/",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Manicure Pro","url":"https://nailcraft.be/manicure-pro/"},
+      {"@type":"ListItem","position":2,"name":"Easy Nails","url":"https://nailcraft.be/easynailstechniek/"},
+      {"@type":"ListItem","position":3,"name":"Upperforms","url":"https://nailcraft.be/upperform-training/"},
+      {"@type":"ListItem","position":4,"name":"Babyboom","url":"https://nailcraft.be/babyboom-online-cursus/"},
+      {"@type":"ListItem","position":5,"name":"Refill Removal Pro","url":"https://nailcraft.be/kunstnagels-affrezen/"},
+      {"@type":"ListItem","position":6,"name":"Perfecte Kleurapplicatie","url":"https://nailcraft.be/kleurapplicatie/"},
+      {"@type":"ListItem","position":7,"name":"Sjabloon Applicatie","url":"https://nailcraft.be/sjablonen/"},
+      {"@type":"ListItem","position":8,"name":"Nail Content Creator","url":"https://nailcraft.be/nail-content-creator-leer-professionele-content-maken-voor-nagelstylisten/"},
+      {"@type":"ListItem","position":9,"name":"The Gel Code","url":"https://nailcraft.be/the-gel-code-cursus/"},
+      {"@type":"ListItem","position":10,"name":"The Basics","url":"https://nailcraft.be/the-basics/"},
+      {"@type":"ListItem","position":11,"name":"Manicure E-book","url":"https://nailcraft.be/manicure-e-book/"}
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =============================================
+       RESET & GLOBALS
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; }
+
+    :root {
+      --nc-licht: #f8f2ff;
+      --nc-accent: #b590f1;
+      --nc-cta: #fe9b00;
+      --nc-paars: #9c28b1;
+      --nc-roze: #ff1fe3;
+      --nc-tekst: #2a1a35;
+      --nc-tekst-zacht: #5a4570;
+    }
+
+    /* Reveal animaties */
+    .nc-reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+    .nc-reveal.nc-visible { opacity:1; transform:none; }
+
+    /* Footer overrides */
+    .nc-footer__col h4 { color: rgba(255,255,255,.6) !important; }
+    .nc-footer__col ul li a { color: rgba(255,255,255,.85) !important; }
+    .nc-footer__col ul li a:hover { color: #fff !important; }
+    .nc-footer__tagline { color: rgba(255,255,255,.85) !important; }
+    .nc-footer__bottom { color: rgba(255,255,255,.7); border-top-color: rgba(255,255,255,.2) !important; }
+    .nc-footer__bottom a { color: rgba(255,255,255,.65) !important; }
+    .nc-footer__bottom a:hover { color: #fff !important; }
+
+    /* Progress bar */
+    #nc-progress { padding: 0 !important; margin: 0 !important; }
+
+    /* =============================================
+       NAVIGATIE
+    ============================================= */
+    .nc-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(248,242,255,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(156,40,177,.1);
+      padding: 0 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      transition: box-shadow .3s;
+    }
+    .nc-nav.scrolled { box-shadow: 0 4px 24px rgba(156,40,177,.1); }
+    .nc-nav__logo img { height: 44px; width: auto; }
+    .nc-nav__links {
+      display: flex; align-items: center; gap: 2rem;
+      list-style: none;
+    }
+    .nc-nav__links a {
+      font-size: .9rem; font-weight: 500; color: var(--nc-tekst);
+      transition: color .2s;
+    }
+    .nc-nav__links a:hover { color: var(--nc-paars); }
+    .nc-nav__links a.active { color: var(--nc-paars); font-weight: 600; }
+    .nc-nav__cta {
+      background: var(--nc-paars); color: #fff !important;
+      padding: .5rem 1.4rem; border-radius: 50px; font-size: .85rem;
+      font-weight: 600; transition: background .2s;
+    }
+    .nc-nav__cta:hover { background: #7a1e8e !important; color: #fff !important; }
+    .nc-nav__toggle {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .nc-nav__toggle span { display: block; width: 24px; height: 2px; background: var(--nc-tekst); border-radius: 2px; transition: all .3s; }
+    .nc-nav__mobile {
+      display: none; position: fixed; top: 70px; left: 0; right: 0;
+      background: #fff; border-bottom: 1px solid rgba(156,40,177,.1);
+      padding: 1.5rem 5vw; flex-direction: column; gap: 1rem; z-index: 999;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+    .nc-nav__mobile.open { display: flex; }
+    .nc-nav__mobile a { font-size: 1rem; font-weight: 500; color: var(--nc-tekst); padding: .5rem 0; border-bottom: 1px solid rgba(156,40,177,.08); }
+    .nc-nav__mobile a:last-child { border-bottom: none; color: var(--nc-paars); font-weight: 700; }
+    @media(max-width: 900px) {
+      .nc-nav__links { display: none; }
+      .nc-nav__toggle { display: flex; }
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .nc-footer {
+      background: #9c28b1; color: rgba(255,255,255,.85);
+      padding: 60px 5vw 30px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .nc-footer__grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+      padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 2rem;
+    }
+    .nc-footer__logo { height: 40px; margin-bottom: 1rem; }
+    .nc-footer__tagline { font-size: .88rem; line-height: 1.7; max-width: 260px; }
+    .nc-footer__col h4 {
+      font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.4); margin-bottom: 1rem;
+    }
+    .nc-footer__col ul { list-style: none; }
+    .nc-footer__col ul li { margin-bottom: .5rem; }
+    .nc-footer__col ul li a { font-size: .88rem; color: rgba(255,255,255,.65); transition: color .2s; }
+    .nc-footer__col ul li a:hover { color: var(--nc-accent); }
+    .nc-footer__bottom {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; font-size: .8rem;
+    }
+    @media(max-width: 768px) {
+      .nc-footer { padding: 32px 5vw 20px; }
+      .nc-footer__grid { display: none; }
+      .nc-footer__mobile { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,.2); margin-bottom: 1rem; }
+      .nc-footer__mobile img { height: 36px; }
+      .nc-footer__mobile p { font-size: .85rem; color: rgba(255,255,255,.85); line-height: 1.6; max-width: 280px; }
+      .nc-footer__mobile-links { display: flex; gap: 1.5rem; justify-content: center; }
+      .nc-footer__mobile-links a { font-size: .88rem; color: rgba(255,255,255,.85); font-weight: 600; }
+      .nc-footer__bottom { flex-direction: column; text-align: center; font-size: .75rem; }
+    }
+    @media(min-width: 769px) {
+      .nc-footer__mobile { display: none; }
+      .nc-footer__mobile-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress bar -->
+  <div id="nc-progress" style="position:fixed;top:70px;left:0;height:1px !important;width:0%;background:#9c28b1;z-index:1001;transition:width .25s linear;pointer-events:none;padding:0 !important;margin:0 !important;display:block;">
+    <span style="position:absolute;right:-8px;top:-9px;font-size:14px;line-height:1;pointer-events:none;">⭐</span>
+  </div>
+  <style>
+    @media(max-width:768px){ #nc-progress { height:1px !important; } }
+  </style>
+
+  <!-- Scroll to top -->
+  <button id="nc-totop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Terug naar boven" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:#9c28b1;color:#fff;border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(156,40,177,.4);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:999;">↑</button>
+  <style>
+    #nc-totop.visible { opacity:1; pointer-events:auto; }
+    #nc-totop:hover { transform:translateY(-3px); background:#7a1e8e; }
+  </style>
+
+  <!-- Navigatie -->
+  <nav class="nc-nav" id="nc-nav">
+    <a href="index.html" class="nc-nav__logo">
+      <img src="images/Logo-NailCraft-Platform.png" alt="NailCraft Platform">
+    </a>
+    <ul class="nc-nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="online-opleidingen.html" class="active">Online Opleidingen</a></li>
+      <li><a href="the-nailstylist-traject.html">The Nailstylist</a></li>
+      <li><a href="over.html">Over</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="online-opleidingen.html" class="nc-nav__cta">Start vandaag →</a></li>
+    </ul>
+    <button class="nc-nav__toggle" id="nc-toggle" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobiel menu -->
+  <div class="nc-nav__mobile" id="nc-mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="online-opleidingen.html">Online Opleidingen</a>
+    <a href="the-nailstylist-traject.html">The Nailstylist</a>
+    <a href="over.html">Over</a>
+    <a href="blog.html">Blog</a>
+    <a href="online-opleidingen.html">Start vandaag →</a>
+  </div>
+
+  <!-- =============================================
+       HERO
+  ============================================= -->
+  <style>
+  .nailcraft-hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden;
+    background: radial-gradient(ellipse 80% 70% at 30% 40%, #d94aff 0%, #9c28b1 35%, #6b1080 65%, #3d0860 100%);
+    font-family: 'DM Sans', sans-serif;
+    padding-top: 70px;
+  }
+  .nailcraft-hero .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 55% 60% at 70% 60%, rgba(255,31,227,0.35) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 40% at 15% 75%, rgba(181,144,241,0.4) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 35% at 80% 15%, rgba(254,155,0,0.12) 0%, transparent 55%);
+  }
+  .nailcraft-hero .hero-content { position: relative; z-index: 2; max-width: 780px; padding: 0 24px; }
+  .nailcraft-hero .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.45);
+    color: #fff; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; padding: 6px 18px; border-radius: 100px;
+    margin-bottom: 22px; backdrop-filter: blur(8px);
+  }
+  .nailcraft-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.4rem); font-weight: 900;
+    color: #fff; line-height: 1.1; margin-bottom: 20px;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.22);
+  }
+  .nailcraft-hero h1 em {
+    font-style: italic; color: #ffe0fb; display: inline-block;
+    animation: heroTextGlow 2.8s ease-in-out infinite alternate;
+  }
+  @keyframes heroTextGlow {
+    from { text-shadow: 0 0 8px rgba(255,31,227,0.3), 0 0 16px rgba(255,31,227,0.15); }
+    to   { text-shadow: 0 0 20px rgba(255,31,227,0.9), 0 0 45px rgba(181,144,241,0.7), 0 0 70px rgba(255,31,227,0.4); }
+  }
+  .nailcraft-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 36px; line-height: 1.7; font-weight: 300; }
+  .nailcraft-hero .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #fe9b00; color: #fff; font-weight: 700; font-size: 1rem;
+    padding: 16px 34px; border-radius: 100px; text-decoration: none;
+    letter-spacing: 0.02em;
+    animation: heroBtnPulse 2.2s ease-in-out infinite;
+  }
+  @keyframes heroBtnPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(254,155,0,0.75), 0 8px 30px rgba(254,155,0,0.45); }
+    65%  { box-shadow: 0 0 0 16px rgba(254,155,0,0), 0 8px 30px rgba(254,155,0,0.45); }
+    100% { box-shadow: 0 0 0 0 rgba(254,155,0,0), 0 8px 30px rgba(254,155,0,0.45); }
+  }
+  .nailcraft-hero .hero-cta:hover {
+    animation: none; transform: scale(1.05);
+    box-shadow: 0 14px 40px rgba(254,155,0,0.65);
+    color: #fff !important; background: #fe9b00 !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .nailcraft-hero .hero-count { margin-top: 44px; color: rgba(255,255,255,0.75); font-size: 0.88rem; letter-spacing: 0.08em; }
+  @media(max-width: 768px) {
+    .nailcraft-hero h1 { font-size: 2rem; }
+    .nailcraft-hero p { font-size: 0.92rem; }
+    .nailcraft-hero .hero-cta { font-size: 0.88rem; padding: 13px 24px; }
+    .nailcraft-hero .hero-count { font-size: 0.75rem; }
+    .nailcraft-hero .hero-badge { font-size: 0.65rem; padding: 5px 14px; }
+  }
+  @media(max-width: 480px) {
+    .nailcraft-hero { min-height: 75vh; }
+    .nailcraft-hero h1 { font-size: 1.7rem; }
+    .nailcraft-hero p { font-size: 0.85rem; margin-bottom: 24px; }
+    .nailcraft-hero .hero-cta { font-size: 0.82rem; padding: 12px 20px; }
+    .nailcraft-hero .hero-count { font-size: 0.7rem; margin-top: 28px; }
+  }
+  </style>
+
+  <section class="nailcraft-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">✦ NailCraft Online Opleidingen</div>
+      <h1>Word een <em>zelfzekere</em><br>nagelstylist</h1>
+      <p>Van manicure tot volledig traject — leer in jouw eigen tempo.<br>Resultaat van dag één.</p>
+      <a href="#nc-cursussen" class="hero-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Bekijk alle cursussen
+      </a>
+      <p class="hero-count">✦ 14 cursussen beschikbaar · videotrainingen & e-books en compleet traject</p>
+    </div>
+  </section>
+
+  <!-- =============================================
+       VIDEOTRAININGEN HEADER
+  ============================================= -->
+  <style>
+  .nc-section-head-marble-vt {
+    background: #f8f2ff; padding: 70px 24px 50px; text-align: center;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nc-section-head-marble-vt .inner-card {
+    display: inline-block; padding: 28px 54px; border-radius: 18px;
+    background: #fff; box-shadow: 0 6px 40px rgba(156,40,177,0.1);
+    border-top: 4px solid #b590f1;
+  }
+  .nc-section-head-marble-vt .cat-label {
+    display: inline-block; background: #b590f1; color: #fff;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 5px 16px; border-radius: 100px; margin-bottom: 12px;
+  }
+  .nc-section-head-marble-vt h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.5rem); color: #9c28b1;
+    font-weight: 900; margin-bottom: 10px;
+  }
+  .nc-section-head-marble-vt p {
+    color: #5a4570; margin-top: 8px; font-size: 0.97rem;
+    font-weight: 300; max-width: 540px; margin-left: auto; margin-right: auto;
+  }
+  @media(max-width: 768px) {
+    .nc-section-head-marble-vt .inner-card { padding: 20px 22px; }
+    .nc-section-head-marble-vt h2 { font-size: 1.5rem; }
+  }
+  @media(max-width: 480px) {
+    .nc-section-head-marble-vt { padding: 44px 16px 34px; }
+    .nc-section-head-marble-vt .inner-card { padding: 18px 20px; }
+    .nc-section-head-marble-vt h2 { font-size: 1.3rem; }
+    .nc-section-head-marble-vt .cat-label { font-size: 0.65rem; }
+  }
+  </style>
+
+  <div style="background:#f8f2ff;margin:0;padding:0;">
+    <div id="nc-cursussen" class="nc-section-head-marble-vt">
+      <div class="inner-card">
+        <div class="cat-label">📹 Videotrainingen</div>
+        <h2>Leer door te kijken & doen</h2>
+        <p>Stap-voor-stap videocursussen die je op elk moment kan volgen.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       VIDEOTRAININGEN GRID
+  ============================================= -->
+  <style>
+  .nc-grid-wrap {
+    max-width: 1180px; margin: 0 auto;
+    padding: 0 24px 80px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 28px; background: #f8f2ff; font-family: 'DM Sans', sans-serif;
+  }
+  .nc-grid-wrap .card {
+    background: #fff; border-radius: 22px; overflow: hidden;
+    box-shadow: 0 6px 32px rgba(156,40,177,0.08);
+    display: flex; flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .nc-grid-wrap .card.animate-ready { opacity: 0; transform: translateY(30px); transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.3s; }
+  .nc-grid-wrap .card.animate-ready.visible { opacity: 1; transform: translateY(0); }
+  .nc-grid-wrap .card:hover { transform: translateY(-6px); box-shadow: 0 18px 60px rgba(156,40,177,0.16); }
+  .nc-grid-wrap .card-media { position: relative; overflow: hidden; background: #ede4f8; aspect-ratio: 16/9; }
+  .nc-grid-wrap .card-media img,
+  .nc-grid-wrap .card-media video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .nc-grid-wrap .card:hover .card-media img,
+  .nc-grid-wrap .card:hover .card-media video { transform: scale(1.04); }
+  video::-webkit-media-controls,
+  video::-webkit-media-controls-enclosure,
+  video::-webkit-media-controls-panel { display: none !important; }
+  .nc-grid-wrap .card-type {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(255,255,255,0.92); color: #9c28b1;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+    backdrop-filter: blur(6px);
+  }
+  .nc-grid-wrap .card-type.ebook { background: #9c28b1; color: #fff; }
+  .nc-grid-wrap .card-type.nieuw { background: #fe9b00; color: #fff; }
+  .nc-grid-wrap .card-body { padding: 24px 26px 20px; flex: 1; display: flex; flex-direction: column; }
+  .nc-grid-wrap .card-title { font-family: 'Playfair Display', serif; font-size: 1.28rem; font-weight: 700; color: #2a1a35; margin-bottom: 10px; line-height: 1.25; }
+  .nc-grid-wrap .card-desc { font-size: 0.89rem; color: #5a4570; line-height: 1.65; margin-bottom: 14px; flex: 1; }
+  .nc-grid-wrap .card-voor { display: flex; align-items: flex-start; gap: 8px; background: #f8f2ff; border-radius: 10px; padding: 10px 14px; margin-bottom: 18px; font-size: 0.83rem; color: #5a4570; line-height: 1.5; }
+  .nc-grid-wrap .card-voor svg { flex-shrink: 0; margin-top: 2px; color: #b590f1; }
+  .nc-grid-wrap .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; }
+  .nc-grid-wrap .card-price { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 900; color: #9c28b1; }
+  .nc-grid-wrap .card-price span { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 400; color: #5a4570; display: block; margin-top: -4px; }
+  .nc-grid-wrap .btn {
+    display: inline-block; background: #fe9b00; color: #fff !important;
+    font-weight: 700; font-size: 0.85rem; padding: 12px 22px;
+    border-radius: 100px; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(254,155,0,0.35); letter-spacing: 0.01em;
+  }
+  .nc-grid-wrap .btn:hover {
+    transform: scale(1.06); box-shadow: 0 8px 28px rgba(254,155,0,0.5);
+    color: #fff !important; background: #fe9b00 !important;
+  }
+  @media(max-width: 768px) {
+    .nc-grid-wrap .card-title { font-size: 1.1rem; }
+    .nc-grid-wrap .card-desc { font-size: 0.83rem; }
+    .nc-grid-wrap .card-voor { font-size: 0.78rem; }
+    .nc-grid-wrap .card-price { font-size: 1.2rem; }
+  }
+  @media(max-width: 480px) {
+    .nc-grid-wrap { grid-template-columns: 1fr; gap: 18px; padding: 0 16px 60px; }
+    .nc-grid-wrap .card-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .nc-grid-wrap .btn { width: 100%; text-align: center; font-size: 0.72rem !important; padding: 11px 16px !important; }
+  }
+  </style>
+
+  <div style="background:#f8f2ff;">
+    <div class="nc-grid-wrap">
+
+      <!-- Manicure Pro -->
+      <div class="card">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+            <source src="https://nailcraft.be/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-16-mp4/" type="video/mp4">
+          </video>
+          <span class="card-type">Video · +4 uur</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Manicure Pro</h3>
+          <p class="card-desc">Voer een perfecte manicure uit op élke klant — zonder wondjes, op elk huid- en nagelriemtype. Inclusief gratis e-book.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Voor wie kunstnagels plaatst en meer kennis wil over voorbereiding</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">€145<span>eenmalig</span></div>
+            <a href="salespaginas/manicure-pro.html" class="btn">Word Manicure Pro →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Easy Nails -->
+      <div class="card">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+            <source src="https://nailcraft.be/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-17-mp4/" type="video/mp4">
+          </video>
+          <span class="card-type">Videotraining</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Easy Nails</h3>
+          <p class="card-desc">Kunstnagels opbouwen zonder navijlen. Leer werken met hardgel en rubber base gel (BIAB) en creëer meteen de juiste nagelarchitectuur.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Voor stylisten die verfijnder, sneller en strakker willen werken</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">€150<span>eenmalig</span></div>
+            <a href="salespaginas/easy-nails.html" class="btn">Ik plaats nagels, easy! →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upperforms -->
+      <div class="card">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+            <source src="https://videos.files.wordpress.com/0hLoGUHj/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-12.mp4" type="video/mp4">
+          </video>
+          <span class="card-type">Video · e-book · pakket</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Upperforms</h3>
+          <p class="card-desc">Werk sneller met strakke, perfect gevormde kunstnagels. Kies zelf: e-book, videotraining of het complete pakket.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Beginners én professionals die de nieuwste techniek willen beheersen</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">Vanaf €70<span>eenmalig</span></div>
+            <a href="salespaginas/upperforms.html" class="btn">Volg deze cursus →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Babyboom -->
+      <div class="card">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+            <source src="https://videos.files.wordpress.com/HAEO8gbX/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-11.mp4" type="video/mp4">
+          </video>
+          <span class="card-type">Video · +gratis e-book</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Babyboom</h3>
+          <p class="card-desc">Creëer een zachte, natuurlijke babyboom met perfecte vormcorrectie via Upperforms + Easy Nails techniek. Inclusief gratis e-book.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Voor stylisten die een babyboom willen plaatsen met mooie overgang</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">€90<span>eenmalig</span></div>
+            <a href="salespaginas/babyboom.html" class="btn">Leer babyboom plaatsen →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Refill Removal Pro -->
+      <div class="card">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+            <source src="https://nailcraft.be/refill-removal-pro-mp4/" type="video/mp4">
+          </video>
+          <span class="card-type">Video · +gratis bonusvideo</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Refill Removal Pro</h3>
+          <p class="card-desc">Leer product veilig affrezen zonder de natuurlijke nagel te beschadigen. Meer controle en zelfvertrouwen bij je refillbehandelingen.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Beginners én ervaren stylisten die veilig willen leren affrezen</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">€65<span>eenmalig</span></div>
+            <a href="salespaginas/kunstnagels-affrezen.html" class="btn">Ik leer veilig affrezen →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Perfecte Kleurapplicatie -->
+      <div class="card">
+        <div class="card-media">
+          <img src="images/kleurapplicatie-1.png" alt="Perfecte Kleurapplicatie" loading="lazy">
+          <span class="card-type nieuw">✨ Nieuw</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Perfecte Kleurapplicatie</h3>
+          <p class="card-desc">Gloednieuwe videotraining over kleurapplicatie. Leer de technieken die jou een strakker, mooier resultaat geven bij het kleuren van kunstnagels.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Voor stylisten die hun kleurwerk naar een hoger niveau willen tillen</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">€49<span>lanceringsprijs <s style="opacity:0.5;font-size:0.9em;">€89</s></span></div>
+            <a href="salespaginas/kleurapplicatie.html" class="btn">Bekijk cursus →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sjabloon Applicatie -->
+      <div class="card">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+            <source src="https://videos.files.wordpress.com/AS5oPIj3/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-15-1.mp4" type="video/mp4">
+          </video>
+          <span class="card-type nieuw">✨ Nieuw</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Sjabloon Applicatie</h3>
+          <p class="card-desc">Nieuwe videotraining over sjabloon applicatie. Werk efficiënter en creëer mooie verlengingen met hardgel en acrygel met de sjabloontechnieken.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Voor stylisten die met sjablonen willen werken om nagels te verlengen</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">€65<span>lanceringsprijs <s style="opacity:0.5;font-size:0.9em;">€155</s></span></div>
+            <a href="salespaginas/sjablonen.html" class="btn">Bekijk cursus →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cards = document.querySelectorAll('.nc-grid-wrap .card');
+    if ('IntersectionObserver' in window) {
+      cards.forEach(function(c) { c.classList.add('animate-ready'); });
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var siblings = Array.from(entry.target.parentElement.children);
+            var idx = siblings.indexOf(entry.target);
+            setTimeout(function() { entry.target.classList.add('visible'); }, Math.min(idx * 90, 400));
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      cards.forEach(function(c) { obs.observe(c); });
+    }
+  });
+  </script>
+
+  <!-- =============================================
+       E-BOOKS HEADER
+  ============================================= -->
+  <style>
+  .nc-section-head-marble {
+    background: #f8f2ff; padding: 70px 24px 50px;
+    text-align: center; font-family: 'DM Sans', sans-serif;
+  }
+  .nc-section-head-marble .inner-card {
+    display: inline-block; padding: 28px 54px; border-radius: 18px;
+    background: #fff; box-shadow: 0 6px 40px rgba(156,40,177,0.1);
+    border-top: 4px solid #b590f1;
+  }
+  .nc-section-head-marble .cat-label {
+    display: inline-block; background: #b590f1; color: #fff;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 5px 16px; border-radius: 100px; margin-bottom: 12px;
+  }
+  .nc-section-head-marble h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.5rem); color: #9c28b1;
+    font-weight: 900; margin-bottom: 10px;
+  }
+  .nc-section-head-marble p {
+    color: #5a4570; margin-top: 8px; font-size: 0.97rem;
+    font-weight: 300; max-width: 540px; margin-left: auto; margin-right: auto;
+  }
+  @media(max-width: 768px) {
+    .nc-section-head-marble .inner-card { padding: 20px 22px; }
+    .nc-section-head-marble h2 { font-size: 1.5rem; }
+  }
+  @media(max-width: 480px) {
+    .nc-section-head-marble { padding: 44px 16px 34px; }
+    .nc-section-head-marble .inner-card { padding: 18px 20px; }
+    .nc-section-head-marble h2 { font-size: 1.3rem; }
+    .nc-section-head-marble .cat-label { font-size: 0.65rem; }
+  }
+  </style>
+
+  <div class="nc-section-head-marble">
+    <div class="inner-card">
+      <div class="cat-label">📖 E-books</div>
+      <h2>Leer op jouw tempo</h2>
+      <p>Diepgaande e-books met praktische kennis die je direct kan toepassen.</p>
+    </div>
+  </div>
+
+  <!-- =============================================
+       E-BOOKS GRID
+  ============================================= -->
+  <style>
+  .nc-grid-wrap-eb {
+    max-width: 1180px; margin: 0 auto;
+    padding: 0 24px 80px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 28px; background: #f8f2ff; font-family: 'DM Sans', sans-serif;
+  }
+  .nc-grid-wrap-eb .card {
+    background: #fff; border-radius: 22px; overflow: hidden;
+    box-shadow: 0 6px 32px rgba(156,40,177,0.08);
+    display: flex; flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .nc-grid-wrap-eb .card.animate-ready { opacity: 0; transform: translateY(30px); transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.3s; }
+  .nc-grid-wrap-eb .card.animate-ready.visible { opacity: 1; transform: translateY(0); }
+  .nc-grid-wrap-eb .card:hover { transform: translateY(-6px); box-shadow: 0 18px 60px rgba(156,40,177,0.16); }
+  .nc-grid-wrap-eb .card-media { position: relative; overflow: hidden; background: #ede4f8; aspect-ratio: 16/9; }
+  .nc-grid-wrap-eb .card-media img,
+  .nc-grid-wrap-eb .card-media video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .nc-grid-wrap-eb .card:hover .card-media img,
+  .nc-grid-wrap-eb .card:hover .card-media video { transform: scale(1.04); }
+  .nc-grid-wrap-eb .card-type {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(255,255,255,0.92); color: #9c28b1;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+    backdrop-filter: blur(6px);
+  }
+  .nc-grid-wrap-eb .card-type.ebook { background: #9c28b1; color: #fff; }
+  .nc-grid-wrap-eb .card-type.nieuw { background: #fe9b00; color: #fff; }
+  .nc-grid-wrap-eb .card-body { padding: 24px 26px 20px; flex: 1; display: flex; flex-direction: column; }
+  .nc-grid-wrap-eb .card-title { font-family: 'Playfair Display', serif; font-size: 1.28rem; font-weight: 700; color: #2a1a35; margin-bottom: 10px; line-height: 1.25; }
+  .nc-grid-wrap-eb .card-desc { font-size: 0.89rem; color: #5a4570; line-height: 1.65; margin-bottom: 14px; flex: 1; }
+  .nc-grid-wrap-eb .card-voor { display: flex; align-items: flex-start; gap: 8px; background: #f8f2ff; border-radius: 10px; padding: 10px 14px; margin-bottom: 18px; font-size: 0.83rem; color: #5a4570; line-height: 1.5; }
+  .nc-grid-wrap-eb .card-voor svg { flex-shrink: 0; margin-top: 2px; color: #b590f1; }
+  .nc-grid-wrap-eb .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; }
+  .nc-grid-wrap-eb .card-price { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 900; color: #9c28b1; }
+  .nc-grid-wrap-eb .card-price span { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 400; color: #5a4570; display: block; margin-top: -4px; }
+  .nc-grid-wrap-eb .btn {
+    display: inline-block; background: #fe9b00; color: #fff !important;
+    font-weight: 700; font-size: 0.85rem; padding: 12px 22px;
+    border-radius: 100px; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(254,155,0,0.35); letter-spacing: 0.01em;
+  }
+  .nc-grid-wrap-eb .btn:hover {
+    transform: scale(1.06); box-shadow: 0 8px 28px rgba(254,155,0,0.5);
+    color: #fff !important; background: #fe9b00 !important;
+  }
+  @media(max-width: 768px) {
+    .nc-grid-wrap-eb .card-title { font-size: 1.1rem; }
+    .nc-grid-wrap-eb .card-desc { font-size: 0.83rem; }
+    .nc-grid-wrap-eb .card-voor { font-size: 0.78rem; }
+    .nc-grid-wrap-eb .card-price { font-size: 1.2rem; }
+  }
+  @media(max-width: 480px) {
+    .nc-grid-wrap-eb { grid-template-columns: 1fr; gap: 18px; padding: 0 16px 60px; }
+    .nc-grid-wrap-eb .card-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .nc-grid-wrap-eb .btn { width: 100%; text-align: center; font-size: 0.72rem !important; padding: 11px 16px !important; }
+  }
+  </style>
+
+  <div style="background:#f8f2ff;">
+    <div class="nc-grid-wrap-eb">
+
+      <!-- Nail Content Creator -->
+      <div class="card">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+            <source src="https://nailcraft.be/nail-content-creator-2-mp4/" type="video/mp4">
+          </video>
+          <span class="card-type ebook">E-book · +gratis videoles</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Nail Content Creator</h3>
+          <p class="card-desc">Breng je foto's naar the next level. Heldere stappenplannen, materiaaluitleg en hands-on laten zien hoe je professionele nagelcontent maakt.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Voor stylisten die hun werk willen fotograferen en meer klanten aantrekken</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">€60<span>eenmalig</span></div>
+            <a href="salespaginas/nail-content-creator.html" class="btn">Ik wil picture perfect →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Gel Code -->
+      <div class="card">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+            <source src="https://videos.files.wordpress.com/ubYUcscx/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-6-1.mp4" type="video/mp4">
+          </video>
+          <span class="card-type ebook">E-book</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">The Gel Code</h3>
+          <p class="card-desc">Begrijp de verschillen tussen biab, hardgel, sculpt en acrygel en weet precies welke techniek je wanneer gebruikt. Nooit meer twijfelen.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Voor stylisten die gelproducten écht willen begrijpen en juiste keuzes maken</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">€45<span>eenmalig</span></div>
+            <a href="salespaginas/the-gel-code.html" class="btn">Ik wil meer kennis →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Basics -->
+      <div class="card">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+            <source src="https://videos.files.wordpress.com/BYeTMJRN/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-9.mp4" type="video/mp4">
+          </video>
+          <span class="card-type ebook">E-book · +gratis videolessen</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">The Basics</h3>
+          <p class="card-desc">Welke materialen heb je écht nodig? Leer stap voor stap nagelanatomie en alle materialen die je nodig hebt om professioneel te werken.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Beginners of stylisten die hun basiskennis willen versterken</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">€45<span>eenmalig</span></div>
+            <a href="salespaginas/the-basics.html" class="btn">Stop met geldverspilling →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manicure E-book -->
+      <div class="card">
+        <div class="card-media">
+          <img src="images/Manicure-e-book.png" alt="Manicure E-book" loading="lazy">
+          <span class="card-type ebook">E-book</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Manicure E-book</h3>
+          <p class="card-desc">Alles over de perfecte manicure in één compleet e-book. Stappenplannen, materiaaluitleg en technieken voor elk huid- en nagelriemtype.</p>
+          <div class="card-voor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Voor wie alles over manicure wil weten in eigen tempo</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">€18,99<span>eenmalig</span></div>
+            <a href="salespaginas/manicure-ebook.html" class="btn">Download e-book →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cards = document.querySelectorAll('.nc-grid-wrap-eb .card');
+    if ('IntersectionObserver' in window) {
+      cards.forEach(function(c) { c.classList.add('animate-ready'); });
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var siblings = Array.from(entry.target.parentElement.children);
+            var idx = siblings.indexOf(entry.target);
+            setTimeout(function() { entry.target.classList.add('visible'); }, Math.min(idx * 90, 400));
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      cards.forEach(function(c) { obs.observe(c); });
+    }
+  });
+  </script>
+
+  <!-- =============================================
+       REVIEWS
+  ============================================= -->
+  <style>
+  .nc-reviews-section { background: #f8f2ff; padding: 0 24px 60px; font-family: 'DM Sans', sans-serif; }
+  .nc-reviews-section .section-head { text-align: center; padding: 80px 24px 48px; }
+  .nc-reviews-section .cat-label {
+    display: inline-block; background: #b590f1; color: #fff;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 5px 16px; border-radius: 100px; margin-bottom: 12px;
+  }
+  .nc-reviews-section .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;
+    color: #9c28b1; margin-bottom: 10px;
+  }
+  .nc-reviews-section .section-sub { color: #5a4570; font-size: 1rem; font-weight: 300; max-width: 540px; margin: 0 auto; }
+  .nc-reviews-grid { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .nc-review-card {
+    background: #fff; border-radius: 18px; padding: 24px;
+    box-shadow: 0 6px 32px rgba(156,40,177,0.08);
+    display: flex; flex-direction: column; gap: 12px;
+    border-left: 4px solid #b590f1;
+  }
+  .nc-review-stars { color: #fe9b00; font-size: 0.95rem; letter-spacing: 2px; }
+  .nc-review-text { font-size: 0.85rem; color: #5a4570; line-height: 1.7; font-style: italic; flex: 1; }
+  .nc-review-author { display: flex; align-items: center; gap: 12px; }
+  .nc-review-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, #9c28b1, #b590f1);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.88rem; flex-shrink: 0;
+  }
+  .nc-review-author strong { display: block; font-size: 0.83rem; color: #2a1a35; }
+  .nc-review-author span { font-size: 0.73rem; color: #5a4570; }
+  @media(max-width: 768px) {
+    .nc-reviews-section .section-title { font-size: 1.5rem; }
+    .nc-reviews-section .section-sub { font-size: 0.88rem; }
+  }
+  @media(max-width: 600px) { .nc-reviews-grid { grid-template-columns: 1fr; } }
+  @media(max-width: 480px) {
+    .nc-reviews-section .section-head { padding: 50px 16px 30px; }
+    .nc-review-card { padding: 18px; }
+    .nc-review-text { font-size: 0.8rem; }
+  }
+  </style>
+
+  <section class="nc-reviews-section">
+    <div class="section-head">
+      <div class="cat-label">⭐ Wat andere stylisten zeggen</div>
+      <h2 class="section-title">Zij gingen je voor</h2>
+      <p class="section-sub">Echte ervaringen van nagelstylisten die onze cursussen volgden.</p>
+    </div>
+    <div class="nc-reviews-grid">
+      <div class="nc-review-card">
+        <div class="nc-review-stars">★★★★★</div>
+        <p class="nc-review-text">"Ik volgde de Easy Nails cursus omdat ik altijd zo lang bezig was met vijlen. En écht, na twee keer oefenen begon ik het verschil al te zien. De uitleg is zo duidelijk, ik heb alles meerdere keren teruggekeken en elke keer leer ik er nog iets bij. Ik werk nu zoveel sneller en mijn klanten merken ook het verschil. Zou deze cursus aan elke stylist aanraden!"</p>
+        <div class="nc-review-author">
+          <div class="nc-review-avatar">L</div>
+          <div>
+            <strong>Lien V.</strong>
+            <span>Nagelstyliste · Easy Nails</span>
+          </div>
+        </div>
+      </div>
+      <div class="nc-review-card">
+        <div class="nc-review-stars">★★★★★</div>
+        <p class="nc-review-text">"Ik twijfelde eerst of een online cursus wel goed zou zijn, maar dit heeft alle verwachtingen overtroffen. De Manicure Pro cursus heeft mijn voorbereiding compleet veranderd. Geen wondjes meer, klanten die zeggen dat het de beste manicure ooit was. De manier waarop alles wordt uitgelegd is gewoon heel fijn — duidelijk, rustig en to the point. Écht de moeite waard!"</p>
+        <div class="nc-review-author">
+          <div class="nc-review-avatar">S</div>
+          <div>
+            <strong>Sarah D.</strong>
+            <span>Nagelstyliste · Manicure Pro</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       TRAJECT: VAN BEGINNER TOT PROFESSIONAL
+  ============================================= -->
+  <style>
+  .nc-traject-section { font-family: 'DM Sans', sans-serif; }
+  .nc-traject-head { background: #f8f2ff; text-align: center; padding: 80px 24px 48px; }
+  .nc-traject-head .cat-label {
+    display: inline-block; background: #b590f1; color: #fff;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 5px 16px; border-radius: 100px; margin-bottom: 12px;
+  }
+  .nc-traject-head .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;
+    color: #b590f1; margin-bottom: 10px;
+  }
+  .nc-traject-head .section-title .gradient-word {
+    background: linear-gradient(135deg, #b590f1 0%, #ff1fe3 50%, #9c28b1 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; display: inline-block;
+    animation: professionalGlow 3s ease-in-out infinite alternate;
+  }
+  @keyframes professionalGlow {
+    from { filter: drop-shadow(0 0 4px rgba(181,144,241,0.4)); }
+    to   { filter: drop-shadow(0 0 18px rgba(255,31,227,0.8)) drop-shadow(0 0 36px rgba(181,144,241,0.5)); }
+  }
+  .nc-traject-head .section-sub { color: #5a4570; font-size: 1rem; font-weight: 300; max-width: 540px; margin: 0 auto; }
+
+  .nc-featured-wrap { background: #f8f2ff; padding: 0 24px 80px; }
+  .nc-featured-inner { max-width: 1180px; margin: 0 auto; }
+  .nc-featured-card {
+    background: linear-gradient(135deg, #9c28b1 0%, #6b1a8f 60%, #3d0d5e 100%);
+    border-radius: 26px; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr;
+    box-shadow: 0 20px 70px rgba(156,40,177,0.3);
+    position: relative;
+  }
+  .nc-featured-card.animate-ready { opacity: 0; transform: translateY(30px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .nc-featured-card.animate-ready.visible { opacity: 1; transform: translateY(0); }
+  .nc-featured-card::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(255,31,227,0.25) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
+  }
+  .nc-featured-media {
+    position: relative; overflow: hidden;
+    aspect-ratio: 16/9; max-height: 380px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nc-featured-media video { width: 100%; height: 100%; object-fit: contain; pointer-events: none; background: #1a0530; display: block; }
+  .nc-featured-body { padding: 48px 44px; display: flex; flex-direction: column; justify-content: center; }
+  .nc-featured-badge {
+    display: inline-block; background: #ff1fe3; color: #fff;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 5px 16px; border-radius: 100px;
+    margin-bottom: 18px; width: fit-content;
+  }
+  .nc-featured-body h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900;
+    color: #fff; margin-bottom: 16px; line-height: 1.15;
+  }
+  .nc-featured-body p { color: rgba(255,255,255,0.78); font-size: 0.93rem; line-height: 1.7; margin-bottom: 12px; }
+  .nc-featured-voor {
+    background: rgba(255,255,255,0.1); border-radius: 12px;
+    padding: 12px 16px; margin: 14px 0 24px;
+    font-size: 0.85rem; color: rgba(255,255,255,0.82); line-height: 1.6;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .nc-featured-price { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: #fff; margin-bottom: 6px; }
+  .nc-featured-price small {
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 300;
+    color: rgba(255,255,255,0.65); display: block; margin-top: -4px; margin-bottom: 20px;
+  }
+  .nc-btn-white {
+    display: inline-block; background: #fff; color: #9c28b1 !important;
+    font-weight: 700; font-size: 0.92rem; padding: 14px 30px;
+    border-radius: 100px; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18); width: fit-content;
+  }
+  .nc-btn-white:hover { transform: scale(1.05); box-shadow: 0 12px 36px rgba(0,0,0,0.25); color: #9c28b1 !important; background: #fff !important; }
+  @media(max-width: 768px) {
+    .nc-featured-card { grid-template-columns: 1fr; }
+    .nc-featured-media { aspect-ratio: 16/9; max-height: 160px; }
+    .nc-featured-body { padding: 26px 22px 30px; }
+    .nc-featured-body h2 { font-size: 1.5rem; }
+    .nc-featured-body p { font-size: 0.85rem; }
+    .nc-featured-price { font-size: 1.55rem; }
+    .nc-featured-voor { font-size: 0.8rem; padding: 10px 12px; }
+    .nc-btn-white { font-size: 0.70rem !important; padding: 10px 16px !important; width: 100%; text-align: center; }
+    .nc-traject-head .section-title { font-size: 1.5rem; }
+    .nc-traject-head .section-sub { font-size: 0.88rem; }
+  }
+  @media(max-width: 480px) {
+    .nc-traject-head { padding: 50px 16px 30px; }
+    .nc-featured-wrap { padding: 0 16px 60px; }
+    .nc-featured-media { max-height: 130px !important; }
+    .nc-featured-body { padding: 22px 18px 26px; }
+    .nc-featured-body h2 { font-size: 1.35rem; margin-bottom: 10px; }
+    .nc-featured-body p { font-size: 0.82rem; line-height: 1.6; }
+    .nc-featured-price { font-size: 1.4rem; }
+    .nc-featured-badge { font-size: 0.62rem; padding: 4px 12px; }
+    .nc-btn-white { font-size: 0.70rem !important; padding: 10px 16px !important; width: 100%; text-align: center; }
+  }
+  </style>
+
+  <div class="nc-traject-section">
+    <div class="nc-traject-head">
+      <div class="cat-label">⭐ Compleet traject</div>
+      <h2 class="section-title">Van beginner tot <span class="gradient-word">professional</span></h2>
+      <p class="section-sub">Wil je meer dan een losse cursus? Ontwikkel je tot een sterke, zelfzekere nagelstylist.</p>
+    </div>
+    <div class="nc-featured-wrap">
+      <div class="nc-featured-inner">
+        <div class="nc-featured-card">
+          <div class="nc-featured-media">
+            <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
+              <source src="https://videos.files.wordpress.com/DcgZz74w/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-10.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="nc-featured-body">
+            <div class="nc-featured-badge">✦ Meest Compleet</div>
+            <h2>The Nailstylist</h2>
+            <p>Van beginner tot volwaardige nagelstylist. Alle e-books, alle videotrainingen, live Q&A's en een exclusieve community — alles wat je nodig hebt om professioneel te werken.</p>
+            <div class="nc-featured-voor">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Voor wie het vak volledig wil leren en wil uitgroeien tot een zelfzekere professional</span>
+            </div>
+            <div class="nc-featured-price">€1.250
+              <small>Cursus start in 2026</small>
+            </div>
+            <a href="the-nailstylist-traject.html" class="nc-btn-white">Kom op de wachtlijst →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var card = document.querySelector('.nc-featured-card');
+    if (!card) return;
+    if ('IntersectionObserver' in window) {
+      card.classList.add('animate-ready');
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.08 });
+      obs.observe(card);
+    }
+  });
+  </script>
+
+  <!-- =============================================
+       QUIZ WIDGET
+  ============================================= -->
+  <div style="background:#f8f2ff;padding:60px 24px 80px;">
+    <div style="text-align:center;margin-bottom:2rem;">
+      <span style="display:inline-block;background:#b590f1;color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:12px;">🤔 Weet je niet welke cursus?</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.5vw,2.4rem);color:#9c28b1;font-weight:900;margin-bottom:8px;">Doe de cursuskiezer</h2>
+      <p style="color:#5a4570;font-size:0.97rem;font-weight:300;max-width:480px;margin:0 auto;">4 korte vragen — en ik wijs je precies de juiste cursus voor jouw niveau en doel.</p>
+    </div>
+
+    <style>
+    #nc-quiz-widget {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      max-width: 600px; margin: 0 auto; padding: 1.5rem 0;
+    }
+    #nc-quiz-widget *, #nc-quiz-widget *::before, #nc-quiz-widget *::after { box-sizing: border-box; }
+    #nc-quiz-widget .nc-badge { display:inline-block;background:#f0e8fd;color:#7a4fc7;font-size:11px;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:12px;letter-spacing:.06em;text-transform:uppercase; }
+    #nc-quiz-widget .nc-header { text-align:center;margin-bottom:1.75rem; }
+    #nc-quiz-widget .nc-title { font-size:22px;font-weight:600;color:#1a1a1a;margin:0 0 6px 0;padding:0;line-height:1.3; }
+    #nc-quiz-widget .nc-sub { font-size:14px;color:#6b6b6b;margin:0;padding:0; }
+    #nc-quiz-widget .nc-progress-bar { width:100%;height:3px;background:#e5e0d8;border-radius:2px;margin-bottom:1.75rem;overflow:hidden; }
+    #nc-quiz-widget .nc-progress-fill { height:100%;background:#b590f1;border-radius:2px;transition:width .4s ease; }
+    #nc-quiz-widget .nc-card { background:#fff;border:1px solid #e5e0d8;border-radius:14px;padding:1.5rem;margin-bottom:1rem;box-shadow:0 1px 4px rgba(0,0,0,.05); }
+    #nc-quiz-widget .nc-question { font-size:16px;font-weight:600;color:#1a1a1a;margin:0 0 1.25rem 0;padding:0;line-height:1.4; }
+    #nc-quiz-widget .nc-options { display:flex;flex-direction:column;gap:8px; }
+    #nc-quiz-widget .nc-opt { width:100%;text-align:left;background:#f5f3ef;border:1px solid #e5e0d8;border-radius:10px;padding:.8rem 1rem;font-size:14px;color:#1a1a1a;cursor:pointer;transition:all .15s;line-height:1.45;font-family:inherit;display:block; }
+    #nc-quiz-widget .nc-opt:hover { background:#f0e8fd;border-color:#d4b8f8; }
+    #nc-quiz-widget .nc-opt.nc-selected { background:#f0e8fd;border-color:#b590f1;color:#7a4fc7;font-weight:600; }
+    #nc-quiz-widget .nc-nav { display:flex;justify-content:space-between;align-items:center;margin-top:1.25rem;gap:12px; }
+    #nc-quiz-widget .nc-btn-prev { background:transparent;border:1px solid #e5e0d8;border-radius:10px;padding:.6rem 1.1rem;font-size:14px;color:#6b6b6b;cursor:pointer;font-family:inherit;transition:background .15s; }
+    #nc-quiz-widget .nc-btn-prev:hover { background:#f5f3ef; }
+    #nc-quiz-widget .nc-step-label { font-size:12px;color:#6b6b6b; }
+    #nc-quiz-widget .nc-btn-next { background:#b590f1;border:none;border-radius:10px;padding:.6rem 1.4rem;font-size:14px;color:#fff;cursor:pointer;font-weight:600;font-family:inherit;transition:opacity .15s; }
+    #nc-quiz-widget .nc-btn-next:disabled { opacity:.35;cursor:default; }
+    #nc-quiz-widget .nc-btn-next:not(:disabled):hover { opacity:.88; }
+    #nc-quiz-widget .nc-result-card { background:#fff;border:1px solid #e5e0d8;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05); }
+    #nc-quiz-widget .nc-result-header { background:#f0e8fd;padding:1.5rem;text-align:center;border-bottom:1px solid #d4b8f8; }
+    #nc-quiz-widget .nc-result-label { font-size:11px;color:#7a4fc7;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin:0 0 6px 0;padding:0; }
+    #nc-quiz-widget .nc-result-name { font-size:21px;font-weight:700;color:#7a4fc7;margin:0 0 4px 0;padding:0; }
+    #nc-quiz-widget .nc-result-price { font-size:13px;color:#7a4fc7;opacity:.7;margin:0;padding:0; }
+    #nc-quiz-widget .nc-result-body { padding:1.5rem; }
+    #nc-quiz-widget .nc-result-why { font-size:14px;color:#1a1a1a;line-height:1.75;margin:0 0 1.25rem 0;padding:0 0 1.25rem 0;border-bottom:1px solid #e5e0d8; }
+    #nc-quiz-widget .nc-includes-title { font-size:11px;font-weight:700;color:#6b6b6b;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px 0;padding:0; }
+    #nc-quiz-widget .nc-includes-list { padding:0 0 0 1.1rem;margin:0 0 1.25rem 0; }
+    #nc-quiz-widget .nc-includes-list li { font-size:13px;color:#1a1a1a;margin-bottom:5px;line-height:1.5; }
+    #nc-quiz-widget .nc-actions { display:flex;flex-direction:column;gap:10px;margin-bottom:1rem; }
+    #nc-quiz-widget .nc-btn-cta { display:block;text-align:center;background:#b590f1;color:#fff !important;border:none;border-radius:10px;padding:.85rem 1.2rem;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none !important;transition:opacity .15s;font-family:inherit; }
+    #nc-quiz-widget .nc-btn-cta:hover { opacity:.88; }
+    #nc-quiz-widget .nc-btn-sec { display:block;text-align:center;background:transparent;color:#7a4fc7 !important;border:1px solid #d4b8f8;border-radius:10px;padding:.75rem 1.2rem;font-size:14px;cursor:pointer;text-decoration:none !important;transition:background .15s;font-family:inherit; }
+    #nc-quiz-widget .nc-btn-sec:hover { background:#f0e8fd; }
+    #nc-quiz-widget .nc-addon { background:#f5f3ef;border:1px solid #e5e0d8;border-radius:10px;padding:1rem 1.2rem;margin-top:.5rem; }
+    #nc-quiz-widget .nc-addon-label { font-size:10px;color:#6b6b6b;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:0 0 4px 0;padding:0; }
+    #nc-quiz-widget .nc-addon-title { font-size:14px;font-weight:600;color:#1a1a1a;margin:0 0 4px 0;padding:0; }
+    #nc-quiz-widget .nc-addon-desc { font-size:13px;color:#6b6b6b;line-height:1.5;margin:0 0 10px 0;padding:0; }
+    #nc-quiz-widget .nc-btn-addon { display:block;text-align:center;font-size:13px;color:#7a4fc7 !important;border:1px solid #d4b8f8;border-radius:10px;padding:.5rem 1rem;text-decoration:none !important;background:transparent;transition:background .15s; }
+    #nc-quiz-widget .nc-btn-addon:hover { background:#f0e8fd; }
+    #nc-quiz-widget .nc-restart-row { text-align:center;margin-top:1.25rem; }
+    #nc-quiz-widget .nc-btn-restart { background:transparent;border:none;font-size:13px;color:#6b6b6b;cursor:pointer;text-decoration:underline;font-family:inherit; }
+    #nc-quiz-widget .nc-btn-restart:hover { color:#1a1a1a; }
+    @media(max-width:480px) {
+      #nc-quiz-widget .nc-opt { font-size:.82rem;padding:.65rem 1rem; }
+      #nc-quiz-widget .nc-btn-next,
+      #nc-quiz-widget .nc-btn-prev,
+      #nc-quiz-widget .nc-btn-cta,
+      #nc-quiz-widget .nc-btn-sec { font-size:.82rem;padding:.65rem 1.1rem; }
+      #nc-quiz-widget .nc-title { font-size:19px; }
+    }
+    </style>
+
+    <div id="nc-quiz-widget">
+      <div class="nc-header">
+        <div class="nc-badge">✦ cursus kiezer</div>
+        <p class="nc-title">Welke cursus past bij jou?</p>
+        <p class="nc-sub">Beantwoord 4 korte vragen — en ik wijs je de weg.</p>
+      </div>
+      <div class="nc-progress-bar"><div class="nc-progress-fill" id="nc-quiz-progress"></div></div>
+      <div id="nc-quiz-content"></div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var QUESTIONS = [
+      { id:"level", q:"Waar sta je nu als nagelstyliste?", opts:[
+        {label:"Ik begin helemaal van nul — ik wil weten wat ik nodig heb",value:"beginner"},
+        {label:"Ik werk al met gelproducten maar wil mijn kennis verdiepen",value:"intermediate"},
+        {label:"Ik zet al regelmatig nagels maar wil verfijnder en sneller werken",value:"experienced"},
+        {label:"Ik ben een ervaren stylist op zoek naar een specifieke techniek",value:"pro"}
+      ]},
+      { id:"problem", q:"Wat is jouw grootste pijnpunt op dit moment?", opts:[
+        {label:"Ik weet niet welk materiaal ik nodig heb — ik koop van alles maar gebruik de helft niet",value:"materials"},
+        {label:"Mijn nagels liften, breken of laten los na een paar dagen",value:"lifting"},
+        {label:"Mijn manicure is niet consistent — soms wondjes, soms roodheid",value:"manicure"},
+        {label:"Ik wil een specifieke techniek leren (babyboom, upperforms, sjablonen, affrezen…)",value:"technique"},
+        {label:"Mijn foto's doen mijn werk geen recht — ik trek geen nieuwe klanten via social media",value:"content"}
+      ]},
+      { id:"format", q:"Hoe leer jij het liefst?", opts:[
+        {label:"Door te kijken — videolessen die ik op mijn eigen tempo kan volgen",value:"video"},
+        {label:"Door te lezen — een goed e-book dat ik kan raadplegen wanneer ik wil",value:"ebook"},
+        {label:"Allebei — ik wil zowel video als theorie in één pakket",value:"both"}
+      ]},
+      { id:"goal", q:"Wat is jouw einddoel?", opts:[
+        {label:"Professioneel starten en meteen de juiste basis leggen",value:"start"},
+        {label:"Betere resultaten voor mijn huidige klanten — minder herstelwerk",value:"quality"},
+        {label:"Een specifieke look of techniek toevoegen aan mijn aanbod",value:"expand"},
+        {label:"Meer klanten aantrekken via sterke online aanwezigheid",value:"attract"}
+      ]}
+    ];
+
+    var COURSES = {
+      basics:{name:"The Basics",price:"€45",sales:"salespaginas/the-basics.html",pay:"https://naillraftplatform.kennis.shop/pay/thebasics",includes:["E-book van 168 pagina's over anatomie en materialen","23 bonusvideo's met uitleg per materiaal","PDF met aankooplinks en productspecificaties","Levenslange toegang + persoonlijke begeleiding"]},
+      thegelcode:{name:"The Gel Code",price:"€45",sales:"salespaginas/the-gel-code.html",pay:"https://naillraftplatform.kennis.shop/pay/thegelcode",includes:["E-book van 75 pagina's","Rubber based, hardgel én acrygel volledig uitgelegd","Vergelijkingstabel + Q&A probleemoplossing","Persoonlijke ondersteuning na aankoop"]},
+      manicurepro:{name:"Manicure Pro",price:"€145",sales:"salespaginas/manicure-pro.html",pay:"https://naillraftplatform.kennis.shop/pay/manicurepro",includes:["Volledige videotraining combi-manicure","Demonstraties op gevoelige, droge & normale huid","E-book van 142 pagina's","Persoonlijke begeleiding inbegrepen"]},
+      easynails:{name:"Easy Nails",price:"€150",sales:"salespaginas/easy-nails.html",pay:"https://naillraftplatform.kennis.shop/pay/easynails",includes:["Nagelarchitectuur en basisopbouw (video)","BIAB-nagels plaatsen stap voor stap","Hardgel opbouwtechniek","Vormen vijlen + handposities"]},
+      upperformmaster:{name:"Upperform Master",price:"€235",sales:"salespaginas/upperforms.html",pay:"https://naillraftplatform.kennis.shop/pay/upperformmaster",includes:["24+ gedetailleerde videolessen","E-book van 97 pagina's","Babyboom, colorboom, inlay, French techniek","Eigen kleuren mengen (video)"]},
+      upperformpro:{name:"Upperform Pro",price:"€185",sales:"salespaginas/upperforms.html",pay:"https://naillraftplatform.kennis.shop/pay/upperformmaster",includes:["24+ gedetailleerde videolessen","Babyboom, colorboom, inlay, French","Eigen kleuren mengen (video)","Materialenlijst inbegrepen"]},
+      babyboom:{name:"Babyboom cursus",price:"€90",sales:"salespaginas/babyboom.html",pay:"https://naillraftplatform.kennis.shop/pay/babyboom",includes:["Babyboom via Upperform + Easy Nails techniek","Bonus: volledige colorboom videoles","E-book van 70 pagina's","Levenslange toegang + gratis updates"]},
+      refillremoval:{name:"Refill Removal Pro",price:"€65",sales:"salespaginas/kunstnagels-affrezen.html",pay:"https://naillraftplatform.kennis.shop/pay/refillremovalpro",includes:["Veilig affrezen op < 1 min per nagel","Freeskopjes, toerentallen & productafname","Haviksnagels & probleemzones","Bonus: bijwerken met niet-dominante hand"]},
+      kleurapplicatie:{name:"Perfecte Kleurapplicatie",price:"€39",sales:"salespaginas/kleurapplicatie.html",pay:"https://naillraftplatform.kennis.shop/pay/kleurapplicatie",includes:["Theorie over kleur & pigmentdichtheid","Penseeltechniek per kleurtype","Pastels, neons, glitter, donkere tinten","Finishing & topcoat techniek"]},
+      sjablonen:{name:"Sjabloon Applicatie",price:"€65",sales:"salespaginas/sjablonen.html",pay:"https://naillraftplatform.kennis.shop/pay/sjabloonapplicatie",includes:["E-book van 71 pagina's","Videolessen per vinger (almond, ballerina, square)","Acrygel én hardgel verlenging","Veelgemaakte fouten + correcties"]},
+      nailcontent:{name:"Nail Content Creator",price:"€60",sales:"salespaginas/nail-content-creator.html",pay:"https://naillraftplatform.kennis.shop/pay/nailcontentcreator",includes:["E-book van 94 pagina's","Video tutorials: fotograferen & editen","iPhone én Android instellingen","Canva, Snapseed & InShot als een pro"]}
+    };
+
+    var EBOOK_ADDON = {title:"Manicure E-book",price:"€18,99",desc:"Wil je ook de manicure beter begrijpen maar nog niet klaar voor Manicure Pro? Het e-book geeft je alle theorie als instap.",url:"salespaginas/manicure-ebook.html"};
+
+    function recommend(a) {
+      var l=a.level, p=a.problem, f=a.format, g=a.goal;
+      if(p==="content"||g==="attract") return {key:"nailcontent",why:"Je werk is mooi — maar als niemand het ziet, stroomt de agenda niet vol. De Nail Content Creator leert je met je smartphone foto's en video's maken die er professioneel uitzien.",addon:null};
+      if(l==="beginner"&&(p==="materials"||g==="start")) return {key:"basics",why:"Je staat aan het begin — en dat is precies het goede moment om het meteen correct te leren. The Basics geeft je alles over nagel- en huidanatomie én welke materialen je écht nodig hebt.",addon:null};
+      if(p==="manicure") return {key:"manicurepro",why:"Roodheid, wondjes, of gewoon geen consistent resultaat bij elke klant? Dat is een techniekprobleem — niet een materiaalprobleem. Manicure Pro geeft je een volledig systeem voor de combi-manicure.",addon:f==="ebook"?EBOOK_ADDON:null};
+      if(p==="lifting"&&(l==="beginner"||l==="intermediate")) return {key:"thegelcode",why:"Als je nagels liften of loslaten, is de kans groot dat je niet precies weet hoe je gelproduct werkt. The Gel Code verandert dat.",addon:null};
+      if(p==="lifting"&&(l==="experienced"||l==="pro")) {
+        if(f==="ebook") return {key:"thegelcode",why:"Je hebt al ervaring, maar lifting blijft opduiken. The Gel Code gaat dieper dan tutorials: je begrijpt de chemie, de architectuur en de probleemoplossing.",addon:null};
+        return {key:"easynails",why:"Easy Nails leert je hoe je gelnagels opbouwt die structureel 4 weken blijven zitten — via BIAB én hardgel. Focus op de juiste nagelarchitectuur.",addon:null};
+      }
+      if(p==="technique") {
+        if(f==="ebook") return {key:"upperformmaster",why:"De Upperform Master combineert alle video's met het volledige 97-pagina's e-book. Babyboom, colorboom, inlay, French — volledig uitgelegd.",addon:null};
+        if(g==="expand") return {key:"upperformpro",why:"Upperform Pro geeft je 24+ gedetailleerde lessen: babyboom, colorboom, inlay, French én eigen kleuren mengen.",addon:null};
+        return {key:"sjablonen",why:"Sjablonen zijn het struikelblok van bijna elke styliste. Deze cursus doet dat — per vinger, per shape, in acrygel én hardgel.",addon:null};
+      }
+      if(g==="expand") return {key:"babyboom",why:"De babyboom cursus combineert de Upperform-techniek met de Easy Nails methode — zodat je een zachte, strakke fading neerzet.",addon:null};
+      if(l==="experienced"||l==="pro") return {key:"refillremoval",why:"Refill Removal Pro leert je product affrezen op minder dan 1 minuut per nagel, met de juiste freeskopjes en toerentallen.",addon:null};
+      return {key:"easynails",why:"Op basis van jouw antwoorden is Easy Nails de beste volgende stap. Je leert gelnagels opbouwen die structureel 4 weken blijven zitten.",addon:null};
+    }
+
+    var step=0, answers={}, total=QUESTIONS.length;
+
+    function render() {
+      var pct=Math.round((step/total)*100);
+      document.getElementById("nc-quiz-progress").style.width=pct+"%";
+      var content=document.getElementById("nc-quiz-content");
+      if(step<total) {
+        var q=QUESTIONS[step], sel=answers[q.id]||null;
+        var optsHtml=q.opts.map(function(o){ return '<button class="nc-opt'+(sel===o.value?' nc-selected':'')+'" data-val="'+o.value+'" data-qid="'+q.id+'">'+o.label+'</button>'; }).join("");
+        var prevBtn=step>0?'<button class="nc-btn-prev" id="nc-btn-prev">← Terug</button>':'<span></span>';
+        content.innerHTML='<div class="nc-card"><p class="nc-question">'+q.q+'</p><div class="nc-options">'+optsHtml+'</div><div class="nc-nav">'+prevBtn+'<span class="nc-step-label">Vraag '+(step+1)+' van '+total+'</span><button class="nc-btn-next" id="nc-btn-next"'+(sel?'':' disabled')+'>Volgende →</button></div></div>';
+        content.querySelectorAll(".nc-opt").forEach(function(btn){
+          btn.addEventListener("click",function(){
+            answers[btn.dataset.qid]=btn.dataset.val;
+            content.querySelectorAll(".nc-opt").forEach(function(b){b.classList.remove("nc-selected");});
+            btn.classList.add("nc-selected");
+            document.getElementById("nc-btn-next").disabled=false;
+            if(step<total-1) setTimeout(goNext,280);
+          });
+        });
+        var nb=document.getElementById("nc-btn-next");
+        if(nb) nb.addEventListener("click",goNext);
+        var pb=document.getElementById("nc-btn-prev");
+        if(pb) pb.addEventListener("click",function(){step--;render();});
+      } else {
+        showResult(content);
+      }
+    }
+
+    function goNext(){if(!answers[QUESTIONS[step].id])return;step++;render();}
+
+    function showResult(content){
+      document.getElementById("nc-quiz-progress").style.width="100%";
+      var rec=recommend(answers), c=COURSES[rec.key];
+      var addonHtml="";
+      if(rec.addon){
+        addonHtml='<div class="nc-addon"><p class="nc-addon-label">ook interessant voor jou</p><p class="nc-addon-title">'+rec.addon.title+' — '+rec.addon.price+'</p><p class="nc-addon-desc">'+rec.addon.desc+'</p><a href="'+rec.addon.url+'" class="nc-btn-addon">Bekijk het e-book →</a></div>';
+      } else if(["manicurepro","basics","nailcontent"].indexOf(rec.key)===-1){
+        addonHtml='<div class="nc-addon"><p class="nc-addon-label">wil je ook je manicure verbeteren?</p><p class="nc-addon-title">Manicure E-book — €18,99</p><p class="nc-addon-desc">De perfecte instap om alles over de manicure te begrijpen, in je eigen tempo.</p><a href="salespaginas/manicure-ebook.html" class="nc-btn-addon">Bekijk het e-book →</a></div>';
+      }
+      var li=c.includes.map(function(i){return '<li>'+i+'</li>';}).join("");
+      content.innerHTML='<div class="nc-result-card"><div class="nc-result-header"><p class="nc-result-label">jouw match</p><p class="nc-result-name">'+c.name+'</p><p class="nc-result-price">'+c.price+' · eenmalig · levenslange toegang</p></div><div class="nc-result-body"><p class="nc-result-why">'+rec.why+'</p><div><p class="nc-includes-title">wat zit erin</p><ul class="nc-includes-list">'+li+'</ul></div><div class="nc-actions"><a href="'+c.pay+'" target="_blank" class="nc-btn-cta">Start nu met '+c.name+'</a><a href="'+c.sales+'" class="nc-btn-sec">Bekijk de volledige cursuspagina</a></div>'+addonHtml+'</div></div><div class="nc-restart-row"><button class="nc-btn-restart" id="nc-btn-restart">Opnieuw beginnen</button></div>';
+      document.getElementById("nc-btn-restart").addEventListener("click",function(){step=0;answers={};render();});
+    }
+
+    render();
+  })();
+  </script>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer class="nc-footer">
+    <div class="nc-footer__mobile">
+      <img src="images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
+      <p>Online nagelschool voor iedereen die dunne, sterke en duurzame kunstnagels wil leren plaatsen.</p>
+      <div class="nc-footer__mobile-links">
+        <a href="online-opleidingen.html">Online Opleidingen</a>
+        <a href="blog.html">Blog</a>
+      </div>
+    </div>
+    <div class="nc-footer__grid">
+      <div>
+        <img class="nc-footer__logo" src="images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
+        <p class="nc-footer__tagline">Online nagelschool voor iedereen die dunne, sterke, perfecte kunstnagels wil leren plaatsen. 850+ cursisten gingen je voor.</p>
+      </div>
+      <div class="nc-footer__col">
+        <h4>Opleidingen</h4>
+        <ul>
+          <li><a href="salespaginas/manicure-pro.html">Manicure Pro</a></li>
+          <li><a href="salespaginas/easy-nails.html">Easy Nails</a></li>
+          <li><a href="salespaginas/upperforms.html">Upperforms</a></li>
+          <li><a href="salespaginas/babyboom.html">Babyboom</a></li>
+          <li><a href="online-opleidingen.html">Alle cursussen</a></li>
+        </ul>
+      </div>
+      <div class="nc-footer__col">
+        <h4>NailCraft</h4>
+        <ul>
+          <li><a href="over.html">Over Tabitha</a></li>
+          <li><a href="blog.html">Blog & Tips</a></li>
+          <li><a href="the-nailstylist-traject.html">The Nailstylist</a></li>
+          <li><a href="https://www.instagram.com/tabitha_nail_it/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="nc-footer__col">
+        <h4>Gratis</h4>
+        <ul>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/startersgids" target="_blank" rel="noopener">Startersgids</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/killercontent" target="_blank" rel="noopener">Killer Content</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/snelheidstraining" target="_blank" rel="noopener">Snelheidstraining</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/veiligaffrezen" target="_blank" rel="noopener">Veilig Affrezen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nc-footer__bottom">
+      <span>© 2026 NailCraft Platform — Tabitha Windels</span>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       SCRIPTS
+  ============================================= -->
+  <script>
+    /* Scroll reveal */
+    (function(){
+      if(window._ncRevealInit) return;
+      window._ncRevealInit = true;
+      const obs = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('nc-visible'); });
+      },{threshold:0.1});
+      function observe(){ document.querySelectorAll('.nc-reveal,.nc-reveal-l,.nc-reveal-r').forEach(el=>obs.observe(el)); }
+      document.readyState==='loading' ? document.addEventListener('DOMContentLoaded',observe) : observe();
+    })();
+
+    /* Nav scroll + progress bar + scroll-to-top */
+    window.addEventListener('scroll', function(){
+      document.getElementById('nc-nav').classList.toggle('scrolled', window.scrollY > 20);
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = (window.scrollY / docHeight) * 100;
+      document.getElementById('nc-progress').style.width = progress + '%';
+      document.getElementById('nc-totop').classList.toggle('visible', window.scrollY > 400);
+    });
+
+    /* Mobiel menu toggle */
+    document.getElementById('nc-toggle').addEventListener('click', function(){
+      document.getElementById('nc-mobile-menu').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
