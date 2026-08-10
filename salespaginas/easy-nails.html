@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://nailcraft.be/easynailstechniek/">
   <meta property="og:title" content="Easy Nails Techniek – Gelnagels die 4 Weken Blijven Zitten">
   <meta property="og:description" content="De techniek voor dunne, sterke nagels zonder lifting. BIAB én hardgel. €150 eenmalig, levenslange toegang.">
+  <meta property="og:image" content="../images/easy-nails/Easy%20nails%20techniek%20volleidge%20header%20mockup%20transparant.png">
   <meta property="og:locale" content="nl_BE">
   <meta property="og:site_name" content="NailCraft Platform">
 
@@ -38,95 +39,114 @@
     #nc-totop.visible { opacity:1; pointer-events:auto; }
     #nc-totop:hover { transform:translateY(-3px); background:#7a1e8e; }
 
-    /* NAV */
-    .nc-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(248,242,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(156,40,177,.1); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 70px; transition: box-shadow .3s; }
-    .nc-nav.scrolled { box-shadow: 0 4px 24px rgba(156,40,177,.1); }
-    .nc-nav__logo img { height: 44px; width: auto; }
-    .nc-nav__links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .nc-nav__links a { font-size: .9rem; font-weight: 500; color: var(--nc-tekst); transition: color .2s; }
-    .nc-nav__links a:hover { color: var(--nc-paars); }
-    .nc-nav__cta { background: var(--nc-paars); color: #fff !important; padding: .5rem 1.4rem; border-radius: 50px; font-size: .85rem; font-weight: 600; transition: background .2s; }
-    .nc-nav__cta:hover { background: #7a1e8e !important; }
-    .nc-nav__toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .nc-nav__toggle span { display: block; width: 24px; height: 2px; background: var(--nc-tekst); border-radius: 2px; }
-    .nc-nav__mobile { display: none; position: fixed; top: 70px; left: 0; right: 0; background: #fff; border-bottom: 1px solid rgba(156,40,177,.1); padding: 1.5rem 5vw; flex-direction: column; gap: 1rem; z-index: 999; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
-    .nc-nav__mobile.open { display: flex; }
-    .nc-nav__mobile a { font-size: 1rem; font-weight: 500; color: var(--nc-tekst); padding: .5rem 0; border-bottom: 1px solid rgba(156,40,177,.08); }
-    .nc-nav__mobile a:last-child { border-bottom: none; color: var(--nc-paars); font-weight: 700; }
-    @media(max-width:900px) { .nc-nav__links { display: none; } .nc-nav__toggle { display: flex; } }
+    /* SALES NAV */
+    .sp-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(248,242,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(156,40,177,.12); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 70px; transition: box-shadow .3s; }
+    .sp-nav.scrolled { box-shadow: 0 4px 24px rgba(156,40,177,.1); }
+    .sp-nav__logo img { height: 44px; width: auto; }
+    .sp-nav__cta { background: var(--nc-cta); color: #fff !important; padding: 10px 24px; border-radius: 100px; font-size: .88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 16px rgba(254,155,0,.35); transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+    .sp-nav__cta:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(254,155,0,.5); }
+    @media(max-width:480px) { .sp-nav__logo img { height: 36px; } .sp-nav__cta { padding: 9px 18px; font-size: .8rem; } }
 
     /* HERO */
-    .sp-hero { background: radial-gradient(ellipse 80% 70% at 30% 40%, #d94aff 0%, #9c28b1 35%, #6b1080 65%, #3d0860 100%); padding: 120px 5vw 80px; text-align: center; position: relative; overflow: hidden; font-family: 'DM Sans', sans-serif; }
-    .sp-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 60% at 70% 60%, rgba(255,31,227,0.25) 0%, transparent 65%); }
-    .sp-hero__inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .sp-hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding-top: 70px;
+      background: radial-gradient(ellipse 80% 70% at 30% 40%, #d94aff 0%, #9c28b1 35%, #6b1080 65%, #3d0860 100%);
+    }
+    .sp-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 60% at 70% 60%, rgba(255,31,227,0.2) 0%, transparent 65%); }
+    .sp-hero__inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 60px 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; }
     .sp-hero__badge { display: inline-block; background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.4); color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 18px; border-radius: 100px; margin-bottom: 24px; backdrop-filter: blur(8px); }
-    .sp-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 20px; }
+    .sp-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 20px; }
     .sp-hero h1 em { font-style: italic; color: #ffe0fb; }
-    .sp-hero__sub { font-size: 1.1rem; color: rgba(255,255,255,0.88); line-height: 1.7; margin-bottom: 36px; font-weight: 300; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .sp-hero__sub { font-size: 1rem; color: rgba(255,255,255,0.88); line-height: 1.7; margin-bottom: 32px; font-weight: 300; }
     .sp-hero__cta { display: inline-flex; align-items: center; gap: 10px; background: var(--nc-cta); color: #fff !important; font-weight: 700; font-size: 1rem; padding: 16px 36px; border-radius: 100px; animation: heroPulse 2.2s ease-in-out infinite; }
     @keyframes heroPulse { 0%{box-shadow:0 0 0 0 rgba(254,155,0,.75),0 8px 30px rgba(254,155,0,.45)}65%{box-shadow:0 0 0 16px rgba(254,155,0,0),0 8px 30px rgba(254,155,0,.45)}100%{box-shadow:0 0 0 0 rgba(254,155,0,0),0 8px 30px rgba(254,155,0,.45)} }
     .sp-hero__cta:hover { animation: none; transform: scale(1.05); box-shadow: 0 14px 40px rgba(254,155,0,.6); transition: transform .2s, box-shadow .2s; }
-    .sp-hero__prijs { margin-top: 20px; color: rgba(255,255,255,0.7); font-size: 0.88rem; }
-    .sp-hero__prijs strong { color: #fff; font-size: 1.3rem; }
+    .sp-hero__prijs { margin-top: 16px; color: rgba(255,255,255,0.7); font-size: 0.88rem; }
+    .sp-hero__prijs strong { color: #fff; font-size: 1.2rem; }
     .sp-hero__prijs s { opacity: 0.55; }
-    @media(max-width:768px) { .sp-hero { padding: 100px 5vw 60px; } .sp-hero h1 { font-size: 2rem; } .sp-hero__sub { font-size: 0.92rem; } .sp-hero__cta { font-size: 0.88rem; padding: 13px 26px; } }
+    .sp-hero__visual { display: flex; align-items: center; justify-content: center; }
+    .sp-hero__visual video { width: 100%; border-radius: 18px; box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+    @media(max-width:900px) { .sp-hero__inner { grid-template-columns: 1fr; gap: 32px; text-align: center; } .sp-hero { min-height: auto; } .sp-hero__visual video { max-width: 420px; margin: 0 auto; } }
+    @media(max-width:480px) { .sp-hero h1 { font-size: 1.9rem; } .sp-hero__cta { font-size: 0.88rem; padding: 13px 24px; } }
+
+    /* SLIDER */
+    .sp-slider { overflow: hidden; background: #fff; }
+    .sp-slider__track { display: flex; animation: slideLoop 24s linear infinite; width: max-content; }
+    .sp-slider__track:hover { animation-play-state: paused; }
+    .sp-slider__track img { height: 320px; width: auto; object-fit: cover; flex-shrink: 0; transition: transform .3s; }
+    .sp-slider__track img:hover { transform: scale(1.03); }
+    @keyframes slideLoop { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @media(max-width:768px) { .sp-slider__track img { height: 220px; } }
 
     /* SECTIONS */
     .sp-section { padding: 80px 5vw; }
     .sp-section--licht { background: var(--nc-licht); }
     .sp-section--wit { background: #fff; }
-    .sp-inner { max-width: 900px; margin: 0 auto; }
+    .sp-section--paars { background: linear-gradient(135deg, var(--nc-paars) 0%, #6b1a8f 60%, #3d0d5e 100%); }
+    .sp-inner { max-width: 920px; margin: 0 auto; }
+    .sp-inner--wide { max-width: 1100px; margin: 0 auto; }
     .sp-label { display: inline-block; background: var(--nc-accent); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 16px; border-radius: 100px; margin-bottom: 14px; }
     .sp-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900; color: var(--nc-paars); margin-bottom: 16px; line-height: 1.2; }
+    .sp-title--wit { color: #fff; }
     .sp-sub { font-size: 1rem; color: var(--nc-tekst-zacht); line-height: 1.7; font-weight: 300; max-width: 640px; }
+    .sp-sub--wit { color: rgba(255,255,255,.8); }
 
     /* WAT LEER JE */
-    .sp-bullets { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+    .sp-wat-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .sp-wat-split__img { border-radius: 22px; overflow: hidden; }
+    .sp-wat-split__img img { width: 100%; object-fit: contain; }
+    @media(max-width:768px) { .sp-wat-split { grid-template-columns: 1fr; gap: 28px; } }
+    .sp-bullets { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
     .sp-bullets li { display: flex; align-items: flex-start; gap: 14px; font-size: 0.97rem; color: var(--nc-tekst); line-height: 1.6; }
-    .sp-bullets li::before { content: ''; width: 22px; height: 22px; min-width: 22px; border-radius: 50%; background: var(--nc-paars); display: flex; align-items: center; justify-content: center; margin-top: 1px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
+    .sp-bullets li::before { content: ''; width: 22px; height: 22px; min-width: 22px; border-radius: 50%; background: var(--nc-paars); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; margin-top: 2px; }
 
     /* VOOR WIE */
-    .sp-voorwie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 32px; }
-    .sp-voorwie-item { background: #fff; border-radius: 14px; padding: 18px 20px; box-shadow: 0 4px 20px rgba(156,40,177,0.07); display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: var(--nc-tekst); line-height: 1.55; border-left: 3px solid var(--nc-accent); }
-    .sp-voorwie-item span { font-size: 1.1rem; margin-top: 1px; }
+    .sp-voorwie-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .sp-voorwie-split__img { border-radius: 22px; overflow: hidden; }
+    .sp-voorwie-split__img img { width: 100%; object-fit: contain; }
+    .sp-voorwie-list { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 12px; }
+    .sp-voorwie-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.93rem; color: var(--nc-tekst); line-height: 1.55; padding: 12px 16px; background: var(--nc-licht); border-radius: 12px; border-left: 3px solid var(--nc-accent); }
+    .sp-voorwie-list li span { font-size: 1.1rem; margin-top: 1px; }
+    @media(max-width:768px) { .sp-voorwie-split { grid-template-columns: 1fr; gap: 28px; } }
 
-    /* MODULES */
-    .sp-modules { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
-    .sp-module { background: #fff; border-radius: 14px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 20px rgba(156,40,177,0.06); }
-    .sp-module__num { width: 36px; height: 36px; min-width: 36px; border-radius: 50%; background: var(--nc-paars); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 700; }
-    .sp-module__title { font-size: 0.93rem; font-weight: 500; color: var(--nc-tekst); }
-    .sp-module__badge { margin-left: auto; background: var(--nc-licht); color: var(--nc-paars); font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; white-space: nowrap; }
+    /* MODULE KAARTEN */
+    .sp-modules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; margin-top: 32px; }
+    .sp-module-card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 28px rgba(156,40,177,.09); transition: transform .3s, box-shadow .3s; }
+    .sp-module-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(156,40,177,.16); }
+    .sp-module-card__img { width: 100%; display: block; object-fit: contain; background: #f0e8fa; }
+    .sp-module-card__body { padding: 14px 16px; }
+    .sp-module-card__num { font-size: 0.68rem; font-weight: 700; color: var(--nc-accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
+    .sp-module-card__title { font-size: 0.9rem; font-weight: 600; color: var(--nc-tekst); line-height: 1.4; }
+    .sp-module-card__badge { display: inline-block; background: var(--nc-cta); color: #fff; font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; margin-top: 6px; }
+
+    /* TECHNIEK BLOKKEN */
+    .sp-techniek { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .sp-techniek--omgekeerd { direction: rtl; }
+    .sp-techniek--omgekeerd > * { direction: ltr; }
+    .sp-techniek__img { border-radius: 22px; overflow: hidden; }
+    .sp-techniek__img img { width: 100%; object-fit: contain; }
+    @media(max-width:768px) { .sp-techniek { grid-template-columns: 1fr; gap: 28px; } .sp-techniek--omgekeerd { direction: ltr; } }
 
     /* INCLUDES */
-    .sp-includes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 32px; }
-    .sp-include-card { background: #fff; border-radius: 16px; padding: 24px 20px; text-align: center; box-shadow: 0 4px 24px rgba(156,40,177,0.08); }
+    .sp-includes { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 28px; }
+    .sp-include-card { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 16px; padding: 22px 18px; text-align: center; }
     .sp-include-card__icon { font-size: 2rem; margin-bottom: 10px; }
-    .sp-include-card__title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--nc-paars); margin-bottom: 6px; }
-    .sp-include-card__desc { font-size: 0.82rem; color: var(--nc-tekst-zacht); line-height: 1.55; }
+    .sp-include-card__title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .sp-include-card__desc { font-size: 0.8rem; color: rgba(255,255,255,.7); line-height: 1.5; }
 
     /* REVIEWS */
     .sp-reviews { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 32px; }
     .sp-review { background: #fff; border-radius: 18px; padding: 24px; box-shadow: 0 6px 32px rgba(156,40,177,0.08); border-left: 4px solid var(--nc-accent); display: flex; flex-direction: column; gap: 10px; }
-    .sp-review__stars { color: var(--nc-cta); font-size: 0.9rem; letter-spacing: 2px; }
+    .sp-review__stars { color: var(--nc-cta); font-size: 0.9rem; }
     .sp-review__text { font-size: 0.85rem; color: var(--nc-tekst-zacht); line-height: 1.7; font-style: italic; flex: 1; }
     .sp-review__author { display: flex; align-items: center; gap: 10px; }
     .sp-review__avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--nc-paars), var(--nc-accent)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
     .sp-review__author strong { display: block; font-size: 0.82rem; color: var(--nc-tekst); }
     .sp-review__author span { font-size: 0.72rem; color: var(--nc-tekst-zacht); }
-
-    /* PRIJS BLOK */
-    .sp-prijsblok { background: linear-gradient(135deg, var(--nc-paars) 0%, #6b1a8f 60%, #3d0d5e 100%); border-radius: 26px; padding: 48px 44px; max-width: 680px; margin: 0 auto; text-align: center; color: #fff; box-shadow: 0 20px 60px rgba(156,40,177,0.3); position: relative; overflow: hidden; }
-    .sp-prijsblok::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,31,227,0.2) 0%, transparent 70%); border-radius: 50%; }
-    .sp-prijsblok__label { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 16px; border-radius: 100px; margin-bottom: 20px; }
-    .sp-prijsblok__oud { font-size: 1rem; color: rgba(255,255,255,0.5); text-decoration: line-through; margin-bottom: 4px; }
-    .sp-prijsblok__prijs { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; line-height: 1; margin-bottom: 6px; }
-    .sp-prijsblok__sub { font-size: 0.88rem; color: rgba(255,255,255,0.65); margin-bottom: 32px; }
-    .sp-prijsblok__includes { list-style: none; text-align: left; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
-    .sp-prijsblok__includes li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: rgba(255,255,255,0.88); }
-    .sp-prijsblok__includes li::before { content: '✓'; width: 20px; height: 20px; min-width: 20px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; }
-    .sp-btn-cta { display: inline-block; background: var(--nc-cta); color: #fff !important; font-weight: 700; font-size: 1rem; padding: 16px 40px; border-radius: 100px; box-shadow: 0 8px 28px rgba(254,155,0,0.45); transition: transform .2s, box-shadow .2s; width: 100%; text-align: center; }
-    .sp-btn-cta:hover { transform: scale(1.04); box-shadow: 0 14px 40px rgba(254,155,0,.6); }
-    .sp-prijsblok__garantie { margin-top: 16px; font-size: 0.78rem; color: rgba(255,255,255,0.55); }
 
     /* OVER TABITHA */
     .sp-tabitha { display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center; background: #fff; border-radius: 22px; padding: 36px; box-shadow: 0 6px 32px rgba(156,40,177,0.08); }
@@ -138,6 +158,20 @@
     .sp-tabitha__stat strong { display: block; font-size: 1.3rem; font-weight: 900; color: var(--nc-paars); }
     .sp-tabitha__stat span { font-size: 0.78rem; color: var(--nc-tekst-zacht); }
     @media(max-width:600px) { .sp-tabitha { grid-template-columns: 1fr; text-align: center; } .sp-tabitha__img { margin: 0 auto; } .sp-tabitha__stats { justify-content: center; } }
+
+    /* PRIJSBLOK */
+    .sp-prijsblok { background: linear-gradient(135deg, var(--nc-paars) 0%, #6b1a8f 60%, #3d0d5e 100%); border-radius: 26px; padding: 48px 44px; max-width: 680px; margin: 0 auto; text-align: center; color: #fff; box-shadow: 0 20px 60px rgba(156,40,177,0.3); position: relative; overflow: hidden; }
+    .sp-prijsblok::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,31,227,0.2) 0%, transparent 70%); border-radius: 50%; }
+    .sp-prijsblok__label { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 16px; border-radius: 100px; margin-bottom: 20px; }
+    .sp-prijsblok__oud { font-size: 1rem; color: rgba(255,255,255,0.5); text-decoration: line-through; margin-bottom: 4px; }
+    .sp-prijsblok__prijs { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; line-height: 1; margin-bottom: 6px; }
+    .sp-prijsblok__sub { font-size: 0.88rem; color: rgba(255,255,255,0.65); margin-bottom: 32px; }
+    .sp-prijsblok__includes { list-style: none; text-align: left; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
+    .sp-prijsblok__includes li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: rgba(255,255,255,0.88); }
+    .sp-prijsblok__includes li::before { content: '✓'; width: 20px; height: 20px; min-width: 20px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; }
+    .sp-btn-cta { display: block; background: var(--nc-cta); color: #fff !important; font-weight: 700; font-size: 1rem; padding: 16px 40px; border-radius: 100px; box-shadow: 0 8px 28px rgba(254,155,0,0.45); transition: transform .2s, box-shadow .2s; text-align: center; }
+    .sp-btn-cta:hover { transform: scale(1.04); box-shadow: 0 14px 40px rgba(254,155,0,.6); }
+    .sp-prijsblok__garantie { margin-top: 16px; font-size: 0.78rem; color: rgba(255,255,255,0.5); }
 
     /* FOOTER */
     .nc-footer { background: #9c28b1; color: rgba(255,255,255,.85); padding: 60px 5vw 30px; font-family: 'DM Sans', sans-serif; }
@@ -161,19 +195,7 @@
       .nc-footer__bottom { text-align: center; font-size: .75rem; }
     }
     @media(min-width:769px) { .nc-footer__mobile { display: none; } .nc-footer__mobile-links { display: none; } }
-
-    @media(max-width:768px) {
-      .sp-section { padding: 56px 5vw; }
-      .sp-voorwie-grid { grid-template-columns: 1fr; }
-      .sp-includes { grid-template-columns: 1fr 1fr; }
-      .sp-reviews { grid-template-columns: 1fr; }
-      .sp-prijsblok { padding: 32px 24px; }
-      .sp-prijsblok__prijs { font-size: 2.8rem; }
-    }
-    @media(max-width:480px) {
-      .sp-includes { grid-template-columns: 1fr; }
-      .sp-btn-cta { font-size: 0.88rem; padding: 14px 24px; }
-    }
+    @media(max-width:768px) { .sp-section { padding: 56px 5vw; } .sp-prijsblok { padding: 32px 24px; } .sp-prijsblok__prijs { font-size: 2.8rem; } }
   </style>
 </head>
 <body>
@@ -186,105 +208,214 @@
   <!-- Scroll to top -->
   <button id="nc-totop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Terug naar boven" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:#9c28b1;color:#fff;border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(156,40,177,.4);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:999;">↑</button>
 
-  <!-- Navigatie -->
-  <nav class="nc-nav" id="nc-nav">
-    <a href="../index.html" class="nc-nav__logo">
-      <img src="../images/Logo-NailCraft-Platform.png" alt="NailCraft Platform">
-    </a>
-    <ul class="nc-nav__links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../online-opleidingen.html">Online Opleidingen</a></li>
-      <li><a href="../the-nailstylist-traject.html">The Nailstylist</a></li>
-      <li><a href="../over.html">Over</a></li>
-      <li><a href="../blog.html">Blog</a></li>
-      <li><a href="../online-opleidingen.html" class="nc-nav__cta">Start vandaag →</a></li>
-    </ul>
-    <button class="nc-nav__toggle" id="nc-toggle" aria-label="Menu openen">
-      <span></span><span></span><span></span>
-    </button>
+  <!-- Sales navigatie -->
+  <nav class="sp-nav" id="sp-nav">
+    <a href="../online-opleidingen.html" class="sp-nav__logo"><img src="../images/Logo-NailCraft-Platform.png" alt="NailCraft Platform"></a>
+    <a href="https://naillraftplatform.kennis.shop/pay/easynails" target="_blank" class="sp-nav__cta">Start nu →</a>
   </nav>
-  <div class="nc-nav__mobile" id="nc-mobile-menu">
-    <a href="../index.html">Home</a>
-    <a href="../online-opleidingen.html">Online Opleidingen</a>
-    <a href="../the-nailstylist-traject.html">The Nailstylist</a>
-    <a href="../over.html">Over</a>
-    <a href="../blog.html">Blog</a>
-    <a href="../online-opleidingen.html">Start vandaag →</a>
-  </div>
 
-  <!-- HERO -->
+  <!-- ===================== HERO ===================== -->
   <section class="sp-hero">
     <div class="sp-hero__inner">
-      <div class="sp-hero__badge">📹 Videotraining</div>
-      <h1>Gelnagels plaatsen die<br><em>4 weken blijven zitten</em></h1>
-      <p class="sp-hero__sub">De techniek om dunne, sterke nagels op te bouwen die niet loslaten. Stop met nagels herstellen en begin geld verdienen met nagels plaatsen.</p>
-      <a href="https://naillraftplatform.kennis.shop/pay/easynails" target="_blank" class="sp-hero__cta">
-        Ik plaats nagels, easy! →
-      </a>
-      <p class="sp-hero__prijs"><s>€255</s> &nbsp; <strong>€150</strong> &nbsp; eenmalig · levenslange toegang</p>
-    </div>
-  </section>
-
-  <!-- WAT LEER JE -->
-  <section class="sp-section sp-section--licht">
-    <div class="sp-inner">
-      <div class="sp-label">Wat je leert</div>
-      <h2 class="sp-title">Na Easy Nails bouw jij nagels<br>die structureel blijven zitten</h2>
-      <p class="sp-sub">Niet raden, niet opnieuw beginnen. Gewoon het systeem leren dat werkt.</p>
-      <ul class="sp-bullets">
-        <li>Nagels bouwen die 4 weken blijven zitten, dun en sterk, zonder breken</li>
-        <li>Frustratie en mislukte nagels voorkomen door de juiste techniek</li>
-        <li>De applicatie-, vijl- en opbouwstap volledig beheersen, zowel BIAB als hardgel</li>
-        <li>Direct weten wat wel en niet werkt, geen losse tutorials meer nodig</li>
-        <li>Klanten laten terugkomen door consistent perfect werk af te leveren</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- VOOR WIE -->
-  <section class="sp-section sp-section--wit">
-    <div class="sp-inner">
-      <div class="sp-label">Voor wie</div>
-      <h2 class="sp-title">Is Easy Nails iets voor jou?</h2>
-      <p class="sp-sub">Deze cursus is voor jou als je je herkent in één van deze situaties.</p>
-      <div class="sp-voorwie-grid">
-        <div class="sp-voorwie-item"><span>🏠</span>Je begint thuis of bij vrienden en wil het meteen goed leren</div>
-        <div class="sp-voorwie-item"><span>💅</span>Je bent ervaren stylist maar wil verfijnder en sneller werken</div>
-        <div class="sp-voorwie-item"><span>🔒</span>Je wil werken met veiligheidsfocus, voor jezelf en je klanten</div>
-        <div class="sp-voorwie-item"><span>📅</span>Je wil klanten die terugkomen omdat jouw werk 4 weken blijft</div>
-        <div class="sp-voorwie-item"><span>😤</span>Je bent het beu om losse tutorials te volgen zonder systeem</div>
-        <div class="sp-voorwie-item"><span>✅</span>Voor elke stylist die dunne, sterke nagels wil bouwen</div>
+      <div class="sp-hero__text">
+        <div class="sp-hero__badge">📹 Videotraining BIAB & Hardgel</div>
+        <h1>Gelnagels plaatsen die <em>4 weken blijven zitten</em></h1>
+        <p class="sp-hero__sub">De techniek voor dunne, sterke nagels die niet loslaten. Stop met nagels herstellen en begin met geld verdienen aan nagels die écht blijven.</p>
+        <a href="https://naillraftplatform.kennis.shop/pay/easynails" target="_blank" class="sp-hero__cta">Ik plaats nagels, easy! →</a>
+        <p class="sp-hero__prijs"><s>€255</s> &nbsp; <strong>€150</strong> &nbsp; eenmalig, levenslange toegang</p>
+      </div>
+      <div class="sp-hero__visual">
+        <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
+          <source src="../images/easy-nails/easy%20nails%20techniek%20video.mp4" type="video/mp4">
+          <img src="../images/easy-nails/Easy%20nails%20techniek%20volleidge%20header%20mockup%20transparant.png" alt="Easy Nails Techniek cursus overzicht">
+        </video>
       </div>
     </div>
   </section>
 
-  <!-- CURSUSINHOUD -->
+  <!-- ===================== SLIDER 1 ===================== -->
+  <div class="sp-slider">
+    <div class="sp-slider__track">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld.jpg" alt="Easy Nails voorbeeld">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%202.jpg" alt="Easy Nails voorbeeld 2">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%203.jpg" alt="Easy Nails voorbeeld 3">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%204.jpg" alt="Easy Nails voorbeeld 4">
+      <img src="../images/easy-nails/easy%20nails%20voobeeld%205.jpg" alt="Easy Nails voorbeeld 5">
+      <!-- Duplicaat voor naadloze loop -->
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld.jpg" alt="Easy Nails voorbeeld">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%202.jpg" alt="Easy Nails voorbeeld 2">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%203.jpg" alt="Easy Nails voorbeeld 3">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%204.jpg" alt="Easy Nails voorbeeld 4">
+      <img src="../images/easy-nails/easy%20nails%20voobeeld%205.jpg" alt="Easy Nails voorbeeld 5">
+    </div>
+  </div>
+
+  <!-- ===================== WAT LEER JE ===================== -->
   <section class="sp-section sp-section--licht">
     <div class="sp-inner">
-      <div class="sp-label">Cursusinhoud</div>
-      <h2 class="sp-title">Wat zit er in Easy Nails?</h2>
-      <p class="sp-sub">4 videolessen + bonustrainingen, stap voor stap opgebouwd.</p>
-      <div class="sp-modules">
-        <div class="sp-module"><div class="sp-module__num">1</div><div class="sp-module__title">Basisarchitectuur van de nagel</div></div>
-        <div class="sp-module"><div class="sp-module__num">2</div><div class="sp-module__title">Perfecte vormen vijlen</div></div>
-        <div class="sp-module"><div class="sp-module__num">3</div><div class="sp-module__title">BIAB-nagels plaatsen, stap voor stap</div></div>
-        <div class="sp-module"><div class="sp-module__num">4</div><div class="sp-module__title">Hardgel toepassen</div></div>
-        <div class="sp-module"><div class="sp-module__num">★</div><div class="sp-module__title">Bonus, architectuurtraining</div><div class="sp-module__badge">Bonus</div></div>
-        <div class="sp-module"><div class="sp-module__num">★</div><div class="sp-module__title">Bonus, handposities voor controle en comfort</div><div class="sp-module__badge">Bonus</div></div>
+      <div class="sp-wat-split">
+        <div>
+          <div class="sp-label">Wat je leert</div>
+          <h2 class="sp-title">Na Easy Nails bouw jij nagels die structureel blijven zitten</h2>
+          <p class="sp-sub">Niet raden, niet opnieuw beginnen. Gewoon het systeem leren dat werkt.</p>
+          <ul class="sp-bullets">
+            <li>Nagels bouwen die 4 weken blijven zitten, dun en sterk, zonder breken</li>
+            <li>Frustratie en mislukte nagels voorkomen door de juiste techniek</li>
+            <li>De applicatie-, vijl- en opbouwstap volledig beheersen, zowel BIAB als hardgel</li>
+            <li>Direct weten wat wel en niet werkt, geen losse tutorials meer nodig</li>
+            <li>Klanten laten terugkomen door consistent perfect werk af te leveren</li>
+          </ul>
+        </div>
+        <div class="sp-wat-split__img">
+          <img src="../images/easy-nails/Easy%20nails%20techniek%20volleidge%20header%20mockup%20transparant.png" alt="Easy Nails cursus overzicht">
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- INCLUDES -->
+  <!-- ===================== VOOR WIE ===================== -->
   <section class="sp-section sp-section--wit">
     <div class="sp-inner">
-      <div class="sp-label">Alles inbegrepen</div>
-      <h2 class="sp-title">Wat krijg je bij aankoop?</h2>
+      <div class="sp-voorwie-split">
+        <div class="sp-voorwie-split__img">
+          <img src="../images/easy-nails/Easy%20nails%20techniek%20transparant%20samenvatting%20mockup.png" alt="Easy Nails samenvatting">
+        </div>
+        <div>
+          <div class="sp-label">Voor wie</div>
+          <h2 class="sp-title">Is Easy Nails iets voor jou?</h2>
+          <p class="sp-sub">Herken je één van deze situaties?</p>
+          <ul class="sp-voorwie-list">
+            <li><span>🏠</span>Je begint thuis of bij vrienden en wil het meteen goed leren</li>
+            <li><span>💅</span>Je bent ervaren stylist maar wil verfijnder en sneller werken</li>
+            <li><span>🔒</span>Je wil werken met veiligheidsfocus, voor jezelf en je klanten</li>
+            <li><span>📅</span>Je wil klanten die terugkomen omdat jouw werk 4 weken blijft</li>
+            <li><span>😤</span>Je bent het beu om losse tutorials te volgen zonder systeem</li>
+            <li><span>✅</span>Voor elke stylist die dunne, sterke nagels wil bouwen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MODULE KAARTEN ===================== -->
+  <section class="sp-section sp-section--licht">
+    <div class="sp-inner--wide">
+      <div style="text-align:center;margin-bottom:12px;">
+        <div class="sp-label">Cursusinhoud</div>
+        <h2 class="sp-title">4 lessen + bonussen, stap voor stap opgebouwd</h2>
+        <p class="sp-sub" style="margin:0 auto;">Van nagelarchitectuur tot BIAB en hardgel in de praktijk.</p>
+      </div>
+      <div class="sp-modules-grid">
+        <div class="sp-module-card">
+          <img class="sp-module-card__img" src="../images/easy-nails/1%20delen%20van%20de%20nagel.jpg" alt="Les 1: Delen van de nagel">
+          <div class="sp-module-card__body">
+            <div class="sp-module-card__num">Les 1</div>
+            <div class="sp-module-card__title">Basisarchitectuur van de nagel</div>
+          </div>
+        </div>
+        <div class="sp-module-card">
+          <img class="sp-module-card__img" src="../images/easy-nails/2%20vormen%20vijlen.jpg" alt="Les 2: Vormen vijlen">
+          <div class="sp-module-card__body">
+            <div class="sp-module-card__num">Les 2</div>
+            <div class="sp-module-card__title">Perfecte vormen vijlen</div>
+          </div>
+        </div>
+        <div class="sp-module-card">
+          <img class="sp-module-card__img" src="../images/easy-nails/3%20BIAB%20.jpg" alt="Les 3: BIAB">
+          <div class="sp-module-card__body">
+            <div class="sp-module-card__num">Les 3</div>
+            <div class="sp-module-card__title">BIAB-nagels plaatsen, stap voor stap</div>
+          </div>
+        </div>
+        <div class="sp-module-card">
+          <img class="sp-module-card__img" src="../images/easy-nails/4%20HARDGEL.jpg" alt="Les 4: Hardgel">
+          <div class="sp-module-card__body">
+            <div class="sp-module-card__num">Les 4</div>
+            <div class="sp-module-card__title">Hardgel toepassen</div>
+          </div>
+        </div>
+        <div class="sp-module-card">
+          <img class="sp-module-card__img" src="../images/easy-nails/5%20bonussen%20.jpg" alt="Bonussen">
+          <div class="sp-module-card__body">
+            <div class="sp-module-card__num">Bonus</div>
+            <div class="sp-module-card__title">Architectuurtraining + handposities voor controle en comfort</div>
+            <span class="sp-module-card__badge">Bonus</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BIAB SECTIE ===================== -->
+  <section class="sp-section sp-section--wit">
+    <div class="sp-inner">
+      <div class="sp-techniek">
+        <div>
+          <div class="sp-label">BIAB</div>
+          <h2 class="sp-title">Builder in a Bottle, stap voor stap uitgelegd</h2>
+          <p class="sp-sub">BIAB is de populairste techniek van dit moment. In Easy Nails leer ik je precies hoe je het correct aanbrengt, welke dikte je nodig hebt en hoe je zorgt dat het 4 weken blijft zitten zonder lifting.</p>
+          <ul class="sp-bullets" style="margin-top:20px;">
+            <li>Correcte laagopbouw voor maximale hechting</li>
+            <li>Juiste dikte op elk deel van de nagel</li>
+            <li>Afwerking die er salon-waardig uitziet</li>
+          </ul>
+        </div>
+        <div class="sp-techniek__img">
+          <img src="../images/easy-nails/biab%20mockup%20techniek.png" alt="BIAB techniek Easy Nails">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SLIDER 2 ===================== -->
+  <div class="sp-slider">
+    <div class="sp-slider__track" style="animation-direction:reverse;">
+      <img src="../images/easy-nails/easy%20nails%20vooebeeld%206.jpg" alt="Easy Nails voorbeeld 6">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%207.jpg" alt="Easy Nails voorbeeld 7">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%208.jpg" alt="Easy Nails voorbeeld 8">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%209.jpg" alt="Easy Nails voorbeeld 9">
+      <!-- Duplicaat voor naadloze loop -->
+      <img src="../images/easy-nails/easy%20nails%20vooebeeld%206.jpg" alt="Easy Nails voorbeeld 6">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%207.jpg" alt="Easy Nails voorbeeld 7">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%208.jpg" alt="Easy Nails voorbeeld 8">
+      <img src="../images/easy-nails/easy%20nails%20voorbeeld%209.jpg" alt="Easy Nails voorbeeld 9">
+    </div>
+  </div>
+
+  <!-- ===================== HARDGEL SECTIE ===================== -->
+  <section class="sp-section sp-section--licht">
+    <div class="sp-inner">
+      <div class="sp-techniek sp-techniek--omgekeerd">
+        <div>
+          <div class="sp-label">Hardgel</div>
+          <h2 class="sp-title">Hardgel voor sterke, duurzame nagels</h2>
+          <p class="sp-sub">Hardgel geeft jou de mogelijkheid om écht sterke en langere nagels te bouwen. Ik leer je de opbouwtechniek die zorgt voor de juiste architectuur, waardoor ze niet breken en niet loslaten.</p>
+          <ul class="sp-bullets" style="margin-top:20px;">
+            <li>Opbouwtechniek voor de juiste nagelarchitectuur</li>
+            <li>Vermijden van breuken door correcte verhouding</li>
+            <li>Vijlen en afwerken als een professional</li>
+          </ul>
+        </div>
+        <div class="sp-techniek__img">
+          <img src="../images/easy-nails/hardgel%20mockup%20techniek.png" alt="Hardgel techniek Easy Nails">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INCLUDES ===================== -->
+  <section class="sp-section sp-section--paars">
+    <div class="sp-inner">
+      <div style="text-align:center;margin-bottom:28px;">
+        <div class="sp-label" style="background:rgba(255,255,255,.2);color:#fff;">Alles inbegrepen</div>
+        <h2 class="sp-title sp-title--wit">Wat krijg je bij aankoop?</h2>
+        <p class="sp-sub sp-sub--wit" style="margin:0 auto;">Eén prijs, alles inbegrepen, voor altijd van jou.</p>
+      </div>
       <div class="sp-includes">
         <div class="sp-include-card">
           <div class="sp-include-card__icon">🎬</div>
-          <div class="sp-include-card__title">Videotraining</div>
-          <div class="sp-include-card__desc">Alle lessen inclusief BIAB en hardgel, op jouw tempo</div>
+          <div class="sp-include-card__title">Volledige videotraining</div>
+          <div class="sp-include-card__desc">4 lessen BIAB en hardgel, op jouw tempo</div>
         </div>
         <div class="sp-include-card">
           <div class="sp-include-card__icon">🏗️</div>
@@ -292,24 +423,31 @@
           <div class="sp-include-card__desc">Bonustraining nagelarchitectuur, de basis van alles</div>
         </div>
         <div class="sp-include-card">
+          <div class="sp-include-card__icon">🖐️</div>
+          <div class="sp-include-card__title">Handposities training</div>
+          <div class="sp-include-card__desc">Werk comfortabel en in controle bij elke klant</div>
+        </div>
+        <div class="sp-include-card">
           <div class="sp-include-card__icon">♾️</div>
           <div class="sp-include-card__title">Levenslange toegang</div>
-          <div class="sp-include-card__desc">Eén keer betalen, voor altijd bekijken en herhalen</div>
+          <div class="sp-include-card__desc">Eén keer betalen, voor altijd bekijken</div>
         </div>
         <div class="sp-include-card">
           <div class="sp-include-card__icon">💬</div>
           <div class="sp-include-card__title">Persoonlijke begeleiding</div>
-          <div class="sp-include-card__desc">Vragen na de cursus? Tabitha staat voor je klaar</div>
+          <div class="sp-include-card__desc">Vragen? Tabitha staat voor je klaar</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- REVIEWS -->
-  <section class="sp-section sp-section--licht">
+  <!-- ===================== REVIEWS ===================== -->
+  <section class="sp-section sp-section--wit">
     <div class="sp-inner">
-      <div class="sp-label">Ervaringen</div>
-      <h2 class="sp-title">Wat andere stylisten zeggen</h2>
+      <div style="text-align:center;margin-bottom:32px;">
+        <div class="sp-label">Ervaringen</div>
+        <h2 class="sp-title">Wat andere stylisten zeggen</h2>
+      </div>
       <div class="sp-reviews">
         <div class="sp-review">
           <div class="sp-review__stars">★★★★★</div>
@@ -339,17 +477,17 @@
     </div>
   </section>
 
-  <!-- OVER TABITHA -->
-  <section class="sp-section sp-section--wit">
+  <!-- ===================== OVER TABITHA ===================== -->
+  <section class="sp-section sp-section--licht">
     <div class="sp-inner">
       <div class="sp-label">Je instructeur</div>
       <h2 class="sp-title" style="margin-bottom:28px;">Tabitha Windels</h2>
       <div class="sp-tabitha">
-        <img class="sp-tabitha__img" src="../images/Over Tabitha.png" alt="Tabitha Windels">
+        <img class="sp-tabitha__img" src="../images/Over%20Tabitha.png" alt="Tabitha Windels">
         <div>
           <div class="sp-tabitha__name">Tabitha Windels</div>
           <div class="sp-tabitha__role">Nagelstylist, vakdocent & oprichter NailCraft Platform</div>
-          <p class="sp-tabitha__bio">18 jaar ervaring in de nagelindustrie, 14 jaar als vakdocent. Belgisch kampioen nagelstyling. Ze ontwikkelde het Easy Nails systeem zodat elke stylist, van beginner tot professional, dunne en sterke nagels kan bouwen die écht blijven zitten.</p>
+          <p class="sp-tabitha__bio">Ik ben Tabitha, en ik werk al 18 jaar in de nagelindustrie. Al 14 jaar geef ik les als vakdocent, en ik ben Belgisch kampioen nagelstyling. Easy Nails heb ik gemaakt omdat ik keer op keer zag dat stylisten struikelden over exact hetzelfde: de opbouwtechniek. Niet het product is het probleem, maar hoe je het aanbrengt. Met het Easy Nails systeem geef ik je precies de stappen en het inzicht dat je nodig hebt om nagels te plaatsen die écht 4 weken blijven zitten, op elke klant, elke keer opnieuw.</p>
           <div class="sp-tabitha__stats">
             <div class="sp-tabitha__stat"><strong>18 jaar</strong><span>Ervaring</span></div>
             <div class="sp-tabitha__stat"><strong>850+</strong><span>Cursisten</span></div>
@@ -360,12 +498,11 @@
     </div>
   </section>
 
-  <!-- PRIJS / CTA -->
-  <section class="sp-section sp-section--licht">
+  <!-- ===================== PRIJS / CTA ===================== -->
+  <section class="sp-section sp-section--wit">
     <div class="sp-inner">
-      <div class="sp-label" style="display:block;text-align:center;margin-bottom:32px;">Klaar om te starten?</div>
       <div class="sp-prijsblok">
-        <div class="sp-prijsblok__label">Easy Nails</div>
+        <div class="sp-prijsblok__label">Easy Nails Techniek</div>
         <p class="sp-prijsblok__oud">Normale prijs €255</p>
         <div class="sp-prijsblok__prijs">€150</div>
         <p class="sp-prijsblok__sub">eenmalig, levenslange toegang</p>
@@ -383,16 +520,12 @@
   </section>
 
   <!-- ===================== INSTAGRAM ===================== -->
-  <section class="sp-section sp-section--wit" style="padding:60px 5vw;">
-    <div class="sp-inner" style="text-align:center;">
-      <div class="sp-label">Volg mee</div>
-      <h2 class="sp-title" style="margin-bottom:8px;">Dagelijkse inspiratie op Instagram</h2>
-      <p class="sp-sub" style="margin:0 auto 36px;">Technieken, tips en mooie nail art, elke dag vers.</p>
-      <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" style="display:inline-block;transition:transform .3s;text-decoration:none;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="../images/instagram%20mockup%20telefoon.png" alt="Instagram @tabitha_nailcraft" style="max-width:280px;width:100%;height:auto;filter:drop-shadow(0 16px 40px rgba(156,40,177,.18));">
-        <p style="margin-top:14px;font-weight:700;color:var(--nc-paars);font-size:0.95rem;">@tabitha_nailcraft →</p>
-      </a>
-    </div>
+  <section style="padding:32px 5vw;background:#fff;text-align:center;">
+    <p style="font-size:0.82rem;color:var(--nc-tekst-zacht);margin-bottom:14px;">Volg mee op Instagram</p>
+    <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+      <img src="../images/instagram%20mockup%20telefoon.png" alt="Instagram @tabitha_nailcraft" style="width:60px;height:auto;filter:drop-shadow(0 4px 12px rgba(156,40,177,.15));">
+      <span style="font-weight:700;color:var(--nc-paars);font-size:0.9rem;">@tabitha_nailcraft →</span>
+    </a>
   </section>
 
   <!-- FOOTER -->
@@ -426,7 +559,7 @@
           <li><a href="../over.html">Over Tabitha</a></li>
           <li><a href="../blog.html">Blog & Tips</a></li>
           <li><a href="../the-nailstylist-traject.html">The Nailstylist</a></li>
-          <li><a href="https://www.instagram.com/tabitha_nail_it/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener">Instagram</a></li>
         </ul>
       </div>
       <div class="nc-footer__col">
@@ -446,13 +579,10 @@
 
   <script>
     window.addEventListener('scroll', function(){
-      document.getElementById('nc-nav').classList.toggle('scrolled', window.scrollY > 20);
+      document.getElementById('sp-nav').classList.toggle('scrolled', window.scrollY > 20);
       var docHeight = document.documentElement.scrollHeight - window.innerHeight;
       document.getElementById('nc-progress').style.width = ((window.scrollY / docHeight) * 100) + '%';
       document.getElementById('nc-totop').classList.toggle('visible', window.scrollY > 400);
-    });
-    document.getElementById('nc-toggle').addEventListener('click', function(){
-      document.getElementById('nc-mobile-menu').classList.toggle('open');
     });
   </script>
 </body>
