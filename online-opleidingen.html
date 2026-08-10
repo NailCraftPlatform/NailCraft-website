@@ -948,7 +948,7 @@
   .nc-featured-wrap { background: #f8f2ff; padding: 0 24px 80px; }
   .nc-featured-inner { max-width: 1180px; margin: 0 auto; }
   .nc-featured-card {
-    background: linear-gradient(135deg, #9c28b1 0%, #6b1a8f 60%, #3d0d5e 100%);
+    background: linear-gradient(135deg, #8a5bc4 0%, #7a1ea0 50%, #4a0d7a 100%);
     border-radius: 26px; overflow: hidden;
     display: grid; grid-template-columns: 1fr 1fr;
     box-shadow: 0 20px 70px rgba(156,40,177,0.3);
@@ -964,8 +964,7 @@
   }
   .nc-featured-media {
     position: relative; overflow: hidden;
-    aspect-ratio: 16/9; max-height: 380px;
-    display: flex; align-items: center; justify-content: center;
+    min-height: 380px;
   }
   .nc-featured-media video { width: 100%; height: 100%; object-fit: contain; pointer-events: none; background: #1a0530; display: block; }
   .nc-featured-body { padding: 48px 44px; display: flex; flex-direction: column; justify-content: center; }
@@ -1002,7 +1001,7 @@
   .nc-btn-white:hover { transform: scale(1.05); box-shadow: 0 12px 36px rgba(0,0,0,0.25); color: #9c28b1 !important; background: #fff !important; }
   @media(max-width: 768px) {
     .nc-featured-card { grid-template-columns: 1fr; }
-    .nc-featured-media { aspect-ratio: 16/9; max-height: 160px; }
+    .nc-featured-media { min-height: 260px; max-height: 320px; }
     .nc-featured-body { padding: 26px 22px 30px; }
     .nc-featured-body h2 { font-size: 1.5rem; }
     .nc-featured-body p { font-size: 0.85rem; }
@@ -1015,7 +1014,7 @@
   @media(max-width: 480px) {
     .nc-traject-head { padding: 50px 16px 30px; }
     .nc-featured-wrap { padding: 0 16px 60px; }
-    .nc-featured-media { max-height: 130px !important; }
+    .nc-featured-media { min-height: 220px !important; max-height: 280px !important; }
     .nc-featured-body { padding: 22px 18px 26px; }
     .nc-featured-body h2 { font-size: 1.35rem; margin-bottom: 10px; }
     .nc-featured-body p { font-size: 0.82rem; line-height: 1.6; }
@@ -1035,7 +1034,7 @@
       <div class="nc-featured-inner">
         <div class="nc-featured-card">
           <div class="nc-featured-media">
-            <img src="images/The Nailstylist.png" alt="The Nailstylist Traject" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img src="images/The Nailstylist.png" alt="The Nailstylist Traject" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
           </div>
           <div class="nc-featured-body">
             <div class="nc-featured-badge">✦ Meest Compleet</div>
