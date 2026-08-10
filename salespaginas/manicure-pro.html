@@ -39,22 +39,13 @@
     #nc-totop.visible { opacity:1; pointer-events:auto; }
     #nc-totop:hover { transform:translateY(-3px); background:#7a1e8e; }
 
-    /* NAV */
-    .nc-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(248,242,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(156,40,177,.1); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 70px; transition: box-shadow .3s; }
-    .nc-nav.scrolled { box-shadow: 0 4px 24px rgba(156,40,177,.1); }
-    .nc-nav__logo img { height: 44px; width: auto; }
-    .nc-nav__links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .nc-nav__links a { font-size: .9rem; font-weight: 500; color: var(--nc-tekst); transition: color .2s; }
-    .nc-nav__links a:hover { color: var(--nc-paars); }
-    .nc-nav__cta { background: var(--nc-paars); color: #fff !important; padding: .5rem 1.4rem; border-radius: 50px; font-size: .85rem; font-weight: 600; }
-    .nc-nav__cta:hover { background: #7a1e8e !important; }
-    .nc-nav__toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .nc-nav__toggle span { display: block; width: 24px; height: 2px; background: var(--nc-tekst); border-radius: 2px; }
-    .nc-nav__mobile { display: none; position: fixed; top: 70px; left: 0; right: 0; background: #fff; border-bottom: 1px solid rgba(156,40,177,.1); padding: 1.5rem 5vw; flex-direction: column; gap: 1rem; z-index: 999; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
-    .nc-nav__mobile.open { display: flex; }
-    .nc-nav__mobile a { font-size: 1rem; font-weight: 500; color: var(--nc-tekst); padding: .5rem 0; border-bottom: 1px solid rgba(156,40,177,.08); }
-    .nc-nav__mobile a:last-child { border-bottom: none; color: var(--nc-paars); font-weight: 700; }
-    @media(max-width:900px) { .nc-nav__links { display: none; } .nc-nav__toggle { display: flex; } }
+    /* SALES NAV */
+    .sp-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(248,242,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(156,40,177,.12); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 70px; transition: box-shadow .3s; }
+    .sp-nav.scrolled { box-shadow: 0 4px 24px rgba(156,40,177,.1); }
+    .sp-nav__logo img { height: 44px; width: auto; }
+    .sp-nav__cta { background: var(--nc-cta); color: #fff !important; padding: 10px 24px; border-radius: 100px; font-size: .88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 16px rgba(254,155,0,.35); transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+    .sp-nav__cta:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(254,155,0,.5); }
+    @media(max-width:480px) { .sp-nav__logo img { height: 36px; } .sp-nav__cta { padding: 9px 18px; font-size: .8rem; } }
 
     /* ===================== HERO ===================== */
     .sp-hero {
@@ -256,27 +247,11 @@
   <!-- Scroll to top -->
   <button id="nc-totop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Terug naar boven" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:#9c28b1;color:#fff;border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(156,40,177,.4);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:999;">↑</button>
 
-  <!-- Navigatie -->
-  <nav class="nc-nav" id="nc-nav">
-    <a href="../index.html" class="nc-nav__logo"><img src="../images/Logo-NailCraft-Platform.png" alt="NailCraft Platform"></a>
-    <ul class="nc-nav__links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../online-opleidingen.html">Online Opleidingen</a></li>
-      <li><a href="../the-nailstylist-traject.html">The Nailstylist</a></li>
-      <li><a href="../over.html">Over</a></li>
-      <li><a href="../blog.html">Blog</a></li>
-      <li><a href="../online-opleidingen.html" class="nc-nav__cta">Start vandaag →</a></li>
-    </ul>
-    <button class="nc-nav__toggle" id="nc-toggle" aria-label="Menu openen"><span></span><span></span><span></span></button>
+  <!-- Sales navigatie -->
+  <nav class="sp-nav" id="sp-nav">
+    <a href="../online-opleidingen.html" class="sp-nav__logo"><img src="../images/Logo-NailCraft-Platform.png" alt="NailCraft Platform"></a>
+    <a href="https://naillraftplatform.kennis.shop/pay/manicurepro" target="_blank" class="sp-nav__cta">Start nu →</a>
   </nav>
-  <div class="nc-nav__mobile" id="nc-mobile-menu">
-    <a href="../index.html">Home</a>
-    <a href="../online-opleidingen.html">Online Opleidingen</a>
-    <a href="../the-nailstylist-traject.html">The Nailstylist</a>
-    <a href="../over.html">Over</a>
-    <a href="../blog.html">Blog</a>
-    <a href="../online-opleidingen.html">Start vandaag →</a>
-  </div>
 
   <!-- ===================== HERO ===================== -->
   <section class="sp-hero">
@@ -638,13 +613,10 @@
 
   <script>
     window.addEventListener('scroll', function(){
-      document.getElementById('nc-nav').classList.toggle('scrolled', window.scrollY > 20);
+      document.getElementById('sp-nav').classList.toggle('scrolled', window.scrollY > 20);
       var docHeight = document.documentElement.scrollHeight - window.innerHeight;
       document.getElementById('nc-progress').style.width = ((window.scrollY / docHeight) * 100) + '%';
       document.getElementById('nc-totop').classList.toggle('visible', window.scrollY > 400);
-    });
-    document.getElementById('nc-toggle').addEventListener('click', function(){
-      document.getElementById('nc-mobile-menu').classList.toggle('open');
     });
   </script>
 </body>
