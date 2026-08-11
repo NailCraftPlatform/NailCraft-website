@@ -60,7 +60,7 @@
     @media(max-width:768px) {
       .hero { background-image: url('../images/upperforms/header%20achtergrond%20mobiel.webp'); }
     }
-    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,8,32,.82) 0%, rgba(18,8,32,.55) 50%, rgba(18,8,32,.2) 100%); z-index: 0; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,8,32,.6) 0%, rgba(18,8,32,.3) 55%, rgba(18,8,32,.08) 100%); z-index: 0; }
     .hero-text { padding: 4rem 3rem 4rem 5vw; position: relative; z-index: 2; }
     .eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-size: .74rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.6rem; opacity: 0; animation: fadeUp .7s .2s forwards; }
     .eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--accent); }
@@ -89,11 +89,11 @@
     @media(max-width:600px) { .hero-text { padding: 2.5rem 1.3rem 1.5rem; } }
 
     /* ── SLIDER ── */
-    .strip { overflow: hidden; background: var(--ink); }
+    .strip { overflow: hidden; background: var(--white); border-top: 1px solid rgba(181,144,241,.12); border-bottom: 1px solid rgba(181,144,241,.12); }
     .strip-track { display: flex; animation: stripScroll 32s linear infinite; width: max-content; }
     .strip-track--rev { animation-direction: reverse; }
-    .strip-track img { height: 260px; width: auto; object-fit: cover; flex-shrink: 0; transition: transform .3s; opacity: .88; }
-    .strip-track img:hover { transform: scale(1.04); opacity: 1; position: relative; z-index: 1; }
+    .strip-track img { height: 260px; width: auto; object-fit: cover; flex-shrink: 0; transition: transform .3s; }
+    .strip-track img:hover { transform: scale(1.04); position: relative; z-index: 1; }
     @media(max-width:600px) { .strip-track img { height: 180px; } }
 
     /* ── SECTIES ── */
@@ -113,7 +113,7 @@
     .stijl-card { position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 3/4; }
     .stijl-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.22,1,.36,1); }
     .stijl-card:hover img { transform: scale(1.06); }
-    .stijl-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,8,32,.75) 0%, transparent 55%); }
+    .stijl-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,8,32,.55) 0%, transparent 50%); }
     .stijl-card__label { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: 18px 16px; }
     .stijl-card__name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); line-height: 1; }
     .stijl-card__sub { font-size: .72rem; color: rgba(255,255,255,.65); margin-top: 3px; }
@@ -123,7 +123,7 @@
     /* ── FOTO BANNER ── */
     .foto-banner { position: relative; height: 420px; overflow: hidden; }
     .foto-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
-    .foto-banner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,8,32,.75) 0%, rgba(18,8,32,.3) 60%, transparent 100%); z-index: 1; }
+    .foto-banner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,8,32,.58) 0%, rgba(18,8,32,.2) 60%, transparent 100%); z-index: 1; }
     .foto-banner__content { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; padding: 0 5vw; max-width: 560px; }
     .foto-banner__content p { font-size: 1rem; color: rgba(255,255,255,.75); line-height: 1.7; margin-top: 12px; max-width: 420px; }
     .foto-banner__btn { display: inline-flex; align-items: center; gap: .5rem; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .84rem; padding: .78rem 1.8rem; border-radius: 60px; margin-top: 24px; transition: transform .2s, box-shadow .2s; width: fit-content; }
@@ -174,16 +174,16 @@
     @media(max-width:600px) { .para { padding: 5rem 1.2rem; } }
 
     /* ── MACBOOK SECTIE ── */
-    .macbook-sec { background: var(--ink); padding: 7rem 5vw; }
+    .macbook-sec { background: var(--light); padding: 7rem 5vw; }
     .macbook-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .macbook-img { position: relative; }
-    .macbook-img img { width: 100%; filter: drop-shadow(0 32px 60px rgba(156,40,177,.35)); }
+    .macbook-img img { width: 100%; filter: drop-shadow(0 32px 60px rgba(156,40,177,.2)); }
     .macbook-text .lbl { color: var(--accent); }
     .macbook-text .lbl::before { background: var(--accent); }
-    .macbook-text p { font-size: .95rem; color: rgba(255,255,255,.7); line-height: 1.8; margin-bottom: 1.2rem; }
+    .macbook-text p { font-size: .95rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 1.2rem; }
     .macbook-bullets { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 10px; }
-    .macbook-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: .9rem; color: rgba(255,255,255,.8); line-height: 1.6; }
-    .macbook-bullets li::before { content: '✓'; width: 20px; height: 20px; min-width: 20px; border-radius: 50%; background: rgba(181,144,241,.25); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; margin-top: 2px; }
+    .macbook-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: .9rem; color: var(--ink); line-height: 1.6; }
+    .macbook-bullets li::before { content: '✓'; width: 20px; height: 20px; min-width: 20px; border-radius: 50%; background: rgba(181,144,241,.25); color: var(--dark); display: flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; margin-top: 2px; }
     .btn-macbook { display: inline-block; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .86rem; padding: .82rem 1.9rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
     .btn-macbook:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(254,155,0,.45); }
     @media(max-width:900px) { .macbook-inner { grid-template-columns: 1fr; gap: 3rem; } }
@@ -567,7 +567,7 @@
       </div>
       <div class="macbook-text reveal" data-delay="100">
         <div class="lbl">Leer op jouw tempo</div>
-        <h2 class="h2 h2w" style="margin-bottom:16px;">Alles staat voor jou klaar, direct na aankoop</h2>
+        <h2 class="h2" style="margin-bottom:16px;">Alles staat voor jou klaar, direct na aankoop</h2>
         <p>Na aankoop heb je meteen toegang tot het volledige platform. Geen wachttijden, geen groepslessen. Jij beslist wanneer je leert, hoe snel je gaat en hoe vaak je iets herbekijkt.</p>
         <ul class="macbook-bullets">
           <li>Levenslange toegang, ook na updates</li>
@@ -581,6 +581,7 @@
   </section>
 
   <!-- FOTO BANNER 2 -->
+
   <div class="foto-banner">
     <img src="../images/upperforms/upperform%20soorten%20foto.webp" alt="Upperform stijlen overzicht" loading="lazy">
     <div class="foto-banner__content">
