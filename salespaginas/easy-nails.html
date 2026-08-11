@@ -196,6 +196,52 @@
     }
     @media(min-width:769px) { .nc-footer__mobile { display: none; } .nc-footer__mobile-links { display: none; } }
     @media(max-width:768px) { .sp-section { padding: 56px 5vw; } .sp-prijsblok { padding: 32px 24px; } .sp-prijsblok__prijs { font-size: 2.8rem; } }
+
+    /* MODULE CARD UITBREIDING */
+    .sp-module-card__desc { font-size: 0.8rem; color: var(--nc-tekst-zacht); line-height: 1.55; margin-top: 8px; }
+    .sp-module-card__leerpunten { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
+    .sp-module-card__leerpunten li { font-size: 0.78rem; color: var(--nc-tekst-zacht); line-height: 1.45; padding-left: 14px; position: relative; }
+    .sp-module-card__leerpunten li::before { content: '→'; position: absolute; left: 0; color: var(--nc-accent); font-size: 0.72rem; }
+    .sp-module-card__resultaat { margin-top: 10px; padding: 8px 10px; background: var(--nc-licht); border-radius: 8px; font-size: 0.76rem; color: var(--nc-paars); font-weight: 600; line-height: 1.4; }
+
+    /* PROBLEEM SECTIE */
+    .sp-probleem { background: #1a0a26; padding: 80px 5vw; }
+    .sp-probleem__inner { max-width: 920px; margin: 0 auto; }
+    .sp-probleem__intro { font-size: 1.1rem; color: rgba(255,255,255,.85); line-height: 1.75; margin-bottom: 32px; font-weight: 300; }
+    .sp-probleem__intro strong { color: #ffe0fb; font-weight: 600; }
+    .sp-probleem__list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+    .sp-probleem__list li { display: flex; align-items: flex-start; gap: 14px; font-size: 0.95rem; color: rgba(255,255,255,.8); line-height: 1.65; }
+    .sp-probleem__list li::before { content: '✗'; width: 24px; height: 24px; min-width: 24px; border-radius: 50%; background: rgba(220,50,50,.3); border: 1.5px solid rgba(220,80,80,.5); color: #ff7070; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; margin-top: 1px; }
+    .sp-probleem__list li strong { color: #ffe0fb; }
+    .sp-probleem__warning { font-size: 0.9rem; color: rgba(255,255,255,.55); line-height: 1.7; border-top: 1px solid rgba(255,255,255,.1); padding-top: 20px; }
+
+    /* ANDERS SECTIE */
+    .sp-anders { background: #fff; padding: 80px 5vw; }
+    .sp-anders__inner { max-width: 920px; margin: 0 auto; }
+    .sp-anders__vergelijk { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 32px 0; }
+    .sp-anders__col { border-radius: 18px; padding: 28px 24px; }
+    .sp-anders__col--nee { background: #fff5f5; border: 1.5px solid #fecaca; }
+    .sp-anders__col--ja { background: var(--nc-licht); border: 1.5px solid var(--nc-accent); }
+    .sp-anders__col h3 { font-size: 0.82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
+    .sp-anders__col--nee h3 { color: #e53e3e; }
+    .sp-anders__col--ja h3 { color: var(--nc-paars); }
+    .sp-anders__col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .sp-anders__col ul li { font-size: 0.88rem; line-height: 1.55; padding-left: 18px; position: relative; color: var(--nc-tekst); }
+    .sp-anders__col--nee ul li::before { content: '✗'; position: absolute; left: 0; color: #e53e3e; font-weight: 700; }
+    .sp-anders__col--ja ul li::before { content: '✓'; position: absolute; left: 0; color: var(--nc-paars); font-weight: 700; }
+    .sp-anders__systeem { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .sp-anders__systeem li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--nc-tekst); line-height: 1.6; }
+    .sp-anders__systeem li::before { content: '✔'; width: 22px; height: 22px; min-width: 22px; border-radius: 50%; background: var(--nc-paars); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; margin-top: 2px; }
+    @media(max-width:600px) { .sp-anders__vergelijk { grid-template-columns: 1fr; } }
+
+    /* KLAAR VOOR SECTIE */
+    .sp-klaarvoorf { background: var(--nc-licht); padding: 80px 5vw; text-align: center; }
+    .sp-klaarvoorf__inner { max-width: 680px; margin: 0 auto; }
+    .sp-klaarvoorf__list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 28px 0 36px; text-align: left; }
+    .sp-klaarvoorf__list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--nc-tekst); line-height: 1.6; }
+    .sp-klaarvoorf__list li::before { content: '✓'; width: 22px; height: 22px; min-width: 22px; border-radius: 50%; background: var(--nc-paars); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; margin-top: 2px; }
+
+    @media(max-width:768px) { .sp-probleem { padding: 56px 5vw; } .sp-anders { padding: 56px 5vw; } .sp-klaarvoorf { padding: 56px 5vw; } }
   </style>
 </head>
 <body>
@@ -218,9 +264,9 @@
   <section class="sp-hero">
     <div class="sp-hero__inner">
       <div class="sp-hero__text">
-        <div class="sp-hero__badge">📹 Videotraining BIAB & Hardgel</div>
+        <div class="sp-hero__badge">🎁 Gratis Chrome Bubble training bij elke aankoop</div>
         <h1>Gelnagels plaatsen die <em>4 weken blijven zitten</em></h1>
-        <p class="sp-hero__sub">De techniek voor dunne, sterke nagels die niet loslaten. Stop met nagels herstellen en begin met geld verdienen aan nagels die écht blijven.</p>
+        <p class="sp-hero__sub">De techniek om dunne, sterke nagels op te bouwen die niet loslaten. Stop met nagels herstellen en begin met geld verdienen aan nagels die écht blijven, zonder uren werk, dure aankopen of losse tutorials.</p>
         <a href="https://naillraftplatform.kennis.shop/pay/easynails" target="_blank" class="sp-hero__cta">Ik plaats nagels, easy! →</a>
         <p class="sp-hero__prijs"><s>€255</s> &nbsp; <strong>€150</strong> &nbsp; eenmalig, levenslange toegang</p>
       </div>
@@ -271,6 +317,22 @@
     </div>
   </section>
 
+  <!-- ===================== PROBLEEM SECTIE ===================== -->
+  <section class="sp-probleem">
+    <div class="sp-probleem__inner">
+      <div class="sp-label" style="background:rgba(255,255,255,.15);color:#fff;margin-bottom:20px;">Het probleem</div>
+      <h2 class="sp-title sp-title--wit" style="margin-bottom:20px;">Je nagels zouden er niet moeten afvallen na een paar dagen</h2>
+      <p class="sp-probleem__intro">Ze zouden <strong>4 weken moeten blijven zitten als een huis</strong>, en er enkel afkomen als jij ze er afneemt. Het grote probleem? Veel mensen leren gelnagels plaatsen alsof het nagellak van de drogisterij is. En dat is precies waarom het fout gaat:</p>
+      <ul class="sp-probleem__list">
+        <li><strong>Loslating:</strong> gelnagels komen los als je niet weet hoe je juist moet opbouwen en welke zones van de natuurlijke nagel belangrijk zijn.</li>
+        <li><strong>Breuken:</strong> gelnagels breken af als je niet het juiste product combineert met de juiste techniek. Gewoon "lakken" is niet voldoende.</li>
+        <li><strong>Hobbels en bobbels:</strong> gel loopt uit in je nagelriem en nagelwallen, met een golvend effect als je niet weet hoe je de gel moet sturen en aanbrengen.</li>
+        <li><strong>Dikke, onnatuurlijke nagels:</strong> gelnagels zien er snel te dik en onnatuurlijk uit als je niet weet waar en hoe je het product neerzet.</li>
+      </ul>
+      <p class="sp-probleem__warning">Elke dag dat je gel verkeerd aanbrengt, is een stap dichter bij breuken, loslating en beschadiging van je natuurlijke nagels. In Easy Nails leer ik je precies hoe je dit voorkomt.</p>
+    </div>
+  </section>
+
   <!-- ===================== VOOR WIE ===================== -->
   <section class="sp-section sp-section--wit">
     <div class="sp-inner">
@@ -307,36 +369,66 @@
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/easy-nails/1%20delen%20van%20de%20nagel.webp" alt="Les 1: Delen van de nagel">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 1</div>
+            <div class="sp-module-card__num">Les 1 · Videotraining</div>
             <div class="sp-module-card__title">Basisarchitectuur van de nagel</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Welke punten belangrijk zijn bij het opbouwen van een kunstnagel</li>
+              <li>Waar je moet opbouwen en waar je dun moet werken</li>
+              <li>Welke fouten je nagels verzwakken en hoe je ze vermijdt</li>
+              <li>Hoe je meteen met zelfvertrouwen kunstnagels plaatst</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: geen twijfels meer en nagels die niet loslaten.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/easy-nails/2%20vormen%20vijlen.webp" alt="Les 2: Vormen vijlen">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 2</div>
+            <div class="sp-module-card__num">Les 2 · Videotraining</div>
             <div class="sp-module-card__title">Perfecte vormen vijlen</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Stap voor stap squoval en ronde vormen vijlen</li>
+              <li>Waar je materiaal wél en niet wegneemt</li>
+              <li>Hoe kleine fouten grote problemen voorkomen</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: nagels breken niet, hoeken blijven mooi en klanten zijn blij.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/easy-nails/3%20BIAB%20.webp" alt="Les 3: BIAB">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 3</div>
+            <div class="sp-module-card__num">Les 3 · Videotraining</div>
             <div class="sp-module-card__title">BIAB-nagels plaatsen, stap voor stap</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Correct aanbrengen van BIAB per stap</li>
+              <li>Veelgemaakte fouten vermijden</li>
+              <li>Verschillende zones opbouwen voor 4 weken hechting</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: geen reparaties, perfecte nagels, tevreden klanten.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/easy-nails/4%20HARDGEL.webp" alt="Les 4: Hardgel">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 4</div>
-            <div class="sp-module-card__title">Hardgel toepassen</div>
+            <div class="sp-module-card__num">Les 4 · Videotraining</div>
+            <div class="sp-module-card__title">Hardgel voor sterke, duurzame nagels</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Hardgel correct aanbrengen stap voor stap</li>
+              <li>Correcte applicatietechniek voor harde producten</li>
+              <li>Zones opbouwen zodat nagels 4 weken blijven zitten</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: WOW-nagels die klanten doen terugkomen.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/easy-nails/5%20bonussen%20.webp" alt="Bonussen">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Bonus</div>
-            <div class="sp-module-card__title">Architectuurtraining + handposities voor controle en comfort</div>
+            <div class="sp-module-card__num">Bonus · Videotraining</div>
+            <div class="sp-module-card__title">Architectuurtraining & handposities</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Alle onderdelen en aandachtspunten van een kunstnagel uitgelegd</li>
+              <li>Correcte handposities voor maximale controle en comfort</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: werken met meer controle, minder vermoeidheid.</div>
             <span class="sp-module-card__badge">Bonus</span>
           </div>
         </div>
@@ -398,6 +490,45 @@
           <img src="../images/easy-nails/hardgel%20mockup%20techniek.webp" alt="Hardgel techniek Easy Nails">
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== WAAROM ANDERS ===================== -->
+  <section class="sp-anders">
+    <div class="sp-anders__inner">
+      <div class="sp-label">Waarom NailCraft anders is</div>
+      <h2 class="sp-title">Andere opleidingen verkopen je producten. Ik leer je techniek.</h2>
+      <p class="sp-sub" style="margin-bottom:28px;">In 90% van de gevallen ligt het probleem niet aan je product, maar aan je techniek. En precies dat is wat ik je leer. Geen marketingpraat, enkel bewezen technieken die ik zelf dagelijks toepas in mijn salon.</p>
+      <div class="sp-anders__vergelijk">
+        <div class="sp-anders__col sp-anders__col--nee">
+          <h3>Andere cursussen</h3>
+          <ul>
+            <li>Sturen je naar dure producten die je "nodig hebt"</li>
+            <li>Losse tips zonder logische opbouw</li>
+            <li>Geen uitleg waarom iets werkt of niet werkt</li>
+            <li>Resultaat afhankelijk van merk of materiaal</li>
+          </ul>
+        </div>
+        <div class="sp-anders__col sp-anders__col--ja">
+          <h3>Easy Nails</h3>
+          <ul>
+            <li>Je werkt met je eigen bestaande materiaal</li>
+            <li>Logisch systeem van basis naar praktijk</li>
+            <li>Je begrijpt waarom elke stap belangrijk is</li>
+            <li>Resultaat bij elke klant, ongeacht merk</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:0.95rem;font-weight:600;color:var(--nc-paars);margin-bottom:16px;">Je leert een systeem dat:</p>
+      <ul class="sp-anders__systeem">
+        <li>Nagels oplevert die bij elke klant 4 weken blijven zitten</li>
+        <li>Geen breuken of lifting meer veroorzaakt</li>
+        <li>Je inzicht geeft in opbouw en architectuur van gelnagels</li>
+        <li>Je het verschil leert tussen BIAB en hardgel, en wanneer je wat gebruikt</li>
+        <li>Je sneller én correct leert werken</li>
+        <li>Herstellingen bijna overbodig maakt</li>
+      </ul>
+      <p style="margin-top:24px;font-size:0.95rem;color:var(--nc-tekst-zacht);line-height:1.7;">Dit is niet meer werk. Dit is slimmer werken. Meer tijd overhouden omdat je nagels blijven zitten, omdat je niet meer moet corrigeren, herstellen of twijfelen.</p>
     </div>
   </section>
 
@@ -485,7 +616,7 @@
         <div>
           <div class="sp-tabitha__name">Tabitha Windels</div>
           <div class="sp-tabitha__role">Nagelstylist, vakdocent & oprichter NailCraft Platform</div>
-          <p class="sp-tabitha__bio">Ik ben Tabitha, en ik werk al 18 jaar in de nagelindustrie. Al 14 jaar geef ik les als vakdocent, en ik ben Belgisch kampioen nagelstyling. Easy Nails heb ik gemaakt omdat ik keer op keer zag dat stylisten struikelden over exact hetzelfde: de opbouwtechniek. Niet het product is het probleem, maar hoe je het aanbrengt. Met het Easy Nails systeem geef ik je precies de stappen en het inzicht dat je nodig hebt om nagels te plaatsen die écht 4 weken blijven zitten, op elke klant, elke keer opnieuw.</p>
+          <p class="sp-tabitha__bio">Het is zo frustrerend wanneer je tijd, geld en energie steekt in nagels plaatsen, en ze na een paar dagen alweer loskomen. Ik heb dat van zo dichtbij meegemaakt, van mijn eigen cursisten, maar ook van de mensen die me elke week begonnen te schrijven.<br><br>Na 18 jaar in de nagelindustrie, 14 jaar als vakdocent en honderden uren lesmateriaal wist ik één ding zeker: er moest een techniek komen die écht werkt. Geen marketingpraat, geen omwegen, gewoon resultaat.<br><br>En toch bleef ik keer op keer hetzelfde horen: nagels die liften, breken, loskomen. Twijfel, beschadiging, frustratie. Alsof iedereen gel bleef behandelen alsof het nagellak was. Dun smeren en hopen dat het blijft.<br><br>Dus besloot ik het anders te doen. Ik dook diep in de fouten die beginners, hobbyisten én stylisten blijven maken. Niet oppervlakkig, maar technisch, structureel, bij de basis. Zo ontstond Easy Nails. Één logisch systeem dat je stap voor stap leert hoe je dunne, sterke gelnagels opbouwt die 4 weken blijven zitten.<br><br>Vandaag werken meer dan 800 cursisten met vertrouwen. Nagels die niet alleen blijven zitten, maar er ook strak, dun en professioneel uitzien. Dat WAUW-effect waar klanten voor blijven terugkomen. En precies dat systeem geef ik je in Easy Nails.</p>
           <div class="sp-tabitha__stats">
             <div class="sp-tabitha__stat"><strong>18 jaar</strong><span>Ervaring</span></div>
             <div class="sp-tabitha__stat"><strong>850+</strong><span>Cursisten</span></div>
@@ -493,6 +624,24 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== KLAAR VOOR ===================== -->
+  <section class="sp-klaarvoorf">
+    <div class="sp-klaarvoorf__inner">
+      <div class="sp-label">Ben jij klaar?</div>
+      <h2 class="sp-title">Als je klaar bent voor...</h2>
+      <ul class="sp-klaarvoorf__list">
+        <li>Nagels die 4 weken blijven zitten, elke keer opnieuw</li>
+        <li>Nagels die niet afbreken en de perfecte vorm hebben</li>
+        <li>Dunne, sterke gelnagels plaatsen op jezelf of bij klanten</li>
+        <li>Nooit meer herstelwerk uitvoeren omdat alles gewoon blijft zitten</li>
+        <li>Werken met vertrouwen, zonder twijfel over je techniek</li>
+      </ul>
+      <p style="font-size:1rem;color:var(--nc-tekst-zacht);line-height:1.7;margin-bottom:32px;">Dan ben je klaar voor Easy Nails. Het duidelijke nagelsysteem om kunstnagels te plaatsen die niet loskomen. Laten we je techniek omvormen in nagelklanten die blijven terugkomen, meer tijd, meer omzet, meer zelfvertrouwen.</p>
+      <a href="https://naillraftplatform.kennis.shop/pay/easynails" target="_blank" class="sp-btn-cta" style="max-width:400px;margin:0 auto;">Ik plaats nagels, easy! →</a>
+      <p style="margin-top:14px;font-size:0.8rem;color:var(--nc-tekst-zacht);">Eenmalig €150 &nbsp;|&nbsp; Levenslange toegang &nbsp;|&nbsp; Persoonlijke begeleiding</p>
     </div>
   </section>
 
