@@ -48,12 +48,13 @@
     .badge-master { display: inline-flex; align-items: center; gap: .5rem; background: linear-gradient(135deg, var(--dark), var(--pink)); color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: .4rem 1rem; border-radius: 20px; margin-bottom: 1.2rem; opacity: 0; animation: fUp .7s .15s forwards; }
     .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 700; line-height: 1.02; color: var(--ink); margin-bottom: 1.3rem; opacity: 0; animation: fUp .7s .3s forwards; }
     .hero h1 em { font-style: italic; background: linear-gradient(120deg, var(--dark) 0%, var(--pink) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-em-glow { filter: drop-shadow(0 0 18px rgba(156,40,177,.45)) drop-shadow(0 0 40px rgba(255,31,227,.25)); }
     .hero-sub { font-size: 1.04rem; color: var(--ink-soft); line-height: 1.78; margin-bottom: 2rem; opacity: 0; animation: fUp .7s .45s forwards; }
     .hero-feats { display: flex; flex-direction: column; gap: .45rem; margin-bottom: 2rem; opacity: 0; animation: fUp .7s .55s forwards; }
     .hf { display: flex; align-items: center; gap: .7rem; font-size: .88rem; color: var(--ink-soft); }
     .hf-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--dark); flex-shrink: 0; }
     .price-row { display: flex; align-items: baseline; gap: .9rem; margin-bottom: 1.8rem; opacity: 0; animation: fUp .7s .63s forwards; }
-    .pnow { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700; color: var(--ink); }
+    .pnow { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700; color: var(--dark); }
     .pwas { font-size: .95rem; color: #aaa; text-decoration: line-through; }
     .psave { font-size: .74rem; font-weight: 700; color: var(--dark); background: rgba(156,40,177,.1); padding: .2rem .6rem; border-radius: 10px; }
     .hero-btns { display: flex; flex-direction: column; gap: .8rem; max-width: 350px; opacity: 0; animation: fUp .7s .75s forwards; }
@@ -78,7 +79,7 @@
     .si { max-width: 1100px; margin: 0 auto; }
     .lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .71rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--dark); margin-bottom: .9rem; }
     .lbl::before { content: ''; width: 18px; height: 1.5px; background: var(--dark); }
-    .h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.1rem, 3.5vw, 3.3rem); font-weight: 700; line-height: 1.08; color: var(--ink); }
+    .h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.1rem, 3.5vw, 3.3rem); font-weight: 700; line-height: 1.08; color: var(--dark); }
     .reveal { opacity: 0; transform: translateY(36px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
     .reveal.in { opacity: 1; transform: translateY(0); }
     @media(max-width:600px) { .sec { padding: 4rem 1.2rem; } }
@@ -94,12 +95,12 @@
     /* TECHNIEKEN */
     .tech-sec { padding: 5rem 0; background: #fff; }
     .tech-head { text-align: center; max-width: 640px; margin: 0 auto 3.5rem; padding: 0 2rem; }
-    .tech-head h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; color: var(--ink); margin-bottom: .6rem; }
+    .tech-head h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; color: var(--dark); margin-bottom: .6rem; }
     .tech-head p { font-size: .97rem; color: var(--ink-soft); line-height: 1.7; }
     .tech-row { margin-bottom: 4rem; }
     .tech-row:last-child { margin-bottom: 0; }
     .tech-label-row { display: flex; align-items: center; gap: 1.2rem; padding: 0 2rem; margin-bottom: 1.2rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
-    .tech-label-row h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); }
+    .tech-label-row h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); }
     .tech-tag { background: rgba(156,40,177,.1); color: var(--dark); font-size: .7rem; font-weight: 700; padding: .25rem .7rem; border-radius: 12px; }
     .tech-desc { font-size: .85rem; color: var(--ink-soft); margin-left: auto; max-width: 280px; text-align: right; }
     .img-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; padding: 0 2rem; max-width: 1100px; margin: 0 auto; }
@@ -115,7 +116,7 @@
     .ebook-sec { background: var(--light); padding: 6rem 2rem; }
     .ebook-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .ebook-visual img { border-radius: 24px; box-shadow: 0 20px 60px rgba(156,40,177,.12); width: 100%; max-height: 450px; object-fit: contain; background: var(--light2); }
-    .ebook-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 700; line-height: 1.1; color: var(--ink); margin-bottom: 1rem; }
+    .ebook-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 700; line-height: 1.1; color: var(--dark); margin-bottom: 1rem; }
     .ebook-text h2 em { font-style: italic; color: var(--dark); }
     .ebook-text p { font-size: .97rem; color: var(--ink-soft); line-height: 1.78; margin-bottom: 1.6rem; }
     .ebook-feats { list-style: none; }
@@ -150,7 +151,7 @@
     .foto-banner img { width: 100%; height: 100%; object-fit: cover; }
     .foto-overlay { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(248,242,255,.78) 0%, rgba(248,242,255,.3) 55%, transparent 100%); display: flex; align-items: center; padding: 0 8vw; }
     .foto-txt { max-width: 420px; }
-    .foto-txt h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: .8rem; }
+    .foto-txt h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: var(--dark); line-height: 1.1; margin-bottom: .8rem; }
     .foto-txt p { font-size: .97rem; color: var(--ink-soft); line-height: 1.7; }
     @media(max-width:600px) { .foto-banner { height: 340px; } .foto-overlay { padding: 0 1.5rem; } }
 
@@ -220,7 +221,7 @@
     .ig-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .ig-lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .71rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
     .ig-lbl::before { content: ''; width: 18px; height: 1.5px; background: var(--accent); display: inline-block; }
-    .ig-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: .9rem; }
+    .ig-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: var(--dark); line-height: 1.1; margin-bottom: .9rem; }
     .ig-inner h2 em { font-style: italic; color: var(--dark); }
     .ig-inner p { font-size: .97rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 2rem; max-width: 420px; }
     .ig-btn { display: inline-flex; align-items: center; gap: .7rem; background: linear-gradient(135deg, var(--dark), var(--pink)); color: #fff; font-weight: 700; font-size: .84rem; padding: .78rem 1.6rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
@@ -267,7 +268,7 @@
     <div class="hero-inner">
       <div>
         <div class="badge-master">👑 De Meest Complete Training</div>
-        <h1>Alles wat je nodig hebt voor<br><em>perfecte upperforms.</em></h1>
+        <h1>Alles wat je nodig hebt voor<br><em class="hero-em-glow">perfecte upperforms applicatie.</em></h1>
         <p class="hero-sub">Video's van de volledige applicatie, bonusvideo's voor elke techniek én een compleet 97-pagina's e-book. Alles samen in één training, levenslang beschikbaar.</p>
         <div class="hero-feats">
           <div class="hf"><span class="hf-dot"></span> Uren demonstratievideo's van de volledige applicatie</div>
