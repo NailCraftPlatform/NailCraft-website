@@ -161,6 +161,11 @@
     .sp-module-card__num { font-size: 0.68rem; font-weight: 700; color: var(--nc-accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
     .sp-module-card__title { font-size: 0.9rem; font-weight: 600; color: var(--nc-tekst); line-height: 1.4; }
     .sp-module-card__badge { display: inline-block; background: var(--nc-cta); color: #fff; font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; margin-top: 6px; }
+    .sp-module-card__desc { font-size: 0.8rem; color: var(--nc-tekst-zacht); line-height: 1.55; margin-top: 8px; }
+    .sp-module-card__leerpunten { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
+    .sp-module-card__leerpunten li { font-size: 0.78rem; color: var(--nc-tekst-zacht); line-height: 1.45; padding-left: 14px; position: relative; }
+    .sp-module-card__leerpunten li::before { content: '→'; position: absolute; left: 0; color: var(--nc-accent); font-size: 0.72rem; }
+    .sp-module-card__resultaat { margin-top: 10px; padding: 8px 10px; background: var(--nc-licht); border-radius: 8px; font-size: 0.76rem; color: var(--nc-paars); font-weight: 600; line-height: 1.4; }
 
     /* MOCKUP OVERVIEW */
     .sp-mockup-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
@@ -359,79 +364,140 @@
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/1%20de%20basis.webp" alt="Les 1: De Basis">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 1</div>
+            <div class="sp-module-card__num">Les 1 · Videotraining</div>
             <div class="sp-module-card__title">De Basis, waarom manicure alles bepaalt</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Waar je écht op moet focussen tijdens je voorbereiding</li>
+              <li>Welke details het verschil maken tussen middelmatig en professioneel</li>
+              <li>Waarom lifting bijna altijd begint bij een fout in de manicure</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: je ziet manicure als de sleutel tot controle, hechting en consistente resultaten.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/2%20de%20materialen%20.webp" alt="Les 2: Materialen">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 2</div>
+            <div class="sp-module-card__num">Les 2 · Videotraining</div>
             <div class="sp-module-card__title">Materialen, de juiste bitjes zonder twijfel</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Inzicht in de kleurcodes van freesbitjes</li>
+              <li>Wanneer je welk bitje inzet op de natuurlijke nagel</li>
+              <li>Welke bitjes veilig zijn per situatie</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: geen twijfel meer over je tools. Jij weet precies wat, wanneer en waarom.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/3%20huid%20en%20nagelriem%20types.webp" alt="Les 3: Huidtypes">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 3</div>
+            <div class="sp-module-card__num">Les 3 · Videotraining + PDF</div>
             <div class="sp-module-card__title">Huid- en nagelriemtypes, leer analyseren als professional</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Hoe droge, normale en gevoelige huid zich anders gedragen</li>
+              <li>Waarom één standaardtechniek nooit voor iedereen werkt</li>
+              <li>Je techniek, druk en materiaal aanpassen aan je klant</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: jij analyseert eerst en werkt daarna doelgericht, bij élke klant.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/4%20stappenplan%20en%20workflow.webp" alt="Les 4: Stappenplan">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 4</div>
+            <div class="sp-module-card__num">Les 4 · Videotraining + PDF</div>
             <div class="sp-module-card__title">Stappenplan & Workflow, het exacte systeem</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Niet alleen wat je doet, maar waarom je het doet</li>
+              <li>De correcte volgorde van werken</li>
+              <li>Efficiënter werken zonder veiligheid te verliezen</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: jij werkt volgens een vast systeem dat rust, structuur en consistentie geeft.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/5%20de%20combi%20manicure.webp" alt="Les 5: Combi Manicure">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 5</div>
+            <div class="sp-module-card__num">Les 5 · Videotraining</div>
             <div class="sp-module-card__title">Combi Manicure in de praktijk, stap voor stap</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Volledige combi-manicure in real time meegekeken</li>
+              <li>Elke techniek, handeling en materiaal uitgelegd</li>
+              <li>Reproduceerbaar stap voor stap aan je eigen werktafel</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: je begrijpt wat ik doe en kan het zelf direct toepassen.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/6%20vormen%20vijlen.webp" alt="Les 6: Vormen vijlen">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 6</div>
+            <div class="sp-module-card__num">Les 6 · Videotraining</div>
             <div class="sp-module-card__title">Perfecte vormen vijlen</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Squoval en ronde vormen stap voor stap vijlen</li>
+              <li>Waar je materiaal wél en niet wegneemt</li>
+              <li>Hoe een juiste vorm bijdraagt aan duurzaamheid</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: nagels breken niet, hoeken blijven mooi en groeien perfect uit.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/7%20gevoelige%20huid.webp" alt="Les 7: Gevoelige huid">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 7</div>
+            <div class="sp-module-card__num">Les 7 · Videotraining</div>
             <div class="sp-module-card__title">Manicure op gevoelige huid</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Veilig en effectief werken zonder wondjes of irritatie</li>
+              <li>Techniek en druk aanpassen aan gevoelige nagelriemen</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: volledige controle, ook bij de meest gevoelige klant.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/8%20droge%20huid.webp" alt="Les 8: Droge huid">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 8</div>
+            <div class="sp-module-card__num">Les 8 · Videotraining</div>
             <div class="sp-module-card__title">Manicure op droge huid</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Hoe droge huid zich anders gedraagt tijdens de manicure</li>
+              <li>Je techniek aanpassen voor optimale hechting</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: een verzorgde manicure die lang blijft zitten, ook op droge huid.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/9%20normale%20huid.webp" alt="Les 9: Normale huid">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Les 9</div>
+            <div class="sp-module-card__num">Les 9 · Videotraining</div>
             <div class="sp-module-card__title">Manicure op normale huid</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Normale huid optimaal voorbereiden voor kunstnagelapplicatie</li>
+              <li>Het volledige systeem toegepast in een complete demonstratie</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: een professionele, consistente manicure bij elke klant.</div>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/bonus%20manicure%20op%20jezelf.webp" alt="Bonus: op jezelf">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Bonus</div>
+            <div class="sp-module-card__num">Bonus · Videotraining</div>
             <div class="sp-module-card__title">Manicure op jezelf met niet-dominante hand</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Handposities, tools en technieken voor je niet-dominante hand</li>
+              <li>Veilig en efficiënt werken op je eigen nagels</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: zelfvertrouwen in je eigen techniek, ook op jezelf.</div>
             <span class="sp-module-card__badge">Bonus</span>
           </div>
         </div>
         <div class="sp-module-card">
           <img class="sp-module-card__img" src="../images/manicure-pro/bonus%20manicure%20met%20cuticle%20remover.webp" alt="Bonus: Cuticle Remover">
           <div class="sp-module-card__body">
-            <div class="sp-module-card__num">Bonus</div>
+            <div class="sp-module-card__num">Bonus · Videotraining</div>
             <div class="sp-module-card__title">Manicure met Cuticle Remover</div>
+            <ul class="sp-module-card__leerpunten">
+              <li>Speciaal voor extreem gevoelige nagelriemen en rijpe huid</li>
+              <li>Veilige manicure zonder frees, enkel cuticle remover en tools</li>
+            </ul>
+            <div class="sp-module-card__resultaat">Resultaat: een zachte manicure die ook bij de meest gevoelige klanten lang blijft zitten.</div>
             <span class="sp-module-card__badge">Bonus</span>
           </div>
         </div>
