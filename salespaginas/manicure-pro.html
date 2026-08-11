@@ -264,8 +264,9 @@
         <a href="https://naillraftplatform.kennis.shop/pay/manicurepro" target="_blank" class="sp-hero__cta">Ik word Manicure Pro →</a>
         <p class="sp-hero__prijs"><s>€235</s> &nbsp; <strong>€145</strong> &nbsp; eenmalig, levenslange toegang</p>
       </div>
-      <div class="sp-hero__visual">
-        <iframe src="https://player.vimeo.com/video/1217014910?autoplay=1&muted=1&loop=1&background=1" style="width:100%;aspect-ratio:16/9;border:none;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.4);" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      <div class="sp-hero__visual" id="hero-visual" style="position:relative;">
+        <img id="hero-poster" src="../images/manicure-pro/Manicure%20pro%20wit%20zonder%20bol.png" alt="Manicure Pro cursus" style="width:100%;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.4);display:block;transition:opacity .4s;">
+        <iframe id="hero-iframe" data-src="https://player.vimeo.com/video/1217014910?autoplay=1&muted=1&loop=1&background=1" style="position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.4);opacity:0;transition:opacity .6s;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -619,6 +620,16 @@
   </footer>
 
   <script>
+    window.addEventListener('load', function(){
+      var iframe = document.getElementById('hero-iframe');
+      var poster = document.getElementById('hero-poster');
+      iframe.src = iframe.dataset.src;
+      iframe.addEventListener('load', function(){
+        iframe.style.opacity = '1';
+        poster.style.opacity = '0';
+      });
+    });
+
     window.addEventListener('scroll', function(){
       document.getElementById('sp-nav').classList.toggle('scrolled', window.scrollY > 20);
       var docHeight = document.documentElement.scrollHeight - window.innerHeight;
