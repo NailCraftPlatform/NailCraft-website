@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upperform Opleidingen – Kies jouw niveau | NailCraft Platform</title>
+  <meta name="description" content="Leer de upperform-techniek via e-book, video of alles samen. Guide, Pro of Master: kies het niveau dat bij jou past. Van Tabitha Windels, NailCraft Platform.">
+  <meta name="author" content="Tabitha Windels">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; color: #120820; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; }
+
+    :root {
+      --light: #f8f2ff;
+      --accent: #b590f1;
+      --cta: #fe9b00;
+      --dark: #9c28b1;
+      --pink: #ff1fe3;
+      --white: #ffffff;
+      --ink: #120820;
+      --ink-soft: #5e4878;
+      --card-radius: 28px;
+    }
+
+    /* ── NAV ── */
+    .sp-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(18,8,32,0.88); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(181,144,241,.15); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 70px; transition: box-shadow .3s; }
+    .sp-nav.scrolled { box-shadow: 0 4px 24px rgba(156,40,177,.15); }
+    .sp-nav__logo img { height: 40px; width: auto; }
+    .sp-nav__links { display: flex; gap: 1.8rem; list-style: none; }
+    .sp-nav__links a { color: rgba(255,255,255,.65); font-size: .86rem; font-weight: 500; transition: color .2s; }
+    .sp-nav__links a:hover { color: var(--accent); }
+    .sp-nav__cta { background: var(--cta); color: var(--ink) !important; padding: 9px 22px; border-radius: 100px; font-size: .84rem; font-weight: 700; white-space: nowrap; transition: transform .2s, box-shadow .2s; }
+    .sp-nav__cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(254,155,0,.4); }
+    @media(max-width: 768px) { .sp-nav__links { display: none; } }
+    @media(max-width: 480px) { .sp-nav__logo img { height: 34px; } .sp-nav__cta { padding: 8px 16px; font-size: .78rem; } }
+
+    /* ── HERO ── */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; overflow: hidden; padding-top: 70px; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: var(--ink); background-image: radial-gradient(ellipse 65% 55% at 15% 40%, rgba(156,40,177,.45) 0%, transparent 60%), radial-gradient(ellipse 50% 45% at 85% 65%, rgba(255,31,227,.22) 0%, transparent 55%), radial-gradient(ellipse 40% 35% at 55% 10%, rgba(181,144,241,.3) 0%, transparent 50%); }
+    .hero-text { padding: 4rem 3rem 4rem 5vw; position: relative; z-index: 2; }
+    .eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-size: .74rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.6rem; opacity: 0; animation: fadeUp .7s .2s forwards; }
+    .eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--accent); }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5.5vw, 5.2rem); font-weight: 700; line-height: 1.04; color: var(--white); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp .7s .35s forwards; }
+    .hero h1 em { font-style: italic; background: linear-gradient(120deg, var(--accent) 0%, var(--pink) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 1.06rem; font-weight: 300; color: rgba(255,255,255,.65); line-height: 1.75; max-width: 440px; margin-bottom: 2.4rem; opacity: 0; animation: fadeUp .7s .5s forwards; }
+    .hero-actions { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; opacity: 0; animation: fadeUp .7s .65s forwards; }
+    .btn-hp { display: inline-flex; align-items: center; gap: .5rem; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .88rem; padding: .85rem 1.9rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; animation: pulseCta 2.8s 1.5s infinite; }
+    .btn-hp:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(254,155,0,.45); animation: none; }
+    .btn-hg { color: rgba(255,255,255,.6); font-size: .84rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 2px; transition: color .2s, border-color .2s; }
+    .btn-hg:hover { color: var(--accent); border-color: var(--accent); }
+    .hero-visual { position: relative; height: 100vh; overflow: hidden; opacity: 0; animation: fadeIn 1s .4s forwards; }
+    .hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .hero-visual::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, var(--ink) 0%, transparent 28%, transparent 72%, rgba(18,8,32,.3) 100%), linear-gradient(to bottom, rgba(18,8,32,.4) 0%, transparent 20%, transparent 80%, rgba(18,8,32,.6) 100%); }
+    .pill { position: absolute; z-index: 2; background: rgba(255,255,255,.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.2); border-radius: 40px; padding: .5rem 1.1rem; font-size: .79rem; font-weight: 600; color: var(--white); display: flex; align-items: center; gap: .4rem; }
+    .pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cta); }
+    .pill--a { bottom: 18%; left: 6%; animation: floatPill 4s ease-in-out infinite; }
+    .pill--b { top: 24%; right: 7%; animation: floatPill 4s 1.5s ease-in-out infinite; }
+    .scroll-cue { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; gap: .4rem; color: rgba(255,255,255,.32); font-size: .67rem; letter-spacing: .15em; text-transform: uppercase; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
+    .scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(255,255,255,.32), transparent); animation: lineAnim 2s 2s ease-in-out infinite; }
+    @media(max-width: 960px) { .hero { grid-template-columns: 1fr; } .hero-visual { height: 55vw; min-height: 280px; } }
+    @media(max-width: 600px) { .hero-text { padding: 2.5rem 1.3rem 2rem; } .hero { padding-top: 70px; } }
+
+    /* ── SLIDER ── */
+    .strip { background: var(--white); overflow: hidden; border-top: 1px solid rgba(181,144,241,.1); }
+    .strip-track { display: flex; animation: stripScroll 30s linear infinite; width: max-content; }
+    .strip-track img { width: 155px; height: 108px; object-fit: cover; flex-shrink: 0; transition: transform .3s; }
+    .strip-track img:hover { transform: scale(1.06); position: relative; z-index: 1; }
+    @media(max-width: 600px) { .strip-track img { width: 120px; height: 85px; } }
+
+    /* ── SECTIES ── */
+    .sec { padding: 7rem 2rem; }
+    .sec-inner { max-width: 1200px; margin: 0 auto; }
+    .lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .73rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: .9rem; }
+    .lbl::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); }
+    .h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 3.5vw, 3.4rem); font-weight: 700; line-height: 1.1; color: var(--ink); }
+    .h2w { color: #fff !important; }
+    .lead { font-size: 1.03rem; color: var(--ink-soft); line-height: 1.75; max-width: 520px; margin-top: .8rem; }
+
+    /* ── CURSUSKAARTEN ── */
+    .courses-head { text-align: center; margin-bottom: 4.5rem; }
+    .courses-head .lead { margin: .8rem auto 0; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; align-items: start; }
+    .reveal { opacity: 0; transform: translateY(44px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .card { background: var(--white); border-radius: var(--card-radius); overflow: hidden; position: relative; box-shadow: 0 2px 20px rgba(156,40,177,.06); transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s; border: 1.5px solid rgba(181,144,241,.15); }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 28px 70px rgba(156,40,177,.2); }
+    .card--ft { border-color: var(--accent); border-width: 2px; }
+    .badge { position: absolute; top: 1.1rem; right: 1.1rem; z-index: 3; font-size: .69rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .85rem; border-radius: 20px; }
+    .badge-or { background: var(--cta); color: var(--ink); }
+    .badge-gr { background: linear-gradient(135deg, var(--dark), var(--pink)); color: var(--white); }
+    .card-media { position: relative; height: 230px; overflow: hidden; background: var(--ink); }
+    .card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .card-media::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(to bottom, transparent, var(--white)); }
+    .card-lv { position: absolute; bottom: 1rem; left: 1.2rem; z-index: 2; font-size: .69rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; padding: .28rem .8rem; border-radius: 20px; background: rgba(18,8,32,.6); backdrop-filter: blur(8px); color: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.15); }
+    .card-body { padding: 1.8rem; }
+    .card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 700; color: var(--ink); margin-bottom: .35rem; }
+    .card-desc { font-size: .86rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 1.3rem; }
+    .feats { list-style: none; margin-bottom: 1.6rem; border-top: 1px solid rgba(181,144,241,.12); }
+    .feats li { display: flex; align-items: flex-start; gap: .55rem; font-size: .84rem; color: var(--ink-soft); padding: .42rem 0; border-bottom: 1px solid rgba(181,144,241,.1); }
+    .feats li:last-child { border-bottom: none; }
+    .ck { color: var(--accent); font-size: .84rem; flex-shrink: 0; margin-top: 1px; }
+    .card-price { display: flex; align-items: baseline; gap: .65rem; margin-bottom: 1.3rem; }
+    .p-main { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 700; color: var(--dark); }
+    .p-old { font-size: .91rem; color: #bbb; text-decoration: line-through; }
+    .p-tag { font-size: .72rem; font-weight: 700; color: var(--cta); background: rgba(254,155,0,.12); padding: .18rem .55rem; border-radius: 12px; }
+    .btn-card { display: block; width: 100%; text-align: center; padding: .8rem; border-radius: 60px; font-weight: 700; font-size: .84rem; transition: transform .2s, box-shadow .2s; }
+    .bc-ol { background: transparent; color: var(--dark); border: 2px solid rgba(181,144,241,.45); }
+    .bc-ol:hover { background: var(--light); border-color: var(--accent); }
+    .bc-dk { background: linear-gradient(135deg, var(--dark) 0%, #6a0d8f 100%); color: var(--white); }
+    .bc-dk:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(156,40,177,.4); }
+    .bc-or { background: var(--cta); color: var(--ink); }
+    .bc-or:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(254,155,0,.45); }
+    @media(max-width: 960px) { .cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+    @media(max-width: 600px) { .sec { padding: 4.5rem 1.2rem; } }
+
+    /* ── PARALLAX BANNER ── */
+    .para { position: relative; padding: 8rem 2rem; overflow: hidden; text-align: center; color: var(--white); }
+    .para-bg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(145deg, #1a0a2e 0%, #9c28b1 45%, #ff1fe3 100%); }
+    .para-bg::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 25% 50%, rgba(254,155,0,.2) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 80% 30%, rgba(181,144,241,.25) 0%, transparent 55%); }
+    .para-content { position: relative; z-index: 1; max-width: 660px; margin: 0 auto; }
+    .para-content p { font-size: 1.07rem; opacity: .75; line-height: 1.75; margin-bottom: 2.4rem; }
+    .btn-para { display: inline-block; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .88rem; padding: .9rem 2.1rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
+    .btn-para:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(254,155,0,.45); }
+    @media(max-width: 600px) { .para { padding: 5rem 1.2rem; } }
+
+    /* ── VERGELIJKINGSTABEL ── */
+    .cmp-head { text-align: center; margin-bottom: 3.5rem; }
+    .cmp-desktop { display: block; }
+    .cmp-wrap { overflow-x: auto; }
+    table.ct { width: 100%; border-collapse: collapse; font-size: .88rem; min-width: 560px; }
+    table.ct th { padding: 1rem 1.4rem; text-align: center; font-weight: 700; font-size: .9rem; background: var(--light); border-bottom: 2px solid rgba(181,144,241,.15); }
+    table.ct th:first-child { text-align: left; background: transparent; border-bottom-color: transparent; }
+    table.ct th.thm { background: linear-gradient(135deg, var(--dark), var(--pink)); color: var(--white); border-radius: 14px 14px 0 0; border-bottom: none; }
+    table.ct td { padding: .85rem 1.4rem; text-align: center; border-bottom: 1px solid rgba(181,144,241,.1); color: var(--ink-soft); }
+    table.ct td:first-child { text-align: left; font-weight: 500; color: var(--ink); }
+    table.ct tr:last-child td { border-bottom: none; }
+    .ck2 { color: var(--accent); font-weight: 700; font-size: 1rem; }
+    .cx { color: #d0c0de; }
+    .ctr td { padding-top: 1.4rem; border-top: 2px solid rgba(181,144,241,.15); border-bottom: none; }
+    .cbtn { display: inline-block; padding: .5rem 1.1rem; border-radius: 40px; font-weight: 700; font-size: .78rem; transition: transform .2s, box-shadow .2s; }
+    .cb-ol { border: 2px solid rgba(181,144,241,.4); color: var(--dark); }
+    .cb-ol:hover { background: var(--light); }
+    .cb-dk { background: linear-gradient(135deg, var(--dark), #6a0d8f); color: var(--white); }
+    .cb-dk:hover { transform: translateY(-2px); }
+    .cb-or { background: var(--cta); color: var(--ink); }
+    .cb-or:hover { transform: translateY(-2px); }
+
+    /* Mobiel accordion */
+    .cmp-mobile { display: none; }
+    .mob-cards { display: flex; flex-direction: column; gap: .9rem; }
+    .mob-card { border-radius: 18px; overflow: hidden; border: 1.5px solid rgba(181,144,241,.2); background: var(--white); box-shadow: 0 2px 14px rgba(156,40,177,.07); }
+    .mob-card--master { background: linear-gradient(160deg, #1e0935 0%, #2d0a44 100%); border-color: rgba(254,155,0,.3); }
+    .mob-card-head { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; cursor: pointer; user-select: none; }
+    .mob-head-left { display: flex; flex-direction: column; gap: .15rem; }
+    .mob-type { font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+    .mob-card--master .mob-type { color: rgba(255,255,255,.45); }
+    .mob-name-row { display: flex; align-items: center; gap: .5rem; }
+    .mob-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--ink); }
+    .mob-card--master .mob-card-name { color: var(--white); }
+    .mob-badge { font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .65rem; border-radius: 12px; }
+    .mob-badge--or { background: var(--cta); color: var(--ink); }
+    .mob-badge--gr { background: linear-gradient(135deg, var(--dark), var(--pink)); color: var(--white); }
+    .mob-head-right { display: flex; align-items: center; gap: .6rem; }
+    .mob-price { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 700; color: var(--dark); }
+    .mob-card--master .mob-price { color: var(--cta); }
+    .mob-chev { width: 26px; height: 26px; border-radius: 50%; background: rgba(181,144,241,.14); display: flex; align-items: center; justify-content: center; font-size: .8rem; color: var(--accent); transition: transform .3s, background .2s; flex-shrink: 0; }
+    .mob-card.mob-open .mob-chev { transform: rotate(180deg); background: var(--accent); color: var(--white); }
+    .mob-card--master .mob-chev { color: var(--cta); }
+    .mob-card--master.mob-open .mob-chev { background: var(--cta); color: var(--ink); }
+    .mob-card-body { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; padding: 0 1.2rem; }
+    .mob-card.mob-open .mob-card-body { max-height: 500px; padding: 0 1.2rem 1.2rem; }
+    .mob-feats { list-style: none; margin-bottom: 1rem; }
+    .mob-feats li { display: flex; align-items: flex-start; gap: .5rem; font-size: .84rem; color: var(--ink-soft); padding: .38rem 0; border-bottom: 1px solid rgba(181,144,241,.1); line-height: 1.5; }
+    .mob-feats li:last-child { border-bottom: none; }
+    .mob-card--master .mob-feats li { color: rgba(255,255,255,.72); border-bottom-color: rgba(255,255,255,.07); }
+    .mob-ck { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+    .mob-ckg { color: var(--cta); font-weight: 700; flex-shrink: 0; }
+    .mob-cx { color: #ccc; flex-shrink: 0; }
+    .mob-btn { display: block; width: 100%; text-align: center; border-radius: 40px; font-weight: 700; font-size: .82rem; padding: .68rem; transition: transform .2s; }
+    .mob-btn--ol { border: 2px solid rgba(181,144,241,.4); color: var(--dark); }
+    .mob-btn--dk { background: linear-gradient(135deg, var(--dark), #6a0d8f); color: var(--white); }
+    .mob-btn--or { background: var(--cta); color: var(--ink); }
+    @media(max-width: 768px) { .cmp-desktop { display: none; } .cmp-mobile { display: block; } }
+
+    /* ── FAQ ── */
+    .faq-inner { max-width: 720px; margin: 0 auto; }
+    .faq-head { text-align: center; margin-bottom: 3rem; }
+    .faq-item { border-bottom: 1px solid rgba(181,144,241,.2); }
+    .faq-btn { width: 100%; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 1.3rem 0; gap: 1rem; text-align: left; font-family: 'DM Sans', sans-serif; font-size: .96rem; font-weight: 600; color: var(--ink); }
+    .faq-ic { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; background: rgba(181,144,241,.12); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--accent); transition: background .25s, transform .35s; }
+    .faq-item.open .faq-ic { background: var(--accent); color: var(--white); transform: rotate(45deg); }
+    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .42s ease, padding .3s; font-size: .9rem; color: var(--ink-soft); line-height: 1.75; }
+    .faq-item.open .faq-ans { max-height: 260px; padding-bottom: 1.3rem; }
+
+    /* ── SOUNDCLOUD ── */
+    .sc-section { background: var(--light); padding: 5rem 2rem; overflow: hidden; }
+    .sc-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .sc-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+    .sc-visual::before { content: ''; position: absolute; width: 320px; height: 320px; border-radius: 50%; background: linear-gradient(135deg, rgba(181,144,241,.2) 0%, rgba(255,31,227,.12) 100%); z-index: 0; }
+    .sc-phone { position: relative; z-index: 1; max-width: 240px; width: 100%; filter: drop-shadow(0 24px 48px rgba(156,40,177,.22)); animation: scFloat 4s ease-in-out infinite; }
+    .sc-phone img { width: 100%; display: block; }
+    .sc-text .sc-lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .73rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .sc-text .sc-lbl::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); display: inline-block; }
+    .sc-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3.2vw, 2.8rem); font-weight: 700; line-height: 1.1; color: var(--ink); margin-bottom: .6rem; }
+    .sc-text h2 em { font-style: italic; color: var(--dark); }
+    .sc-text p { font-size: .95rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 1.8rem; max-width: 420px; }
+    .sc-player-wrap { background: var(--white); border-radius: 20px; padding: 1.4rem 1.6rem; border: 1.5px solid rgba(181,144,241,.2); box-shadow: 0 4px 24px rgba(156,40,177,.08); margin-bottom: 1.6rem; }
+    .sc-player-label { display: flex; align-items: center; gap: .6rem; font-size: .8rem; font-weight: 600; color: var(--ink-soft); margin-bottom: 1rem; }
+    .sc-player-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: scPulse 2s ease-in-out infinite; }
+    .sc-iframe { width: 100%; border-radius: 12px; overflow: hidden; border: none; display: block; }
+    .sc-btn-main { display: block; text-align: center; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .84rem; padding: .78rem 1.6rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
+    .sc-btn-main:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(254,155,0,.4); }
+    @media(max-width: 900px) { .sc-inner { grid-template-columns: 1fr; gap: 2.5rem; } .sc-visual { order: -1; } .sc-visual::before { width: 220px; height: 220px; } .sc-phone { max-width: 180px; } }
+    @media(max-width: 600px) { .sc-section { padding: 3.5rem 1.2rem; } }
+
+    /* ── OVER MIJ ── */
+    .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img { width: 100%; border-radius: 24px; object-fit: cover; max-height: 580px; object-position: top; box-shadow: 0 20px 60px rgba(156,40,177,.18); }
+    .about-acc { position: absolute; bottom: -1.5rem; right: -1.5rem; z-index: -1; width: 70%; height: 70%; border-radius: 24px; background: linear-gradient(135deg, var(--accent), var(--pink)); opacity: .22; }
+    .about-text p { font-size: .94rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 1rem; }
+    .stats { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 700; color: var(--dark); line-height: 1; display: block; }
+    .stat-lbl { font-size: .79rem; color: var(--ink-soft); font-weight: 500; letter-spacing: .05em; }
+    @media(max-width: 960px) { .about-inner { grid-template-columns: 1fr; gap: 2.5rem; } .about-acc { display: none; } }
+
+    /* ── FINAL CTA ── */
+    .final { background: var(--ink); position: relative; overflow: hidden; padding: 9rem 2rem; text-align: center; }
+    .final-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(156,40,177,.3) 0%, transparent 65%), radial-gradient(ellipse 40% 35% at 10% 80%, rgba(255,31,227,.18) 0%, transparent 50%), radial-gradient(ellipse 35% 30% at 90% 20%, rgba(181,144,241,.2) 0%, transparent 50%); }
+    .final-c { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .final-c p { font-size: 1.04rem; color: rgba(255,255,255,.62); line-height: 1.8; margin-bottom: 2.6rem; }
+    .final-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-fo { padding: .85rem 1.9rem; border-radius: 60px; font-weight: 700; font-size: .88rem; background: var(--cta); color: var(--ink); transition: transform .2s, box-shadow .2s; }
+    .btn-fo:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(254,155,0,.45); }
+    .btn-fgh { padding: .85rem 1.9rem; border-radius: 60px; font-weight: 600; font-size: .88rem; color: rgba(255,255,255,.6); border: 1.5px solid rgba(255,255,255,.2); transition: border-color .2s, color .2s; }
+    .btn-fgh:hover { border-color: var(--accent); color: var(--accent); }
+    @media(max-width: 600px) { .final { padding: 5rem 1.2rem; } }
+
+    /* ── INSTAGRAM ── */
+    .ig-section { background: var(--light); padding: 5rem 2rem; overflow: hidden; }
+    .ig-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .ig-text .ig-lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .73rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .ig-text .ig-lbl::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); display: inline-block; }
+    .ig-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.1; color: var(--ink); margin-bottom: 1rem; }
+    .ig-text h2 em { font-style: italic; color: var(--dark); }
+    .ig-text p { font-size: .97rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 2rem; max-width: 420px; }
+    .ig-btn { display: inline-flex; align-items: center; gap: .7rem; background: linear-gradient(135deg, var(--dark) 0%, var(--pink) 100%); color: var(--white); font-weight: 700; font-size: .84rem; padding: .78rem 1.6rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
+    .ig-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(156,40,177,.4); color: var(--white); }
+    .ig-btn-icon { width: 20px; height: 20px; flex-shrink: 0; }
+    .ig-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .ig-tag { font-size: .75rem; color: var(--accent); font-weight: 500; }
+    .ig-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+    .ig-visual::before { content: ''; position: absolute; width: 340px; height: 340px; border-radius: 50%; background: linear-gradient(135deg, rgba(181,144,241,.18) 0%, rgba(255,31,227,.12) 100%); z-index: 0; }
+    .ig-phone { position: relative; z-index: 1; max-width: 260px; width: 100%; filter: drop-shadow(0 24px 48px rgba(156,40,177,.22)); animation: igFloat 4s ease-in-out infinite; }
+    .ig-phone img { width: 100%; display: block; }
+    @media(max-width: 900px) { .ig-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; } .ig-text .ig-lbl { justify-content: center; } .ig-text p { margin-left: auto; margin-right: auto; } .ig-tags { justify-content: center; } .ig-visual { margin-top: 1rem; } .ig-visual::before { width: 260px; height: 260px; } .ig-phone { max-width: 200px; } }
+    @media(max-width: 600px) { .ig-section { padding: 3.5rem 1.2rem; } }
+
+    /* ── FOOTER ── */
+    .nc-footer { background: #9c28b1; color: rgba(255,255,255,.85); padding: 60px 5vw 30px; }
+    .nc-footer__grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 2rem; }
+    .nc-footer__logo { height: 40px; margin-bottom: 1rem; }
+    .nc-footer__tagline { font-size: .88rem; line-height: 1.7; max-width: 260px; color: rgba(255,255,255,.85); }
+    .nc-footer__col h4 { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 1rem; }
+    .nc-footer__col ul { list-style: none; }
+    .nc-footer__col ul li { margin-bottom: .5rem; }
+    .nc-footer__col ul li a { font-size: .88rem; color: rgba(255,255,255,.65); transition: color .2s; }
+    .nc-footer__col ul li a:hover { color: #fff; }
+    .nc-footer__bottom { max-width: 1100px; margin: 0 auto; font-size: .8rem; color: rgba(255,255,255,.7); }
+    @media(max-width: 768px) {
+      .nc-footer { padding: 32px 5vw 20px; }
+      .nc-footer__grid { display: none; }
+      .nc-footer__mobile { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,.2); margin-bottom: 1rem; }
+      .nc-footer__mobile img { height: 36px; }
+      .nc-footer__mobile p { font-size: .85rem; color: rgba(255,255,255,.85); line-height: 1.6; max-width: 280px; }
+      .nc-footer__mobile-links { display: flex; gap: 1.5rem; justify-content: center; }
+      .nc-footer__mobile-links a { font-size: .88rem; color: rgba(255,255,255,.85); font-weight: 600; }
+      .nc-footer__bottom { text-align: center; font-size: .75rem; }
+    }
+    @media(min-width: 769px) { .nc-footer__mobile { display: none; } .nc-footer__mobile-links { display: none; } }
+
+    /* ── ANIMATIES ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes floatPill { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes lineAnim { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+    @keyframes pulseCta { 0%, 100% { box-shadow: 0 0 0 0 rgba(254,155,0,.5); } 50% { box-shadow: 0 0 0 14px rgba(254,155,0,0); } }
+    @keyframes stripScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes scFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes scPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.85); } }
+    @keyframes igFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="sp-nav" id="sp-nav">
+    <a href="../online-opleidingen.html" class="sp-nav__logo">
+      <img src="../images/Logo-NailCraft-Platform.png" alt="NailCraft Platform">
+    </a>
+    <ul class="sp-nav__links">
+      <li><a href="#cursussen">Cursussen</a></li>
+      <li><a href="#vergelijk">Vergelijk</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#cursussen" class="sp-nav__cta">Kies jouw cursus →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-text">
+      <span class="eyebrow">Upperforms Opleidingen</span>
+      <h1>Perfecte nagels.<br><em>Elke keer</em><br>opnieuw.</h1>
+      <p class="hero-sub">Leer de upperform-techniek die strakke, dunne nagels geeft, 4 weken lifting-vrij gegarandeerd. Kies het niveau dat bij jou past.</p>
+      <div class="hero-actions">
+        <a href="#cursussen" class="btn-hp">Bekijk de cursussen ↓</a>
+        <a href="#vergelijk" class="btn-hg">Cursussen vergelijken</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img class="hero-photo" src="../images/Gemini_Generated_Image_czjyaaczjyaaczjy.webp" alt="Tabitha Windels, NailCraft">
+      <div class="pill pill--a"><span class="dot"></span> 4 weken lifting-vrij</div>
+      <div class="pill pill--b"><span class="dot"></span> Direct toepasbaar</div>
+    </div>
+    <div class="scroll-cue">Scroll<span class="scroll-line"></span></div>
+  </section>
+
+  <!-- SLIDER 1 -->
+  <div class="strip">
+    <div class="strip-track">
+      <img src="../images/slider-1.webp" alt="" loading="lazy">
+      <img src="../images/slider-2.webp" alt="" loading="lazy">
+      <img src="../images/slider-3.webp" alt="" loading="lazy">
+      <img src="../images/slider-4.webp" alt="" loading="lazy">
+      <img src="../images/slider-5.webp" alt="" loading="lazy">
+      <img src="../images/slider-6.webp" alt="" loading="lazy">
+      <img src="../images/slider-7.webp" alt="" loading="lazy">
+      <!-- duplicaat voor naadloze loop -->
+      <img src="../images/slider-1.webp" alt="" loading="lazy">
+      <img src="../images/slider-2.webp" alt="" loading="lazy">
+      <img src="../images/slider-3.webp" alt="" loading="lazy">
+      <img src="../images/slider-4.webp" alt="" loading="lazy">
+      <img src="../images/slider-5.webp" alt="" loading="lazy">
+      <img src="../images/slider-6.webp" alt="" loading="lazy">
+      <img src="../images/slider-7.webp" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <!-- CURSUSKAARTEN -->
+  <section class="sec" style="background:var(--light);" id="cursussen">
+    <div class="sec-inner">
+      <div class="courses-head">
+        <div class="lbl">3 niveaus, kies het jouwe</div>
+        <h2 class="h2">Welke training past bij jou?</h2>
+        <p class="lead">Enkel theorie? Liever video? Of alles samen? Er is een optie voor elke leerstijl.</p>
+      </div>
+      <div class="cards">
+
+        <!-- GUIDE -->
+        <div class="card reveal" data-delay="0">
+          <div class="card-media">
+            <img src="../images/upperforms/upperform-guide.webp" alt="Upperform Guide e-book" loading="lazy">
+            <span class="card-lv">E-book · Theorie</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Upperform Guide</h3>
+            <p class="card-desc">Het complete naslagwerk, 97 pagina's met alle theorie, stappenplannen en creatieve technieken.</p>
+            <ul class="feats">
+              <li><span class="ck">✓</span> 97 pagina's theorieboek (e-book)</li>
+              <li><span class="ck">✓</span> Babyboom, colorboom, inlay & marmer</li>
+              <li><span class="ck">✓</span> French techniek uitgelegd</li>
+              <li><span class="ck">✓</span> Veelgemaakte fouten + Q&A</li>
+              <li><span class="ck">✓</span> Bonus materialenlijst checklist</li>
+            </ul>
+            <div class="card-price">
+              <span class="p-main">€70</span>
+              <span class="p-old">€97</span>
+              <span class="p-tag">−28%</span>
+            </div>
+            <a href="upperform-guide.html" class="btn-card bc-ol">Meer info & bestellen →</a>
+          </div>
+        </div>
+
+        <!-- PRO -->
+        <div class="card card--ft reveal" data-delay="130">
+          <div class="badge badge-or">Populair</div>
+          <div class="card-media">
+            <img src="../images/upperforms/upperform-pro.webp" alt="Upperform Pro videocursus" loading="lazy">
+            <span class="card-lv">Videocursus</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Upperform Pro</h3>
+            <p class="card-desc">Leer via video's, stap voor stap naar foutloze upperform applicatie met 24+ gedetailleerde lessen.</p>
+            <ul class="feats">
+              <li><span class="ck">✓</span> Demonstratievideo's volledige applicatie</li>
+              <li><span class="ck">✓</span> Babyboom, colorboom, inlay & French</li>
+              <li><span class="ck">✓</span> Geavanceerd: eigen kleuren mengen</li>
+              <li><span class="ck">✓</span> 24 extra detailvideo's</li>
+              <li><span class="ck">✓</span> Materialenlijst inbegrepen</li>
+            </ul>
+            <div class="card-price">
+              <span class="p-main">€185</span>
+              <span class="p-old">€235</span>
+              <span class="p-tag">−21%</span>
+            </div>
+            <a href="upperform-pro.html" class="btn-card bc-dk">Meer info & bestellen →</a>
+          </div>
+        </div>
+
+        <!-- MASTER -->
+        <div class="card reveal" data-delay="260">
+          <div class="badge badge-gr">Meest compleet</div>
+          <div class="card-media">
+            <img src="../images/upperforms/upperform-master.webp" alt="Upperform Master" loading="lazy">
+            <span class="card-lv">Video + E-book</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Upperform Master</h3>
+            <p class="card-desc">De ultieme training: alle video's van Pro én het volledige e-book, niets wordt overgelaten aan toeval.</p>
+            <ul class="feats">
+              <li><span class="ck">✓</span> Alle Pro video's inbegrepen</li>
+              <li><span class="ck">✓</span> Upperform Guide e-book (97 p.)</li>
+              <li><span class="ck">✓</span> Geavanceerde babyboom & colorboom</li>
+              <li><span class="ck">✓</span> Geavanceerde French techniek</li>
+              <li><span class="ck">✓</span> Eigen kleuren mengen (video)</li>
+            </ul>
+            <div class="card-price">
+              <span class="p-main">€235</span>
+              <span class="p-old">€315</span>
+              <span class="p-tag">−25%</span>
+            </div>
+            <a href="upperform-master.html" class="btn-card bc-or">Meer info & bestellen →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PARALLAX BANNER -->
+  <div class="para">
+    <div class="para-bg"></div>
+    <div class="para-content">
+      <h2 class="h2 h2w" style="font-size:clamp(2.4rem,4.5vw,3.8rem);margin-bottom:1rem;">Nagels die 4 weken<br>perfect blijven zitten.</h2>
+      <p>Geen lifting. Geen frustratie. Met de juiste techniek zet jij professionele nagels, vanaf dag één.</p>
+      <a href="#cursussen" class="btn-para">Start jouw training vandaag</a>
+    </div>
+  </div>
+
+  <!-- VERGELIJKING -->
+  <section class="sec" style="background:var(--white);" id="vergelijk">
+    <div class="sec-inner">
+      <div class="cmp-head">
+        <div class="lbl">Overzicht</div>
+        <h2 class="h2">Wat zit er in elke cursus?</h2>
+      </div>
+
+      <!-- Desktop tabel -->
+      <div class="cmp-desktop">
+        <div class="cmp-wrap">
+          <table class="ct">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Guide<br><small style="font-weight:400;color:var(--ink-soft)">€70</small></th>
+                <th>Pro<br><small style="font-weight:400;color:var(--ink-soft)">€185</small></th>
+                <th class="thm">Master<br><small style="font-weight:400;opacity:.75">€235</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>97 pagina's e-book</td><td><span class="ck2">✓</span></td><td><span class="cx">–</span></td><td><span class="ck2">✓</span></td></tr>
+              <tr><td>Demonstratievideo's applicatie</td><td><span class="cx">–</span></td><td><span class="ck2">✓</span></td><td><span class="ck2">✓</span></td></tr>
+              <tr><td>Babyboom & colorboom</td><td><span class="ck2">✓</span></td><td><span class="ck2">✓</span></td><td><span class="ck2">✓</span></td></tr>
+              <tr><td>Inlay, marmer & French</td><td><span class="ck2">✓</span></td><td><span class="ck2">✓</span></td><td><span class="ck2">✓</span></td></tr>
+              <tr><td>Eigen kleuren mengen (video)</td><td><span class="cx">–</span></td><td><span class="ck2">✓</span></td><td><span class="ck2">✓</span></td></tr>
+              <tr><td>24 extra detailvideo's</td><td><span class="cx">–</span></td><td><span class="ck2">✓</span></td><td><span class="ck2">✓</span></td></tr>
+              <tr><td>Materialenlijst checklist</td><td><span class="ck2">✓</span></td><td><span class="ck2">✓</span></td><td><span class="ck2">✓</span></td></tr>
+              <tr class="ctr">
+                <td></td>
+                <td><a href="upperform-guide.html" class="cbtn cb-ol">Bekijk Guide</a></td>
+                <td><a href="upperform-pro.html" class="cbtn cb-dk">Bekijk Pro</a></td>
+                <td><a href="upperform-master.html" class="cbtn cb-or">Bekijk Master</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Mobiel accordion -->
+      <div class="cmp-mobile">
+        <div class="mob-cards">
+          <div class="mob-card">
+            <div class="mob-card-head">
+              <div class="mob-head-left">
+                <span class="mob-type">E-book · Theorie</span>
+                <div class="mob-name-row"><span class="mob-card-name">Guide</span></div>
+              </div>
+              <div class="mob-head-right">
+                <span class="mob-price">€70</span>
+                <span class="mob-chev">▾</span>
+              </div>
+            </div>
+            <div class="mob-card-body">
+              <ul class="mob-feats">
+                <li><span class="mob-ck">✓</span> 97 pagina's e-book (PDF)</li>
+                <li><span class="mob-ck">✓</span> Babyboom & colorboom, stappenplan</li>
+                <li><span class="mob-ck">✓</span> Inlay, marmer & French, stappenplan</li>
+                <li><span class="mob-cx">–</span> Demonstratievideo's</li>
+                <li><span class="mob-cx">–</span> 24 extra detailvideo's</li>
+                <li><span class="mob-cx">–</span> Eigen kleuren mengen (video)</li>
+                <li><span class="mob-ck">✓</span> Materialenlijst checklist</li>
+              </ul>
+              <a href="upperform-guide.html" class="mob-btn mob-btn--ol">Meer info →</a>
+            </div>
+          </div>
+          <div class="mob-card mob-open">
+            <div class="mob-card-head">
+              <div class="mob-head-left">
+                <span class="mob-type">Videocursus</span>
+                <div class="mob-name-row">
+                  <span class="mob-card-name">Pro</span>
+                  <span class="mob-badge mob-badge--or">Populair</span>
+                </div>
+              </div>
+              <div class="mob-head-right">
+                <span class="mob-price">€185</span>
+                <span class="mob-chev">▾</span>
+              </div>
+            </div>
+            <div class="mob-card-body">
+              <ul class="mob-feats">
+                <li><span class="mob-cx">–</span> E-book (niet inbegrepen)</li>
+                <li><span class="mob-ck">✓</span> Demonstratievideo's applicatie</li>
+                <li><span class="mob-ck">✓</span> Babyboom & colorboom, videoles</li>
+                <li><span class="mob-ck">✓</span> Inlay, marmer & French, videoles</li>
+                <li><span class="mob-ck">✓</span> 24 extra detailvideo's</li>
+                <li><span class="mob-ck">✓</span> Eigen kleuren mengen (video)</li>
+                <li><span class="mob-ck">✓</span> Materialenlijst inbegrepen</li>
+              </ul>
+              <a href="upperform-pro.html" class="mob-btn mob-btn--dk">Meer info →</a>
+            </div>
+          </div>
+          <div class="mob-card mob-card--master">
+            <div class="mob-card-head">
+              <div class="mob-head-left">
+                <span class="mob-type">Video + E-book</span>
+                <div class="mob-name-row">
+                  <span class="mob-card-name">Master</span>
+                  <span class="mob-badge mob-badge--gr">Compleet</span>
+                </div>
+              </div>
+              <div class="mob-head-right">
+                <span class="mob-price">€235</span>
+                <span class="mob-chev">▾</span>
+              </div>
+            </div>
+            <div class="mob-card-body">
+              <ul class="mob-feats">
+                <li><span class="mob-ckg">✓</span> 97 pagina's e-book inbegrepen</li>
+                <li><span class="mob-ckg">✓</span> Demonstratievideo's applicatie</li>
+                <li><span class="mob-ckg">✓</span> Babyboom & colorboom, videoles</li>
+                <li><span class="mob-ckg">✓</span> Inlay, marmer & French, videoles</li>
+                <li><span class="mob-ckg">✓</span> 24 extra detailvideo's</li>
+                <li><span class="mob-ckg">✓</span> Eigen kleuren mengen (video)</li>
+                <li><span class="mob-ckg">✓</span> Materialenlijst inbegrepen</li>
+              </ul>
+              <a href="upperform-master.html" class="mob-btn mob-btn--or">Meer info →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" style="background:var(--light);" id="faq">
+    <div class="faq-inner">
+      <div class="faq-head">
+        <div class="lbl">Vragen</div>
+        <h2 class="h2">Veelgestelde vragen</h2>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">Voor wie zijn deze cursussen bedoeld?<span class="faq-ic">+</span></button>
+        <div class="faq-ans">De cursussen zijn geschikt voor zowel beginnende als ervaren nageltechnici die de upperform-techniek correct willen leren of perfectioneren. Of je nu thuis werkt of in een salon, er is een niveau dat bij jou past.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">Wat is het verschil tussen Pro en Master?<span class="faq-ic">+</span></button>
+        <div class="faq-ans">De Upperform Pro bestaat enkel uit video's. De Upperform Master combineert alle Pro video's met het volledige 97 pagina's e-book. Als je alles in één wil, kies je Master.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">Heb ik bepaalde materialen nodig?<span class="faq-ic">+</span></button>
+        <div class="faq-ans">Elke cursus bevat een uitgebreide materialenlijst zodat je precies weet welke gels, tools en accessoires je nodig hebt om optimaal te kunnen werken.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">Hoe lang heb ik toegang?<span class="faq-ic">+</span></button>
+        <div class="faq-ans">Je hebt levenslang toegang tot je gekochte cursus. Bekijk en herlees alles in jouw eigen tempo, ook nog jaren later.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">Kan ik vragen stellen als ik vastloop?<span class="faq-ic">+</span></button>
+        <div class="faq-ans">Ja! Bij elke cursus is er een directe contactmogelijkheid zodat je vragen kan stellen wanneer iets niet duidelijk is. Ik begeleid je persoonlijk.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">Is er een verschil in moeilijkheidsgraad?<span class="faq-ic">+</span></button>
+        <div class="faq-ans">Alle niveaus starten bij de basis van upperforms en bouwen stap voor stap op. Beginners zijn even welkom als ervaren stylisten die hun techniek willen verfijnen.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOUNDCLOUD -->
+  <div class="sc-section">
+    <div class="sc-inner">
+      <div class="sc-visual">
+        <div class="sc-phone">
+          <img src="../images/instagram mockup telefoon.png" alt="NailCraft intro" loading="lazy">
+        </div>
+      </div>
+      <div class="sc-text">
+        <div class="sc-lbl">Beluister mijn verhaal</div>
+        <h2>Hallo, toekomstige<br><em>SQUAD member!</em></h2>
+        <p>Laat me mezelf even voorstellen, wie ik ben, waarom ik deze upperform trainingen maak en wat jij eruit kan halen. Zet je koptelefoon op en luister even mee.</p>
+        <div class="sc-player-wrap">
+          <div class="sc-player-label">
+            <span class="sc-player-dot"></span>
+            Beluister de intro
+          </div>
+          <iframe class="sc-iframe" width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2167530753%3Fsecret_token%3Ds-A0wPECrYhCT&color=%23b590f1&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
+          </iframe>
+        </div>
+        <a href="upperform-master.html" class="sc-btn-main">👑 YES! Ik wil Master worden →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVER MIJ -->
+  <section class="sec" style="background:var(--white);">
+    <div class="about-inner">
+      <div class="about-img-wrap reveal">
+        <img class="about-img" src="../images/Over%20Tabitha.webp" alt="Tabitha Windels">
+        <div class="about-acc"></div>
+      </div>
+      <div class="about-text reveal" data-delay="100">
+        <div class="lbl">Wie ben ik?</div>
+        <h2 class="h2" style="margin-bottom:1.1rem;">Gepassioneerd door nagels.<br>Gedreven om te leren.</h2>
+        <p>Ik ben Tabitha, de drijvende kracht achter NailCraft Platform. Met 18 jaar ervaring in de nagelindustrie en 14 jaar als vakdocent weet ik precies waar het fout gaat bij nageltechnici, en hoe ik dat kan ombuigen naar echte resultaten.</p>
+        <p>Upperforms zijn mijn specialiteit. Ik heb deze cursussen opgebouwd zodat je niet hoeft te raden of te proberen, maar gewoon het systeem volgt dat werkt. Of je nu net begint of al jaren werkt, mijn trainingen zijn zo opgebouwd dat jij écht vooruitgaat.</p>
+        <div class="stats">
+          <div><span class="stat-num">18j</span><span class="stat-lbl">Ervaring</span></div>
+          <div><span class="stat-num">850+</span><span class="stat-lbl">Cursisten</span></div>
+          <div><span class="stat-num">97p</span><span class="stat-lbl">E-book Guide</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final">
+    <div class="final-bg"></div>
+    <div class="final-c reveal">
+      <h2 class="h2 h2w" style="font-size:clamp(2.4rem,4.5vw,4rem);margin-bottom:1rem;">Klaar om upperforms<br>te beheersen?</h2>
+      <p>Kies jouw niveau en start vandaag. De perfecte nageltechniek is één training ver.</p>
+      <div class="final-btns">
+        <a href="#cursussen" class="btn-fo">Kies jouw cursus</a>
+        <a href="#vergelijk" class="btn-fgh">Cursussen vergelijken</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDER 2 -->
+  <div class="strip">
+    <div class="strip-track" style="animation-direction:reverse;">
+      <img src="../images/slider-8.webp" alt="" loading="lazy">
+      <img src="../images/slider-9.webp" alt="" loading="lazy">
+      <img src="../images/slider-10.webp" alt="" loading="lazy">
+      <img src="../images/slider-11.webp" alt="" loading="lazy">
+      <img src="../images/slider-12.webp" alt="" loading="lazy">
+      <img src="../images/slider-13.webp" alt="" loading="lazy">
+      <!-- duplicaat -->
+      <img src="../images/slider-8.webp" alt="" loading="lazy">
+      <img src="../images/slider-9.webp" alt="" loading="lazy">
+      <img src="../images/slider-10.webp" alt="" loading="lazy">
+      <img src="../images/slider-11.webp" alt="" loading="lazy">
+      <img src="../images/slider-12.webp" alt="" loading="lazy">
+      <img src="../images/slider-13.webp" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <div class="ig-section">
+    <div class="ig-inner">
+      <div class="ig-text">
+        <div class="ig-lbl">Instagram</div>
+        <h2>Volg je mij al<br><em>On The Gram?</em></h2>
+        <p>Zin om geïnspireerd te worden? Kom er gezellig bij. Ik post regelmatig content die je inspireert en geeft een inkijk in mijn achter-de-schermen leven en hoe ik mijn onderneming run.</p>
+        <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="ig-btn">
+          <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          @tabitha_nailcraft
+        </a>
+        <div class="ig-tags">
+          <span class="ig-tag">#nailcraft</span>
+          <span class="ig-tag">#upperforms</span>
+          <span class="ig-tag">#nagels</span>
+          <span class="ig-tag">#behindthescenes</span>
+        </div>
+      </div>
+      <div class="ig-visual">
+        <div class="ig-phone">
+          <img src="../images/instagram%20mockup%20telefoon.png" alt="NailCraft Instagram" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="nc-footer">
+    <div class="nc-footer__mobile">
+      <img src="../images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
+      <p>Online nagelschool voor iedereen die dunne, sterke en duurzame kunstnagels wil leren plaatsen.</p>
+      <div class="nc-footer__mobile-links">
+        <a href="../online-opleidingen.html">Online Opleidingen</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+    </div>
+    <div class="nc-footer__grid">
+      <div>
+        <img class="nc-footer__logo" src="../images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
+        <p class="nc-footer__tagline">Online nagelschool voor iedereen die dunne, sterke, perfecte kunstnagels wil leren plaatsen. 850+ cursisten gingen je voor.</p>
+      </div>
+      <div class="nc-footer__col">
+        <h4>Opleidingen</h4>
+        <ul>
+          <li><a href="manicure-pro.html">Manicure Pro</a></li>
+          <li><a href="easy-nails.html">Easy Nails</a></li>
+          <li><a href="upperforms.html">Upperforms</a></li>
+          <li><a href="../online-opleidingen.html">Alle cursussen</a></li>
+        </ul>
+      </div>
+      <div class="nc-footer__col">
+        <h4>NailCraft</h4>
+        <ul>
+          <li><a href="../over.html">Over Tabitha</a></li>
+          <li><a href="../blog.html">Blog & Tips</a></li>
+          <li><a href="../the-nailstylist-traject.html">The Nailstylist</a></li>
+          <li><a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="nc-footer__col">
+        <h4>Gratis</h4>
+        <ul>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/startersgids" target="_blank" rel="noopener">Startersgids</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/killercontent" target="_blank" rel="noopener">Killer Content</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/snelheidstraining" target="_blank" rel="noopener">Snelheidstraining</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/veiligaffrezen" target="_blank" rel="noopener">Veilig Affrezen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nc-footer__bottom">
+      <span>© 2026 NailCraft Platform, Tabitha Windels</span>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      document.getElementById('sp-nav').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const d = parseInt(e.target.dataset.delay || 0);
+          setTimeout(() => e.target.classList.add('in'), d);
+          ro.unobserve(e.target);
+        }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    document.querySelectorAll('.mob-card-head').forEach(function(head) {
+      head.addEventListener('click', function() {
+        head.closest('.mob-card').classList.toggle('mob-open');
+      });
+    });
+  </script>
+</body>
+</html>
