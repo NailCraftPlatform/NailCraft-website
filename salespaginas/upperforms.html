@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../images/upperforms/header%20achtergrond%20mobiel.webp" media="(max-width:768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="../images/upperforms/header%20achtergrond%20pc.webp" media="(min-width:769px)" fetchpriority="high">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,41 +41,60 @@
     .sp-nav__links a:hover { color: var(--accent); }
     .sp-nav__cta { background: var(--cta); color: var(--ink) !important; padding: 9px 22px; border-radius: 100px; font-size: .84rem; font-weight: 700; white-space: nowrap; transition: transform .2s, box-shadow .2s; }
     .sp-nav__cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(254,155,0,.4); }
-    @media(max-width: 768px) { .sp-nav__links { display: none; } }
-    @media(max-width: 480px) { .sp-nav__logo img { height: 34px; } .sp-nav__cta { padding: 8px 16px; font-size: .78rem; } }
+    @media(max-width:768px) { .sp-nav__links { display: none; } }
+    @media(max-width:480px) { .sp-nav__logo img { height: 34px; } .sp-nav__cta { padding: 8px 16px; font-size: .78rem; } }
 
     /* ── HERO ── */
-    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; overflow: hidden; padding-top: 70px; }
-    .hero-bg { position: absolute; inset: 0; z-index: 0; background: var(--ink); background-image: radial-gradient(ellipse 65% 55% at 15% 40%, rgba(156,40,177,.45) 0%, transparent 60%), radial-gradient(ellipse 50% 45% at 85% 65%, rgba(255,31,227,.22) 0%, transparent 55%), radial-gradient(ellipse 40% 35% at 55% 10%, rgba(181,144,241,.3) 0%, transparent 50%); }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 70px;
+      background-image: url('../images/upperforms/header%20achtergrond%20pc.webp');
+      background-size: cover;
+      background-position: center;
+    }
+    @media(max-width:768px) {
+      .hero { background-image: url('../images/upperforms/header%20achtergrond%20mobiel.webp'); }
+    }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,8,32,.82) 0%, rgba(18,8,32,.55) 50%, rgba(18,8,32,.2) 100%); z-index: 0; }
     .hero-text { padding: 4rem 3rem 4rem 5vw; position: relative; z-index: 2; }
     .eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-size: .74rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.6rem; opacity: 0; animation: fadeUp .7s .2s forwards; }
     .eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--accent); }
     .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5.5vw, 5.2rem); font-weight: 700; line-height: 1.04; color: var(--white); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp .7s .35s forwards; }
     .hero h1 em { font-style: italic; background: linear-gradient(120deg, var(--accent) 0%, var(--pink) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-sub { font-size: 1.06rem; font-weight: 300; color: rgba(255,255,255,.65); line-height: 1.75; max-width: 440px; margin-bottom: 2.4rem; opacity: 0; animation: fadeUp .7s .5s forwards; }
+    .hero-sub { font-size: 1.06rem; font-weight: 300; color: rgba(255,255,255,.75); line-height: 1.75; max-width: 440px; margin-bottom: 2.4rem; opacity: 0; animation: fadeUp .7s .5s forwards; }
     .hero-actions { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; opacity: 0; animation: fadeUp .7s .65s forwards; }
     .btn-hp { display: inline-flex; align-items: center; gap: .5rem; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .88rem; padding: .85rem 1.9rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; animation: pulseCta 2.8s 1.5s infinite; }
     .btn-hp:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(254,155,0,.45); animation: none; }
-    .btn-hg { color: rgba(255,255,255,.6); font-size: .84rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 2px; transition: color .2s, border-color .2s; }
+    .btn-hg { color: rgba(255,255,255,.65); font-size: .84rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,.25); padding-bottom: 2px; transition: color .2s, border-color .2s; }
     .btn-hg:hover { color: var(--accent); border-color: var(--accent); }
-    .hero-visual { position: relative; height: 100vh; overflow: hidden; opacity: 0; animation: fadeIn 1s .4s forwards; }
-    .hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .hero-visual::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, var(--ink) 0%, transparent 28%, transparent 72%, rgba(18,8,32,.3) 100%), linear-gradient(to bottom, rgba(18,8,32,.4) 0%, transparent 20%, transparent 80%, rgba(18,8,32,.6) 100%); }
-    .pill { position: absolute; z-index: 2; background: rgba(255,255,255,.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.2); border-radius: 40px; padding: .5rem 1.1rem; font-size: .79rem; font-weight: 600; color: var(--white); display: flex; align-items: center; gap: .4rem; }
+
+    /* Hero video facade */
+    .hero-visual { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; padding: 2rem 5vw 2rem 0; }
+    .hero-video-wrap { position: relative; width: 100%; max-width: 480px; border-radius: 22px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,.5); aspect-ratio: 16/9; }
+    .hero-video-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .6s; }
+    .hero-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; opacity: 0; transition: opacity .6s; }
+
+    .pill { position: absolute; z-index: 4; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.25); border-radius: 40px; padding: .5rem 1.1rem; font-size: .79rem; font-weight: 600; color: var(--white); display: flex; align-items: center; gap: .4rem; }
     .pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cta); }
-    .pill--a { bottom: 18%; left: 6%; animation: floatPill 4s ease-in-out infinite; }
-    .pill--b { top: 24%; right: 7%; animation: floatPill 4s 1.5s ease-in-out infinite; }
-    .scroll-cue { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; gap: .4rem; color: rgba(255,255,255,.32); font-size: .67rem; letter-spacing: .15em; text-transform: uppercase; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
-    .scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(255,255,255,.32), transparent); animation: lineAnim 2s 2s ease-in-out infinite; }
-    @media(max-width: 960px) { .hero { grid-template-columns: 1fr; } .hero-visual { height: 55vw; min-height: 280px; } }
-    @media(max-width: 600px) { .hero-text { padding: 2.5rem 1.3rem 2rem; } .hero { padding-top: 70px; } }
+    .pill--a { bottom: 12%; left: 8%; animation: floatPill 4s ease-in-out infinite; }
+    .pill--b { top: 16%; right: 4%; animation: floatPill 4s 1.5s ease-in-out infinite; }
+    .scroll-cue { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; gap: .4rem; color: rgba(255,255,255,.35); font-size: .67rem; letter-spacing: .15em; text-transform: uppercase; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
+    .scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(255,255,255,.35), transparent); animation: lineAnim 2s 2s ease-in-out infinite; }
+    @media(max-width:960px) { .hero { grid-template-columns: 1fr; } .hero-visual { padding: 0 5vw 2rem; } .hero-video-wrap { max-width: 400px; } }
+    @media(max-width:600px) { .hero-text { padding: 2.5rem 1.3rem 1.5rem; } }
 
     /* ── SLIDER ── */
-    .strip { background: var(--white); overflow: hidden; border-top: 1px solid rgba(181,144,241,.1); }
-    .strip-track { display: flex; animation: stripScroll 30s linear infinite; width: max-content; }
-    .strip-track img { width: 155px; height: 108px; object-fit: cover; flex-shrink: 0; transition: transform .3s; }
-    .strip-track img:hover { transform: scale(1.06); position: relative; z-index: 1; }
-    @media(max-width: 600px) { .strip-track img { width: 120px; height: 85px; } }
+    .strip { overflow: hidden; background: var(--ink); }
+    .strip-track { display: flex; animation: stripScroll 32s linear infinite; width: max-content; }
+    .strip-track--rev { animation-direction: reverse; }
+    .strip-track img { height: 260px; width: auto; object-fit: cover; flex-shrink: 0; transition: transform .3s; opacity: .88; }
+    .strip-track img:hover { transform: scale(1.04); opacity: 1; position: relative; z-index: 1; }
+    @media(max-width:600px) { .strip-track img { height: 180px; } }
 
     /* ── SECTIES ── */
     .sec { padding: 7rem 2rem; }
@@ -83,23 +104,45 @@
     .h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 3.5vw, 3.4rem); font-weight: 700; line-height: 1.1; color: var(--ink); }
     .h2w { color: #fff !important; }
     .lead { font-size: 1.03rem; color: var(--ink-soft); line-height: 1.75; max-width: 520px; margin-top: .8rem; }
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    @media(max-width:600px) { .sec { padding: 4.5rem 1.2rem; } }
+
+    /* ── STIJLEN SECTIE ── */
+    .stijlen-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
+    .stijl-card { position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 3/4; }
+    .stijl-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.22,1,.36,1); }
+    .stijl-card:hover img { transform: scale(1.06); }
+    .stijl-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,8,32,.75) 0%, transparent 55%); }
+    .stijl-card__label { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: 18px 16px; }
+    .stijl-card__name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); line-height: 1; }
+    .stijl-card__sub { font-size: .72rem; color: rgba(255,255,255,.65); margin-top: 3px; }
+    @media(max-width:768px) { .stijlen-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:480px) { .stijlen-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+    /* ── FOTO BANNER ── */
+    .foto-banner { position: relative; height: 420px; overflow: hidden; }
+    .foto-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+    .foto-banner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,8,32,.75) 0%, rgba(18,8,32,.3) 60%, transparent 100%); z-index: 1; }
+    .foto-banner__content { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; padding: 0 5vw; max-width: 560px; }
+    .foto-banner__content p { font-size: 1rem; color: rgba(255,255,255,.75); line-height: 1.7; margin-top: 12px; max-width: 420px; }
+    .foto-banner__btn { display: inline-flex; align-items: center; gap: .5rem; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .84rem; padding: .78rem 1.8rem; border-radius: 60px; margin-top: 24px; transition: transform .2s, box-shadow .2s; width: fit-content; }
+    .foto-banner__btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(254,155,0,.45); }
+    @media(max-width:600px) { .foto-banner { height: 320px; } }
 
     /* ── CURSUSKAARTEN ── */
     .courses-head { text-align: center; margin-bottom: 4.5rem; }
     .courses-head .lead { margin: .8rem auto 0; }
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; align-items: start; }
-    .reveal { opacity: 0; transform: translateY(44px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-    .card { background: var(--white); border-radius: var(--card-radius); overflow: hidden; position: relative; box-shadow: 0 2px 20px rgba(156,40,177,.06); transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s; border: 1.5px solid rgba(181,144,241,.15); }
+    .card { background: var(--white); border-radius: var(--card-radius); overflow: hidden; position: relative; box-shadow: 0 2px 20px rgba(156,40,177,.07); transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s; border: 1.5px solid rgba(181,144,241,.15); }
     .card:hover { transform: translateY(-10px); box-shadow: 0 28px 70px rgba(156,40,177,.2); }
     .card--ft { border-color: var(--accent); border-width: 2px; }
     .badge { position: absolute; top: 1.1rem; right: 1.1rem; z-index: 3; font-size: .69rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .85rem; border-radius: 20px; }
     .badge-or { background: var(--cta); color: var(--ink); }
     .badge-gr { background: linear-gradient(135deg, var(--dark), var(--pink)); color: var(--white); }
-    .card-media { position: relative; height: 230px; overflow: hidden; background: var(--ink); }
-    .card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .card-media::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(to bottom, transparent, var(--white)); }
-    .card-lv { position: absolute; bottom: 1rem; left: 1.2rem; z-index: 2; font-size: .69rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; padding: .28rem .8rem; border-radius: 20px; background: rgba(18,8,32,.6); backdrop-filter: blur(8px); color: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.15); }
+    .card-media { position: relative; height: 240px; overflow: hidden; background: #f0e8fa; display: flex; align-items: center; justify-content: center; }
+    .card-media img { width: 90%; height: 90%; object-fit: contain; display: block; }
+    .card-lv { position: absolute; bottom: .8rem; left: 1.2rem; z-index: 2; font-size: .69rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; padding: .28rem .8rem; border-radius: 20px; background: rgba(18,8,32,.6); backdrop-filter: blur(8px); color: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.15); }
     .card-body { padding: 1.8rem; }
     .card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 700; color: var(--ink); margin-bottom: .35rem; }
     .card-desc { font-size: .86rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 1.3rem; }
@@ -118,18 +161,33 @@
     .bc-dk:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(156,40,177,.4); }
     .bc-or { background: var(--cta); color: var(--ink); }
     .bc-or:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(254,155,0,.45); }
-    @media(max-width: 960px) { .cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
-    @media(max-width: 600px) { .sec { padding: 4.5rem 1.2rem; } }
+    @media(max-width:960px) { .cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
 
     /* ── PARALLAX BANNER ── */
     .para { position: relative; padding: 8rem 2rem; overflow: hidden; text-align: center; color: var(--white); }
     .para-bg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(145deg, #1a0a2e 0%, #9c28b1 45%, #ff1fe3 100%); }
     .para-bg::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 25% 50%, rgba(254,155,0,.2) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 80% 30%, rgba(181,144,241,.25) 0%, transparent 55%); }
     .para-content { position: relative; z-index: 1; max-width: 660px; margin: 0 auto; }
-    .para-content p { font-size: 1.07rem; opacity: .75; line-height: 1.75; margin-bottom: 2.4rem; }
+    .para-content p { font-size: 1.07rem; opacity: .78; line-height: 1.75; margin-bottom: 2.4rem; }
     .btn-para { display: inline-block; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .88rem; padding: .9rem 2.1rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
     .btn-para:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(254,155,0,.45); }
-    @media(max-width: 600px) { .para { padding: 5rem 1.2rem; } }
+    @media(max-width:600px) { .para { padding: 5rem 1.2rem; } }
+
+    /* ── MACBOOK SECTIE ── */
+    .macbook-sec { background: var(--ink); padding: 7rem 5vw; }
+    .macbook-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .macbook-img { position: relative; }
+    .macbook-img img { width: 100%; filter: drop-shadow(0 32px 60px rgba(156,40,177,.35)); }
+    .macbook-text .lbl { color: var(--accent); }
+    .macbook-text .lbl::before { background: var(--accent); }
+    .macbook-text p { font-size: .95rem; color: rgba(255,255,255,.7); line-height: 1.8; margin-bottom: 1.2rem; }
+    .macbook-bullets { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 10px; }
+    .macbook-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: .9rem; color: rgba(255,255,255,.8); line-height: 1.6; }
+    .macbook-bullets li::before { content: '✓'; width: 20px; height: 20px; min-width: 20px; border-radius: 50%; background: rgba(181,144,241,.25); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; margin-top: 2px; }
+    .btn-macbook { display: inline-block; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .86rem; padding: .82rem 1.9rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
+    .btn-macbook:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(254,155,0,.45); }
+    @media(max-width:900px) { .macbook-inner { grid-template-columns: 1fr; gap: 3rem; } }
+    @media(max-width:600px) { .macbook-sec { padding: 4.5rem 1.2rem; } }
 
     /* ── VERGELIJKINGSTABEL ── */
     .cmp-head { text-align: center; margin-bottom: 3.5rem; }
@@ -145,7 +203,7 @@
     .ck2 { color: var(--accent); font-weight: 700; font-size: 1rem; }
     .cx { color: #d0c0de; }
     .ctr td { padding-top: 1.4rem; border-top: 2px solid rgba(181,144,241,.15); border-bottom: none; }
-    .cbtn { display: inline-block; padding: .5rem 1.1rem; border-radius: 40px; font-weight: 700; font-size: .78rem; transition: transform .2s, box-shadow .2s; }
+    .cbtn { display: inline-block; padding: .5rem 1.1rem; border-radius: 40px; font-weight: 700; font-size: .78rem; transition: transform .2s; }
     .cb-ol { border: 2px solid rgba(181,144,241,.4); color: var(--dark); }
     .cb-ol:hover { background: var(--light); }
     .cb-dk { background: linear-gradient(135deg, var(--dark), #6a0d8f); color: var(--white); }
@@ -188,7 +246,7 @@
     .mob-btn--ol { border: 2px solid rgba(181,144,241,.4); color: var(--dark); }
     .mob-btn--dk { background: linear-gradient(135deg, var(--dark), #6a0d8f); color: var(--white); }
     .mob-btn--or { background: var(--cta); color: var(--ink); }
-    @media(max-width: 768px) { .cmp-desktop { display: none; } .cmp-mobile { display: block; } }
+    @media(max-width:768px) { .cmp-desktop { display: none; } .cmp-mobile { display: block; } }
 
     /* ── FAQ ── */
     .faq-inner { max-width: 720px; margin: 0 auto; }
@@ -201,40 +259,43 @@
     .faq-item.open .faq-ans { max-height: 260px; padding-bottom: 1.3rem; }
 
     /* ── SOUNDCLOUD ── */
-    .sc-section { background: var(--light); padding: 5rem 2rem; overflow: hidden; }
+    .sc-section { background: var(--light); padding: 7rem 2rem; }
     .sc-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .sc-visual { display: flex; justify-content: center; align-items: center; position: relative; }
     .sc-visual::before { content: ''; position: absolute; width: 320px; height: 320px; border-radius: 50%; background: linear-gradient(135deg, rgba(181,144,241,.2) 0%, rgba(255,31,227,.12) 100%); z-index: 0; }
-    .sc-phone { position: relative; z-index: 1; max-width: 240px; width: 100%; filter: drop-shadow(0 24px 48px rgba(156,40,177,.22)); animation: scFloat 4s ease-in-out infinite; }
+    .sc-phone { position: relative; z-index: 1; max-width: 280px; width: 100%; filter: drop-shadow(0 24px 48px rgba(156,40,177,.22)); animation: scFloat 4s ease-in-out infinite; }
     .sc-phone img { width: 100%; display: block; }
-    .sc-text .sc-lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .73rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-    .sc-text .sc-lbl::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); display: inline-block; }
+    .sc-lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .73rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .sc-lbl::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); display: inline-block; }
     .sc-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3.2vw, 2.8rem); font-weight: 700; line-height: 1.1; color: var(--ink); margin-bottom: .6rem; }
     .sc-text h2 em { font-style: italic; color: var(--dark); }
     .sc-text p { font-size: .95rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 1.8rem; max-width: 420px; }
     .sc-player-wrap { background: var(--white); border-radius: 20px; padding: 1.4rem 1.6rem; border: 1.5px solid rgba(181,144,241,.2); box-shadow: 0 4px 24px rgba(156,40,177,.08); margin-bottom: 1.6rem; }
     .sc-player-label { display: flex; align-items: center; gap: .6rem; font-size: .8rem; font-weight: 600; color: var(--ink-soft); margin-bottom: 1rem; }
     .sc-player-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: scPulse 2s ease-in-out infinite; }
-    .sc-iframe { width: 100%; border-radius: 12px; overflow: hidden; border: none; display: block; }
-    .sc-btn-main { display: block; text-align: center; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .84rem; padding: .78rem 1.6rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
+    .sc-iframe { width: 100%; border-radius: 12px; border: none; display: block; }
+    .sc-btn-main { display: block; text-align: center; background: var(--cta); color: var(--ink); font-weight: 700; font-size: .84rem; padding: .82rem 1.6rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
     .sc-btn-main:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(254,155,0,.4); }
-    @media(max-width: 900px) { .sc-inner { grid-template-columns: 1fr; gap: 2.5rem; } .sc-visual { order: -1; } .sc-visual::before { width: 220px; height: 220px; } .sc-phone { max-width: 180px; } }
-    @media(max-width: 600px) { .sc-section { padding: 3.5rem 1.2rem; } }
+    @media(max-width:900px) { .sc-inner { grid-template-columns: 1fr; gap: 3rem; } .sc-visual { order: -1; } .sc-visual::before { width: 220px; height: 220px; } .sc-phone { max-width: 200px; } }
+    @media(max-width:600px) { .sc-section { padding: 4.5rem 1.2rem; } }
 
     /* ── OVER MIJ ── */
+    .about-sec { background: var(--white); padding: 7rem 5vw; }
     .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .about-img-wrap { position: relative; }
-    .about-img { width: 100%; border-radius: 24px; object-fit: cover; max-height: 580px; object-position: top; box-shadow: 0 20px 60px rgba(156,40,177,.18); }
-    .about-acc { position: absolute; bottom: -1.5rem; right: -1.5rem; z-index: -1; width: 70%; height: 70%; border-radius: 24px; background: linear-gradient(135deg, var(--accent), var(--pink)); opacity: .22; }
+    .about-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .about-photos img { border-radius: 16px; width: 100%; object-fit: cover; }
+    .about-photos img:first-child { grid-column: 1 / -1; height: 280px; }
+    .about-photos img:not(:first-child) { height: 180px; }
     .about-text p { font-size: .94rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 1rem; }
     .stats { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
     .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 700; color: var(--dark); line-height: 1; display: block; }
-    .stat-lbl { font-size: .79rem; color: var(--ink-soft); font-weight: 500; letter-spacing: .05em; }
-    @media(max-width: 960px) { .about-inner { grid-template-columns: 1fr; gap: 2.5rem; } .about-acc { display: none; } }
+    .stat-lbl { font-size: .79rem; color: var(--ink-soft); font-weight: 500; }
+    @media(max-width:960px) { .about-inner { grid-template-columns: 1fr; gap: 3rem; } .about-photos img:first-child { height: 220px; } }
+    @media(max-width:600px) { .about-sec { padding: 4.5rem 1.2rem; } }
 
     /* ── FINAL CTA ── */
     .final { background: var(--ink); position: relative; overflow: hidden; padding: 9rem 2rem; text-align: center; }
-    .final-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(156,40,177,.3) 0%, transparent 65%), radial-gradient(ellipse 40% 35% at 10% 80%, rgba(255,31,227,.18) 0%, transparent 50%), radial-gradient(ellipse 35% 30% at 90% 20%, rgba(181,144,241,.2) 0%, transparent 50%); }
+    .final-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(156,40,177,.3) 0%, transparent 65%), radial-gradient(ellipse 40% 35% at 10% 80%, rgba(255,31,227,.18) 0%, transparent 50%); }
     .final-c { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
     .final-c p { font-size: 1.04rem; color: rgba(255,255,255,.62); line-height: 1.8; margin-bottom: 2.6rem; }
     .final-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
@@ -242,27 +303,17 @@
     .btn-fo:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(254,155,0,.45); }
     .btn-fgh { padding: .85rem 1.9rem; border-radius: 60px; font-weight: 600; font-size: .88rem; color: rgba(255,255,255,.6); border: 1.5px solid rgba(255,255,255,.2); transition: border-color .2s, color .2s; }
     .btn-fgh:hover { border-color: var(--accent); color: var(--accent); }
-    @media(max-width: 600px) { .final { padding: 5rem 1.2rem; } }
+    @media(max-width:600px) { .final { padding: 5rem 1.2rem; } }
 
     /* ── INSTAGRAM ── */
-    .ig-section { background: var(--light); padding: 5rem 2rem; overflow: hidden; }
-    .ig-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .ig-text .ig-lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .73rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-    .ig-text .ig-lbl::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); display: inline-block; }
-    .ig-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.1; color: var(--ink); margin-bottom: 1rem; }
-    .ig-text h2 em { font-style: italic; color: var(--dark); }
-    .ig-text p { font-size: .97rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 2rem; max-width: 420px; }
-    .ig-btn { display: inline-flex; align-items: center; gap: .7rem; background: linear-gradient(135deg, var(--dark) 0%, var(--pink) 100%); color: var(--white); font-weight: 700; font-size: .84rem; padding: .78rem 1.6rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
-    .ig-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(156,40,177,.4); color: var(--white); }
-    .ig-btn-icon { width: 20px; height: 20px; flex-shrink: 0; }
-    .ig-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1.5rem; }
-    .ig-tag { font-size: .75rem; color: var(--accent); font-weight: 500; }
-    .ig-visual { display: flex; justify-content: center; align-items: center; position: relative; }
-    .ig-visual::before { content: ''; position: absolute; width: 340px; height: 340px; border-radius: 50%; background: linear-gradient(135deg, rgba(181,144,241,.18) 0%, rgba(255,31,227,.12) 100%); z-index: 0; }
-    .ig-phone { position: relative; z-index: 1; max-width: 260px; width: 100%; filter: drop-shadow(0 24px 48px rgba(156,40,177,.22)); animation: igFloat 4s ease-in-out infinite; }
-    .ig-phone img { width: 100%; display: block; }
-    @media(max-width: 900px) { .ig-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; } .ig-text .ig-lbl { justify-content: center; } .ig-text p { margin-left: auto; margin-right: auto; } .ig-tags { justify-content: center; } .ig-visual { margin-top: 1rem; } .ig-visual::before { width: 260px; height: 260px; } .ig-phone { max-width: 200px; } }
-    @media(max-width: 600px) { .ig-section { padding: 3.5rem 1.2rem; } }
+    .ig-section { background: var(--light); padding: 5rem 2rem; }
+    .ig-inner { max-width: 920px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; }
+    .ig-section p { font-size: .88rem; color: var(--ink-soft); }
+    .ig-link { display: inline-flex; align-items: center; gap: 12px; transition: opacity .2s; }
+    .ig-link:hover { opacity: .75; }
+    .ig-link img { width: 60px; height: auto; filter: drop-shadow(0 4px 12px rgba(156,40,177,.18)); }
+    .ig-link span { font-weight: 700; color: var(--dark); font-size: .9rem; }
+    @media(max-width:600px) { .ig-inner { flex-direction: column; text-align: center; } }
 
     /* ── FOOTER ── */
     .nc-footer { background: #9c28b1; color: rgba(255,255,255,.85); padding: 60px 5vw 30px; }
@@ -275,7 +326,7 @@
     .nc-footer__col ul li a { font-size: .88rem; color: rgba(255,255,255,.65); transition: color .2s; }
     .nc-footer__col ul li a:hover { color: #fff; }
     .nc-footer__bottom { max-width: 1100px; margin: 0 auto; font-size: .8rem; color: rgba(255,255,255,.7); }
-    @media(max-width: 768px) {
+    @media(max-width:768px) {
       .nc-footer { padding: 32px 5vw 20px; }
       .nc-footer__grid { display: none; }
       .nc-footer__mobile { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,.2); margin-bottom: 1rem; }
@@ -285,7 +336,7 @@
       .nc-footer__mobile-links a { font-size: .88rem; color: rgba(255,255,255,.85); font-weight: 600; }
       .nc-footer__bottom { text-align: center; font-size: .75rem; }
     }
-    @media(min-width: 769px) { .nc-footer__mobile { display: none; } .nc-footer__mobile-links { display: none; } }
+    @media(min-width:769px) { .nc-footer__mobile { display: none; } .nc-footer__mobile-links { display: none; } }
 
     /* ── ANIMATIES ── */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -296,7 +347,6 @@
     @keyframes stripScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes scFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes scPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.85); } }
-    @keyframes igFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
   </style>
 </head>
 <body>
@@ -316,7 +366,6 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg"></div>
     <div class="hero-text">
       <span class="eyebrow">Upperforms Opleidingen</span>
       <h1>Perfecte nagels.<br><em>Elke keer</em><br>opnieuw.</h1>
@@ -327,31 +376,88 @@
       </div>
     </div>
     <div class="hero-visual">
-      <img class="hero-photo" src="../images/Gemini_Generated_Image_czjyaaczjyaaczjy.webp" alt="Tabitha Windels, NailCraft">
-      <div class="pill pill--a"><span class="dot"></span> 4 weken lifting-vrij</div>
-      <div class="pill pill--b"><span class="dot"></span> Direct toepasbaar</div>
+      <div class="hero-video-wrap">
+        <img id="hero-poster" src="../images/upperforms/Upperform%20Master%20wit%20(mockup-transparante%20achtergrond).webp" alt="Upperform Master cursus" style="object-fit:contain;background:#1a0a2e;">
+        <iframe id="hero-iframe" data-src="https://player.vimeo.com/video/1217378586?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </div>
+    <div class="pill pill--a"><span class="dot"></span> 4 weken lifting-vrij</div>
+    <div class="pill pill--b"><span class="dot"></span> Direct toepasbaar</div>
     <div class="scroll-cue">Scroll<span class="scroll-line"></span></div>
   </section>
 
   <!-- SLIDER 1 -->
   <div class="strip">
     <div class="strip-track">
-      <img src="../images/slider-1.webp" alt="" loading="lazy">
-      <img src="../images/slider-2.webp" alt="" loading="lazy">
-      <img src="../images/slider-3.webp" alt="" loading="lazy">
-      <img src="../images/slider-4.webp" alt="" loading="lazy">
-      <img src="../images/slider-5.webp" alt="" loading="lazy">
-      <img src="../images/slider-6.webp" alt="" loading="lazy">
-      <img src="../images/slider-7.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform2.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform3.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform4.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform5.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform7.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform8.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform%20babyboom.webp" alt="" loading="lazy">
       <!-- duplicaat voor naadloze loop -->
-      <img src="../images/slider-1.webp" alt="" loading="lazy">
-      <img src="../images/slider-2.webp" alt="" loading="lazy">
-      <img src="../images/slider-3.webp" alt="" loading="lazy">
-      <img src="../images/slider-4.webp" alt="" loading="lazy">
-      <img src="../images/slider-5.webp" alt="" loading="lazy">
-      <img src="../images/slider-6.webp" alt="" loading="lazy">
-      <img src="../images/slider-7.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform2.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform3.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform4.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform5.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform7.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform8.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform%20babyboom.webp" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <!-- STIJLEN SECTIE -->
+  <section class="sec" style="background:var(--white);">
+    <div class="sec-inner">
+      <div style="text-align:center;margin-bottom:0;">
+        <div class="lbl">Wat leer je</div>
+        <h2 class="h2">4 stijlen, 1 systeem</h2>
+        <p class="lead" style="margin:12px auto 0;">Met upperforms leer ik je niet één techniek, maar een volledig systeem waarmee je babyboom, colorboom, French en marmering professioneel uitvoert.</p>
+      </div>
+      <div class="stijlen-grid">
+        <div class="stijl-card reveal">
+          <img src="../images/upperforms/nagels%20upperform%20babyboom.webp" alt="Babyboom upperform" loading="lazy">
+          <div class="stijl-card__label">
+            <div class="stijl-card__name">Babyboom</div>
+            <div class="stijl-card__sub">Zacht gradient effect</div>
+          </div>
+        </div>
+        <div class="stijl-card reveal" data-delay="80">
+          <img src="../images/upperforms/nagels%20upperform%20colorboom.webp" alt="Colorboom upperform" loading="lazy">
+          <div class="stijl-card__label">
+            <div class="stijl-card__name">Colorboom</div>
+            <div class="stijl-card__sub">Kleurrijke varianten</div>
+          </div>
+        </div>
+        <div class="stijl-card reveal" data-delay="160">
+          <img src="../images/upperforms/nagels%20upperform%20french.webp" alt="French upperform" loading="lazy">
+          <div class="stijl-card__label">
+            <div class="stijl-card__name">French</div>
+            <div class="stijl-card__sub">Strakke klassieke look</div>
+          </div>
+        </div>
+        <div class="stijl-card reveal" data-delay="240">
+          <img src="../images/upperforms/nagels%20upperform%20marmer.webp" alt="Marmer upperform" loading="lazy">
+          <div class="stijl-card__label">
+            <div class="stijl-card__name">Marmer</div>
+            <div class="stijl-card__sub">Luxe marmerlook</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOTO BANNER 1 -->
+  <div class="foto-banner">
+    <img src="../images/upperforms/nagels%20upperform%20ik%20aan%20het%20werk.webp" alt="Tabitha aan het werk" loading="lazy">
+    <div class="foto-banner__content">
+      <div class="lbl" style="color:rgba(255,255,255,.8);">Mijn aanpak</div>
+      <h2 class="h2 h2w" style="font-size:clamp(1.8rem,3vw,2.8rem);">Techniek boven alles</h2>
+      <p>In 90% van de gevallen ligt het probleem niet aan je product, maar aan je techniek. Dat is precies wat ik je leer.</p>
+      <a href="#cursussen" class="foto-banner__btn">Bekijk de cursussen →</a>
     </div>
   </div>
 
@@ -361,14 +467,13 @@
       <div class="courses-head">
         <div class="lbl">3 niveaus, kies het jouwe</div>
         <h2 class="h2">Welke training past bij jou?</h2>
-        <p class="lead">Enkel theorie? Liever video? Of alles samen? Er is een optie voor elke leerstijl.</p>
+        <p class="lead">Enkel theorie? Liever video? Of alles samen? Er is een optie voor elke leerstijl en elk budget.</p>
       </div>
       <div class="cards">
 
-        <!-- GUIDE -->
         <div class="card reveal" data-delay="0">
           <div class="card-media">
-            <img src="../images/upperforms/upperform-guide.webp" alt="Upperform Guide e-book" loading="lazy">
+            <img src="../images/upperforms/Upperform%20Guide%20wit%20(mockup-transparante%20achtergrond).webp" alt="Upperform Guide e-book" loading="lazy">
             <span class="card-lv">E-book · Theorie</span>
           </div>
           <div class="card-body">
@@ -390,11 +495,10 @@
           </div>
         </div>
 
-        <!-- PRO -->
         <div class="card card--ft reveal" data-delay="130">
           <div class="badge badge-or">Populair</div>
           <div class="card-media">
-            <img src="../images/upperforms/upperform-pro.webp" alt="Upperform Pro videocursus" loading="lazy">
+            <img src="../images/upperforms/Upperform%20Pro%20wit%20%20(mockup-transparante%20achtergrond).webp" alt="Upperform Pro videocursus" loading="lazy">
             <span class="card-lv">Videocursus</span>
           </div>
           <div class="card-body">
@@ -416,11 +520,10 @@
           </div>
         </div>
 
-        <!-- MASTER -->
         <div class="card reveal" data-delay="260">
           <div class="badge badge-gr">Meest compleet</div>
           <div class="card-media">
-            <img src="../images/upperforms/upperform-master.webp" alt="Upperform Master" loading="lazy">
+            <img src="../images/upperforms/Upperform%20Master%20wit%20(mockup-transparante%20achtergrond).webp" alt="Upperform Master" loading="lazy">
             <span class="card-lv">Video + E-book</span>
           </div>
           <div class="card-body">
@@ -456,6 +559,37 @@
     </div>
   </div>
 
+  <!-- MACBOOK SECTIE -->
+  <section class="macbook-sec">
+    <div class="macbook-inner">
+      <div class="macbook-img reveal">
+        <img src="../images/upperforms/MacBook%20Mockup%2C%20upperform.webp" alt="Upperform cursus op MacBook" loading="lazy">
+      </div>
+      <div class="macbook-text reveal" data-delay="100">
+        <div class="lbl">Leer op jouw tempo</div>
+        <h2 class="h2 h2w" style="margin-bottom:16px;">Alles staat voor jou klaar, direct na aankoop</h2>
+        <p>Na aankoop heb je meteen toegang tot het volledige platform. Geen wachttijden, geen groepslessen. Jij beslist wanneer je leert, hoe snel je gaat en hoe vaak je iets herbekijkt.</p>
+        <ul class="macbook-bullets">
+          <li>Levenslange toegang, ook na updates</li>
+          <li>Bekijk op laptop, tablet of telefoon</li>
+          <li>Herlees het e-book naast je werkplek</li>
+          <li>Persoonlijke begeleiding bij vragen</li>
+        </ul>
+        <a href="#cursussen" class="btn-macbook">Kies jouw cursus →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOTO BANNER 2 -->
+  <div class="foto-banner">
+    <img src="../images/upperforms/upperform%20soorten%20foto.webp" alt="Upperform stijlen overzicht" loading="lazy">
+    <div class="foto-banner__content">
+      <div class="lbl" style="color:rgba(255,255,255,.8);">Veelzijdigheid</div>
+      <h2 class="h2 h2w" style="font-size:clamp(1.8rem,3vw,2.8rem);">Eén techniek, eindeloze mogelijkheden</h2>
+      <p>Van babyboom tot marmering, van French tot inlay. Als je het systeem kent, pas je het toe op elke stijl die je klant vraagt.</p>
+    </div>
+  </div>
+
   <!-- VERGELIJKING -->
   <section class="sec" style="background:var(--white);" id="vergelijk">
     <div class="sec-inner">
@@ -464,7 +598,6 @@
         <h2 class="h2">Wat zit er in elke cursus?</h2>
       </div>
 
-      <!-- Desktop tabel -->
       <div class="cmp-desktop">
         <div class="cmp-wrap">
           <table class="ct">
@@ -495,7 +628,6 @@
         </div>
       </div>
 
-      <!-- Mobiel accordion -->
       <div class="cmp-mobile">
         <div class="mob-cards">
           <div class="mob-card">
@@ -516,7 +648,6 @@
                 <li><span class="mob-ck">✓</span> Inlay, marmer & French, stappenplan</li>
                 <li><span class="mob-cx">–</span> Demonstratievideo's</li>
                 <li><span class="mob-cx">–</span> 24 extra detailvideo's</li>
-                <li><span class="mob-cx">–</span> Eigen kleuren mengen (video)</li>
                 <li><span class="mob-ck">✓</span> Materialenlijst checklist</li>
               </ul>
               <a href="upperform-guide.html" class="mob-btn mob-btn--ol">Meer info →</a>
@@ -581,6 +712,35 @@
     </div>
   </section>
 
+  <!-- SLIDER 2 -->
+  <div class="strip">
+    <div class="strip-track strip-track--rev">
+      <img src="../images/upperforms/nagels%20upperform9.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform10.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform11.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform12.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform13.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform14.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/upperform%20soorten%202.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/upperform%20soorten%203.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/upperform%20soorten%204.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform%20colorboom2.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform%20french2.webp" alt="" loading="lazy">
+      <!-- duplicaat -->
+      <img src="../images/upperforms/nagels%20upperform9.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform10.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform11.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform12.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform13.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform14.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/upperform%20soorten%202.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/upperform%20soorten%203.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/upperform%20soorten%204.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform%20colorboom2.webp" alt="" loading="lazy">
+      <img src="../images/upperforms/nagels%20upperform%20french2.webp" alt="" loading="lazy">
+    </div>
+  </div>
+
   <!-- FAQ -->
   <section class="sec" style="background:var(--light);" id="faq">
     <div class="faq-inner">
@@ -620,13 +780,13 @@
     <div class="sc-inner">
       <div class="sc-visual">
         <div class="sc-phone">
-          <img src="../images/instagram mockup telefoon.png" alt="NailCraft intro" loading="lazy">
+          <img src="../images/upperforms/iPhone%2015%20Mockup%2C%20upperform%20decoratief.webp" alt="NailCraft upperform op telefoon" loading="lazy">
         </div>
       </div>
       <div class="sc-text">
         <div class="sc-lbl">Beluister mijn verhaal</div>
         <h2>Hallo, toekomstige<br><em>SQUAD member!</em></h2>
-        <p>Laat me mezelf even voorstellen, wie ik ben, waarom ik deze upperform trainingen maak en wat jij eruit kan halen. Zet je koptelefoon op en luister even mee.</p>
+        <p>Laat me mezelf even voorstellen. Wie ik ben, waarom ik deze upperform trainingen maak en wat jij eruit kan halen. Zet je koptelefoon op en luister even mee.</p>
         <div class="sc-player-wrap">
           <div class="sc-player-label">
             <span class="sc-player-dot"></span>
@@ -642,21 +802,22 @@
   </div>
 
   <!-- OVER MIJ -->
-  <section class="sec" style="background:var(--white);">
+  <section class="about-sec">
     <div class="about-inner">
-      <div class="about-img-wrap reveal">
-        <img class="about-img" src="../images/Over%20Tabitha.webp" alt="Tabitha Windels">
-        <div class="about-acc"></div>
+      <div class="about-photos reveal">
+        <img src="../images/upperforms/nagels%20upperform%20ik%20aan%20het%20werk2.webp" alt="Tabitha aan het werk" loading="lazy">
+        <img src="../images/upperforms/nagels%20upperform%20ik%20aan%20het%20werk3.webp" alt="Upperform techniek" loading="lazy">
+        <img src="../images/upperforms/upperform%20vullen%20marmer.webp" alt="Upperform marmer techniek" loading="lazy">
       </div>
       <div class="about-text reveal" data-delay="100">
         <div class="lbl">Wie ben ik?</div>
-        <h2 class="h2" style="margin-bottom:1.1rem;">Gepassioneerd door nagels.<br>Gedreven om te leren.</h2>
-        <p>Ik ben Tabitha, de drijvende kracht achter NailCraft Platform. Met 18 jaar ervaring in de nagelindustrie en 14 jaar als vakdocent weet ik precies waar het fout gaat bij nageltechnici, en hoe ik dat kan ombuigen naar echte resultaten.</p>
-        <p>Upperforms zijn mijn specialiteit. Ik heb deze cursussen opgebouwd zodat je niet hoeft te raden of te proberen, maar gewoon het systeem volgt dat werkt. Of je nu net begint of al jaren werkt, mijn trainingen zijn zo opgebouwd dat jij écht vooruitgaat.</p>
+        <h2 class="h2" style="margin-bottom:1.1rem;">Ik ben Tabitha.<br>En upperforms zijn mijn passie.</h2>
+        <p>Ik werk al 18 jaar in de nagelindustrie en geef al 14 jaar les als vakdocent. Upperforms zijn mijn specialiteit, en ik heb deze cursussen opgebouwd vanuit één doel: jou leren werken met vertrouwen, zonder eindeloze trial & error.</p>
+        <p>Ik heb het systeem ontwikkeld dat ik zelf dagelijks toepas in mijn salon. Geen theorie die lossstaat van de praktijk, maar technieken die direct werken bij elke klant, elke stijl, elke keer opnieuw.</p>
         <div class="stats">
           <div><span class="stat-num">18j</span><span class="stat-lbl">Ervaring</span></div>
           <div><span class="stat-num">850+</span><span class="stat-lbl">Cursisten</span></div>
-          <div><span class="stat-num">97p</span><span class="stat-lbl">E-book Guide</span></div>
+          <div><span class="stat-num">14j</span><span class="stat-lbl">Vakdocent</span></div>
         </div>
       </div>
     </div>
@@ -675,54 +836,14 @@
     </div>
   </div>
 
-  <!-- SLIDER 2 -->
-  <div class="strip">
-    <div class="strip-track" style="animation-direction:reverse;">
-      <img src="../images/slider-8.webp" alt="" loading="lazy">
-      <img src="../images/slider-9.webp" alt="" loading="lazy">
-      <img src="../images/slider-10.webp" alt="" loading="lazy">
-      <img src="../images/slider-11.webp" alt="" loading="lazy">
-      <img src="../images/slider-12.webp" alt="" loading="lazy">
-      <img src="../images/slider-13.webp" alt="" loading="lazy">
-      <!-- duplicaat -->
-      <img src="../images/slider-8.webp" alt="" loading="lazy">
-      <img src="../images/slider-9.webp" alt="" loading="lazy">
-      <img src="../images/slider-10.webp" alt="" loading="lazy">
-      <img src="../images/slider-11.webp" alt="" loading="lazy">
-      <img src="../images/slider-12.webp" alt="" loading="lazy">
-      <img src="../images/slider-13.webp" alt="" loading="lazy">
-    </div>
-  </div>
-
   <!-- INSTAGRAM -->
-  <div class="ig-section">
-    <div class="ig-inner">
-      <div class="ig-text">
-        <div class="ig-lbl">Instagram</div>
-        <h2>Volg je mij al<br><em>On The Gram?</em></h2>
-        <p>Zin om geïnspireerd te worden? Kom er gezellig bij. Ik post regelmatig content die je inspireert en geeft een inkijk in mijn achter-de-schermen leven en hoe ik mijn onderneming run.</p>
-        <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="ig-btn">
-          <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-          </svg>
-          @tabitha_nailcraft
-        </a>
-        <div class="ig-tags">
-          <span class="ig-tag">#nailcraft</span>
-          <span class="ig-tag">#upperforms</span>
-          <span class="ig-tag">#nagels</span>
-          <span class="ig-tag">#behindthescenes</span>
-        </div>
-      </div>
-      <div class="ig-visual">
-        <div class="ig-phone">
-          <img src="../images/instagram%20mockup%20telefoon.png" alt="NailCraft Instagram" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </div>
+  <section style="padding:32px 5vw;background:#fff;text-align:center;">
+    <p style="font-size:0.82rem;color:var(--ink-soft);margin-bottom:14px;">Volg mee op Instagram</p>
+    <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+      <img src="../images/instagram%20mockup%20telefoon.png" alt="Instagram @tabitha_nailcraft" style="width:60px;height:auto;filter:drop-shadow(0 4px 12px rgba(156,40,177,.15));">
+      <span style="font-weight:700;color:var(--dark);font-size:0.9rem;">@tabitha_nailcraft →</span>
+    </a>
+  </section>
 
   <!-- FOOTER -->
   <footer class="nc-footer">
@@ -777,6 +898,16 @@
       document.getElementById('sp-nav').classList.toggle('scrolled', window.scrollY > 20);
     });
 
+    window.addEventListener('load', function() {
+      var iframe = document.getElementById('hero-iframe');
+      var poster = document.getElementById('hero-poster');
+      iframe.src = iframe.dataset.src;
+      iframe.addEventListener('load', function() {
+        iframe.style.opacity = '1';
+        poster.style.opacity = '0';
+      });
+    });
+
     const ro = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -785,7 +916,7 @@
           ro.unobserve(e.target);
         }
       });
-    }, { threshold: .12 });
+    }, { threshold: .1 });
     document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
     document.querySelectorAll('.faq-btn').forEach(btn => {
