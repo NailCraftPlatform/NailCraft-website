@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Babyboom Cursus – Perfecte Fading met Upperforms | NailCraft Platform</title>
+  <meta name="description" content="Leer de perfecte babyboom neerzetten met Upperforms en Easy Nails techniek. Inclusief colorboom bonus en e-book van 70 pagina's. Direct beschikbaar.">
+  <meta name="author" content="Tabitha Windels">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; color: #120820; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; }
+
+    :root {
+      --light: #f8f2ff;
+      --light2: #ede4ff;
+      --accent: #b590f1;
+      --cta: #fe9b00;
+      --dark: #9c28b1;
+      --pink: #ff1fe3;
+      --ink: #120820;
+      --ink-soft: #5e4878;
+      --card-radius: 24px;
+    }
+
+    /* ── ANIMATIES ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes floatPill { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes pulseCta { 0%,100% { box-shadow: 0 0 0 0 rgba(254,155,0,.35); } 60% { box-shadow: 0 0 0 14px rgba(254,155,0,0); } }
+    @keyframes stripS { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ── NAV ── */
+    .sp-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(248,242,255,.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(181,144,241,.2); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 70px; transition: box-shadow .3s; }
+    .sp-nav.scrolled { box-shadow: 0 4px 24px rgba(156,40,177,.1); }
+    .sp-nav__logo img { height: 40px; width: auto; }
+    .sp-nav__back { display: flex; align-items: center; gap: .4rem; font-size: .82rem; font-weight: 500; color: var(--ink-soft); transition: color .2s; }
+    .sp-nav__back:hover { color: var(--dark); }
+    .sp-nav__back svg { width: 14px; height: 14px; }
+    .sp-nav__cta { background: var(--cta); color: #fff !important; padding: 9px 22px; border-radius: 100px; font-size: .84rem; font-weight: 700; white-space: nowrap; transition: transform .2s, box-shadow .2s; }
+    .sp-nav__cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(254,155,0,.4); }
+    @media(max-width:600px) { .sp-nav__back span { display: none; } .sp-nav__logo img { height: 34px; } .sp-nav__cta { padding: 8px 16px; font-size: .78rem; } }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(150deg, #f5eeff 0%, #ecdcff 35%, #fce4fb 70%, #f8f2ff 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 7rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(221,23,198,.12), transparent 70%);
+      top: -150px; right: -150px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(181,144,241,.14), transparent 70%);
+      bottom: -100px; left: -100px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 780px; }
+
+    .hero-pill {
+      display: inline-block;
+      background: rgba(156,40,177,.1);
+      border: 1px solid rgba(156,40,177,.2);
+      color: var(--dark);
+      font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      padding: .4rem 1rem; border-radius: 50px;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp .6s .1s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 700; line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+      opacity: 0; animation: fadeUp .7s .2s ease both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--dark);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      color: var(--ink-soft); max-width: 540px; margin: 0 auto 2rem;
+      line-height: 1.7; font-weight: 400;
+      opacity: 0; animation: fadeUp .7s .32s ease both;
+    }
+
+    .hero-price {
+      display: flex; align-items: baseline; justify-content: center; gap: .8rem;
+      margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp .7s .42s ease both;
+    }
+    .hero-price .old { font-size: 1.1rem; color: #aaa; text-decoration: line-through; }
+    .hero-price .new { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--dark); line-height: 1; }
+    .hero-price .note { font-size: .8rem; color: var(--ink-soft); }
+
+    .btn-cta {
+      display: inline-block;
+      background: var(--cta); color: var(--ink) !important;
+      font-weight: 700; font-size: .95rem; padding: 1rem 2.5rem;
+      border-radius: 50px; box-shadow: 0 4px 30px rgba(254,155,0,.35);
+      transition: transform .2s, box-shadow .2s;
+      animation: pulseCta 2.8s 1.5s infinite;
+      opacity: 0; animation: fadeUp .7s .52s ease both, pulseCta 2.8s 2s infinite;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(254,155,0,.5); animation: none; }
+
+    .hero-trust {
+      margin-top: 1rem; font-size: .8rem; color: var(--ink-soft);
+      opacity: 0; animation: fadeUp .7s .62s ease both;
+    }
+
+    /* Hero foto strip (circles) */
+    .hero-circles {
+      display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 3rem;
+      opacity: 0; animation: fadeUp .8s .75s ease both;
+    }
+    .hero-circles img {
+      width: 96px; height: 96px; object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid rgba(156,40,177,.2);
+      transition: transform .3s, border-color .3s;
+    }
+    .hero-circles img:hover { transform: scale(1.08); border-color: var(--dark); }
+    @media(max-width:600px) { .hero-circles img { width: 70px; height: 70px; } }
+
+    /* ── VIDEO SECTIE ── */
+    .video-sec {
+      background: #fff;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .video-sec-inner { max-width: 860px; margin: 0 auto; }
+    .lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .73rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--dark); margin-bottom: .9rem; }
+    .lbl::before { content: ''; width: 20px; height: 1.5px; background: var(--dark); }
+    .sec-h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; line-height: 1.1; color: var(--dark); margin-bottom: 1rem; }
+    .sec-h2 em { font-style: italic; color: var(--pink); }
+    .sec-lead { font-size: 1rem; color: var(--ink-soft); line-height: 1.75; max-width: 520px; margin: 0 auto 2.5rem; }
+
+    .vimeo-wrap {
+      position: relative; width: 100%; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 24px 70px rgba(156,40,177,.15);
+      aspect-ratio: 16/9;
+      background: #f0e8fa;
+    }
+    .vimeo-poster { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; }
+    .vimeo-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+    /* ── SECTIES algemeen ── */
+    .sec { padding: 5.5rem 2rem; }
+    .sec-inner { max-width: 1000px; margin: 0 auto; }
+    @media(max-width:600px) { .sec { padding: 3.5rem 1.2rem; } }
+
+    /* ── WAT IS BABYBOOM ── */
+    .what-sec { background: #fdecfc; }
+    .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .what-grid .text-col p { color: var(--ink-soft); line-height: 1.75; font-size: 1rem; margin-bottom: 1rem; }
+    .what-img { width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(221,23,198,.12); transition: transform .4s; }
+    .what-img:hover { transform: scale(1.02); }
+    @media(max-width:768px) { .what-grid { grid-template-columns: 1fr; } }
+
+    /* ── VOOR WIE ── */
+    .forwho-sec { background: #fff; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+    .check-card {
+      background: #fdecfc; border-radius: 16px; padding: 1.4rem 1.6rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: box-shadow .3s;
+    }
+    .check-card:hover { box-shadow: 0 8px 30px rgba(221,23,198,.1); }
+    .check-icon {
+      width: 26px; height: 26px; min-width: 26px;
+      background: var(--dark); color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; margin-top: 2px;
+    }
+    .check-card p { font-size: .93rem; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+
+    /* ── PARALLAX BANNER ── */
+    .parallax-sec {
+      position: relative; height: 440px; overflow: hidden;
+    }
+    .parallax-img {
+      position: absolute; inset: -15%;
+      background-size: cover; background-position: center;
+      background-attachment: fixed;
+    }
+    .parallax-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(248,242,255,.82) 0%, rgba(253,236,252,.65) 50%, rgba(248,242,255,.55) 100%);
+    }
+    .parallax-content {
+      position: relative; z-index: 2; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 2rem;
+    }
+    .parallax-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.1;
+      color: #2a0840; margin-bottom: 1rem;
+    }
+    .parallax-content h2 em { color: var(--dark); font-style: italic; }
+    .parallax-content p { font-size: 1.05rem; color: #120820; font-weight: 500; max-width: 480px; }
+    @media(max-width:768px) { .parallax-img { background-attachment: scroll; } .parallax-sec { height: 360px; } }
+
+    /* ── CURSUS INHOUD ── */
+    .content-sec { background: var(--light); }
+    .content-header { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; margin-bottom: 3rem; }
+    .mockup-img { width: 200px; border-radius: 16px; box-shadow: 0 16px 50px rgba(156,40,177,.15); object-fit: contain; background: transparent; }
+    .modules { display: flex; flex-direction: column; gap: 1rem; }
+    .module-card {
+      background: #fff; border-radius: 16px; padding: 1.4rem 1.8rem;
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      box-shadow: 0 2px 16px rgba(156,40,177,.06);
+      border-left: 4px solid var(--accent);
+      transition: box-shadow .3s;
+    }
+    .module-card:hover { box-shadow: 0 8px 30px rgba(156,40,177,.12); }
+    .module-num { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: var(--accent); line-height: 1; min-width: 30px; }
+    .module-info h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; color: var(--ink); }
+    .module-info p { font-size: .88rem; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+    @media(max-width:600px) { .content-header { grid-template-columns: 1fr; } .mockup-img { width: 140px; margin: 0 auto; } }
+
+    /* ── DE TECHNIEKEN ── */
+    .tech-sec { background: #fdecfc; }
+    .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
+    .tech-card {
+      background: #fff; border-radius: 20px; padding: 2.2rem;
+      box-shadow: 0 4px 24px rgba(156,40,177,.07);
+      transition: box-shadow .3s, transform .3s;
+    }
+    .tech-card:hover { box-shadow: 0 12px 40px rgba(156,40,177,.14); transform: translateY(-4px); }
+    .tech-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .tech-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: .8rem; color: var(--dark); }
+    .tech-card p { font-size: .92rem; color: var(--ink-soft); line-height: 1.65; margin-bottom: 1rem; }
+    .tech-bullets { list-style: none; padding: 0; margin: 0; }
+    .tech-bullets li { font-size: .88rem; color: var(--ink-soft); padding: .35rem 0 .35rem 1.2rem; position: relative; line-height: 1.5; }
+    .tech-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--dark); font-weight: 700; }
+    @media(max-width:768px) { .tech-grid { grid-template-columns: 1fr; } }
+
+    /* ── BONUSSEN ── */
+    .bonus-sec { background: var(--light); }
+    .bonus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .bonus-card {
+      background: #fff; border-radius: 20px; padding: 2rem;
+      box-shadow: 0 4px 24px rgba(156,40,177,.08);
+      border: 1.5px solid rgba(181,144,241,.2);
+      transition: box-shadow .3s, transform .3s;
+    }
+    .bonus-card:hover { box-shadow: 0 12px 40px rgba(156,40,177,.15); transform: translateY(-4px); }
+    .bonus-tag {
+      display: inline-block;
+      background: var(--cta); color: var(--ink);
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem;
+    }
+    .bonus-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: .6rem; color: var(--dark); }
+    .bonus-card p { font-size: .9rem; color: var(--ink-soft); line-height: 1.6; margin: 0 0 .5rem; }
+    .bonus-card img { width: 100%; max-width: 180px; border-radius: 10px; margin-top: 1.2rem; box-shadow: 0 10px 30px rgba(156,40,177,.12); }
+    .bonus-value { margin-top: 2.5rem; text-align: center; font-size: .9rem; color: var(--ink-soft); }
+    .bonus-value strong { color: var(--dark); }
+    @media(max-width:768px) { .bonus-grid { grid-template-columns: 1fr; } }
+
+    /* ── GALERIJ MARQUEE ── */
+    .gallery-sec { background: #fff; padding: 5rem 0 3rem; overflow: hidden; }
+    .gallery-head { max-width: 1000px; margin: 0 auto 2rem; padding: 0 2rem; }
+    .marquee-wrap { overflow: hidden; }
+    .marquee-track {
+      display: flex; gap: 1rem; width: max-content;
+      animation: stripS 28s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .gallery-item { width: 240px; height: 300px; border-radius: 20px; overflow: hidden; flex-shrink: 0; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .gallery-item:hover img { transform: scale(1.07); }
+
+    /* ── TESTIMONIALS ── */
+    .testi-sec { background: #fdecfc; }
+    .testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .testi-card {
+      background: #fff; border-radius: 20px; padding: 2rem;
+      box-shadow: 0 4px 20px rgba(221,23,198,.07);
+      transition: transform .3s;
+    }
+    .testi-card:hover { transform: translateY(-4px); }
+    .testi-stars { color: var(--dark); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .testi-card blockquote { font-size: .95rem; line-height: 1.7; color: var(--ink-soft); font-style: italic; margin-bottom: 1.2rem; }
+    .testi-card cite { font-size: .85rem; font-weight: 700; color: var(--dark); font-style: normal; }
+    @media(max-width:768px) { .testi-grid { grid-template-columns: 1fr; } }
+
+    /* ── PRIJSKAART ── */
+    .pricing-sec { background: linear-gradient(135deg, #fdecfc, #f5eeff); padding: 5.5rem 2rem; text-align: center; }
+    .pricing-card {
+      max-width: 560px; margin: 2.5rem auto 0;
+      background: #fff; border-radius: 28px; padding: 3rem 2.5rem;
+      box-shadow: 0 20px 70px rgba(156,40,177,.14);
+      position: relative; overflow: hidden;
+    }
+    .pricing-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+      background: linear-gradient(90deg, var(--dark), var(--accent), var(--cta));
+    }
+    .price-row { display: flex; align-items: baseline; justify-content: center; gap: .8rem; margin-bottom: .5rem; }
+    .price-old { font-size: 1.2rem; color: #bbb; text-decoration: line-through; }
+    .price-cur { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700; color: var(--dark); line-height: 1; }
+    .price-sub { font-size: .8rem; color: #999; margin-bottom: 2rem; }
+    .feat-list { list-style: none; text-align: left; margin: 0 auto 2rem; padding: 0; display: flex; flex-direction: column; gap: .75rem; max-width: 400px; }
+    .feat-list li { display: flex; align-items: center; gap: .75rem; font-size: .95rem; color: var(--ink-soft); }
+    .feat-ico { width: 22px; height: 22px; min-width: 22px; background: linear-gradient(135deg, var(--dark), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .65rem; color: #fff; }
+    .btn-big { display: block; width: 100%; background: var(--cta); color: var(--ink) !important; font-weight: 800; font-size: 1.1rem; padding: 1.1rem 2rem; border-radius: 50px; box-shadow: 0 6px 30px rgba(254,155,0,.4); transition: transform .2s, box-shadow .2s; text-align: center; }
+    .btn-big:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(254,155,0,.5); }
+    .lifetime-badge { display: inline-flex; align-items: center; gap: .4rem; background: #f0fdf4; color: #16a34a; font-size: .78rem; font-weight: 600; padding: .35rem .8rem; border-radius: 20px; margin-top: 1rem; }
+    .urgency { margin-top: 1rem; font-size: .82rem; color: #bbb; }
+    .urgency strong { color: var(--dark); }
+    @media(max-width:600px) { .pricing-card { padding: 2rem 1.2rem; } .btn-big { font-size: .88rem; padding: .85rem 1.5rem; } }
+
+    /* ── REVIEW BANNER ── */
+    .rbanner-sec { background: var(--light2); padding: 5rem 0; overflow: hidden; }
+    .rbanner-head { text-align: center; padding: 0 2rem; margin-bottom: 2.5rem; }
+    .rbanner-track-wrap { overflow: hidden; position: relative; }
+    .rbanner-track-wrap::before, .rbanner-track-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 3; pointer-events: none;
+    }
+    .rbanner-track-wrap::before { left: 0; background: linear-gradient(to right, var(--light2), transparent); }
+    .rbanner-track-wrap::after { right: 0; background: linear-gradient(to left, var(--light2), transparent); }
+    .rbanner-track {
+      display: flex; gap: 1.2rem; width: max-content;
+      animation: stripS 32s linear infinite;
+      padding: .5rem 0 1rem;
+    }
+    .rbanner-track:hover { animation-play-state: paused; }
+    .rcard {
+      background: #fff; border: 1.5px solid rgba(181,144,241,.2);
+      border-radius: 20px; padding: 1.6rem 1.8rem; width: 300px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: .8rem;
+      box-shadow: 0 4px 20px rgba(156,40,177,.07);
+      transition: box-shadow .3s, transform .3s;
+    }
+    .rcard:hover { box-shadow: 0 10px 36px rgba(156,40,177,.14); transform: translateY(-3px); }
+    .rcard-top { display: flex; align-items: center; gap: .7rem; }
+    .rcard-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: .9rem; flex-shrink: 0; }
+    .rcard-name { font-size: .85rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
+    .rcard-stars { color: var(--cta); font-size: .78rem; letter-spacing: 1px; }
+    .rcard-usp { display: inline-flex; align-items: center; gap: .3rem; font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: rgba(181,144,241,.15); color: var(--dark); padding: .2rem .65rem; border-radius: 20px; width: fit-content; }
+    .rcard-text { font-size: .92rem; color: var(--ink-soft); line-height: 1.6; font-style: italic; }
+    .rcard-text strong { color: var(--dark); font-style: normal; }
+
+    /* ── FAQ ── */
+    .faq-sec { background: #fff; }
+    .faq-list { margin-top: 2rem; display: flex; flex-direction: column; gap: .8rem; }
+    .faq-item { border: 1px solid rgba(156,40,177,.15); border-radius: 14px; overflow: hidden; }
+    .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 1.2rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: .98rem; font-weight: 600; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: background .2s; }
+    .faq-q:hover { background: #fdecfc; }
+    .faq-arrow { font-size: .85rem; color: var(--dark); transition: transform .3s; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s; font-size: .92rem; color: var(--ink-soft); line-height: 1.7; padding: 0 1.5rem; }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.2rem; }
+
+    /* ── INSTAGRAM ── */
+    .ig-sec { background: var(--light); padding: 5rem 2rem; overflow: hidden; }
+    .ig-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .ig-lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .73rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .ig-lbl::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); display: inline-block; }
+    .ig-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.1; color: var(--ink); margin-bottom: 1rem; }
+    .ig-text h2 em { font-style: italic; color: var(--dark); }
+    .ig-text p { font-size: .97rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 2rem; max-width: 420px; }
+    .ig-btn { display: inline-flex; align-items: center; gap: .7rem; background: linear-gradient(135deg, var(--dark), var(--pink)); color: #fff !important; font-weight: 700; font-size: .84rem; padding: .75rem 1.6rem; border-radius: 60px; transition: transform .2s, box-shadow .2s; }
+    .ig-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(156,40,177,.35); }
+    .ig-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .ig-tag { font-size: .75rem; color: var(--accent); font-weight: 500; }
+    .ig-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+    .ig-visual::before { content: ''; position: absolute; width: 320px; height: 320px; border-radius: 50%; background: linear-gradient(135deg, rgba(181,144,241,.18), rgba(255,31,227,.1)); z-index: 0; }
+    .ig-phone { position: relative; z-index: 1; max-width: 240px; width: 100%; filter: drop-shadow(0 24px 48px rgba(156,40,177,.2)); }
+    @keyframes igFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .ig-phone { animation: igFloat 4s ease-in-out infinite; }
+    @media(max-width:900px) { .ig-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; } .ig-lbl { justify-content: center; } .ig-text p { margin: 0 auto 2rem; } .ig-tags { justify-content: center; } .ig-visual::before { width: 240px; height: 240px; } .ig-phone { max-width: 190px; } }
+    @media(max-width:600px) { .ig-sec { padding: 3.5rem 1.2rem; } }
+
+    /* ── FOOTER ── */
+    .sp-footer { background: var(--dark); color: rgba(255,255,255,.8); padding: 3rem 5vw 1.8rem; }
+    .sp-footer__inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; padding-bottom: 1.8rem; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .sp-footer__logo img { height: 36px; filter: brightness(0) invert(1); }
+    .sp-footer__links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .sp-footer__links a { font-size: .84rem; color: rgba(255,255,255,.65); transition: color .2s; }
+    .sp-footer__links a:hover { color: #fff; }
+    .sp-footer__bottom { max-width: 1100px; margin: 1.2rem auto 0; font-size: .78rem; color: rgba(255,255,255,.45); text-align: center; }
+    .sp-footer__bottom a { color: rgba(255,255,255,.55); }
+    .sp-footer__bottom a:hover { color: #fff; }
+
+    /* ── SCROLL TO TOP ── */
+    #scrollTop { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: var(--dark); color: #fff; border: none; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(156,40,177,.4); opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s, background .2s; z-index: 999; }
+    #scrollTop.visible { opacity: 1; pointer-events: auto; }
+    #scrollTop:hover { transform: translateY(-3px); background: var(--pink); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="sp-nav" id="sp-nav">
+    <a href="../online-opleidingen.html" class="sp-nav__logo">
+      <img src="../images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform">
+    </a>
+    <a href="../salespaginas/upperforms.html" class="sp-nav__back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      <span>Upperforms overzicht</span>
+    </a>
+    <a href="https://naillraftplatform.kennis.shop/pay/babyboom" class="sp-nav__cta">Nu €90 →</a>
+  </nav>
+
+  <!-- SCROLL TO TOP -->
+  <button id="scrollTop" aria-label="Terug naar boven">↑</button>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-pill">✦ Online cursus voor nagelstylistes</span>
+      <h1>De perfecte<br><em>Babyboom</em><br>neerzetten</h1>
+      <p class="hero-sub">Leer de ultieme fading zetten met Upperforms en Easy Nails techniek, strak, snel en zonder navijlen.</p>
+      <div class="hero-price">
+        <span class="old">€145</span>
+        <span class="new">€90</span>
+        <span class="note">eenmalig · levenslang toegang</span>
+      </div>
+      <a href="https://naillraftplatform.kennis.shop/pay/babyboom" class="btn-cta">Ja, ik start nu! →</a>
+      <p class="hero-trust">Levenslange toegang · Gratis updates · Direct beschikbaar</p>
+      <div class="hero-circles">
+        <img src="../images/babyboom/IMG_5397.webp" alt="Babyboom resultaat" loading="eager">
+        <img src="../images/babyboom/IMG_3742.webp" alt="Babyboom resultaat" loading="eager">
+        <img src="../images/babyboom/IMG_3743.webp" alt="Babyboom resultaat" loading="eager">
+        <img src="../images/babyboom/IMG_3750.webp" alt="Babyboom resultaat" loading="eager">
+        <img src="../images/babyboom/IMG_4883 - kopie.webp" alt="Babyboom resultaat" loading="eager">
+        <img src="../images/babyboom/IMG_5402.webp" alt="Babyboom resultaat" loading="eager">
+        <img src="../images/babyboom/IMG_5405 - kopie.webp" alt="Babyboom resultaat" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO PREVIEW -->
+  <section class="video-sec">
+    <div class="video-sec-inner">
+      <div class="lbl reveal">Bekijk de cursus</div>
+      <h2 class="sec-h2 reveal">Zo ziet de cursus eruit</h2>
+      <p class="sec-lead reveal">Een korte inkijk in de videolessen, de sfeer en hoe ik je stap voor stap begeleid naar een perfecte babyboom.</p>
+      <div class="vimeo-wrap reveal">
+        <img class="vimeo-poster" src="../images/babyboom/Babyboom mockup transparant achtergrond.webp" alt="Babyboom cursus preview" style="object-fit:contain;background:#f5eeff;">
+      </div>
+    </div>
+  </section>
+
+  <!-- WAT IS BABYBOOM -->
+  <section class="sec what-sec">
+    <div class="sec-inner">
+      <div class="what-grid">
+        <div class="text-col">
+          <div class="lbl reveal">Wat is het?</div>
+          <h2 class="sec-h2 reveal">De <em>modern French</em><br>die iedereen wil</h2>
+          <p class="reveal">De babyboom is de zachte overgang van roze naar wit die er altijd verzorgd uitziet. Subtiel genoeg voor elke dag, elegant genoeg voor elke gelegenheid.</p>
+          <p class="reveal">Het klinkt simpel. De uitvoering is dat niet, tenzij je de juiste techniek kent. Precies dat leer je hier.</p>
+        </div>
+        <div class="reveal">
+          <img class="what-img" src="../images/babyboom/IMG_5469.webp" alt="Babyboom voorbeeld" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOOR WIE -->
+  <section class="sec forwho-sec">
+    <div class="sec-inner">
+      <div class="lbl reveal">Voor wie?</div>
+      <h2 class="sec-h2 reveal">Deze cursus is <em>voor jou</em> als je...</h2>
+      <div class="cards-grid">
+        <div class="check-card reveal"><span class="check-icon">✓</span><p>Worstelt met een mooie, strakke fading die consequent lukt</p></div>
+        <div class="check-card reveal"><span class="check-icon">✓</span><p>Te veel tijd verliest aan vijlwerk achteraf</p></div>
+        <div class="check-card reveal"><span class="check-icon">✓</span><p>Meer controle wil over vormcorrectie en verlenging</p></div>
+        <div class="check-card reveal"><span class="check-icon">✓</span><p>Klanten een moderne, naturelle look wil aanbieden</p></div>
+        <div class="check-card reveal"><span class="check-icon">✓</span><p>Upperforms correct wil leren inzetten, voor elke nagelplaat</p></div>
+        <div class="check-card reveal"><span class="check-icon">✓</span><p>Ook de colorboom in haar repertoire wil opnemen</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARALLAX QUOTE -->
+  <div class="parallax-sec">
+    <div class="parallax-img" style="background-image:url('../images/babyboom/IMG_5408.webp');"></div>
+    <div class="parallax-overlay"></div>
+    <div class="parallax-content">
+      <h2>Geen goede en<br>slechte dagen meer.<br><em>Alleen resultaten.</em></h2>
+      <p>Met de juiste techniek wordt consistentie de norm, niet de uitzondering.</p>
+    </div>
+  </div>
+
+  <!-- CURSUS INHOUD -->
+  <section class="sec content-sec">
+    <div class="sec-inner">
+      <div class="content-header">
+        <div>
+          <div class="lbl reveal">Cursus inhoud</div>
+          <h2 class="sec-h2 reveal">Wat zit er<br><em>in de cursus?</em></h2>
+        </div>
+        <img class="mockup-img reveal" src="../images/babyboom/Babyboom mockup transparant achtergrond.webp" alt="Babyboom cursus mockup" loading="lazy">
+      </div>
+      <div class="modules">
+        <div class="module-card reveal">
+          <span class="module-num">1</span>
+          <div class="module-info">
+            <h3>Welkom + optimale bekijkervaring</h3>
+            <p>Hoe je het meeste uit de cursus haalt en de video's in de hoogste kwaliteit bekijkt.</p>
+          </div>
+        </div>
+        <div class="module-card reveal">
+          <span class="module-num">2</span>
+          <div class="module-info">
+            <h3>Babyboom met Upperform &amp; Easy Nails</h3>
+            <p>Stap voor stap van voorbereiding tot perfect afgewerkt resultaat, inclusief vormcorrectie, verlenging en architecturaal opbouwen voor 4+ weken houdbaarheid.</p>
+          </div>
+        </div>
+        <div class="module-card reveal">
+          <span class="module-num">3</span>
+          <div class="module-info">
+            <h3>🎁 Bonus: Colorboom</h3>
+            <p>Dezelfde zachte fading, nu in kleur. Leer hoe je met meerdere tinten speelt voor trendy, seizoensgebonden looks.</p>
+          </div>
+        </div>
+        <div class="module-card reveal">
+          <span class="module-num">4</span>
+          <div class="module-info">
+            <h3>🎁 Bonus: E-Book (70 pagina's)</h3>
+            <p>Het naslagwerk dat je salon nodig heeft, stappenplannen, theorie en technische uitleg voor babyboom én colorboom.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DE TECHNIEKEN -->
+  <section class="sec tech-sec">
+    <div class="sec-inner">
+      <div class="lbl reveal">De technieken</div>
+      <h2 class="sec-h2 reveal">Twee krachtige methodes,<br>één <em>perfect resultaat</em></h2>
+      <div class="tech-grid">
+        <div class="tech-card reveal">
+          <div class="tech-icon">💅</div>
+          <h3>Upperform techniek</h3>
+          <p>Gecontroleerde vorm én structuur bepalen, zonder de klassieke problemen van sjablonen of tips. Jouw fundament voor een perfecte fading.</p>
+          <ul class="tech-bullets">
+            <li>Vormcorrectie ook bij moeilijke nagels</li>
+            <li>Verlengingen zonder extra moeite</li>
+            <li>Rechte lijnen, scherpe C-curves, stevige apex</li>
+            <li>Drastisch minder vijlwerk</li>
+          </ul>
+        </div>
+        <div class="tech-card reveal">
+          <div class="tech-icon">✨</div>
+          <h3>Easy Nails techniek</h3>
+          <p>Bouw je nagel zo op dat vijlen achteraf overbodig wordt. Zó glad is je architectuur, direct na de uitharding.</p>
+          <ul class="tech-bullets">
+            <li>Geen bulten of dips meer</li>
+            <li>Maximale controle over verhoudingen</li>
+            <li>Minder tijd per klant = meer omzet</li>
+            <li>Strakker, verfijnder eindresultaat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BONUSSEN -->
+  <section class="sec bonus-sec">
+    <div class="sec-inner">
+      <div class="lbl reveal">Bonussen</div>
+      <h2 class="sec-h2 reveal">Wat je <em>extra</em> krijgt</h2>
+      <div class="bonus-grid">
+        <div class="bonus-card reveal">
+          <span class="bonus-tag">Bonus 1</span>
+          <h3>Volledige Colorboom videoles</h3>
+          <p>De zomerse variant van de babyboom, met eindeloze kleurencombinaties. Strakke blends zonder stress.</p>
+          <img src="../images/babyboom/nagels upperform colorboom.webp" alt="Colorboom resultaat" loading="lazy">
+        </div>
+        <div class="bonus-card reveal">
+          <span class="bonus-tag">Bonus 2</span>
+          <h3>E-Book: 70 pagina's</h3>
+          <p>Stappenplannen en theorie voor babyboom én colorboom. Jouw referentiegids in de salon, altijd bij de hand.</p>
+          <img src="../images/babyboom/Magazines Mockup ebook bonus, Top View.webp" alt="E-book mockup" loading="lazy">
+        </div>
+      </div>
+      <p class="bonus-value reveal">Bonuswaarde: <strong>€135</strong>, inclusief bij aankoop</p>
+    </div>
+  </section>
+
+  <!-- GALERIJ -->
+  <section class="gallery-sec">
+    <div class="gallery-head">
+      <div class="lbl reveal">Resultaten</div>
+      <h2 class="sec-h2 reveal">Zo ziet het <em>eindresultaat</em> eruit</h2>
+    </div>
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <div class="gallery-item"><img src="../images/babyboom/IMG_5397.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_5489.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_3742.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_5402.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_3743.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_3750.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_5408.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/nagels upperform colorboom.webp" alt="Colorboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/nagels upperform colorboom (2).webp" alt="Colorboom" loading="lazy"></div>
+        <!-- duplicate voor naadloze loop -->
+        <div class="gallery-item"><img src="../images/babyboom/IMG_5397.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_5489.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_3742.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_5402.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_3743.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_3750.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/IMG_5408.webp" alt="Babyboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/nagels upperform colorboom.webp" alt="Colorboom" loading="lazy"></div>
+        <div class="gallery-item"><img src="../images/babyboom/nagels upperform colorboom (2).webp" alt="Colorboom" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="sec testi-sec">
+    <div class="sec-inner">
+      <div class="lbl reveal">Ervaringen</div>
+      <h2 class="sec-h2 reveal">Zij gingen je <em>al voor</em></h2>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>"Het voelde alsof ik de technieken pas écht begreep wanneer ik met Tabitha aan de slag ging. De inhoud is duidelijk, goed gestructureerd en met veel ruimte voor begeleiding."</blockquote>
+          <cite>Sarra Latreche</cite>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>"Ze heeft enorm veel info, legt alles tot in de puntjes goed uit. Als je het niet direct snapt, legt ze het nogmaals uit. Je bent een top docent!"</blockquote>
+          <cite>Karen Claeys</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIJSKAART -->
+  <section class="pricing-sec">
+    <div class="sec-inner" style="max-width:1000px;margin:0 auto;">
+      <div class="lbl reveal" style="justify-content:center;">Investering</div>
+      <h2 class="sec-h2 reveal" style="text-align:center;">Klaar om te starten?</h2>
+      <div class="pricing-card reveal">
+        <div class="price-row">
+          <span class="price-old">€145</span>
+          <span class="price-cur">€90</span>
+        </div>
+        <p class="price-sub">eenmalige investering · geen abonnement</p>
+        <ul class="feat-list">
+          <li><span class="feat-ico">✓</span> Babyboom cursus: Upperform + Easy Nails</li>
+          <li><span class="feat-ico">✓</span> Stap-voor-stap videolessen in UHD</li>
+          <li><span class="feat-ico">✓</span> Leer correct opbouwen zonder navijlen</li>
+          <li><span class="feat-ico">✓</span> Perfecte fading &amp; architectuur</li>
+          <li><span class="feat-ico">★</span> BONUS: Volledige Colorboom videoles</li>
+          <li><span class="feat-ico">★</span> BONUS: E-book 70 pagina's (€135 waarde)</li>
+          <li><span class="feat-ico">∞</span> Levenslange toegang + gratis updates</li>
+        </ul>
+        <a href="https://naillraftplatform.kennis.shop/pay/babyboom" class="btn-big">Ja, ik start nu! →</a>
+        <div style="text-align:center;">
+          <span class="lifetime-badge">♾️ Levenslang toegang · toekomstige updates inbegrepen</span>
+        </div>
+        <p class="urgency">⏳ De prijs stijgt bij elke nieuwe update. <strong>Nu instappen = laagste prijs voor de meest complete versie.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEW BANNER -->
+  <section class="rbanner-sec">
+    <div class="rbanner-head">
+      <div class="lbl reveal" style="justify-content:center;">Wat cursisten zeggen</div>
+      <h2 class="sec-h2 reveal">100+ stylistes gingen<br>je <em>al voor</em></h2>
+    </div>
+    <div class="rbanner-track-wrap">
+      <div class="rbanner-track">
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--dark),var(--accent));">J</div><div><div class="rcard-name">Julie S.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">⚡ Geen navijlen</span>
+          <p class="rcard-text">"Ik heb geleerd dat ik mijn nagels <strong>nooit meer hoef na te vijlen</strong> als ik de architectuur goed opbouw. Dat alleen al spaart me 20 min per klant."</p>
+        </div>
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--cta),var(--dark));">M</div><div><div class="rcard-name">Manon D.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">🎨 Perfecte fading</span>
+          <p class="rcard-text">"Eindelijk begrijp ik <strong>waarom mijn fading altijd scheef zat</strong>, en hoe ik het in één keer goed doe."</p>
+        </div>
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--accent),var(--cta));">E</div><div><div class="rcard-name">Ellen R.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">📖 Duidelijke uitleg</span>
+          <p class="rcard-text">"De uitleg is <strong>zo helder dat je het meteen kan toepassen</strong>. Geen vage stappen, alles is concreet."</p>
+        </div>
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--dark),var(--cta));">K</div><div><div class="rcard-name">Kim V.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">⏱ Eigen tempo</span>
+          <p class="rcard-text">"Ik vond het heel fijn dat ik <strong>zelf kon bepalen wanneer ik keek</strong>. Ik paste het die zelfde dag nog toe."</p>
+        </div>
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--accent),var(--dark));">S</div><div><div class="rcard-name">Silke B.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">💅 Upperforms</span>
+          <p class="rcard-text">"Zelfs bij klanten met korte of rare nagelplaten <strong>zit het nu in één keer goed</strong>."</p>
+        </div>
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--cta),var(--accent));">A</div><div><div class="rcard-name">Amber L.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">🌈 Colorboom bonus</span>
+          <p class="rcard-text">"Die bonusvideo colorboom... <strong>dat had ik echt niet verwacht!</strong> Mijn zomerse agenda is nu vol met colorboom aanvragen."</p>
+        </div>
+        <!-- duplicate -->
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--dark),var(--accent));">J</div><div><div class="rcard-name">Julie S.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">⚡ Geen navijlen</span>
+          <p class="rcard-text">"Ik heb geleerd dat ik mijn nagels <strong>nooit meer hoef na te vijlen</strong> als ik de architectuur goed opbouw. Dat alleen al spaart me 20 min per klant."</p>
+        </div>
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--cta),var(--dark));">M</div><div><div class="rcard-name">Manon D.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">🎨 Perfecte fading</span>
+          <p class="rcard-text">"Eindelijk begrijp ik <strong>waarom mijn fading altijd scheef zat</strong>, en hoe ik het in één keer goed doe."</p>
+        </div>
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--accent),var(--cta));">E</div><div><div class="rcard-name">Ellen R.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">📖 Duidelijke uitleg</span>
+          <p class="rcard-text">"De uitleg is <strong>zo helder dat je het meteen kan toepassen</strong>. Geen vage stappen, alles is concreet."</p>
+        </div>
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--dark),var(--cta));">K</div><div><div class="rcard-name">Kim V.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">⏱ Eigen tempo</span>
+          <p class="rcard-text">"Ik vond het heel fijn dat ik <strong>zelf kon bepalen wanneer ik keek</strong>. Ik paste het die zelfde dag nog toe."</p>
+        </div>
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--accent),var(--dark));">S</div><div><div class="rcard-name">Silke B.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">💅 Upperforms</span>
+          <p class="rcard-text">"Zelfs bij klanten met korte of rare nagelplaten <strong>zit het nu in één keer goed</strong>."</p>
+        </div>
+        <div class="rcard">
+          <div class="rcard-top"><div class="rcard-avatar" style="background:linear-gradient(135deg,var(--cta),var(--accent));">A</div><div><div class="rcard-name">Amber L.</div><div class="rcard-stars">★★★★★</div></div></div>
+          <span class="rcard-usp">🌈 Colorboom bonus</span>
+          <p class="rcard-text">"Die bonusvideo colorboom... <strong>dat had ik echt niet verwacht!</strong> Mijn zomerse agenda is nu vol met colorboom aanvragen."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec faq-sec">
+    <div class="sec-inner">
+      <div class="lbl reveal">FAQ</div>
+      <h2 class="sec-h2 reveal">Vragen die de <em>squad stelt</em></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Hoelang heb ik toegang tot de cursus? <span class="faq-arrow">▼</span></button>
+          <div class="faq-a">Voor altijd! Zolang het internet blijft bestaan en je je inloggegevens niet kwijtraakt. Je hoeft dus niet te stressen dat je alles binnen een maand uit je hoofd moet leren.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Voor wie is deze cursus geschikt? <span class="faq-arrow">▼</span></button>
+          <div class="faq-a">Voor iedereen die werkt met gelproducten en babyboom wil leren opbouwen zonder navijlen. Of je nu een beginner bent of al ervaring hebt, je leert gegarandeerd iets nieuws.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Krijg ik updates als er iets nieuws bijkomt? <span class="faq-arrow">▼</span></button>
+          <div class="faq-a">Jazeker! Updates zijn inbegrepen. Als ik nieuwe technieken toevoeg of extra video's opneem, krijg jij daar automatisch toegang toe. Een cursus die met je meegroeit.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Hoeveel tijd moet ik investeren? <span class="faq-arrow">▼</span></button>
+          <div class="faq-a">Dat bepaal je helemaal zelf. Je doorloopt alles op je eigen tempo. De meeste cursisten passen de technieken al na een paar dagen toe, en zien meteen verschil.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Kan ik je bereiken als ik vragen heb? <span class="faq-arrow">▼</span></button>
+          <div class="faq-a">In de leeromgeving vind je mijn contactgegevens zodat je me altijd kunt bereiken. Geen officiële helpdesk, maar wél jouw persoonlijke hotline naar antwoorden. Jouw succes is ook mijn trots.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Ik twijfel nog. Wat moet ik doen? <span class="faq-arrow">▼</span></button>
+          <div class="faq-a">Twijfel is de grootste tijdverspiller, en tijd is geld. Stel jezelf de vraag: wil ik blijven zoeken en proberen, of wil ik in één keer dé juiste kennis hebben? Als dat laatste beter klinkt, weet je wat je te doen staat.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="ig-sec">
+    <div class="ig-inner">
+      <div class="ig-text">
+        <div class="ig-lbl">Instagram</div>
+        <h2>Volg je mij al<br><em>On The Gram?</em></h2>
+        <p>Zin om geïnspireerd te worden? Kom er gezellig bij, ik post regelmatig content die je inspireert en geeft een inkijk in mijn achter-de-schermen leven en hoe ik mijn onderneming run.</p>
+        <a href="https://www.instagram.com/tabitha_nail_it/" target="_blank" class="ig-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Ga naar Instagram
+        </a>
+        <div class="ig-tags">
+          <span class="ig-tag">#nailcraft</span>
+          <span class="ig-tag">#babyboom</span>
+          <span class="ig-tag">#upperforms</span>
+          <span class="ig-tag">#nagels</span>
+        </div>
+      </div>
+      <div class="ig-visual">
+        <div class="ig-phone">
+          <img src="../images/upperforms/instagram mockup telefoon.webp" alt="NailCraft Instagram">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="sp-footer">
+    <div class="sp-footer__inner">
+      <a href="../index.html" class="sp-footer__logo">
+        <img src="../images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform">
+      </a>
+      <nav class="sp-footer__links">
+        <a href="../online-opleidingen.html">Online Opleidingen</a>
+        <a href="../the-nailstylist-traject.html">The Nailstylist</a>
+        <a href="../over.html">Over</a>
+        <a href="../blog.html">Blog</a>
+      </nav>
+    </div>
+    <p class="sp-footer__bottom">© 2025 <a href="../index.html">NailCraft Platform</a> · Tabitha Windels · Alle rechten voorbehouden</p>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('sp-nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
+
+    // Scroll-to-top
+    const topBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => topBtn.classList.toggle('visible', window.scrollY > 400), { passive: true });
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Reveal on scroll
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Vimeo lazy load
+    window.addEventListener('load', () => {
+      const wrap = document.querySelector('.vimeo-wrap');
+      if (wrap) {
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://player.vimeo.com/video/1217675541?autoplay=1&muted=1&loop=1&background=1';
+        iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+        wrap.appendChild(iframe);
+        setTimeout(() => { const poster = wrap.querySelector('.vimeo-poster'); if (poster) poster.style.opacity = '0'; }, 1200);
+      }
+    });
+  </script>
+</body>
+</html>
