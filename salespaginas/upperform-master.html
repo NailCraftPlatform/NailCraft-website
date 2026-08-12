@@ -151,7 +151,7 @@
     .foto-banner img { width: 100%; height: 100%; object-fit: cover; }
     .foto-overlay { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(248,242,255,.78) 0%, rgba(248,242,255,.3) 55%, transparent 100%); display: flex; align-items: center; padding: 0 8vw; }
     .foto-txt { max-width: 420px; }
-    .foto-txt h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: var(--dark); line-height: 1.1; margin-bottom: .8rem; }
+    .foto-txt h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: .8rem; }
     .foto-txt p { font-size: .97rem; color: var(--ink-soft); line-height: 1.7; }
     @media(max-width:600px) { .foto-banner { height: 340px; } .foto-overlay { padding: 0 1.5rem; } }
 
@@ -244,6 +244,12 @@
     .nc-footer__bottom { max-width: 1100px; margin: 0 auto; font-size: .8rem; color: rgba(255,255,255,.6); }
     @media(max-width:768px) { .nc-footer { padding: 32px 5vw 20px; } .nc-footer__grid { display: none; } .nc-footer__bottom { text-align: center; font-size: .75rem; } }
 
+    /* SCROLL TOP */
+    .scroll-top { position: fixed; bottom: 2rem; right: 2rem; z-index: 900; width: 44px; height: 44px; border-radius: 50%; background: var(--dark); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(156,40,177,.35); opacity: 0; transform: translateY(12px); transition: opacity .3s, transform .3s, background .2s; pointer-events: none; }
+    .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .scroll-top:hover { background: var(--pink); box-shadow: 0 6px 24px rgba(255,31,227,.4); }
+    .scroll-top svg { width: 18px; height: 18px; }
+
     /* ANIMATIES */
     @keyframes fUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fIn { from { opacity: 0; } to { opacity: 1; } }
@@ -268,7 +274,7 @@
     <div class="hero-inner">
       <div>
         <div class="badge-master">👑 De Meest Complete Training</div>
-        <h1>Alles wat je nodig hebt voor<br><em class="hero-em-glow">perfecte upperforms applicatie.</em></h1>
+        <h1>Alles wat je nodig hebt voor een<br><em class="hero-em-glow">perfecte upperform applicatie.</em></h1>
         <p class="hero-sub">Video's van de volledige applicatie, bonusvideo's voor elke techniek én een compleet 97-pagina's e-book. Alles samen in één training, levenslang beschikbaar.</p>
         <div class="hero-feats">
           <div class="hf"><span class="hf-dot"></span> Uren demonstratievideo's van de volledige applicatie</div>
@@ -414,7 +420,7 @@
   <div class="ebook-sec">
     <div class="ebook-inner">
       <div class="ebook-visual reveal">
-        <img src="../images/upperforms/MacBook%20Mockup%2C%20upperform.webp" alt="Upperform cursus platform" loading="lazy">
+        <img src="../images/upperforms/e-book%20upperform%20guid%20bonus%20in%20master.webp" alt="Upperform e-book bonus" loading="lazy">
       </div>
       <div class="ebook-text reveal">
         <div class="lbl">Exclusief in de Master</div>
@@ -459,7 +465,7 @@
         </ul>
       </div>
       <div class="platform-visual reveal">
-        <img src="../images/upperforms/upperform%20soorten%20foto.webp" alt="upperform technieken overzicht" loading="lazy">
+        <img src="../images/upperforms/MacBook%20Mockup%2C%20upperform.webp" alt="Upperform cursus platform" loading="lazy">
       </div>
     </div>
   </div>
@@ -666,13 +672,19 @@
       </div>
     </div>
     <div class="nc-footer__bottom">
-      <span>© 2026 NailCraft Platform, Tabitha Windels</span>
+      <a href="../index.html" style="color:rgba(255,255,255,.6);transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">© 2026 NailCraft Platform, Tabitha Windels</a>
     </div>
   </footer>
+
+  <!-- SCROLL TOP KNOP -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll naar boven" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 
   <script>
     window.addEventListener('scroll', () => {
       document.getElementById('sp-nav').classList.toggle('scrolled', window.scrollY > 20);
+      document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
     });
 
     window.addEventListener('load', () => {
