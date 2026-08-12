@@ -320,6 +320,181 @@
   </section>
 
   <!-- =============================================
+       SNELNAVIGATIE BALK
+  ============================================= -->
+  <style>
+  .snelnav {
+    background: #fff;
+    border-bottom: 1px solid rgba(181,144,241,.18);
+    padding: 0 5vw;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 70px;
+    z-index: 500;
+    box-shadow: 0 2px 16px rgba(156,40,177,.07);
+  }
+  .snelnav__label {
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #9c28b1;
+    padding: 1rem 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(181,144,241,.25);
+    padding-right: 1rem;
+  }
+  .snelnav__group {
+    position: relative;
+  }
+  .snelnav__btn {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .86rem;
+    font-weight: 600;
+    color: #2a1a35;
+    padding: 1.1rem .6rem;
+    white-space: nowrap;
+    transition: color .2s;
+    border-bottom: 2px solid transparent;
+  }
+  .snelnav__btn:hover,
+  .snelnav__group.open .snelnav__btn { color: #9c28b1; border-bottom-color: #9c28b1; }
+  .snelnav__arrow {
+    width: 14px; height: 14px;
+    transition: transform .25s;
+    flex-shrink: 0;
+  }
+  .snelnav__group.open .snelnav__arrow { transform: rotate(180deg); }
+
+  .snelnav__drop {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    min-width: 240px;
+    background: #fff;
+    border: 1px solid rgba(181,144,241,.2);
+    border-radius: 16px;
+    box-shadow: 0 12px 48px rgba(156,40,177,.14);
+    padding: .6rem;
+    z-index: 600;
+  }
+  .snelnav__group.open .snelnav__drop { display: block; }
+
+  .snelnav__drop a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .65rem .9rem;
+    border-radius: 10px;
+    font-size: .86rem;
+    color: #2a1a35;
+    font-weight: 500;
+    transition: background .2s, color .2s;
+    white-space: nowrap;
+  }
+  .snelnav__drop a:hover { background: #f8f2ff; color: #9c28b1; }
+  .snelnav__drop a .price {
+    font-size: .76rem;
+    font-weight: 700;
+    color: #9c28b1;
+    background: rgba(181,144,241,.12);
+    padding: .15rem .5rem;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+  .snelnav__divider {
+    height: 1px;
+    background: rgba(181,144,241,.15);
+    margin: .35rem .4rem;
+  }
+  @media(max-width:600px) {
+    .snelnav__label { display: none; }
+    .snelnav { gap: .2rem; }
+    .snelnav__drop { min-width: 220px; }
+    .snelnav__btn { font-size: .8rem; padding: 1rem .4rem; }
+  }
+  </style>
+
+  <div class="snelnav" id="snelnav">
+    <span class="snelnav__label">Snel naar →</span>
+
+    <div class="snelnav__group" id="snelgroup-video">
+      <button class="snelnav__btn" onclick="toggleSnelGroup('snelgroup-video')">
+        🎥 Video trainingen
+        <svg class="snelnav__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="snelnav__drop">
+        <a href="salespaginas/manicure-pro.html"><span>Manicure Pro</span><span class="price">€145</span></a>
+        <a href="salespaginas/easy-nails.html"><span>Easy Nails</span><span class="price">€150</span></a>
+        <div class="snelnav__divider"></div>
+        <a href="salespaginas/upperform-master.html"><span>Upperform Master</span><span class="price">€235</span></a>
+        <a href="salespaginas/upperform-pro.html"><span>Upperform Pro</span><span class="price">€185</span></a>
+        <div class="snelnav__divider"></div>
+        <a href="salespaginas/babyboom.html"><span>Babyboom cursus</span><span class="price">€90</span></a>
+        <a href="salespaginas/kunstnagels-affrezen.html"><span>Refill Removal Pro</span><span class="price">€65</span></a>
+        <a href="salespaginas/kleurapplicatie.html"><span>Perfecte Kleurapplicatie</span><span class="price">€39</span></a>
+        <a href="salespaginas/sjablonen.html"><span>Sjabloon Applicatie</span><span class="price">€65</span></a>
+      </div>
+    </div>
+
+    <div class="snelnav__group" id="snelgroup-books">
+      <button class="snelnav__btn" onclick="toggleSnelGroup('snelgroup-books')">
+        📄 E-books &amp; Guides
+        <svg class="snelnav__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="snelnav__drop">
+        <a href="salespaginas/upperform-guide.html"><span>Upperform Guide</span><span class="price">€70</span></a>
+        <a href="salespaginas/the-basics.html"><span>The Basics</span><span class="price">€45</span></a>
+        <a href="salespaginas/the-gel-code.html"><span>The Gel Code</span><span class="price">€45</span></a>
+        <a href="salespaginas/nail-content-creator.html"><span>Nail Content Creator</span><span class="price">€60</span></a>
+        <a href="salespaginas/manicure-ebook.html"><span>Manicure E-book</span><span class="price">€18,99</span></a>
+      </div>
+    </div>
+
+    <div class="snelnav__group" id="snelgroup-traject">
+      <button class="snelnav__btn" onclick="toggleSnelGroup('snelgroup-traject')">
+        ✨ Compleet traject
+        <svg class="snelnav__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="snelnav__drop">
+        <a href="the-nailstylist-traject.html"><span>The Nailstylist Traject</span><span class="price" style="background:rgba(255,31,227,.1);color:#cc00bb;">Wachtlijst</span></a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  function toggleSnelGroup(id) {
+    var groups = document.querySelectorAll('.snelnav__group');
+    groups.forEach(function(g) {
+      if (g.id === id) {
+        g.classList.toggle('open');
+      } else {
+        g.classList.remove('open');
+      }
+    });
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.snelnav__group')) {
+      document.querySelectorAll('.snelnav__group').forEach(function(g) {
+        g.classList.remove('open');
+      });
+    }
+  });
+  </script>
+
+  <!-- =============================================
        VIDEOTRAININGEN HEADER
   ============================================= -->
   <style>
