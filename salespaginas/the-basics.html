@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Basics – e-book cursus | NailCraft Platform</title>
+  <meta name="description" content="De complete gids over huid- en nagelanatomie én de juiste materialen. 168 pagina's e-book + 23 bonusvideo's. Nooit meer verkeerde aankopen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; color: #3d2b5e; background: #f8f2ff; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; }
+
+    /* NAV */
+    .ncb-nav { position:fixed; top:0; left:0; right:0; z-index:9999; padding:.9rem 2rem; display:flex; align-items:center; justify-content:space-between; background:rgba(248,242,255,.92); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(181,144,241,.18); }
+    .ncb-nav img { height:28px; }
+    .ncb-nav-cta { background:#fe9b00; color:#fff; padding:.5rem 1.4rem; border-radius:100px; font-size:.85rem; font-weight:600; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 4px 16px rgba(254,155,0,.3); }
+    .ncb-nav-cta:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,155,0,.4); }
+    @media(max-width:768px){ .ncb-nav{padding:.7rem 1.2rem;} .ncb-nav img{height:22px;} .ncb-nav-cta{font-size:.72rem;padding:.45rem 1rem;} }
+
+    /* SCROLL TO TOP */
+    #ncb-top { position:fixed; bottom:1.8rem; right:1.8rem; z-index:800; width:44px; height:44px; border-radius:50%; border:none; cursor:pointer; background:#fe9b00; color:#fff; font-size:1.1rem; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(254,155,0,.35); opacity:0; transform:translateY(12px); transition:opacity .3s,transform .3s; }
+    #ncb-top.show { opacity:1; transform:translateY(0); }
+    #ncb-top:hover { background:#e88a00; }
+
+    /* FOOTER */
+    .ncb-footer { background:#9c28b1; color:rgba(255,255,255,.7); text-align:center; padding:2rem 1.5rem; font-size:.83rem; }
+    .ncb-footer a { color:#fff; text-decoration:none; }
+    .ncb-footer a:hover { text-decoration:underline; }
+
+    /* GEDEELD */
+    .ncb-label-bar { font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#8863c3; margin-bottom:.8rem; display:flex; align-items:center; gap:.5rem; }
+    .ncb-label-bar::before { content:''; display:inline-block; width:28px; height:2px; background:#fe9b00; }
+
+    /* VIMEO FACADE */
+    .vfacade { position:relative; width:100%; background:#000; border-radius:16px; overflow:hidden; }
+    .vfacade img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:opacity .5s ease; }
+    .vfacade iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+    .vfacade.loaded img { opacity:0; pointer-events:none; }
+
+    @keyframes ncbFloat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);} }
+    @keyframes igFloat   { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="ncb-nav">
+  <a href="../online-opleidingen.html">
+    <img src="../images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform">
+  </a>
+  <a class="ncb-nav-cta" href="https://naillraftplatform.kennis.shop/pay/thebasics">Start voor €45</a>
+</nav>
+<div style="height:68px"></div>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<style>
+.ncb01 { min-height:90vh; display:grid; grid-template-columns:1fr 1fr; align-items:center; padding:6rem 5% 5rem; gap:4rem; background:radial-gradient(ellipse 70% 60% at 80% 40%,rgba(181,144,241,.22) 0%,transparent 70%),radial-gradient(ellipse 50% 50% at 10% 80%,rgba(181,144,241,.12) 0%,transparent 60%),#f8f2ff; position:relative; overflow:hidden; }
+.ncb01::before { content:''; position:absolute; top:-80px; right:-80px; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle,rgba(181,144,241,.18),transparent 70%); pointer-events:none; }
+.ncb01-label { display:inline-flex; align-items:center; gap:.5rem; background:rgba(181,144,241,.15); border:1px solid rgba(181,144,241,.4); border-radius:100px; padding:.35rem 1rem; font-size:.78rem; font-weight:600; letter-spacing:.08em; color:#8863c3; text-transform:uppercase; margin-bottom:1.2rem; }
+.ncb01-label span { width:7px; height:7px; background:#fe9b00; border-radius:50%; display:inline-block; }
+.ncb01 h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.6rem,7vw,5.5rem); font-weight:700; line-height:1.1; color:#9c28b1; margin:0 0 .8rem; }
+.ncb01 h1 em { font-style:italic; color:#b590f1; }
+.ncb01-sub { font-size:clamp(1rem,1.8vw,1.2rem); color:#3d2b5e; opacity:.85; max-width:500px; margin-bottom:2rem; line-height:1.65; }
+.ncb01-btn { display:inline-flex; align-items:center; gap:.6rem; background:#fe9b00; color:#fff; padding:1rem 2.2rem; border-radius:100px; font-size:1rem; font-weight:700; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 8px 30px rgba(254,155,0,.3); }
+.ncb01-btn:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(254,155,0,.4); color:#fff; }
+.ncb01-price { margin-top:1.2rem; font-size:.9rem; color:#3d2b5e; opacity:.7; }
+.ncb01-price s { opacity:.5; }
+.ncb01-price strong { color:#8863c3; font-size:1.3rem; }
+.ncb01-img { display:flex; justify-content:center; align-items:center; }
+.ncb01-img img { width:100%; max-width:520px; filter:drop-shadow(0 30px 60px rgba(136,99,195,.25)); animation:ncbFloat 6s ease-in-out infinite; }
+@media(max-width:768px){ .ncb01{grid-template-columns:1fr;padding:5rem 5% 4rem;gap:2.5rem;text-align:center;} .ncb01-sub{margin:0 auto 2rem;} .ncb01-img{order:-1;} .ncb01-img img{max-width:280px;} .ncb01-btn{font-size:.72rem;padding:.65rem 1.4rem;} }
+</style>
+
+<section class="ncb01">
+  <div>
+    <div class="ncb01-label"><span></span> E-book · 168 pagina's</div>
+    <h1>The<br><em>Basics</em></h1>
+    <p class="ncb01-sub">De complete gids over huid- &amp; nagelanatomie én de juiste materialen. Nooit meer verkeerde aankopen. Nooit meer gissen.</p>
+    <a class="ncb01-btn" href="https://naillraftplatform.kennis.shop/pay/thebasics">Ik start nu →</a>
+    <div class="ncb01-price">Tijdelijk <strong>€45</strong> <s>€119</s></div>
+  </div>
+  <div class="ncb01-img">
+    <img src="../images/the-basics/The Basic  wit mockup transparant achtergrond.webp" alt="The Basics mockup">
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PIJNPUNTEN
+============================================================ -->
+<style>
+.ncb02 { padding:6rem 5%; background:#fff; position:relative; overflow:hidden; }
+.ncb02::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(181,144,241,.08),transparent); pointer-events:none; }
+.ncb02-inner { max-width:900px; margin:0 auto; text-align:center; }
+.ncb02 h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:700; color:#9c28b1; margin-bottom:1rem; }
+.ncb02-intro { color:#3d2b5e; opacity:.7; max-width:600px; margin:0 auto 3rem; line-height:1.75; }
+.ncb02-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; text-align:left; margin-bottom:3rem; }
+.ncb02-item { background:#f8f2ff; border:1px solid rgba(181,144,241,.25); border-radius:16px; padding:1.4rem 1.6rem; display:flex; gap:1rem; align-items:flex-start; opacity:0; transform:translateY(28px); transition:opacity .55s ease,transform .55s ease,background .3s; }
+.ncb02-item.vis { opacity:1; transform:translateY(0); }
+.ncb02-item:hover { background:rgba(181,144,241,.1); transform:translateY(-3px); }
+.ncb02-icon { font-size:1.4rem; flex-shrink:0; }
+.ncb02-item p { color:#3d2b5e; font-size:.95rem; line-height:1.6; margin:0; }
+.ncb02-callout { opacity:0; transform:translateY(24px); transition:opacity .6s ease .3s,transform .6s ease .3s; background:linear-gradient(135deg,rgba(181,144,241,.12),rgba(199,184,223,.18)); border:1px solid rgba(181,144,241,.3); border-radius:20px; padding:2rem; color:#8863c3; font-size:clamp(1.1rem,2.5vw,1.4rem); font-family:'Cormorant Garamond',serif; font-style:italic; }
+.ncb02-callout.vis { opacity:1; transform:translateY(0); }
+@media(max-width:768px){ .ncb02{padding:4rem 5%;} }
+</style>
+
+<section class="ncb02">
+  <div class="ncb02-inner">
+    <h2>Ben je het beu om geld te verspillen?</h2>
+    <p class="ncb02-intro">Elke nagelstyliste herkent dit. Meer tools, meer verwarring, minder resultaat.</p>
+    <div class="ncb02-grid">
+      <div class="ncb02-item"><span class="ncb02-icon">💸</span><p>Geld uitgeven aan materialen die je nooit gebruikt of die niet werken</p></div>
+      <div class="ncb02-item"><span class="ncb02-icon">🤷</span><p>Geen idee wat gritt-nummers of kleurcodes van bitjes betekenen</p></div>
+      <div class="ncb02-item"><span class="ncb02-icon">😬</span><p>Twijfelen of een tool veilig werkt op de nagel en huid</p></div>
+      <div class="ncb02-item"><span class="ncb02-icon">🌀</span><p>Overweldigd door het aanbod zonder te weten wat écht werkt</p></div>
+      <div class="ncb02-item"><span class="ncb02-icon">📦</span><p>Een tafel vol tools waarvan je niet meer weet waarvoor ze dienen</p></div>
+      <div class="ncb02-item"><span class="ncb02-icon">❓</span><p>Geen duidelijkheid over anatomie, terwijl dat de basis is van alles</p></div>
+    </div>
+    <div class="ncb02-callout">"Er is te veel keuze en veel te weinig kennis die écht gedeeld wordt."</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } }); },{threshold:.12});
+  document.querySelectorAll('.ncb02-item,.ncb02-callout').forEach(function(el,i){ el.style.transitionDelay=(i*.07)+'s'; io.observe(el); });
+})();
+</script>
+
+
+<!-- ============================================================
+     OPLOSSING
+============================================================ -->
+<style>
+.ncb03 { padding:6rem 5%; background:#f8f2ff; }
+.ncb03-inner { max-width:1100px; margin:0 auto; }
+.ncb03-head { opacity:0; transform:translateY(20px); transition:opacity .5s ease,transform .5s ease; }
+.ncb03-head.vis { opacity:1; transform:translateY(0); }
+.ncb03 h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:700; color:#9c28b1; margin-bottom:3rem; max-width:600px; }
+.ncb03-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center; }
+.ncb03-list { display:flex; flex-direction:column; gap:1.2rem; }
+.ncb03-item { display:flex; gap:1rem; align-items:flex-start; padding:1.2rem 1.4rem; background:#fff; border-radius:14px; border-left:3px solid #b590f1; opacity:0; transform:translateX(-24px); transition:opacity .55s ease,transform .55s ease,box-shadow .3s; }
+.ncb03-item.vis { opacity:1; transform:translateX(0); }
+.ncb03-item.vis:hover { transform:translateX(6px); box-shadow:0 8px 24px rgba(181,144,241,.15); }
+.ncb03-check { color:#fe9b00; font-size:1.2rem; flex-shrink:0; font-weight:800; }
+.ncb03-item p { font-size:.97rem; color:#3d2b5e; margin:0; }
+.ncb03-btn { display:inline-flex; align-items:center; gap:.6rem; background:#fe9b00; color:#fff; padding:1rem 2.2rem; border-radius:100px; font-size:1rem; font-weight:700; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 8px 30px rgba(254,155,0,.3); margin-top:.8rem; }
+.ncb03-btn:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(254,155,0,.4); color:#fff; }
+.ncb03-img img { width:100%; border-radius:20px; box-shadow:0 20px 50px rgba(136,99,195,.2); opacity:0; transform:translateY(24px); transition:opacity .7s ease .2s,transform .7s ease .2s; }
+.ncb03-img img.vis { opacity:1; transform:translateY(0); }
+@media(max-width:768px){ .ncb03{padding:4rem 5%;} .ncb03-grid{grid-template-columns:1fr;} .ncb03-img{display:none;} .ncb03-btn{font-size:.72rem;padding:.65rem 1.4rem;} }
+</style>
+
+<section class="ncb03">
+  <div class="ncb03-inner">
+    <div class="ncb03-head">
+      <div class="ncb-label-bar">De oplossing</div>
+      <h2>Wat als je precies wist wat je nodig hebt, en waarom?</h2>
+    </div>
+    <div class="ncb03-grid">
+      <div class="ncb03-list">
+        <div class="ncb03-item"><span class="ncb03-check">✓</span><p><strong>Welke tools écht onmisbaar zijn</strong>, en welke gewoon marketingpraat zijn</p></div>
+        <div class="ncb03-item"><span class="ncb03-check">✓</span><p><strong>Wat gritt-nummers en kleurcodes betekenen</strong> voor veilig gebruik op de natuurlijke nagel</p></div>
+        <div class="ncb03-item"><span class="ncb03-check">✓</span><p><strong>Hoe huid- en nagelanatomie werkt</strong>, de basis die alles verandert</p></div>
+        <div class="ncb03-item"><span class="ncb03-check">✓</span><p><strong>Welke aankopen je beter vermijdt</strong>, met concrete aankooplinks en specificaties</p></div>
+        <div class="ncb03-item"><span class="ncb03-check">✓</span><p><strong>Video-uitleg bij elk materiaal</strong>, zodat je exact ziet hoe het werkt in de praktijk</p></div>
+        <a class="ncb03-btn" href="https://naillraftplatform.kennis.shop/pay/thebasics">Ja, ik wil die kennis →</a>
+      </div>
+      <div class="ncb03-img">
+        <img src="../images/the-basics/ebook die openligt the basics.webp" alt="The Basics ebook">
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } }); },{threshold:.1});
+  document.querySelectorAll('.ncb03-item,.ncb03-img img,.ncb03-head').forEach(function(el,i){ el.style.transitionDelay=(i*.08)+'s'; io.observe(el); });
+})();
+</script>
+
+
+<!-- ============================================================
+     INHOUD
+============================================================ -->
+<style>
+.ncb04 { padding:6rem 5%; background:linear-gradient(180deg,#f8f2ff 0%,#fdecfc 100%); }
+.ncb04-inner { max-width:1000px; margin:0 auto; }
+.ncb04 h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:700; color:#9c28b1; margin-bottom:.5rem; }
+.ncb04-sub { color:#3d2b5e; opacity:.7; margin-bottom:3rem; max-width:560px; line-height:1.75; }
+.ncb04-list { display:flex; flex-direction:column; gap:1rem; }
+.ncb04-item { background:#fff; border-radius:16px; padding:1.4rem 1.8rem; display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:start; border:1px solid rgba(181,144,241,.15); opacity:0; transform:translateY(28px); transition:opacity .55s ease,transform .55s ease,box-shadow .3s,border-color .3s; }
+.ncb04-item.vis { opacity:1; transform:translateY(0); }
+.ncb04-item.vis:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(181,144,241,.18); border-color:rgba(181,144,241,.35); }
+.ncb04-num { width:38px; height:38px; background:linear-gradient(135deg,#b590f1,#8863c3); color:#fff; border-radius:10px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:1rem; flex-shrink:0; }
+.ncb04-text h3 { font-family:'Cormorant Garamond',serif; color:#9c28b1; margin-bottom:.3rem; font-size:1.05rem; font-weight:700; }
+.ncb04-text p { font-size:.88rem; color:#3d2b5e; opacity:.75; line-height:1.6; margin:0; }
+@media(max-width:768px){ .ncb04{padding:4rem 5%;} }
+</style>
+
+<section class="ncb04">
+  <div class="ncb04-inner">
+    <div class="ncb-label-bar">Inhoud</div>
+    <h2>Wat zit er in The Basics?</h2>
+    <p class="ncb04-sub">168 pagina's strak gestructureerde kennis. Geen nutteloze vulling, elke pagina telt.</p>
+    <div class="ncb04-list">
+      <div class="ncb04-item"><div class="ncb04-num">1</div><div class="ncb04-text"><h3>Anatomie van de natuurlijke nagel &amp; huid</h3><p>Van nagelmatrix tot nagelplaat en nagelriem, je begrijpt hoe alles samenwerkt en waarom dat cruciaal is voor veilig werken.</p></div></div>
+      <div class="ncb04-item"><div class="ncb04-num">2</div><div class="ncb04-text"><h3>De lagen van de nagelplaat</h3><p>Wat gebeurt er als je te agressief vijlt? Waarom hecht product bij de ene klant beter? Je leert de nagel beoordelen zonder schade te veroorzaken.</p></div></div>
+      <div class="ncb04-item"><div class="ncb04-num">3</div><div class="ncb04-text"><h3>Nagelaandoeningen herkennen</h3><p>Wat mag je behandelen, en wat niet? Je leert signalen lezen, wanneer doorverwijzen en hoe je veilig en professioneel werkt.</p></div></div>
+      <div class="ncb04-item"><div class="ncb04-num">4</div><div class="ncb04-text"><h3>Vijlen, tools &amp; penselen</h3><p>Van vijlen en buffers tot nageltools en penselen, elk materiaal uitgelegd met functie, specificaties en aankooptips.</p></div></div>
+      <div class="ncb04-item"><div class="ncb04-num">5</div><div class="ncb04-text"><h3>Freestechnieken &amp; bitjes</h3><p>Welk freestoestel, welke bitjes, wat betekenen de kleuren en gritt? Eindelijk duidelijkheid over wat je echt nodig hebt.</p></div></div>
+      <div class="ncb04-item"><div class="ncb04-num">6</div><div class="ncb04-text"><h3>UV/LED lampen</h3><p>Verschillen, kwaliteit, levensduur, je weet exact wat je aankoopt en waarom het ertoe doet.</p></div></div>
+      <div class="ncb04-item"><div class="ncb04-num">7</div><div class="ncb04-text"><h3>Tips, checklist &amp; slim starten</h3><p>Een gerichte checklist, de meestgemaakte fouten van beginners én hoe je voorkomt dat je geld uitgeeft aan materialen die niet werken.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } }); },{threshold:.1});
+  document.querySelectorAll('.ncb04-item').forEach(function(el,i){ el.style.transitionDelay=(i*.08)+'s'; io.observe(el); });
+})();
+</script>
+
+
+<!-- ============================================================
+     BONUSSEN
+============================================================ -->
+<style>
+.ncb05 { padding:6rem 5%; background:#fdecfc; position:relative; overflow:hidden; text-align:center; }
+.ncb05::after { content:''; position:absolute; bottom:-100px; right:-100px; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle,rgba(181,144,241,.1),transparent 70%); pointer-events:none; }
+.ncb05-inner { max-width:900px; margin:0 auto; }
+.ncb05-head { opacity:0; transform:translateY(20px); transition:opacity .5s ease,transform .5s ease; }
+.ncb05-head.vis { opacity:1; transform:translateY(0); }
+.ncb05 h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:700; color:#9c28b1; margin-bottom:2rem; }
+.ncb05-video-wrap { width:100%; max-width:320px; margin:0 auto 2.5rem; aspect-ratio:16/9; border-radius:16px; overflow:hidden; box-shadow:0 12px 40px rgba(181,144,241,.2); }
+.ncb05-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; margin-bottom:2.5rem; }
+.ncb05-card { background:#fff; border:1px solid rgba(181,144,241,.25); border-radius:20px; padding:2rem 1.5rem; text-align:center; opacity:0; transform:translateY(28px); transition:opacity .55s ease,transform .55s ease,box-shadow .3s; }
+.ncb05-card.vis { opacity:1; transform:translateY(0); }
+.ncb05-card.vis:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(181,144,241,.18); }
+.ncb05-icon { font-size:2.4rem; margin-bottom:1rem; }
+.ncb05-card h3 { font-family:'Cormorant Garamond',serif; color:#9c28b1; margin-bottom:.6rem; font-size:1.2rem; font-weight:700; }
+.ncb05-card p { color:#3d2b5e; opacity:.75; font-size:.9rem; margin:0; line-height:1.65; }
+.ncb05-value { display:inline-block; background:rgba(254,155,0,.12); border:1px solid rgba(254,155,0,.4); border-radius:100px; padding:.5rem 1.6rem; color:#fe9b00; font-weight:700; font-size:1rem; }
+@media(max-width:768px){ .ncb05{padding:4rem 5%;} }
+</style>
+
+<section class="ncb05">
+  <div class="ncb05-inner">
+    <div class="ncb05-head">
+      <div class="ncb-label-bar" style="justify-content:center;">Bonussen</div>
+      <h2>Er zit nog meer bij.</h2>
+    </div>
+    <div class="ncb05-video-wrap">
+      <div class="vfacade" data-vimeo="1218234428" style="padding-top:56.25%;height:0;">
+        <img src="../images/the-basics/The Basic  wit mockup transparant achtergrond.webp" alt="The Basics preview" loading="lazy" style="object-position:center top;">
+      </div>
+    </div>
+    <div class="ncb05-grid">
+      <div class="ncb05-card"><div class="ncb05-icon">🎥</div><h3>23 bonusvideo's</h3><p>Bij elk materiaal een video. Je ziet exact hoe het eruitziet, hoe het werkt en waarop je moet letten, in de praktijk, niet in theorie.</p></div>
+      <div class="ncb05-card"><div class="ncb05-icon">📄</div><h3>Bonus PDF met aankooplinks</h3><p>Productspecificaties en directe aankooplinks zodat je meteen weet wat te bestellen, zonder opnieuw te moeten zoeken.</p></div>
+      <div class="ncb05-card"><div class="ncb05-icon">💬</div><h3>Persoonlijke ondersteuning</h3><p>Vragen na aankoop? Je kunt mij altijd bereiken. Geen onbeantwoorde vragen, geen gissen.</p></div>
+    </div>
+    <div style="margin-bottom:1.5rem;">
+      <img src="../images/the-basics/materialenlijst mooi paars wit BONUS.webp" alt="Bonus materialenlijst" style="max-width:420px;margin:0 auto;border-radius:16px;box-shadow:0 12px 32px rgba(181,144,241,.2);">
+    </div>
+    <span class="ncb05-value">Totale bonuswaarde: €129</span>
+  </div>
+</section>
+
+<script>
+window.addEventListener('load', function(){
+  document.querySelectorAll('.vfacade').forEach(function(el){
+    var id = el.dataset.vimeo;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://player.vimeo.com/video/'+id+'?autoplay=1&muted=1&loop=1&background=1';
+    iframe.allow = 'autoplay; fullscreen';
+    el.appendChild(iframe);
+    setTimeout(function(){ el.classList.add('loaded'); }, 1500);
+  });
+});
+</script>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } }); },{threshold:.12});
+  document.querySelectorAll('.ncb05-head,.ncb05-card').forEach(function(el,i){ el.style.transitionDelay=(i*.1)+'s'; io.observe(el); });
+})();
+</script>
+
+
+<!-- ============================================================
+     PRIJSBLOK (1e)
+============================================================ -->
+<style>
+.ncb06 { padding:7rem 5%; background:#f8f2ff; text-align:center; }
+.ncb06 h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:700; color:#9c28b1; margin-bottom:.5rem; }
+.ncb06-sub { color:#3d2b5e; opacity:.7; margin-bottom:3rem; line-height:1.75; }
+.ncb06-card { max-width:500px; margin:0 auto; background:#fff; border-radius:28px; padding:3rem 2.5rem; box-shadow:0 20px 60px rgba(136,99,195,.18); border:2px solid rgba(181,144,241,.3); position:relative; overflow:hidden; text-align:left; }
+.ncb06-card::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,#b590f1,#fe9b00); }
+.ncb06-badge { position:absolute; top:1.5rem; right:1.5rem; background:#fe9b00; color:#fff; border-radius:100px; padding:.25rem .8rem; font-size:.72rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.ncb06-old { font-size:1.1rem; color:#3d2b5e; opacity:.4; text-decoration:line-through; margin-bottom:.3rem; }
+.ncb06-new { font-family:'Cormorant Garamond',serif; font-size:clamp(3.5rem,8vw,5rem); font-weight:700; color:#8863c3; line-height:1; margin-bottom:.2rem; }
+.ncb06-note { font-size:.82rem; color:#3d2b5e; opacity:.55; margin-bottom:2rem; }
+.ncb06-features { margin-bottom:2rem; display:flex; flex-direction:column; gap:.75rem; list-style:none; padding:0; }
+.ncb06-feat { display:flex; gap:.8rem; align-items:center; font-size:.95rem; color:#3d2b5e; }
+.ncb06-feat::before { content:'✓'; color:#fe9b00; font-weight:900; flex-shrink:0; width:22px; height:22px; background:rgba(254,155,0,.1); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.75rem; }
+.ncb06-btn { display:block; width:100%; background:#fe9b00; color:#fff; padding:1.1rem 2rem; border-radius:100px; font-size:1.1rem; font-weight:800; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 8px 30px rgba(254,155,0,.35); text-align:center; }
+.ncb06-btn:hover { transform:translateY(-3px); box-shadow:0 16px 45px rgba(254,155,0,.55); color:#fff; }
+.ncb06-small { margin-top:1rem; font-size:.8rem; color:#3d2b5e; opacity:.5; text-align:center; }
+@media(max-width:768px){ .ncb06{padding:5rem 5%;} .ncb06-card{padding:2rem 1.5rem;} .ncb06-new{font-size:3.5rem;} .ncb06-btn{font-size:.72rem;padding:.65rem 1.4rem;} }
+</style>
+
+<section class="ncb06">
+  <div class="ncb-label-bar" style="justify-content:center;">Investering</div>
+  <h2>Start vandaag.</h2>
+  <p class="ncb06-sub">Tijdelijk aan de launchprijs. Je verdient dit terug na je eerste slimme aankoop.</p>
+  <div class="ncb06-card">
+    <div class="ncb06-badge">⚡ Limited</div>
+    <div class="ncb06-old">€119</div>
+    <div class="ncb06-new">€45</div>
+    <div class="ncb06-note">eenmalige betaling · levenslange toegang</div>
+    <ul class="ncb06-features">
+      <li class="ncb06-feat">168 pagina's E-book, anatomie + materialen</li>
+      <li class="ncb06-feat">23 bonusvideo's met uitleg per materiaal</li>
+      <li class="ncb06-feat">Bonus PDF met aankooplinks &amp; specificaties</li>
+      <li class="ncb06-feat">Levenslange toegang, inclusief updates</li>
+      <li class="ncb06-feat">Meteen beschikbaar, start vandaag</li>
+      <li class="ncb06-feat">Persoonlijke ondersteuning na aankoop</li>
+    </ul>
+    <a class="ncb06-btn" href="https://naillraftplatform.kennis.shop/pay/thebasics">Ik leer de basics!</a>
+    <p class="ncb06-small">Veilig betalen · Directe toegang</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     RESULTATEN
+============================================================ -->
+<style>
+.ncb07 { padding:6rem 5%; background:radial-gradient(ellipse 60% 80% at 100% 50%,rgba(181,144,241,.12),transparent),#fdecfc; }
+.ncb07-inner { max-width:1000px; margin:0 auto; }
+.ncb07-head { opacity:0; transform:translateY(20px); transition:opacity .5s ease,transform .5s ease; }
+.ncb07-head.vis { opacity:1; transform:translateY(0); }
+.ncb07 h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:700; color:#9c28b1; margin-bottom:3rem; max-width:560px; }
+.ncb07-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.2rem; }
+.ncb07-card { background:#fff; border-radius:16px; padding:1.5rem; border-left:4px solid #b590f1; opacity:0; transform:translateY(28px); transition:opacity .55s ease,transform .55s ease,box-shadow .3s; }
+.ncb07-card.vis { opacity:1; transform:translateY(0); }
+.ncb07-card.vis:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(181,144,241,.2); }
+.ncb07-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:700; color:#8863c3; margin-bottom:.5rem; }
+.ncb07-card p { font-size:.9rem; color:#3d2b5e; opacity:.8; line-height:1.65; margin:0; }
+@media(max-width:768px){ .ncb07{padding:4rem 5%;} }
+</style>
+
+<section class="ncb07">
+  <div class="ncb07-inner">
+    <div class="ncb07-head">
+      <div class="ncb-label-bar">Na The Basics</div>
+      <h2>Wat verandert er voor jou?</h2>
+    </div>
+    <div class="ncb07-grid">
+      <div class="ncb07-card"><h3>🎓 Starten met kennis</h3><p>Je begrijpt hoe de huid en nagel zijn opgebouwd, de basis die alles verandert voor veilige, professionele behandelingen.</p></div>
+      <div class="ncb07-card"><h3>✅ De juiste tools kiezen</h3><p>Geen paniek meer bij vijlen, bitjes en lampen. Je weet wat werkt, wat kwaliteit is en wat gewoon marketingpraat is.</p></div>
+      <div class="ncb07-card"><h3>💰 Slim investeren</h3><p>Bespaar honderden euro's. Je koopt alleen wat je écht nodig hebt, en je weet waarom.</p></div>
+      <div class="ncb07-card"><h3>💪 Zelfverzekerd werken</h3><p>Een sterke basis voor elke toekomstige opleiding of klantbehandeling. Geen twijfels, geen gissen.</p></div>
+      <div class="ncb07-card"><h3>⭐ Betere resultaten</h3><p>Bewuste keuzes leiden tot mooie én duurzame resultaten. Je klanten voelen het verschil.</p></div>
+      <div class="ncb07-card"><h3>🚀 Vliegende start</h3><p>Je begint je opleiding al met voorkennis. Geen verloren tijd, geen onnodige frustratie.</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } }); },{threshold:.12});
+  document.querySelectorAll('.ncb07-head,.ncb07-card').forEach(function(el,i){ el.style.transitionDelay=(i*.09)+'s'; io.observe(el); });
+})();
+</script>
+
+
+<!-- ============================================================
+     OVER TABITHA
+============================================================ -->
+<style>
+.ncb08 { padding:6rem 5%; background:#f8f2ff; }
+.ncb08-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.ncb08-img { position:relative; }
+.ncb08-img img { width:100%; border-radius:24px; object-fit:cover; max-height:480px; }
+.ncb08-img::after { content:''; position:absolute; inset:-12px; border:2px solid rgba(181,144,241,.3); border-radius:30px; z-index:-1; }
+.ncb08 h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:700; color:#9c28b1; margin-bottom:1.5rem; }
+.ncb08-stats { display:flex; gap:2rem; margin:2rem 0; flex-wrap:wrap; }
+.ncb08-stat strong { display:block; font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:#8863c3; }
+.ncb08-stat span { font-size:.8rem; color:#3d2b5e; opacity:.55; }
+.ncb08 p { color:#3d2b5e; opacity:.82; line-height:1.8; margin-bottom:1.2rem; font-size:.97rem; }
+.ncb08-sc { border-radius:16px; overflow:hidden; margin-top:1.5rem; border:1px solid rgba(181,144,241,.25); }
+@media(max-width:768px){ .ncb08{padding:4rem 5%;} .ncb08-inner{grid-template-columns:1fr;gap:2.5rem;} .ncb08-img img{max-height:300px;} .ncb08-stats{justify-content:center;} }
+</style>
+
+<section class="ncb08">
+  <div class="ncb08-inner">
+    <div class="ncb08-img">
+      <img src="../images/the-basics/Magazines Mockup, ebook the basics cover en open pagina.webp" alt="The Basics ebook">
+    </div>
+    <div>
+      <div class="ncb-label-bar">Over Tabitha</div>
+      <h2>Hallo, toekomstig squad member!</h2>
+      <div class="ncb08-stats">
+        <div class="ncb08-stat"><strong>18+</strong><span>jaar ervaring</span></div>
+        <div class="ncb08-stat"><strong>800+</strong><span>online cursisten</span></div>
+        <div class="ncb08-stat"><strong>350+</strong><span>live opgeleid</span></div>
+      </div>
+      <p>Ik ben Tabitha, nagelstyliste en docent. Ik rolde op mijn 17e dit vak in en werd er meteen verliefd op. Maar ik liep constant tegen dezelfde muur: slechte begeleiding na aankoop, onduidelijke specificaties, en opleidingen die niet alles deelden.</p>
+      <p>Ik wilde dat veranderen. The Basics is de gids die ik zelf wilde hebben. Eerlijk, volledig, zonder poespas. Ik verkoop zelf geen materialen, mijn enige doel is jou informeren over wat écht werkt.</p>
+      <div class="ncb08-sc">
+        <iframe width="100%" height="200" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2187091288%3Fsecret_token%3Ds-jgipW4TtEBM&color=%23b590f1&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FINALE CTA
+============================================================ -->
+<style>
+.ncb09 { padding:7rem 5%; text-align:center; background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(181,144,241,.18),transparent 70%),#f8f2ff; }
+.ncb09 h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:700; color:#9c28b1; margin-bottom:1rem; max-width:600px; margin-left:auto; margin-right:auto; }
+.ncb09 p { color:#3d2b5e; opacity:.75; max-width:480px; margin:0 auto 2.5rem; line-height:1.75; }
+.ncb09-btn { display:inline-flex; align-items:center; gap:.6rem; background:#fe9b00; color:#fff; padding:1rem 2.2rem; border-radius:100px; font-size:1rem; font-weight:700; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 8px 30px rgba(254,155,0,.3); }
+.ncb09-btn:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(254,155,0,.4); color:#fff; }
+.ncb09-sub { margin-top:1rem; font-size:.8rem; color:#3d2b5e; opacity:.5; }
+@media(max-width:768px){ .ncb09{padding:5rem 5%;} .ncb09-btn{font-size:.72rem;padding:.65rem 1.4rem;} }
+</style>
+
+<section class="ncb09">
+  <h2>Stop met gokken. Start met weten.</h2>
+  <p>The Basics geeft je alles wat je nodig hebt om professioneel te starten, voor de prijs van één verkeerde aankoop.</p>
+  <a class="ncb09-btn" href="https://naillraftplatform.kennis.shop/pay/thebasics">Ik leer de basics! →</a>
+  <div class="ncb09-sub">Tijdelijk €45 — Levenslange toegang</div>
+</section>
+
+
+<!-- ============================================================
+     PRIJSBLOK (2e — na CTA)
+============================================================ -->
+<section class="ncb06" style="background:#fdecfc;">
+  <div class="ncb-label-bar" style="justify-content:center;">Investering</div>
+  <h2>Start vandaag.</h2>
+  <p class="ncb06-sub">Tijdelijk aan de launchprijs. Je verdient dit terug na je eerste slimme aankoop.</p>
+  <div class="ncb06-card">
+    <div class="ncb06-badge">⚡ Limited</div>
+    <div class="ncb06-old">€119</div>
+    <div class="ncb06-new">€45</div>
+    <div class="ncb06-note">eenmalige betaling · levenslange toegang</div>
+    <ul class="ncb06-features">
+      <li class="ncb06-feat">168 pagina's E-book, anatomie + materialen</li>
+      <li class="ncb06-feat">23 bonusvideo's met uitleg per materiaal</li>
+      <li class="ncb06-feat">Bonus PDF met aankooplinks &amp; specificaties</li>
+      <li class="ncb06-feat">Levenslange toegang, inclusief updates</li>
+      <li class="ncb06-feat">Meteen beschikbaar, start vandaag</li>
+      <li class="ncb06-feat">Persoonlijke ondersteuning na aankoop</li>
+    </ul>
+    <a class="ncb06-btn" href="https://naillraftplatform.kennis.shop/pay/thebasics">Ik leer de basics!</a>
+    <p class="ncb06-small">Veilig betalen · Directe toegang</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     INSTAGRAM
+============================================================ -->
+<style>
+.ig-section { background:#f8f2ff; padding:5rem 2rem; overflow:hidden; }
+.ig-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.ig-lbl { display:inline-flex; align-items:center; gap:.5rem; font-size:.73rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#b590f1; margin-bottom:1rem; }
+.ig-lbl::before { content:''; width:20px; height:1.5px; background:#b590f1; display:inline-block; }
+.ig-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; line-height:1.1; color:#120820; margin-bottom:1rem; }
+.ig-text h2 em { font-style:italic; color:#9c28b1; }
+.ig-text p { font-size:.97rem; color:#5e4878; line-height:1.8; margin-bottom:2rem; max-width:420px; }
+.ig-btn { display:inline-flex; align-items:center; gap:.7rem; background:linear-gradient(135deg,#9c28b1 0%,#ff1fe3 100%); color:#fff; font-weight:700; font-size:.82rem; padding:.75rem 1.6rem; border-radius:60px; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 4px 20px rgba(156,40,177,.3); }
+.ig-btn:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(156,40,177,.4); color:#fff; }
+.ig-btn-icon { width:20px; height:20px; flex-shrink:0; }
+.ig-tags { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:1.5rem; }
+.ig-tag { font-size:.75rem; color:#b590f1; font-weight:500; }
+.ig-visual { display:flex; justify-content:center; align-items:center; position:relative; }
+.ig-visual::before { content:''; position:absolute; width:340px; height:340px; border-radius:50%; background:linear-gradient(135deg,rgba(181,144,241,.18) 0%,rgba(255,31,227,.12) 100%); z-index:0; }
+.ig-phone { position:relative; z-index:1; max-width:260px; width:100%; filter:drop-shadow(0 24px 48px rgba(156,40,177,.22)); animation:igFloat 4s ease-in-out infinite; }
+.ig-phone img { width:100%; }
+@media(max-width:900px){ .ig-inner{grid-template-columns:1fr;gap:3rem;text-align:center;} .ig-lbl{justify-content:center;} .ig-text p{margin-left:auto;margin-right:auto;} .ig-tags{justify-content:center;} .ig-btn{margin:0 auto;} .ig-visual::before{width:260px;height:260px;} .ig-phone{max-width:200px;} }
+@media(max-width:600px){ .ig-section{padding:3.5rem 1.2rem;} }
+</style>
+
+<div class="ig-section">
+  <div class="ig-inner">
+    <div class="ig-text">
+      <div class="ig-lbl">Instagram</div>
+      <h2>Volg je mij al<br><em>On The Gram?</em></h2>
+      <p>Zin om geïnspireerd te worden? Kom er gezellig bij, ik post regelmatig content die je inspireert en geeft een inkijk in mijn achter-de-schermen leven en hoe ik mijn onderneming run.</p>
+      <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="ig-btn">
+        <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Ga naar Instagram
+      </a>
+      <div class="ig-tags">
+        <span class="ig-tag">#nailcraft</span>
+        <span class="ig-tag">#thebasics</span>
+        <span class="ig-tag">#nagels</span>
+        <span class="ig-tag">#behindthescenes</span>
+      </div>
+    </div>
+    <div class="ig-visual">
+      <div class="ig-phone">
+        <img src="../images/upperforms/instagram mockup telefoon.webp" alt="NailCraft Instagram op telefoon" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="ncb-footer">
+  <p>© Tabitha – NailCraft Platform &nbsp;·&nbsp; <a href="../online-opleidingen.html">Alle opleidingen</a> &nbsp;·&nbsp; <a href="../index.html">Home</a></p>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="ncb-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Terug naar boven">↑</button>
+
+<script>
+window.addEventListener('scroll', function(){
+  var btn = document.getElementById('ncb-top');
+  if(window.scrollY > 400) btn.classList.add('show'); else btn.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
