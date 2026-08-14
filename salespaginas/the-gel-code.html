@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Gel Code – e-book cursus | NailCraft Platform</title>
+  <meta name="description" content="Begrijp de wetenschap achter gelproducten. Rubber Based, Hardgel en Acrygel volledig uitgelegd. 75 pagina's vakkennis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gc-cream: #fcffec;
+      --gc-mint: #ebf6f0;
+      --gc-teal: #97c4c1;
+      --gc-teal-dark: #6aadaa;
+      --gc-orange: #fe9b00;
+      --gc-yellow: #f9ffb5;
+      --gc-dark: #1a2520;
+      --gc-mid: #3a4f48;
+      --gc-white: #ffffff;
+    }
+    body { font-family: 'DM Sans', sans-serif; color: var(--gc-dark); background: var(--gc-cream); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; }
+
+    /* NAV */
+    .gc-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .7rem clamp(1.2rem,4vw,3rem);
+      background: rgba(252,255,236,.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(151,196,193,.3);
+      box-shadow: 0 2px 12px rgba(151,196,193,.1);
+    }
+    .gc-nav img { height: 32px; }
+    .gc-nav-cta {
+      background: var(--gc-orange); color: var(--gc-dark);
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: .82rem;
+      padding: .5rem 1.2rem; border-radius: 50px; text-decoration: none;
+      box-shadow: 0 3px 12px rgba(254,155,0,.35); transition: transform .2s, box-shadow .2s;
+      white-space: nowrap;
+    }
+    .gc-nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(254,155,0,.5); }
+
+    /* SCROLL TO TOP */
+    #gc-top-btn {
+      position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800;
+      width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer;
+      background: var(--gc-orange); color: var(--gc-dark); font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(254,155,0,.35);
+      opacity: 0; transform: translateY(12px); transition: opacity .3s, transform .3s;
+    }
+    #gc-top-btn.show { opacity: 1; transform: translateY(0); }
+    #gc-top-btn:hover { background: #e88a00; }
+
+    /* FOOTER */
+    .gc-footer { background: #1a2520; color: rgba(255,255,255,.45); text-align: center; padding: 2rem 1.5rem; font-size: .83rem; }
+    .gc-footer a { color: var(--gc-teal); text-decoration: none; }
+    .gc-footer a:hover { text-decoration: underline; }
+
+    /* GEDEELD */
+    .gc-inner { max-width: 900px; margin: 0 auto; }
+    .gc-label { display: inline-block; font-size: .61rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; color: var(--gc-teal-dark); margin-bottom: .7rem; font-family: 'DM Sans', sans-serif; }
+    .gc-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.85rem,5vw,2.8rem); line-height: 1.1; margin-bottom: 1.1rem; }
+    .gc-body { font-size: .96rem; line-height: 1.78; color: var(--gc-mid); max-width: 620px; font-family: 'DM Sans', sans-serif; }
+    .gc-btn {
+      display: inline-block; background: var(--gc-orange); color: var(--gc-dark);
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: .92rem;
+      padding: 1rem 2.4rem; border-radius: 50px; text-decoration: none;
+      box-shadow: 0 8px 30px rgba(254,155,0,.38); transition: transform .2s, box-shadow .2s; border: none; cursor: pointer;
+    }
+    .gc-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(254,155,0,.55); color: var(--gc-dark); }
+    @media(max-width:767px){ .gc-btn{ font-size:.70rem; padding:.65rem 1.4rem; box-shadow:0 4px 14px rgba(254,155,0,.32); } }
+
+    /* SCROLL REVEAL */
+    .gc-reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
+    .gc-reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes gc-fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
+    @keyframes gc-fadeDown { from{opacity:0;transform:translateY(-14px);}to{opacity:1;transform:translateY(0);} }
+    @keyframes gc-scrollLeft { from{transform:translateX(0);}to{transform:translateX(-50%);} }
+    @keyframes gcFloat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+
+    /* VIMEO FACADE */
+    .vfacade { position:relative; width:100%; height:100%; background:#000; border-radius:20px; overflow:hidden; }
+    .vfacade img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:opacity .5s ease; }
+    .vfacade iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+    .vfacade.loaded img { opacity:0; pointer-events:none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="gc-nav">
+  <a href="../online-opleidingen.html">
+    <img src="../images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform">
+  </a>
+  <a href="https://naillraftplatform.kennis.shop/pay/thegelcode" class="gc-nav-cta">Ik kraak de code →</a>
+</nav>
+
+
+<!-- ================================================
+     HERO
+================================================ -->
+<style>
+.gc-hero {
+  background: var(--gc-cream);
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 7rem 1.5rem 5rem; overflow: hidden;
+}
+.gc-hero-blob1 { position:absolute; top:-140px; right:-140px; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(151,196,193,.32) 0%,transparent 68%); pointer-events:none; }
+.gc-hero-blob2 { position:absolute; bottom:-100px; left:-100px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(249,255,181,.6) 0%,transparent 70%); pointer-events:none; }
+.gc-hero-badge { display:inline-flex; align-items:center; gap:.4rem; background:var(--gc-yellow); color:var(--gc-dark); font-size:.66rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; padding:.35rem 1rem; border-radius:50px; margin-bottom:1.6rem; position:relative; z-index:2; animation:gc-fadeDown .6s ease both; font-family:'DM Sans',sans-serif; }
+.gc-hero h1 { font-family:'Cormorant Garamond',serif; position:relative; z-index:2; font-size:clamp(3.4rem,10vw,7rem); color:var(--gc-dark); line-height:1; letter-spacing:-.02em; animation:gc-fadeUp .7s .1s ease both; }
+.gc-hero h1 .gc-accent { color:var(--gc-teal-dark); font-style:italic; }
+.gc-hero h1 .gc-highlight { color:var(--gc-orange); }
+.gc-hero-sub { position:relative; z-index:2; max-width:560px; margin:1.6rem auto 0; font-size:clamp(.97rem,2.5vw,1.12rem); color:var(--gc-mid); font-weight:400; line-height:1.78; animation:gc-fadeUp .7s .22s ease both; font-family:'DM Sans',sans-serif; }
+.gc-hero-pills { position:relative; z-index:2; display:flex; flex-wrap:wrap; justify-content:center; gap:.45rem; margin-top:1.5rem; animation:gc-fadeUp .7s .32s ease both; }
+.gc-pill { background:var(--gc-mint); color:var(--gc-mid); border:1px solid rgba(151,196,193,.45); font-size:.74rem; font-weight:500; padding:.28rem .85rem; border-radius:50px; font-family:'DM Sans',sans-serif; }
+.gc-hero-ctas { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:.9rem; margin-top:2.2rem; animation:gc-fadeUp .7s .42s ease both; }
+.gc-hero-ghost { font-family:'DM Sans',sans-serif; font-size:.8rem; font-weight:500; color:var(--gc-mid); text-decoration:underline; cursor:pointer; }
+.gc-hero-video { position:relative; z-index:2; margin-top:3.5rem; max-width:700px; width:100%; border-radius:20px; overflow:hidden; box-shadow:0 24px 80px rgba(151,196,193,.28),0 6px 24px rgba(0,0,0,.07); animation:gc-fadeUp .85s .55s ease both; aspect-ratio:16/9; }
+.gc-hero-trust { position:relative; z-index:2; display:flex; align-items:center; gap:1.6rem; flex-wrap:wrap; justify-content:center; margin-top:2.2rem; padding-top:2rem; border-top:1px solid rgba(151,196,193,.35); animation:gc-fadeUp .7s .7s ease both; }
+.gc-trust-item { display:flex; align-items:center; gap:.4rem; font-size:.78rem; color:var(--gc-mid); font-weight:500; font-family:'DM Sans',sans-serif; }
+.gc-trust-dot { color:var(--gc-teal-dark); font-size:.7rem; }
+@media(max-width:767px){ .gc-hero{padding:5.5rem 1.2rem 4rem;} }
+</style>
+
+<section class="gc-hero">
+  <div class="gc-hero-blob1"></div>
+  <div class="gc-hero-blob2"></div>
+  <div class="gc-hero-badge">✦ Online E-book Cursus</div>
+  <h1>The <span class="gc-accent">Gel</span><br><span class="gc-highlight">Code</span></h1>
+  <p class="gc-hero-sub">Begrijp de wetenschap achter gelproducten. Werk met 100% vertrouwen. Geen lifting meer, geen verkeerde gelkeuzes.</p>
+  <div class="gc-hero-pills">
+    <span class="gc-pill">Rubber Based</span>
+    <span class="gc-pill">Hardgel</span>
+    <span class="gc-pill">Acrygel</span>
+    <span class="gc-pill">Architectuur</span>
+    <span class="gc-pill">Problemen oplossen</span>
+  </div>
+  <div class="gc-hero-ctas">
+    <a href="https://naillraftplatform.kennis.shop/pay/thegelcode" class="gc-btn">YES! Ik wil dit →</a>
+    <a href="#gc-inhoud" class="gc-hero-ghost">Bekijk de inhoud ↓</a>
+  </div>
+  <div class="gc-hero-video">
+    <div class="vfacade" data-vimeo="1218233923">
+      <img src="../images/the-gel-code/The Gel Code mockup volledig transparant (1).webp" alt="The Gel Code preview" loading="eager">
+    </div>
+  </div>
+  <div class="gc-hero-trust">
+    <div class="gc-trust-item"><span class="gc-trust-dot">✦</span> 75 pagina's vakkennis</div>
+    <div class="gc-trust-item"><span class="gc-trust-dot">✦</span> Levenslange toegang</div>
+    <div class="gc-trust-item"><span class="gc-trust-dot">✦</span> Gratis updates voor altijd</div>
+    <div class="gc-trust-item"><span class="gc-trust-dot">✦</span> 18+ jaar ervaring</div>
+  </div>
+</section>
+
+<script>
+window.addEventListener('load', function(){
+  document.querySelectorAll('.vfacade').forEach(function(el){
+    var id = el.dataset.vimeo;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://player.vimeo.com/video/'+id+'?autoplay=1&muted=1&loop=1&background=1';
+    iframe.allow = 'autoplay; fullscreen';
+    el.appendChild(iframe);
+    setTimeout(function(){ el.classList.add('loaded'); }, 1500);
+  });
+});
+</script>
+
+
+<!-- ================================================
+     PIJNPUNTEN
+================================================ -->
+<style>
+.gc-pain { background: var(--gc-mint); padding: 5rem 1.5rem; }
+.gc-pain-list { list-style:none; margin:2rem 0 0; padding:0; display:flex; flex-direction:column; gap:.8rem; }
+.gc-pain-list li { display:flex; align-items:flex-start; gap:1rem; background:#fff; border:1px solid rgba(151,196,193,.35); border-radius:12px; padding:.9rem 1.2rem; color:var(--gc-mid); font-size:.92rem; line-height:1.55; font-family:'DM Sans',sans-serif; }
+.gc-pain-list .gc-icon { font-size:1rem; flex-shrink:0; margin-top:.15rem; }
+.gc-pain-bridge { margin-top:2.8rem; padding:1.8rem 2rem; background:linear-gradient(135deg,var(--gc-teal) 0%,var(--gc-teal-dark) 100%); border-radius:18px; text-align:center; opacity:0; transform:translateY(26px); transition:opacity .6s ease,transform .6s ease; }
+.gc-pain-bridge.visible { opacity:1; transform:translateY(0); }
+.gc-pain-bridge p { color:var(--gc-dark); font-size:1.05rem; font-weight:600; line-height:1.65; margin:0; font-family:'DM Sans',sans-serif; }
+.gc-pain-bridge em { font-style:italic; font-family:'Cormorant Garamond',serif; font-size:1.3rem; display:block; margin-top:.35rem; color:var(--gc-dark); }
+@media(max-width:767px){ .gc-pain{padding:4rem 1.2rem;} }
+</style>
+
+<section class="gc-pain">
+  <div class="gc-inner">
+    <span class="gc-label">Herkenbaar?</span>
+    <h2 class="gc-title">Ben je het beu om…</h2>
+    <ul class="gc-pain-list">
+      <li><span class="gc-icon">😤</span>Steeds opnieuw gel te zien loskomen zonder te begrijpen waarom?</li>
+      <li><span class="gc-icon">🤯</span>Producten te gebruiken zonder echt te weten hoe ze werken?</li>
+      <li><span class="gc-icon">📚</span>Geen duidelijke structuur te vinden en telkens info te missen?</li>
+      <li><span class="gc-icon">🤷</span>Niet te weten welk product je moet kiezen voor welk resultaat?</li>
+      <li><span class="gc-icon">🔍</span>Moeilijk in te schatten waar het precies fout loopt bij je klanten?</li>
+    </ul>
+    <div class="gc-pain-bridge">
+      <p>Er is te veel keuze en te weinig echte kennis gedeeld.<br>
+      <em>Wat als je wél precies wist hoe het moest?</em></p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } }); },{threshold:.15});
+  document.querySelectorAll('.gc-pain-bridge').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+
+<!-- ================================================
+     WAT JE LEERT
+================================================ -->
+<style>
+.gc-what { background: var(--gc-cream); padding: 5rem 1.5rem; }
+.gc-what-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin-top:2.5rem; }
+@media(max-width:580px){ .gc-what-grid{grid-template-columns:1fr;} }
+.gc-what-card { background:#fff; border-radius:16px; padding:1.5rem; border:1px solid rgba(151,196,193,.28); opacity:0; transform:translateY(22px); transition:opacity .5s ease,transform .5s ease,box-shadow .3s; }
+.gc-what-card.visible { opacity:1; transform:translateY(0); }
+.gc-what-card:hover { box-shadow:0 12px 40px rgba(151,196,193,.22); transform:translateY(-3px); }
+.gc-what-card .gc-num { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:var(--gc-teal); line-height:1; margin-bottom:.5rem; }
+.gc-what-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700; margin:0 0 .35rem; color:var(--gc-dark); }
+.gc-what-card p { font-size:.84rem; color:var(--gc-mid); line-height:1.6; margin:0; font-family:'DM Sans',sans-serif; }
+@media(max-width:767px){ .gc-what{padding:4rem 1.2rem;} }
+</style>
+
+<section class="gc-what">
+  <div class="gc-inner">
+    <span class="gc-label">Wat je leert</span>
+    <h2 class="gc-title">Alles in 1 complete gids</h2>
+    <p class="gc-body">Van chemische samenstelling tot praktijkgerichte technieken, na The Gel Code begrijp je niet alleen hóé gel werkt, maar ook <em>waarom</em>.</p>
+    <div class="gc-what-grid">
+      <div class="gc-what-card"><div class="gc-num">01</div><h3>De chemie achter gel</h3><p>Acrylaten, crosslinks, polymerisatie, je begrijpt de bouwstenen van elk product zodat je nooit meer blind koopt.</p></div>
+      <div class="gc-what-card"><div class="gc-num">02</div><h3>Rubber Based, Hardgel &amp; Acrygel</h3><p>Alle 3 grondig uitgelegd: wanneer gebruik je wat, voor welke nagelplaat, en waarom?</p></div>
+      <div class="gc-what-card"><div class="gc-num">03</div><h3>Perfecte architectuur</h3><p>Geen te bolle, dikke of platte nagels meer. Leer de correcte apex bouwen voor een langdurig resultaat.</p></div>
+      <div class="gc-what-card"><div class="gc-num">04</div><h3>Problemen oplossen</h3><p>Lifting, scheuren, loslating, oorzaken én concrete oplossingen per product en techniek.</p></div>
+      <div class="gc-what-card"><div class="gc-num">05</div><h3>Productchoice per nageltype</h3><p>Flexibele nagel, beschadigde plaat, dunne nagels, jij maakt voortaan altijd de juiste keuze.</p></div>
+      <div class="gc-what-card"><div class="gc-num">06</div><h3>Vergelijkingstabel + Q&amp;A</h3><p>Alle info overzichtelijk naast elkaar. Plus de meest gestelde vragen helder beantwoord.</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ setTimeout(function(){ e.target.classList.add('visible'); },parseInt(e.target.dataset.d||0)); io.unobserve(e.target); } }); },{threshold:.1});
+  document.querySelectorAll('.gc-what-card').forEach(function(c,i){ c.dataset.d=i*80; io.observe(c); });
+})();
+</script>
+
+
+<!-- ================================================
+     FOTO STRIP
+================================================ -->
+<style>
+.gc-photo-strip { background:var(--gc-mint); padding:3rem 0; overflow:hidden; }
+.gc-photo-inner { display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; max-width:900px; margin:0 auto; padding:0 1.5rem; }
+@media(max-width:640px){ .gc-photo-inner{display:flex;flex-wrap:nowrap;gap:.8rem;padding:0 1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none;} .gc-photo-inner::-webkit-scrollbar{display:none;} .gc-photo-inner>div{flex:0 0 64vw;scroll-snap-align:start;} }
+.gc-photo-tile { border-radius:14px; overflow:hidden; aspect-ratio:4/3; }
+.gc-photo-tile img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s; }
+.gc-photo-tile:hover img { transform:scale(1.04); }
+.gc-photo-label { font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gc-teal-dark); text-align:center; margin-top:.5rem; font-family:'DM Sans',sans-serif; }
+</style>
+
+<div class="gc-photo-strip">
+  <div class="gc-photo-inner">
+    <div>
+      <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based aanbrengen.webp" alt="Rubber based gel" loading="lazy"></div>
+      <p class="gc-photo-label">Rubber Based</p>
+    </div>
+    <div>
+      <div class="gc-photo-tile"><img src="../images/the-gel-code/Hardgel aanbrengen.webp" alt="Hardgel" loading="lazy"></div>
+      <p class="gc-photo-label">Hardgel</p>
+    </div>
+    <div>
+      <div class="gc-photo-tile"><img src="../images/the-gel-code/Hardgel aanbrengen3.webp" alt="Acrygel" loading="lazy"></div>
+      <p class="gc-photo-label">Acrygel</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================
+     INHOUD / HOOFDSTUKKEN
+================================================ -->
+<style>
+.gc-chapters { background:var(--gc-cream); padding:5rem 1.5rem; }
+.gc-chapters-grid { display:flex; flex-direction:column; gap:.85rem; margin-top:2.5rem; }
+.gc-chapter-row { display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:start; background:#fff; border-radius:14px; padding:1.2rem 1.4rem; border-left:4px solid var(--gc-teal); opacity:0; transform:translateX(-18px); transition:opacity .5s ease,transform .5s ease; }
+.gc-chapter-row.visible { opacity:1; transform:translateX(0); }
+.gc-chapter-num { font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:700; color:var(--gc-teal); line-height:1; min-width:2.4rem; }
+.gc-chapter-row h3 { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:700; color:var(--gc-dark); margin:0 0 .3rem; }
+.gc-chapter-row p { font-size:.83rem; color:var(--gc-mid); line-height:1.55; margin:0; font-family:'DM Sans',sans-serif; }
+@media(max-width:767px){ .gc-chapters{padding:4rem 1.2rem;} }
+</style>
+
+<section class="gc-chapters" id="gc-inhoud">
+  <div class="gc-inner">
+    <span class="gc-label">Inhoud</span>
+    <h2 class="gc-title">Wat vind je in The Gel Code?</h2>
+    <p class="gc-body">75 pagina's gestructureerde vakkennis, opgebouwd van chemische basis tot hands-on techniek en probleemoplossing.</p>
+    <div class="gc-chapters-grid">
+      <div class="gc-chapter-row"><div class="gc-chapter-num">2</div><div><h3>De Basis — Wat je móét weten</h3><p>De chemie achter gelproducten: acrylaten, crosslinks en polymerisatie. Een goed resultaat start niet bij de applicatie, maar bij begrip van je product.</p></div></div>
+      <div class="gc-chapter-row"><div class="gc-chapter-num">3</div><div><h3>Rubber Based — De flexibele held</h3><p>BIAB volledig uitgelegd: hechting, dunne apex, aceton, dos &amp; don'ts en een stap-voor-stap stappenplan met reflectietips.</p></div></div>
+      <div class="gc-chapter-row"><div class="gc-chapter-num">4</div><div><h3>Hardgels — De alleskunner</h3><p>Buildergels, liquid builder, sculptgel, upperforms, sjablonen, Easy Nails techniek en de concave freestechniek voor 4 weken durende resultaten.</p></div></div>
+      <div class="gc-chapter-row"><div class="gc-chapter-num">5</div><div><h3>Acrygel — Sterk maar soepel</h3><p>Hybride product met silica, juiste apex, aparte penselenset, modelleren met cleanser en tips voor elke vorm.</p></div></div>
+      <div class="gc-chapter-row"><div class="gc-chapter-num">6</div><div><h3>Vergelijkingstabel</h3><p>Alle 3 producten naast elkaar op flexibiliteit, sterkte, uitharding, verwijdering en geschiktheid nageltype. In één oogopslag duidelijk.</p></div></div>
+      <div class="gc-chapter-row"><div class="gc-chapter-num">7</div><div><h3>Problemen Oplossen — Q&amp;A</h3><p>Scheuren, loslating, slechte verwijdering, lifting, oorzaken én concrete oplossingen. Geen giswerk meer.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ setTimeout(function(){ e.target.classList.add('visible'); },parseInt(e.target.dataset.d||0)); io.unobserve(e.target); } }); },{threshold:.1});
+  document.querySelectorAll('.gc-chapter-row').forEach(function(r,i){ r.dataset.d=i*65; io.observe(r); });
+})();
+</script>
+
+
+<!-- ================================================
+     PRICING (1e)
+================================================ -->
+<style>
+.gc-pricing { background:var(--gc-mint); padding:5rem 1.5rem; text-align:center; }
+.gc-pricing-card { max-width:520px; margin:2.5rem auto 0; background:#fff; border-radius:24px; padding:2.5rem 2rem; box-shadow:0 20px 60px rgba(151,196,193,.22); position:relative; overflow:hidden; text-align:left; }
+.gc-pricing-card::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--gc-teal),var(--gc-orange)); }
+.gc-pricing-badge { display:inline-block; background:var(--gc-yellow); color:var(--gc-dark); font-size:.61rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.28rem .9rem; border-radius:50px; margin-bottom:1.2rem; font-family:'DM Sans',sans-serif; }
+.gc-price-row { display:flex; align-items:baseline; gap:.5rem; margin-bottom:.4rem; }
+.gc-price-old { font-size:1.05rem; color:#bbb; text-decoration:line-through; font-family:'DM Sans',sans-serif; }
+.gc-price-new { font-family:'Cormorant Garamond',serif; font-size:3.4rem; font-weight:700; color:var(--gc-dark); line-height:1; }
+.gc-price-euro { font-size:1.7rem; color:var(--gc-dark); align-self:flex-start; margin-top:.5rem; font-family:'Cormorant Garamond',serif; }
+.gc-pricing-note { font-size:.75rem; color:#bbb; margin-bottom:1.8rem; font-family:'DM Sans',sans-serif; }
+.gc-pricing-list { list-style:none; padding:0; margin:0 0 2rem; display:flex; flex-direction:column; gap:.65rem; }
+.gc-pricing-list li { display:flex; align-items:flex-start; gap:.7rem; font-size:.88rem; line-height:1.5; color:var(--gc-dark); font-family:'DM Sans',sans-serif; }
+.gc-pricing-list .gc-dot { color:var(--gc-orange); font-size:1rem; flex-shrink:0; margin-top:.1rem; }
+.gc-pricing-btn { display:block; width:100%; text-align:center; background:var(--gc-orange); color:var(--gc-dark); font-family:'DM Sans',sans-serif; font-weight:700; font-size:1rem; padding:1.1rem 2rem; border-radius:50px; text-decoration:none; box-shadow:0 8px 30px rgba(254,155,0,.38); transition:transform .2s,box-shadow .2s; }
+.gc-pricing-btn:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(254,155,0,.55); color:var(--gc-dark); }
+.gc-pricing-guarantee { margin-top:1.4rem; background:var(--gc-cream); border-radius:12px; padding:.85rem 1rem; font-size:.76rem; color:var(--gc-mid); line-height:1.5; border:1px solid rgba(151,196,193,.3); text-align:center; font-family:'DM Sans',sans-serif; }
+@media(max-width:767px){ .gc-pricing{padding:4rem 1.2rem;} .gc-pricing-btn{font-size:.70rem;padding:.65rem 1.4rem;box-shadow:0 4px 14px rgba(254,155,0,.32);} }
+</style>
+
+<section class="gc-pricing">
+  <div class="gc-inner">
+    <span class="gc-label">Investering</span>
+    <h2 class="gc-title">Start vandaag</h2>
+    <div class="gc-pricing-card">
+      <div class="gc-pricing-badge">⏳ Tijdelijk aan deze prijs</div>
+      <div class="gc-price-row">
+        <span class="gc-price-old">€65</span>
+        <span class="gc-price-euro">€</span>
+        <span class="gc-price-new">45</span>
+      </div>
+      <p class="gc-pricing-note">Eenmalige betaling · Geen abonnement</p>
+      <ul class="gc-pricing-list">
+        <li><span class="gc-dot">✦</span>Volledig e-book van 75 pagina's, meteen beschikbaar</li>
+        <li><span class="gc-dot">✦</span>Alle soorten gel uitgelegd met stap-voor-stap technieken</li>
+        <li><span class="gc-dot">✦</span>Vergelijkingstabel + volledige Q&amp;A probleemoplossing</li>
+        <li><span class="gc-dot">✦</span>Levenslange toegang, je verliest nooit je cursus</li>
+        <li><span class="gc-dot">✦</span><strong>Gratis updates voor altijd</strong>, nieuwe info? Jij krijgt die erbij.</li>
+        <li><span class="gc-dot">✦</span>Persoonlijke ondersteuning na aankoop</li>
+      </ul>
+      <a href="https://naillraftplatform.kennis.shop/pay/thegelcode" class="gc-pricing-btn">Ik kraak de code! →</a>
+      <div class="gc-pricing-guarantee">🔒 Direct toegang na betaling · Leer op je eigen tempo · Levenslange toegang incl. gratis updates</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     MIDPAGE CTA (parallax foto)
+================================================ -->
+<style>
+.gc-midcta { position:relative; min-height:420px; display:flex; align-items:center; justify-content:center; text-align:center; padding:5rem 1.5rem; overflow:hidden; }
+.gc-midcta-bg { position:absolute; inset:0; background-image:url('../images/the-gel-code/Hardgel aanbrengen2.webp'); background-size:cover; background-position:center; }
+@media(min-width:768px){ .gc-midcta-bg{background-attachment:fixed;} }
+.gc-midcta-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(26,37,32,.78) 0%,rgba(151,196,193,.35) 100%); }
+.gc-midcta-content { position:relative; z-index:2; max-width:680px; opacity:0; transform:translateY(26px); transition:opacity .6s ease,transform .6s ease; }
+.gc-midcta-content.visible { opacity:1; transform:translateY(0); }
+.gc-midcta-content h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5vw,3rem); color:#fff; margin:0 0 1.1rem; }
+.gc-midcta-content h2 em { color:var(--gc-orange); }
+.gc-midcta-content p { color:rgba(255,255,255,.78); font-size:1rem; line-height:1.72; margin:0 0 2rem; font-family:'DM Sans',sans-serif; }
+@media(max-width:767px){ .gc-midcta{padding:4rem 1.2rem;min-height:320px;} }
+</style>
+
+<div class="gc-midcta">
+  <div class="gc-midcta-bg"></div>
+  <div class="gc-midcta-overlay"></div>
+  <div class="gc-midcta-content" id="gc-midcta-content">
+    <h2>Geen giswerk meer.<br><em>Pure kennis.</em></h2>
+    <p>Stel je voor: elke set nagels plaatsen met zekerheid. Nooit meer twijfelen over product of techniek. Weten wat je doet, en waarom het werkt.</p>
+    <a href="https://naillraftplatform.kennis.shop/pay/thegelcode" class="gc-btn">YES, ik kraak de code →</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var el = document.getElementById('gc-midcta-content');
+  if(!el) return;
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } }); },{threshold:.2});
+  io.observe(el);
+})();
+</script>
+
+
+<!-- ================================================
+     RESULTATEN
+================================================ -->
+<style>
+.gc-results { background:var(--gc-mint); padding:5rem 1.5rem; }
+.gc-results-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+@media(max-width:680px){ .gc-results-grid{grid-template-columns:1fr;gap:2rem;} }
+.gc-results-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.85rem; }
+.gc-results-list li { display:flex; align-items:flex-start; gap:.85rem; font-size:.93rem; line-height:1.6; color:var(--gc-dark); opacity:0; transform:translateX(-14px); transition:opacity .45s ease,transform .45s ease; font-family:'DM Sans',sans-serif; }
+.gc-results-list li.visible { opacity:1; transform:translateX(0); }
+.gc-check { color:var(--gc-orange); font-size:1rem; flex-shrink:0; margin-top:.2rem; }
+.gc-results-img { border-radius:18px; overflow:hidden; opacity:0; transform:translateY(26px); transition:opacity .6s ease,transform .6s ease; }
+.gc-results-img.visible { opacity:1; transform:translateY(0); }
+.gc-results-img img { width:100%; border-radius:18px; display:block; }
+@media(max-width:767px){ .gc-results{padding:4rem 1.2rem;} .gc-results-img{max-width:260px;margin:0 auto;} }
+</style>
+
+<section class="gc-results">
+  <div class="gc-inner">
+    <div class="gc-results-grid">
+      <div>
+        <span class="gc-label">Na The Gel Code</span>
+        <h2 class="gc-title">Wat levert het je écht op?</h2>
+        <ul class="gc-results-list">
+          <li><span class="gc-check">✦</span><span>Vol vertrouwen de juiste gel kiezen voor elk nageltype en elke techniek</span></li>
+          <li><span class="gc-check">✦</span><span>Geen onnodige lifting of breuken meer, want je begrijpt waarom ze ontstaan</span></li>
+          <li><span class="gc-check">✦</span><span>Perfecte architectuur creëren: correcte apex, geen bolle of dikke nagels</span></li>
+          <li><span class="gc-check">✦</span><span>Problemen oplossen vóór ze ontstaan, herkennen is begrijpen</span></li>
+          <li><span class="gc-check">✦</span><span>Meer tevreden klanten, nagels die écht 4 weken blijven zitten</span></li>
+          <li><span class="gc-check">✦</span><span>Professioneler werken, minder frustratie, meer resultaat</span></li>
+        </ul>
+      </div>
+      <div class="gc-results-img">
+        <img src="../images/the-gel-code/hallo dit ben ik.webp" alt="Tabitha aan het werk" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ setTimeout(function(){ e.target.classList.add('visible'); },parseInt(e.target.dataset.d||0)); io.unobserve(e.target); } }); },{threshold:.1});
+  document.querySelectorAll('.gc-results-list li').forEach(function(li,i){ li.dataset.d=i*70; io.observe(li); });
+  document.querySelectorAll('.gc-results-img').forEach(function(img){ io.observe(img); });
+})();
+</script>
+
+
+<!-- ================================================
+     OVER TABITHA
+================================================ -->
+<style>
+.gc-about { background:linear-gradient(135deg,var(--gc-mint) 0%,var(--gc-yellow) 60%,var(--gc-cream) 100%); padding:5rem 1.5rem; overflow:hidden; }
+.gc-about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+@media(max-width:700px){ .gc-about-grid{grid-template-columns:1fr;gap:2.5rem;} }
+.gc-about-img { border-radius:20px; overflow:hidden; opacity:0; transform:translateY(26px); transition:opacity .6s ease,transform .6s ease; }
+.gc-about-img.visible { opacity:1; transform:translateY(0); }
+.gc-about-img img { width:100%; display:block; border-radius:20px; }
+.gc-about p { color:var(--gc-mid); font-size:.93rem; line-height:1.78; margin-bottom:1rem; font-family:'DM Sans',sans-serif; }
+.gc-stats-row { display:flex; gap:1.6rem; margin-top:2rem; flex-wrap:wrap; }
+.gc-stat-num { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:var(--gc-orange); line-height:1; }
+.gc-stat-label { font-size:.7rem; color:var(--gc-teal-dark); line-height:1.35; margin-top:.15rem; font-weight:600; font-family:'DM Sans',sans-serif; }
+@media(max-width:767px){ .gc-about{padding:4rem 1.2rem;} }
+</style>
+
+<section class="gc-about">
+  <div class="gc-inner">
+    <div class="gc-about-grid">
+      <div class="gc-about-img">
+        <img src="../images/the-gel-code/hallo dit ben ik.webp" alt="Tabitha Windels" loading="lazy">
+      </div>
+      <div>
+        <span class="gc-label">Over Tabitha</span>
+        <h2 class="gc-title">Hé, ik ben Tabitha.</h2>
+        <p>Ik rolde op mijn 17e in dit vak, pure passie. Wat volgde? Meer dan 18 jaar als nagelstyliste en docent, en één terugkerende frustratie: cursussen gaven trucjes maar nooit de échte <em>waarom</em> achter technieken.</p>
+        <p>Dus maakte ik The Gel Code. Alles wat ik wilde weten maar nergens vond, samengebracht in één complete gids. Keihard eerlijk en zonder poespas.</p>
+        <div class="gc-stats-row">
+          <div><div class="gc-stat-num">18+</div><div class="gc-stat-label">jaar<br>ervaring</div></div>
+          <div><div class="gc-stat-num">800+</div><div class="gc-stat-label">online<br>cursisten</div></div>
+          <div><div class="gc-stat-num">350+</div><div class="gc-stat-label">live<br>geholpen</div></div>
+          <div><div class="gc-stat-num">75</div><div class="gc-stat-label">pagina's<br>vakkennis</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(e){ e.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } }); },{threshold:.15});
+  document.querySelectorAll('.gc-about-img').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+
+<!-- ================================================
+     REVIEWS
+================================================ -->
+<style>
+.gc-reviews { background:var(--gc-cream); padding:5rem 0; overflow:hidden; }
+.gc-reviews-header { padding:0 1.5rem; max-width:900px; margin:0 auto 2.5rem; }
+.gc-reviews-wrap { position:relative; overflow:hidden; }
+.gc-reviews-wrap::before,.gc-reviews-wrap::after { content:''; position:absolute; top:0; bottom:0; width:100px; z-index:2; pointer-events:none; }
+.gc-reviews-wrap::before { left:0; background:linear-gradient(90deg,var(--gc-cream) 0%,transparent 100%); }
+.gc-reviews-wrap::after  { right:0; background:linear-gradient(270deg,var(--gc-cream) 0%,transparent 100%); }
+.gc-reviews-track { display:flex; gap:1.1rem; width:max-content; animation:gc-scrollLeft 35s linear infinite; padding:.5rem 1rem; }
+.gc-reviews-track:hover { animation-play-state:paused; }
+.gc-review-card { background:#fff; border-radius:16px; padding:1.4rem 1.6rem; border:1px solid rgba(151,196,193,.3); min-width:278px; max-width:290px; flex-shrink:0; box-shadow:0 4px 20px rgba(151,196,193,.1); }
+.gc-review-stars { color:var(--gc-orange); font-size:.8rem; margin-bottom:.6rem; letter-spacing:.05em; }
+.gc-review-text { font-size:.87rem; line-height:1.65; color:var(--gc-mid); margin:0 0 .9rem; font-style:italic; font-family:'DM Sans',sans-serif; }
+.gc-review-name { font-size:.74rem; font-weight:700; color:var(--gc-dark); font-family:'DM Sans',sans-serif; }
+.gc-review-tag { display:inline-block; background:var(--gc-yellow); color:var(--gc-dark); font-size:.58rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.16rem .55rem; border-radius:50px; margin-left:.4rem; vertical-align:middle; font-family:'DM Sans',sans-serif; }
+</style>
+
+<section class="gc-reviews">
+  <div class="gc-reviews-header">
+    <span class="gc-label">Wat cursisten zeggen</span>
+    <h2 class="gc-title">Zij gingen je al voor</h2>
+  </div>
+  <div class="gc-reviews-wrap">
+    <div class="gc-reviews-track">
+      <div class="gc-review-card"><div class="gc-review-stars">★★★★★</div><p class="gc-review-text">"Ik vind de cursus super duidelijk opgebouwd. Eindelijk snap ik waarom mijn gel soms loskomt en wat ik daaraan moet doen."</p><span class="gc-review-name">— Sara V.<span class="gc-review-tag">Structuur</span></span></div>
+      <div class="gc-review-card"><div class="gc-review-stars">★★★★★</div><p class="gc-review-text">"Ik heb geleerd dat ik al die jaren het verkeerde product gebruikte voor mijn klanten met dunne nagels. Wat een eyeopener!"</p><span class="gc-review-name">— Elien M.<span class="gc-review-tag">Productkeuze</span></span></div>
+      <div class="gc-review-card"><div class="gc-review-stars">★★★★★</div><p class="gc-review-text">"Superleuke cursus want het voelt niet als studeren, je leest het gewoon door want het is zo interessant geschreven!"</p><span class="gc-review-name">— Nathalie D.<span class="gc-review-tag">Leesbaarheid</span></span></div>
+      <div class="gc-review-card"><div class="gc-review-stars">★★★★★</div><p class="gc-review-text">"Ik vond het heel fijn dat ik na aankoop nog vragen kon stellen. Tabitha antwoordt snel en altijd heel duidelijk!"</p><span class="gc-review-name">— Karen C.<span class="gc-review-tag">Support</span></span></div>
+      <div class="gc-review-card"><div class="gc-review-stars">★★★★★</div><p class="gc-review-text">"De uitleg is zo helder, ook de chemie achter de producten. Ik dacht dat dat ingewikkeld zou zijn maar het klikt meteen."</p><span class="gc-review-name">— Sarra L.<span class="gc-review-tag">Chemie &amp; basis</span></span></div>
+      <!-- duplicaat -->
+      <div class="gc-review-card"><div class="gc-review-stars">★★★★★</div><p class="gc-review-text">"Ik vind de cursus super duidelijk opgebouwd. Eindelijk snap ik waarom mijn gel soms loskomt en wat ik daaraan moet doen."</p><span class="gc-review-name">— Sara V.<span class="gc-review-tag">Structuur</span></span></div>
+      <div class="gc-review-card"><div class="gc-review-stars">★★★★★</div><p class="gc-review-text">"Ik heb geleerd dat ik al die jaren het verkeerde product gebruikte voor mijn klanten met dunne nagels. Wat een eyeopener!"</p><span class="gc-review-name">— Elien M.<span class="gc-review-tag">Productkeuze</span></span></div>
+      <div class="gc-review-card"><div class="gc-review-stars">★★★★★</div><p class="gc-review-text">"Superleuke cursus want het voelt niet als studeren, je leest het gewoon door want het is zo interessant geschreven!"</p><span class="gc-review-name">— Nathalie D.<span class="gc-review-tag">Leesbaarheid</span></span></div>
+      <div class="gc-review-card"><div class="gc-review-stars">★★★★★</div><p class="gc-review-text">"Ik vond het heel fijn dat ik na aankoop nog vragen kon stellen. Tabitha antwoordt snel en altijd heel duidelijk!"</p><span class="gc-review-name">— Karen C.<span class="gc-review-tag">Support</span></span></div>
+      <div class="gc-review-card"><div class="gc-review-stars">★★★★★</div><p class="gc-review-text">"De uitleg is zo helder, ook de chemie achter de producten. Ik dacht dat dat ingewikkeld zou zijn maar het klikt meteen."</p><span class="gc-review-name">— Sarra L.<span class="gc-review-tag">Chemie &amp; basis</span></span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     FAQ — LICHTE ACHTERGROND
+================================================ -->
+<style>
+.gc-faq { background:var(--gc-mint); padding:5rem 1.5rem; }
+.gc-faq .gc-label { color:var(--gc-teal-dark); }
+.gc-faq .gc-title { color:var(--gc-dark); margin:0 0 2rem; }
+.gc-faq-item { border-bottom:1px solid rgba(151,196,193,.4); }
+.gc-faq-q { width:100%; background:transparent; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; padding:1.1rem 0; color:var(--gc-dark); font-family:'DM Sans',sans-serif; font-size:.93rem; font-weight:500; line-height:1.4; gap:1rem; }
+.gc-faq-q:hover { color:var(--gc-teal-dark); }
+.gc-faq-icon { color:var(--gc-teal-dark); font-size:1.3rem; flex-shrink:0; transition:transform .3s; display:inline-block; }
+.gc-faq-item.open .gc-faq-icon { transform:rotate(45deg); }
+.gc-faq-a { overflow:hidden; max-height:0; transition:max-height .4s ease,padding .3s; color:var(--gc-mid); font-size:.88rem; line-height:1.72; padding:0; font-family:'DM Sans',sans-serif; }
+.gc-faq-item.open .gc-faq-a { max-height:400px; padding-bottom:1.1rem; }
+@media(max-width:767px){ .gc-faq{padding:4rem 1.2rem;} }
+</style>
+
+<section class="gc-faq">
+  <div class="gc-inner">
+    <span class="gc-label">FAQ</span>
+    <h2 class="gc-title">Vragen?</h2>
+    <div class="gc-faq-list">
+      <div class="gc-faq-item"><button class="gc-faq-q">Voor wie is The Gel Code geschikt?<span class="gc-faq-icon">+</span></button><div class="gc-faq-a">Voor nagelstylistes die al werken met kunstnagels en dieper willen gaan. Ook voor absolute beginners die willen begrijpen wat er écht in hun producten zit en hoe ze die correct toepassen.</div></div>
+      <div class="gc-faq-item"><button class="gc-faq-q">Is dit voor één bepaald merk?<span class="gc-faq-icon">+</span></button><div class="gc-faq-a">Nee. De kennis in The Gel Code is merkonafhankelijk. Je leert de categorie begrijpen, waarna je elk product van elk merk correct kunt beoordelen en inzetten.</div></div>
+      <div class="gc-faq-item"><button class="gc-faq-q">Hoelang heb ik toegang?<span class="gc-faq-icon">+</span></button><div class="gc-faq-a">Levenslang. En je krijgt gratis toegang tot alle toekomstige updates. Nieuwe info of aanpassing? Jij krijgt die erbij, automatisch, zonder extra betaling.</div></div>
+      <div class="gc-faq-item"><button class="gc-faq-q">Hoeveel tijd moet ik investeren?<span class="gc-faq-icon">+</span></button><div class="gc-faq-a">Jij bepaalt het tempo. Het e-book lees je wanneer het jou past. De meeste stylistes lezen het in 2 à 3 sessies en gaan daarna gericht terug naar specifieke hoofdstukken als referentie.</div></div>
+      <div class="gc-faq-item"><button class="gc-faq-q">Kan ik vragen stellen na aankoop?<span class="gc-faq-icon">+</span></button><div class="gc-faq-a">Ja! Persoonlijke ondersteuning is inbegrepen. Je kan me altijd contacteren via Instagram of e-mail. Ik antwoord persoonlijk.</div></div>
+      <div class="gc-faq-item"><button class="gc-faq-q">Wat maakt dit anders dan andere cursussen?<span class="gc-faq-icon">+</span></button><div class="gc-faq-a">De meeste cursussen geven info over hun eigen merk maar nooit de échte "waarom" achter elke gelcategorie. The Gel Code legt de chemie en logica uit zodat je zelfstandig de juiste keuzes maakt voor elk product, elk merk, elke klant.</div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  document.querySelectorAll('.gc-faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item = btn.closest('.gc-faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.gc-faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>
+
+
+<!-- ================================================
+     PRICING (2e — na FAQ)
+================================================ -->
+<section class="gc-pricing">
+  <div class="gc-inner">
+    <span class="gc-label">Investering</span>
+    <h2 class="gc-title">Start vandaag</h2>
+    <div class="gc-pricing-card">
+      <div class="gc-pricing-badge">⏳ Tijdelijk aan deze prijs</div>
+      <div class="gc-price-row">
+        <span class="gc-price-old">€65</span>
+        <span class="gc-price-euro">€</span>
+        <span class="gc-price-new">45</span>
+      </div>
+      <p class="gc-pricing-note">Eenmalige betaling · Geen abonnement</p>
+      <ul class="gc-pricing-list">
+        <li><span class="gc-dot">✦</span>Volledig e-book van 75 pagina's, meteen beschikbaar</li>
+        <li><span class="gc-dot">✦</span>Alle soorten gel uitgelegd met stap-voor-stap technieken</li>
+        <li><span class="gc-dot">✦</span>Vergelijkingstabel + volledige Q&amp;A probleemoplossing</li>
+        <li><span class="gc-dot">✦</span>Levenslange toegang, je verliest nooit je cursus</li>
+        <li><span class="gc-dot">✦</span><strong>Gratis updates voor altijd</strong>, nieuwe info? Jij krijgt die erbij.</li>
+        <li><span class="gc-dot">✦</span>Persoonlijke ondersteuning na aankoop</li>
+      </ul>
+      <a href="https://naillraftplatform.kennis.shop/pay/thegelcode" class="gc-pricing-btn">Ik kraak de code! →</a>
+      <div class="gc-pricing-guarantee">🔒 Direct toegang na betaling · Leer op je eigen tempo · Levenslange toegang incl. gratis updates</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     FINALE CTA
+================================================ -->
+<style>
+.gc-finalcta { background:var(--gc-cream); text-align:center; padding:5.5rem 1.5rem 4.5rem; position:relative; overflow:hidden; }
+.gc-finalcta::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(151,196,193,.18) 0%,transparent 70%); pointer-events:none; }
+.gc-finalcta h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5vw,3rem); color:var(--gc-dark); margin:0 0 1rem; position:relative; z-index:1; }
+.gc-finalcta h2 span { color:var(--gc-orange); }
+.gc-finalcta p { color:var(--gc-mid); font-size:.95rem; max-width:500px; margin:0 auto 2.5rem; line-height:1.75; position:relative; z-index:1; font-family:'DM Sans',sans-serif; }
+.gc-final-mockup { margin:2.5rem auto 0; max-width:300px; opacity:.9; position:relative; z-index:1; }
+@media(max-width:767px){ .gc-finalcta{padding:4rem 1.2rem 3rem;} }
+</style>
+
+<section class="gc-finalcta">
+  <h2>Klaar om de code te <span>kraken?</span></h2>
+  <p>Direct na inschrijven krijg je toegang tot het volledige e-book. Geen wachttijd. Start vandaag en werk morgen al met meer vertrouwen.</p>
+  <a href="https://naillraftplatform.kennis.shop/pay/thegelcode" class="gc-btn" style="position:relative;z-index:1;">LET'S GOOO! →</a>
+  <div class="gc-final-mockup">
+    <img src="../images/the-gel-code/The Gel Code mockup boek kleiner transparant (1).webp" alt="The Gel Code" loading="lazy">
+  </div>
+</section>
+
+
+<!-- ================================================
+     INSTAGRAM
+================================================ -->
+<style>
+.gc-ig { background:var(--gc-mint); padding:5rem 2rem; overflow:hidden; }
+.gc-ig-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.gc-ig-lbl { display:inline-flex; align-items:center; gap:.5rem; font-size:.73rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gc-teal-dark); margin-bottom:1rem; font-family:'DM Sans',sans-serif; }
+.gc-ig-lbl::before { content:''; width:20px; height:1.5px; background:var(--gc-teal-dark); display:inline-block; }
+.gc-ig-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; line-height:1.1; color:var(--gc-dark); margin-bottom:1rem; }
+.gc-ig-text h2 em { font-style:italic; color:var(--gc-teal-dark); }
+.gc-ig-text p { font-size:.97rem; color:var(--gc-mid); line-height:1.8; margin-bottom:2rem; max-width:420px; font-family:'DM Sans',sans-serif; }
+.gc-ig-btn { display:inline-flex; align-items:center; gap:.7rem; background:linear-gradient(135deg,var(--gc-teal-dark) 0%,var(--gc-orange) 100%); color:#fff; font-family:'DM Sans',sans-serif; font-weight:700; font-size:.82rem; padding:.75rem 1.6rem; border-radius:60px; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 4px 20px rgba(106,173,170,.3); }
+.gc-ig-btn:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(254,155,0,.35); color:#fff; }
+.gc-ig-btn-icon { width:20px; height:20px; flex-shrink:0; }
+.gc-ig-tags { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:1.5rem; }
+.gc-ig-tag { font-size:.75rem; color:var(--gc-teal-dark); font-weight:500; font-family:'DM Sans',sans-serif; }
+.gc-ig-visual { display:flex; justify-content:center; align-items:center; position:relative; }
+.gc-ig-visual::before { content:''; position:absolute; width:340px; height:340px; border-radius:50%; background:linear-gradient(135deg,rgba(151,196,193,.25) 0%,rgba(249,255,181,.3) 100%); z-index:0; }
+.gc-ig-phone { position:relative; z-index:1; max-width:260px; width:100%; filter:drop-shadow(0 24px 48px rgba(151,196,193,.3)); animation:gcFloat 4s ease-in-out infinite; }
+.gc-ig-phone img { width:100%; }
+@media(max-width:900px){ .gc-ig-inner{grid-template-columns:1fr;gap:3rem;text-align:center;} .gc-ig-lbl{justify-content:center;} .gc-ig-text p{margin-left:auto;margin-right:auto;} .gc-ig-tags{justify-content:center;} .gc-ig-btn{margin:0 auto;} .gc-ig-visual::before{width:260px;height:260px;} .gc-ig-phone{max-width:200px;} }
+@media(max-width:600px){ .gc-ig{padding:3.5rem 1.2rem;} }
+</style>
+
+<div class="gc-ig">
+  <div class="gc-ig-inner">
+    <div class="gc-ig-text">
+      <div class="gc-ig-lbl">Instagram</div>
+      <h2>Volg je mij al<br><em>On The Gram?</em></h2>
+      <p>Zin om geïnspireerd te worden? Kom er gezellig bij, ik post regelmatig content die je inspireert en geeft een inkijk in mijn achter-de-schermen leven en hoe ik mijn onderneming run.</p>
+      <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="gc-ig-btn">
+        <svg class="gc-ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Ga naar Instagram
+      </a>
+      <div class="gc-ig-tags">
+        <span class="gc-ig-tag">#nailcraft</span>
+        <span class="gc-ig-tag">#gelcode</span>
+        <span class="gc-ig-tag">#nagels</span>
+        <span class="gc-ig-tag">#behindthescenes</span>
+      </div>
+    </div>
+    <div class="gc-ig-visual">
+      <div class="gc-ig-phone">
+        <img src="../images/upperforms/instagram mockup telefoon.webp" alt="NailCraft Instagram op telefoon" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="gc-footer">
+  <p>© Tabitha – NailCraft Platform &nbsp;·&nbsp; <a href="../online-opleidingen.html">Alle opleidingen</a> &nbsp;·&nbsp; <a href="../index.html">Home</a></p>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="gc-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Terug naar boven">↑</button>
+
+<script>
+window.addEventListener('scroll',function(){
+  var btn = document.getElementById('gc-top-btn');
+  if(window.scrollY>400) btn.classList.add('show'); else btn.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
