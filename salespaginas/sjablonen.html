@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sjabloon Applicatie – Online cursus | NailCraft Platform</title>
+  <meta name="description" content="Leer stap voor stap hoe je sjablonen correct plaatst, inknipt en bevestigt — voor een strakke, professionele verlenging in elke shape. 7 modules, e-book, videolessen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #f8f2ff; color: #2d1e45; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    /* GLOBAL KEYFRAMES */
+    @keyframes nc-fadeDown  { from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)} }
+    @keyframes nc-fadeUp    { from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)} }
+    @keyframes nc-shimmerText { 0%{background-position:0% center}100%{background-position:250% center} }
+    @keyframes nc-glowPulse { 0%,100%{box-shadow:0 0 18px 2px rgba(254,155,0,.38)}50%{box-shadow:0 0 32px 6px rgba(254,155,0,.58)} }
+    @keyframes nc-scrollPulse{ 0%,100%{opacity:.4}50%{opacity:1} }
+    @keyframes nc-scrollBanner{ from{transform:translateX(0)}to{transform:translateX(-50%)} }
+
+    /* NAV */
+    .nc-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(248,242,255,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(181,144,241,.15);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.2rem,4vw,3rem); height: 68px;
+    }
+    .nc-nav img { height: 34px; }
+    .nc-nav-cta {
+      background: #fe9b00; color: #fff; font-family: 'DM Sans',sans-serif;
+      font-weight: 600; font-size: .88rem; padding: .55rem 1.4rem;
+      border-radius: 50px; text-decoration: none; transition: background .2s;
+    }
+    .nc-nav-cta:hover { background: #e08800; }
+    @media(max-width:480px){ .nc-nav-cta{ font-size:.70rem; padding:.50rem 1rem; } }
+
+    /* SCROLL TO TOP */
+    #nc-top-btn {
+      position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800;
+      width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer;
+      background: #9c28b1; color: #fff; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(156,40,177,.35);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .3s, transform .3s, background .2s;
+    }
+    #nc-top-btn.show { opacity: 1; transform: translateY(0); }
+    #nc-top-btn:hover { background: #fe9b00; }
+
+    /* FOOTER */
+    .nc-footer { background: #120720; color: rgba(255,255,255,.5); text-align: center; padding: 2rem 1.5rem; font-size: .83rem; font-family: 'DM Sans',sans-serif; }
+    .nc-footer a { color: #b590f1; text-decoration: none; }
+    .nc-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nc-nav">
+  <a href="../online-opleidingen.html">
+    <img src="../images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform">
+  </a>
+  <a href="https://naillraftplatform.kennis.shop/pay/sjabloonapplicatie" class="nc-nav-cta">Starten voor €65</a>
+</nav>
+
+
+<!-- ================================================
+     BLOK 02 – HERO (licht)
+================================================ -->
+<style>
+.nc-hero {
+  min-height: 100svh; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8f2ff 0%, #ede0ff 55%, #f0e8ff 100%);
+  padding: 7rem 1.5rem 5rem;
+}
+.nc-hero__bg {
+  position: absolute; inset: 0;
+  background-image: url('../images/sjablonen/sjablonen techniek.webp');
+  background-size: cover; background-position: center;
+  opacity: .10; pointer-events: none;
+}
+.nc-hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(248,242,255,.82) 0%, rgba(240,232,255,.72) 55%, rgba(237,224,255,.88) 100%);
+}
+.nc-hero__content {
+  position: relative; z-index: 2; text-align: center; max-width: 820px; width: 100%;
+}
+.nc-hero__badge {
+  display: inline-block;
+  background: rgba(181,144,241,.16); border: 1px solid rgba(181,144,241,.35);
+  color: #7040b8; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
+  padding: .4rem 1.2rem; border-radius: 50px; margin-bottom: 1.5rem;
+  font-family: 'DM Sans',sans-serif; font-weight: 600;
+  animation: nc-fadeDown .8s ease both;
+}
+.nc-hero__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  color: #1a0a2e; line-height: 1.1; margin-bottom: 1.2rem;
+  animation: nc-fadeUp .9s ease .2s both;
+}
+.nc-hero__shimmer {
+  display: inline-block; font-style: italic;
+  background: linear-gradient(90deg, #9c28b1 0%, #c070e8 38%, #fe9b00 58%, #9c28b1 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: nc-shimmerText 3.2s linear infinite;
+}
+.nc-hero__sub {
+  color: #6b4f8a; font-size: clamp(.93rem, 2.2vw, 1.1rem);
+  max-width: 560px; margin: 0 auto 2rem; line-height: 1.78; font-weight: 400;
+  font-family: 'DM Sans',sans-serif;
+  animation: nc-fadeUp .9s ease .35s both;
+}
+.nc-hero__price {
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  margin-bottom: 2.2rem; animation: nc-fadeUp .9s ease .45s both;
+}
+.nc-hero__price-old { color: rgba(45,30,69,.4); font-size: 1rem; text-decoration: line-through; font-family:'DM Sans',sans-serif; }
+.nc-hero__price-new { color: #fe9b00; font-size: 2.1rem; font-weight: 700; font-family:'DM Sans',sans-serif; }
+.nc-hero__price-tag {
+  background: rgba(254,155,0,.14); border: 1px solid rgba(254,155,0,.3);
+  color: #c07000; font-size: .67rem; font-weight: 600;
+  padding: .27rem .68rem; border-radius: 4px;
+  text-transform: uppercase; letter-spacing: .08em; font-family:'DM Sans',sans-serif;
+}
+.nc-hero__btn {
+  display: inline-block; background: #fe9b00; color: #fff;
+  font-family: 'DM Sans',sans-serif; font-size: 1rem; font-weight: 700;
+  padding: 1rem 2.6rem; border-radius: 50px; text-decoration: none;
+  box-shadow: 0 0 26px 4px rgba(254,155,0,.42);
+  animation: nc-fadeUp .9s ease .55s both, nc-glowPulse 2.2s ease-in-out 1.8s infinite;
+  transition: transform .2s;
+}
+.nc-hero__btn:hover { transform: scale(1.05); animation: none; }
+.nc-hero__scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  z-index: 2; animation: nc-fadeUp 1s ease 1.4s both;
+}
+.nc-hero__scroll span {
+  display: block; width: 1px; height: 48px;
+  background: linear-gradient(to bottom, transparent, rgba(156,40,177,.5));
+  animation: nc-scrollPulse 1.9s ease-in-out infinite;
+}
+@media(max-width:768px){
+  .nc-hero { padding: 6rem 1.2rem 4rem; }
+  .nc-hero__btn { font-size: .70rem; padding: .65rem 1.4rem; box-shadow: none; animation: nc-fadeUp .9s ease .55s both; }
+}
+</style>
+
+<div class="nc-hero">
+  <div class="nc-hero__bg"></div>
+  <div class="nc-hero__overlay"></div>
+  <div class="nc-hero__content">
+    <div class="nc-hero__badge">Online cursus · Nagelverlenging</div>
+    <h1 class="nc-hero__title">Perfecte <span class="nc-hero__shimmer">Sjabloon</span><br>Applicatie</h1>
+    <p class="nc-hero__sub">Leer stap voor stap hoe je sjablonen correct plaatst, inknipt en bevestigt, voor een strakke, professionele verlenging in elke shape.</p>
+    <div class="nc-hero__price">
+      <span class="nc-hero__price-old">€155</span>
+      <span class="nc-hero__price-new">€65</span>
+      <span class="nc-hero__price-tag">Lanceringsprijs</span>
+    </div>
+    <a href="https://naillraftplatform.kennis.shop/pay/sjabloonapplicatie" class="nc-hero__btn">Ja, ik start nu!</a>
+  </div>
+  <div class="nc-hero__scroll"><span></span></div>
+</div>
+
+
+<!-- ================================================
+     BLOK 03 – PIJNPUNTEN
+================================================ -->
+<style>
+.nc-pain { background: #f8f2ff; padding: 6rem 1.5rem; text-align: center; }
+.nc-pain__label { display: inline-block; font-size: .67rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; color: #b590f1; margin-bottom: .7rem; font-family:'DM Sans',sans-serif; }
+.nc-pain__title { font-family:'Cormorant Garamond',serif; font-size: clamp(1.75rem,3.8vw,2.65rem); line-height: 1.18; margin-bottom: 1rem; color: #9c28b1; }
+.nc-pain__lead { color: #6b4f8a; max-width: 540px; margin: 0 auto 3.5rem; font-size: .97rem; line-height: 1.75; font-family:'DM Sans',sans-serif; }
+.nc-pain__grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 1.2rem; max-width: 960px; margin: 0 auto; }
+.nc-pain__card {
+  background: #fff; border: 1px solid rgba(181,144,241,.2); border-radius: 18px;
+  padding: 1.8rem 1.5rem; text-align: left;
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.nc-pain__card.nc-visible { opacity: 1; transform: translateY(0); }
+.nc-pain__card-icon { font-size: 1.5rem; margin-bottom: .75rem; display: block; }
+.nc-pain__card h3 { color: #9c28b1; font-size: .93rem; font-weight: 600; margin-bottom: .4rem; font-family:'DM Sans',sans-serif; }
+.nc-pain__card p  { color: #6b4f8a; font-size: .83rem; line-height: 1.6; font-family:'DM Sans',sans-serif; }
+@media(max-width:768px){ .nc-pain{ padding: 4rem 1.2rem; } }
+</style>
+
+<div class="nc-pain">
+  <span class="nc-pain__label">Herken je dit?</span>
+  <h2 class="nc-pain__title">Sjablonen plaatsen, het struikelblok van élke nagelstyliste</h2>
+  <p class="nc-pain__lead">Je werkt hard, je hebt talent. Maar dit ene onderdeel laat je resultaat telkens net niet professioneel genoeg lijken.</p>
+  <div class="nc-pain__grid">
+    <div class="nc-pain__card"><span class="nc-pain__card-icon">↩️</span><h3>Sjabloon sluit niet aan</h3><p>Er blijft een opening of deuk, hoe je het ook probeert. Het puzzelstuk wil niet passen.</p></div>
+    <div class="nc-pain__card"><span class="nc-pain__card-icon">📐</span><h3>Scheve verlengingen</h3><p>Het eindresultaat wijkt af. De middellijn klopt niet en je nagels zijn zichtbaar uit lijn.</p></div>
+    <div class="nc-pain__card"><span class="nc-pain__card-icon">✂️</span><h3>Inknippen op gevoel</h3><p>Je knipt en past aan, maar zonder systeem. Voor elke vinger opnieuw raden.</p></div>
+    <div class="nc-pain__card"><span class="nc-pain__card-icon">⏱️</span><h3>Te traag voor je klantenboek</h3><p>Sjablonen kosten je dubbel zo veel tijd als nodig. Dat schaalt niet.</p></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ setTimeout(function(){ e.target.classList.add('nc-visible'); }, +(e.target.dataset.delay||0)); obs.unobserve(e.target); }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.nc-pain__card').forEach(function(el,i){ el.dataset.delay=i*90; obs.observe(el); });
+})();
+</script>
+
+
+<!-- ================================================
+     BLOK 04 – OPLOSSING
+================================================ -->
+<style>
+.nc-sol { background: #f8f2ff; padding: 6rem 1.5rem; }
+.nc-sol__inner { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.nc-sol__img img { width: 100%; border-radius: 20px; box-shadow: 0 24px 68px rgba(156,40,177,.12); opacity: 0; transform: translateX(-28px); transition: opacity .7s ease, transform .7s ease; }
+.nc-sol__img.nc-visible img { opacity: 1; transform: translateX(0); }
+.nc-sol__text { opacity: 0; transform: translateX(28px); transition: opacity .7s ease .18s, transform .7s ease .18s; }
+.nc-sol__text.nc-visible { opacity: 1; transform: translateX(0); }
+.nc-sol__label { display: inline-block; font-size: .67rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; color: #b590f1; margin-bottom: .7rem; font-family:'DM Sans',sans-serif; }
+.nc-sol__title { font-family:'Cormorant Garamond',serif; font-size: clamp(1.75rem,3.8vw,2.65rem); line-height: 1.18; margin-bottom: 1rem; color: #9c28b1; }
+.nc-sol__text p { color: #6b4f8a; font-size: .97rem; line-height: 1.78; margin-bottom: 1.1rem; font-family:'DM Sans',sans-serif; }
+.nc-sol__pillars { display: flex; flex-direction: column; gap: .72rem; margin-top: 1.3rem; }
+.nc-sol__pillar  { display: flex; align-items: flex-start; gap: .72rem; }
+.nc-sol__dot     { width: 8px; height: 8px; border-radius: 50%; background: #fe9b00; margin-top: 7px; flex-shrink: 0; }
+.nc-sol__pillar p{ font-size: .9rem; color: #2d1b4e; margin: 0; line-height: 1.5; font-family:'DM Sans',sans-serif; }
+@media(max-width:768px){ .nc-sol__inner{ grid-template-columns:1fr; gap:2rem; } .nc-sol__img{ order:-1; } .nc-sol{ padding:4rem 1.2rem; } }
+</style>
+
+<div class="nc-sol">
+  <div class="nc-sol__inner">
+    <div class="nc-sol__img">
+      <img src="../images/sjablonen/sjablonen mockup volledig.webp" alt="Sjabloon Applicatie cursus mockup">
+    </div>
+    <div class="nc-sol__text">
+      <span class="nc-sol__label">De oplossing</span>
+      <h2 class="nc-sol__title">Eindelijk een cursus die je techniek fundamenteel verandert</h2>
+      <p>Niet een losse tip hier en daar. Een compleet systeem, van de voorbereiding van de nagel tot het vijlen van de verlenging.</p>
+      <p>Met een professioneel e-book én gedetailleerde videolessen voor elk type vinger, elke shape.</p>
+      <div class="nc-sol__pillars">
+        <div class="nc-sol__pillar"><span class="nc-sol__dot"></span><p><strong>71-pagina e-book</strong> met alle theorie, schema's en aandachtspunten</p></div>
+        <div class="nc-sol__pillar"><span class="nc-sol__dot"></span><p><strong>Videolessen per vinger</strong> — wijsvinger, middelvinger, ringvinger, pink, duim</p></div>
+        <div class="nc-sol__pillar"><span class="nc-sol__dot"></span><p><strong>Acrygel én hardgel</strong> — almond, ballerina én square</p></div>
+        <div class="nc-sol__pillar"><span class="nc-sol__dot"></span><p><strong>Veelgemaakte fouten</strong> uitgelegd zodat jij ze nooit meer maakt</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('nc-visible'); obs.unobserve(e.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.nc-sol__img,.nc-sol__text').forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
+
+<!-- ================================================
+     BLOK 05 – BEWEGENDE FOTOBANNER
+================================================ -->
+<style>
+.nc-banner { overflow: hidden; padding: 2.5rem 0; background: #fff; position: relative; }
+.nc-banner::before, .nc-banner::after { content:''; position:absolute; top:0; bottom:0; width:100px; z-index:2; pointer-events:none; }
+.nc-banner::before { left:0; background:linear-gradient(to right,#fff,transparent); }
+.nc-banner::after  { right:0; background:linear-gradient(to left,#fff,transparent); }
+.nc-banner__track { display:flex; gap:1.1rem; width:max-content; animation:nc-scrollBanner 36s linear infinite; }
+.nc-banner__track img { height:210px; width:auto; border-radius:12px; object-fit:cover; flex-shrink:0; display:block; }
+@media(max-width:768px){ .nc-banner__track img{ height:150px; } }
+</style>
+
+<div class="nc-banner">
+  <div class="nc-banner__track">
+    <img src="../images/sjablonen/sjablonen techniek.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek2.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek3.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek4.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek5.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek6.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek7.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen resultaat.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen resultaat1.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen resultaat2.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjabloon voorbeeld.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/IMG_1533.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek8.webp" alt="" loading="lazy">
+    <!-- duplicaat voor naadloze loop -->
+    <img src="../images/sjablonen/sjablonen techniek.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek2.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek3.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek4.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek5.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek6.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek7.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen resultaat.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen resultaat1.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen resultaat2.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjabloon voorbeeld.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/IMG_1533.webp" alt="" loading="lazy">
+    <img src="../images/sjablonen/sjablonen techniek8.webp" alt="" loading="lazy">
+  </div>
+</div>
+
+
+<!-- ================================================
+     BLOK 06b – CURSUSINHOUD (compact)
+================================================ -->
+<style>
+.nc-content2 { background: #fff; padding: 6rem 1.5rem; }
+.nc-content2__label { display:block; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; font-weight:600; color:#b590f1; margin-bottom:.7rem; text-align:center; font-family:'DM Sans',sans-serif; }
+.nc-content2__title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,3.8vw,2.65rem); line-height:1.18; margin-bottom:.8rem; color:#b590f1; text-align:center; }
+.nc-content2__intro { color:#6b4f8a; text-align:center; max-width:520px; margin:0 auto 3.5rem; font-size:.95rem; line-height:1.75; font-family:'DM Sans',sans-serif; }
+.nc-content2__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; max-width:1080px; margin:0 auto 2.5rem; }
+.nc-mod2 {
+  background:#f8f2ff; border:1px solid rgba(181,144,241,.2); border-radius:16px;
+  padding:1.6rem 1.5rem; display:flex; gap:1rem; align-items:flex-start;
+  opacity:0; transform:translateY(22px); transition:opacity .5s ease, transform .5s ease;
+}
+.nc-mod2.nc-visible { opacity:1; transform:translateY(0); }
+.nc-mod2:hover { border-color:rgba(156,40,177,.28); background:#f0e8ff; }
+.nc-mod2__num { min-width:36px; height:36px; border-radius:50%; background:#9c28b1; color:#fff; display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:700; font-family:'DM Sans',sans-serif; flex-shrink:0; margin-top:2px; }
+.nc-mod2__body h3 { color:#9c28b1; font-size:.9rem; font-weight:600; margin-bottom:.35rem; line-height:1.35; font-family:'DM Sans',sans-serif; }
+.nc-mod2__body p  { color:#6b4f8a; font-size:.82rem; line-height:1.6; margin:0; font-family:'DM Sans',sans-serif; }
+.nc-mod2__tag { display:inline-block; margin-top:.5rem; background:rgba(254,155,0,.1); border:1px solid rgba(254,155,0,.22); border-radius:6px; font-size:.7rem; color:#fe9b00; font-weight:600; padding:.18rem .55rem; font-family:'DM Sans',sans-serif; }
+.nc-content2__cta-wrap { text-align:center; }
+.nc-content2__btn { display:inline-block; background:#fe9b00; color:#fff; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:700; padding:1rem 2.6rem; border-radius:50px; text-decoration:none; box-shadow:0 6px 22px rgba(254,155,0,.26); transition:transform .2s; }
+.nc-content2__btn:hover { transform:scale(1.05); }
+@media(max-width:768px){ .nc-content2{ padding:4rem 1.2rem; } .nc-content2__btn{ font-size:.70rem; padding:.65rem 1.4rem; box-shadow:none; } }
+</style>
+
+<div class="nc-content2">
+  <span class="nc-content2__label">Wat zit er in de cursus?</span>
+  <h2 class="nc-content2__title">Van theorie tot afgewerkt resultaat.<br>Stap voor stap.</h2>
+  <p class="nc-content2__intro">7 modules die je meenemen van de basis tot een volledige, professionele verlenging in elke shape, in acrygel én hardgel.</p>
+  <div class="nc-content2__grid">
+    <div class="nc-mod2"><div class="nc-mod2__num">01</div><div class="nc-mod2__body"><h3>Welkom &amp; materialen</h3><p>Je start meteen goed: je weet precies welk materiaal je nodig hebt en hoe je de omgeving optimaal instelt.</p><span class="nc-mod2__tag">📄 PDF materialenlijst</span></div></div>
+    <div class="nc-mod2"><div class="nc-mod2__num">02</div><div class="nc-mod2__body"><h3>Theorie: sjabloon plaatsen</h3><p>Een 71-pagina e-book legt uit hoe een sjabloon is opgebouwd en wat de regels zijn voor élke nagelshape.</p><span class="nc-mod2__tag">📖 Inclusief e-book</span></div></div>
+    <div class="nc-mod2"><div class="nc-mod2__num">03</div><div class="nc-mod2__body"><h3>Praktijk: de basisprincipes</h3><p>Je ziet live hoe je een sjabloon correct plaatst en inknipt, inclusief de meest gemaakte fouten zodat jij ze vermijdt.</p></div></div>
+    <div class="nc-mod2"><div class="nc-mod2__num">04</div><div class="nc-mod2__body"><h3>Acrygel verlenging: almond</h3><p>Vinger per vinger doorlopen: van sjabloon passen en inknippen tot verlengen met acrygel op de almond shape.</p></div></div>
+    <div class="nc-mod2"><div class="nc-mod2__num">05</div><div class="nc-mod2__body"><h3>Hardgel verlenging: almond</h3><p>Dezelfde stap-voor-stap aanpak, nu volledig in hardgel, zodat je beide producten beheerst.</p></div></div>
+    <div class="nc-mod2"><div class="nc-mod2__num">06</div><div class="nc-mod2__body"><h3>Verwijderen, vijlen &amp; afwerking</h3><p>Je leert de verlenging netjes verwijderen, vijlen en afwerken tot een strak eindresultaat met topcoat.</p></div></div>
+    <div class="nc-mod2"><div class="nc-mod2__num">07</div><div class="nc-mod2__body"><h3>Acrygel verlenging: square</h3><p>Een complete square set van A tot Z, inclusief Cat Eye afwerking en professioneel navijlen.</p></div></div>
+  </div>
+  <div class="nc-content2__cta-wrap">
+    <a href="https://naillraftplatform.kennis.shop/pay/sjabloonapplicatie" class="nc-content2__btn">Ik wil dit leren – €65</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ setTimeout(function(){ e.target.classList.add('nc-visible'); }, +(e.target.dataset.delay||0)); obs.unobserve(e.target); } });
+  },{threshold:.08});
+  document.querySelectorAll('.nc-mod2').forEach(function(el,i){ el.dataset.delay=i*70; obs.observe(el); });
+})();
+</script>
+
+
+<!-- ================================================
+     BLOK 07 – PARALLAX QUOTE
+================================================ -->
+<style>
+.nc-parallax {
+  background-image: url('../images/sjablonen/sjablonen resultaat1.webp');
+  background-attachment: fixed; background-size: cover; background-position: center;
+  min-height: 310px; display: flex; align-items: center; justify-content: center; position: relative;
+}
+.nc-parallax__overlay { position:absolute; inset:0; background:rgba(248,242,255,.84); }
+.nc-parallax__quote { position:relative; z-index:2; text-align:center; padding:2.5rem 1.5rem; max-width:700px; }
+.nc-parallax__quote p { font-family:'Cormorant Garamond',serif; font-size:clamp(1.25rem,3.2vw,1.9rem); color:#2d1b4e; line-height:1.55; font-style:italic; }
+.nc-parallax__quote span { color:#9c28b1; }
+@media(max-width:768px){ .nc-parallax{ background-attachment:scroll; } }
+</style>
+
+<div class="nc-parallax">
+  <div class="nc-parallax__overlay"></div>
+  <div class="nc-parallax__quote">
+    <p>"Precisie in elke verlenging begint bij een <span>perfect geplaatst sjabloon.</span>"</p>
+  </div>
+</div>
+
+
+<!-- ================================================
+     BLOK 08 – PRIJS
+================================================ -->
+<style>
+.nc-price { background: #f8f2ff; padding: 6rem 1.5rem; text-align: center; }
+.nc-price__label { display:inline-block; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; font-weight:600; color:#b590f1; margin-bottom:.7rem; font-family:'DM Sans',sans-serif; }
+.nc-price__title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,3.8vw,2.65rem); color:#9c28b1; line-height:1.18; margin-bottom:0; }
+.nc-price__card { max-width:480px; margin:2.5rem auto 0; background:#fff; border-radius:24px; padding:2.8rem 2.4rem; box-shadow:0 16px 50px rgba(156,40,177,.1); border:2px solid rgba(181,144,241,.28); opacity:0; transform:translateY(28px); transition:opacity .6s ease, transform .6s ease; }
+.nc-price__card.nc-visible { opacity:1; transform:translateY(0); }
+.nc-price__launch { display:inline-block; background:#fe9b00; color:#fff; font-size:.67rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:.32rem 1rem; border-radius:50px; margin-bottom:1.4rem; font-family:'DM Sans',sans-serif; }
+.nc-price__main { display:flex; align-items:baseline; justify-content:center; gap:.4rem; margin-bottom:.4rem; }
+.nc-price__amount   { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:700; color:#9c28b1; line-height:1; }
+.nc-price__currency { font-size:1.5rem; font-weight:600; color:#9c28b1; font-family:'DM Sans',sans-serif; }
+.nc-price__old  { font-size:.88rem; color:#bbb; margin-bottom:1.8rem; font-family:'DM Sans',sans-serif; }
+.nc-price__old span { text-decoration:line-through; }
+.nc-price__list { list-style:none; text-align:left; display:flex; flex-direction:column; gap:.72rem; margin-bottom:2rem; padding:0; }
+.nc-price__list li { display:flex; align-items:flex-start; gap:.72rem; font-size:.9rem; color:#2d1b4e; line-height:1.4; font-family:'DM Sans',sans-serif; }
+.nc-price__chk { width:19px; height:19px; border-radius:50%; background:#b590f1; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:.62rem; color:#fff; margin-top:1px; }
+.nc-price__btn { display:block; width:100%; text-align:center; background:#fe9b00; color:#fff; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:700; padding:1rem 2rem; border-radius:50px; text-decoration:none; box-shadow:0 6px 22px rgba(254,155,0,.26); transition:transform .2s; }
+.nc-price__btn:hover { transform:scale(1.05); }
+.nc-price__note { font-size:.75rem; color:#bbb; margin-top:1rem; font-family:'DM Sans',sans-serif; }
+@media(max-width:768px){ .nc-price{ padding:4rem 1.2rem; } .nc-price__btn{ font-size:.70rem; padding:.65rem 1.4rem; box-shadow:none; } }
+</style>
+
+<div class="nc-price">
+  <span class="nc-price__label">Investering</span>
+  <h2 class="nc-price__title">Eenmalig. Levenslang toegang.</h2>
+  <div class="nc-price__card">
+    <span class="nc-price__launch">Lanceringsprijs</span>
+    <div class="nc-price__main"><span class="nc-price__currency">€</span><span class="nc-price__amount">65</span></div>
+    <p class="nc-price__old">Normale prijs: <span>€155</span>, je bespaart €90</p>
+    <ul class="nc-price__list">
+      <li><span class="nc-price__chk">✓</span>71-pagina professioneel e-book</li>
+      <li><span class="nc-price__chk">✓</span>Videolessen: acrygel + hardgel verlenging</li>
+      <li><span class="nc-price__chk">✓</span>Alle shapes: almond, ballerina, square</li>
+      <li><span class="nc-price__chk">✓</span>Elke vinger apart doorlopen</li>
+      <li><span class="nc-price__chk">✓</span>Veelgemaakte fouten + correcties</li>
+      <li><span class="nc-price__chk">✓</span>Materialenlijst (PDF)</li>
+      <li><span class="nc-price__chk">✓</span>Levenslang toegang</li>
+    </ul>
+    <a href="https://naillraftplatform.kennis.shop/pay/sjabloonapplicatie" class="nc-price__btn">Ik wil starten! →</a>
+    <p class="nc-price__note">Veilig betalen · Directe toegang na betaling</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('nc-visible'); obs.unobserve(e.target); } });
+  },{threshold:.1});
+  document.querySelectorAll('.nc-price__card').forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
+
+<!-- ================================================
+     BLOK 09 – OVER TABITHA
+================================================ -->
+<style>
+.nc-about { background: #fff; padding: 6rem 1.5rem; }
+.nc-about__inner { max-width: 940px; margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 4rem; align-items: center; }
+.nc-about__photo { opacity:0; transform:translateX(-28px); transition:opacity .7s ease, transform .7s ease; }
+.nc-about__photo.nc-visible { opacity:1; transform:translateX(0); }
+.nc-about__photo img { width:100%; border-radius:20px; box-shadow:0 18px 48px rgba(156,40,177,.14); display:block; }
+.nc-about__text { opacity:0; transform:translateX(28px); transition:opacity .7s ease .15s, transform .7s ease .15s; }
+.nc-about__text.nc-visible { opacity:1; transform:translateX(0); }
+.nc-about__label { display:inline-block; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; font-weight:600; color:#b590f1; margin-bottom:.7rem; font-family:'DM Sans',sans-serif; }
+.nc-about__title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,3.8vw,2.65rem); color:#9c28b1; line-height:1.18; margin-bottom:1rem; }
+.nc-about__text p { color:#6b4f8a; font-size:.95rem; line-height:1.78; margin-bottom:.9rem; font-family:'DM Sans',sans-serif; }
+.nc-about__stats { display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; margin-top:2rem; }
+.nc-about__stat { text-align:center; background:#f8f2ff; border-radius:14px; padding:1.1rem .7rem; }
+.nc-about__stat-num   { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:700; color:#9c28b1; display:block; }
+.nc-about__stat-label { font-size:.7rem; color:#6b4f8a; line-height:1.3; margin-top:.2rem; display:block; font-family:'DM Sans',sans-serif; }
+@media(max-width:768px){ .nc-about{ padding:4rem 1.2rem; } .nc-about__inner{ grid-template-columns:1fr; gap:2rem; } .nc-about__photo{ max-width:200px; } }
+</style>
+
+<div class="nc-about">
+  <div class="nc-about__inner">
+    <div class="nc-about__photo">
+      <img src="../images/kleurapplicatie/Dag ik ben tabitha.webp" alt="Tabitha Windels">
+    </div>
+    <div class="nc-about__text">
+      <span class="nc-about__label">Over de docente</span>
+      <h2 class="nc-about__title">Tabitha Windels</h2>
+      <p>Met meer dan 18 jaar ervaring in de nagelwereld en de titel van Belgisch Kampioen Sjablonen French weet ik exact waar nagelstylisten vastlopen.</p>
+      <p>Ik heb meer dan 800 cursisten online begeleid en 350+ stylisten live getraind. Mijn methode? Geen trucjes, een strak systeem dat je meeneemt van chaos naar controle.</p>
+      <p>Deze cursus is alles wat ik zou willen weten als ik opnieuw begon.</p>
+      <div class="nc-about__stats">
+        <div class="nc-about__stat"><span class="nc-about__stat-num">18j</span><span class="nc-about__stat-label">Ervaring in de sector</span></div>
+        <div class="nc-about__stat"><span class="nc-about__stat-num">800+</span><span class="nc-about__stat-label">Online cursisten</span></div>
+        <div class="nc-about__stat"><span class="nc-about__stat-num">🥇</span><span class="nc-about__stat-label">Belgisch Kampioen Sjablonen French</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('nc-visible'); obs.unobserve(e.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.nc-about__photo,.nc-about__text').forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
+
+<!-- ================================================
+     BLOK 10 – VOOR & NA
+================================================ -->
+<style>
+.nc-transform { background: #f8f2ff; padding: 6rem 1.5rem; text-align: center; }
+.nc-transform__label { display:inline-block; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; font-weight:600; color:#b590f1; margin-bottom:.7rem; font-family:'DM Sans',sans-serif; }
+.nc-transform__title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,3.8vw,2.65rem); color:#b590f1; line-height:1.18; margin-bottom:0; }
+.nc-transform__grid { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; max-width:800px; margin:3rem auto 0; }
+.nc-transform__col { border-radius:20px; padding:2rem 1.8rem; text-align:left; opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+.nc-transform__col.nc-visible { opacity:1; transform:translateY(0); }
+.nc-transform__col--before { background:#fff; border:1px solid rgba(199,184,223,.5); }
+.nc-transform__col--after  { background:#f0e8ff; border:1px solid rgba(181,144,241,.3); }
+.nc-transform__col h3 { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; margin-bottom:1.1rem; font-family:'DM Sans',sans-serif; }
+.nc-transform__col--before h3 { color:#c7b8df; }
+.nc-transform__col--after  h3 { color:#b590f1; }
+.nc-transform__col ul { list-style:none; display:flex; flex-direction:column; gap:.63rem; padding:0; margin:0; }
+.nc-transform__col ul li { display:flex; align-items:flex-start; gap:.55rem; font-size:.86rem; line-height:1.45; font-family:'DM Sans',sans-serif; }
+.nc-transform__col--before ul li { color:#6b4f8a; }
+.nc-transform__col--after  ul li { color:#2d1b4e; }
+.nc-transform__col--before ul li::before { content:'✗'; color:#d8a0c0; flex-shrink:0; }
+.nc-transform__col--after  ul li::before { content:'✓'; color:#b590f1; flex-shrink:0; }
+@media(max-width:768px){ .nc-transform{ padding:4rem 1.2rem; } .nc-transform__grid{ grid-template-columns:1fr; } }
+</style>
+
+<div class="nc-transform">
+  <span class="nc-transform__label">Jouw traject</span>
+  <h2 class="nc-transform__title">Vóór en na deze cursus</h2>
+  <div class="nc-transform__grid">
+    <div class="nc-transform__col nc-transform__col--before">
+      <h3>Vóór</h3>
+      <ul>
+        <li>Sjabloon sluit niet aan, je knipt opnieuw en opnieuw</li>
+        <li>Verlengingen wijken af of zitten schief</li>
+        <li>Elke vinger voelt als gokken</li>
+        <li>Je verliest kostbare tijd per klant</li>
+        <li>Je durft bepaalde shapes niet aan te bieden</li>
+      </ul>
+    </div>
+    <div class="nc-transform__col nc-transform__col--after">
+      <h3>Na</h3>
+      <ul>
+        <li>Je sjabloon sluit als een puzzelstuk, altijd</li>
+        <li>Strakke, rechte verlengingen in elke shape</li>
+        <li>Een systeem dat werkt voor elke vinger</li>
+        <li>Sneller werken, meer klanten, meer omzet</li>
+        <li>Almond, ballerina én square, geen probleem</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ setTimeout(function(){ e.target.classList.add('nc-visible'); }, +(e.target.dataset.delay||0)); obs.unobserve(e.target); } });
+  },{threshold:.1});
+  document.querySelectorAll('.nc-transform__col').forEach(function(el,i){ el.dataset.delay=i*140; obs.observe(el); });
+})();
+</script>
+
+
+<!-- ================================================
+     BLOK 11 – REVIEWS (scrollend)
+================================================ -->
+<style>
+.nc-reviews { background: #fff; padding: 5rem 1.5rem; overflow: hidden; }
+.nc-reviews__label { display:block; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; font-weight:600; color:#b590f1; margin-bottom:.5rem; text-align:center; font-family:'DM Sans',sans-serif; }
+.nc-reviews__title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,3.8vw,2.65rem); color:#9c28b1; text-align:center; margin-bottom:3rem; }
+.nc-reviews__wrap { overflow:hidden; position:relative; }
+.nc-reviews__wrap::before,.nc-reviews__wrap::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
+.nc-reviews__wrap::before { left:0; background:linear-gradient(to right,#fff,transparent); }
+.nc-reviews__wrap::after  { right:0; background:linear-gradient(to left,#fff,transparent); }
+.nc-reviews__track { display:flex; gap:1.1rem; width:max-content; animation:nc-scrollBanner 42s linear infinite; }
+.nc-reviews__card { background:#f8f2ff; border-radius:16px; padding:1.5rem 1.7rem; width:270px; flex-shrink:0; border:1px solid rgba(181,144,241,.18); }
+.nc-reviews__stars  { color:#fe9b00; font-size:.88rem; margin-bottom:.65rem; }
+.nc-reviews__text   { font-size:.83rem; color:#6b4f8a; line-height:1.62; font-style:italic; margin-bottom:.9rem; font-family:'DM Sans',sans-serif; }
+.nc-reviews__author { font-size:.76rem; font-weight:600; color:#9c28b1; font-family:'DM Sans',sans-serif; }
+@media(max-width:768px){ .nc-reviews{ padding:3.5rem 0; } }
+</style>
+
+<div class="nc-reviews">
+  <span class="nc-reviews__label">Wat cursisten zeggen</span>
+  <h2 class="nc-reviews__title">Resultaten die spreken</h2>
+  <div class="nc-reviews__wrap">
+    <div class="nc-reviews__track">
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"Eindelijk begrijp ik waarom mijn sjablonen altijd scheef zaten. De uitleg over de middellijn heeft alles veranderd."</p><span class="nc-reviews__author">Lisa V. – Nagelstyliste</span></div>
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"Het e-book alleen al is goud waard. Zo duidelijk en volledig. Tabitha legt alles uit zodat je het echt begrijpt."</p><span class="nc-reviews__author">Amber D. – Zelfstandige nagelstyliste</span></div>
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"Ik heb vorige week mijn eerste perfecte square verlengingen gemaakt. Nooit gedacht dat ik dit zou kunnen na één cursus."</p><span class="nc-reviews__author">Nathalie M. – Starter</span></div>
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"De videolessen per vinger zijn zo handig. Je ziet exact hoe je moet knippen, zelfs voor de pinkvinger."</p><span class="nc-reviews__author">Elien T. – Reeds actieve styliste</span></div>
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"Tabitha heeft een gave om complexe technieken eenvoudig te maken. Mijn klanten zien het verschil meteen."</p><span class="nc-reviews__author">Sara B. – Thuissalon</span></div>
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"De foutensectie was voor mij de grootste eye-opener. Ik maakte al jaren dezelfde fout zonder het te weten."</p><span class="nc-reviews__author">Kelly R. – Professionele styliste</span></div>
+      <!-- duplicaat -->
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"Eindelijk begrijp ik waarom mijn sjablonen altijd scheef zaten. De uitleg over de middellijn heeft alles veranderd."</p><span class="nc-reviews__author">Lisa V. – Nagelstyliste</span></div>
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"Het e-book alleen al is goud waard. Zo duidelijk en volledig. Tabitha legt alles uit zodat je het echt begrijpt."</p><span class="nc-reviews__author">Amber D. – Zelfstandige nagelstyliste</span></div>
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"Ik heb vorige week mijn eerste perfecte square verlengingen gemaakt. Nooit gedacht dat ik dit zou kunnen na één cursus."</p><span class="nc-reviews__author">Nathalie M. – Starter</span></div>
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"De videolessen per vinger zijn zo handig. Je ziet exact hoe je moet knippen, zelfs voor de pinkvinger."</p><span class="nc-reviews__author">Elien T. – Reeds actieve styliste</span></div>
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"Tabitha heeft een gave om complexe technieken eenvoudig te maken. Mijn klanten zien het verschil meteen."</p><span class="nc-reviews__author">Sara B. – Thuissalon</span></div>
+      <div class="nc-reviews__card"><div class="nc-reviews__stars">★★★★★</div><p class="nc-reviews__text">"De foutensectie was voor mij de grootste eye-opener. Ik maakte al jaren dezelfde fout zonder het te weten."</p><span class="nc-reviews__author">Kelly R. – Professionele styliste</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================
+     BLOK 06 – CURSUSINHOUD (uitgebreid)
+================================================ -->
+<style>
+.nc-content { background: #f8f2ff; padding: 6rem 1.5rem; }
+.nc-content__label { display:block; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; font-weight:600; color:#b590f1; margin-bottom:.7rem; text-align:center; font-family:'DM Sans',sans-serif; }
+.nc-content__title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,3.8vw,2.65rem); line-height:1.18; margin-bottom:1rem; color:#b590f1; text-align:center; }
+.nc-content__intro { color:#6b4f8a; text-align:center; max-width:540px; margin:0 auto 3.5rem; font-size:.95rem; line-height:1.75; font-family:'DM Sans',sans-serif; }
+.nc-content__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(275px,1fr)); gap:1.2rem; max-width:1080px; margin:0 auto 2.5rem; }
+.nc-mod { background:#fff; border:1px solid rgba(181,144,241,.22); border-radius:18px; padding:1.8rem 1.6rem; opacity:0; transform:translateY(26px); transition:opacity .5s ease, transform .5s ease; }
+.nc-mod.nc-visible { opacity:1; transform:translateY(0); }
+.nc-mod:hover { border-color:rgba(156,40,177,.28); background:#faf5ff; }
+.nc-mod__num   { font-size:.67rem; letter-spacing:.14em; text-transform:uppercase; color:#b590f1; font-weight:600; margin-bottom:.5rem; font-family:'DM Sans',sans-serif; }
+.nc-mod h3     { color:#9c28b1; font-size:.93rem; font-weight:600; margin-bottom:.9rem; line-height:1.4; font-family:'DM Sans',sans-serif; }
+.nc-mod__list  { list-style:none; display:flex; flex-direction:column; gap:.4rem; padding:0; margin:0; }
+.nc-mod__list li { display:flex; align-items:flex-start; gap:.5rem; font-size:.81rem; color:#6b4f8a; line-height:1.45; font-family:'DM Sans',sans-serif; }
+.nc-mod__list li::before { content:'▸'; color:#b590f1; flex-shrink:0; margin-top:1px; font-size:.68rem; }
+.nc-mod__list li.nc-hl { color:#2d1b4e; font-weight:500; }
+.nc-mod__list li.nc-hl::before { color:#fe9b00; }
+.nc-mod__ebook { display:flex; align-items:center; gap:.45rem; margin-top:.9rem; padding:.45rem .75rem; background:rgba(254,155,0,.1); border:1px solid rgba(254,155,0,.22); border-radius:8px; font-size:.73rem; color:#fe9b00; font-weight:500; font-family:'DM Sans',sans-serif; }
+.nc-content__cta-wrap { text-align:center; }
+.nc-content__btn { display:inline-block; background:#fe9b00; color:#fff; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:700; padding:1rem 2.6rem; border-radius:50px; text-decoration:none; box-shadow:0 6px 22px rgba(254,155,0,.26); transition:transform .2s; }
+.nc-content__btn:hover { transform:scale(1.05); }
+@media(max-width:768px){ .nc-content{ padding:4rem 1.2rem; } .nc-content__btn{ font-size:.70rem; padding:.65rem 1.4rem; box-shadow:none; } }
+</style>
+
+<div class="nc-content">
+  <span class="nc-content__label">Wat zit er in de cursus?</span>
+  <h2 class="nc-content__title">Alles wat je nodig hebt.<br>Niets meer, niets minder.</h2>
+  <p class="nc-content__intro">Van de eerste manicure-stap tot het navijlen van de afgewerkte verlenging, volledig in video en e-book.</p>
+  <div class="nc-content__grid">
+    <div class="nc-mod"><div class="nc-mod__num">Module 01</div><h3>Welkom &amp; materialen</h3><ul class="nc-mod__list"><li class="nc-hl">Welkomstles + Full HD instructie</li><li>Materialenlijst (PDF)</li><li>Korte uitleg bij elk materiaal</li></ul></div>
+    <div class="nc-mod"><div class="nc-mod__num">Module 02</div><h3>Theorie: Sjablonen plaatsen</h3><ul class="nc-mod__list"><li class="nc-hl">71-pagina e-book: volledige theorie</li><li>Volledige opbouw van het sjabloon, lijnen &amp; vleugels</li><li>Shapes: almond en square</li><li>Veelgemaakte fouten</li></ul><div class="nc-mod__ebook">📖 Inclusief professioneel e-book</div></div>
+    <div class="nc-mod"><div class="nc-mod__num">Module 03</div><h3>Praktijk: basisprincipes</h3><ul class="nc-mod__list"><li>Basisprincipe sjabloon plaatsen</li><li>Basisprincipe sjabloon inknippen</li><li>Veelgemaakte fouten in beeld</li><li>Wat moet je doen tijdens je manicure vóór sjabloon applicatie</li></ul></div>
+    <div class="nc-mod"><div class="nc-mod__num">Module 04</div><h3>Acrygel + Almond: per vinger</h3><ul class="nc-mod__list"><li>Sjabloon voorbereiden &amp; inknippen: demo op elke vinger</li><li>Sjabloon bevestigen per vinger</li><li>Verlenging met acrygel per vinger</li></ul></div>
+    <div class="nc-mod"><div class="nc-mod__num">Module 05</div><h3>Hardgel + Almond: per vinger</h3><ul class="nc-mod__list"><li>Sjabloon voorbereiden &amp; inknippen: op elke vinger</li><li>Sjabloon bevestigen per vinger</li><li>Verlenging met hardgel per vinger</li></ul></div>
+    <div class="nc-mod"><div class="nc-mod__num">Module 06</div><h3>Verwijderen, vijlen &amp; afwerking</h3><ul class="nc-mod__list"><li>Sjablonen verwijderen</li><li>Verlenging vijlen: acrygel &amp; hardgel almond</li><li>Easy Nails techniek: acrygel &amp; hardgel</li><li>Topcoat, navijlen, afwerken</li><li class="nc-hl">Resultaat</li></ul></div>
+    <div class="nc-mod"><div class="nc-mod__num">Module 07</div><h3>Acrygel + Square: volledig</h3><ul class="nc-mod__list"><li>Kort, rond, symmetrisch vijlen</li><li>Sjabloon passen, inknippen &amp; bevestigen per vinger</li><li>Verlenging met acrygel per vinger</li><li>Easy Nails &amp; Cat Eye techniek</li><li>Topcoat, navijlen, olie, resultaat</li></ul></div>
+  </div>
+  <div class="nc-content__cta-wrap">
+    <a href="https://naillraftplatform.kennis.shop/pay/sjabloonapplicatie" class="nc-content__btn">Ik wil dit leren – €65</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ setTimeout(function(){ e.target.classList.add('nc-visible'); }, +(e.target.dataset.delay||0)); obs.unobserve(e.target); } });
+  },{threshold:.08});
+  document.querySelectorAll('.nc-mod').forEach(function(el,i){ el.dataset.delay=i*70; obs.observe(el); });
+})();
+</script>
+
+
+<!-- ================================================
+     BLOK 12 – FINALE CTA
+================================================ -->
+<style>
+.nc-finalcta { background: #f8f2ff; padding: 7rem 1.5rem; text-align: center; position: relative; overflow: hidden; }
+.nc-finalcta::before { content:''; position:absolute; top:-180px; left:50%; transform:translateX(-50%); width:560px; height:560px; border-radius:50%; background:radial-gradient(circle,rgba(181,144,241,.18) 0%,transparent 70%); pointer-events:none; }
+.nc-finalcta__label { display:block; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; font-weight:600; color:#b590f1; margin-bottom:.7rem; font-family:'DM Sans',sans-serif; }
+.nc-finalcta__title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,3.8vw,2.65rem); color:#9c28b1; line-height:1.18; margin-bottom:1rem; }
+.nc-finalcta__sub { color:#6b4f8a; max-width:460px; margin:0 auto 1.5rem; font-size:.96rem; line-height:1.72; font-family:'DM Sans',sans-serif; }
+.nc-finalcta__price { display:flex; align-items:center; justify-content:center; gap:1rem; margin-bottom:2rem; }
+.nc-finalcta__old { color:#c7b8df; font-size:1rem; text-decoration:line-through; font-family:'DM Sans',sans-serif; }
+.nc-finalcta__new { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:700; color:#9c28b1; }
+.nc-finalcta__btn { display:inline-block; background:#fe9b00; color:#fff; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:700; padding:1rem 2.6rem; border-radius:50px; text-decoration:none; box-shadow:0 0 26px 4px rgba(254,155,0,.42); animation:nc-glowPulse 2.2s ease-in-out infinite; transition:transform .2s; }
+.nc-finalcta__btn:hover { transform:scale(1.05); animation:none; }
+.nc-finalcta__note { font-size:.74rem; color:#c7b8df; margin-top:1rem; font-family:'DM Sans',sans-serif; }
+@media(max-width:768px){ .nc-finalcta{ padding:4.5rem 1.2rem; } .nc-finalcta__btn{ font-size:.70rem; padding:.65rem 1.4rem; box-shadow:none; animation:none; } }
+</style>
+
+<div class="nc-finalcta">
+  <span class="nc-finalcta__label">Klaar om te starten?</span>
+  <h2 class="nc-finalcta__title">Jouw verlengingen verdienen<br>een sterke basis.</h2>
+  <p class="nc-finalcta__sub">Eenmalige investering. Levenslang toegang. Direct aan de slag.</p>
+  <div class="nc-finalcta__price">
+    <span class="nc-finalcta__old">€155</span>
+    <span class="nc-finalcta__new">€65</span>
+  </div>
+  <a href="https://naillraftplatform.kennis.shop/pay/sjabloonapplicatie" class="nc-finalcta__btn">Ik start vandaag →</a>
+  <p class="nc-finalcta__note">Lanceringsprijs · Beperkte tijd</p>
+</div>
+
+
+<!-- INSTAGRAM -->
+<style>
+.ig-section { background: #fff; padding: 5rem 2rem; overflow: hidden; }
+.ig-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.ig-lbl { display:inline-flex; align-items:center; gap:.5rem; font-size:.73rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#b590f1; margin-bottom:1rem; font-family:'DM Sans',sans-serif; }
+.ig-lbl::before { content:''; width:20px; height:1.5px; background:#b590f1; display:inline-block; }
+.ig-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; line-height:1.1; color:#120820; margin-bottom:1rem; }
+.ig-text h2 em { font-style:italic; color:#9c28b1; }
+.ig-text p { font-size:.97rem; color:#5e4878; line-height:1.8; margin-bottom:2rem; max-width:420px; font-family:'DM Sans',sans-serif; }
+.ig-btn { display:inline-flex; align-items:center; gap:.7rem; background:#9c28b1; color:#fff; font-family:'DM Sans',sans-serif; font-weight:600; font-size:.82rem; padding:.75rem 1.6rem; border-radius:60px; text-decoration:none; transition:transform .2s, box-shadow .2s; box-shadow:0 4px 20px rgba(156,40,177,.3); }
+.ig-btn:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(156,40,177,.4); color:#fff; }
+.ig-btn-icon { width:20px; height:20px; flex-shrink:0; }
+.ig-tags { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:1.5rem; }
+.ig-tag { font-size:.75rem; color:#b590f1; font-weight:500; font-family:'DM Sans',sans-serif; }
+.ig-visual { display:flex; justify-content:center; align-items:center; position:relative; }
+.ig-visual::before { content:''; position:absolute; width:340px; height:340px; border-radius:50%; background:radial-gradient(ellipse at center,rgba(181,144,241,.18) 0%,rgba(254,155,0,.08) 100%); z-index:0; }
+.ig-phone { position:relative; z-index:1; max-width:260px; width:100%; filter:drop-shadow(0 24px 48px rgba(156,40,177,.22)); animation:igFloat 4s ease-in-out infinite; }
+.ig-phone img { width:100%; }
+@keyframes igFloat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+@media(max-width:900px){ .ig-inner{grid-template-columns:1fr;gap:3rem;text-align:center;} .ig-lbl{justify-content:center;} .ig-text p{margin-left:auto;margin-right:auto;} .ig-tags{justify-content:center;} .ig-btn{margin:0 auto;} .ig-visual::before{width:260px;height:260px;} .ig-phone{max-width:200px;} }
+@media(max-width:600px){ .ig-section{padding:3.5rem 1.2rem;} .ig-btn{font-size:.70rem;padding:.65rem 1.3rem;} }
+</style>
+
+<div class="ig-section">
+  <div class="ig-inner">
+    <div class="ig-text">
+      <div class="ig-lbl">Instagram</div>
+      <h2>Volg je mij al<br><em>On The Gram?</em></h2>
+      <p>Zin om geïnspireerd te worden? Kom er gezellig bij, ik post regelmatig content die je inspireert en geeft een inkijk in mijn achter-de-schermen leven en hoe ik mijn onderneming run.</p>
+      <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="ig-btn">
+        <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Ga naar Instagram
+      </a>
+      <div class="ig-tags">
+        <span class="ig-tag">#nailcraft</span>
+        <span class="ig-tag">#sjablonen</span>
+        <span class="ig-tag">#nagels</span>
+        <span class="ig-tag">#behindthescenes</span>
+      </div>
+    </div>
+    <div class="ig-visual">
+      <div class="ig-phone">
+        <img src="../images/upperforms/instagram mockup telefoon.webp" alt="NailCraft Instagram op telefoon" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="nc-footer">
+  <p>© Tabitha – NailCraft Platform &nbsp;·&nbsp; <a href="../online-opleidingen.html">Alle opleidingen</a> &nbsp;·&nbsp; <a href="../index.html">Home</a></p>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="nc-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Terug naar boven">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('nc-top-btn');
+  if (window.scrollY > 400) btn.classList.add('show'); else btn.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
