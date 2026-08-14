@@ -109,48 +109,51 @@
 <style>
 .gc-hero {
   background: var(--gc-cream);
-  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 7rem 1.5rem 5rem; overflow: hidden;
+  position: relative; overflow: hidden;
+  padding: 7rem clamp(1.2rem,5%,4rem) 5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
 }
 .gc-hero-blob1 { position:absolute; top:-140px; right:-140px; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(151,196,193,.32) 0%,transparent 68%); pointer-events:none; }
 .gc-hero-blob2 { position:absolute; bottom:-100px; left:-100px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(249,255,181,.6) 0%,transparent 70%); pointer-events:none; }
-.gc-hero-badge { display:inline-flex; align-items:center; gap:.4rem; background:var(--gc-yellow); color:var(--gc-dark); font-size:.66rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; padding:.35rem 1rem; border-radius:50px; margin-bottom:1.6rem; position:relative; z-index:2; animation:gc-fadeDown .6s ease both; font-family:'DM Sans',sans-serif; }
-.gc-hero h1 { font-family:'Cormorant Garamond',serif; position:relative; z-index:2; font-size:clamp(3.4rem,10vw,7rem); color:var(--gc-dark); line-height:1; letter-spacing:-.02em; animation:gc-fadeUp .7s .1s ease both; }
+.gc-hero-text { position:relative; z-index:2; }
+.gc-hero-badge { display:inline-flex; align-items:center; gap:.4rem; background:var(--gc-yellow); color:var(--gc-dark); font-size:.66rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; padding:.35rem 1rem; border-radius:50px; margin-bottom:1.6rem; animation:gc-fadeDown .6s ease both; font-family:'DM Sans',sans-serif; }
+.gc-hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3.4rem,8vw,6rem); color:var(--gc-dark); line-height:1; letter-spacing:-.02em; animation:gc-fadeUp .7s .1s ease both; }
 .gc-hero h1 .gc-accent { color:var(--gc-teal-dark); font-style:italic; }
 .gc-hero h1 .gc-highlight { color:var(--gc-orange); }
-.gc-hero-sub { position:relative; z-index:2; max-width:560px; margin:1.6rem auto 0; font-size:clamp(.97rem,2.5vw,1.12rem); color:var(--gc-mid); font-weight:400; line-height:1.78; animation:gc-fadeUp .7s .22s ease both; font-family:'DM Sans',sans-serif; }
-.gc-hero-pills { position:relative; z-index:2; display:flex; flex-wrap:wrap; justify-content:center; gap:.45rem; margin-top:1.5rem; animation:gc-fadeUp .7s .32s ease both; }
+.gc-hero-sub { max-width:500px; margin:1.6rem 0 0; font-size:clamp(.97rem,2vw,1.1rem); color:var(--gc-mid); font-weight:400; line-height:1.78; animation:gc-fadeUp .7s .22s ease both; font-family:'DM Sans',sans-serif; }
+.gc-hero-pills { display:flex; flex-wrap:wrap; gap:.45rem; margin-top:1.5rem; animation:gc-fadeUp .7s .32s ease both; }
 .gc-pill { background:var(--gc-mint); color:var(--gc-mid); border:1px solid rgba(151,196,193,.45); font-size:.74rem; font-weight:500; padding:.28rem .85rem; border-radius:50px; font-family:'DM Sans',sans-serif; }
-.gc-hero-ctas { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:.9rem; margin-top:2.2rem; animation:gc-fadeUp .7s .42s ease both; }
+.gc-hero-ctas { display:flex; flex-direction:column; align-items:flex-start; gap:.9rem; margin-top:2.2rem; animation:gc-fadeUp .7s .42s ease both; }
 .gc-hero-ghost { font-family:'DM Sans',sans-serif; font-size:.8rem; font-weight:500; color:var(--gc-mid); text-decoration:underline; cursor:pointer; }
-.gc-hero-video { position:relative; z-index:2; margin-top:3.5rem; max-width:700px; width:100%; border-radius:20px; overflow:hidden; box-shadow:0 24px 80px rgba(151,196,193,.28),0 6px 24px rgba(0,0,0,.07); animation:gc-fadeUp .85s .55s ease both; aspect-ratio:16/9; }
-.gc-hero-trust { position:relative; z-index:2; display:flex; align-items:center; gap:1.6rem; flex-wrap:wrap; justify-content:center; margin-top:2.2rem; padding-top:2rem; border-top:1px solid rgba(151,196,193,.35); animation:gc-fadeUp .7s .7s ease both; }
+.gc-hero-img { position:relative; z-index:2; display:flex; justify-content:center; align-items:center; animation:gc-fadeUp .85s .3s ease both; }
+.gc-hero-img img { width:100%; max-width:480px; filter:drop-shadow(0 30px 60px rgba(151,196,193,.3)); animation:gcFloat 6s ease-in-out infinite; }
+.gc-hero-trust { position:relative; z-index:2; grid-column:1/-1; display:flex; align-items:center; gap:1.6rem; flex-wrap:wrap; justify-content:flex-start; padding-top:2rem; border-top:1px solid rgba(151,196,193,.35); animation:gc-fadeUp .7s .6s ease both; }
 .gc-trust-item { display:flex; align-items:center; gap:.4rem; font-size:.78rem; color:var(--gc-mid); font-weight:500; font-family:'DM Sans',sans-serif; }
 .gc-trust-dot { color:var(--gc-teal-dark); font-size:.7rem; }
-@media(max-width:767px){ .gc-hero{padding:5.5rem 1.2rem 4rem;} }
+@media(max-width:767px){ .gc-hero{grid-template-columns:1fr;padding:5.5rem 1.2rem 4rem;gap:2rem;} .gc-hero-img{order:-1;} .gc-hero-img img{max-width:260px;} .gc-hero-ctas{align-items:center;} .gc-hero-text{text-align:center;} .gc-hero-pills{justify-content:center;} .gc-hero-trust{justify-content:center;} }
 </style>
 
 <section class="gc-hero">
   <div class="gc-hero-blob1"></div>
   <div class="gc-hero-blob2"></div>
-  <div class="gc-hero-badge">✦ Online E-book Cursus</div>
-  <h1>The <span class="gc-accent">Gel</span><br><span class="gc-highlight">Code</span></h1>
-  <p class="gc-hero-sub">Begrijp de wetenschap achter gelproducten. Werk met 100% vertrouwen. Geen lifting meer, geen verkeerde gelkeuzes.</p>
-  <div class="gc-hero-pills">
-    <span class="gc-pill">Rubber Based</span>
-    <span class="gc-pill">Hardgel</span>
-    <span class="gc-pill">Acrygel</span>
-    <span class="gc-pill">Architectuur</span>
-    <span class="gc-pill">Problemen oplossen</span>
-  </div>
-  <div class="gc-hero-ctas">
-    <a href="https://naillraftplatform.kennis.shop/pay/thegelcode" class="gc-btn">YES! Ik wil dit →</a>
-    <a href="#gc-inhoud" class="gc-hero-ghost">Bekijk de inhoud ↓</a>
-  </div>
-  <div class="gc-hero-video">
-    <div class="vfacade" data-vimeo="1218233923">
-      <img src="../images/the-gel-code/The Gel Code mockup volledig transparant (1).webp" alt="The Gel Code preview" loading="eager">
+  <div class="gc-hero-text">
+    <div class="gc-hero-badge">✦ Online E-book Cursus</div>
+    <h1>The <span class="gc-accent">Gel</span><br><span class="gc-highlight">Code</span></h1>
+    <p class="gc-hero-sub">Begrijp de wetenschap achter gelproducten. Werk met 100% vertrouwen. Geen lifting meer, geen verkeerde gelkeuzes.</p>
+    <div class="gc-hero-pills">
+      <span class="gc-pill">Rubber Based</span>
+      <span class="gc-pill">Hardgel</span>
+      <span class="gc-pill">Acrygel</span>
+      <span class="gc-pill">Architectuur</span>
+      <span class="gc-pill">Problemen oplossen</span>
     </div>
+    <div class="gc-hero-ctas">
+      <a href="https://naillraftplatform.kennis.shop/pay/thegelcode" class="gc-btn">YES! Ik wil dit →</a>
+      <a href="#gc-inhoud" class="gc-hero-ghost">Bekijk de inhoud ↓</a>
+    </div>
+  </div>
+  <div class="gc-hero-img">
+    <img src="../images/the-gel-code/The Gel Code mockup volledig transparant (1).webp" alt="The Gel Code mockup" loading="eager">
   </div>
   <div class="gc-hero-trust">
     <div class="gc-trust-item"><span class="gc-trust-dot">✦</span> 75 pagina's vakkennis</div>
@@ -261,7 +264,7 @@ window.addEventListener('load', function(){
 <style>
 .gc-photo-strip { background:var(--gc-mint); padding:3rem 0; overflow:hidden; }
 .gc-photo-inner { display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; max-width:900px; margin:0 auto; padding:0 1.5rem; }
-@media(max-width:640px){ .gc-photo-inner{display:flex;flex-wrap:nowrap;gap:.8rem;padding:0 1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none;} .gc-photo-inner::-webkit-scrollbar{display:none;} .gc-photo-inner>div{flex:0 0 64vw;scroll-snap-align:start;} }
+@media(max-width:640px){ .gc-photo-inner{grid-template-columns:1fr;max-width:420px;} }
 .gc-photo-tile { border-radius:14px; overflow:hidden; aspect-ratio:4/3; }
 .gc-photo-tile img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s; }
 .gc-photo-tile:hover img { transform:scale(1.04); }
@@ -441,8 +444,10 @@ window.addEventListener('load', function(){
           <li><span class="gc-check">✦</span><span>Professioneler werken, minder frustratie, meer resultaat</span></li>
         </ul>
       </div>
-      <div class="gc-results-img">
-        <img src="../images/the-gel-code/hallo dit ben ik.webp" alt="Tabitha Windels" loading="lazy">
+      <div class="gc-results-img" style="aspect-ratio:16/9;">
+        <div class="vfacade" data-vimeo="1218233923">
+          <img src="../images/the-gel-code/The Gel Code mockup volledig transparant (1).webp" alt="The Gel Code video" loading="lazy">
+        </div>
       </div>
     </div>
   </div>
