@@ -269,25 +269,25 @@ window.addEventListener('load', function(){
 .gc-photo-inner { display:flex; gap:1rem; width:max-content; animation:gc-banner-scroll 22s linear infinite; }
 .gc-photo-inner:hover { animation-play-state:paused; }
 @keyframes gc-banner-scroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
-.gc-photo-tile { flex-shrink:0; width:280px; border-radius:14px; overflow:hidden; }
+.gc-photo-tile { flex-shrink:0; width:280px; border-radius:14px; overflow:hidden; position:relative; }
 .gc-photo-tile img { width:100%; height:200px; object-fit:cover; display:block; }
-.gc-photo-label { font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gc-teal-dark); text-align:center; margin-top:.5rem; font-family:'DM Sans',sans-serif; padding-bottom:.5rem; }
+.gc-photo-label { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 100%); color:#fff; font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.7rem .8rem .5rem; font-family:'DM Sans',sans-serif; }
 </style>
 
 <div class="gc-photo-strip">
   <div class="gc-photo-inner">
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"></div>
-    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"><span class="gc-photo-label">Rubber Based Gel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"><span class="gc-photo-label">Hardgel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"><span class="gc-photo-label">Acrygel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"><span class="gc-photo-label">Rubber Based Gel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"><span class="gc-photo-label">Hardgel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"><span class="gc-photo-label">Acrygel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"><span class="gc-photo-label">Rubber Based Gel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"><span class="gc-photo-label">Hardgel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"><span class="gc-photo-label">Acrygel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"><span class="gc-photo-label">Rubber Based Gel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"><span class="gc-photo-label">Hardgel</span></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"><span class="gc-photo-label">Acrygel</span></div>
   </div>
 </div>
 
