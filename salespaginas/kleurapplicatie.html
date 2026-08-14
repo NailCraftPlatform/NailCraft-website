@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfecte Kleurapplicatie – Online cursus | NailCraft Platform</title>
+  <meta name="description" content="13 modules over kleurapplicatie: van pastel tot neon, van cateye tot heldere kleuren. Leer elke kleur beheersen met stap-voor-stap video's.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --light:        #f8f2ff;
+      --light2:       #ede0ff;
+      --purple:       #b590f1;
+      --purple-dark:  #9060d8;
+      --purple-deep:  #1a0a2e;
+      --orange:       #fe9b00;
+      --orange-dark:  #e08800;
+      --mid:          #5a4070;
+      --text:         #2d1e45;
+      --text-light:   #6b5585;
+      --white:        #ffffff;
+      --radius:       16px;
+      --shadow:       0 4px 24px rgba(90,64,112,.10);
+      --shadow-lg:    0 8px 40px rgba(90,64,112,.16);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 1rem;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1.2;
+      color: var(--purple-deep);
+    }
+
+    /* FADE-UP */
+    .fade-up {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.delay-1 { transition-delay: .1s; }
+    .fade-up.delay-2 { transition-delay: .2s; }
+    .fade-up.delay-3 { transition-delay: .3s; }
+    .fade-up.delay-4 { transition-delay: .4s; }
+    .fade-up.delay-5 { transition-delay: .5s; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(248,242,255,.96);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(181,144,241,.15);
+      padding: .75rem clamp(1.2rem,4vw,3rem);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    nav a.logo-link { display: flex; align-items: center; text-decoration: none; }
+    nav img.logo { height: 34px; width: auto; }
+    nav a.nav-cta {
+      background: var(--orange); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: .88rem;
+      padding: .55rem 1.4rem; border-radius: 50px; text-decoration: none;
+      transition: background .2s; white-space: nowrap;
+    }
+    nav a.nav-cta:hover { background: var(--orange-dark); }
+    @media (max-width: 480px) { nav a.nav-cta { font-size: .70rem; padding: .50rem 1rem; } }
+
+    /* SCROLL TO TOP */
+    #top-btn {
+      position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800;
+      width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer;
+      background: var(--purple-dark); color: #fff; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(144,96,216,.35);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .3s, transform .3s, background .2s;
+    }
+    #top-btn.show { opacity: 1; transform: translateY(0); }
+    #top-btn:hover { background: var(--orange); }
+
+    /* HERO */
+    .hero {
+      min-height: 100svh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #f8f2ff 0%, #ede0ff 60%, #f0e8ff 100%);
+      padding: 7rem 2rem 4rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('../images/kleurapplicatie/pastel-nagels.webp');
+      background-size: cover; background-position: center;
+      background-attachment: fixed; opacity: .18;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 680px; margin: 0 auto; text-align: center;
+    }
+    .hero-badge {
+      display: inline-block; background: var(--purple); color: var(--white);
+      font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      padding: .35rem 1.1rem; border-radius: 50px; margin-bottom: 1.4rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700;
+      color: var(--purple-deep); margin-bottom: 1.2rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--purple-dark); }
+    .hero p.sub {
+      font-size: 1.15rem; color: var(--mid);
+      max-width: 520px; margin: 0 auto 2rem; font-weight: 400;
+    }
+    .btn-primary {
+      display: inline-block; background: var(--orange); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 700;
+      padding: 1rem 2.4rem; border-radius: 50px; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(254,155,0,.35);
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(254,155,0,.4); }
+    .hero-price { margin-top: 1.4rem; font-size: .92rem; color: var(--text-light); }
+    .hero-price strong { color: var(--purple-dark); font-size: 1.1rem; }
+    .hero-price s { opacity: .6; }
+
+    @keyframes pulse-btn {
+      0%,100% { transform: scale(1); box-shadow: 0 4px 20px rgba(254,155,0,.35); }
+      50% { transform: scale(1.045); box-shadow: 0 8px 32px rgba(254,155,0,.55); }
+    }
+    .hero .btn-primary { animation: pulse-btn 2.2s ease-in-out infinite; }
+    .hero .btn-primary:hover { animation: none; background: var(--orange-dark); transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .hero-bg { background-attachment: scroll; }
+      .hero { padding: 6rem 1.2rem 3rem; }
+    }
+
+    /* SECTION */
+    .section { padding: 5rem 1.5rem; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-family: 'DM Sans', sans-serif; font-size: .78rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--purple); margin-bottom: .6rem; display: block;
+    }
+    .section-title { font-size: clamp(1.7rem,4vw,2.5rem); margin-bottom: 1rem; color: var(--purple-dark) !important; }
+    .section-sub { font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin-bottom: 3rem; }
+
+    /* QUICK WINS */
+    .quick-wins { background: var(--white); }
+    .wins-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.5rem; }
+    .win-card {
+      background: var(--light); border-radius: var(--radius);
+      padding: 2rem 1.6rem; border: 1px solid rgba(181,144,241,.2);
+    }
+    .win-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .win-card h3 { font-size: 1.1rem; margin-bottom: .5rem; color: var(--purple-deep); font-family: 'DM Sans',sans-serif; font-weight: 600; }
+    .win-card p { font-size: .93rem; color: var(--text-light); }
+
+    /* FOR WHO */
+    .for-who { background: rgba(181,144,241,.10); }
+    .who-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 1.2rem; }
+    .who-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 1.6rem; box-shadow: var(--shadow);
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .who-icon { font-size: 1.3rem; flex-shrink: 0; color: var(--purple-dark); font-weight: 700; margin-top: .05rem; }
+    .who-card p { font-size: .95rem; color: var(--text); }
+
+    /* PARALLAX STRIP 1 */
+    .parallax-strip {
+      height: 320px;
+      background-image: url('../images/kleurapplicatie/eindresultaten 4.webp');
+      background-size: cover; background-position: center 30%;
+      background-attachment: fixed; position: relative;
+    }
+    .parallax-strip::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(26,10,46,.55) 0%, rgba(181,144,241,.25) 100%);
+    }
+    .parallax-strip-text {
+      position: absolute; inset: 0; z-index: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 2rem; color: var(--white);
+    }
+    .parallax-strip-text p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem,3vw,2rem); font-style: italic;
+      max-width: 640px; line-height: 1.5;
+    }
+    .parallax-strip-text span {
+      display: block; font-family: 'DM Sans', sans-serif;
+      font-size: .85rem; font-style: normal;
+      margin-top: .8rem; opacity: .8; letter-spacing: .06em;
+    }
+    @media (max-width: 768px) { .parallax-strip { background-attachment: scroll; } }
+
+    /* CURRICULUM */
+    .curriculum { background: var(--light); }
+    .phase-block { margin-bottom: 3.5rem; }
+    .phase-header {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: rgba(181,144,241,.15); border: 2px solid rgba(181,144,241,.35);
+      border-radius: var(--radius);
+    }
+    .phase-number {
+      background: var(--purple); color: var(--white);
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .95rem; flex-shrink: 0;
+    }
+    .phase-header h3 { color: var(--purple-deep); font-size: 1.15rem; font-family: 'DM Sans',sans-serif; font-weight: 600; }
+    .phase-header p { font-size: .85rem; color: var(--text-light); margin-top: .15rem; font-family: 'DM Sans',sans-serif; }
+    .modules-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1rem; }
+    .module-card {
+      background: var(--white); border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s;
+    }
+    .module-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .module-card.has-photo .module-photo { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .module-body { padding: 1.3rem 1.4rem 1.5rem; }
+    .module-num {
+      font-size: .73rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--purple); margin-bottom: .35rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .module-card h4 { font-size: 1rem; font-family: 'DM Sans',sans-serif; font-weight: 600; color: var(--purple-deep); margin-bottom: .6rem; }
+    .module-bullets { list-style: none; padding: 0; }
+    .module-bullets li {
+      font-size: .87rem; color: var(--text-light);
+      padding: .22rem 0 .22rem 1.2rem; position: relative;
+    }
+    .module-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--purple); font-size: .75rem; }
+    .module-card.bonus { background: rgba(181,144,241,.12); border: 2px solid var(--purple); }
+    .bonus-tag {
+      display: inline-block; background: var(--orange); color: var(--white);
+      font-size: .7rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      padding: .25rem .75rem; border-radius: 50px; margin-bottom: .8rem;
+    }
+    @media (max-width: 480px) { .modules-grid { grid-template-columns: 1fr; } }
+
+    /* GALLERY */
+    .gallery-section { background: var(--white); padding-left: 0; padding-right: 0; }
+    .marquee-wrap {
+      width: 100%; overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex; gap: 1rem; width: max-content;
+      animation: marquee-scroll 38s linear infinite;
+    }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track img {
+      height: 220px; width: auto; aspect-ratio: 3/4;
+      object-fit: cover; border-radius: 12px;
+      box-shadow: var(--shadow); transition: transform .3s;
+    }
+    .marquee-track img:hover { transform: scale(1.04); }
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (max-width: 768px) { .marquee-track img { height: 150px; } }
+    @media (max-width: 480px) { .marquee-track img { height: 120px; } }
+
+    /* PARALLAX 2 */
+    .parallax-2 {
+      height: 280px;
+      background-image: url('../images/kleurapplicatie/neon-roze-mat.webp');
+      background-size: cover; background-position: center 20%;
+      background-attachment: fixed; position: relative;
+    }
+    .parallax-2::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(181,144,241,.45);
+    }
+    @media (max-width: 768px) { .parallax-2 { background-attachment: scroll; } }
+
+    /* PRICING */
+    .pricing { background: var(--white); }
+    .pricing-card {
+      max-width: 520px; margin: 0 auto;
+      background: var(--white); border-radius: 24px; overflow: hidden;
+      box-shadow: var(--shadow-lg); border: 2px solid var(--purple);
+    }
+    .pricing-top {
+      background: rgba(181,144,241,.15); color: var(--purple-deep);
+      padding: 2rem 2.4rem; text-align: center;
+      border-bottom: 1px solid rgba(181,144,241,.25);
+    }
+    .pricing-top .label {
+      font-size: .78rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--purple-dark); margin-bottom: .5rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .pricing-top h2 { color: var(--purple-deep); font-size: 1.7rem; margin-bottom: .4rem; }
+    .price-amount {
+      font-size: 3.5rem; font-weight: 700;
+      font-family: 'Cormorant Garamond', serif; color: var(--orange); line-height: 1;
+    }
+    .price-amount sup { font-size: 1.6rem; vertical-align: super; }
+    .price-normal { margin-top: .5rem; font-size: .92rem; color: var(--text-light); }
+    .pricing-body { padding: 2rem 2.4rem; }
+    .pricing-includes { list-style: none; margin-bottom: 2rem; }
+    .pricing-includes li {
+      display: flex; align-items: flex-start; gap: .75rem;
+      padding: .55rem 0; border-bottom: 1px solid rgba(181,144,241,.12); font-size: .95rem;
+    }
+    .pricing-includes li:last-child { border-bottom: none; }
+    .check { color: var(--purple-dark); font-weight: 700; flex-shrink: 0; font-size: 1.05rem; }
+    .pricing-cta {
+      display: block; text-align: center; background: var(--orange); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 700;
+      padding: 1.05rem 2rem; border-radius: 50px; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(254,155,0,.35); transition: background .2s, transform .2s;
+    }
+    .pricing-cta:hover { background: var(--orange-dark); transform: translateY(-2px); }
+    .pricing-note { text-align: center; font-size: .82rem; color: var(--text-light); margin-top: 1rem; }
+    @media (max-width: 768px) { .pricing-top, .pricing-body { padding: 1.5rem; } }
+
+    /* ABOUT */
+    .about { background: var(--light); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-photo { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 24px; box-shadow: var(--shadow-lg); }
+    .about-text p { font-size: .97rem; color: var(--text-light); margin-bottom: .85rem; }
+    @media (max-width: 768px) {
+      .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .about-photo { aspect-ratio: 3/2; max-height: 300px; }
+    }
+
+    /* REVIEWS */
+    .reviews { background: var(--white); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 1.4rem; }
+    .review-card {
+      background: var(--light); border-radius: var(--radius);
+      padding: 1.6rem; border-left: 3px solid var(--purple);
+    }
+    .stars { color: var(--orange); font-size: 1rem; margin-bottom: .7rem; }
+    .review-card p { font-size: .92rem; color: var(--text); line-height: 1.6; font-style: italic; margin-bottom: 1rem; }
+    .reviewer { font-size: .82rem; font-weight: 600; color: var(--purple-dark); font-style: normal; display: block; }
+    .review-screens-title { font-size: 1rem; font-weight: 600; color: var(--purple-deep); margin: 3rem 0 1.4rem; font-family: 'DM Sans',sans-serif; }
+    .review-screens-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 1.4rem; }
+    .review-screen-card { background: var(--light); border-radius: var(--radius); padding: .6rem; box-shadow: var(--shadow); }
+    .review-screen-card img { width: 100%; height: auto; border-radius: 10px; object-fit: contain; }
+
+    /* FAQ */
+    .faq { background: rgba(181,144,241,.10); }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    details {
+      background: var(--white); border-radius: var(--radius); margin-bottom: .75rem;
+      border: 1px solid rgba(181,144,241,.2); overflow: hidden;
+    }
+    summary {
+      font-weight: 600; font-size: .97rem; padding: 1.2rem 1.5rem;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--purple-deep); font-family: 'DM Sans', sans-serif;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 1.3rem; font-weight: 300; color: var(--purple); transition: transform .2s; flex-shrink: 0; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { padding: 0 1.5rem 1.3rem; font-size: .93rem; color: var(--text-light); line-height: 1.65; }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: rgba(181,144,241,.13); padding: 6rem 1.5rem;
+      text-align: center; position: relative; overflow: hidden;
+      border-top: 1px solid rgba(181,144,241,.25);
+    }
+    .final-cta::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; background: var(--purple); opacity: .10; border-radius: 50%; }
+    .final-cta::after  { content: ''; position: absolute; bottom: -80px; left: -80px; width: 360px; height: 360px; background: var(--orange); opacity: .07; border-radius: 50%; }
+    .final-cta h2 { color: var(--purple-deep); font-size: clamp(1.8rem,4vw,2.8rem); margin-bottom: 1rem; position: relative; z-index: 1; }
+    .final-cta > p { color: var(--text-light); font-size: 1.05rem; margin-bottom: 2.4rem; position: relative; z-index: 1; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .final-cta .btn-primary { position: relative; z-index: 1; font-size: 1.1rem; padding: 1.1rem 2.8rem; }
+    .final-price-note { position: relative; z-index: 1; color: var(--text-light); font-size: .85rem; margin-top: 1.2rem; }
+
+    /* INSTAGRAM */
+    .ig-section { background: var(--white); padding: 5rem 2rem; overflow: hidden; }
+    .ig-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .ig-lbl { display: inline-flex; align-items: center; gap: .5rem; font-size: .73rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; }
+    .ig-lbl::before { content: ''; width: 20px; height: 1.5px; background: var(--purple); display: inline-block; }
+    .ig-text h2 { font-size: clamp(2rem,3.5vw,3rem); font-weight: 700; line-height: 1.1; color: var(--text); margin-bottom: 1rem; }
+    .ig-text h2 em { font-style: italic; color: var(--purple-dark); }
+    .ig-text p { font-size: .97rem; color: var(--text-light); line-height: 1.8; margin-bottom: 2rem; max-width: 420px; }
+    .ig-btn { display: inline-flex; align-items: center; gap: .7rem; background: var(--purple-dark); color: #fff; font-family: 'DM Sans',sans-serif; font-weight: 600; font-size: .82rem; padding: .75rem 1.6rem; border-radius: 60px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(144,96,216,.3); }
+    .ig-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(144,96,216,.4); color: #fff; }
+    .ig-btn-icon { width: 20px; height: 20px; flex-shrink: 0; }
+    .ig-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .ig-tag { font-size: .75rem; color: var(--purple); font-weight: 500; }
+    .ig-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+    .ig-visual::before { content: ''; position: absolute; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(181,144,241,.18) 0%, rgba(254,155,0,.08) 100%); z-index: 0; }
+    .ig-phone { position: relative; z-index: 1; max-width: 260px; width: 100%; filter: drop-shadow(0 24px 48px rgba(144,96,216,.22)); animation: igFloat 4s ease-in-out infinite; }
+    .ig-phone img { width: 100%; }
+    @keyframes igFloat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+
+    /* FOOTER */
+    footer {
+      background: #120720; color: rgba(255,255,255,.5);
+      text-align: center; padding: 2rem 1.5rem; font-size: .83rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+    footer a { color: var(--purple); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .ig-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+      .ig-lbl { justify-content: center; }
+      .ig-text p { margin-left: auto; margin-right: auto; }
+      .ig-tags { justify-content: center; }
+      .ig-btn { margin: 0 auto; }
+      .ig-visual::before { width: 260px; height: 260px; }
+      .ig-phone { max-width: 200px; }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 3.5rem 1.2rem; }
+      .ig-section { padding: 3.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../online-opleidingen.html" class="logo-link">
+    <img src="../images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform" class="logo">
+  </a>
+  <a href="https://naillraftplatform.kennis.shop/pay/kleurapplicatie" class="nav-cta">Starten voor €89</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-badge fade-up">Online cursus nagels</span>
+    <h1 class="fade-up delay-1">Leer eindelijk die <em>perfecte kleurapplicatie</em> zetten</h1>
+    <p class="sub fade-up delay-2">Van pastel tot neon, van cateye tot heldere kleuren: 13 modules met stap-voor-stap video's zodat jij elke kleur beheerst.</p>
+    <a href="https://naillraftplatform.kennis.shop/pay/kleurapplicatie" class="btn-primary fade-up delay-3">Ja, ik wil dit leren!</a>
+    <p class="hero-price fade-up delay-4">Investering: <strong>€89</strong> &nbsp;·&nbsp; eenmalig, levenslang toegang</p>
+  </div>
+</section>
+
+<!-- QUICK WINS -->
+<section class="section quick-wins">
+  <div class="container">
+    <span class="section-label fade-up">Wat je meeneemt</span>
+    <h2 class="section-title fade-up delay-1">Na deze cursus doe jij dit met je ogen dicht</h2>
+    <div class="wins-grid">
+      <div class="win-card fade-up delay-1">
+        <div class="win-icon">🎨</div>
+        <h3>Je begrijpt elke kleur</h3>
+        <p>Je weet waarom pastels anders werken dan neon, en hoe je dat in jouw voordeel gebruikt voor vlekkeloze dekking.</p>
+      </div>
+      <div class="win-card fade-up delay-2">
+        <div class="win-icon">✏️</div>
+        <h3>Perfecte penseeltechniek</h3>
+        <p>Geen penseelstrepen meer. Je traint de juiste bewegingen voor een strakke afwerking, tot op de nagelriem.</p>
+      </div>
+      <div class="win-card fade-up delay-3">
+        <div class="win-icon">💅</div>
+        <h3>Elk resultaat in twee lagen</h3>
+        <p>Je weet precies welke laagopbouw werkt per kleur, ook bij die moeilijke kleuren die altijd tegenvallen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="section for-who">
+  <div class="container">
+    <span class="section-label fade-up">Voor wie</span>
+    <h2 class="section-title fade-up delay-1">Deze cursus is voor jou als je…</h2>
+    <div class="who-grid">
+      <div class="who-card fade-up delay-1"><span class="who-icon">✓</span><p>Nagelstylist bent die worstelt met pastels, glitters of neon kleuren</p></div>
+      <div class="who-card fade-up delay-2"><span class="who-icon">✓</span><p>Elke keer dezelfde kleuren gebruikt omdat de rest gewoon niet lukt</p></div>
+      <div class="who-card fade-up delay-3"><span class="who-icon">✓</span><p>Penseelstrepen hebt of moeite met strak afwerken aan de randen</p></div>
+      <div class="who-card fade-up delay-4"><span class="who-icon">✓</span><p>Wilt begrijpen waarom iets misloopt, zodat je het zelf kan oplossen</p></div>
+      <div class="who-card fade-up delay-5"><span class="who-icon">✓</span><p>Thuis studeert en concrete, eerlijke feedback wilt in je eigen tempo</p></div>
+      <div class="who-card fade-up delay-1"><span class="who-icon">✓</span><p>Cateye, mat afwerken of neon perfect wilt beheersen met de juiste techniek</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX STRIP 1 -->
+<div class="parallax-strip">
+  <div class="parallax-strip-text fade-up">
+    <p>"Niet alleen filmpjes kijken, maar écht begrijpen wat je doet."</p>
+    <span>NailCraft Platform</span>
+  </div>
+</div>
+
+<!-- CURRICULUM -->
+<section class="section curriculum">
+  <div class="container">
+    <span class="section-label fade-up">Cursusinhoud</span>
+    <h2 class="section-title fade-up delay-1">13 modules: van theorie tot praktijk</h2>
+    <p class="section-sub fade-up delay-2">Alles is opgebouwd zodat je stap voor stap meer controle krijgt over elke kleur.</p>
+
+    <!-- FASE 1 -->
+    <div class="phase-block fade-up">
+      <div class="phase-header">
+        <div class="phase-number">1</div>
+        <div>
+          <h3>Fase 1: Fundament</h3>
+          <p>Modules 1–5 · Theorie, technieken &amp; probleemkleuren</p>
+        </div>
+      </div>
+      <div class="modules-grid">
+        <div class="module-card">
+          <div class="module-body">
+            <p class="module-num">Module 1</p>
+            <h4>Kleur begrijpen</h4>
+            <ul class="module-bullets">
+              <li>Verschil Paint Gel vs. Gelpolish</li>
+              <li>Pigmentdichtheid: pastels vs. kleuren vs. zwart</li>
+              <li>Sticky layer &amp; non-sticky layer als voordeel</li>
+              <li>Welke kleuren zijn "moeilijk" en waarom?</li>
+              <li>Materialen voor nail art met polish</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card">
+          <div class="module-body">
+            <p class="module-num">Module 2</p>
+            <h4>De 5 dingen die je best niet doet</h4>
+            <ul class="module-bullets">
+              <li>5 concrete fouten die bijna iedereen maakt</li>
+              <li>Weten wat fout loopt = weten hoe je het oplost</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card has-photo">
+          <img src="../images/kleurapplicatie/penseeltechniek.webp" alt="Penseeltechniek nagels" class="module-photo">
+          <div class="module-body">
+            <p class="module-num">Module 3</p>
+            <h4>Penseeltechniek &amp; applicatie</h4>
+            <ul class="module-bullets">
+              <li>Juiste penseelbeweging voor dekking &amp; randen</li>
+              <li>Druk, hoek en snelheid</li>
+              <li>Penseelstrepen voorkomen</li>
+              <li>De fine liner: gebruik &amp; perfecte afwerking</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card has-photo">
+          <img src="../images/kleurapplicatie/glitter-cateye.webp" alt="Glitter en cateye nagels" class="module-photo">
+          <div class="module-body">
+            <p class="module-num">Module 4</p>
+            <h4>De probleemkleuren</h4>
+            <ul class="module-bullets">
+              <li>Pastels &amp; witte tinten: de "pastelhorror"</li>
+              <li>Glitters &amp; cateye: hoe pak je die aan?</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card">
+          <div class="module-body">
+            <p class="module-num">Module 5</p>
+            <h4>Laagopbouw &amp; dekking</h4>
+            <ul class="module-bullets">
+              <li>Dekkend in twee lagen: hoe pak je dat aan?</li>
+              <li>Dunne vs. dikke lagen: risico's en gevolgen</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 2 -->
+    <div class="phase-block fade-up">
+      <div class="phase-header">
+        <div class="phase-number">2</div>
+        <div>
+          <h3>Fase 2: Praktijk Cateye</h3>
+          <p>Modules 6–7 · Stap voor stap cateye plaatsen</p>
+        </div>
+      </div>
+      <div class="modules-grid">
+        <div class="module-card has-photo">
+          <img src="../images/kleurapplicatie/cateye-teal.webp" alt="Cateye teal nagels" class="module-photo">
+          <div class="module-body">
+            <p class="module-num">Module 6</p>
+            <h4>Praktijk kleurapplicatie: Cateye blauw</h4>
+            <ul class="module-bullets">
+              <li>Voorbereidende stappen &amp; fine liner in laag 1</li>
+              <li>Eerste kleurlaag alle vingers</li>
+              <li>Tweede kleurlaag &amp; topcoat</li>
+              <li>Strakke reflecties krijgen</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card has-photo">
+          <img src="../images/kleurapplicatie/cateye-rood.webp" alt="Cateye rood nagels" class="module-photo">
+          <div class="module-body">
+            <p class="module-num">Module 7</p>
+            <h4>Praktijk kleurapplicatie: Cateye rood</h4>
+            <ul class="module-bullets">
+              <li>Materialen &amp; eerste kleurlaag</li>
+              <li>Tweede kleurlaag &amp; topcoat</li>
+              <li>Strakke reflecties &amp; finishing touch</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 3 -->
+    <div class="phase-block fade-up">
+      <div class="phase-header">
+        <div class="phase-number">3</div>
+        <div>
+          <h3>Fase 3: Kleurmeesters</h3>
+          <p>Modules 8–10 · Paars, pastels &amp; neon</p>
+        </div>
+      </div>
+      <div class="modules-grid">
+        <div class="module-card has-photo">
+          <img src="../images/kleurapplicatie/paars-vivid.webp" alt="Heldere paarse nagels" class="module-photo">
+          <div class="module-body">
+            <p class="module-num">Module 8</p>
+            <h4>Praktijk kleurapplicatie: Paars</h4>
+            <ul class="module-bullets">
+              <li>Aandachtspunten voorbereiding</li>
+              <li>Volledig stappenplan egale heldere kleur</li>
+              <li>Resultaat &amp; tips</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card has-photo">
+          <img src="../images/kleurapplicatie/pastel-fist.webp" alt="Pastel nagels" class="module-photo">
+          <div class="module-body">
+            <p class="module-num">Module 9</p>
+            <h4>Praktijk kleurapplicatie: Pastel</h4>
+            <ul class="module-bullets">
+              <li>Ondergrond &amp; aandachtspunten</li>
+              <li>Pastel roze &amp; paars: stap voor stap</li>
+              <li>Pastel geel &amp; groen: de moeilijkste</li>
+              <li>Pastel blauw aanbrengen</li>
+              <li>Tips rond afwerking</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card has-photo">
+          <img src="../images/kleurapplicatie/neon-roze-mat.webp" alt="Neon roze matte nagels" class="module-photo">
+          <div class="module-body">
+            <p class="module-num">Module 10</p>
+            <h4>Praktijk kleurapplicatie: Neon</h4>
+            <ul class="module-bullets">
+              <li>Tools &amp; stappenplan neon kleuren</li>
+              <li>Eerste &amp; tweede kleurlaag</li>
+              <li>Foutjes herstellen</li>
+              <li>Afwerking &amp; tips</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 4 -->
+    <div class="phase-block fade-up">
+      <div class="phase-header">
+        <div class="phase-number">4</div>
+        <div>
+          <h3>Fase 4: Afwerking &amp; Tools</h3>
+          <p>Modules 11–13 · Finishing, adviestool &amp; ombré bonus</p>
+        </div>
+      </div>
+      <div class="modules-grid">
+        <div class="module-card">
+          <div class="module-body">
+            <p class="module-num">Module 11</p>
+            <h4>Finishing &amp; glans</h4>
+            <ul class="module-bullets">
+              <li>Mijn 5 tips voor een mat of glanzende afwerking</li>
+              <li>Mat topcoat vs. glitter topcoat: wanneer wat?</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card bonus has-photo">
+          <img src="../images/kleurapplicatie/kleurapplicatie advies tool.webp" alt="Kleurapplicatie adviestool" class="module-photo">
+          <div class="module-body">
+            <span class="bonus-tag">Bonus</span>
+            <p class="module-num">Module 12</p>
+            <h4>Kleurapplicatie tool</h4>
+            <ul class="module-bullets">
+              <li>Selecteer jouw kleur in de tool</li>
+              <li>Krijg direct advies over stappenplan, ondergrond &amp; lagen</li>
+              <li>Mijn volledige materialenlijst inbegrepen</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card bonus has-photo">
+          <img src="../images/kleurapplicatie/ombre techniek roze.webp" alt="Ombré techniek nagels" class="module-photo">
+          <div class="module-body">
+            <span class="bonus-tag">Nieuwe bonus</span>
+            <p class="module-num">Module 13</p>
+            <h4>Ombré techniek</h4>
+            <ul class="module-bullets">
+              <li>Stap voor stap een vloeiende kleurovergang plaatsen</li>
+              <li>De juiste sponstechniek &amp; materialen</li>
+              <li>Veelgemaakte fouten en hoe je ze vermijdt</li>
+              <li>Resultaat &amp; finishing tips</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section class="section gallery-section">
+  <div class="container">
+    <span class="section-label fade-up" style="padding-left:1.5rem;">Resultaten</span>
+    <h2 class="section-title fade-up delay-1" style="padding-left:1.5rem;">Dit maak jij na de cursus</h2>
+  </div>
+  <div class="marquee-wrap fade-up delay-2">
+    <div class="marquee-track">
+      <img src="../images/kleurapplicatie/pastel-nagels.webp" alt="Pastel nagels">
+      <img src="../images/kleurapplicatie/paars-vivid.webp" alt="Vivid paarse nagels">
+      <img src="../images/kleurapplicatie/neon-roze-mat.webp" alt="Neon roze matte nagels">
+      <img src="../images/kleurapplicatie/cateye-rood.webp" alt="Cateye rood nagels">
+      <img src="../images/kleurapplicatie/ombre techniek roze.webp" alt="Ombré techniek nagels">
+      <img src="../images/kleurapplicatie/pastel-fist.webp" alt="Pastel nagels">
+      <img src="../images/kleurapplicatie/cateye-teal.webp" alt="Teal cateye nagels">
+      <img src="../images/kleurapplicatie/glitter-cateye.webp" alt="Glitter cateye nagels">
+      <img src="../images/kleurapplicatie/module 8 paars praktijk.webp" alt="Paarse nagels praktijk">
+      <img src="../images/kleurapplicatie/eindresultaten 1.webp" alt="Eindresultaat">
+      <img src="../images/kleurapplicatie/eindresultaten 2.webp" alt="Eindresultaat">
+      <!-- duplicaat -->
+      <img src="../images/kleurapplicatie/pastel-nagels.webp" alt="Pastel nagels">
+      <img src="../images/kleurapplicatie/paars-vivid.webp" alt="Vivid paarse nagels">
+      <img src="../images/kleurapplicatie/neon-roze-mat.webp" alt="Neon roze matte nagels">
+      <img src="../images/kleurapplicatie/cateye-rood.webp" alt="Cateye rood nagels">
+      <img src="../images/kleurapplicatie/ombre techniek roze.webp" alt="Ombré techniek nagels">
+      <img src="../images/kleurapplicatie/pastel-fist.webp" alt="Pastel nagels">
+      <img src="../images/kleurapplicatie/cateye-teal.webp" alt="Teal cateye nagels">
+      <img src="../images/kleurapplicatie/glitter-cateye.webp" alt="Glitter cateye nagels">
+      <img src="../images/kleurapplicatie/module 8 paars praktijk.webp" alt="Paarse nagels praktijk">
+      <img src="../images/kleurapplicatie/eindresultaten 1.webp" alt="Eindresultaat">
+      <img src="../images/kleurapplicatie/eindresultaten 2.webp" alt="Eindresultaat">
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX 2 -->
+<div class="parallax-2"></div>
+
+<!-- PRICING -->
+<section class="section pricing">
+  <div class="container">
+    <span class="section-label fade-up" style="text-align:center;">Investering</span>
+    <h2 class="section-title fade-up delay-1" style="text-align:center;">Één keer betalen, altijd toegang</h2>
+    <div class="pricing-card fade-up delay-2">
+      <div class="pricing-top">
+        <p class="label">Investering</p>
+        <h2>Perfecte Kleurapplicatie</h2>
+        <div class="price-amount"><sup>€</sup>89</div>
+        <p class="price-normal">Eenmalig &amp; levenslang toegang</p>
+      </div>
+      <div class="pricing-body">
+        <ul class="pricing-includes">
+          <li><span class="check">✓</span> 13 modules met stap-voor-stap video's</li>
+          <li><span class="check">✓</span> Theorie over pigment, lagen &amp; properties</li>
+          <li><span class="check">✓</span> Praktijk: cateye, pastels, neon, heldere kleuren</li>
+          <li><span class="check">✓</span> Penseeltechniek van fine liner tot kwast</li>
+          <li><span class="check">✓</span> Finishing tips: mat &amp; glanzend</li>
+          <li><span class="check">✓</span> Bonus: digitale kleurapplicatie adviestool</li>
+          <li><span class="check">✓</span> Bonus: Ombré techniek module</li>
+          <li><span class="check">✓</span> Bonus: volledige materialenlijst</li>
+          <li><span class="check">✓</span> Levenslang toegang, leer in je eigen tempo</li>
+        </ul>
+        <a href="https://naillraftplatform.kennis.shop/pay/kleurapplicatie" class="pricing-cta">Ja, ik start nu voor €89!</a>
+        <p class="pricing-note">Veilig betalen · Direct toegang · Geen abonnement</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about">
+  <div class="container">
+    <div class="about-inner">
+      <img src="../images/kleurapplicatie/IMG_0261.webp" alt="Tabitha Windels – NailCraft Platform" class="about-photo fade-up">
+      <div class="about-text fade-up delay-2">
+        <span class="section-label">Over de docente</span>
+        <h2>Dag, ik ben Tabitha</h2>
+        <p>Ik zet al jarenlang nagels en zie hoe zelfs gevorderde nagelstylisten worstelen met kleurapplicatie. Niet omdat ze het niet kunnen, maar omdat ze het nooit écht uitgelegd kregen.</p>
+        <p>In deze cursus deel ik alles wat ik wou dat iemand mij vroeger had verteld. Alle theorie en 50+ concrete video's die je zelf opnieuw kan bekijken, op jouw tempo.</p>
+        <p>Of je nu penseelstrepen hebt bij je pastels of heldere kleuren niet zuiver aan de randen kan plaatsen: hier leer je exact wat er misloopt en hoe je het oplost. Leer elke kleur dekkend aanbrengen en werk zuiver aan de nagelriemen en nagelwallen, tot zelfs er onder!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews">
+  <div class="container">
+    <span class="section-label fade-up">Ervaringen</span>
+    <h2 class="section-title fade-up delay-1">Wat anderen zeggen</h2>
+    <div class="reviews-grid">
+      <div class="review-card fade-up delay-1">
+        <div class="stars">★★★★★</div>
+        <p>"Eindelijk snap ik waarom pastels altijd zo slecht lagen bij mij. Die tips hebben alles veranderd!"</p>
+        <span class="reviewer">Ines V., nagelstylist</span>
+      </div>
+      <div class="review-card fade-up delay-2">
+        <div class="stars">★★★★★</div>
+        <p>"De cateye module is top. Ik probeerde al maanden die strakke reflecties te krijgen en nu lukt het gewoon."</p>
+        <span class="reviewer">Lisa M.</span>
+      </div>
+      <div class="review-card fade-up delay-3">
+        <div class="stars">★★★★★</div>
+        <p>"Ik dacht dat ik al genoeg wist over gelpolish maar deze cursus heeft mijn ogen echt geopend. Super duidelijk uitgelegd."</p>
+        <span class="reviewer">Hailey D.</span>
+      </div>
+      <div class="review-card fade-up delay-4">
+        <div class="stars">★★★★★</div>
+        <p>"De penseeltechniek video's zijn zo handig. Ik kijk ze telkens opnieuw voor ik begin. Geen strepen meer!"</p>
+        <span class="reviewer">Amber L.</span>
+      </div>
+      <div class="review-card fade-up delay-5">
+        <div class="stars">★★★★★</div>
+        <p>"Die adviestool uit module 12 gebruik ik echt vaak. Ik geef de kleur in en weet meteen wat ik moet doen. Zo nice!!"</p>
+        <span class="reviewer">Jolien K.</span>
+      </div>
+    </div>
+
+    <p class="review-screens-title fade-up">Nog meer reviews van cursisten</p>
+    <div class="review-screens-grid">
+      <div class="review-screen-card fade-up delay-1">
+        <img src="../images/kleurapplicatie/revieuw bibi.webp" alt="Review Bibi">
+      </div>
+      <div class="review-screen-card fade-up delay-2">
+        <img src="../images/kleurapplicatie/revieuw Veerle.webp" alt="Review Veerle">
+      </div>
+      <div class="review-screen-card fade-up delay-3">
+        <img src="../images/kleurapplicatie/review suzanne.webp" alt="Review Suzanne">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq">
+  <div class="container">
+    <span class="section-label fade-up" style="text-align:center;">Veelgestelde vragen</span>
+    <h2 class="section-title fade-up delay-1" style="text-align:center;">Heb je een vraag?</h2>
+    <div class="faq-list fade-up delay-2">
+      <details>
+        <summary>Voor wie is deze cursus geschikt?</summary>
+        <p>Voor nagelstylisten die al een basis kennen maar moeite hebben met kleurapplicatie van pastels, neon, cateye of gewoon een egale heldere kleur. Je mag een beginner zijn, maar dit is geen opbouwcursus voor je gelapplicatie. Dit is perfect als je nooit echt begreep waarom iets misloopt met je kleurapplicatie zelf.</p>
+      </details>
+      <details>
+        <summary>Hoe lang heb ik toegang?</summary>
+        <p>Je hebt levenslang toegang. Je kan de video's bekijken wanneer je wilt, zo vaak als je wilt, in je eigen tempo.</p>
+      </details>
+      <details>
+        <summary>Wat heb ik nodig om te starten?</summary>
+        <p>Enkel een laptop, tablet of telefoon. Je hoeft niks speciaals te installeren. Na betaling krijg je meteen toegang tot alle modules.</p>
+      </details>
+      <details>
+        <summary>Is de cursus ook voor hobbyisten?</summary>
+        <p>De cursus is gemaakt voor nagelstylisten maar is zeker ook te volgen als hobbyist die echt wil begrijpen hoe kleurapplicatie werkt.</p>
+      </details>
+      <details>
+        <summary>Zijn er live sessies?</summary>
+        <p>Nee, alles is on-demand. Je kiest zelf wanneer je kijkt. Geen vaste tijden, geen deadlines.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2 class="fade-up">Klaar om élke kleur te beheersen?</h2>
+  <p class="fade-up delay-1">Stop met raden. Begin met begrijpen. Jouw nagels verdienen die perfecte afwerking.</p>
+  <a href="https://naillraftplatform.kennis.shop/pay/kleurapplicatie" class="btn-primary fade-up delay-2">Start nu voor €89 →</a>
+  <p class="final-price-note fade-up delay-3">Eenmalige investering · Direct toegang na betaling</p>
+</section>
+
+<!-- INSTAGRAM -->
+<div class="ig-section">
+  <div class="ig-inner">
+    <div class="ig-text">
+      <div class="ig-lbl">Instagram</div>
+      <h2>Volg je mij al<br><em>On The Gram?</em></h2>
+      <p>Zin om geïnspireerd te worden? Kom er gezellig bij, ik post regelmatig content die je inspireert en geeft een inkijk in mijn achter-de-schermen leven en hoe ik mijn onderneming run.</p>
+      <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="ig-btn">
+        <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        Ga naar Instagram
+      </a>
+      <div class="ig-tags">
+        <span class="ig-tag">#nailcraft</span>
+        <span class="ig-tag">#kleurapplicatie</span>
+        <span class="ig-tag">#nagels</span>
+        <span class="ig-tag">#behindthescenes</span>
+      </div>
+    </div>
+    <div class="ig-visual">
+      <div class="ig-phone">
+        <img src="../images/upperforms/instagram mockup telefoon.webp" alt="NailCraft Instagram op telefoon" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© Tabitha – NailCraft Platform &nbsp;·&nbsp; <a href="../online-opleidingen.html">Alle opleidingen</a> &nbsp;·&nbsp; <a href="../index.html">Home</a></p>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Terug naar boven">↑</button>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: .12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  window.addEventListener('scroll', function() {
+    var btn = document.getElementById('top-btn');
+    if (window.scrollY > 400) btn.classList.add('show'); else btn.classList.remove('show');
+  });
+</script>
+
+</body>
+</html>
