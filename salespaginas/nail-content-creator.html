@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nail Content Creator – e-book + video tutorials | NailCraft Platform</title>
+  <meta name="description" content="Maak professionele nagelfoto's en -video's met je smartphone. Geen dure camera. 94 pagina's e-book + video tutorials. iPhone én Android.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --pink-light: #fdecfc; --pink-accent: #f580e8; --pink-hot: #ff1fe3;
+      --green-light: #fcffec; --dark: #1a1a2e; --text: #3d2c3c;
+      --text-muted: #7a5f78; --radius: 20px; --radius-sm: 12px;
+    }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: #fff; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    /* NAV */
+    .ncc-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(253,236,252,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245,128,232,.15);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.2rem,4vw,3rem); height: 68px;
+    }
+    .ncc-nav img { height: 34px; }
+    .ncc-nav-cta {
+      background: var(--pink-hot); color: #fff; font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: .88rem; padding: .55rem 1.4rem;
+      border-radius: 50px; text-decoration: none; transition: background .2s;
+      box-shadow: 0 4px 16px rgba(255,31,227,.3);
+    }
+    .ncc-nav-cta:hover { background: #d800c0; }
+    @media(max-width:480px){ .ncc-nav-cta{ font-size:.72rem; padding:.50rem 1rem; } }
+
+    /* SCROLL TO TOP */
+    #ncc-top-btn {
+      position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800;
+      width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer;
+      background: var(--pink-hot); color: #fff; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(255,31,227,.35);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .3s, transform .3s, background .2s;
+    }
+    #ncc-top-btn.show { opacity: 1; transform: translateY(0); }
+    #ncc-top-btn:hover { background: #fe9b00; }
+
+    /* FOOTER */
+    .ncc-footer { background: #120720; color: rgba(255,255,255,.5); text-align: center; padding: 2rem 1.5rem; font-size: .83rem; font-family: 'DM Sans', sans-serif; }
+    .ncc-footer a { color: #f580e8; text-decoration: none; }
+    .ncc-footer a:hover { text-decoration: underline; }
+
+    /* BUTTONS */
+    .ncc-btn-primary {
+      display: inline-block; background: var(--pink-hot); color: #fff;
+      font-size: .95rem; font-weight: 700; padding: 1rem 2.2rem; border-radius: 50px;
+      text-decoration: none; box-shadow: 0 6px 28px rgba(255,31,227,.4);
+      transition: transform .2s, box-shadow .2s; border: none; cursor: pointer;
+    }
+    .ncc-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(255,31,227,.5); color: #fff; }
+    .ncc-btn-secondary {
+      display: inline-block; background: transparent; color: var(--text);
+      font-size: .95rem; font-weight: 600; padding: .95rem 2rem; border-radius: 50px;
+      text-decoration: none; border: 2px solid var(--pink-accent); transition: all .2s;
+    }
+    .ncc-btn-secondary:hover { background: var(--pink-accent); color: #fff; }
+    @media(max-width:480px){ .ncc-btn-primary{ font-size:.70rem; padding:.65rem 1.4rem; box-shadow:0 4px 14px rgba(255,31,227,.3); } .ncc-btn-secondary{ font-size:.70rem; padding:.65rem 1.2rem; } }
+
+    /* VIMEO FACADE */
+    .vfacade {
+      position: relative; width: 100%; height: 100%;
+      cursor: pointer; background: #000; border-radius: var(--radius); overflow: hidden;
+    }
+    .vfacade img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .5s ease; }
+    .vfacade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    .vfacade.loaded img { opacity: 0; pointer-events: none; }
+
+    @keyframes ncc-pulse { 0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:.6;} }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="ncc-nav">
+  <a href="../online-opleidingen.html">
+    <img src="../images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform">
+  </a>
+  <a href="https://naillraftplatform.kennis.shop/pay/nailcontentcreator" class="ncc-nav-cta">Start voor €60</a>
+</nav>
+
+
+<!-- ================================================
+     HERO
+================================================ -->
+<style>
+.ncc-hero {
+  padding: 100px 2rem 80px;
+  background: linear-gradient(160deg,#fdecfc 0%,#fff 55%,#fcffec 100%);
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 3rem;
+  position: relative; overflow: hidden;
+}
+.ncc-hero::before { content:''; position:absolute; top:-120px; right:-120px; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(245,128,232,.18) 0%,transparent 70%); pointer-events:none; }
+.ncc-hero::after  { content:''; position:absolute; bottom:-80px; left:-80px; width:350px; height:350px; border-radius:50%; background:radial-gradient(circle,rgba(199,184,223,.2) 0%,transparent 70%); pointer-events:none; }
+
+.ncc-hero-text { position: relative; z-index: 2; }
+.ncc-hero-label { display:inline-block; background:var(--pink-accent); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:.35rem 1rem; border-radius:50px; margin-bottom:1.4rem; font-family:'DM Sans',sans-serif; }
+.ncc-hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,5vw,3.8rem); line-height:1.1; font-weight:700; color:var(--dark); margin-bottom:1.4rem; }
+.ncc-hero h1 em { font-style:italic; color:var(--pink-hot); }
+.ncc-hero-sub { font-size:1.05rem; color:var(--text-muted); max-width:480px; margin-bottom:2rem; font-family:'DM Sans',sans-serif; }
+.ncc-hero-pills { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.2rem; }
+.ncc-pill { background:rgba(245,128,232,.12); border:1px solid rgba(245,128,232,.35); color:var(--text); padding:.4rem .9rem; border-radius:50px; font-size:.8rem; font-weight:500; font-family:'DM Sans',sans-serif; }
+.ncc-hero-ctas { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
+.ncc-price-note { font-size:.8rem; color:var(--text-muted); margin-top:.9rem; font-family:'DM Sans',sans-serif; }
+
+.ncc-hero-visual { position:relative; z-index:2; }
+.ncc-video-wrap {
+  border-radius:var(--radius); overflow:hidden;
+  box-shadow:0 24px 60px rgba(180,80,200,.2);
+  aspect-ratio:16/9; max-width:480px; max-height:280px; width:100%; position:relative;
+}
+.ncc-hero-badge {
+  position:absolute; bottom:-18px; left:-18px; background:#fff; border-radius:var(--radius-sm);
+  padding:.9rem 1.2rem; box-shadow:0 8px 24px rgba(0,0,0,.1);
+  display:flex; align-items:center; gap:.7rem; font-size:.82rem; font-weight:600;
+  white-space:nowrap; font-family:'DM Sans',sans-serif;
+}
+.ncc-badge-dot { width:10px; height:10px; border-radius:50%; background:var(--pink-hot); animation:ncc-pulse 2s infinite; }
+
+@media(max-width:768px){
+  .ncc-hero { grid-template-columns:1fr; padding:90px 1.2rem 60px; gap:2rem; text-align:center; }
+  .ncc-hero-sub { margin-left:auto; margin-right:auto; }
+  .ncc-hero-pills { justify-content:center; }
+  .ncc-hero-ctas { justify-content:center; }
+  .ncc-video-wrap { max-width:100%; max-height:220px; }
+  .ncc-hero-badge { font-size:.72rem; padding:.7rem 1rem; left:50%; transform:translateX(-50%); }
+}
+</style>
+
+<section class="ncc-hero">
+  <div class="ncc-hero-text">
+    <span class="ncc-hero-label">✦ e-book + video tutorials</span>
+    <h1>Maak <em>killer</em> nagelcontent met je smartphone</h1>
+    <p class="ncc-hero-sub">Geen dure camera. Geen uren editing. Gewoon professionele foto's en video's, stap voor stap uitgelegd.</p>
+    <div class="ncc-hero-pills">
+      <span class="ncc-pill">📱 iPhone &amp; Android</span>
+      <span class="ncc-pill">94 pagina's</span>
+      <span class="ncc-pill">Levenslange toegang</span>
+    </div>
+    <div class="ncc-hero-ctas">
+      <a href="https://naillraftplatform.kennis.shop/pay/nailcontentcreator" class="ncc-btn-primary">Ja, ik wil dit! — €60</a>
+      <a href="#ncc-inhoud" class="ncc-btn-secondary">Bekijk inhoud</a>
+    </div>
+    <p class="ncc-price-note">🔒 Eénmalige betaling · geen abonnement</p>
+  </div>
+  <div class="ncc-hero-visual">
+    <div class="ncc-video-wrap">
+      <div class="vfacade" data-vimeo="1218230035">
+        <img src="../images/nail-content-creator/Nail Content Creator wit mockup transparant achtergrond.webp" alt="Nail Content Creator preview" loading="eager">
+      </div>
+    </div>
+    <div class="ncc-hero-badge">
+      <div class="ncc-badge-dot"></div>
+      <span>94 pagina's · iPhone &amp; Android</span>
+    </div>
+  </div>
+</section>
+
+<script>
+window.addEventListener('load', function() {
+  document.querySelectorAll('.vfacade').forEach(function(el) {
+    var id = el.dataset.vimeo;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&muted=1&loop=1&background=1';
+    iframe.allow = 'autoplay; fullscreen';
+    el.appendChild(iframe);
+    setTimeout(function() { el.classList.add('loaded'); }, 1500);
+  });
+});
+</script>
+
+
+<!-- ================================================
+     FOTOBANNER
+================================================ -->
+<style>
+.ncc-marquee-outer { overflow:hidden; width:100%; height:240px; position:relative; }
+.ncc-marquee-outer::before,.ncc-marquee-outer::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
+.ncc-marquee-outer::before { left:0; background:linear-gradient(to right,rgba(253,236,252,.8),transparent); }
+.ncc-marquee-outer::after  { right:0; background:linear-gradient(to left,rgba(252,255,236,.8),transparent); }
+.ncc-marquee-track { display:flex; gap:12px; animation:ncc-marquee 30s linear infinite; width:max-content; height:100%; }
+.ncc-marquee-track:hover { animation-play-state:paused; }
+.ncc-marquee-item { flex-shrink:0; width:220px; height:240px; border-radius:12px; overflow:hidden; }
+.ncc-marquee-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+.ncc-marquee-item:hover img { transform:scale(1.05); }
+@keyframes ncc-marquee { 0%{transform:translateX(0);}100%{transform:translateX(-50%);} }
+@media(max-width:768px){ .ncc-marquee-outer{height:180px;} .ncc-marquee-item{width:160px;height:180px;} }
+</style>
+
+<div class="ncc-marquee-outer">
+  <div class="ncc-marquee-track">
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen  goed.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen  voorbeeld handposititie.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen  goed voorbeeld ik bezig.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen macro en gezicht erop.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto over schouder telefoon foto nagels bijwerken.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen mooi .webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/over schouder telefoon nagels.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen  goed voorbeeld ik bezig2.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/ligend bureau over schouder foto bewerken.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/IMG_3303.webp" alt="" loading="lazy"></div>
+    <!-- duplicaat voor naadloze loop -->
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen  goed.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen  voorbeeld handposititie.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen  goed voorbeeld ik bezig.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen macro en gezicht erop.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto over schouder telefoon foto nagels bijwerken.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen mooi .webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/over schouder telefoon nagels.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/foto's nemen  goed voorbeeld ik bezig2.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/ligend bureau over schouder foto bewerken.webp" alt="" loading="lazy"></div>
+    <div class="ncc-marquee-item"><img src="../images/nail-content-creator/IMG_3303.webp" alt="" loading="lazy"></div>
+  </div>
+</div>
+
+
+<!-- ================================================
+     PIJNPUNTEN
+================================================ -->
+<style>
+.ncc-pain { background:linear-gradient(135deg,#fdecfc 0%,#fcffec 100%); padding:80px 2rem; position:relative; overflow:hidden; }
+.ncc-pain::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:radial-gradient(ellipse at 80% 20%,rgba(245,128,232,.1) 0%,transparent 60%); pointer-events:none; }
+.ncc-inner { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
+.ncc-label { display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--pink-hot); margin-bottom:.8rem; font-family:'DM Sans',sans-serif; }
+.ncc-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:700; line-height:1.15; color:var(--dark); margin-bottom:1rem; }
+.ncc-subtitle { font-size:1rem; color:var(--text-muted); max-width:580px; margin-bottom:2.5rem; font-family:'DM Sans',sans-serif; }
+.ncc-pain-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
+.ncc-pain-card { background:rgba(255,255,255,.75); border:1px solid rgba(245,128,232,.25); border-radius:var(--radius-sm); padding:1.4rem 1.6rem; display:flex; align-items:flex-start; gap:1rem; opacity:0; transform:translateY(24px); transition:opacity .5s ease,transform .5s ease; }
+.ncc-pain-card.visible { opacity:1; transform:translateY(0); }
+.ncc-pain-icon { font-size:1.3rem; flex-shrink:0; margin-top:2px; }
+.ncc-pain-card p { color:var(--text); font-size:.9rem; line-height:1.5; font-family:'DM Sans',sans-serif; }
+@media(max-width:768px){ .ncc-pain{padding:60px 1.2rem;} .ncc-pain-grid{grid-template-columns:1fr;} }
+</style>
+
+<section class="ncc-pain">
+  <div class="ncc-inner">
+    <span class="ncc-label">Klinkt dit bekend?</span>
+    <h2 class="ncc-title">Je werk is mooi.<br>Je foto's doen het geen recht.</h2>
+    <p class="ncc-subtitle">Je steekt uren in het perfecte nagelset, maar de foto ziet er vlak uit. Dat hoeft niet meer zo te zijn.</p>
+    <div class="ncc-pain-grid">
+      <div class="ncc-pain-card"><span class="ncc-pain-icon">😤</span><p>Je foto's zien er nooit zo mooi uit als je werk in het echt.</p></div>
+      <div class="ncc-pain-card"><span class="ncc-pain-icon">💡</span><p>Je weet niet hoe je de belichting correct instelt voor heldere, levendige beelden.</p></div>
+      <div class="ncc-pain-card"><span class="ncc-pain-icon">🤷</span><p>Je weet niet hoe je handen goed positioneert voor een mooie compositie.</p></div>
+      <div class="ncc-pain-card"><span class="ncc-pain-icon">📱</span><p>Je hebt geen idee welke camera-instellingen je moet gebruiken op je iPhone of Android.</p></div>
+      <div class="ncc-pain-card"><span class="ncc-pain-icon">🔍</span><p>Je wil macro-lenzen gebruiken, maar weet niet welke of hoe.</p></div>
+      <div class="ncc-pain-card"><span class="ncc-pain-icon">😩</span><p>Je voelt je overweldigd door vage uitleg uit andere cursussen die niet compleet zijn.</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var cards = document.querySelectorAll('.ncc-pain-card');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var idx = Array.from(cards).indexOf(e.target);
+        setTimeout(function(){e.target.classList.add('visible');}, idx*80);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  cards.forEach(function(c){obs.observe(c);});
+})();
+</script>
+
+
+<!-- ================================================
+     OPLOSSING
+================================================ -->
+<style>
+.ncc-solution { background:linear-gradient(135deg,#fdecfc 0%,#fff 60%,#fcffec 100%); padding:80px 2rem; }
+.ncc-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.ncc-img-wrap { border-radius:var(--radius); overflow:hidden; box-shadow:0 20px 50px rgba(180,80,200,.18); max-width:320px; margin:0 auto; }
+.ncc-img-wrap img { width:100%; display:block; object-fit:cover; }
+.ncc-benefits { list-style:none; display:flex; flex-direction:column; gap:1rem; margin-bottom:2.4rem; padding:0; }
+.ncc-benefits li { display:flex; align-items:flex-start; gap:.9rem; font-size:.95rem; opacity:0; transform:translateX(-16px); transition:opacity .4s ease,transform .4s ease; font-family:'DM Sans',sans-serif; }
+.ncc-benefits li.visible { opacity:1; transform:translateX(0); }
+.ncc-check-c { width:22px; height:22px; border-radius:50%; background:var(--pink-hot); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:.7rem; margin-top:2px; }
+@media(max-width:768px){ .ncc-solution{padding:60px 1.2rem;} .ncc-grid{grid-template-columns:1fr;gap:2rem;} .ncc-img-wrap{max-width:240px;} }
+</style>
+
+<section class="ncc-solution">
+  <div class="ncc-inner">
+    <div class="ncc-grid">
+      <div class="ncc-img-wrap">
+        <img src="../images/nail-content-creator/iPhone 15 Pro Max Mockup, Front View.webp" alt="Nail Content Creator op smartphone">
+      </div>
+      <div>
+        <span class="ncc-label">Wat je leert</span>
+        <h2 class="ncc-title">Alles wat je nodig hebt. Niets wat je niet nodig hebt.</h2>
+        <p class="ncc-subtitle">Na deze cursus maak je professionele nagelcontent, met de smartphone die je al hebt.</p>
+        <ul class="ncc-benefits">
+          <li><span class="ncc-check-c">✓</span><span>Haarscherpe nagelfoto's met élke smartphone (iPhone én Android)</span></li>
+          <li><span class="ncc-check-c">✓</span><span>Telefooninstellingen correct instellen voor optimaal resultaat</span></li>
+          <li><span class="ncc-check-c">✓</span><span>Macro-lenzen kiezen, plaatsen en optimaal gebruiken</span></li>
+          <li><span class="ncc-check-c">✓</span><span>Belichting opzetten zonder dure studio-apparatuur</span></li>
+          <li><span class="ncc-check-c">✓</span><span>Handpositionering en styling voor de mooiste shots</span></li>
+          <li><span class="ncc-check-c">✓</span><span>Gratis apps (Canva, Snapseed, InShot) inzetten als een pro</span></li>
+          <li><span class="ncc-check-c">✓</span><span>Content slim inplannen zodat je meer klanten aantrekt</span></li>
+        </ul>
+        <a href="https://naillraftplatform.kennis.shop/pay/nailcontentcreator" class="ncc-btn-primary">Start vandaag, €60</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.ncc-benefits li');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var idx = Array.from(items).indexOf(e.target);
+        setTimeout(function(){e.target.classList.add('visible');}, idx*80);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  items.forEach(function(el){obs.observe(el);});
+})();
+</script>
+
+
+<!-- ================================================
+     CURSUSINHOUD
+================================================ -->
+<style>
+.ncc-inhoud { background:#fff; padding:80px 2rem; }
+.ncc-inhoud .ncc-inner { text-align:center; }
+.ncc-chapters { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; text-align:left; }
+.ncc-chapter {
+  background:linear-gradient(135deg,#fdecfc 0%,#fff 100%);
+  border:1px solid rgba(245,128,232,.25); border-radius:var(--radius); padding:1.8rem;
+  opacity:0; transform:translateY(20px); transition:opacity .5s ease,transform .5s ease,box-shadow .2s;
+}
+.ncc-chapter:hover { box-shadow:0 12px 32px rgba(245,128,232,.2); }
+.ncc-chapter.visible { opacity:1; transform:translateY(0); }
+.ncc-chapter-num { font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:700; color:rgba(245,128,232,.25); line-height:1; margin-bottom:.5rem; }
+.ncc-chapter-title { font-weight:700; font-size:1rem; color:var(--dark); margin-bottom:.8rem; font-family:'DM Sans',sans-serif; }
+.ncc-chapter-items { list-style:none; display:flex; flex-direction:column; gap:.4rem; padding:0; }
+.ncc-chapter-items li { font-size:.82rem; color:var(--text-muted); display:flex; align-items:center; gap:.5rem; font-family:'DM Sans',sans-serif; }
+.ncc-chapter-items li::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--pink-accent); flex-shrink:0; }
+.ncc-inhoud-cta { text-align:center; margin-top:2.5rem; }
+@media(max-width:768px){ .ncc-inhoud{padding:60px 1.2rem;} .ncc-chapters{grid-template-columns:1fr;} }
+</style>
+
+<section class="ncc-inhoud" id="ncc-inhoud">
+  <div class="ncc-inner">
+    <span class="ncc-label">Cursusinhoud</span>
+    <h2 class="ncc-title">94 pagina's. Alles uitgelegd.</h2>
+    <p class="ncc-subtitle" style="max-width:580px;margin:0 auto 3rem;">Van belichting tot bewerkingsapps, elk hoofdstuk is praktisch, direct toepasbaar en visueel ondersteund.</p>
+    <div class="ncc-chapters">
+      <div class="ncc-chapter">
+        <div class="ncc-chapter-num">01</div>
+        <div class="ncc-chapter-title">Benodigdheden</div>
+        <ul class="ncc-chapter-items">
+          <li>Welke lampen &amp; specs je nodig hebt</li>
+          <li>Achtergronden: materialen &amp; inspiratie</li>
+          <li>Accessoires die je foto's tillen</li>
+          <li>Statieven voor stabiele shoots</li>
+          <li>Afwerkingsproducten voor perfecte finish</li>
+        </ul>
+      </div>
+      <div class="ncc-chapter">
+        <div class="ncc-chapter-num">02</div>
+        <div class="ncc-chapter-title">Apps</div>
+        <ul class="ncc-chapter-items">
+          <li>Canva, brand kit, templates &amp; plannen</li>
+          <li>ChatGPT, captions &amp; contentstrategie</li>
+          <li>Snapseed, focus, bijsnijden, vignet</li>
+          <li>InShot, video knippen &amp; reels</li>
+        </ul>
+      </div>
+      <div class="ncc-chapter">
+        <div class="ncc-chapter-num">03</div>
+        <div class="ncc-chapter-title">Camera-instellingen</div>
+        <ul class="ncc-chapter-items">
+          <li>iPhone vs. Samsung, stap voor stap</li>
+          <li>ISO, sluitertijd &amp; macrolens instellen</li>
+          <li>4K/60fps, aspect ratio &amp; HEIF/HEVC</li>
+          <li>Smart HDR &amp; intelligente optimalisatie</li>
+          <li>Macro lens (Blackeyelens) correct plaatsen</li>
+        </ul>
+      </div>
+      <div class="ncc-chapter">
+        <div class="ncc-chapter-num">04</div>
+        <div class="ncc-chapter-title">How to fotograferen</div>
+        <ul class="ncc-chapter-items">
+          <li>Belichtingsopstelling (2-lampentechniek)</li>
+          <li>Handpositionering &amp; ontspannen vingers</li>
+          <li>Compositie &amp; Rule of Thirds</li>
+          <li>Camerapositie &amp; inzoomen vanop afstand</li>
+          <li>Reflecties lezen als kwaliteitsindicator</li>
+        </ul>
+      </div>
+      <div class="ncc-chapter">
+        <div class="ncc-chapter-num">05</div>
+        <div class="ncc-chapter-title">Bonusmateriaal</div>
+        <ul class="ncc-chapter-items">
+          <li>Procreate voor how-to content</li>
+          <li>Do's &amp; don'ts checklist fotosessie</li>
+          <li>Content plannen via Instagram &amp; Meta</li>
+          <li>Vergelijking macro-lenzen (Black Eye vs Apexel)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ncc-inhoud-cta">
+      <a href="https://naillraftplatform.kennis.shop/pay/nailcontentcreator" class="ncc-btn-primary">Ik wil dit leren, €60</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var cards = document.querySelectorAll('.ncc-chapter');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var idx = Array.from(cards).indexOf(e.target);
+        setTimeout(function(){e.target.classList.add('visible');}, idx*100);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  cards.forEach(function(c){obs.observe(c);});
+})();
+</script>
+
+
+<!-- ================================================
+     PRIJS
+================================================ -->
+<style>
+.ncc-pricing { background:linear-gradient(160deg,#fdecfc 0%,#fff 50%,#fcffec 100%); text-align:center; padding:80px 2rem; }
+.ncc-pricing .ncc-inner { text-align:center; }
+.ncc-card {
+  max-width:520px; margin:0 auto; background:#fff; border-radius:var(--radius);
+  padding:3rem 2.5rem; box-shadow:0 20px 60px rgba(245,128,232,.2);
+  border:2px solid rgba(245,128,232,.3); position:relative; overflow:hidden;
+}
+.ncc-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--pink-accent),var(--pink-hot)); }
+.ncc-badge { display:inline-block; background:var(--pink-light); color:var(--pink-hot); font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.35rem 1rem; border-radius:50px; margin-bottom:1.2rem; font-family:'DM Sans',sans-serif; }
+.ncc-price-big { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:700; color:var(--dark); line-height:1; margin-bottom:.3rem; }
+.ncc-price-sub2 { font-size:.85rem; color:var(--text-muted); margin-bottom:1.8rem; font-family:'DM Sans',sans-serif; }
+.ncc-includes { list-style:none; text-align:left; display:flex; flex-direction:column; gap:.7rem; margin-bottom:2.2rem; padding:0; }
+.ncc-includes li { display:flex; align-items:center; gap:.7rem; font-size:.9rem; font-family:'DM Sans',sans-serif; }
+.ncc-check-sm { width:18px; height:18px; border-radius:50%; background:var(--pink-hot); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:.6rem; }
+.ncc-btn-block { display:block; width:100%; text-align:center; background:var(--pink-hot); color:#fff; font-family:'DM Sans',sans-serif; font-size:.95rem; font-weight:700; padding:1rem 2.2rem; border-radius:50px; text-decoration:none; box-shadow:0 6px 28px rgba(255,31,227,.4); transition:transform .2s,box-shadow .2s; }
+.ncc-btn-block:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(255,31,227,.5); color:#fff; }
+.ncc-guarantee { margin-top:1.4rem; font-size:.78rem; color:var(--text-muted); display:flex; align-items:center; justify-content:center; gap:.4rem; font-family:'DM Sans',sans-serif; }
+@media(max-width:768px){ .ncc-pricing{padding:60px 1.2rem;} .ncc-card{padding:2rem 1.5rem;} .ncc-price-big{font-size:3rem;} }
+</style>
+
+<section class="ncc-pricing">
+  <div class="ncc-inner">
+    <span class="ncc-label">Investering</span>
+    <h2 class="ncc-title" style="margin-bottom:2.5rem;">Eén keer betalen.<br>Altijd toegang.</h2>
+    <div class="ncc-card">
+      <div class="ncc-badge">Nail Content Creator</div>
+      <div class="ncc-price-big">€60</div>
+      <p class="ncc-price-sub2">Eénmalige betaling · geen abonnement</p>
+      <ul class="ncc-includes">
+        <li><span class="ncc-check-sm">✓</span><span>E-book van 94 pagina's (PDF)</span></li>
+        <li><span class="ncc-check-sm">✓</span><span>Video tutorials, live demonstraties</span></li>
+        <li><span class="ncc-check-sm">✓</span><span>Macro lens vergelijkingsguide</span></li>
+        <li><span class="ncc-check-sm">✓</span><span>iPhone én Android stap-voor-stap instellingen</span></li>
+        <li><span class="ncc-check-sm">✓</span><span>Do's &amp; don'ts checklist fotosessie</span></li>
+        <li><span class="ncc-check-sm">✓</span><span>Levenslange toegang + toekomstige updates</span></li>
+      </ul>
+      <a href="https://naillraftplatform.kennis.shop/pay/nailcontentcreator" class="ncc-btn-block">Ja, ik start nu! →</a>
+      <p class="ncc-guarantee">🔒 Veilige betaling · directe toegang na aankoop</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     OVER TABITHA
+================================================ -->
+<style>
+.ncc-about { background:linear-gradient(160deg,#fcffec 0%,#fdecfc 100%); padding:80px 2rem; }
+.ncc-about .ncc-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.ncc-about-img-wrap { position:relative; }
+.ncc-about-img { border-radius:var(--radius); overflow:hidden; box-shadow:0 20px 50px rgba(180,80,200,.18); }
+.ncc-about-img img { width:100%; display:block; object-fit:cover; height:480px; max-height:480px; }
+.ncc-about-deco { position:absolute; bottom:-20px; right:-20px; width:120px; height:120px; border-radius:50%; background:var(--pink-accent); opacity:.15; z-index:-1; }
+.ncc-soundcloud { margin-top:2rem; border-radius:var(--radius-sm); overflow:hidden; }
+@media(max-width:768px){ .ncc-about{padding:60px 1.2rem;} .ncc-about .ncc-grid2{grid-template-columns:1fr;gap:2rem;} .ncc-about-img img{height:260px;max-height:260px;} }
+</style>
+
+<section class="ncc-about">
+  <div class="ncc-inner">
+    <div class="ncc-grid2">
+      <div class="ncc-about-img-wrap">
+        <div class="ncc-about-img">
+          <img src="../images/nail-content-creator/foto's nemen  goed voorbeeld ik bezig3.webp" alt="Tabitha Windels">
+        </div>
+        <div class="ncc-about-deco"></div>
+      </div>
+      <div>
+        <span class="ncc-label">Over mij</span>
+        <h2 class="ncc-title">Hoi, ik ben Tabitha</h2>
+        <p style="font-size:.95rem;color:var(--text-muted);margin-bottom:1.2rem;line-height:1.7;font-family:'DM Sans',sans-serif;">
+          Ik ben nagelstyliste én content creator. Ik maak al jaren mijn eigen nagelcontent, en ik weet hoe frustrerend het is als je werk er op foto niet uitziet zoals in het echt.
+        </p>
+        <p style="font-size:.95rem;color:var(--text-muted);margin-bottom:.8rem;line-height:1.7;font-family:'DM Sans',sans-serif;">
+          Daarom zette ik alles wat ik weet in dit e-book: van lampen en instellingen tot positionering en bewerking. Zonder dure camera. Zonder technische kennis vooraf.
+        </p>
+        <p style="font-size:.95rem;color:var(--text-muted);margin-bottom:1.8rem;line-height:1.7;font-family:'DM Sans',sans-serif;">
+          Beluister hieronder even mijn korte introductie.
+        </p>
+        <div class="ncc-soundcloud">
+          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2167469955%3Fsecret_token%3Ds-DoeJY9cKjP2&color=%23f580e8&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     BONUSSEN
+================================================ -->
+<style>
+.ncc-bonus { background:linear-gradient(135deg,#fdecfc 0%,#fff 100%); padding:80px 2rem; }
+.ncc-bonus .ncc-inner { text-align:center; }
+.ncc-bonus-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-bottom:2rem; }
+.ncc-bonus-card { background:#fff; border:1px solid rgba(245,128,232,.25); border-radius:var(--radius); padding:1.8rem; text-align:center; box-shadow:0 4px 20px rgba(245,128,232,.1); opacity:0; transform:translateY(20px); transition:opacity .5s ease,transform .5s ease; }
+.ncc-bonus-card.visible { opacity:1; transform:translateY(0); }
+.ncc-bonus-icon { font-size:2.2rem; margin-bottom:1rem; }
+.ncc-bonus-title { font-weight:700; font-size:.95rem; color:var(--dark); margin-bottom:.5rem; font-family:'DM Sans',sans-serif; }
+.ncc-bonus-desc { font-size:.83rem; color:var(--text-muted); line-height:1.5; font-family:'DM Sans',sans-serif; }
+.ncc-value { font-size:.82rem; color:var(--text-muted); font-family:'DM Sans',sans-serif; }
+@media(max-width:768px){ .ncc-bonus{padding:60px 1.2rem;} .ncc-bonus-grid{grid-template-columns:1fr;} }
+</style>
+
+<section class="ncc-bonus">
+  <div class="ncc-inner">
+    <span class="ncc-label">🎁 Bonussen inbegrepen</span>
+    <h2 class="ncc-title">Meer dan alleen een e-book</h2>
+    <p class="ncc-subtitle" style="max-width:580px;margin:0 auto 2.5rem;">Naast de 94 pagina's krijg je extra materiaal dat je meteen kunt toepassen.</p>
+    <div class="ncc-bonus-grid">
+      <div class="ncc-bonus-card">
+        <div class="ncc-bonus-icon">🎬</div>
+        <div class="ncc-bonus-title">Video tutorials</div>
+        <div class="ncc-bonus-desc">Ik laat je live zien hoe ik fotografeer, hoe ik handen positioneer en hoe ik macro-lenzen gebruik.</div>
+      </div>
+      <div class="ncc-bonus-card">
+        <div class="ncc-bonus-icon">🔍</div>
+        <div class="ncc-bonus-title">Macro lens vergelijking</div>
+        <div class="ncc-bonus-desc">Handig transcript met mijn aanbevolen macro-lenzen, incl. links en verschil in gebruik.</div>
+      </div>
+      <div class="ncc-bonus-card">
+        <div class="ncc-bonus-icon">♾️</div>
+        <div class="ncc-bonus-title">Levenslange toegang</div>
+        <div class="ncc-bonus-desc">Inclusief alle toekomstige updates, je betaalt één keer en hebt er altijd toegang toe.</div>
+      </div>
+    </div>
+    <p class="ncc-value">Totale waarde: <s>€109</s> — jij krijgt alles voor <strong style="color:var(--pink-hot);">€60</strong></p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var cards = document.querySelectorAll('.ncc-bonus-card');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var idx = Array.from(cards).indexOf(e.target);
+        setTimeout(function(){e.target.classList.add('visible');}, idx*100);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  cards.forEach(function(c){obs.observe(c);});
+})();
+</script>
+
+
+<!-- ================================================
+     FAQ
+================================================ -->
+<style>
+.ncc-faq { background:#fff; padding:80px 2rem; }
+.ncc-faq .ncc-inner { text-align:center; }
+.ncc-faq-list { max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:.8rem; text-align:left; }
+.ncc-faq-item { border:1px solid rgba(245,128,232,.25); border-radius:var(--radius-sm); overflow:hidden; }
+.ncc-faq-q { width:100%; background:none; border:none; padding:1.2rem 1.5rem; text-align:left; font-family:'DM Sans',sans-serif; font-size:.92rem; font-weight:600; color:var(--dark); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:background .2s; }
+.ncc-faq-q:hover { background:var(--pink-light); }
+.ncc-faq-arrow { width:22px; height:22px; border-radius:50%; background:var(--pink-accent); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:.7rem; transition:transform .3s; }
+.ncc-faq-item.open .ncc-faq-arrow { transform:rotate(180deg); }
+.ncc-faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+.ncc-faq-a-inner { padding:0 1.5rem 1.2rem; font-size:.88rem; color:var(--text-muted); line-height:1.6; font-family:'DM Sans',sans-serif; }
+.ncc-faq-item.open .ncc-faq-a { max-height:300px; }
+@media(max-width:768px){ .ncc-faq{padding:60px 1.2rem;} .ncc-faq-q{font-size:.85rem;padding:1rem 1.1rem;} }
+</style>
+
+<section class="ncc-faq">
+  <div class="ncc-inner">
+    <span class="ncc-label">FAQ</span>
+    <h2 class="ncc-title" style="margin-bottom:2.5rem;">Veelgestelde vragen</h2>
+    <div class="ncc-faq-list">
+      <div class="ncc-faq-item">
+        <button class="ncc-faq-q">Heb ik een dure camera nodig?<span class="ncc-faq-arrow">▾</span></button>
+        <div class="ncc-faq-a"><div class="ncc-faq-a-inner">Nee. De cursus is volledig gebaseerd op het gebruik van je smartphone, iPhone of Android. Ik leg precies uit welke instellingen je nodig hebt voor professionele resultaten.</div></div>
+      </div>
+      <div class="ncc-faq-item">
+        <button class="ncc-faq-q">Werkt dit voor zowel iPhone als Android?<span class="ncc-faq-arrow">▾</span></button>
+        <div class="ncc-faq-a"><div class="ncc-faq-a-inner">Ja! De cursus bevat aparte stap-voor-stap instructies voor zowel iPhone als Samsung (Android). De meeste tips zijn ook toepasbaar op andere Android-toestellen.</div></div>
+      </div>
+      <div class="ncc-faq-item">
+        <button class="ncc-faq-q">Hoe krijg ik toegang na aankoop?<span class="ncc-faq-arrow">▾</span></button>
+        <div class="ncc-faq-a"><div class="ncc-faq-a-inner">Je krijgt direct na je aankoop toegang via het NailCraft platform. Je kunt het e-book en de video's raadplegen wanneer het jou past.</div></div>
+      </div>
+      <div class="ncc-faq-item">
+        <button class="ncc-faq-q">Moet ik al ervaring hebben met fotografie?<span class="ncc-faq-arrow">▾</span></button>
+        <div class="ncc-faq-a"><div class="ncc-faq-a-inner">Absoluut niet. De cursus is opgebouwd voor beginners maar bevat genoeg diepgang voor wie al wat verder staat. Alles wordt visueel uitgelegd, je hoeft niets vooraf te kennen.</div></div>
+      </div>
+      <div class="ncc-faq-item">
+        <button class="ncc-faq-q">Hoe lang heb ik toegang?<span class="ncc-faq-arrow">▾</span></button>
+        <div class="ncc-faq-a"><div class="ncc-faq-a-inner">Levenslang! Je betaalt één keer en hebt er altijd toegang toe, inclusief eventuele toekomstige updates van de cursus.</div></div>
+      </div>
+      <div class="ncc-faq-item">
+        <button class="ncc-faq-q">Welke apps heb ik nodig?<span class="ncc-faq-arrow">▾</span></button>
+        <div class="ncc-faq-a"><div class="ncc-faq-a-inner">Canva, Snapseed en InShot, alle drie gratis beschikbaar. Ik leg per app uit hoe je ze optimaal inzet voor je nagelcontent.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  document.querySelectorAll('.ncc-faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item = btn.closest('.ncc-faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.ncc-faq-item').forEach(function(i){i.classList.remove('open');});
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>
+
+
+<!-- ================================================
+     FINALE CTA
+================================================ -->
+<style>
+.ncc-cta { background:linear-gradient(135deg,#fdecfc 0%,#fcffec 100%); padding:80px 2rem; text-align:center; position:relative; overflow:hidden; }
+.ncc-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(245,128,232,.12) 0%,transparent 60%); pointer-events:none; }
+.ncc-cta .ncc-inner { position:relative; z-index:1; }
+.ncc-cta-logo { height:28px; width:auto; margin:0 auto 2rem; }
+.ncc-cta h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,3rem); color:var(--dark); margin-bottom:1rem; line-height:1.2; }
+.ncc-cta h2 em { font-style:italic; color:var(--pink-hot); }
+.ncc-cta p { color:var(--text-muted); font-size:.95rem; max-width:460px; margin:0 auto 2.5rem; font-family:'DM Sans',sans-serif; }
+.ncc-note { color:var(--text-muted); font-size:.75rem; margin-top:1rem; font-family:'DM Sans',sans-serif; }
+@media(max-width:768px){ .ncc-cta{padding:60px 1.2rem;} }
+</style>
+
+<section class="ncc-cta">
+  <div class="ncc-inner">
+    <img src="../images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform" class="ncc-cta-logo">
+    <h2>Jouw werk verdient de spotlight.<br><em>Laat het ook zó zien.</em></h2>
+    <p>Stop met random foto's maken. Start vandaag met content die klanten aantrekt.</p>
+    <a href="https://naillraftplatform.kennis.shop/pay/nailcontentcreator" class="ncc-btn-primary">Ja, ik wil dit! — €60 →</a>
+    <p class="ncc-note">🔒 Veilige betaling · directe toegang · levenslang</p>
+  </div>
+</section>
+
+
+<!-- INSTAGRAM -->
+<style>
+.ig-section { background: #fff; padding: 5rem 2rem; overflow: hidden; }
+.ig-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.ig-lbl { display:inline-flex; align-items:center; gap:.5rem; font-size:.73rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#b590f1; margin-bottom:1rem; font-family:'DM Sans',sans-serif; }
+.ig-lbl::before { content:''; width:20px; height:1.5px; background:#b590f1; display:inline-block; }
+.ig-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; line-height:1.1; color:#120820; margin-bottom:1rem; }
+.ig-text h2 em { font-style:italic; color:var(--pink-hot); }
+.ig-text p { font-size:.97rem; color:#5e4878; line-height:1.8; margin-bottom:2rem; max-width:420px; font-family:'DM Sans',sans-serif; }
+.ig-btn { display:inline-flex; align-items:center; gap:.7rem; background:linear-gradient(135deg,#9c28b1 0%,var(--pink-hot) 100%); color:#fff; font-family:'DM Sans',sans-serif; font-weight:700; font-size:.82rem; padding:.75rem 1.6rem; border-radius:60px; text-decoration:none; transition:transform .2s, box-shadow .2s; box-shadow:0 4px 20px rgba(255,31,227,.3); }
+.ig-btn:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(255,31,227,.4); color:#fff; }
+.ig-btn-icon { width:20px; height:20px; flex-shrink:0; }
+.ig-tags { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:1.5rem; }
+.ig-tag { font-size:.75rem; color:#b590f1; font-weight:500; font-family:'DM Sans',sans-serif; }
+.ig-visual { display:flex; justify-content:center; align-items:center; position:relative; }
+.ig-visual::before { content:''; position:absolute; width:340px; height:340px; border-radius:50%; background:linear-gradient(135deg,rgba(181,144,241,.18) 0%,rgba(255,31,227,.12) 100%); z-index:0; }
+.ig-phone { position:relative; z-index:1; max-width:260px; width:100%; filter:drop-shadow(0 24px 48px rgba(255,31,227,.22)); animation:igFloat 4s ease-in-out infinite; }
+.ig-phone img { width:100%; }
+@keyframes igFloat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+@media(max-width:900px){ .ig-inner{grid-template-columns:1fr;gap:3rem;text-align:center;} .ig-lbl{justify-content:center;} .ig-text p{margin-left:auto;margin-right:auto;} .ig-tags{justify-content:center;} .ig-btn{margin:0 auto;} .ig-visual::before{width:260px;height:260px;} .ig-phone{max-width:200px;} }
+@media(max-width:600px){ .ig-section{padding:3.5rem 1.2rem;} }
+</style>
+
+<div class="ig-section">
+  <div class="ig-inner">
+    <div class="ig-text">
+      <div class="ig-lbl">Instagram</div>
+      <h2>Volg je mij al<br><em>On The Gram?</em></h2>
+      <p>Zin om geïnspireerd te worden? Kom er gezellig bij, ik post regelmatig content die je inspireert en geeft een inkijk in mijn achter-de-schermen leven en hoe ik mijn onderneming run.</p>
+      <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="ig-btn">
+        <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Ga naar Instagram
+      </a>
+      <div class="ig-tags">
+        <span class="ig-tag">#nailcraft</span>
+        <span class="ig-tag">#nagelcontent</span>
+        <span class="ig-tag">#nagels</span>
+        <span class="ig-tag">#behindthescenes</span>
+      </div>
+    </div>
+    <div class="ig-visual">
+      <div class="ig-phone">
+        <img src="../images/upperforms/instagram mockup telefoon.webp" alt="NailCraft Instagram op telefoon" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="ncc-footer">
+  <p>© Tabitha – NailCraft Platform &nbsp;·&nbsp; <a href="../online-opleidingen.html">Alle opleidingen</a> &nbsp;·&nbsp; <a href="../index.html">Home</a></p>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="ncc-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Terug naar boven">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('ncc-top-btn');
+  if (window.scrollY > 400) btn.classList.add('show'); else btn.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
