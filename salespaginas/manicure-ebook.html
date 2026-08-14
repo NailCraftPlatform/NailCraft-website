@@ -213,11 +213,6 @@
   </div>
 </div>
 
-<!-- FOTO NA OPLOSSING -->
-<div style="background:#6a3fa6;padding:0 1.2rem 3rem;display:flex;justify-content:center;">
-  <img src="../images/manicure-ebook/Hardcover Books Mockup Front And Back View Manicure e-boek.webp" alt="Manicure e-book hardcover" style="max-width:300px;width:100%;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.2);" loading="lazy">
-</div>
-
 
 <!-- ============================================================
      VIDEO PREVIEW
@@ -244,25 +239,37 @@
 
 
 <!-- ============================================================
-     FOTO STRIP — manicure voorbeelden
+     FOTO BANNER — bewegend
 ============================================================ -->
 <style>
-.me-photos { background: var(--wit); padding: 2rem 1.2rem; }
-.me-photos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .8rem; max-width: 860px; margin: 0 auto; }
-.me-photo-tile { border-radius: 14px; overflow: hidden; aspect-ratio: 4/3; }
-.me-photo-tile img { width:100%; height:100%; object-fit:cover; transition:transform .4s; display:block; }
-.me-photo-tile:hover img { transform:scale(1.04); }
-@media(max-width:540px){ .me-photos-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto;} }
+.me-banner { background: var(--wit); padding: 1.5rem 0; overflow: hidden; position: relative; }
+.me-banner::before, .me-banner::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
+.me-banner::before { left:0; background:linear-gradient(90deg,var(--wit),transparent); }
+.me-banner::after  { right:0; background:linear-gradient(270deg,var(--wit),transparent); }
+.me-banner-track { display:flex; gap:1rem; width:max-content; animation:me-scroll 28s linear infinite; }
+.me-banner-track:hover { animation-play-state:paused; }
+@keyframes me-scroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+.me-banner-item { flex-shrink:0; width:200px; height:150px; border-radius:14px; overflow:hidden; }
+.me-banner-item img { width:100%; height:100%; object-fit:cover; display:block; }
 </style>
 
-<div class="me-photos">
-  <div class="me-photos-grid">
-    <div class="me-photo-tile nc-anim" data-delay="0"><img src="../images/manicure-ebook/ik doe manicure actiefoto.webp" alt="Manicure in actie" loading="lazy"></div>
-    <div class="me-photo-tile nc-anim" data-delay="80"><img src="../images/manicure-ebook/ik doe manicure actiefoto2.webp" alt="Manicure in actie" loading="lazy"></div>
-    <div class="me-photo-tile nc-anim" data-delay="160"><img src="../images/manicure-ebook/ik doe manicure actiefoto3.webp" alt="Manicure in actie" loading="lazy"></div>
-    <div class="me-photo-tile nc-anim" data-delay="0"><img src="../images/manicure-ebook/clean manicure voorbeeld 2.webp" alt="Clean manicure resultaat" loading="lazy"></div>
-    <div class="me-photo-tile nc-anim" data-delay="80"><img src="../images/manicure-ebook/clean manicure voorbeeld 4.webp" alt="Clean manicure resultaat" loading="lazy"></div>
-    <div class="me-photo-tile nc-anim" data-delay="160"><img src="../images/manicure-ebook/manicure voorbeelden.webp" alt="Manicure voorbeelden" loading="lazy"></div>
+<div class="me-banner">
+  <div class="me-banner-track">
+    <div class="me-banner-item"><img src="../images/manicure-ebook/ik doe manicure actiefoto.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 2.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/ik doe manicure actiefoto2.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 4.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/ik doe manicure actiefoto3.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/manicure voorbeelden.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 3.jpg" alt="Manicure" loading="lazy"></div>
+    <!-- duplicaat voor naadloze loop -->
+    <div class="me-banner-item"><img src="../images/manicure-ebook/ik doe manicure actiefoto.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 2.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/ik doe manicure actiefoto2.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 4.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/ik doe manicure actiefoto3.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/manicure voorbeelden.webp" alt="Manicure" loading="lazy"></div>
+    <div class="me-banner-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 3.jpg" alt="Manicure" loading="lazy"></div>
   </div>
 </div>
 
@@ -364,6 +371,37 @@
 </div>
 
 
+<!-- CLEAN MANICURE BANNER -->
+<style>
+.me-clean-banner { background: var(--wit); padding: 1.2rem 0; overflow: hidden; position: relative; }
+.me-clean-banner::before,.me-clean-banner::after { content:''; position:absolute; top:0; bottom:0; width:60px; z-index:2; pointer-events:none; }
+.me-clean-banner::before { left:0; background:linear-gradient(90deg,var(--wit),transparent); }
+.me-clean-banner::after  { right:0; background:linear-gradient(270deg,var(--wit),transparent); }
+.me-clean-track { display:flex; gap:.8rem; width:max-content; animation:me-clean-scroll 20s linear infinite; }
+.me-clean-track:hover { animation-play-state:paused; }
+@keyframes me-clean-scroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+.me-clean-item { flex-shrink:0; width:160px; height:110px; border-radius:12px; overflow:hidden; }
+.me-clean-item img { width:100%; height:100%; object-fit:cover; display:block; }
+</style>
+
+<div class="me-clean-banner">
+  <div class="me-clean-track">
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 2.webp" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 3.jpg" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 4.webp" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 2.webp" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 3.jpg" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 4.webp" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 2.webp" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 3.jpg" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 4.webp" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 2.webp" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 3.jpg" alt="Clean manicure" loading="lazy"></div>
+    <div class="me-clean-item"><img src="../images/manicure-ebook/clean manicure voorbeeld 4.webp" alt="Clean manicure" loading="lazy"></div>
+  </div>
+</div>
+
+
 <!-- ============================================================
      PRIJSBLOK (1e)
 ============================================================ -->
@@ -433,7 +471,7 @@
 <div class="me-over">
   <div class="me-over-inner">
     <div class="me-over-img nc-anim" data-delay="0">
-      <img src="../images/manicure-ebook/ik doe manicure actiefoto4.webp" alt="Tabitha aan het werk" loading="lazy">
+      <img src="../images/manicure-ebook/foto tabitha.webp" alt="Tabitha Windels" loading="lazy">
     </div>
     <div>
       <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:.6rem;">Over Tabitha</div>

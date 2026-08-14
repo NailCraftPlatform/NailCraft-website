@@ -262,29 +262,32 @@ window.addEventListener('load', function(){
      FOTO STRIP
 ================================================ -->
 <style>
-.gc-photo-strip { background:var(--gc-mint); padding:3rem 0; overflow:hidden; }
-.gc-photo-inner { display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; max-width:900px; margin:0 auto; padding:0 1.5rem; }
-@media(max-width:640px){ .gc-photo-inner{grid-template-columns:1fr;max-width:420px;} }
-.gc-photo-tile { border-radius:14px; overflow:hidden; aspect-ratio:4/3; }
-.gc-photo-tile img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s; }
-.gc-photo-tile:hover img { transform:scale(1.04); }
-.gc-photo-label { font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gc-teal-dark); text-align:center; margin-top:.5rem; font-family:'DM Sans',sans-serif; }
+.gc-photo-strip { background:var(--gc-mint); padding:2.5rem 0; overflow:hidden; position:relative; }
+.gc-photo-strip::before,.gc-photo-strip::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
+.gc-photo-strip::before { left:0; background:linear-gradient(90deg,var(--gc-mint),transparent); }
+.gc-photo-strip::after  { right:0; background:linear-gradient(270deg,var(--gc-mint),transparent); }
+.gc-photo-inner { display:flex; gap:1rem; width:max-content; animation:gc-banner-scroll 22s linear infinite; }
+.gc-photo-inner:hover { animation-play-state:paused; }
+@keyframes gc-banner-scroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+.gc-photo-tile { flex-shrink:0; width:280px; border-radius:14px; overflow:hidden; }
+.gc-photo-tile img { width:100%; height:200px; object-fit:cover; display:block; }
+.gc-photo-label { font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gc-teal-dark); text-align:center; margin-top:.5rem; font-family:'DM Sans',sans-serif; padding-bottom:.5rem; }
 </style>
 
 <div class="gc-photo-strip">
   <div class="gc-photo-inner">
-    <div>
-      <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber based gel" loading="lazy"></div>
-      <p class="gc-photo-label">Rubber Based</p>
-    </div>
-    <div>
-      <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"></div>
-      <p class="gc-photo-label">Hardgel</p>
-    </div>
-    <div>
-      <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"></div>
-      <p class="gc-photo-label">Acrygel</p>
-    </div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/rubber based gel .webp" alt="Rubber Based" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/hardgel (1).webp" alt="Hardgel" loading="lazy"></div>
+    <div class="gc-photo-tile"><img src="../images/the-gel-code/acrygel.webp" alt="Acrygel" loading="lazy"></div>
   </div>
 </div>
 
