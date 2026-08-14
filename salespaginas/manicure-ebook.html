@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manicure E-book – combi-manicure van A tot Z | NailCraft Platform</title>
+  <meta name="description" content="142 pagina's vakkennis. Leer de combi-manicure van A tot Z via uitgeschreven theorie, stap-voor-stap uitleg en fotovoorbeelden. Direct downloadbaar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --licht: #f8f2ff;
+      --accent: #b590f1;
+      --cta: #fe9b00;
+      --mid: #8863c3;
+      --soft: #c7b8df;
+      --blush: #fdecfc;
+      --wit: #ffffff;
+      --donker: #1a1025;
+      --tekst: #2d1f45;
+      --subtekst: #5a4478;
+    }
+    body { font-family: 'DM Sans', sans-serif; color: var(--tekst); background: var(--licht); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; }
+
+    /* NAV */
+    .me-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; padding: .8rem clamp(1.2rem,4vw,3rem); display: flex; align-items: center; justify-content: space-between; background: rgba(248,242,255,.93); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(181,144,241,.2); }
+    .me-nav img { height: 28px; }
+    .me-nav-cta { background: var(--cta); color: #fff; padding: .5rem 1.3rem; border-radius: 100px; font-size: .82rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 16px rgba(254,155,0,.3); transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+    .me-nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(254,155,0,.45); }
+    @media(max-width:600px){ .me-nav img{height:22px;} .me-nav-cta{font-size:.7rem;padding:.45rem 1rem;} }
+
+    /* SCROLL TO TOP */
+    #me-top { position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800; width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer; background: var(--cta); color: #fff; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(254,155,0,.35); opacity: 0; transform: translateY(12px); transition: opacity .3s, transform .3s; }
+    #me-top.show { opacity: 1; transform: translateY(0); }
+
+    /* FOOTER */
+    .me-footer { background: #9c28b1; color: rgba(255,255,255,.75); text-align: center; padding: 2rem 1.5rem; font-size: .83rem; }
+    .me-footer a { color: #fff; text-decoration: none; }
+    .me-footer a:hover { text-decoration: underline; }
+
+    /* GEDEELD */
+    .nc-container { max-width: 680px; margin: 0 auto; }
+
+    /* SCROLL REVEAL */
+    @keyframes nc-fade-up { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    .nc-anim { opacity: 0; }
+    .nc-anim.nc-visible { animation: nc-fade-up .6s ease forwards; }
+
+    /* VIMEO FACADE */
+    .vfacade { position: relative; width: 100%; background: #000; border-radius: 16px; overflow: hidden; }
+    .vfacade img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .5s ease; }
+    .vfacade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    .vfacade.loaded img { opacity: 0; pointer-events: none; }
+
+    @keyframes ncbFloat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+    @keyframes nc-shimmer { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    @keyframes igFloat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="me-nav">
+  <a href="../online-opleidingen.html">
+    <img src="../images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform">
+  </a>
+  <a class="me-nav-cta" href="https://naillraftplatform.kennis.shop/pay/manicureebook">Ik wil dit e-book →</a>
+</nav>
+<div style="height:62px"></div>
+
+<!-- SCROLL OBSERVER -->
+<script>
+(function(){
+  function initObserver(){
+    var els = document.querySelectorAll('.nc-anim');
+    if(!els.length) return;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var el = e.target;
+          var d = parseInt(el.getAttribute('data-delay')||'0');
+          setTimeout(function(){ el.classList.add('nc-visible'); }, d);
+          obs.unobserve(el);
+        }
+      });
+    }, {threshold:.12});
+    els.forEach(function(el){ obs.observe(el); });
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',initObserver); }
+  else{ initObserver(); }
+})();
+</script>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<style>
+.nc-hero-wrap { background: linear-gradient(160deg,var(--licht) 0%,var(--blush) 60%,#e8d8ff 100%); }
+.nc-hero { padding: 4rem 1.2rem 3.5rem; position: relative; overflow: hidden; }
+.nc-hero::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; border-radius:50%; background:rgba(181,144,241,.15); pointer-events:none; }
+.nc-hero::after  { content:''; position:absolute; bottom:-40px; left:-40px; width:160px; height:160px; border-radius:50%; background:rgba(254,155,0,.1); pointer-events:none; }
+.nc-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 980px; margin: 0 auto; }
+.nc-hero-badge { display:inline-block; background:var(--accent); color:#fff; font-size:.72rem; font-weight:600; padding:.3rem 1rem; border-radius:50px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1.2rem; }
+.nc-hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,6vw,3.6rem); color:var(--tekst); line-height:1.1; margin-bottom:1rem; }
+.nc-hero-highlight { background:linear-gradient(90deg,#b590f1,#fe9b00,#8863c3,#fe9b00,#b590f1); background-size:300% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:nc-shimmer 3.5s linear infinite; display:inline; }
+.nc-hero-sub { font-size:1rem; color:var(--subtekst); max-width:460px; margin:0 0 2rem; line-height:1.7; }
+.nc-hero-price-row { display:flex; align-items:center; gap:1rem; margin-bottom:1.8rem; flex-wrap:wrap; }
+.nc-price-old { font-size:1rem; color:#9a8ab0; text-decoration:line-through; }
+.nc-price-new { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:700; color:var(--cta); }
+.nc-price-label { font-size:.75rem; background:rgba(254,155,0,.15); color:#c47800; padding:.25rem .7rem; border-radius:20px; font-weight:600; }
+.nc-hero-note { font-size:.78rem; color:var(--subtekst); margin-top:1rem; }
+
+@keyframes nc-hero-btn-pulse { 0%{box-shadow:0 0 0 0 rgba(254,155,0,.7),0 4px 20px rgba(254,155,0,.3)} 60%{box-shadow:0 0 0 16px rgba(254,155,0,0),0 4px 20px rgba(254,155,0,.3)} 100%{box-shadow:0 0 0 0 rgba(254,155,0,0),0 4px 20px rgba(254,155,0,.3)} }
+@keyframes nc-hero-btn-shimmer { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.nc-hero-cta { display:inline-block; background:linear-gradient(90deg,#fe9b00,#ffb733,#fe9b00); background-size:200% auto; color:#fff; font-family:'DM Sans',sans-serif; font-weight:700; font-size:.95rem; padding:.85rem 2rem; border-radius:50px; text-decoration:none; letter-spacing:.03em; cursor:pointer; border:none; animation:nc-hero-btn-pulse 2.2s ease-out infinite,nc-hero-btn-shimmer 2.5s linear infinite; transition:transform .2s; }
+.nc-hero-cta:hover { transform:translateY(-3px) scale(1.03); color:#fff; }
+
+.nc-hero-img { display:flex; justify-content:center; align-items:center; }
+.nc-hero-img img { width:100%; max-width:420px; filter:drop-shadow(0 24px 60px rgba(136,99,195,.25)); animation:ncbFloat 6s ease-in-out infinite; }
+
+@media(max-width:768px){ .nc-hero-inner{grid-template-columns:1fr;gap:2rem;text-align:center;} .nc-hero-img{order:-1;} .nc-hero-img img{max-width:260px;margin:0 auto;} .nc-hero-price-row{justify-content:center;} .nc-hero-cta{font-size:.72rem;padding:.65rem 1.4rem;} .nc-hero-sub{margin-left:auto;margin-right:auto;} }
+</style>
+
+<div class="nc-hero-wrap">
+  <div class="nc-hero">
+    <div class="nc-hero-inner">
+      <div>
+        <div class="nc-hero-badge nc-anim" data-delay="0">✦ E-book, direct downloadbaar</div>
+        <h1 class="nc-anim" data-delay="100">De <span class="nc-hero-highlight">manicure</span> die<br>elke klant doet terugkomen</h1>
+        <p class="nc-hero-sub nc-anim" data-delay="200">142 pagina's vakkennis: leer de combi-manicure van A tot Z via uitgeschreven theorie, visuele stap-voor-stap uitleg en fotovoorbeelden uit de praktijk, alles in je eigen tempo leren.</p>
+        <div class="nc-hero-price-row nc-anim" data-delay="300">
+          <span class="nc-price-old">€45,00</span>
+          <span class="nc-price-new">€18,99</span>
+          <span class="nc-price-label">Actieprijs</span>
+        </div>
+        <div class="nc-anim" data-delay="400">
+          <a href="https://naillraftplatform.kennis.shop/pay/manicureebook" class="nc-hero-cta">Ja, ik wil dit e-book →</a>
+        </div>
+        <p class="nc-hero-note nc-anim" data-delay="500">142 pagina's · Direct downloadbaar als PDF</p>
+      </div>
+      <div class="nc-hero-img nc-anim" data-delay="200">
+        <img src="../images/manicure-ebook/Manicure e-book mockup transparante achtergrond.webp" alt="Manicure e-book mockup">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PIJNPUNTEN
+============================================================ -->
+<style>
+.nc-pijn-wrap { background: var(--wit); }
+.nc-pijn { padding: 4.5rem 1.2rem; }
+.nc-pijn h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,5vw,2.4rem); text-align:center; margin-bottom:.6rem; color:var(--tekst); }
+.nc-pijn-sub { text-align:center; color:var(--subtekst); margin-bottom:2.5rem; font-size:.95rem; }
+.nc-pijn-grid { display:grid; gap:1rem; }
+.nc-pijn-card { background:var(--licht); border-left:4px solid var(--accent); border-radius:0 12px 12px 0; padding:1rem 1.2rem; }
+.nc-pijn-card p { font-size:.9rem; color:var(--tekst); line-height:1.6; }
+.nc-pijn-card p::before { content:'😩 '; }
+</style>
+
+<div class="nc-pijn-wrap">
+  <div class="nc-pijn">
+    <div class="nc-container">
+      <h2 class="nc-anim" data-delay="0">Herken jij dit?</h2>
+      <p class="nc-pijn-sub nc-anim" data-delay="100">Veel nagelstylisten worstelen met dezelfde dingen…</p>
+      <div class="nc-pijn-grid">
+        <div class="nc-pijn-card nc-anim" data-delay="150"><p>Je werkt al een tijdje met gel, maar je manicure voelt nog steeds onzeker of inconsistent aan</p></div>
+        <div class="nc-pijn-card nc-anim" data-delay="220"><p>Je weet niet altijd welk bitje je wanneer moet gebruiken, of je durft de frees nauwelijks aan te raken</p></div>
+        <div class="nc-pijn-card nc-anim" data-delay="290"><p>Je klanten hebben lifting of beschadiging, en je weet niet exact waar het misgaat</p></div>
+        <div class="nc-pijn-card nc-anim" data-delay="360"><p>Je hebt tutorials bekeken maar mist een duidelijk, volledig stappenplan dat alles samenvoegt</p></div>
+        <div class="nc-pijn-card nc-anim" data-delay="430"><p>Je werkt wel hygiënisch, maar twijfelt soms over de correcte desinfectie- en sterilisatieprocedure</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     OPLOSSING
+============================================================ -->
+<style>
+.nc-oplossing-wrap { background: linear-gradient(135deg,#8863c3 0%,#6a3fa6 100%); }
+.nc-oplossing { padding: 4.5rem 1.2rem; color: #fff; }
+.nc-oplossing h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,5vw,2.4rem); color:#fff; margin-bottom:.8rem; text-align:center; }
+.nc-opl-sub { text-align:center; color:rgba(255,255,255,.8); margin-bottom:2.5rem; font-size:.95rem; }
+.nc-opl-grid { display:grid; gap:1.2rem; }
+.nc-opl-item { display:flex; gap:1rem; align-items:flex-start; }
+.nc-opl-nr { min-width:36px; height:36px; border-radius:50%; background:var(--cta); color:#fff; font-weight:700; font-size:.85rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.nc-opl-item h3 { font-family:'DM Sans',sans-serif; font-size:.95rem; font-weight:600; color:#fff; margin-bottom:.2rem; }
+.nc-opl-item p { font-size:.85rem; color:rgba(255,255,255,.75); line-height:1.6; }
+</style>
+
+<div class="nc-oplossing-wrap">
+  <div class="nc-oplossing">
+    <div class="nc-container">
+      <h2 class="nc-anim" data-delay="0">Dit e-book is jouw antwoord</h2>
+      <p class="nc-opl-sub nc-anim" data-delay="100">Geen vage tips. Geen oppervlakkige uitleg. Alles wat je nodig hebt om elke manicure strak, veilig en professioneel uit te voeren, uitgeschreven zodat je het opnieuw kan lezen wanneer je wil.</p>
+      <div class="nc-opl-grid">
+        <div class="nc-opl-item nc-anim" data-delay="150"><div class="nc-opl-nr">1</div><div><h3>Begrijp wat je doet, en waarom</h3><p>Niet alleen de stappen, maar ook de logica erachter. Zo maak je slimmere keuzes aan de tafel.</p></div></div>
+        <div class="nc-opl-item nc-anim" data-delay="230"><div class="nc-opl-nr">2</div><div><h3>Werk op elk nagelriemtype correct</h3><p>6 types uitgelegd met aanpak per type. Geen twee klanten zijn hetzelfde, en nu weet jij hoe je daarmee omgaat.</p></div></div>
+        <div class="nc-opl-item nc-anim" data-delay="310"><div class="nc-opl-nr">3</div><div><h3>Volledig stappenplan combi-manicure</h3><p>Van desinfectie tot de laatste polijstslag, met een overzichtelijke roadmap die je elke keer opnieuw kan volgen.</p></div></div>
+        <div class="nc-opl-item nc-anim" data-delay="390"><div class="nc-opl-nr">4</div><div><h3>Leer van echte fouten, met foto's</h3><p>De meest voorkomende fouten, uitgelegd met beelden. Zo herken je ze bij jezelf én voorkom je ze in de toekomst.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     VIDEO PREVIEW
+============================================================ -->
+<style>
+.me-video-wrap { background: var(--licht); padding: 4rem 1.2rem; text-align: center; }
+.me-video-inner { max-width: 680px; margin: 0 auto; }
+.me-video-inner h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,4vw,2.2rem); color:var(--tekst); margin-bottom:.5rem; }
+.me-video-inner p { color:var(--subtekst); margin-bottom:2rem; font-size:.95rem; }
+.me-vfacade-wrap { aspect-ratio:16/9; border-radius:20px; overflow:hidden; box-shadow:0 16px 48px rgba(136,99,195,.2); }
+</style>
+
+<div class="me-video-wrap">
+  <div class="me-video-inner">
+    <h2 class="nc-anim" data-delay="0">Bekijk wat er in het e-book zit</h2>
+    <p class="nc-anim" data-delay="100">Een korte inkijk in de inhoud en opbouw van het manicure e-book.</p>
+    <div class="me-vfacade-wrap nc-anim" data-delay="200">
+      <div class="vfacade" data-vimeo="1218234174" style="padding-top:56.25%;height:0;">
+        <img src="../images/manicure-ebook/Manicure e-book mockup transparante achtergrond (2).webp" alt="Manicure e-book preview" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     FOTO STRIP — manicure voorbeelden
+============================================================ -->
+<style>
+.me-photos { background: var(--wit); padding: 2rem 1.2rem; }
+.me-photos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .8rem; max-width: 860px; margin: 0 auto; }
+.me-photo-tile { border-radius: 14px; overflow: hidden; aspect-ratio: 4/3; }
+.me-photo-tile img { width:100%; height:100%; object-fit:cover; transition:transform .4s; display:block; }
+.me-photo-tile:hover img { transform:scale(1.04); }
+@media(max-width:540px){ .me-photos-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto;} }
+</style>
+
+<div class="me-photos">
+  <div class="me-photos-grid">
+    <div class="me-photo-tile nc-anim" data-delay="0"><img src="../images/manicure-ebook/ik doe manicure actiefoto.webp" alt="Manicure in actie" loading="lazy"></div>
+    <div class="me-photo-tile nc-anim" data-delay="80"><img src="../images/manicure-ebook/ik doe manicure actiefoto2.webp" alt="Manicure in actie" loading="lazy"></div>
+    <div class="me-photo-tile nc-anim" data-delay="160"><img src="../images/manicure-ebook/ik doe manicure actiefoto3.webp" alt="Manicure in actie" loading="lazy"></div>
+    <div class="me-photo-tile nc-anim" data-delay="0"><img src="../images/manicure-ebook/clean manicure voorbeeld 2.webp" alt="Clean manicure resultaat" loading="lazy"></div>
+    <div class="me-photo-tile nc-anim" data-delay="80"><img src="../images/manicure-ebook/clean manicure voorbeeld 4.webp" alt="Clean manicure resultaat" loading="lazy"></div>
+    <div class="me-photo-tile nc-anim" data-delay="160"><img src="../images/manicure-ebook/manicure voorbeelden.webp" alt="Manicure voorbeelden" loading="lazy"></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     INHOUD
+============================================================ -->
+<style>
+.nc-inhoud-wrap { background: var(--licht); }
+.nc-inhoud { padding: 4.5rem 1.2rem; }
+.nc-inhoud h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,5vw,2.4rem); text-align:center; margin-bottom:.5rem; color:var(--tekst); }
+.nc-inhoud-sub { text-align:center; color:var(--subtekst); margin-bottom:2.5rem; font-size:.95rem; }
+.nc-inhoud-list { display:grid; gap:.7rem; margin-bottom:2rem; }
+.nc-inhoud-item { background:#fff; border-radius:12px; padding:.9rem 1.1rem; display:flex; gap:.8rem; align-items:flex-start; border:1px solid #ede0ff; transition:box-shadow .3s,transform .3s; }
+.nc-inhoud-item:hover { box-shadow:0 8px 24px rgba(181,144,241,.15); transform:translateY(-2px); }
+.nc-check { color:var(--accent); font-size:1.1rem; flex-shrink:0; margin-top:1px; }
+.nc-inhoud-item-text strong { font-size:.9rem; color:var(--tekst); display:block; margin-bottom:.1rem; }
+.nc-inhoud-item-text span { font-size:.8rem; color:var(--subtekst); }
+.nc-pages-tag { text-align:center; font-size:.85rem; color:var(--mid); font-weight:500; margin-bottom:2rem; }
+.nc-btn { display:inline-block; background:var(--cta); color:#fff; font-family:'DM Sans',sans-serif; font-weight:700; font-size:.92rem; padding:.85rem 2rem; border-radius:50px; text-decoration:none; box-shadow:0 8px 28px rgba(254,155,0,.35); transition:transform .2s,box-shadow .2s; }
+.nc-btn:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(254,155,0,.5); color:#fff; }
+@media(max-width:600px){ .nc-btn{font-size:.72rem;padding:.65rem 1.4rem;} }
+</style>
+
+<div class="nc-inhoud-wrap">
+  <div class="nc-inhoud">
+    <div class="nc-container">
+      <h2 class="nc-anim" data-delay="0">Wat zit er in het e-book?</h2>
+      <p class="nc-inhoud-sub nc-anim" data-delay="100">142 pagina's vol kennis die je direct kan toepassen</p>
+      <div class="nc-inhoud-list">
+        <div class="nc-inhoud-item nc-anim" data-delay="120"><span class="nc-check">✦</span><div class="nc-inhoud-item-text"><strong>Wat is een combi-manicure?</strong><span>Introductie, doelen en voordelen van de techniek</span></div></div>
+        <div class="nc-inhoud-item nc-anim" data-delay="170"><span class="nc-check">✦</span><div class="nc-inhoud-item-text"><strong>Tools & materialen (13 onderdelen)</strong><span>Pusher, scharen, vellentang, bitjes, afwerkingsproducten en meer</span></div></div>
+        <div class="nc-inhoud-item nc-anim" data-delay="220"><span class="nc-check">✦</span><div class="nc-inhoud-item-text"><strong>Het freestoestel kiezen</strong><span>Must-haves vs nice-to-haves, waarop letten bij aankoop</span></div></div>
+        <div class="nc-inhoud-item nc-anim" data-delay="270"><span class="nc-check">✦</span><div class="nc-inhoud-item-text"><strong>6 nagelriemtypes herkennen</strong><span>Van dun & gevoelig tot vochtig, met de juiste techniek per type</span></div></div>
+        <div class="nc-inhoud-item nc-anim" data-delay="320"><span class="nc-check">✦</span><div class="nc-inhoud-item-text"><strong>Huidtypes & correcte aanpak</strong><span>Droog, normaal en vochtig, hoe je elk type het beste behandelt</span></div></div>
+        <div class="nc-inhoud-item nc-anim" data-delay="370"><span class="nc-check">✦</span><div class="nc-inhoud-item-text"><strong>Volledig stappenplan combi-manicure</strong><span>10 stappen + roadmap, van pocket openen tot laatste polijsting</span></div></div>
+        <div class="nc-inhoud-item nc-anim" data-delay="420"><span class="nc-check">✦</span><div class="nc-inhoud-item-text"><strong>Hygiëne in het salon</strong><span>Desinfectie, sterilisatie, ultrasoon apparaat en heteluchtsterilisator</span></div></div>
+        <div class="nc-inhoud-item nc-anim" data-delay="470"><span class="nc-check">✦</span><div class="nc-inhoud-item-text"><strong>Wondzorg tijdens de behandeling</strong><span>Wat te doen bij wondjes, stap voor stap, professioneel en veilig</span></div></div>
+        <div class="nc-inhoud-item nc-anim" data-delay="520"><span class="nc-check">✦</span><div class="nc-inhoud-item-text"><strong>Meest voorkomende fouten (met foto's)</strong><span>Beschadiging nagelplaat, ring of fire, verkeerd toerental en meer</span></div></div>
+      </div>
+      <p class="nc-pages-tag nc-anim" data-delay="570">📄 142 pagina's · Direct downloadbaar als PDF</p>
+      <div style="text-align:center" class="nc-anim" data-delay="620">
+        <a href="https://naillraftplatform.kennis.shop/pay/manicureebook" class="nc-btn">Ik wil dit e-book →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     VÓÓR & NA
+============================================================ -->
+<style>
+.nc-verandering-wrap { background: linear-gradient(160deg,var(--blush),var(--licht)); }
+.nc-verandering { padding: 4.5rem 1.2rem; }
+.nc-verandering h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,5vw,2.4rem); text-align:center; margin-bottom:2rem; color:var(--tekst); }
+.nc-voor-na { display:grid; gap:1rem; }
+@media(min-width:601px){ .nc-voor-na{grid-template-columns:1fr 1fr;} }
+.nc-vn-col { background:#fff; border-radius:16px; padding:1.2rem; border:1px solid #ede0ff; }
+.nc-vn-label { font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.8rem; padding-bottom:.5rem; border-bottom:2px solid; }
+.nc-vn-label.voor { color:#c06; border-color:#ffe0f0; }
+.nc-vn-label.na { color:var(--mid); border-color:var(--accent); }
+.nc-vn-col ul { padding:0; margin:0; }
+.nc-vn-col li { font-size:.85rem; color:var(--tekst); padding:.25rem 0; list-style:none; line-height:1.5; }
+.nc-voor-col li::before { content:'✗ '; color:#d06; }
+.nc-na-col li::before { content:'✓ '; color:var(--mid); }
+</style>
+
+<div class="nc-verandering-wrap">
+  <div class="nc-verandering">
+    <div class="nc-container">
+      <h2 class="nc-anim" data-delay="0">Jouw manicure vóór & na dit e-book</h2>
+      <div class="nc-voor-na">
+        <div class="nc-vn-col nc-voor-col nc-anim" data-delay="150">
+          <div class="nc-vn-label voor">Vóór</div>
+          <ul>
+            <li>Onzeker aan de frees</li>
+            <li>Inconsistent resultaat</li>
+            <li>Twijfels over hygiëne</li>
+            <li>Weet niet welk bitje wanneer</li>
+            <li>Lifting bij klanten</li>
+            <li>Geen systeem of roadmap</li>
+          </ul>
+        </div>
+        <div class="nc-vn-col nc-na-col nc-anim" data-delay="280">
+          <div class="nc-vn-label na">Na ✦</div>
+          <ul>
+            <li>Werkt precies en gecontroleerd</li>
+            <li>Strak resultaat bij élke klant</li>
+            <li>Hygiëneprotocol onder de knie</li>
+            <li>Juiste bitje, juiste stap</li>
+            <li>Minder lifting, meer vertrouwen</li>
+            <li>Vaste roadmap voor elke manicure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PRIJSBLOK (1e)
+============================================================ -->
+<style>
+.nc-prijs-wrap { background: var(--wit); }
+.nc-prijs { padding: 4.5rem 1.2rem; text-align: center; }
+.nc-prijs h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,5vw,2.4rem); margin-bottom:.5rem; color:var(--tekst); }
+.nc-prijs-sub { color:var(--subtekst); margin-bottom:2rem; font-size:.95rem; }
+.nc-prijs-box { background:linear-gradient(145deg,var(--licht),var(--blush)); border:2px solid var(--accent); border-radius:20px; padding:2rem 1.5rem; max-width:400px; margin:0 auto 1.5rem; position:relative; overflow:hidden; text-align:left; }
+.nc-prijs-box::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--accent),var(--cta)); }
+.nc-actie-label { display:inline-block; background:var(--cta); color:#fff; font-size:.72rem; font-weight:700; padding:.3rem 1rem; border-radius:50px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1.2rem; }
+.nc-prijs-oud { font-size:.9rem; color:#9a8ab0; text-decoration:line-through; margin-bottom:.3rem; }
+.nc-prijs-groot { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; color:var(--cta); line-height:1; }
+.nc-prijs-groot sup { font-size:1.2rem; vertical-align:super; }
+.nc-prijs-incl { font-size:.78rem; color:var(--subtekst); margin-top:.5rem; margin-bottom:1.5rem; }
+.nc-prijs-includes { text-align:left; margin-bottom:1.5rem; padding:0; }
+.nc-prijs-includes li { font-size:.85rem; color:var(--tekst); padding:.3rem 0; list-style:none; display:flex; gap:.6rem; }
+.nc-prijs-includes li::before { content:'✓'; color:var(--accent); font-weight:700; flex-shrink:0; }
+.nc-prijs-btn { display:block; width:100%; text-align:center; background:var(--cta); color:#fff; font-family:'DM Sans',sans-serif; font-weight:700; font-size:1rem; padding:1rem 1.4rem; border-radius:50px; text-decoration:none; box-shadow:0 8px 28px rgba(254,155,0,.4); transition:transform .2s,box-shadow .2s; }
+.nc-prijs-btn:hover { transform:translateY(-2px); box-shadow:0 14px 40px rgba(254,155,0,.55); color:#fff; }
+.nc-prijs-note { font-size:.78rem; color:var(--subtekst); margin-top:1rem; text-align:center; }
+@media(max-width:600px){ .nc-prijs-btn{font-size:.72rem;padding:.65rem 1.4rem;} }
+</style>
+
+<div class="nc-prijs-wrap">
+  <div class="nc-prijs" id="prijs">
+    <div class="nc-container">
+      <h2 class="nc-anim" data-delay="0">Investeer in je techniek</h2>
+      <p class="nc-prijs-sub nc-anim" data-delay="100">Minder dan een manicure bij jezelf. Een investering die je elke dag terugverdient.</p>
+      <div class="nc-prijs-box nc-anim" data-delay="200">
+        <div class="nc-actie-label">⚡ Beperkte actieprijs</div>
+        <p class="nc-prijs-oud">Normale prijs: €45,00</p>
+        <div class="nc-prijs-groot"><sup>€</sup>18,99</div>
+        <p class="nc-prijs-incl">Eenmalige betaling · Geen abonnement</p>
+        <ul class="nc-prijs-includes">
+          <li>142 pagina's professionele manicure-inhoud</li>
+          <li>Volledig stappenplan combi-manicure</li>
+          <li>6 nagelriemtypes + huidtypes uitgelegd</li>
+          <li>Fotovoorbeelden van veelgemaakte fouten</li>
+          <li>Wondzorg & hygiëneprotocol</li>
+          <li>Direct downloadbaar na betaling</li>
+        </ul>
+        <a href="https://naillraftplatform.kennis.shop/pay/manicureebook" class="nc-prijs-btn">Ja, ik koop het e-book →</a>
+        <p class="nc-prijs-note">🔒 Veilige betaling · Direct toegang · Geen gedoe</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     OVER TABITHA
+============================================================ -->
+<style>
+.me-over { background: linear-gradient(135deg,var(--licht),var(--blush)); padding: 4.5rem 1.2rem; }
+.me-over-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.me-over-img { border-radius: 20px; overflow: hidden; }
+.me-over-img img { width:100%; border-radius:20px; object-fit:cover; max-height:420px; }
+.me-over h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,4vw,2.2rem); color:var(--tekst); margin-bottom:1rem; }
+.me-over p { color:var(--subtekst); font-size:.93rem; line-height:1.8; margin-bottom:1rem; }
+.me-over-stats { display:flex; gap:2rem; margin-top:1.5rem; flex-wrap:wrap; }
+.me-stat strong { display:block; font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--mid); line-height:1; }
+.me-stat span { font-size:.75rem; color:var(--subtekst); }
+@media(max-width:700px){ .me-over-inner{grid-template-columns:1fr;gap:2rem;} .me-over-img{max-height:280px;overflow:hidden;} .me-over-stats{justify-content:center;} }
+</style>
+
+<div class="me-over">
+  <div class="me-over-inner">
+    <div class="me-over-img nc-anim" data-delay="0">
+      <img src="../images/manicure-ebook/ik doe manicure actiefoto4.webp" alt="Tabitha aan het werk" loading="lazy">
+    </div>
+    <div>
+      <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:.6rem;">Over Tabitha</div>
+      <h2 class="nc-anim" data-delay="100">Hé, ik ben Tabitha.</h2>
+      <p class="nc-anim" data-delay="180">Ik werk al meer dan 18 jaar als nagelstyliste en docent. Manicure is mijn passie, de basis waarop alles rust. Ik merkte steeds dat stylisten dezelfde fouten maakten, niet uit gebrek aan inzet, maar uit gebrek aan duidelijke, eerlijke kennis.</p>
+      <p class="nc-anim" data-delay="260">Dit e-book is wat ik zelf had willen hebben toen ik begon. Uitgeschreven, geïllustreerd, en compleet. Geen halve waarheden, geen commercieel gekleurd advies.</p>
+      <div class="me-over-stats nc-anim" data-delay="340">
+        <div class="me-stat"><strong>18+</strong><span>jaar ervaring</span></div>
+        <div class="me-stat"><strong>800+</strong><span>online cursisten</span></div>
+        <div class="me-stat"><strong>142</strong><span>pagina's vakkennis</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     UPSELL — Manicure Pro
+============================================================ -->
+<style>
+.nc-pro-wrap { background: #6a3fa6; }
+.nc-pro-upsell { padding: 2.5rem 1.2rem; text-align: center; }
+.nc-pro-upsell-inner { background: rgba(255,255,255,.1); border: 1px solid rgba(181,144,241,.4); border-radius: 16px; padding: 1.8rem 1.4rem; max-width: 540px; margin: 0 auto; }
+.nc-pro-badge { display:inline-block; background:rgba(181,144,241,.25); color:#e8d8ff; font-size:.7rem; font-weight:700; padding:.25rem .8rem; border-radius:20px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:.8rem; }
+.nc-pro-upsell h3 { font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:#fff; margin-bottom:.6rem; line-height:1.3; }
+.nc-pro-upsell p { font-size:.82rem; color:rgba(255,255,255,.7); margin-bottom:1.2rem; line-height:1.6; }
+.nc-btn-pro { display:inline-block; border: 1.5px solid rgba(199,184,223,.7); color:#e8d8ff; font-family:'DM Sans',sans-serif; font-weight:600; font-size:.82rem; padding:.55rem 1.2rem; border-radius:50px; text-decoration:none; transition:all .2s; }
+.nc-btn-pro:hover { background:rgba(199,184,223,.2); color:#fff; }
+</style>
+
+<div class="nc-pro-wrap">
+  <div class="nc-pro-upsell">
+    <div class="nc-pro-upsell-inner nc-anim" data-delay="0">
+      <div class="nc-pro-badge">💡 Wist je dit?</div>
+      <h3>Liever leren met video én boek samen?</h3>
+      <p>Als je de <strong style="color:#e8d8ff">Manicure Pro</strong> videocursus aankoopt, krijg je dit e-book volledig gratis erbij. De combinatie van videotraining én dit uitgeschreven handboek geeft je het meest complete leertraject.</p>
+      <a href="../online-opleidingen.html" class="nc-btn-pro">Bekijk Manicure Pro →</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     MOCKUP FOTO
+============================================================ -->
+<div style="background:var(--licht);padding:3rem 1.2rem;display:flex;justify-content:center;">
+  <img src="../images/manicure-ebook/Hardcover Books Mockup Front And Back View Manicure e-boek.webp" alt="Manicure e-book hardcover mockup" style="max-width:600px;width:100%;border-radius:20px;box-shadow:0 20px 60px rgba(136,99,195,.18);" loading="lazy">
+</div>
+
+
+<!-- ============================================================
+     PRIJSBLOK (2e)
+============================================================ -->
+<div class="nc-prijs-wrap" style="background:var(--blush);">
+  <div class="nc-prijs">
+    <div class="nc-container">
+      <h2 class="nc-anim" data-delay="0">Investeer in je techniek</h2>
+      <p class="nc-prijs-sub nc-anim" data-delay="100">Minder dan een manicure bij jezelf. Een investering die je elke dag terugverdient.</p>
+      <div class="nc-prijs-box nc-anim" data-delay="200">
+        <div class="nc-actie-label">⚡ Beperkte actieprijs</div>
+        <p class="nc-prijs-oud">Normale prijs: €45,00</p>
+        <div class="nc-prijs-groot"><sup>€</sup>18,99</div>
+        <p class="nc-prijs-incl">Eenmalige betaling · Geen abonnement</p>
+        <ul class="nc-prijs-includes">
+          <li>142 pagina's professionele manicure-inhoud</li>
+          <li>Volledig stappenplan combi-manicure</li>
+          <li>6 nagelriemtypes + huidtypes uitgelegd</li>
+          <li>Fotovoorbeelden van veelgemaakte fouten</li>
+          <li>Wondzorg & hygiëneprotocol</li>
+          <li>Direct downloadbaar na betaling</li>
+        </ul>
+        <a href="https://naillraftplatform.kennis.shop/pay/manicureebook" class="nc-prijs-btn">Ja, ik koop het e-book →</a>
+        <p class="nc-prijs-note">🔒 Veilige betaling · Direct toegang · Geen gedoe</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     INSTAGRAM
+============================================================ -->
+<style>
+.ig-section { background: var(--licht); padding: 5rem 2rem; overflow: hidden; }
+.ig-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.ig-lbl { display:inline-flex; align-items:center; gap:.5rem; font-size:.73rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
+.ig-lbl::before { content:''; width:20px; height:1.5px; background:var(--accent); display:inline-block; }
+.ig-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:700; line-height:1.1; color:var(--tekst); margin-bottom:1rem; }
+.ig-text h2 em { font-style:italic; color:#9c28b1; }
+.ig-text p { font-size:.97rem; color:var(--subtekst); line-height:1.8; margin-bottom:2rem; max-width:420px; }
+.ig-btn { display:inline-flex; align-items:center; gap:.7rem; background:linear-gradient(135deg,#9c28b1 0%,#ff1fe3 100%); color:#fff; font-family:'DM Sans',sans-serif; font-weight:700; font-size:.82rem; padding:.75rem 1.6rem; border-radius:60px; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 4px 20px rgba(156,40,177,.3); }
+.ig-btn:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(156,40,177,.4); color:#fff; }
+.ig-btn-icon { width:20px; height:20px; flex-shrink:0; }
+.ig-tags { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:1.5rem; }
+.ig-tag { font-size:.75rem; color:var(--accent); font-weight:500; }
+.ig-visual { display:flex; justify-content:center; align-items:center; position:relative; }
+.ig-visual::before { content:''; position:absolute; width:340px; height:340px; border-radius:50%; background:linear-gradient(135deg,rgba(181,144,241,.18) 0%,rgba(255,31,227,.12) 100%); z-index:0; }
+.ig-phone { position:relative; z-index:1; max-width:260px; width:100%; filter:drop-shadow(0 24px 48px rgba(156,40,177,.22)); animation:igFloat 4s ease-in-out infinite; }
+.ig-phone img { width:100%; }
+@media(max-width:900px){ .ig-inner{grid-template-columns:1fr;gap:3rem;text-align:center;} .ig-lbl{justify-content:center;} .ig-text p{margin-left:auto;margin-right:auto;} .ig-tags{justify-content:center;} .ig-btn{margin:0 auto;} .ig-visual::before{width:260px;height:260px;} .ig-phone{max-width:200px;} }
+@media(max-width:600px){ .ig-section{padding:3.5rem 1.2rem;} }
+</style>
+
+<div class="ig-section">
+  <div class="ig-inner">
+    <div class="ig-text">
+      <div class="ig-lbl">Instagram</div>
+      <h2>Volg je mij al<br><em>On The Gram?</em></h2>
+      <p>Zin om geïnspireerd te worden? Kom er gezellig bij, ik post regelmatig content die je inspireert en geeft een inkijk in mijn achter-de-schermen leven en hoe ik mijn onderneming run.</p>
+      <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="ig-btn">
+        <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Ga naar Instagram
+      </a>
+      <div class="ig-tags">
+        <span class="ig-tag">#nailcraft</span>
+        <span class="ig-tag">#manicure</span>
+        <span class="ig-tag">#nagels</span>
+        <span class="ig-tag">#behindthescenes</span>
+      </div>
+    </div>
+    <div class="ig-visual">
+      <div class="ig-phone">
+        <img src="../images/upperforms/instagram mockup telefoon.webp" alt="NailCraft Instagram op telefoon" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="me-footer">
+  <p>© Tabitha – NailCraft Platform &nbsp;·&nbsp; <a href="../online-opleidingen.html">Alle opleidingen</a> &nbsp;·&nbsp; <a href="../index.html">Home</a></p>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="me-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Terug naar boven">↑</button>
+
+<script>
+window.addEventListener('load', function(){
+  document.querySelectorAll('.vfacade').forEach(function(el){
+    var id = el.dataset.vimeo;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://player.vimeo.com/video/'+id+'?autoplay=1&muted=1&loop=1&background=1';
+    iframe.allow = 'autoplay; fullscreen';
+    el.appendChild(iframe);
+    setTimeout(function(){ el.classList.add('loaded'); }, 1500);
+  });
+});
+window.addEventListener('scroll', function(){
+  var btn = document.getElementById('me-top');
+  if(window.scrollY > 400) btn.classList.add('show'); else btn.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
