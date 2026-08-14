@@ -608,12 +608,19 @@
   <div style="background:#f8f2ff;">
     <div class="nc-grid-wrap">
 
-      <!-- Manicure Pro -->
+      <style>
+  /* Vimeo facade */
+  .vfacade { position: absolute; inset: 0; overflow: hidden; background: #f0e8fa; }
+  .vfacade-poster { width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity .8s; }
+  .nc-grid-wrap .card-media,
+  .nc-grid-wrap-eb .card-media { position: relative; }
+  </style>
+  <!-- Manicure Pro -->
       <div class="card">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
-            <source src="https://nailcraft.be/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-16-mp4/" type="video/mp4">
-          </video>
+          <div class="vfacade" data-vid="1217014910">
+          <img class="vfacade-poster" src="images/Manicure pro wit zonder bol.webp" alt="Manicure Pro cursus" loading="lazy">
+        </div>
           <span class="card-type">Video · +4 uur</span>
         </div>
         <div class="card-body">
@@ -633,9 +640,9 @@
       <!-- Easy Nails -->
       <div class="card">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
-            <source src="https://nailcraft.be/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-17-mp4/" type="video/mp4">
-          </video>
+          <div class="vfacade" data-vid="1217014867">
+          <img class="vfacade-poster" src="images/Easy nails techniek transparant samenvatting mockup.webp" alt="Easy Nails cursus" loading="lazy">
+        </div>
           <span class="card-type">Videotraining</span>
         </div>
         <div class="card-body">
@@ -655,9 +662,9 @@
       <!-- Upperforms -->
       <div class="card">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
-            <source src="https://videos.files.wordpress.com/0hLoGUHj/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-12.mp4" type="video/mp4">
-          </video>
+          <div class="vfacade" data-vid="1217378586">
+          <img class="vfacade-poster" src="images/upperforms/Upperform Master wit (mockup-transparante achtergrond).webp" alt="Upperforms cursus" loading="lazy">
+        </div>
           <span class="card-type">Video · e-book · pakket</span>
         </div>
         <div class="card-body">
@@ -677,9 +684,9 @@
       <!-- Babyboom -->
       <div class="card">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
-            <source src="https://videos.files.wordpress.com/HAEO8gbX/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-11.mp4" type="video/mp4">
-          </video>
+          <div class="vfacade" data-vid="1217675541">
+          <img class="vfacade-poster" src="images/babyboom/Babyboom mockup transparant achtergrond.webp" alt="Babyboom cursus" loading="lazy">
+        </div>
           <span class="card-type">Video · +gratis e-book</span>
         </div>
         <div class="card-body">
@@ -699,9 +706,9 @@
       <!-- Refill Removal Pro -->
       <div class="card">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
-            <source src="https://nailcraft.be/refill-removal-pro-mp4/" type="video/mp4">
-          </video>
+          <div class="vfacade" data-vid="1218229291">
+          <img class="vfacade-poster" src="images/refill removal pro mockup transparant achtergrond.webp" alt="Refill Removal Pro cursus" loading="lazy">
+        </div>
           <span class="card-type">Video · +gratis bonusvideo</span>
         </div>
         <div class="card-body">
@@ -721,7 +728,9 @@
       <!-- Perfecte Kleurapplicatie -->
       <div class="card">
         <div class="card-media">
-          <img src="images/kleurapplicatie-1.png" alt="Perfecte Kleurapplicatie" loading="lazy">
+          <div class="vfacade" data-vid="1218235020">
+          <img class="vfacade-poster" src="images/kleurapplicatie mockup transparant.webp" alt="Perfecte Kleurapplicatie cursus" loading="lazy">
+        </div>
           <span class="card-type nieuw">✨ Nieuw</span>
         </div>
         <div class="card-body">
@@ -741,9 +750,9 @@
       <!-- Sjabloon Applicatie -->
       <div class="card">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
-            <source src="https://videos.files.wordpress.com/AS5oPIj3/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-15-1.mp4" type="video/mp4">
-          </video>
+          <div class="vfacade" data-vid="1218228475">
+          <img class="vfacade-poster" src="images/sjablonen mockup transparant.webp" alt="Sjabloon Applicatie cursus" loading="lazy">
+        </div>
           <span class="card-type nieuw">✨ Nieuw</span>
         </div>
         <div class="card-body">
@@ -901,9 +910,9 @@
       <!-- Nail Content Creator -->
       <div class="card">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
-            <source src="https://nailcraft.be/nail-content-creator-2-mp4/" type="video/mp4">
-          </video>
+          <div class="vfacade" data-vid="1218230035">
+          <img class="vfacade-poster" src="images/Nail Content Creator wit mockup transparant achtergrond.webp" alt="Nail Content Creator cursus" loading="lazy">
+        </div>
           <span class="card-type ebook">E-book · +gratis videoles</span>
         </div>
         <div class="card-body">
@@ -923,9 +932,9 @@
       <!-- The Gel Code -->
       <div class="card">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
-            <source src="https://videos.files.wordpress.com/ubYUcscx/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-6-1.mp4" type="video/mp4">
-          </video>
+          <div class="vfacade" data-vid="1218233923">
+          <img class="vfacade-poster" src="images/The Gel Code mockup boek kleiner transparant (1).webp" alt="The Gel Code cursus" loading="lazy">
+        </div>
           <span class="card-type ebook">E-book</span>
         </div>
         <div class="card-body">
@@ -945,9 +954,9 @@
       <!-- The Basics -->
       <div class="card">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
-            <source src="https://videos.files.wordpress.com/BYeTMJRN/mockup-alle-cursussen-tgc-ncc-mpro-rrpro-9.mp4" type="video/mp4">
-          </video>
+          <div class="vfacade" data-vid="1218234428">
+          <img class="vfacade-poster" src="images/The Basic  wit mockup transparant achtergrond.webp" alt="The Basics cursus" loading="lazy">
+        </div>
           <span class="card-type ebook">E-book · +gratis videolessen</span>
         </div>
         <div class="card-body">
@@ -967,7 +976,9 @@
       <!-- Manicure E-book -->
       <div class="card">
         <div class="card-media">
-          <img src="images/Manicure-e-book.webp" alt="Manicure E-book" loading="lazy">
+          <div class="vfacade" data-vid="1218234174">
+          <img class="vfacade-poster" src="images/Manicure e-book mockup transparant (1).webp" alt="Manicure E-book" loading="lazy">
+        </div>
           <span class="card-type ebook">E-book</span>
         </div>
         <div class="card-body">
@@ -1514,5 +1525,21 @@
     });
   </script>
 
+  <script>
+  window.addEventListener('load', function() {
+    document.querySelectorAll('.vfacade[data-vid]').forEach(function(wrap) {
+      var id = wrap.dataset.vid;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&muted=1&loop=1&background=1';
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
+      wrap.appendChild(iframe);
+      setTimeout(function() {
+        var poster = wrap.querySelector('.vfacade-poster');
+        if (poster) poster.style.opacity = '0';
+      }, 1500);
+    });
+  });
+  </script>
 </body>
 </html>
