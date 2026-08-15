@@ -1362,8 +1362,8 @@
   <div style="background:#f8f2ff;padding:60px 24px 80px;">
     <div style="text-align:center;margin-bottom:2rem;">
       <span style="display:inline-block;background:#b590f1;color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:12px;">🤔 Weet je niet welke cursus?</span>
-      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.5vw,2.4rem);color:#9c28b1;font-weight:900;margin-bottom:8px;">Doe de cursuskiezer</h2>
-      <p style="color:#5a4570;font-size:0.97rem;font-weight:300;max-width:480px;margin:0 auto;">4 korte vragen, en ik wijs je precies de juiste cursus voor jouw niveau en doel.</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,3.5vw,2.4rem);color:#9c28b1;font-weight:700;margin-bottom:8px;">Doe de cursuskiezer</h2>
+      <p style="color:#5a4570;font-size:0.97rem;font-weight:300;max-width:480px;margin:0 auto;">Een paar gerichte vragen, en je weet meteen welke cursus perfect bij jou past.</p>
     </div>
 
     <style>
@@ -1415,6 +1415,9 @@
     #nc-quiz-widget .nc-restart-row { text-align:center;margin-top:1.25rem; }
     #nc-quiz-widget .nc-btn-restart { background:transparent;border:none;font-size:13px;color:#6b6b6b;cursor:pointer;text-decoration:underline;font-family:inherit; }
     #nc-quiz-widget .nc-btn-restart:hover { color:#1a1a1a; }
+    #nc-quiz-widget .nc-extra-card { background:#f8f2ff;border:1px solid #d4b8f8;border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:10px; }
+    #nc-quiz-widget .nc-extra-card .nc-btn-cta { margin-bottom:0;flex:1; }
+    #nc-quiz-widget .nc-extra-card .nc-btn-sec { flex:1; }
     @media(max-width:480px) {
       #nc-quiz-widget .nc-opt { font-size:.82rem;padding:.65rem 1rem; }
       #nc-quiz-widget .nc-btn-next,
@@ -1438,112 +1441,312 @@
 
   <script>
   (function() {
-    var QUESTIONS = [
-      { id:"level", q:"Waar sta je nu als nagelstyliste?", opts:[
-        {label:"Ik begin helemaal van nul, ik wil weten wat ik nodig heb",value:"beginner"},
-        {label:"Ik werk al met gelproducten maar wil mijn kennis verdiepen",value:"intermediate"},
-        {label:"Ik zet al regelmatig nagels maar wil verfijnder en sneller werken",value:"experienced"},
-        {label:"Ik ben een ervaren stylist op zoek naar een specifieke techniek",value:"pro"}
-      ]},
-      { id:"problem", q:"Wat is jouw grootste pijnpunt op dit moment?", opts:[
-        {label:"Ik weet niet welk materiaal ik nodig heb, ik koop van alles maar gebruik de helft niet",value:"materials"},
-        {label:"Mijn nagels liften, breken of laten los na een paar dagen",value:"lifting"},
-        {label:"Mijn manicure is niet consistent, soms wondjes, soms roodheid",value:"manicure"},
-        {label:"Ik wil een specifieke techniek leren (babyboom, upperforms, sjablonen, affrezen…)",value:"technique"},
-        {label:"Mijn foto's doen mijn werk geen recht, ik trek geen nieuwe klanten via social media",value:"content"}
-      ]},
-      { id:"format", q:"Hoe leer jij het liefst?", opts:[
-        {label:"Door te kijken, videolessen die ik op mijn eigen tempo kan volgen",value:"video"},
-        {label:"Door te lezen, een goed e-book dat ik kan raadplegen wanneer ik wil",value:"ebook"},
-        {label:"Allebei, ik wil zowel video als theorie in één pakket",value:"both"}
-      ]},
-      { id:"goal", q:"Wat is jouw einddoel?", opts:[
-        {label:"Professioneel starten en meteen de juiste basis leggen",value:"start"},
-        {label:"Betere resultaten voor mijn huidige klanten, minder herstelwerk",value:"quality"},
-        {label:"Een specifieke look of techniek toevoegen aan mijn aanbod",value:"expand"},
-        {label:"Meer klanten aantrekken via sterke online aanwezigheid",value:"attract"}
-      ]}
-    ];
 
     var COURSES = {
-      basics:{name:"The Basics",price:"€45",sales:"salespaginas/the-basics.html",pay:"https://naillraftplatform.kennis.shop/pay/thebasics",includes:["E-book van 168 pagina's over anatomie en materialen","23 bonusvideo's met uitleg per materiaal","PDF met aankooplinks en productspecificaties","Levenslange toegang + persoonlijke begeleiding"]},
-      thegelcode:{name:"The Gel Code",price:"€45",sales:"salespaginas/the-gel-code.html",pay:"https://naillraftplatform.kennis.shop/pay/thegelcode",includes:["E-book van 75 pagina's","Rubber based, hardgel én acrygel volledig uitgelegd","Vergelijkingstabel + Q&A probleemoplossing","Persoonlijke ondersteuning na aankoop"]},
-      manicurepro:{name:"Manicure Pro",price:"€145",sales:"salespaginas/manicure-pro.html",pay:"https://naillraftplatform.kennis.shop/pay/manicurepro",includes:["Volledige videotraining combi-manicure","Demonstraties op gevoelige, droge & normale huid","E-book van 142 pagina's","Persoonlijke begeleiding inbegrepen"]},
-      easynails:{name:"Easy Nails",price:"€150",sales:"salespaginas/easy-nails.html",pay:"https://naillraftplatform.kennis.shop/pay/easynails",includes:["Nagelarchitectuur en basisopbouw (video)","BIAB-nagels plaatsen stap voor stap","Hardgel opbouwtechniek","Vormen vijlen + handposities"]},
-      upperformmaster:{name:"Upperform Master",price:"€235",sales:"salespaginas/upperforms.html",pay:"https://naillraftplatform.kennis.shop/pay/upperformmaster",includes:["24+ gedetailleerde videolessen","E-book van 97 pagina's","Babyboom, colorboom, inlay, French techniek","Eigen kleuren mengen (video)"]},
-      upperformpro:{name:"Upperform Pro",price:"€185",sales:"salespaginas/upperforms.html",pay:"https://naillraftplatform.kennis.shop/pay/upperformmaster",includes:["24+ gedetailleerde videolessen","Babyboom, colorboom, inlay, French","Eigen kleuren mengen (video)","Materialenlijst inbegrepen"]},
-      babyboom:{name:"Babyboom cursus",price:"€90",sales:"salespaginas/babyboom.html",pay:"https://naillraftplatform.kennis.shop/pay/babyboom",includes:["Babyboom via Upperform + Easy Nails techniek","Bonus: volledige colorboom videoles","E-book van 70 pagina's","Levenslange toegang + gratis updates"]},
-      refillremoval:{name:"Refill Removal Pro",price:"€65",sales:"salespaginas/kunstnagels-affrezen.html",pay:"https://naillraftplatform.kennis.shop/pay/refillremovalpro",includes:["Veilig affrezen op < 1 min per nagel","Freeskopjes, toerentallen & productafname","Haviksnagels & probleemzones","Bonus: bijwerken met niet-dominante hand"]},
-      kleurapplicatie:{name:"Perfecte Kleurapplicatie",price:"€89",sales:"salespaginas/kleurapplicatie.html",pay:"https://naillraftplatform.kennis.shop/pay/kleurapplicatie",includes:["Theorie over kleur & pigmentdichtheid","Penseeltechniek per kleurtype","Pastels, neons, glitter, donkere tinten","Finishing & topcoat techniek"]},
-      sjablonen:{name:"Sjabloon Applicatie",price:"€65",sales:"salespaginas/sjablonen.html",pay:"https://naillraftplatform.kennis.shop/pay/sjabloonapplicatie",includes:["E-book van 71 pagina's","Videolessen per vinger (almond, ballerina, square)","Acrygel én hardgel verlenging","Veelgemaakte fouten + correcties"]},
-      nailcontent:{name:"Nail Content Creator",price:"€60",sales:"salespaginas/nail-content-creator.html",pay:"https://naillraftplatform.kennis.shop/pay/nailcontentcreator",includes:["E-book van 94 pagina's","Video tutorials: fotograferen & editen","iPhone én Android instellingen","Canva, Snapseed & InShot als een pro"]}
+      traject:     {name:"The Nailstylist Traject",    price:"€1.250 (of 6 × €249,50)", sales:"salespaginas/the-nailstylist.html",   pay:null,  includes:["7 maanden intensief: manicure, gel, upperforms, sjablonen, nail art en meer","Video's, e-books, live Q&A's en persoonlijke feedback","Officieel certificaat nagelstylist bij voltooiing","Levenslang toegang, voor altijd"]},
+      manicurepro: {name:"Manicure Pro",               price:"€145",                     sales:"salespaginas/manicure-pro.html",       pay:"https://naillraftplatform.kennis.shop/pay/manicurepro",   includes:["Volledige videotraining combi-manicure","Demonstraties op gevoelige, droge & normale huid","E-book van 142 pagina's","Persoonlijke begeleiding inbegrepen"]},
+      easynails:   {name:"Easy Nails",                  price:"€150",                     sales:"salespaginas/easy-nails.html",         pay:"https://naillraftplatform.kennis.shop/pay/easynails",     includes:["Nagelarchitectuur en basisopbouw met rubber based gel en hardgel","Vrije hand opbouwen met penseel, geen navijlen meer","Architectuurtheorie: hoek, zone 2, stress point","Vormen vijlen + handposities voor strakke resultaten"]},
+      upperformpro:{name:"Upperform Pro",               price:"€185",                     sales:"salespaginas/upperforms.html",         pay:"https://naillraftplatform.kennis.shop/pay/upperformpro",  includes:["24+ videolessen: babyboom, colorboom, inlay, French op upperform","Eigen kleuren mengen op video","Leren van nul, alles stap voor stap uitgelegd","Materialenlijst inbegrepen"]},
+      upperformmaster:{name:"Upperform Master",         price:"€235",                     sales:"salespaginas/upperforms.html",         pay:"https://naillraftplatform.kennis.shop/pay/upperformmaster",includes:["Alles van Upperform Pro + uitgebreid e-book van 97 pagina's","Handleiding die je kan raadplegen tijdens het oefenen","Babyboom, colorboom, inlay, French volledig uitgelegd","Persoonlijke begeleiding na aankoop"]},
+      babyboom:    {name:"Babyboom cursus",             price:"€90",                      sales:"salespaginas/babyboom.html",           pay:"https://naillraftplatform.kennis.shop/pay/babyboom",      includes:["Babyboom op Upperform-techniek én Easy Nails-methode","Bonus: volledige colorboom videoles","E-book van 70 pagina's met alle details","Levenslange toegang + gratis updates"]},
+      kleur:       {name:"Perfecte Kleurapplicatie",   price:"€89",                      sales:"salespaginas/kleurapplicatie.html",    pay:"https://naillraftplatform.kennis.shop/pay/kleurapplicatie",includes:["Theorie over kleur & pigmentdichtheid","Penseeltechniek per kleurtype (pastels, neons, glitters, donker)","Kleur op rubber based gel en hardgel","Finishing & topcoat techniek"]},
+      sjablonen:   {name:"Sjabloon Applicatie",        price:"€65",                      sales:"salespaginas/sjablonen.html",          pay:"https://naillraftplatform.kennis.shop/pay/sjabloonapplicatie",includes:["E-book van 71 pagina's + videolessen per vinger","Almond, ballerina, square: alles per shape uitgelegd","Acrygel én hardgel verlenging met sjabloon","Veelgemaakte fouten en hoe je ze corrigeert"]},
+      refill:      {name:"Refill Removal Pro",         price:"€65",                      sales:"salespaginas/kunstnagels-affrezen.html",pay:"https://naillraftplatform.kennis.shop/pay/refillremovalpro",includes:["Veilig affrezen op minder dan 1 minuut per nagel","Juiste freeskopjes en toerentallen per situatie","Haviksnagels, probleemzones en moeilijke gevallen","Bonus: bijwerken met de niet-dominante hand"]},
+      thegelcode:  {name:"The Gel Code",               price:"€45",                      sales:"salespaginas/the-gel-code.html",       pay:"https://naillraftplatform.kennis.shop/pay/thegelcode",    includes:["E-book van 75 pagina's over rubber based, hardgel en acrygel","Wanneer gebruik je wat? Mogelijkheden en beperkingen","Vergelijkingstabel + Q&A probleemoplossing","Persoonlijke ondersteuning na aankoop"]},
+      basics:      {name:"The Basics",                 price:"€45",                      sales:"salespaginas/the-basics.html",         pay:"https://naillraftplatform.kennis.shop/pay/thebasics",     includes:["E-book van 168 pagina's over materialen en anatomie","23 bonusvideo's met uitleg per materiaal","PDF met aankooplinks en productspecificaties","Waarom bepaalde specs zo belangrijk zijn"]},
+      nailcontent: {name:"Nail Content Creator",       price:"€60",                      sales:"salespaginas/nail-content-creator.html",pay:"https://naillraftplatform.kennis.shop/pay/nailcontentcreator",includes:["E-book van 94 pagina's: fotograferen en editen","iPhone én Android instellingen stap voor stap","Canva, Snapseed & InShot als een pro","Hoe je consistent content maakt die klanten aantrekt"]}
     };
 
-    var EBOOK_ADDON = {title:"Manicure E-book",price:"€18,99",desc:"Wil je ook de manicure beter begrijpen maar nog niet klaar voor Manicure Pro? Het e-book geeft je alle theorie als instap.",url:"salespaginas/manicure-ebook.html"};
+    // Branching quiz tree — each node is a question or a result
+    var NODES = {
 
-    function recommend(a) {
-      var l=a.level, p=a.problem, f=a.format, g=a.goal;
-      if(p==="content"||g==="attract") return {key:"nailcontent",why:"Je werk is mooi, maar als niemand het ziet, stroomt de agenda niet vol. De Nail Content Creator leert je met je smartphone foto's en video's maken die er professioneel uitzien.",addon:null};
-      if(l==="beginner"&&(p==="materials"||g==="start")) return {key:"basics",why:"Je staat aan het begin, en dat is precies het goede moment om het meteen correct te leren. The Basics geeft je alles over nagel- en huidanatomie én welke materialen je écht nodig hebt.",addon:null};
-      if(p==="manicure") return {key:"manicurepro",why:"Roodheid, wondjes, of gewoon geen consistent resultaat bij elke klant? Dat is een techniekprobleem, niet een materiaalprobleem. Manicure Pro geeft je een volledig systeem voor de combi-manicure.",addon:f==="ebook"?EBOOK_ADDON:null};
-      if(p==="lifting"&&(l==="beginner"||l==="intermediate")) return {key:"thegelcode",why:"Als je nagels liften of loslaten, is de kans groot dat je niet precies weet hoe je gelproduct werkt. The Gel Code verandert dat.",addon:null};
-      if(p==="lifting"&&(l==="experienced"||l==="pro")) {
-        if(f==="ebook") return {key:"thegelcode",why:"Je hebt al ervaring, maar lifting blijft opduiken. The Gel Code gaat dieper dan tutorials: je begrijpt de chemie, de architectuur en de probleemoplossing.",addon:null};
-        return {key:"easynails",why:"Easy Nails leert je hoe je gelnagels opbouwt die structureel 4 weken blijven zitten, via BIAB én hardgel. Focus op de juiste nagelarchitectuur.",addon:null};
+      q1: { type:"q", progress:10,
+        q: "Wat is jouw situatie op dit moment?",
+        opts: [
+          {label:"Ik begin helemaal van nul, ik heb nog nooit nagels gedaan", next:"q2_beginner"},
+          {label:"Ik kan al manicure, maar wil leren werken met gelproducten en nagels plaatsen", next:"q2_gel"},
+          {label:"Ik kan al nagels plaatsen en wil een specifieke techniek bijleren", next:"q2_techniek"},
+          {label:"Ik wil beter begrijpen welke producten en materialen ik nodig heb", next:"r_kennis"},
+          {label:"Ik wil mijn werk beter fotograferen en meer klanten aantrekken via social media", next:"r_content"}
+        ]
+      },
+
+      q2_beginner: { type:"q", progress:40,
+        q: "Wil je alles in één compleet traject leren, of liever stap voor stap met losse cursussen?",
+        opts: [
+          {label:"Alles in één traject: van manicure tot professionele technieken, van A tot Z", next:"r_traject"},
+          {label:"Stap voor stap, liever beginnen met één cursus en dan verder bouwen", next:"q3_beginner"}
+        ]
+      },
+
+      q3_beginner: { type:"q", progress:70,
+        q: "Waarmee wil je als beginner starten?",
+        opts: [
+          {label:"Ik wil eerst de manicure goed leren (verzorging, cuticula, nagelriem, workflow)", next:"r_manicurepro_alleen"},
+          {label:"Ik wil meteen leren nagels plaatsen met gel, van manicure tot opbouw", next:"r_manicure_plus_easy"},
+          {label:"Ik wil eerst begrijpen welke producten en materialen ik nodig heb voor ik iets koop", next:"r_kennis"}
+        ]
+      },
+
+      q2_gel: { type:"q", progress:40,
+        q: "Wat wil je precies leren?",
+        opts: [
+          {label:"Nagels opbouwen met rubber based gel en hardgel, vrije hand met penseel, zonder lifting", next:"r_easynails"},
+          {label:"Upperforms: verlengingen maken, babyboom, colorboom, French op upperform", next:"q_upperform"},
+          {label:"Kleur aanbrengen op gel nagels (pastels, neons, glitters, donkere tinten)", next:"r_kleur_check"},
+          {label:"Werken met sjablonen voor verlengingen", next:"r_sjablonen"}
+        ]
+      },
+
+      q2_techniek: { type:"q", progress:40,
+        q: "Welke techniek wil je toevoegen aan je aanbod?",
+        opts: [
+          {label:"Babyboom (zachte kleurovergang op gel nagels)", next:"r_babyboom"},
+          {label:"Upperforms: verlengingen, babyboom, colorboom, French op upperform", next:"q_upperform"},
+          {label:"Kleur aanbrengen op gel nagels", next:"r_kleur"},
+          {label:"Sjablonen voor verlengingen", next:"r_sjablonen"},
+          {label:"Kunstnagels bijwerken (refill) en veilig affrezen", next:"r_refill"}
+        ]
+      },
+
+      q_upperform: { type:"q", progress:75,
+        q: "Hoe leer jij het liefst?",
+        opts: [
+          {label:"Puur via video — ik leer het best door te kijken en meteen te oefenen", next:"r_upperformpro"},
+          {label:"Via video én een uitgebreide handleiding die ik kan raadplegen", next:"r_upperformmaster"}
+        ]
+      },
+
+      r_traject: { type:"r",
+        label:"Jouw perfecte match",
+        key:"traject",
+        why:"The Nailstylist Traject is het enige programma waarbij je van absolute nul start en na 7 maanden een volledige, gecertificeerde nagelstylist bent. Manicure, gel, architectuur, upperforms, sjablonen, nail art, marketing — alles zit erin. Omdat je helemaal opnieuw begint en alles in één keer goed wil leren, is dit de meest efficiënte keuze. Let op: het traject opent slechts 1 keer per jaar.",
+        note:"⏳ The Nailstylist opent 1× per jaar. Zet je nu op de wachtlijst zodat je als eerste bericht krijgt.",
+        extra: null
+      },
+
+      r_manicurepro_alleen: { type:"r",
+        label:"Jouw perfecte match",
+        key:"manicurepro",
+        why:"De manicure is de absolute basis voor alles wat je daarna met nagels doet. Als je die niet perfect hebt, zal je altijd problemen blijven hebben met gel en kunstnagels. Manicure Pro leert je de volledige combi-manicure van A tot Z, op elke huidtype.",
+        note:null,
+        extra: {
+          title:"Daarna logische vervolgstap",
+          cards:[
+            {key:"easynails",    desc:"Als je manicure zit, is Easy Nails de volgende stap: leer nagels plaatsen met gel en de architectuurtheorie die voor strakke, duurzame resultaten zorgt."},
+            {key:"thegelcode",   desc:"The Gel Code leert je het verschil tussen rubber based, hardgel en acrygel begrijpen zodat je nooit meer de verkeerde producten koopt."},
+            {key:"basics",       desc:"The Basics legt je alles uit over materialen, specificaties en anatomie. Handig om van bij de start de juiste aankopen te doen."}
+          ]
+        }
+      },
+
+      r_manicure_plus_easy: { type:"r",
+        label:"Jouw perfecte combinatie",
+        key:"manicurepro",
+        why:"Als je van nul wil leren nagels plaatsen, heb je twee cursussen nodig: eerst Manicure Pro voor de juiste basis (cuticula, nagelriem, workflow) en dan Easy Nails voor de gel-opbouwtechniek en architectuur. Zonder goede manicure zal je altijd problemen houden met gel — ook de beste nagelstylistes beginnen hier.",
+        note:null,
+        extra: {
+          title:"Voeg daarna ook toe voor een complete basis",
+          cards:[
+            {key:"easynails",  desc:"Easy Nails is jouw tweede stap: leer rubber based gel en hardgel opbouwen, vrije hand met penseel, zonder lifting en zonder navijlen op het oppervlak."},
+            {key:"thegelcode", desc:"The Gel Code begrijpen je producten: wanneer gebruik je wat, en wat doe je als het fout gaat? Perfect als aanvulling bij je gel-opleiding."},
+            {key:"basics",     desc:"The Basics over materialen en anatomie: welke boor, welke lamp, welke primer — en waarom die specificaties echt belangrijk zijn."}
+          ]
+        }
+      },
+
+      r_kennis: { type:"r",
+        label:"Jouw perfecte match",
+        key:"thegelcode",
+        why:"Voordat je geld uitgeeft aan producten is het slim om eerst te begrijpen wat alles doet en wat je écht nodig hebt. The Gel Code legt het verschil uit tussen rubber based gel, hardgel en acrygel: de mogelijkheden, de beperkingen, en waarom het soms fout loopt.",
+        note:null,
+        extra: {
+          title:"Ideaal te combineren met",
+          cards:[
+            {key:"basics", desc:"The Basics gaat dieper in op alle materialen: boorkoppen, lampen, primers, e-file-specs — met aankooplinks zodat je weet wat je zoekt en waar."}
+          ]
+        }
+      },
+
+      r_easynails: { type:"r",
+        label:"Jouw perfecte match",
+        key:"easynails",
+        why:"Easy Nails is precies wat je zoekt: je leert rubber based gel en hardgel opbouwen met een penseel, vrije hand, zonder lifting. De focus ligt op nagelarchitectuur — de juiste hoek, zone 2, het stress point — zodat je nagels neerzet die 4 weken blijven zitten zonder te navijlen op het oppervlak.",
+        note:null,
+        extra: {
+          title:"Handige aanvulling",
+          cards:[
+            {key:"thegelcode", desc:"The Gel Code helpt je de producten die je in Easy Nails gebruikt nog beter begrijpen: wanneer kies je rubber based, wanneer hardgel, en wat doe je als er lifting optreedt?"}
+          ]
+        }
+      },
+
+      r_kleur_check: { type:"q", progress:70,
+        q: "Kan je al gel nagels opbouwen of plaatsen (met rubber based gel of hardgel)?",
+        opts: [
+          {label:"Ja, ik kan al nagels plaatsen met gel", next:"r_kleur"},
+          {label:"Nee, ik kan nog geen gel nagels opbouwen", next:"r_kleur_eerst_easy"}
+        ]
+      },
+
+      r_kleur: { type:"r",
+        label:"Jouw perfecte match",
+        key:"kleur",
+        why:"Perfecte Kleurapplicatie leert je precies hoe je kleur aanbrengt op gel nagels: de theorie over pigmentdichtheid, de penseeltechniek per kleurtype (pastels, neons, glitters, donkere tinten) en de finishing met topcoat. Elke kleur vraagt een andere aanpak, en na deze cursus weet je exact hoe.",
+        note:null,
+        extra:null
+      },
+
+      r_kleur_eerst_easy: { type:"r",
+        label:"Aanbevolen volgorde voor jou",
+        key:"easynails",
+        why:"Perfecte Kleurapplicatie is bedoeld voor wie al nagels kan plaatsen en opbouwen. Als je dat nog niet kan, is Easy Nails de juiste eerste stap: je leert rubber based gel en hardgel opbouwen zodat je daarna ook kleur correct kan aanbrengen.",
+        note:"Zodra je Easy Nails hebt, is Perfecte Kleurapplicatie de logische vervolgstap.",
+        extra: {
+          title:"Daarna: jouw echte doel",
+          cards:[
+            {key:"kleur", desc:"Perfecte Kleurapplicatie leert je kleur aanbrengen op gel nagels — pastels, neons, glitters en donkere tinten, elk met de juiste penseeltechniek."}
+          ]
+        }
+      },
+
+      r_sjablonen: { type:"r",
+        label:"Jouw perfecte match",
+        key:"sjablonen",
+        why:"Sjabloon Applicatie leert je van A tot Z hoe je verlengingen maakt met sjablonen: almond, ballerina, square — per vinger uitgelegd, in zowel acrygel als hardgel. Je leert ook de meest gemaakte fouten herkennen en corrigeren. Je hebt wel al een basismanicure nodig, die zit niet in deze cursus.",
+        note:null,
+        extra:null
+      },
+
+      r_babyboom: { type:"r",
+        label:"Jouw perfecte match",
+        key:"babyboom",
+        why:"De Babyboom cursus leert je de zachte kleurovergang via twee technieken: de Upperform-methode én de Easy Nails-methode. Als bonus krijg je ook de volledige colorboom videoles erbij. Je hebt wel al een basismanicure nodig voor deze cursus.",
+        note:null,
+        extra:null
+      },
+
+      r_upperformpro: { type:"r",
+        label:"Jouw perfecte match",
+        key:"upperformpro",
+        why:"Upperform Pro is de cursus voor wie puur via video leert. Je krijgt 24+ gedetailleerde videolessen: babyboom, colorboom, inlay, French op upperform — en je leert ook kleuren mengen. Alles wordt van nul uitgelegd, ook als je nog nooit met upperforms hebt gewerkt.",
+        note:null,
+        extra:null
+      },
+
+      r_upperformmaster: { type:"r",
+        label:"Jouw perfecte match",
+        key:"upperformmaster",
+        why:"Upperform Master heeft alles van Pro, maar voegt een uitgebreid e-book van 97 pagina's toe dat je kan raadplegen terwijl je oefent. Ideaal als je graag de theorie ook op papier wil hebben om terug te vallen op tijdens het werken.",
+        note:null,
+        extra:null
+      },
+
+      r_refill: { type:"r",
+        label:"Jouw perfecte match",
+        key:"refill",
+        why:"Refill Removal Pro leert je kunstnagels veilig bijwerken en affrezen in minder dan 1 minuut per nagel. De juiste freeskopjes, toerentallen, productafname per situatie — en ook moeilijke gevallen zoals haviksnagels. Let op: je moet al nagels kunnen plaatsen, want affrezen en bijwerken doe je op bestaand werk.",
+        note:null,
+        extra:null
+      },
+
+      r_content: { type:"r",
+        label:"Jouw perfecte match",
+        key:"nailcontent",
+        why:"Nail Content Creator leert je je nagelwerk fotograferen als een professional, met je eigen smartphone. iPhone én Android instellingen, editen, Canva en InShot — én hoe je consistent content maakt die nieuwe klanten aantrekt. Als je nagels doet maar niemand ziet het, stroomt je agenda nooit vol.",
+        note:null,
+        extra:null
       }
-      if(p==="technique") {
-        if(f==="ebook") return {key:"upperformmaster",why:"De Upperform Master combineert alle video's met het volledige 97-pagina's e-book. Babyboom, colorboom, inlay, French, volledig uitgelegd.",addon:null};
-        if(g==="expand") return {key:"upperformpro",why:"Upperform Pro geeft je 24+ gedetailleerde lessen: babyboom, colorboom, inlay, French én eigen kleuren mengen.",addon:null};
-        return {key:"sjablonen",why:"Sjablonen zijn het struikelblok van bijna elke styliste. Deze cursus doet dat, per vinger, per shape, in acrygel én hardgel.",addon:null};
-      }
-      if(g==="expand") return {key:"babyboom",why:"De babyboom cursus combineert de Upperform-techniek met de Easy Nails methode, zodat je een zachte, strakke fading neerzet.",addon:null};
-      if(l==="experienced"||l==="pro") return {key:"refillremoval",why:"Refill Removal Pro leert je product affrezen op minder dan 1 minuut per nagel, met de juiste freeskopjes en toerentallen.",addon:null};
-      return {key:"easynails",why:"Op basis van jouw antwoorden is Easy Nails de beste volgende stap. Je leert gelnagels opbouwen die structureel 4 weken blijven zitten.",addon:null};
+    };
+
+    var history = [], currentNode = "q1";
+
+    function totalQuestions(nodeId) {
+      // Rough depth estimate per path for progress bar
+      return 3;
     }
-
-    var step=0, answers={}, total=QUESTIONS.length;
 
     function render() {
-      var pct=Math.round((step/total)*100);
-      document.getElementById("nc-quiz-progress").style.width=pct+"%";
-      var content=document.getElementById("nc-quiz-content");
-      if(step<total) {
-        var q=QUESTIONS[step], sel=answers[q.id]||null;
-        var optsHtml=q.opts.map(function(o){ return '<button class="nc-opt'+(sel===o.value?' nc-selected':'')+'" data-val="'+o.value+'" data-qid="'+q.id+'">'+o.label+'</button>'; }).join("");
-        var prevBtn=step>0?'<button class="nc-btn-prev" id="nc-btn-prev">← Terug</button>':'<span></span>';
-        content.innerHTML='<div class="nc-card"><p class="nc-question">'+q.q+'</p><div class="nc-options">'+optsHtml+'</div><div class="nc-quiz-row">'+prevBtn+'<span class="nc-step-label">Vraag '+(step+1)+' van '+total+'</span><button class="nc-btn-next" id="nc-btn-next"'+(sel?'':' disabled')+'>Volgende →</button></div></div>';
+      var node = NODES[currentNode];
+      var progress = node.progress || (node.type==="r" ? 100 : 50);
+      document.getElementById("nc-quiz-progress").style.width = progress + "%";
+      var content = document.getElementById("nc-quiz-content");
+
+      if (node.type === "q") {
+        var sel = node._selected || null;
+        var optsHtml = node.opts.map(function(o) {
+          return '<button class="nc-opt' + (sel===o.next?' nc-selected':'') + '" data-next="'+o.next+'">'+o.label+'</button>';
+        }).join("");
+        var prevBtn = history.length > 0 ? '<button class="nc-btn-prev" id="nc-btn-prev">← Terug</button>' : '<span></span>';
+        var qNum = history.length + 1;
+        content.innerHTML = '<div class="nc-card"><p class="nc-question">'+node.q+'</p><div class="nc-options">'+optsHtml+'</div><div class="nc-quiz-row">'+prevBtn+'<span class="nc-step-label">Vraag '+qNum+'</span><button class="nc-btn-next" id="nc-btn-next"'+(sel?'':' disabled')+'>Volgende →</button></div></div>';
         content.querySelectorAll(".nc-opt").forEach(function(btn){
-          btn.addEventListener("click",function(){
-            answers[btn.dataset.qid]=btn.dataset.val;
+          btn.addEventListener("click", function(){
+            node._selected = btn.dataset.next;
             content.querySelectorAll(".nc-opt").forEach(function(b){b.classList.remove("nc-selected");});
             btn.classList.add("nc-selected");
-            document.getElementById("nc-btn-next").disabled=false;
-            if(step<total-1) setTimeout(goNext,280);
+            document.getElementById("nc-btn-next").disabled = false;
+            setTimeout(goNext, 280);
           });
         });
-        var nb=document.getElementById("nc-btn-next");
-        if(nb) nb.addEventListener("click",goNext);
-        var pb=document.getElementById("nc-btn-prev");
-        if(pb) pb.addEventListener("click",function(){step--;render();});
+        var nb = document.getElementById("nc-btn-next");
+        if(nb) nb.addEventListener("click", goNext);
+        var pb = document.getElementById("nc-btn-prev");
+        if(pb) pb.addEventListener("click", function(){ var prev=history.pop(); NODES[currentNode]._selected=null; currentNode=prev; render(); });
+
       } else {
-        showResult(content);
+        showResult(content, node);
       }
     }
 
-    function goNext(){if(!answers[QUESTIONS[step].id])return;step++;render();}
+    function goNext() {
+      var node = NODES[currentNode];
+      if(!node._selected) return;
+      history.push(currentNode);
+      currentNode = node._selected;
+      // If next is also a question-type result node, handle
+      render();
+    }
 
-    function showResult(content){
-      document.getElementById("nc-quiz-progress").style.width="100%";
-      var rec=recommend(answers), c=COURSES[rec.key];
-      var addonHtml="";
-      if(rec.addon){
-        addonHtml='<div class="nc-addon"><p class="nc-addon-label">ook interessant voor jou</p><p class="nc-addon-title">'+rec.addon.title+', '+rec.addon.price+'</p><p class="nc-addon-desc">'+rec.addon.desc+'</p><a href="'+rec.addon.url+'" class="nc-btn-addon">Bekijk het e-book →</a></div>';
-      } else if(["manicurepro","basics","nailcontent"].indexOf(rec.key)===-1){
-        addonHtml='<div class="nc-addon"><p class="nc-addon-label">wil je ook je manicure verbeteren?</p><p class="nc-addon-title">Manicure E-book, €18,99</p><p class="nc-addon-desc">De perfecte instap om alles over de manicure te begrijpen, in je eigen tempo.</p><a href="salespaginas/manicure-ebook.html" class="nc-btn-addon">Bekijk het e-book →</a></div>';
+    function courseCard(key, extraDesc) {
+      var c = COURSES[key];
+      var liHtml = c.includes.map(function(i){return '<li>'+i+'</li>';}).join("");
+      var payBtn = c.pay ? '<a href="'+c.pay+'" target="_blank" class="nc-btn-cta">Meteen starten →</a>' : '<a href="'+c.sales+'" class="nc-btn-cta">Zet me op de wachtlijst →</a>';
+      var descHtml = extraDesc ? '<p style="font-size:13px;color:#5a4570;line-height:1.6;margin:0 0 12px;">' + extraDesc + '</p>' : '';
+      return '<div class="nc-extra-card">'+descHtml+'<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;margin-bottom:10px;"><strong style="font-size:15px;color:#1a1a1a;">'+c.name+'</strong><span style="font-size:13px;color:#9c28b1;font-weight:700;">'+c.price+'</span></div><ul class="nc-includes-list" style="margin-bottom:12px;">'+liHtml+'</ul><div style="display:flex;gap:8px;flex-wrap:wrap;">'+payBtn+'<a href="'+c.sales+'" class="nc-btn-sec" style="flex:1;">Cursuspagina bekijken</a></div></div>';
+    }
+
+    function showResult(content, node) {
+      document.getElementById("nc-quiz-progress").style.width = "100%";
+      var c = COURSES[node.key];
+      var liHtml = c.includes.map(function(i){return '<li>'+i+'</li>';}).join("");
+      var noteHtml = node.note ? '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1rem;font-size:13px;color:#7a5c00;line-height:1.5;">'+node.note+'</div>' : '';
+      var mainPayBtn = c.pay ? '<a href="'+c.pay+'" target="_blank" class="nc-btn-cta">Start nu met '+c.name+'</a>' : '<a href="'+c.sales+'" class="nc-btn-cta">Kom op de wachtlijst →</a>';
+
+      var extraHtml = "";
+      if (node.extra) {
+        var extraCards = node.extra.cards.map(function(ec){ return courseCard(ec.key, ec.desc); }).join("");
+        extraHtml = '<div style="margin-top:1.5rem;"><p class="nc-includes-title" style="margin-bottom:12px;">'+node.extra.title+'</p>'+extraCards+'</div>';
       }
-      var li=c.includes.map(function(i){return '<li>'+i+'</li>';}).join("");
-      content.innerHTML='<div class="nc-result-card"><div class="nc-result-header"><p class="nc-result-label">jouw match</p><p class="nc-result-name">'+c.name+'</p><p class="nc-result-price">'+c.price+' · eenmalig · levenslange toegang</p></div><div class="nc-result-body"><p class="nc-result-why">'+rec.why+'</p><div><p class="nc-includes-title">wat zit erin</p><ul class="nc-includes-list">'+li+'</ul></div><div class="nc-actions"><a href="'+c.pay+'" target="_blank" class="nc-btn-cta">Start nu met '+c.name+'</a><a href="'+c.sales+'" class="nc-btn-sec">Bekijk de volledige cursuspagina</a></div>'+addonHtml+'</div></div><div class="nc-restart-row"><button class="nc-btn-restart" id="nc-btn-restart">Opnieuw beginnen</button></div>';
-      document.getElementById("nc-btn-restart").addEventListener("click",function(){step=0;answers={};render();});
+
+      content.innerHTML =
+        '<div class="nc-result-card">' +
+          '<div class="nc-result-header"><p class="nc-result-label">'+node.label+'</p><p class="nc-result-name">'+c.name+'</p><p class="nc-result-price">'+c.price+(c.pay?' · eenmalig · levenslange toegang':'')+'</p></div>' +
+          '<div class="nc-result-body">' +
+            noteHtml +
+            '<p class="nc-result-why">'+node.why+'</p>' +
+            '<p class="nc-includes-title">Wat zit erin</p>' +
+            '<ul class="nc-includes-list">'+liHtml+'</ul>' +
+            '<div class="nc-actions">'+mainPayBtn+'<a href="'+c.sales+'" class="nc-btn-sec">Bekijk de volledige cursuspagina</a></div>' +
+            extraHtml +
+          '</div>' +
+        '</div>' +
+        '<div class="nc-restart-row"><button class="nc-btn-restart" id="nc-btn-restart">↩ Opnieuw beginnen</button></div>';
+
+      document.getElementById("nc-btn-restart").addEventListener("click", function(){
+        Object.keys(NODES).forEach(function(k){ if(NODES[k]._selected) NODES[k]._selected=null; });
+        history = []; currentNode = "q1"; render();
+      });
     }
 
     render();
