@@ -405,6 +405,23 @@
     white-space: nowrap;
   }
   .snelnav__drop a:hover { background: #f8f2ff; color: #9c28b1; }
+  .snelnav__quiz-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .8rem;
+    font-weight: 700;
+    color: #9c28b1;
+    background: #f0e8fd;
+    border: 1.5px solid #b590f1;
+    border-radius: 100px;
+    padding: .35rem 1rem;
+    white-space: nowrap;
+    text-decoration: none;
+    flex-shrink: 0;
+    margin-left: auto;
+    transition: background .15s, color .15s;
+  }
+  .snelnav__quiz-btn:hover { background: #9c28b1; color: #fff; }
+  .snelnav__cursuskiezer-mobile { display: none; }
   .snelnav__drop a .price {
     font-size: .76rem;
     font-weight: 700;
@@ -424,6 +441,8 @@
     .snelnav { gap: .2rem; }
     .snelnav__drop { min-width: 220px; }
     .snelnav__btn { font-size: .8rem; padding: 1rem .4rem; }
+    .snelnav__quiz-desktop { display: none !important; }
+    .snelnav__cursuskiezer-mobile { display: flex !important; }
   }
   </style>
 
@@ -448,6 +467,8 @@
         <a href="salespaginas/sjablonen.html"><span>Sjabloon Applicatie</span><span class="price">€65</span></a>
         <div class="snelnav__divider"></div>
         <a href="salespaginas/the-nailstylist.html"><span>✨ The Nailstylist Traject</span><span class="price" style="background:rgba(255,31,227,.1);color:#cc00bb;">Wachtlijst</span></a>
+        <div class="snelnav__divider snelnav__cursuskiezer-mobile"></div>
+        <a href="#nc-quiz-widget" class="snelnav__cursuskiezer-mobile"><span>🎯 Welke cursus past bij mij?</span></a>
       </div>
     </div>
 
@@ -464,6 +485,8 @@
         <a href="salespaginas/manicure-ebook.html"><span>Manicure E-book</span><span class="price">€18,99</span></a>
       </div>
     </div>
+
+    <a href="#nc-quiz-widget" class="snelnav__quiz-btn snelnav__quiz-desktop">🎯 Welke cursus past bij mij?</a>
 
     </div>
   </div>
