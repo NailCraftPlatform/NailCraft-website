@@ -265,7 +265,7 @@
       <li><a href="the-nailstylist-traject.html">The Nailstylist</a></li>
       <li><a href="over.html">Over</a></li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="online-opleidingen.html" class="nc-nav__cta">Start vandaag →</a></li>
+      <li><a href="online-opleidingen.html#nc-quiz-widget" class="nc-nav__cta">Cursuskiezer →</a></li>
     </ul>
     <button class="nc-nav__toggle" id="nc-toggle" aria-label="Menu openen">
       <span></span><span></span><span></span>
@@ -279,7 +279,7 @@
     <a href="the-nailstylist-traject.html">The Nailstylist</a>
     <a href="over.html">Over</a>
     <a href="blog.html">Blog</a>
-    <a href="online-opleidingen.html">Start vandaag →</a>
+    <a href="online-opleidingen.html#nc-quiz-widget">Cursuskiezer →</a>
   </div>
 
   <!-- =============================================
@@ -374,7 +374,7 @@
       <span class="nc-hero__spacer" aria-hidden="true"></span>
       <p class="nc-hero__sub">Van beginner tot pro, ik help vrouwen nagelstyliste worden. Met online opleidingen, bijscholingen, e-books en video cursussen. Zonder dure klassikale opleiding. Direct starten.</p>
       <div class="nc-hero__btns">
-        <a href="online-opleidingen.html" class="nc-btn-primary nc-btn-primary--pulse">Start vandaag →</a>
+        <a href="online-opleidingen.html#nc-quiz-widget" class="nc-btn-primary nc-btn-primary--pulse">Cursuskiezer →</a>
         <a href="https://naillraftplatform.kennis.shop/" class="nc-btn-secondary" target="_blank" rel="noopener">Bekijk de shop</a>
       </div>
       <div class="nc-hero__stats">
@@ -794,11 +794,11 @@
   .nc-ss__track { display:flex; align-items:flex-start; gap:20px; width:max-content; animation:nc-ss-scroll 40s linear infinite; padding:12px 0 20px; }
   .nc-ss__track:hover { animation-play-state:paused; }
   @keyframes nc-ss-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-  .nc-ss-card { background:#f8f2ff; border-radius:18px; padding:12px; width:280px; flex-shrink:0; border:1px solid rgba(156,40,177,.12); box-shadow:0 4px 20px rgba(156,40,177,.07); transition:transform .3s,box-shadow .3s; }
+  .nc-ss-card { background:#f8f2ff; border-radius:18px; padding:12px; width:220px; flex-shrink:0; border:1px solid rgba(156,40,177,.12); box-shadow:0 4px 20px rgba(156,40,177,.07); transition:transform .3s,box-shadow .3s; }
   .nc-ss-card:hover { transform:translateY(-5px); box-shadow:0 12px 32px rgba(156,40,177,.14); }
-  .nc-ss-card img { width:100%; height:auto; display:block; border-radius:10px; object-fit:contain; }
+  .nc-ss-card img { width:100%; max-height:280px; display:block; border-radius:10px; object-fit:cover; object-position:top; }
   .nc-ss-card__name { font-size:.75rem; font-weight:600; color:#9c28b1; text-transform:uppercase; letter-spacing:.08em; margin-top:.7rem; text-align:center; }
-  @media(max-width:768px){ .nc-ss { padding:60px 0; } .nc-ss__header { padding:0 20px; } .nc-ss-card { width:220px; padding:10px; } }
+  @media(max-width:768px){ .nc-ss { padding:60px 0; } .nc-ss__header { padding:0 20px; } .nc-ss-card { width:180px; padding:10px; } .nc-ss-card img { max-height:220px; } }
   </style>
 
   <section class="nc-ss">
@@ -935,26 +935,48 @@
       <p class="nc-blog__sub">Praktische tips uit 18 jaar ervaring, over techniek, materialen en carrière als nagelstylist.</p>
     </div>
     <div class="nc-blog__grid">
-      <a href="blog.html" class="nc-blog-card nc-reveal">
+      <a href="blog.html#nc-article-voorbereiding" class="nc-blog-card nc-reveal">
         <span class="nc-blog-card__cat">Techniek</span>
-        <h3 class="nc-blog-card__title">Alles wat ik dagelijks gebruik in mijn nagelstudio</h3>
-        <p>Eerlijk, praktisch en gedeeld vanuit 18+ jaar ervaring als nagelstylist en vakdocente.</p>
+        <h3 class="nc-blog-card__title">Voorbereiding is alles: zo bereid ik een nagel voor</h3>
+        <p>De voorbereiding bepaalt hoe lang je werk blijft zitten. Ik loop je stap voor stap door mijn routine.</p>
       </a>
-      <a href="blog.html" class="nc-blog-card nc-reveal" style="transition-delay:.1s">
+      <a href="blog.html#nc-article-5-dingen" class="nc-blog-card nc-reveal" style="transition-delay:.1s">
         <span class="nc-blog-card__cat">Nagelarchitectuur</span>
-        <h3 class="nc-blog-card__title">Dunne, sterke kunstnagels, hoe doe je dat?</h3>
-        <p>De meest gemaakte fouten bij het plaatsen van kunstnagels, en hoe je ze vermijdt.</p>
+        <h3 class="nc-blog-card__title">5 dingen die ik niet kan missen in mijn nagelstudio</h3>
+        <p>Als ik morgen opnieuw moest beginnen, dit zijn de 5 producten die ik als eerste zou kopen. Geen fratsen, gewoon wat werkt.</p>
       </a>
-      <a href="blog.html" class="nc-blog-card nc-reveal" style="transition-delay:.2s">
+      <a href="blog.html#nc-article-5-fouten" class="nc-blog-card nc-reveal" style="transition-delay:.2s">
         <span class="nc-blog-card__cat">Carrière</span>
-        <h3 class="nc-blog-card__title">Nagelstylist worden: waar begin je?</h3>
-        <p>Van eerste oefeningen tot je eerste klant. Mijn eerlijk advies voor beginners in de nagelstyling.</p>
+        <h3 class="nc-blog-card__title">Mijn 5 grootste fouten als beginnende nagelstylist</h3>
+        <p>Ik heb ze allemaal gemaakt. Zodat jij dat niet hoeft. Eerlijk, concreet en zonder sugar coating.</p>
       </a>
     </div>
     <div class="nc-blog__more nc-reveal">
       <a href="blog.html" class="nc-btn-secondary">Alle tips &amp; tricks bekijken →</a>
     </div>
   </section>
+
+  <!-- =============================================
+       CURSUSKIEZER CTA
+  ============================================= -->
+  <style>
+  .nc-ck-banner { background: linear-gradient(135deg, #7a1e8e 0%, #9c28b1 60%, #b84ecb 100%); padding: 3.5rem 1.5rem; text-align: center; font-family: 'DM Sans', sans-serif; }
+  .nc-ck-banner__inner { max-width: 620px; margin: 0 auto; }
+  .nc-ck-banner__eyebrow { display: inline-block; background: rgba(255,255,255,.18); color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: .3rem 1rem; border-radius: 50px; margin-bottom: 1rem; }
+  .nc-ck-banner__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: .75rem; text-wrap: balance; }
+  .nc-ck-banner__sub { color: rgba(255,255,255,.85); font-size: .95rem; line-height: 1.6; margin-bottom: 1.75rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+  .nc-ck-banner__btn { display: inline-block; background: #fff; color: #7a1e8e !important; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: .95rem; padding: .85rem 2.2rem; border-radius: 100px; text-decoration: none; box-shadow: 0 4px 18px rgba(0,0,0,.18); transition: transform .2s, box-shadow .2s; }
+  .nc-ck-banner__btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.22); }
+  </style>
+
+  <div class="nc-ck-banner">
+    <div class="nc-ck-banner__inner nc-reveal">
+      <span class="nc-ck-banner__eyebrow">🤔 Weet je niet welke cursus?</span>
+      <h2 class="nc-ck-banner__title">Doe de cursuskiezer</h2>
+      <p class="nc-ck-banner__sub">Een paar gerichte vragen, en je weet meteen welke cursus perfect bij jou past.</p>
+      <a href="online-opleidingen.html#nc-quiz-widget" class="nc-ck-banner__btn">Start de cursuskiezer →</a>
+    </div>
+  </div>
 
   <!-- =============================================
        BLOK 14: VERGELIJKING
