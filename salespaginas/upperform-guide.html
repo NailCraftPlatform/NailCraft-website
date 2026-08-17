@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
@@ -212,6 +212,7 @@
   </style>
 </head>
 <body>
+  <div id="nc-progress" style="position:fixed;top:70px;left:0;height:2px;width:0%;background:#9c28b1;z-index:1001;transition:width .25s linear;pointer-events:none;"></div>
 
   <!-- NAV -->
   <nav class="sp-nav" id="sp-nav">
@@ -534,5 +535,12 @@
       });
     });
   </script>
-</body>
+<script>
+(function(){
+  window.addEventListener('scroll', function() {
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+    if (docH > 0) document.getElementById('nc-progress').style.width = (window.scrollY / docH * 100) + '%';
+  }, { passive: true });
+})();
+</script></body>
 </html>
