@@ -110,8 +110,8 @@
       position: absolute; inset: 0;
       background-image: url('images/Over/Untitled-design-7.webp');
       background-size: cover;
-      background-position: right center;
-      opacity: 0.22;
+      background-position: 65% center;
+      opacity: 0.32;
       transform: scale(1.05);
     }
     .hero-overlay {
@@ -357,6 +357,8 @@
     ============================================= */
     @media(max-width:768px) {
       .hero-content { margin-left: 0; padding: 5rem 1.5rem 3rem; }
+      .hero-bg { background-position: center top; opacity: 0.38; }
+      .hero-overlay { background: linear-gradient(180deg, rgba(248,242,255,0.82) 0%, rgba(248,242,255,0.88) 60%, rgba(248,242,255,0.97) 100%); }
       .story-grid, .podcast-grid, .work-grid { grid-template-columns: 1fr; gap: 2rem; }
       .parallax-content { margin-left: 0; }
       .story-img-wrap img { height: 300px; }
