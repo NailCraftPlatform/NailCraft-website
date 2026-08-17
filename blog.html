@@ -666,42 +666,207 @@
   </div>
 
   <!-- ========== ARTIKEL 1: FREES ========== -->
-  <section class="artikel-sectie" id="nc-article-frees">
-    <div class="artikel-sectie__badge">Materiaal</div>
-    <h2>Marathon vs Micro NX: <em>welke frees kies jij?</em></h2>
-    <div class="artikel-meta">
-      <span>✍️ Tabitha Windels</span>
-      <span>📖 5 minuten leestijd</span>
-    </div>
-    <img src="images/Blog/marathon vs micro NX welke frees kies jij.webp" alt="Marathon vs Micro NX frees" class="artikel-hero-img" loading="lazy">
-    <div class="artikel-sectie__content">
-      <p>Ik word er regelmatig naar gevraagd: <strong>welke frees moet ik kopen?</strong> En eerlijk gezegd is het antwoord niet simpel, want het hangt af van wat je doet en in welk stadium van je carrière je zit.</p>
-      <p>In mijn studio werk ik met beide toestellen. De Marathon en de Micro NX hebben elk hun sterke punten, en ik gebruik ze niet door elkaar maar bewust.</p>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap');
+  .nc-art-section {
+    background: #ffffff;
+    padding: 4rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nc-art-inner { max-width: 780px; margin: 0 auto; }
+  .nc-art-tag-row { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; flex-wrap: wrap; }
+  .nc-art-tag {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    background: rgba(181,144,241,0.15); color: #9c28b1;
+    padding: 0.3rem 0.85rem; border-radius: 50px; border: 1px solid rgba(181,144,241,0.3);
+  }
+  .nc-art-date { font-size: 0.78rem; color: #7a6585; }
+  .nc-art-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 5vw, 2.8rem) !important;
+    color: #9c28b1;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+  .nc-art-intro {
+    font-size: 1.05rem; color: #7a6585; line-height: 1.75; font-style: italic;
+    border-left: 3px solid #b590f1; padding-left: 1.1rem;
+  }
+  .nc-art-divider { width: 50px; height: 2px; background: #b590f1; margin: 2rem 0; border-radius: 2px; }
+  .nc-h2 { font-family: 'Cormorant Garamond', serif !important; font-size: 1.45rem !important; color: #9c28b1 !important; margin: 2.2rem 0 0.8rem !important; }
+  .nc-h3 { font-size: 1rem !important; font-weight: 600 !important; color: #9c28b1 !important; margin: 1.4rem 0 0.4rem !important; }
+  .nc-p { font-size: 0.96rem; line-height: 1.8; color: #4a3558; margin-bottom: 0.9rem; }
+  .nc-box {
+    border-radius: 16px; padding: 1.4rem 1.5rem; margin: 1.5rem 0;
+    border: 1px solid rgba(181,144,241,0.25);
+  }
+  .nc-box-purple { background: linear-gradient(135deg, #fdecfc, #f8f2ff); }
+  .nc-box-mint   { background: linear-gradient(135deg, #fcffec, #f8f2ff); }
+  .nc-box h4 {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    color: #9c28b1; margin-bottom: 0.9rem;
+  }
+  .nc-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.7rem; font-size: 0.9rem; line-height: 1.5; color: #4a3558; }
+  .nc-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .nc-dot-dark { background: #9c28b1; }
+  .nc-dot-light { background: #b590f1; }
+  .nc-product {
+    background: #f8f2ff; border: 1px solid rgba(181,144,241,0.25);
+    border-radius: 16px; padding: 1.4rem 1.5rem; margin: 1.8rem 0;
+    display: flex; flex-direction: column; gap: 0.8rem;
+  }
+  .nc-product-head { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; }
+  .nc-product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: #9c28b1; }
+  .nc-product-price {
+    font-size: 0.85rem; font-weight: 600; color: #fe9b00;
+    background: rgba(254,155,0,0.12); padding: 0.2rem 0.7rem; border-radius: 50px;
+  }
+  .nc-product-body { font-size: 0.88rem; line-height: 1.7; color: #4a3558; }
+  .nc-product-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .nc-plink {
+    display: inline-block; font-size: 0.78rem; font-weight: 600;
+    padding: 0.5rem 1.1rem; border-radius: 50px; text-decoration: none;
+    transition: all 0.2s; border: 1px solid;
+  }
+  .nc-plink-primary { background: #9c28b1; color: #fff; border-color: #9c28b1; }
+  .nc-plink-secondary { background: transparent; color: #9c28b1; border-color: rgba(156,40,177,0.35); }
+  .nc-plink:hover { opacity: 0.85; transform: translateY(-1px); }
+  .nc-free-cta {
+    background: linear-gradient(135deg, rgba(181,144,241,0.12), rgba(255,31,227,0.08));
+    border: 1px solid rgba(181,144,241,0.3); border-radius: 16px;
+    padding: 1.4rem 1.5rem; margin: 2rem 0; text-align: center;
+  }
+  .nc-free-cta p { font-size: 0.88rem; color: #7a6585; margin-bottom: 0.9rem; }
+  .nc-free-btn {
+    display: inline-block; background: #fe9b00; color: #fff;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.88rem;
+    padding: 0.8rem 1.8rem; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 4px 18px rgba(254,155,0,0.35); transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .nc-free-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(254,155,0,0.45); }
+  .nc-author { display: flex; align-items: center; gap: 1rem; padding: 1.5rem 0; flex-wrap: wrap; }
+  .nc-author img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(181,144,241,0.4); }
+  .nc-author-name { font-weight: 600; font-size: 0.95rem; color: #9c28b1; margin-bottom: 0.2rem; }
+  .nc-author-bio { font-size: 0.83rem; color: #7a6585; line-height: 1.5; }
+  .nc-rev { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .nc-rev.nc-vis { opacity: 1; transform: none; }
+  @media (max-width: 768px) {
+    .nc-art-section { padding: 2.5rem 1rem; }
+    .nc-art-title { font-size: 1.35rem !important; line-height: 1.25 !important; }
+    .nc-plink { font-size: 0.70rem !important; padding: 0.65rem 1.4rem !important; box-shadow: none !important; }
+    .nc-free-btn { font-size: 0.70rem !important; padding: 0.65rem 1.4rem !important; box-shadow: none !important; }
+  }
+  </style>
 
-      <h3>De Marathon</h3>
-      <p>De Marathon is een krachtpatser. Hij draait tot 35.000 toeren per minuut en dat voel je. Wanneer ik langdurig op producten werk, of wanneer ik stevige acryl moet affrezen, pak ik de Marathon. Hij trilt minder dan je zou verwachten voor zoveel kracht, en de handstukken zijn uitstekend.</p>
-      <p>Het nadeel? Prijs. Een goed Marathon systeem is een investering. Maar als je professioneel werkt, is het dat waard.</p>
+  <div id="nc-article" class="nc-art-section">
+    <div class="nc-art-inner">
 
-      <div class="citaat">"De Marathon is mijn werkezel. Hij draait al jaren mee en heeft nog nooit gefaald op een drukke werkdag."</div>
-
-      <h3>De Micro NX</h3>
-      <p>De Micro NX is compacter, lichter en vriendelijker in gebruik. Zeker voor beginners is dit mijn aanbeveling. Je hebt minder kans om fouten te maken bij lagere toeren, en het toestel is intuïtiever in zijn bediening.</p>
-      <p>Ook voor fijne afwerking en nagelriemwerk gebruik ik de Micro NX liever. De controle is preciezer bij werk dicht bij de huid.</p>
-
-      <div class="highlight-blok">
-        <h4>Samengevat: wanneer gebruik ik wat?</h4>
-        <ul>
-          <li><strong>Marathon:</strong> zwaar freeswerk, lang acryl affrezen, intensieve bijwerkingen</li>
-          <li><strong>Micro NX:</strong> fijne afwerking, nagelriemwerk, beginners, mobiel gebruik</li>
-          <li><strong>Budget beperkt?</strong> Start met de Micro NX en upgrade later naar Marathon</li>
-        </ul>
+      <div class="nc-art-tag-row nc-rev">
+        <span class="nc-art-tag">Freestoestellen &amp; materiaal</span>
+        <span class="nc-art-date">Mei 2025</span>
       </div>
 
-      <p>Welke je ook kiest: kwaliteit betaalt zich terug. Een goedkoop freestoestel zonder koppel geeft je meer frustratie dan resultaat.</p>
-    </div>
-  </section>
+      <h1 class="nc-art-title nc-rev">Mijn ervaring met freestoestellen: van de Marathon naar de MicroNX</h1>
 
-  <div class="artikel-divider"></div>
+      <p class="nc-art-intro nc-rev">Als je al wat langer met nagels bezig bent, dan weet je één ding: je freestoestel is geen gadget. Het is een werkpaard. Een tool die je elke dag opnieuw gebruikt, die je tijd bespaart en die bepaalt hoe zuiver jouw werk eruitziet, en hoe veilig je kan werken.</p>
+
+      <div class="nc-art-divider nc-rev"></div>
+
+      <p class="nc-p nc-rev">Ik heb in mijn carrière heel wat toestellen in handen gehad, maar twee springen er echt uit: de <strong>Marathon</strong>, waar ik zestien jaar lang op heb gewerkt, en de <strong>MicroNX</strong>, mijn huidige toestel. Waarom ik ooit ben overgestapt, en waar jij op moet letten wanneer je een frees kiest, vertel ik je hieronder.</p>
+
+      <p class="nc-p nc-rev">En geloof me: een frees koop je niet omdat iemand zegt dat die "goed" is. Je kiest op basis van functionaliteit, duurzaamheid en het soort werk dat jij doet.</p>
+
+      <h2 class="nc-h2 nc-rev">Waarvoor gebruik je een freestoestel eigenlijk?</h2>
+      <p class="nc-p nc-rev">Veel beginnende nagelstylistes onderschatten het, maar je frees is <em>overal aanwezig</em> in je werkproces.</p>
+
+      <h3 class="nc-h3 nc-rev">Tijdens de manicure</h3>
+      <p class="nc-p nc-rev">Hier is het toestel simpelweg onmisbaar. Je gebruikt het om de nagelplaat volledig te reinigen, pterygium weg te halen, het eponychium netjes op te kuisen en loshangende velletjes te verwijderen. Hoe preciezer je dit doet, hoe beter je product hecht en hoe langer de set blijft zitten. Voorbereiding is geen snel-snel-werkje, het is de fundering van je resultaat.</p>
+
+      <h3 class="nc-h3 nc-rev">Tijdens de afwerking</h3>
+      <p class="nc-p nc-rev">Je kunt de concave uitfrezen voor een dun, natuurlijk ogend resultaat. Je kunt overtollig product rond de nagelriemen verfijnen zodat je set er strak uitziet en veel minder kans heeft op lifting.</p>
+
+      <h3 class="nc-h3 nc-rev">Tijdens een bijwerking</h3>
+      <p class="nc-p nc-rev">Hier spaart de frees je handen, je tijd én je humeur 😉. Je neemt het product terug tot aan de base coat zonder moeite. Zo bouw je snel en veilig een nieuwe set op, zonder eindeloos manueel vijlen.</p>
+
+      <h2 class="nc-h2 nc-rev">Waar let ik persoonlijk op wanneer ik een frees kies?</h2>
+
+      <div class="nc-box nc-box-purple nc-rev">
+        <h4>Must haves</h4>
+        <div class="nc-item"><div class="nc-dot nc-dot-dark"></div><div><strong>Variabele snelheidsregeling</strong>, geen toestel dat per 5.000 verspringt, maar een vloeiende knop. Digitaal toerental is een bonus.</div></div>
+        <div class="nc-item"><div class="nc-dot nc-dot-dark"></div><div><strong>Omkeerbare rotatie</strong>, forward en reverse, zodat je zowel links als rechts kan werken.</div></div>
+        <div class="nc-item"><div class="nc-dot nc-dot-dark"></div><div><strong>Ergonomisch handstuk</strong>, licht, trillingsarm en fijn in de hand. Je gebruikt dit urenlang.</div></div>
+        <div class="nc-item"><div class="nc-dot nc-dot-dark"></div><div><strong>Krachtige motor</strong>, minimaal 30.000 rpm. Minder dan dat en je voelt het tekort onmiddellijk bij productafname.</div></div>
+        <div class="nc-item"><div class="nc-dot nc-dot-dark"></div><div><strong>Betrouwbaarheid</strong>, een frees moet lang meegaan. Koop bij een erkende leverancier.</div></div>
+      </div>
+
+      <div class="nc-box nc-box-mint nc-rev">
+        <h4>Nice to haves</h4>
+        <div class="nc-item"><div class="nc-dot nc-dot-light"></div><div>Geluidsarm: stil toestel, weinig trillingen</div></div>
+        <div class="nc-item"><div class="nc-dot nc-dot-light"></div><div>Makkelijk onderhoud</div></div>
+        <div class="nc-item"><div class="nc-dot nc-dot-light"></div><div>Oververhittingsbeveiliging</div></div>
+        <div class="nc-item"><div class="nc-dot nc-dot-light"></div><div>Draagbaarheid (snoerloos) voor mobiele stylistes</div></div>
+        <div class="nc-item"><div class="nc-dot nc-dot-light"></div><div>Voetpedaal: minder draaien aan knoppen</div></div>
+        <div class="nc-item"><div class="nc-dot nc-dot-light"></div><div>Opslag voor bitjes bovenaan het toestel</div></div>
+      </div>
+
+      <p class="nc-p nc-rev">Handig, maar geen dealbreakers… tenzij je zoals ik elke dag tientallen klanten draait. Dan merk je het verschil.</p>
+
+      <div class="nc-free-cta nc-rev">
+        <p>Wil je hier meer over leren? Volg dan mijn gratis training.</p>
+        <a href="https://naillraftplatform.kennis.shop/pay/veiligaffrezen" class="nc-free-btn">✨ Gratis cursus 'Veilig affrezen'</a>
+      </div>
+
+      <h2 class="nc-h2 nc-rev">Mijn ervaring met de Marathon frees</h2>
+
+      <div class="nc-product nc-rev">
+        <div class="nc-product-head">
+          <span class="nc-product-name">Marathon Frees</span>
+          <span class="nc-product-price">± €130</span>
+        </div>
+        <p class="nc-product-body">De Marathon is een klassieker, en met reden. Betrouwbaar, stevig en verrassend krachtig voor zijn prijsklasse. Ik heb er zelf <strong>zestien jaar lang</strong> mee gewerkt. Dat zegt genoeg. Hij staat nog steeds in mijn kast als reserve, gewoon omdat ik weet dat hij me nooit in de steek laat.<br><br>Wat ik miste? De digitale weergave van het toerental. Als je veel klanten doet, wil je exact weten op welke RPM je werkt. Niet voor beginners een must, maar op termijn ga je het appreciëren. Het voetpedaal krijg je er standaard bij.<br><br>Voor startende nagelstylisten een perfecte keuze: betaalbaar, betrouwbaar en met alle noodzakelijke functies.</p>
+        <div class="nc-product-links">
+          <a href="https://amzn.to/4dFU8qE" class="nc-plink nc-plink-primary" target="_blank" rel="nofollow">🇳🇱 Nederland – Amazon</a>
+          <a href="https://amzn.to/4uocVOa" class="nc-plink nc-plink-secondary" target="_blank" rel="nofollow">🇧🇪 België – Amazon</a>
+        </div>
+      </div>
+
+      <h2 class="nc-h2 nc-rev">Waarom ik overstapte naar de MicroNX</h2>
+
+      <div class="nc-product nc-rev">
+        <div class="nc-product-head">
+          <span class="nc-product-name">Micro NX 300B</span>
+          <span class="nc-product-price">± €278</span>
+        </div>
+        <p class="nc-product-body">Op een bepaald moment wil je meer verfijning. Meer controle. Meer comfort. De MicroNX heeft dat allemaal.<br><br>Je ziet het toerental digitaal. Het handstuk is licht en werkt bijna zonder trillingen. De kracht is uitstekend, zelfs bij stevig materiaal. Er bestaat een voetpedaal dat je apart kunt kopen, ik zou het altijd overwegen.<br><br>Voor mij biedt de MicroNX de beste verhouding tussen prijs en professionele kwaliteit. Een echte topper voor wie dagelijks met nagels bezig is.</p>
+        <div class="nc-product-links">
+          <a href="https://www.tanyasavchenko.com/products/frees-micro-nx-300b?srsltid=AfmBOorEb1T1qL0RX5hWpRaoYuzHZT0iiGyHBXtc8WkawfBKk9FVvtQX" class="nc-plink nc-plink-primary" target="_blank" rel="nofollow">Micro NX bestellen →</a>
+        </div>
+      </div>
+
+      <div class="nc-art-divider nc-rev" style="margin-top:2.5rem;"></div>
+
+      <div class="nc-author nc-rev">
+        <img src="images/Over/Mijn verhaal — in mijn eigen woorden..webp" alt="Tabitha">
+        <div>
+          <p class="nc-author-name">Tabitha</p>
+          <p class="nc-author-bio">Nagelstyliste met 18+ jaar ervaring. Eigenaar van Nagelstudio Nailit en Nailcraft online opleidingen.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var els = document.querySelectorAll('#nc-article .nc-rev');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('nc-vis'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function(el) { obs.observe(el); });
+  })();
+  </script>
 
   <!-- ========== NAGEL STRIP B ========== -->
   <div class="nagel-strip strip-right nagel-strip--paars">
