@@ -642,7 +642,7 @@
       <div class="card">
         <div class="card-media">
           <div class="vfacade" data-vid="1217014910">
-          <img class="vfacade-poster" src="images/Manicure pro wit zonder bol.webp" alt="Manicure Pro cursus" loading="lazy">
+          <img class="vfacade-poster" src="images/manicure-pro/Manicure pro wit zonder bol.webp" alt="Manicure Pro cursus" loading="lazy">
         </div>
           <span class="card-type">Video · +4 uur</span>
         </div>
@@ -664,7 +664,7 @@
       <div class="card">
         <div class="card-media">
           <div class="vfacade" data-vid="1217014867">
-          <img class="vfacade-poster" src="images/Easy nails techniek transparant samenvatting mockup.webp" alt="Easy Nails cursus" loading="lazy">
+          <img class="vfacade-poster" src="images/easy-nails/Easy nails techniek volleidge header mockup transparant.webp" alt="Easy Nails cursus" loading="lazy">
         </div>
           <span class="card-type">Videotraining</span>
         </div>
@@ -730,7 +730,7 @@
       <div class="card">
         <div class="card-media">
           <div class="vfacade" data-vid="1218229291">
-          <img class="vfacade-poster" src="images/refill removal pro mockup transparant achtergrond.webp" alt="Refill Removal Pro cursus" loading="lazy">
+          <img class="vfacade-poster" src="images/refill-removal-pro/refill removal pro mockup transparant achtergrond.webp" alt="Refill Removal Pro cursus" loading="lazy">
         </div>
           <span class="card-type">Video · +gratis bonusvideo</span>
         </div>
@@ -752,7 +752,7 @@
       <div class="card">
         <div class="card-media">
           <div class="vfacade" data-vid="1218235020">
-          <img class="vfacade-poster" src="images/kleurapplicatie mockup transparant.webp" alt="Perfecte Kleurapplicatie cursus" loading="lazy">
+          <img class="vfacade-poster" src="images/kleurapplicatie/kleurapplicatie mockup transparant.webp" alt="Perfecte Kleurapplicatie cursus" loading="lazy">
         </div>
           <span class="card-type nieuw">✨ Nieuw</span>
         </div>
@@ -774,7 +774,7 @@
       <div class="card">
         <div class="card-media">
           <div class="vfacade" data-vid="1218228475">
-          <img class="vfacade-poster" src="images/sjablonen mockup transparant.webp" alt="Sjabloon Applicatie cursus" loading="lazy">
+          <img class="vfacade-poster" src="images/sjablonen/sjablonen mockup transparant.webp" alt="Sjabloon Applicatie cursus" loading="lazy">
         </div>
           <span class="card-type nieuw">✨ Nieuw</span>
         </div>
@@ -934,7 +934,7 @@
       <div class="card">
         <div class="card-media">
           <div class="vfacade" data-vid="1218230035">
-          <img class="vfacade-poster" src="images/Nail Content Creator wit mockup transparant achtergrond.webp" alt="Nail Content Creator cursus" loading="lazy">
+          <img class="vfacade-poster" src="images/nail-content-creator/Nail Content Creator wit mockup transparant achtergrond.webp" alt="Nail Content Creator cursus" loading="lazy">
         </div>
           <span class="card-type ebook">E-book · +gratis videoles</span>
         </div>
@@ -956,7 +956,7 @@
       <div class="card">
         <div class="card-media">
           <div class="vfacade" data-vid="1218233923">
-          <img class="vfacade-poster" src="images/The Gel Code mockup boek kleiner transparant (1).webp" alt="The Gel Code cursus" loading="lazy">
+          <img class="vfacade-poster" src="images/the-gel-code/The Gel Code mockup volledig transparant (1).webp" alt="The Gel Code cursus" loading="lazy">
         </div>
           <span class="card-type ebook">E-book</span>
         </div>
@@ -978,7 +978,7 @@
       <div class="card">
         <div class="card-media">
           <div class="vfacade" data-vid="1218234428">
-          <img class="vfacade-poster" src="images/The Basic  wit mockup transparant achtergrond.webp" alt="The Basics cursus" loading="lazy">
+          <img class="vfacade-poster" src="images/the-basics/The Basic  wit mockup transparant achtergrond.webp" alt="The Basics cursus" loading="lazy">
         </div>
           <span class="card-type ebook">E-book · +gratis videolessen</span>
         </div>
@@ -1000,7 +1000,7 @@
       <div class="card">
         <div class="card-media">
           <div class="vfacade" data-vid="1218234174">
-          <img class="vfacade-poster" src="images/Manicure e-book mockup transparant (1).webp" alt="Manicure E-book" loading="lazy">
+          <img class="vfacade-poster" src="images/manicure-ebook/Manicure e-book mockup transparante achtergrond.webp" alt="Manicure E-book" loading="lazy">
         </div>
           <span class="card-type ebook">E-book</span>
         </div>
@@ -1836,17 +1836,30 @@
 
   <script>
   window.addEventListener('load', function() {
-    document.querySelectorAll('.vfacade[data-vid]').forEach(function(wrap) {
-      var id = wrap.dataset.vid;
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&muted=1&loop=1&background=1';
-      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
-      wrap.appendChild(iframe);
-      setTimeout(function() {
+    var facadeObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var wrap = entry.target;
+        if (wrap.dataset.loaded) return;
+        wrap.dataset.loaded = '1';
+        facadeObs.unobserve(wrap);
+
+        var id = wrap.dataset.vid;
         var poster = wrap.querySelector('.vfacade-poster');
-        if (poster) poster.style.opacity = '0';
-      }, 1500);
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&muted=1&loop=1&background=1';
+        iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;opacity:0;transition:opacity .6s;';
+        iframe.addEventListener('load', function() {
+          iframe.style.opacity = '1';
+          if (poster) poster.style.opacity = '0';
+        });
+        wrap.appendChild(iframe);
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.vfacade[data-vid]').forEach(function(wrap) {
+      facadeObs.observe(wrap);
     });
   });
   </script>
