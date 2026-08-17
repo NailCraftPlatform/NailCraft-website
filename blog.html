@@ -3005,6 +3005,9 @@
       document.getElementById('nc-progress').style.width = (window.scrollY / docH * 100) + '%';
       document.getElementById('nc-totop').classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
+    document.getElementById('nc-totop').addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     // Scroll animations
     var obs = new IntersectionObserver(function(entries) {
