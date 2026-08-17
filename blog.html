@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog – Tips & Tricks voor Nagelstyling | NailCraft Platform</title>
+  <meta name="description" content="Praktische tips van Tabitha Windels: welke frees, freesbitjes, voorbereiding en producten ze gebruikt. Leer van een Belgisch Kampioen.">
+  <meta name="author" content="Tabitha Windels">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; background: #f8f2ff; color: #1a0a2e; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; }
+
+    :root {
+      --light:   #f8f2ff;
+      --accent:  #b590f1;
+      --orange:  #fe9b00;
+      --pink:    #ff1fe3;
+      --pink-light: #fdecfc;
+      --title:   #9c28b1;
+      --dark:    #1a0a2e;
+      --white:   #ffffff;
+      --nc-paars: #9c28b1;
+      --nc-tekst: #2a1a35;
+      --nc-tekst-zacht: #5a4570;
+    }
+
+    /* =============================================
+       PROGRESS BAR
+    ============================================= */
+    #nc-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--pink));
+      z-index: 2000; transition: width .1s linear;
+    }
+
+    /* =============================================
+       NAV
+    ============================================= */
+    .nc-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(248,242,255,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(156,40,177,.1);
+      padding: 0 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px; transition: box-shadow .3s;
+    }
+    .nc-nav.scrolled { box-shadow: 0 4px 24px rgba(156,40,177,.1); }
+    .nc-nav__logo img { height: 44px; width: auto; }
+    .nc-nav__links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nc-nav__links a { font-size: .9rem; font-weight: 500; color: var(--nc-tekst); transition: color .2s; }
+    .nc-nav__links a:hover { color: var(--nc-paars); }
+    .nc-nav__links a.active { color: var(--nc-paars); font-weight: 600; }
+    .nc-nav__cta { background: var(--nc-paars); color: #fff !important; padding: .5rem 1.4rem; border-radius: 50px; font-size: .85rem; font-weight: 600; transition: background .2s; }
+    .nc-nav__cta:hover { background: #7a1e8e !important; color: #fff !important; }
+    .nc-nav__toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nc-nav__toggle span { display: block; width: 24px; height: 2px; background: var(--nc-tekst); border-radius: 2px; transition: all .3s; }
+    .nc-nav__mobile { display: none; position: fixed; top: 70px; left: 0; right: 0; background: #fff; border-bottom: 1px solid rgba(156,40,177,.1); padding: 1.5rem 5vw; flex-direction: column; gap: 1rem; z-index: 999; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    .nc-nav__mobile.open { display: flex; }
+    .nc-nav__mobile a { font-size: 1rem; font-weight: 500; color: var(--nc-tekst); padding: .5rem 0; border-bottom: 1px solid rgba(156,40,177,.08); }
+    .nc-nav__mobile a:last-child { border-bottom: none; color: var(--nc-paars); font-weight: 700; }
+    @media(max-width:900px) { .nc-nav__links { display: none; } .nc-nav__toggle { display: flex; } }
+
+    /* =============================================
+       SCROLL-TO-TOP
+    ============================================= */
+    #nc-totop { position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:#9c28b1; color:#fff; border:none; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(156,40,177,.4); opacity:0; pointer-events:none; transition:opacity .3s,transform .3s; z-index:999; }
+    #nc-totop.visible { opacity:1; pointer-events:auto; }
+    #nc-totop:hover { transform:translateY(-3px); background:#7a1e8e; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .nc-footer { background: #9c28b1; color: rgba(255,255,255,.85); padding: 60px 5vw 30px; font-family: 'DM Sans', sans-serif; }
+    .nc-footer__grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 2rem; }
+    .nc-footer__logo { height: 40px; margin-bottom: 1rem; }
+    .nc-footer__tagline { font-size: .88rem; line-height: 1.7; max-width: 260px; color: rgba(255,255,255,.85); }
+    .nc-footer__col h4 { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 1rem; }
+    .nc-footer__col ul { list-style: none; }
+    .nc-footer__col ul li { margin-bottom: .5rem; }
+    .nc-footer__col ul li a { font-size: .88rem; color: rgba(255,255,255,.65); transition: color .2s; }
+    .nc-footer__col ul li a:hover { color: #fff; }
+    .nc-footer__bottom { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: .8rem; color: rgba(255,255,255,.7); }
+    @media(max-width:768px) {
+      .nc-footer { padding: 32px 5vw 20px; }
+      .nc-footer__grid { display: none; }
+      .nc-footer__mobile { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,.2); margin-bottom: 1rem; }
+      .nc-footer__mobile img { height: 36px; }
+      .nc-footer__mobile p { font-size: .85rem; color: rgba(255,255,255,.85); line-height: 1.6; max-width: 280px; }
+      .nc-footer__mobile-links { display: flex; gap: 1.5rem; justify-content: center; }
+      .nc-footer__mobile-links a { font-size: .88rem; color: rgba(255,255,255,.85); font-weight: 600; }
+      .nc-footer__bottom { flex-direction: column; text-align: center; font-size: .75rem; }
+    }
+    @media(min-width:769px) { .nc-footer__mobile { display: none; } }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--orange), #ff6b00);
+      color: var(--white) !important; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 700;
+      padding: 0.9rem 2rem; border-radius: 100px;
+      letter-spacing: 0.04em;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(254,155,0,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(254,155,0,0.5); }
+    .btn-ghost {
+      display: inline-block; background: transparent;
+      color: var(--title) !important; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      padding: 0.9rem 2rem; border-radius: 100px;
+      letter-spacing: 0.04em;
+      border: 1.5px solid rgba(156,40,177,0.4);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--title); background: rgba(181,144,241,0.12); }
+
+    /* =============================================
+       FADE ANIMATIONS
+    ============================================= */
+    @keyframes bFadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    .b-fade-up { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+    .b-fade-up.vis { opacity:1; transform:none; }
+    .b-fade-up.d1 { transition-delay:.12s; }
+    .b-fade-up.d2 { transition-delay:.24s; }
+    .b-fade-up.d3 { transition-delay:.36s; }
+    .b-fade-up.d4 { transition-delay:.48s; }
+    .b-fade-up.d5 { transition-delay:.6s; }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .blog-hero {
+      position: relative; min-height: 60vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f8f2ff 0%, #fdecfc 55%, #f0e0ff 100%);
+    }
+    .blog-hero__bg {
+      position: absolute; inset: 0;
+      background-image: url("images/Blog/foto's nemen vooraan met gezicht mooi.webp");
+      background-size: cover; background-position: center 20%;
+      opacity: 0.35;
+    }
+    .blog-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(248,242,255,0.93) 0%, rgba(248,242,255,0.75) 50%, rgba(253,236,252,0.2) 100%);
+    }
+    .blog-hero__content {
+      position: relative; z-index: 2;
+      padding: 8rem 2rem 4rem;
+      max-width: 700px;
+      margin-left: clamp(1.5rem, 6vw, 8rem);
+    }
+    .blog-hero__badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(181,144,241,0.15); border: 1px solid rgba(181,144,241,0.5);
+      border-radius: 100px; padding: 0.35rem 1rem;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--title); margin-bottom: 1.5rem;
+      opacity: 0; animation: bFadeUp 0.8s 0.2s forwards;
+    }
+    .blog-hero__badge::before { content: '✦'; font-size: 0.6rem; }
+    .blog-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 700; line-height: 1.1; color: var(--dark);
+      margin-bottom: 1.2rem;
+      opacity: 0; animation: bFadeUp 0.9s 0.4s forwards;
+    }
+    .blog-hero h1 em {
+      font-style: italic;
+      background: linear-gradient(90deg, var(--accent), var(--pink), var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+    @keyframes shimmer { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+    .blog-hero__sub {
+      font-size: clamp(1rem, 2.2vw, 1.15rem); color: #5a3a7e;
+      line-height: 1.65; max-width: 500px; font-weight: 300;
+      opacity: 0; animation: bFadeUp 0.9s 0.6s forwards;
+    }
+    @media(max-width:768px) {
+      .blog-hero { min-height: 55vh; }
+      .blog-hero__content { margin-left: 0; padding: 6rem 1.5rem 3rem; }
+      .blog-hero__bg { background-position: right 20%; }
+    }
+
+    /* =============================================
+       ARTIKEL HUB (kaarten)
+    ============================================= */
+    .artikel-hub {
+      padding: 5rem 5vw;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .artikel-hub__header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--title);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700; color: var(--dark); line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--title); }
+    .section-intro { color: var(--nc-tekst-zacht); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+    /* filter tabs */
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      padding: 0.45rem 1.2rem; border-radius: 100px; border: 1.5px solid rgba(156,40,177,0.25);
+      background: transparent; color: var(--nc-tekst-zacht); font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--nc-paars); color: #fff; border-color: var(--nc-paars);
+    }
+
+    /* cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .artikel-card {
+      background: #fff; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(156,40,177,0.08);
+      transition: transform .3s, box-shadow .3s;
+      display: flex; flex-direction: column;
+    }
+    .artikel-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(156,40,177,0.16); }
+    .artikel-card.binnenkort { opacity: 0.65; pointer-events: none; }
+    .artikel-card__img-wrap { position: relative; overflow: hidden; aspect-ratio: 16/9; }
+    .artikel-card__img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .artikel-card:hover .artikel-card__img-wrap img { transform: scale(1.05); }
+    .artikel-card__cat {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--nc-paars); color: #fff;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.75rem; border-radius: 100px;
+    }
+    .binnenkort-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(254,155,0,0.9); color: #fff;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.75rem; border-radius: 100px;
+    }
+    .artikel-card__body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .artikel-card__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 0.7rem;
+    }
+    .artikel-card__excerpt { font-size: 0.88rem; color: var(--nc-tekst-zacht); line-height: 1.6; flex: 1; margin-bottom: 1.2rem; }
+    .artikel-card__link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.85rem; font-weight: 600; color: var(--nc-paars);
+      transition: gap .2s;
+    }
+    .artikel-card:hover .artikel-card__link { gap: 0.7rem; }
+
+    @media(max-width:640px) {
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+
+    /* =============================================
+       NAGEL STRIP (bewegende banner)
+    ============================================= */
+    .nagel-strip { overflow: hidden; padding: 1.2rem 0; background: #fff; }
+    .nagel-strip--paars { background: linear-gradient(90deg, #f8f2ff, #fdecfc); }
+    .nagel-strip__track {
+      display: flex; width: max-content;
+      gap: 12px; align-items: center;
+    }
+    .nagel-strip__track img {
+      height: 120px; width: auto; border-radius: 10px;
+      flex-shrink: 0; object-fit: cover;
+    }
+    @keyframes scrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes scrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    .strip-left .nagel-strip__track { animation: scrollLeft 30s linear infinite; }
+    .strip-right .nagel-strip__track { animation: scrollRight 32s linear infinite; }
+    @media(max-width:768px) {
+      .nagel-strip__track img { height: 80px; }
+      .strip-left .nagel-strip__track { animation-duration: 20s; }
+      .strip-right .nagel-strip__track { animation-duration: 22s; }
+    }
+
+    /* =============================================
+       ARTIKEL SECTIES
+    ============================================= */
+    .artikel-sectie {
+      padding: 5rem 5vw;
+      max-width: 860px; margin: 0 auto;
+    }
+    .artikel-sectie + .artikel-sectie { padding-top: 2rem; }
+    .artikel-sectie__badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(181,144,241,0.12); border: 1px solid rgba(181,144,241,0.4);
+      border-radius: 100px; padding: 0.3rem 0.9rem;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--title); margin-bottom: 1.2rem;
+    }
+    .artikel-sectie__badge::before { content: '✦'; font-size: 0.6rem; }
+    .artikel-sectie h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 0.5rem;
+    }
+    .artikel-sectie h2 em { font-style: italic; color: var(--title); }
+    .artikel-meta {
+      font-size: 0.8rem; color: var(--nc-tekst-zacht); margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .artikel-meta span { display: flex; align-items: center; gap: 0.35rem; }
+    .artikel-sectie__content p {
+      font-size: 1rem; line-height: 1.8; color: var(--nc-tekst);
+      margin-bottom: 1.4rem;
+    }
+    .artikel-sectie__content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem; font-weight: 700; color: var(--dark);
+      margin: 2.2rem 0 0.9rem;
+    }
+    .artikel-sectie__content h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 700; color: var(--title);
+      margin: 1.5rem 0 0.6rem;
+    }
+    .artikel-sectie__content ul, .artikel-sectie__content ol {
+      padding-left: 1.4rem; margin-bottom: 1.4rem;
+    }
+    .artikel-sectie__content li { font-size: 1rem; line-height: 1.75; color: var(--nc-tekst); margin-bottom: 0.4rem; }
+    .artikel-sectie__content strong { color: var(--dark); font-weight: 600; }
+    .artikel-sectie__content .citaat {
+      border-left: 3px solid var(--accent); padding: 1rem 1.5rem;
+      background: rgba(181,144,241,0.08); border-radius: 0 12px 12px 0;
+      font-size: 1.05rem; font-style: italic; color: #3a1a5e;
+      margin: 2rem 0;
+    }
+    .artikel-hero-img {
+      width: 100%; border-radius: 16px; margin-bottom: 2rem;
+      object-fit: cover; max-height: 420px;
+      box-shadow: 0 8px 32px rgba(156,40,177,0.12);
+    }
+    .artikel-divider {
+      height: 1px; background: linear-gradient(90deg, transparent, rgba(181,144,241,0.3), transparent);
+      margin: 4rem 0;
+    }
+
+    /* bit kaarten */
+    .bit-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem; margin: 2rem 0;
+    }
+    .bit-card {
+      background: #fff; border-radius: 14px; padding: 1.2rem;
+      box-shadow: 0 4px 16px rgba(156,40,177,0.08); text-align: center;
+    }
+    .bit-card img { height: 130px; width: auto; object-fit: contain; margin: 0 auto 1rem; border-radius: 8px; }
+    .bit-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+    .bit-card p { font-size: 0.82rem; color: var(--nc-tekst-zacht); line-height: 1.55; }
+    @media(max-width:600px) { .bit-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* product kaarten */
+    .product-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem; margin: 2rem 0;
+    }
+    .product-card {
+      background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 4px 16px rgba(156,40,177,0.08);
+    }
+    .product-card img { width: 100%; height: 180px; object-fit: cover; }
+    .product-card__body { padding: 1rem; }
+    .product-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+    .product-card p { font-size: 0.82rem; color: var(--nc-tekst-zacht); line-height: 1.5; }
+    @media(max-width:600px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* highlight blok */
+    .highlight-blok {
+      background: linear-gradient(135deg, rgba(181,144,241,0.12), rgba(253,236,252,0.5));
+      border: 1px solid rgba(181,144,241,0.25); border-radius: 16px;
+      padding: 2rem; margin: 2rem 0;
+    }
+    .highlight-blok h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: var(--title); margin-bottom: 0.8rem; }
+    .highlight-blok ul { padding-left: 1.2rem; }
+    .highlight-blok li { font-size: 0.95rem; color: var(--nc-tekst); line-height: 1.7; margin-bottom: 0.3rem; }
+
+    /* fout-kaarten */
+    .fout-kaart {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      background: #fff; border-radius: 14px; padding: 1.4rem;
+      box-shadow: 0 4px 16px rgba(156,40,177,0.07); margin-bottom: 1.2rem;
+    }
+    .fout-nr {
+      min-width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--pink));
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .fout-body h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+    .fout-body p { font-size: 0.92rem; color: var(--nc-tekst-zacht); line-height: 1.65; }
+
+    /* stap kaarten (voorbereiding) */
+    .stap-kaart {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      margin-bottom: 1.4rem;
+    }
+    .stap-nr {
+      min-width: 36px; height: 36px; border-radius: 50%;
+      background: var(--nc-paars); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.9rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .stap-body h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 700; color: var(--dark); margin-bottom: 0.35rem; }
+    .stap-body p { font-size: 0.92rem; color: var(--nc-tekst-zacht); line-height: 1.65; }
+
+    /* PARALLAXY SECTIE TUSSEN ARTIKELS */
+    .parallax-sectie {
+      position: relative; min-height: 300px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .parallax-sectie__bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      background-attachment: fixed;
+      opacity: 0.28;
+    }
+    .parallax-sectie__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(156,40,177,0.7), rgba(253,236,252,0.5));
+    }
+    .parallax-sectie__content {
+      position: relative; z-index: 2; text-align: center; padding: 3rem 2rem;
+    }
+    .parallax-sectie__content p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem); font-style: italic;
+      color: #fff; line-height: 1.35; max-width: 600px;
+    }
+    @media(max-width:768px) { .parallax-sectie__bg { background-attachment: scroll; } }
+
+    /* CTA sectie onderaan */
+    .blog-cta {
+      background: linear-gradient(135deg, #9c28b1, #7a1e8e);
+      padding: 5rem 5vw; text-align: center; color: #fff;
+    }
+    .blog-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem,5vw,3rem); font-weight: 700; margin-bottom: 1rem; }
+    .blog-cta p { font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto 2rem; opacity: 0.9; }
+    .btn-white {
+      display: inline-block; background: #fff; color: var(--nc-paars) !important;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700;
+      padding: 0.9rem 2rem; border-radius: 100px; letter-spacing: 0.04em;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+  </style>
+</head>
+<body>
+
+  <!-- Progress bar -->
+  <div id="nc-progress"></div>
+
+  <!-- Scroll-to-top -->
+  <button id="nc-totop" aria-label="Naar boven">↑</button>
+
+  <!-- ========== NAV ========== -->
+  <nav class="nc-nav" id="nc-nav">
+    <a href="index.html" class="nc-nav__logo">
+      <img src="images/Logo-NailCraft-Platform.png" alt="NailCraft Platform">
+    </a>
+    <ul class="nc-nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="online-opleidingen.html">Online Opleidingen</a></li>
+      <li><a href="salespaginas/the-nailstylist.html">The Nailstylist</a></li>
+      <li><a href="over.html">Over</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="online-opleidingen.html" class="nc-nav__cta">Start vandaag →</a></li>
+    </ul>
+    <button class="nc-nav__toggle" id="nc-toggle" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobiel menu -->
+  <div class="nc-nav__mobile" id="nc-mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="online-opleidingen.html">Online Opleidingen</a>
+    <a href="salespaginas/the-nailstylist.html">The Nailstylist</a>
+    <a href="over.html">Over</a>
+    <a href="blog.html">Blog</a>
+    <a href="online-opleidingen.html">Start vandaag →</a>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="blog-hero">
+    <div class="blog-hero__bg"></div>
+    <div class="blog-hero__overlay"></div>
+    <div class="blog-hero__content">
+      <div class="blog-hero__badge">NailCraft · Blog</div>
+      <h1>Tips & tricks van een <em>echte vakvrouw.</em></h1>
+      <p class="blog-hero__sub">Eerlijke kennis over freesmachines, bitjes, voorbereiding en producten, gedeeld door Tabitha Windels, Belgisch Kampioen French 2016.</p>
+    </div>
+  </section>
+
+  <!-- ========== ARTIKEL HUB ========== -->
+  <div id="nc-article" class="artikel-hub">
+    <div class="artikel-hub__header b-fade-up">
+      <div class="section-label">Alle artikels</div>
+      <h2 class="section-title">Leer van <em>de basis</em></h2>
+      <p class="section-intro">Geen fluff, geen reclamepraat. Gewoon wat ik zelf gebruik, wat werkt en wat niet, na meer dan 14 jaar in het vak.</p>
+    </div>
+
+    <div class="filter-bar b-fade-up d1">
+      <button class="filter-btn active" data-filter="all">Alles</button>
+      <button class="filter-btn" data-filter="materiaal">Materiaal</button>
+      <button class="filter-btn" data-filter="techniek">Techniek</button>
+      <button class="filter-btn" data-filter="tips">Tips</button>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Card 1: Frees -->
+      <a href="#nc-article-frees" class="artikel-card b-fade-up" data-nccat="materiaal">
+        <div class="artikel-card__img-wrap">
+          <img src="images/Blog/marathon vs micro NX welke frees kies jij.webp" alt="Marathon vs Micro NX frees" loading="lazy">
+          <span class="artikel-card__cat">Materiaal</span>
+        </div>
+        <div class="artikel-card__body">
+          <div class="artikel-card__title">Marathon vs Micro NX: welke frees kies jij?</div>
+          <p class="artikel-card__excerpt">Ik gebruik beide in mijn studio en ze hebben elk hun moment. Ik leg je eerlijk uit wanneer ik welke pak en waarom.</p>
+          <span class="artikel-card__link">Lees meer →</span>
+        </div>
+      </a>
+
+      <!-- Card 2: Freesbitjes -->
+      <a href="#nc-article-freesbitjes" class="artikel-card b-fade-up d1" data-nccat="materiaal">
+        <div class="artikel-card__img-wrap">
+          <img src="images/Blog/welke freesbitjes gebruik ik en waarom.webp" alt="Freesbitjes" loading="lazy">
+          <span class="artikel-card__cat">Materiaal</span>
+        </div>
+        <div class="artikel-card__body">
+          <div class="artikel-card__title">Welke freesbitjes gebruik ik en waarom?</div>
+          <p class="artikel-card__excerpt">Van de flame bit tot de carbide fijne bit: elk bitje heeft een functie. Ik laat je zien welke ik wanneer gebruik.</p>
+          <span class="artikel-card__link">Lees meer →</span>
+        </div>
+      </a>
+
+      <!-- Card 3: Voorbereiding -->
+      <a href="#nc-article-voorbereiding" class="artikel-card b-fade-up d2" data-nccat="techniek">
+        <div class="artikel-card__img-wrap">
+          <img src="images/Blog/voorbereiding is alles zo bereid ik een nagel voor.webp" alt="Voorbereiding nagel" loading="lazy">
+          <span class="artikel-card__cat">Techniek</span>
+        </div>
+        <div class="artikel-card__body">
+          <div class="artikel-card__title">Voorbereiding is alles: zo bereid ik een nagel voor</div>
+          <p class="artikel-card__excerpt">De voorbereiding bepaalt hoe lang je werk blijft zitten. Ik loop je stap voor stap door mijn routine.</p>
+          <span class="artikel-card__link">Lees meer →</span>
+        </div>
+      </a>
+
+      <!-- Card 4: 5 fouten -->
+      <a href="#nc-article-fouten" class="artikel-card b-fade-up d3" data-nccat="tips">
+        <div class="artikel-card__img-wrap">
+          <img src="images/Blog/mijn 5 grootste fouten als beginnende nagelstylist.webp" alt="5 grootste fouten" loading="lazy">
+          <span class="artikel-card__cat">Tips</span>
+        </div>
+        <div class="artikel-card__body">
+          <div class="artikel-card__title">Mijn 5 grootste fouten als beginnende nagelstylist</div>
+          <p class="artikel-card__excerpt">Ik heb ze allemaal gemaakt. Zodat jij dat niet hoeft. Eerlijk, concreet en zonder sugarcoating.</p>
+          <span class="artikel-card__link">Lees meer →</span>
+        </div>
+      </a>
+
+      <!-- Card 5: Gel topcoat primer -->
+      <a href="#nc-article-gel" class="artikel-card b-fade-up d4" data-nccat="materiaal">
+        <div class="artikel-card__img-wrap">
+          <img src="images/Blog/welke gel topcoat en primer gebruik ik.webp" alt="Gel topcoat primer" loading="lazy">
+          <span class="artikel-card__cat">Materiaal</span>
+        </div>
+        <div class="artikel-card__body">
+          <div class="artikel-card__title">Welke gel, topcoat en primer gebruik ik?</div>
+          <p class="artikel-card__excerpt">Er zijn honderden producten op de markt. Ik vertel je welke ik zelf dag in dag uit gebruik in mijn nagelstudio.</p>
+          <span class="artikel-card__link">Lees meer →</span>
+        </div>
+      </a>
+
+      <!-- Card 6: BINNENKORT -->
+      <div class="artikel-card binnenkort b-fade-up d5" data-nccat="techniek">
+        <div class="artikel-card__img-wrap">
+          <img src="images/Blog/zo die ik een bijwerking in minder dan 90 min.webp" alt="Bijwerking in 90 minuten" loading="lazy">
+          <span class="artikel-card__cat">Techniek</span>
+          <span class="binnenkort-badge">Binnenkort</span>
+        </div>
+        <div class="artikel-card__body">
+          <div class="artikel-card__title">Zo doe ik een bijwerking in minder dan 90 minuten</div>
+          <p class="artikel-card__excerpt">Mijn complete routine voor een snelle, nette bijwerking zonder in te boeten op kwaliteit.</p>
+          <span class="artikel-card__link" style="opacity:.5;">Binnenkort beschikbaar</span>
+        </div>
+      </div>
+
+      <!-- Card 7: 5 dingen -->
+      <a href="#nc-article-5dingen" class="artikel-card b-fade-up" data-nccat="tips">
+        <div class="artikel-card__img-wrap">
+          <img src="images/Blog/5 dingen die ik niet kan missen in mijn nagelstudio - kopie.webp" alt="5 dingen nagelstudio" loading="lazy">
+          <span class="artikel-card__cat">Tips</span>
+        </div>
+        <div class="artikel-card__body">
+          <div class="artikel-card__title">5 dingen die ik niet kan missen in mijn nagelstudio</div>
+          <p class="artikel-card__excerpt">Als ik morgen opnieuw moest beginnen, dit zijn de 5 producten die ik als eerste zou kopen. Geen fratsen, gewoon wat werkt.</p>
+          <span class="artikel-card__link">Lees meer →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ========== NAGEL STRIP A ========== -->
+  <div class="nagel-strip strip-left">
+    <div class="nagel-strip__track">
+      <!-- set A: nagels.webp, nagels1-nagels9 -->
+      <img src="images/Blog/nagels.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels1.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels2.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels3.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels4.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels5.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels6.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels7.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels8.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels9.webp" alt="" loading="lazy">
+      <!-- duplicate for seamless loop -->
+      <img src="images/Blog/nagels.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels1.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels2.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels3.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels4.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels5.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels6.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels7.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels8.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels9.webp" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ========== ARTIKEL 1: FREES ========== -->
+  <section class="artikel-sectie" id="nc-article-frees">
+    <div class="artikel-sectie__badge">Materiaal</div>
+    <h2>Marathon vs Micro NX: <em>welke frees kies jij?</em></h2>
+    <div class="artikel-meta">
+      <span>✍️ Tabitha Windels</span>
+      <span>📖 5 minuten leestijd</span>
+    </div>
+    <img src="images/Blog/marathon vs micro NX welke frees kies jij.webp" alt="Marathon vs Micro NX frees" class="artikel-hero-img" loading="lazy">
+    <div class="artikel-sectie__content">
+      <p>Ik word er regelmatig naar gevraagd: <strong>welke frees moet ik kopen?</strong> En eerlijk gezegd is het antwoord niet simpel, want het hangt af van wat je doet en in welk stadium van je carrière je zit.</p>
+      <p>In mijn studio werk ik met beide toestellen. De Marathon en de Micro NX hebben elk hun sterke punten, en ik gebruik ze niet door elkaar maar bewust.</p>
+
+      <h3>De Marathon</h3>
+      <p>De Marathon is een krachtpatser. Hij draait tot 35.000 toeren per minuut en dat voel je. Wanneer ik langdurig op producten werk, of wanneer ik stevige acryl moet affrezen, pak ik de Marathon. Hij trilt minder dan je zou verwachten voor zoveel kracht, en de handstukken zijn uitstekend.</p>
+      <p>Het nadeel? Prijs. Een goed Marathon systeem is een investering. Maar als je professioneel werkt, is het dat waard.</p>
+
+      <div class="citaat">"De Marathon is mijn werkezel. Hij draait al jaren mee en heeft nog nooit gefaald op een drukke werkdag."</div>
+
+      <h3>De Micro NX</h3>
+      <p>De Micro NX is compacter, lichter en vriendelijker in gebruik. Zeker voor beginners is dit mijn aanbeveling. Je hebt minder kans om fouten te maken bij lagere toeren, en het toestel is intuïtiever in zijn bediening.</p>
+      <p>Ook voor fijne afwerking en nagelriemwerk gebruik ik de Micro NX liever. De controle is preciezer bij werk dicht bij de huid.</p>
+
+      <div class="highlight-blok">
+        <h4>Samengevat: wanneer gebruik ik wat?</h4>
+        <ul>
+          <li><strong>Marathon:</strong> zwaar freeswerk, lang acryl affrezen, intensieve bijwerkingen</li>
+          <li><strong>Micro NX:</strong> fijne afwerking, nagelriemwerk, beginners, mobiel gebruik</li>
+          <li><strong>Budget beperkt?</strong> Start met de Micro NX en upgrade later naar Marathon</li>
+        </ul>
+      </div>
+
+      <p>Welke je ook kiest: kwaliteit betaalt zich terug. Een goedkoop freestoestel zonder koppel geeft je meer frustratie dan resultaat.</p>
+    </div>
+  </section>
+
+  <div class="artikel-divider"></div>
+
+  <!-- ========== NAGEL STRIP B ========== -->
+  <div class="nagel-strip strip-right nagel-strip--paars">
+    <div class="nagel-strip__track">
+      <!-- set B: nagels10-nagels20, nagels22-nagels23 -->
+      <img src="images/Blog/nagels10.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels11.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels12.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels13.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels14.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels15.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels16.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels17.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels18.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels19.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels20.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels22.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels23.webp" alt="" loading="lazy">
+      <!-- duplicate -->
+      <img src="images/Blog/nagels10.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels11.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels12.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels13.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels14.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels15.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels16.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels17.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels18.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels19.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels20.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels22.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels23.webp" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ========== ARTIKEL 2: FREESBITJES ========== -->
+  <section class="artikel-sectie" id="nc-article-freesbitjes">
+    <div class="artikel-sectie__badge">Materiaal</div>
+    <h2>Welke freesbitjes gebruik ik <em>en waarom?</em></h2>
+    <div class="artikel-meta">
+      <span>✍️ Tabitha Windels</span>
+      <span>📖 6 minuten leestijd</span>
+    </div>
+    <img src="images/Blog/welke freesbitjes gebruik ik en waarom.webp" alt="Freesbitjes overzicht" class="artikel-hero-img" loading="lazy">
+    <div class="artikel-sectie__content">
+      <p>Freesbitjes zijn niet zomaar freesbitjes. Elk bitje heeft een specifieke vorm, korrel en functie. Als je de verkeerde bit op het verkeerde moment gebruikt, beschadig je de nagel of het product.</p>
+      <p>Ik werk al jarenlang met hetzelfde select gezelschap aan bitjes. Hier is een eerlijk overzicht van wat ik gebruik en wanneer.</p>
+
+      <h3>Mijn vaste bitjes</h3>
+      <div class="bit-grid">
+        <div class="bit-card">
+          <img src="images/Blog/flame bit.webp" alt="Flame bit" loading="lazy">
+          <h4>Flame bit</h4>
+          <p>Voor het werken rondom de nagelwal en de zijkanten. De puntsvorm laat me precies werken zonder te branden.</p>
+        </div>
+        <div class="bit-card">
+          <img src="images/Blog/bitbal.webp" alt="Bitbal" loading="lazy">
+          <h4>Bitbal</h4>
+          <p>Mijn go-to voor het verwijderen van de nagelriem en het reinigen van de proximale wal. Zacht maar effectief.</p>
+        </div>
+        <div class="bit-card">
+          <img src="images/Blog/polijstbit mineraalbit.webp" alt="Polijstbit" loading="lazy">
+          <h4>Polijstbit (mineraalbit)</h4>
+          <p>Voor de eindafwerking. Geeft het oppervlak een egale glans zonder het product te beschadigen.</p>
+        </div>
+        <div class="bit-card">
+          <img src="images/Blog/conische carbide bit.webp" alt="Conische carbide bit" loading="lazy">
+          <h4>Conische carbide bit</h4>
+          <p>Krachtig bitje voor het weg-frezen van gel of acryl. Ik gebruik hem altijd bij bijwerkingen.</p>
+        </div>
+        <div class="bit-card">
+          <img src="images/Blog/fijne carbide bit afgeronde top.png" alt="Fijne carbide bit" loading="lazy">
+          <h4>Fijne carbide bit (afgeronde top)</h4>
+          <p>Voor precisiework bij de cuticula. De afgeronde top voorkomt beschadiging van de huid.</p>
+        </div>
+        <div class="bit-card">
+          <img src="images/Blog/fijne carbide bit geel afgeronde top.webp" alt="Fijne carbide bit geel" loading="lazy">
+          <h4>Fijne carbide bit geel</h4>
+          <p>Gele korrel staat voor extra fijn. Gebruik ik voor de laatste verfijning en in gevoelige zones.</p>
+        </div>
+      </div>
+
+      <div class="citaat">"Een goed bitje dat je kent is meer waard dan tien nieuwe die je niet begrijpt."</div>
+
+      <h3>Waar let ik op bij bitjes?</h3>
+      <ul>
+        <li><strong>Hygiëne:</strong> ik reinig en steriliseer elk bitje na elk gebruik</li>
+        <li><strong>Kwaliteit:</strong> goedkope bitjes slijten snel en kunnen ongelijkmatig snijden</li>
+        <li><strong>Passende schacht:</strong> check altijd of de schacht overeenkomt met je handstuk (2,35 mm of 3/32 inch)</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="artikel-divider"></div>
+
+  <!-- ========== NAGEL STRIP C ========== -->
+  <div class="nagel-strip strip-left">
+    <div class="nagel-strip__track">
+      <!-- set C: nagels24, nagels 25-nagels 32 -->
+      <img src="images/Blog/nagels24.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 25.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 26.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 27.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 28.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 29.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 30.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 31.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 32.webp" alt="" loading="lazy">
+      <!-- duplicate -->
+      <img src="images/Blog/nagels24.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 25.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 26.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 27.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 28.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 29.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 30.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 31.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 32.webp" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ========== ARTIKEL 3: VOORBEREIDING ========== -->
+  <section class="artikel-sectie" id="nc-article-voorbereiding">
+    <div class="artikel-sectie__badge">Techniek</div>
+    <h2>Voorbereiding is alles: <em>zo bereid ik een nagel voor</em></h2>
+    <div class="artikel-meta">
+      <span>✍️ Tabitha Windels</span>
+      <span>📖 5 minuten leestijd</span>
+    </div>
+    <img src="images/Blog/voorbereiding is alles zo bereid ik een nagel voor.webp" alt="Voorbereiding nagel" class="artikel-hero-img" loading="lazy">
+    <div class="artikel-sectie__content">
+      <p>De meeste liftingproblemen beginnen niet bij het product of de techniek. Ze beginnen bij een slechte voorbereiding. Dat is de harde waarheid.</p>
+      <p>Na 14 jaar heb ik mijn voorbereidingsroutine helemaal uitgewerkt. Elke stap heeft een reden. Ik sla er geen over, ook niet als ik weinig tijd heb.</p>
+
+      <h3>Mijn stap-voor-stap voorbereiding</h3>
+
+      <div class="stap-kaart">
+        <div class="stap-nr">1</div>
+        <div class="stap-body">
+          <h4>Nagel reinigen</h4>
+          <p>Eerst verwijder ik alle resten van oude lak, gel of acryl. Daarna reinig ik de nagel met een ontvetter om huidvetten en vochtigheid te verwijderen. Dit is de allerbelangrijkste stap.</p>
+        </div>
+      </div>
+      <div class="stap-kaart">
+        <div class="stap-nr">2</div>
+        <div class="stap-body">
+          <h4>Nagelriem terugduwen en verwijderen</h4>
+          <p>Met de bitbal duw ik de nagelriem zacht terug. Losse velletjes verwijder ik voorzichtig. Ik snij nooit in levend weefsel.</p>
+        </div>
+      </div>
+      <div class="stap-kaart">
+        <div class="stap-nr">3</div>
+        <div class="stap-body">
+          <h4>Oppervlak ruwmaken</h4>
+          <p>Met een vijl of de conische carbide bit maak ik het nageloppervlak licht ruw. Dit vergroot het hechtend oppervlak voor het product.</p>
+        </div>
+      </div>
+      <div class="stap-kaart">
+        <div class="stap-nr">4</div>
+        <div class="stap-body">
+          <h4>Stof verwijderen</h4>
+          <p>Na het vijlen borstel ik het stof weg en reinig ik opnieuw met ontvetter. Stof onder het product = gegarandeerde lifting.</p>
+        </div>
+      </div>
+      <div class="stap-kaart">
+        <div class="stap-nr">5</div>
+        <div class="stap-body">
+          <h4>Primer aanbrengen</h4>
+          <p>Ik gebruik een zuurvrije primer. Dun laagje, laten drogen tot mat. Dan pas breng ik het product aan.</p>
+        </div>
+      </div>
+
+      <div class="citaat">"Vijf minuten extra voorbereiding bespaart je twintig minuten probleemoplossing later."</div>
+
+      <p>Is deze routine voor iedere klant hetzelfde? Ja, bijna. Bij sterk zwetende handen of broze nagels pas ik licht aan, maar de basisstappen zijn altijd identiek.</p>
+    </div>
+  </section>
+
+  <div class="artikel-divider"></div>
+
+  <!-- ========== NAGEL STRIP D ========== -->
+  <div class="nagel-strip strip-right nagel-strip--paars">
+    <div class="nagel-strip__track">
+      <!-- set D: nagels 36-nagels 44, nagels 46, nagels 47 -->
+      <img src="images/Blog/nagels 36.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 37.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 38.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 39.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 40.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 41.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 42.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 43.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 44.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 46.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 47.webp" alt="" loading="lazy">
+      <!-- duplicate -->
+      <img src="images/Blog/nagels 36.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 37.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 38.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 39.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 40.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 41.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 42.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 43.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 44.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 46.webp" alt="" loading="lazy">
+      <img src="images/Blog/nagels 47.webp" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ========== ARTIKEL 4: 5 FOUTEN ========== -->
+  <section class="artikel-sectie" id="nc-article-fouten">
+    <div class="artikel-sectie__badge">Tips</div>
+    <h2>Mijn 5 grootste fouten als <em>beginnende nagelstylist</em></h2>
+    <div class="artikel-meta">
+      <span>✍️ Tabitha Windels</span>
+      <span>📖 7 minuten leestijd</span>
+    </div>
+    <img src="images/Blog/mijn 5 grootste fouten als beginnende nagelstylist.webp" alt="5 grootste fouten" class="artikel-hero-img" loading="lazy">
+    <div class="artikel-sectie__content">
+      <p>Iedereen maakt fouten als beginner. Ik ook. En ik heb er mijn deel van gehad. Maar liever dat jij leert van mijn blunders dan dat je ze allemaal zelf uitprobeert.</p>
+      <p>Dit zijn de vijf dingen die ik verkeerd deed in het begin, en wat ik nu anders doe.</p>
+
+      <div class="fout-kaart">
+        <div class="fout-nr">1</div>
+        <div class="fout-body">
+          <h4>Te snel werken</h4>
+          <p>Ik dacht dat snelheid gelijk stond aan expertise. Maar snelheid zonder controle geeft slechte resultaten. Kwaliteit komt eerst, snelheid volgt vanzelf met ervaring.</p>
+        </div>
+      </div>
+      <div class="fout-kaart">
+        <div class="fout-nr">2</div>
+        <div class="fout-body">
+          <h4>Te dikke lagen product aanbrengen</h4>
+          <p>Meer is niet beter. Dikke lagen gel of acryl harden slecht uit en liften sneller. Ik leerde om meerdere dunne lagen te werken met volledig uitharden tussenin.</p>
+        </div>
+      </div>
+      <div class="fout-kaart">
+        <div class="fout-nr">3</div>
+        <div class="fout-body">
+          <h4>De voorbereiding overslaan "als het snel moet"</h4>
+          <p>Als ik weinig tijd had, sloeg ik stappen over. En dan had ik altijd het uur crop die nagel die liftete. Nooit meer. Voorbereiding is heilig.</p>
+        </div>
+      </div>
+      <div class="fout-kaart">
+        <div class="fout-nr">4</div>
+        <div class="fout-body">
+          <h4>Goedkoop materiaal kopen om geld te sparen</h4>
+          <p>Goedkope producten zijn duurder op lange termijn. Slechte adhesie, ongelijkmatige textuur, klanten die terugkomen met problemen. Investeer van bij het begin in kwaliteit.</p>
+        </div>
+      </div>
+      <div class="fout-kaart">
+        <div class="fout-nr">5</div>
+        <div class="fout-body">
+          <h4>Geen grondige opleiding volgen</h4>
+          <p>YouTube-tutorials zijn geen opleiding. Ik leerde pas echt toen ik me serieus liet begeleiden. Een goede basis in anatomie, productkunde en techniek maakt het verschil voor de rest van je carrière.</p>
+        </div>
+      </div>
+
+      <div class="citaat">"Ik heb deze fouten gemaakt zodat jij dat niet hoeft. Maar eerlijk gezegd heb ik ze ook nodig gehad om te worden wie ik nu ben."</div>
+    </div>
+  </section>
+
+  <div class="artikel-divider"></div>
+
+  <!-- ========== ARTIKEL 5: GEL TOPCOAT PRIMER ========== -->
+  <section class="artikel-sectie" id="nc-article-gel">
+    <div class="artikel-sectie__badge">Materiaal</div>
+    <h2>Welke gel, topcoat en primer <em>gebruik ik?</em></h2>
+    <div class="artikel-meta">
+      <span>✍️ Tabitha Windels</span>
+      <span>📖 5 minuten leestijd</span>
+    </div>
+    <img src="images/Blog/welke gel topcoat en primer gebruik ik.webp" alt="Gel topcoat primer producten" class="artikel-hero-img" loading="lazy">
+    <div class="artikel-sectie__content">
+      <p>De markt voor nagelproducten is overweldigend groot. Er zijn honderden merken, tientallen soorten gels en elke week lijkt er iets nieuws te zijn.</p>
+      <p>Ik werk al jaren met een select aantal producten die ik ken door en door. Want dat is mijn tip nummer één: ken je producten. Werk er elke dag mee tot je weet hoe ze reageren bij warmte, vochtigheid en verschillende nageltypes.</p>
+
+      <h3>Primer</h3>
+      <p>Ik werk uitsluitend met een <strong>zuurvrije primer</strong>. Een zuurhoudende primer geeft weliswaar sterke adhesie, maar beschadigt de nagelplaat op lange termijn. Voor professioneel en duurzaam werk is zuurvrij de enige keuze.</p>
+      <p>De primer breng ik aan in één dun laagje en laat ik volledig drogen (ca. 30-60 seconden) voor ik het basisproduct aanbren.</p>
+
+      <h3>Basisgel</h3>
+      <p>De basisgel is de sleutel voor goede adhesie. Ik gebruik een dunvloeibare basisgel die goed in de nagelplaat trekt. Niet te dik, niet te dun. Eén dunne laag, goed uitharden onder de lamp.</p>
+
+      <h3>Opbouwgel of acryl</h3>
+      <p>Voor volume en stevigheid werk ik afhankelijk van de klant met hard gel of acryl. Bij klanten met broze nagels ga ik eerder voor gel, bij klanten die extra sterke nagels willen kies ik soms voor acryl.</p>
+
+      <h3>Topcoat</h3>
+      <p>De topcoat beschermt en geeft glans. Ik gebruik een topcoat met kleurvas en UV-bescherming. Het eindigloze debat over remonteerbare vs. niet-remonteerbare topcoat? Ik kies voor kwaliteit en look boven gemak.</p>
+
+      <div class="highlight-blok">
+        <h4>Mijn boodschap over producten:</h4>
+        <ul>
+          <li>Werk met professionele merken, niet met producten voor thuisgebruik</li>
+          <li>Koop nooit de goedkoopste optie als je resultaat verwacht</li>
+          <li>Leer je producten grondig kennen voor je ze op klanten toepast</li>
+          <li>Bewaar producten correct: koel, droog en weg van direct licht</li>
+        </ul>
+      </div>
+
+      <p>Wil je weten welke producten ik concreet gebruik in mijn studio? In mijn online opleidingen leer je alles stap voor stap, inclusief welke merken en waarom.</p>
+      <div style="margin-top:1.5rem;">
+        <a href="online-opleidingen.html" class="btn-primary">Bekijk de online opleidingen →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="artikel-divider"></div>
+
+  <!-- ========== ARTIKEL 6: 5 DINGEN ========== -->
+  <section class="artikel-sectie" id="nc-article-5dingen">
+    <div class="artikel-sectie__badge">Tips</div>
+    <h2>5 dingen die ik niet kan missen <em>in mijn nagelstudio</em></h2>
+    <div class="artikel-meta">
+      <span>✍️ Tabitha Windels</span>
+      <span>📖 4 minuten leestijd</span>
+    </div>
+    <img src="images/Blog/5 dingen die ik niet kan missen in mijn nagelstudio - kopie.webp" alt="5 dingen nagelstudio" class="artikel-hero-img" loading="lazy">
+    <div class="artikel-sectie__content">
+      <p>Als ik morgen opnieuw moest beginnen met een lege studio, wat zou ik als eerste kopen? Niet de leukste kleurengels. Niet de mooiste display. Dit:</p>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="images/Blog/okay-keukenrol.webp" alt="Keukenrol" loading="lazy">
+          <div class="product-card__body">
+            <h4>Goede keukenrol</h4>
+            <p>Klinkt triviaal, maar de kwaliteit van je keukenrol bepaalt mee je werkcomfort. Ik gebruik Okay keukenrol: stevig, absorberend en niet pluizend.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="images/Blog/staleks pro exclusive.webp" alt="Staleks Pro Exclusive" loading="lazy">
+          <div class="product-card__body">
+            <h4>Staleks Pro Exclusive schaartje</h4>
+            <p>Voor het verwijderen van nagelriemvelletjes. Dit schaartje is het beste dat ik ooit in handen heb gehad. Precies, scherp en ergonomisch.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="images/Blog/micro NX freestoestel.webp" alt="Micro NX freestoestel" loading="lazy">
+          <div class="product-card__body">
+            <h4>Micro NX freestoestel</h4>
+            <p>Mijn dagelijkse werkpaard voor gedetailleerd frees- en nagelriemwerk. Compact, precies en betrouwbaar.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="images/Blog/nagelriemolie borstel frees (1).webp" alt="Nagelriemolie en borstel" loading="lazy">
+          <div class="product-card__body">
+            <h4>Nagelriemolie en stofborstel</h4>
+            <p>Na elk freeswerk breng ik nagelriemolie aan voor verzorging. De stofborstel voor tussendoor reinigen is ook onmisbaar.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>En het vijfde ding? <strong>Goede opleiding.</strong> Zonder de juiste kennis haal je nooit het maximum uit je materiaal, hoe goed het ook is. Dat is de investering die ik het meeste aanbeveel.</p>
+
+      <div class="citaat">"Je kunt de duurste freesmachine kopen, maar zonder kennis is het een duur decoratiestuk."</div>
+
+      <div style="margin-top:1.5rem;">
+        <a href="online-opleidingen.html" class="btn-primary">Start jouw opleiding →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="blog-cta">
+    <h2>Klaar om écht te leren?</h2>
+    <p>De blog geeft je een voorproefje. In de online opleidingen van NailCraft Platform leer je alles van A tot Z, stap voor stap, op jouw tempo.</p>
+    <a href="online-opleidingen.html" class="btn-white">Bekijk de opleidingen →</a>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="nc-footer">
+    <div class="nc-footer__mobile">
+      <img src="images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
+      <p>Online nagelschool voor iedereen die dunne, sterke en duurzame kunstnagels wil leren plaatsen.</p>
+      <div class="nc-footer__mobile-links">
+        <a href="online-opleidingen.html">Online Opleidingen</a>
+        <a href="blog.html">Blog</a>
+      </div>
+    </div>
+    <div class="nc-footer__grid">
+      <div>
+        <img class="nc-footer__logo" src="images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
+        <p class="nc-footer__tagline">Online nagelschool voor iedereen die dunne, sterke, perfecte kunstnagels wil leren plaatsen. 850+ cursisten gingen je voor.</p>
+      </div>
+      <div class="nc-footer__col">
+        <h4>Opleidingen</h4>
+        <ul>
+          <li><a href="salespaginas/manicure-pro.html">Manicure Pro</a></li>
+          <li><a href="salespaginas/easy-nails.html">Easy Nails</a></li>
+          <li><a href="salespaginas/upperforms.html">Upperforms</a></li>
+          <li><a href="salespaginas/babyboom.html">Babyboom</a></li>
+          <li><a href="online-opleidingen.html">Alle cursussen</a></li>
+        </ul>
+      </div>
+      <div class="nc-footer__col">
+        <h4>NailCraft</h4>
+        <ul>
+          <li><a href="over.html">Over Tabitha</a></li>
+          <li><a href="blog.html">Blog & Tips</a></li>
+          <li><a href="salespaginas/the-nailstylist.html">The Nailstylist</a></li>
+          <li><a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="nc-footer__col">
+        <h4>Gratis</h4>
+        <ul>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/startersgids" target="_blank" rel="noopener">Startersgids</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/killercontent" target="_blank" rel="noopener">Killer Content</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/snelheidstraining" target="_blank" rel="noopener">Snelheidstraining</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/veiligaffrezen" target="_blank" rel="noopener">Veilig Affrezen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nc-footer__bottom">
+      <span>© 2026 NailCraft Platform, Tabitha Windels</span>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Nav toggle
+    document.getElementById('nc-toggle').addEventListener('click', function() {
+      document.getElementById('nc-mobile-menu').classList.toggle('open');
+    });
+
+    // Nav scroll + progress + totop
+    window.addEventListener('scroll', function() {
+      document.getElementById('nc-nav').classList.toggle('scrolled', window.scrollY > 20);
+      var docH = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('nc-progress').style.width = (window.scrollY / docH * 100) + '%';
+      document.getElementById('nc-totop').classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    // Scroll animations
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.b-fade-up').forEach(function(el) { obs.observe(el); });
+
+    // Filter cards
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var filter = btn.dataset.filter;
+        document.querySelectorAll('.artikel-card').forEach(function(card) {
+          if (filter === 'all' || card.dataset.nccat === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
