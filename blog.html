@@ -76,6 +76,22 @@
     #nc-totop:hover { transform:translateY(-3px); background:#7a1e8e; }
 
     /* =============================================
+       ARTIKEL QUICK-NAV
+    ============================================= */
+    #nc-qnav { position:fixed; top:70px; left:0; right:0; z-index:998; background:#9c28b1; font-family:'DM Sans',sans-serif; transform:translateY(-100%); opacity:0; transition:transform .3s,opacity .3s; pointer-events:none; }
+    #nc-qnav.nc-qnav--vis { transform:translateY(0); opacity:1; pointer-events:auto; }
+    #nc-qnav__inner { display:flex; align-items:center; justify-content:center; padding:0 5vw; height:42px; }
+    #nc-qnav__btn { background:none; border:none; color:#fff; font-family:'DM Sans',sans-serif; font-size:0.82rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:6px; letter-spacing:0.02em; white-space:nowrap; padding:0; }
+    #nc-qnav__btn .nc-qnav__arrow { font-size:0.7rem; transition:transform .2s; display:inline-block; }
+    #nc-qnav.open #nc-qnav__btn .nc-qnav__arrow { transform:rotate(180deg); }
+    #nc-qnav__drop { position:absolute; top:42px; left:50%; transform:translateX(-50%); background:#fff; border-radius:12px; box-shadow:0 8px 32px rgba(90,40,126,.22); min-width:260px; max-width:92vw; overflow:hidden; display:none; }
+    #nc-qnav.open #nc-qnav__drop { display:block; }
+    #nc-qnav__drop a { display:block; padding:11px 20px; font-size:0.84rem; color:#3d1a5e; text-decoration:none; border-bottom:1px solid rgba(181,144,241,.15); transition:background .15s; }
+    #nc-qnav__drop a:last-child { border-bottom:none; }
+    #nc-qnav__drop a:hover { background:#f8f2ff; color:#9c28b1; }
+    #nc-qnav__drop a .nc-qnav__cat { font-size:0.7rem; color:#b590f1; margin-left:6px; font-weight:400; }
+
+    /* =============================================
        FOOTER
     ============================================= */
     .nc-footer { background: #9c28b1; color: rgba(255,255,255,.85); padding: 60px 5vw 30px; font-family: 'DM Sans', sans-serif; }
@@ -511,6 +527,23 @@
       <span></span><span></span><span></span>
     </button>
   </nav>
+
+  <!-- Artikel quick-nav -->
+  <div id="nc-qnav">
+    <div id="nc-qnav__inner">
+      <button id="nc-qnav__btn" aria-expanded="false">
+        Snel naar artikel <span class="nc-qnav__arrow">▼</span>
+      </button>
+    </div>
+    <div id="nc-qnav__drop">
+      <a href="#nc-article">Marathon vs Micro NX <span class="nc-qnav__cat">Materiaal</span></a>
+      <a href="#nc-article-freesbitjes">Welke freesbitjes? <span class="nc-qnav__cat">Materiaal</span></a>
+      <a href="#nc-article-voorbereiding">Voorbereiding nagel <span class="nc-qnav__cat">Techniek</span></a>
+      <a href="#nc-article-5-fouten">5 fouten als beginner <span class="nc-qnav__cat">Tips</span></a>
+      <a href="#nc-article-gel-topcoat-primer">Gel, topcoat & primer <span class="nc-qnav__cat">Materiaal</span></a>
+      <a href="#nc-article-5-dingen">5 studio-must-haves <span class="nc-qnav__cat">Tips</span></a>
+    </div>
+  </div>
 
   <!-- Mobiel menu -->
   <div class="nc-nav__mobile" id="nc-mobile-menu">
@@ -2998,15 +3031,43 @@
       document.getElementById('nc-mobile-menu').classList.toggle('open');
     });
 
-    // Nav scroll + progress + totop
+    // Nav scroll + progress + totop + quick-nav
+    var qnav = document.getElementById('nc-qnav');
+    var hubBottom = 0;
+    window.addEventListener('load', function() {
+      var hub = document.getElementById('nc-article');
+      if (hub) hubBottom = hub.getBoundingClientRect().top + window.scrollY + 100;
+    });
     window.addEventListener('scroll', function() {
       document.getElementById('nc-nav').classList.toggle('scrolled', window.scrollY > 20);
       var docH = document.documentElement.scrollHeight - window.innerHeight;
       document.getElementById('nc-progress').style.width = (window.scrollY / docH * 100) + '%';
       document.getElementById('nc-totop').classList.toggle('visible', window.scrollY > 400);
+      qnav.classList.toggle('nc-qnav--vis', window.scrollY > (hubBottom || 500));
     }, { passive: true });
     document.getElementById('nc-totop').addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Quick-nav toggle
+    var qnavBtn = document.getElementById('nc-qnav__btn');
+    qnavBtn.addEventListener('click', function() {
+      var open = qnav.classList.toggle('open');
+      qnavBtn.setAttribute('aria-expanded', open);
+    });
+    // Sluit dropdown bij klik op een link
+    document.querySelectorAll('#nc-qnav__drop a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        qnav.classList.remove('open');
+        qnavBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    // Sluit bij klik buiten
+    document.addEventListener('click', function(e) {
+      if (!qnav.contains(e.target)) {
+        qnav.classList.remove('open');
+        qnavBtn.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Scroll animations
