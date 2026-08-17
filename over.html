@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over Tabitha Windels – NailCraft Platform</title>
+  <meta name="description" content="Leer Tabitha Windels kennen: Belgisch Kampioen French 2016, 14 jaar docente, +850 online cursisten begeleid. Ontdek haar verhaal en missie.">
+  <meta name="author" content="Tabitha Windels">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =============================================
+       RESET & GLOBALS
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; background: #f8f2ff; color: #1a0a2e; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; }
+
+    :root {
+      --light:   #f8f2ff;
+      --accent:  #b590f1;
+      --orange:  #fe9b00;
+      --pink:    #ff1fe3;
+      --pink-light: #fdecfc;
+      --title:   #9c28b1;
+      --dark:    #1a0a2e;
+      --white:   #ffffff;
+      --nc-paars: #9c28b1;
+      --nc-tekst: #2a1a35;
+      --nc-tekst-zacht: #5a4570;
+    }
+
+    /* =============================================
+       NAVIGATIE
+    ============================================= */
+    .nc-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(248,242,255,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(156,40,177,.1);
+      padding: 0 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      transition: box-shadow .3s;
+    }
+    .nc-nav.scrolled { box-shadow: 0 4px 24px rgba(156,40,177,.1); }
+    .nc-nav__logo img { height: 44px; width: auto; }
+    .nc-nav__links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nc-nav__links a { font-size: .9rem; font-weight: 500; color: var(--nc-tekst); transition: color .2s; }
+    .nc-nav__links a:hover { color: var(--nc-paars); }
+    .nc-nav__links a.active { color: var(--nc-paars); font-weight: 600; }
+    .nc-nav__cta { background: var(--nc-paars); color: #fff !important; padding: .5rem 1.4rem; border-radius: 50px; font-size: .85rem; font-weight: 600; transition: background .2s; }
+    .nc-nav__cta:hover { background: #7a1e8e !important; color: #fff !important; }
+    .nc-nav__toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nc-nav__toggle span { display: block; width: 24px; height: 2px; background: var(--nc-tekst); border-radius: 2px; transition: all .3s; }
+    .nc-nav__mobile { display: none; position: fixed; top: 70px; left: 0; right: 0; background: #fff; border-bottom: 1px solid rgba(156,40,177,.1); padding: 1.5rem 5vw; flex-direction: column; gap: 1rem; z-index: 999; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    .nc-nav__mobile.open { display: flex; }
+    .nc-nav__mobile a { font-size: 1rem; font-weight: 500; color: var(--nc-tekst); padding: .5rem 0; border-bottom: 1px solid rgba(156,40,177,.08); }
+    .nc-nav__mobile a:last-child { border-bottom: none; color: var(--nc-paars); font-weight: 700; }
+    @media(max-width:900px) { .nc-nav__links { display: none; } .nc-nav__toggle { display: flex; } }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .nc-footer { background: #9c28b1; color: rgba(255,255,255,.85); padding: 60px 5vw 30px; font-family: 'DM Sans', sans-serif; }
+    .nc-footer__grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 2rem; }
+    .nc-footer__logo { height: 40px; margin-bottom: 1rem; }
+    .nc-footer__tagline { font-size: .88rem; line-height: 1.7; max-width: 260px; color: rgba(255,255,255,.85); }
+    .nc-footer__col h4 { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 1rem; }
+    .nc-footer__col ul { list-style: none; }
+    .nc-footer__col ul li { margin-bottom: .5rem; }
+    .nc-footer__col ul li a { font-size: .88rem; color: rgba(255,255,255,.65); transition: color .2s; }
+    .nc-footer__col ul li a:hover { color: #fff; }
+    .nc-footer__bottom { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: .8rem; color: rgba(255,255,255,.7); }
+    @media(max-width:768px) {
+      .nc-footer { padding: 32px 5vw 20px; }
+      .nc-footer__grid { display: none; }
+      .nc-footer__mobile { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,.2); margin-bottom: 1rem; }
+      .nc-footer__mobile img { height: 36px; }
+      .nc-footer__mobile p { font-size: .85rem; color: rgba(255,255,255,.85); line-height: 1.6; max-width: 280px; }
+      .nc-footer__mobile-links { display: flex; gap: 1.5rem; justify-content: center; }
+      .nc-footer__mobile-links a { font-size: .88rem; color: rgba(255,255,255,.85); font-weight: 600; }
+      .nc-footer__bottom { flex-direction: column; text-align: center; font-size: .75rem; }
+    }
+    @media(min-width:769px) { .nc-footer__mobile { display: none; } }
+
+    /* =============================================
+       SCROLL-TO-TOP & PROGRESS
+    ============================================= */
+    #nc-totop { position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:#9c28b1; color:#fff; border:none; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(156,40,177,.4); opacity:0; pointer-events:none; transition:opacity .3s,transform .3s; z-index:999; }
+    #nc-totop.visible { opacity:1; pointer-events:auto; }
+    #nc-totop:hover { transform:translateY(-3px); background:#7a1e8e; }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f8f2ff 0%, #fdecfc 55%, #f0e0ff 100%);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('images/Over/Untitled-design-7.webp');
+      background-size: cover;
+      background-position: right center;
+      opacity: 0.22;
+      transform: scale(1.05);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(248,242,255,0.92) 0%, rgba(248,242,255,0.78) 45%, rgba(253,236,252,0.2) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 7rem 2rem 4rem;
+      max-width: 680px;
+      margin-left: clamp(1.5rem, 6vw, 8rem);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(181,144,241,0.15);
+      border: 1px solid rgba(181,144,241,0.5);
+      border-radius: 100px; padding: 0.35rem 1rem;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--title);
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: ovFadeUp 0.8s 0.2s forwards;
+    }
+    .hero-badge::before { content: '✦'; font-size: 0.6rem; }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700; line-height: 1.05;
+      color: var(--dark); margin-bottom: 1.2rem;
+      opacity: 0; animation: ovFadeUp 0.9s 0.4s forwards;
+    }
+    .hero h1 em {
+      font-style: italic;
+      background: linear-gradient(90deg, var(--accent), var(--pink), var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: ovShimmer 3s linear infinite;
+    }
+    @keyframes ovShimmer { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.15rem); color: #5a3a7e;
+      line-height: 1.65; max-width: 500px; margin-bottom: 2.5rem; font-weight: 300;
+      opacity: 0; animation: ovFadeUp 0.9s 0.6s forwards;
+    }
+    .hero-creds {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.8rem;
+      opacity: 0; animation: ovFadeUp 0.9s 0.8s forwards;
+    }
+    .cred-pill {
+      background: rgba(255,255,255,0.7); border: 1px solid rgba(181,144,241,0.3);
+      border-radius: 8px; padding: 0.5rem 0.9rem; font-size: 0.78rem; color: #3a1a5e;
+      line-height: 1.4;
+    }
+    .cred-pill strong { display: block; color: var(--orange); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.15rem; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; opacity: 0; animation: ovFadeUp 0.9s 1s forwards; }
+
+    /* =============================================
+       SHARED BUTTONS
+    ============================================= */
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--orange), #ff6b00);
+      color: var(--white) !important; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 700;
+      padding: 0.9rem 2rem; border-radius: 100px;
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(254,155,0,0.4); border: none;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(254,155,0,0.5); }
+    .btn-ghost {
+      display: inline-block; background: transparent;
+      color: var(--title) !important; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      padding: 0.9rem 2rem; border-radius: 100px;
+      text-decoration: none; letter-spacing: 0.04em;
+      border: 1.5px solid rgba(156,40,177,0.4);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--title); background: rgba(181,144,241,0.12); }
+    .btn-pink {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--pink), #c400b8);
+      color: var(--white) !important; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 700;
+      padding: 0.9rem 2rem; border-radius: 100px;
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(255,31,227,0.4); border: none;
+    }
+    .btn-pink:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,31,227,0.5); }
+
+    /* =============================================
+       STATS BAR
+    ============================================= */
+    .stats-bar {
+      background: #ffffff;
+      border-top: 1px solid rgba(181,144,241,0.2);
+      border-bottom: 1px solid rgba(181,144,241,0.2);
+      padding: 2rem; display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 2rem 4rem;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--title), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.75rem; color: #8a6aaa; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; }
+
+    /* =============================================
+       SECTION HELPERS
+    ============================================= */
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .section-label::after { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 700;
+      color: var(--title); line-height: 1.15; margin-bottom: 1.5rem;
+    }
+
+    /* =============================================
+       STORY SPLIT
+    ============================================= */
+    .story-section { background: var(--white); }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .story-text p { font-size: 1rem; line-height: 1.8; color: #3a1a5e; margin-bottom: 1.2rem; font-weight: 300; }
+    .story-text p strong { color: var(--title); font-weight: 600; }
+    .story-img-wrap { position: relative; border-radius: 24px; overflow: hidden; }
+    .story-img-wrap img { width: 100%; height: 520px; object-fit: cover; display: block; border-radius: 24px; }
+    .story-img-wrap::before { content: ''; position: absolute; inset: -2px; border-radius: 26px; background: linear-gradient(135deg, var(--accent), var(--pink)); z-index: -1; }
+    .story-quote {
+      background: linear-gradient(135deg, var(--pink-light), var(--light));
+      border-left: 3px solid var(--accent); border-radius: 0 16px 16px 0;
+      padding: 1.4rem 1.6rem; margin: 1.8rem 0;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+      font-style: italic; color: var(--title); line-height: 1.5;
+    }
+
+    /* =============================================
+       PARALLAX SECTIONS
+    ============================================= */
+    .parallax-section { position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden; }
+    .parallax-bg { position: absolute; inset: 0; background-size: cover; background-position: center; background-attachment: fixed; }
+    @media(max-width:768px) {
+      .parallax-bg { background-attachment: scroll; }
+      .parallax-bg.focus-top-left { background-position: right top; }
+      .parallax-bg.focus-top-center { background-position: center 10%; }
+    }
+    .parallax-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(248,242,255,0.88) 0%, rgba(248,242,255,0.7) 50%, rgba(253,236,252,0.45) 100%); }
+    .parallax-content { position: relative; z-index: 2; padding: 4rem 2rem; max-width: 700px; margin-left: clamp(1.5rem, 6vw, 8rem); }
+    .parallax-content .section-label { color: var(--title); }
+    .parallax-content .section-label::after { background: var(--title); }
+    .parallax-content p { color: #4a2a6e; font-size: 1rem; line-height: 1.75; margin-bottom: 1.2rem; font-weight: 300; }
+
+    /* =============================================
+       GALLERY BANNERS
+    ============================================= */
+    .gallery-wrap { overflow: hidden; padding: 1.5rem 0; position: relative; }
+    .gallery-wrap::before, .gallery-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .gallery-wrap.bg-light { background: var(--light); }
+    .gallery-wrap.bg-light::before { background: linear-gradient(to right, var(--light), transparent); }
+    .gallery-wrap.bg-light::after { background: linear-gradient(to left, var(--light), transparent); left: auto; right: 0; }
+    .gallery-wrap.bg-pink { background: var(--pink-light); }
+    .gallery-wrap.bg-pink::before { background: linear-gradient(to right, var(--pink-light), transparent); }
+    .gallery-wrap.bg-pink::after { background: linear-gradient(to left, var(--pink-light), transparent); left: auto; right: 0; }
+    .gallery-track { display: flex; gap: 1rem; width: max-content; }
+    .gallery-track.go-left  { animation: ovScrollLeft  35s linear infinite; }
+    .gallery-track.go-right { animation: ovScrollRight 40s linear infinite; }
+    .gallery-track.go-slow  { animation: ovScrollLeft  52s linear infinite; }
+    .gallery-track img { width: 220px; height: 220px; object-fit: cover; border-radius: 16px; display: block; flex-shrink: 0; transition: transform 0.3s; }
+    .gallery-track img:hover { transform: scale(1.04); }
+    @keyframes ovScrollLeft  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @keyframes ovScrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+    /* =============================================
+       WORK SECTION
+    ============================================= */
+    .work-section { background: var(--pink-light); }
+    .work-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+    .work-img { border-radius: 20px; overflow: hidden; aspect-ratio: 4/5; }
+    .work-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .work-text p { font-size: 1rem; line-height: 1.8; color: #3a1a5e; margin-bottom: 1.2rem; font-weight: 300; }
+    .highlight-box { background: var(--white); border-radius: 16px; padding: 1.4rem 1.6rem; margin: 1.5rem 0; border: 1px solid rgba(181,144,241,0.2); }
+    .highlight-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--title); margin-bottom: 0.4rem; }
+    .highlight-box p { font-size: 0.88rem; color: #666; margin: 0; }
+
+    /* =============================================
+       PODCAST SECTION
+    ============================================= */
+    .podcast-section { background: linear-gradient(135deg, #fcffec 0%, var(--light) 100%); }
+    .podcast-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: center; }
+    .podcast-visual { position: relative; }
+    .podcast-visual img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 20px; display: block; }
+    .podcast-badge { position: absolute; bottom: -1rem; right: -1rem; background: var(--orange); color: var(--white); font-weight: 700; font-size: 0.78rem; padding: 0.7rem 1.1rem; border-radius: 12px; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 6px 20px rgba(254,155,0,0.4); }
+    .podcast-player { margin-top: 1.5rem; border-radius: 16px; overflow: hidden; }
+
+    /* =============================================
+       TIMELINE
+    ============================================= */
+    .timeline-section { background: linear-gradient(135deg, #f8f2ff 0%, #fdecfc 100%); }
+    .timeline { position: relative; padding-left: 2.5rem; margin-top: 3rem; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--pink), rgba(181,144,241,0.1)); }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -2.7rem; top: 0.4rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #f8f2ff; box-shadow: 0 0 0 3px rgba(181,144,241,0.25); }
+    .timeline-year { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; color: var(--orange); text-transform: uppercase; margin-bottom: 0.3rem; }
+    .timeline-item h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--title); margin-bottom: 0.4rem; }
+    .timeline-item p { font-size: 0.9rem; color: #5a3a7e; line-height: 1.65; font-weight: 300; }
+
+    /* =============================================
+       CTA SECTION
+    ============================================= */
+    .cta-section { background: linear-gradient(135deg, var(--dark) 0%, #3d0f6b 100%); text-align: center; padding: 6rem 2rem; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(181,144,241,0.15) 0%, transparent 70%); }
+    .cta-section .cta-inner { position: relative; z-index: 2; }
+    .cta-section .section-label { justify-content: center; color: var(--orange); }
+    .cta-section .section-label::after { display: none; }
+    .cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+    /* =============================================
+       INSTAGRAM STRIP
+    ============================================= */
+    .insta-section { background: var(--white); padding: 4rem 2rem; text-align: center; }
+    .insta-section .section-label { justify-content: center; }
+    .insta-section .section-label::after { display: none; }
+
+    /* =============================================
+       SCROLL ANIMATIONS
+    ============================================= */
+    @keyframes ovFadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .ov-fade-up  { opacity: 0; transform: translateY(32px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+    .ov-fade-left  { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .ov-fade-right { opacity: 0; transform: translateX(32px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+    .ov-fade-up.vis, .ov-fade-left.vis, .ov-fade-right.vis { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+    /* =============================================
+       MOBILE
+    ============================================= */
+    @media(max-width:768px) {
+      .hero-content { margin-left: 0; padding: 5rem 1.5rem 3rem; }
+      .story-grid, .podcast-grid, .work-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .parallax-content { margin-left: 0; }
+      .story-img-wrap img { height: 300px; }
+      .gallery-track img { width: 160px; height: 160px; }
+      .work-img { order: -1; aspect-ratio: 3/2; }
+      .btn-primary, .btn-ghost, .btn-pink { font-size: 0.82rem; padding: 0.75rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress bar -->
+  <div id="nc-progress" style="position:fixed;top:70px;left:0;height:2px;width:0%;background:#9c28b1;z-index:1001;transition:width .25s linear;pointer-events:none;">
+    <span style="position:absolute;right:-8px;top:-9px;font-size:14px;line-height:1;pointer-events:none;">⭐</span>
+  </div>
+
+  <!-- Scroll-to-top -->
+  <button id="nc-totop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Terug naar boven">↑</button>
+
+  <!-- Navigatie -->
+  <nav class="nc-nav" id="nc-nav">
+    <a href="index.html" class="nc-nav__logo">
+      <img src="images/Logo-NailCraft-Platform.png" alt="NailCraft Platform">
+    </a>
+    <ul class="nc-nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="online-opleidingen.html">Online Opleidingen</a></li>
+      <li><a href="salespaginas/the-nailstylist.html">The Nailstylist</a></li>
+      <li><a href="over.html" class="active">Over</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="online-opleidingen.html" class="nc-nav__cta">Start vandaag →</a></li>
+    </ul>
+    <button class="nc-nav__toggle" id="nc-toggle" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobiel menu -->
+  <div class="nc-nav__mobile" id="nc-mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="online-opleidingen.html">Online Opleidingen</a>
+    <a href="salespaginas/the-nailstylist.html">The Nailstylist</a>
+    <a href="over.html">Over</a>
+    <a href="blog.html">Blog</a>
+    <a href="online-opleidingen.html">Start vandaag →</a>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">NailCraft · Over Mij</div>
+      <h1>Hoi, ik ben <em>Tabitha.</em></h1>
+      <p class="hero-sub">Van een klein kamertje bij mijn ouders naar dé nagelexpert met een bloeiend online en offline bedrijf, dit is mijn verhaal.</p>
+      <div class="hero-creds">
+        <div class="cred-pill"><strong>🏆 Kampioen</strong>Belgisch Kampioen French 2016</div>
+        <div class="cred-pill"><strong>🎓 Docente</strong>14 jaar volwassenenonderwijs</div>
+        <div class="cred-pill"><strong>💜 +850</strong>Online cursisten begeleid</div>
+      </div>
+      <div class="hero-btns">
+        <a href="online-opleidingen.html" class="btn-primary">Start jouw opleiding →</a>
+        <a href="#mijn-verhaal" class="btn-ghost">Lees mijn verhaal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS ========== -->
+  <div class="stats-bar">
+    <div class="stat ov-fade-up"><div class="stat-num">14+</div><div class="stat-label">Jaar ervaring</div></div>
+    <div class="stat ov-fade-up d1"><div class="stat-num">850+</div><div class="stat-label">Cursisten online</div></div>
+    <div class="stat ov-fade-up d2"><div class="stat-num">350+</div><div class="stat-label">Live cursisten</div></div>
+    <div class="stat ov-fade-up d3"><div class="stat-num">🏆</div><div class="stat-label">Belgisch kampioen 2016</div></div>
+  </div>
+
+  <!-- ========== VERHAAL DEEL 1 ========== -->
+  <section class="story-section" id="mijn-verhaal">
+    <div class="section-inner">
+      <div class="story-grid">
+        <div class="story-text ov-fade-left">
+          <div class="section-label">Het begin</div>
+          <h2 class="section-title">Van een kamertje bij mijn ouders…</h2>
+          <p>Ik had geen eigen huis. Enkel een klein kamertje bij mijn ouders, maar <strong>wél een droom</strong>: een eigen nagelstudio starten en docent nagelstyling worden.</p>
+          <p>Toen mijn zus het ouderlijk huis uitging en haar kamer vrijkwam, pakte ik die meteen in. Voilà: de allereerste versie van <strong>Nail It</strong> was geboren.</p>
+          <div class="story-quote">"Ik had nog het geld niet om een eigen pand te kopen. Maar nu moest ik wel slagen, van mezelf."</div>
+          <p>Vrienden, familie, mond-tot-mond klanten kwamen langs. Alles voelde als knutselen, maar met volle overgave. Ondertussen werkte ik in een schoonheidsinstituut op een paar kilometer van huis, en een jaar later was ik degene die alle kunstnagels in het salon zette.</p>
+        </div>
+        <div class="story-img-wrap ov-fade-right d2">
+          <img src="images/Over/Foto tabitha van een kamertje bij mijn ouders.webp" alt="Tabitha, het begin" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PARALLAX 1 ========== -->
+  <div class="parallax-section">
+    <div class="parallax-bg focus-top-left" style="background-image: url('images/Over/achtergrond stuk Ik wil alles weten. Maar écht alles..webp');"></div>
+    <div class="parallax-overlay"></div>
+    <div class="parallax-content ov-fade-up">
+      <div class="section-label">Mijn perfectionistische kant</div>
+      <h2 class="section-title">Ik wil alles weten. Maar écht alles.</h2>
+      <p>Maagd horoscoop, wie herkent het? Ik voelde al snel dat ik kennis tekortkwam. Dus dook ik dieper. Ik studeerde voor docent aan de hogeschool, volgde trainingen in België, Nederland, Kiev en Budapest.</p>
+      <p>Vele opleidingen en boeken later kan ik zeggen: ik heb écht veel kennis. Maar ik wil nog steeds meer. Dat zal nooit veranderen.</p>
+    </div>
+  </div>
+
+  <!-- ========== GALERIJ BANNER 1 ========== -->
+  <div class="gallery-wrap bg-light">
+    <div class="gallery-track go-left">
+      <img src="images/Over/nagels.webp"   alt="nagels" loading="lazy">
+      <img src="images/Over/nagels2.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels3.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels4.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels5.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels6.webp"  alt="nagels" loading="lazy">
+      <!-- duplicate for seamless loop -->
+      <img src="images/Over/nagels.webp"   alt="nagels" loading="lazy">
+      <img src="images/Over/nagels2.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels3.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels4.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels5.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels6.webp"  alt="nagels" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ========== VERHAAL DEEL 2: BELGISCH KAMPIOEN ========== -->
+  <section class="work-section">
+    <div class="section-inner">
+      <div class="work-grid">
+        <div class="work-img ov-fade-left">
+          <img src="images/Over/Tabitha Belgisch Kampioen French 2016.webp" alt="Tabitha Belgisch Kampioen French 2016" loading="lazy">
+        </div>
+        <div class="work-text ov-fade-right d2">
+          <div class="section-label">De doorbraak</div>
+          <h2 class="section-title">Belgisch Kampioen French 2016</h2>
+          <p>Het keerpunt? In 2016 nam ik deel aan het Belgisch Kampioenschap French, en <strong>won</strong>. De millimeter-precisie die daarvoor vereist is, dáár kick ik op. Tot op de dag van vandaag.</p>
+          <div class="highlight-box">
+            <h4>💜 Van nail art naar nagelarchitectuur</h4>
+            <p>Nail art was ooit populair. Maar voor mij draait het nu om structuur en sterkte van de natuurlijke nagel. Dat is het fundament van alles.</p>
+          </div>
+          <p>Ondertussen sta ik <strong>14 jaar in het volwassenenonderwijs</strong> en heb ik meer dan 350 cursisten live kunstnagels aangeleerd. En dan kwam corona…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALERIJ BANNER 2 (rechts) ========== -->
+  <div class="gallery-wrap bg-pink">
+    <div class="gallery-track go-right">
+      <img src="images/Over/nagels7.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels8.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels9.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels10.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels11.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/kleurappliactie nagels cateye (2).webp" alt="nagels" loading="lazy">
+      <!-- duplicate -->
+      <img src="images/Over/nagels7.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels8.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels9.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels10.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels11.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/kleurappliactie nagels cateye (2).webp" alt="nagels" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ========== NAILCRAFT ONLINE ========== -->
+  <section style="background: var(--white);">
+    <div class="section-inner">
+      <div class="story-grid">
+        <div class="story-text ov-fade-left">
+          <div class="section-label">NailCraft Platform</div>
+          <h2 class="section-title">Online, voor iedereen.</h2>
+          <p>Corona dwong alles digitaal. Geen paniek: ik zette al mijn kennis om in cursussen, boeken en video's. Ik dook in de wereld van filmen, editen, belichting, spraak… en haalde de beste resultaten. <strong>Zo goed dat al mijn collega's nu mij advies vragen.</strong></p>
+          <div class="story-quote">"Dit mag niet enkel voor mijn live cursisten zijn. Dit moet online voor iedereen beschikbaar zijn."</div>
+          <p>Voilà, zo ben jij hier beland. Al <strong>+850 cursisten</strong> mocht ik online begeleiden. En ik ben nog lang niet klaar. Nog steeds even gepassioneerd. Nog steeds leergierig. Nog steeds overtuigd: <em>education is key.</em></p>
+          <div style="margin-top: 1.5rem;">
+            <a href="online-opleidingen.html" class="btn-primary">Ontdek de opleidingen →</a>
+          </div>
+        </div>
+        <div class="story-img-wrap ov-fade-right d2">
+          <img src="images/Over/tabitha Online — voor iedereen..webp" alt="Tabitha aan het werk aan NailCraft" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PARALLAX 2 ========== -->
+  <div class="parallax-section">
+    <div class="parallax-bg focus-top-center" style="background-image: url('images/Over/achtergrond Nagelstylistes naar een hoger niveau tillen..webp');"></div>
+    <div class="parallax-overlay"></div>
+    <div class="parallax-content ov-fade-up">
+      <div class="section-label">Mijn missie</div>
+      <h2 class="section-title">Nagelstylistes naar een hoger niveau tillen.</h2>
+      <p>Te vaak zie ik onjuiste informatie verspreid worden in de nagelbranche. Mijn achtergrond als leerkracht stelt me in staat die kennis helder en effectief over te brengen.</p>
+      <p>Vakmanschap centraal. Iedere styliste die met trots de mooiste nagels kan creëren. Dat is mijn ambitie. <strong>Elke dag opnieuw.</strong></p>
+    </div>
+  </div>
+
+  <!-- ========== PODCAST ========== -->
+  <section class="podcast-section">
+    <div class="section-inner">
+      <div class="podcast-grid">
+        <div class="podcast-visual ov-fade-left">
+          <img src="images/Over/Mijn verhaal — in mijn eigen woorden..webp" alt="Tabitha podcast" loading="lazy">
+          <div class="podcast-badge">🎙️ Aflevering 1</div>
+        </div>
+        <div class="ov-fade-right d2">
+          <div class="section-label">Voor wie liever luistert</div>
+          <h2 class="section-title">Mijn verhaal, in mijn eigen woorden.</h2>
+          <p style="font-size:1rem; line-height:1.75; color:#3a1a5e; font-weight:300; margin-bottom:1.5rem;">Benieuwd wie ik ben als ondernemer en hoe ik in de nagelwereld terechtkwam? In de allereerste aflevering van mijn podcast vertel ik alles, van mijn eerste stappen in schoonheidsverzorging tot vandaag.</p>
+          <div class="podcast-player">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2170869759%3Fsecret_token%3Ds-LQAbbwBCbG1&color=%23b590f1&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" title="Podcast: Mijn verhaal"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALERIJ BANNER 3 ========== -->
+  <div class="gallery-wrap bg-light">
+    <div class="gallery-track go-slow">
+      <img src="images/Over/nagels12.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels13.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels14.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels15.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels16.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels17.webp" alt="nagels" loading="lazy">
+      <!-- duplicate -->
+      <img src="images/Over/nagels12.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels13.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels14.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels15.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels16.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels17.webp" alt="nagels" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ========== TIJDSLIJN ========== -->
+  <section class="timeline-section">
+    <div class="section-inner">
+      <div class="ov-fade-up">
+        <div class="section-label" style="color:var(--title);">Mijn tijdslijn</div>
+        <h2 class="section-title">18 jaar nagelpassie in een oogopslag.</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item ov-fade-up">
+          <div class="timeline-year">2007</div>
+          <h3>Eerste nagelstudiopleiding</h3>
+          <p>Op mijn 17e volgde ik mijn eerste opleiding tot nagelstylist. Mijn specialisatie begon.</p>
+        </div>
+        <div class="timeline-item ov-fade-up">
+          <div class="timeline-year">2008</div>
+          <h3>Professionele start & studie docent</h3>
+          <p>Verantwoordelijk voor alle kunstnagels in een schoonheidssalon, gecombineerd met een studie tot leerkracht.</p>
+        </div>
+        <div class="timeline-item ov-fade-up">
+          <div class="timeline-year">2011</div>
+          <h3>Trainingen in binnen- en buitenland</h3>
+          <p>België, Nederland, Kiev, Budapest, ik bleef mezelf voortdurend ontwikkelen. Kennisontwikkeling stopt nooit.</p>
+        </div>
+        <div class="timeline-item ov-fade-up">
+          <div class="timeline-year">2016</div>
+          <h3>🏆 Belgisch Kampioen French</h3>
+          <p>Het keerpunt. Millimeter-precisie als kunst. Hier ontdekte ik mijn liefde voor absolute perfectie.</p>
+        </div>
+        <div class="timeline-item ov-fade-up">
+          <div class="timeline-year">2018</div>
+          <h3>Focus op nagelarchitectuur</h3>
+          <p>Van nail art naar de diepte: structuur en sterkte van de natuurlijke nagel. Dit is wat écht telt.</p>
+        </div>
+        <div class="timeline-item ov-fade-up">
+          <div class="timeline-year">2021</div>
+          <h3>NailCraft Platform geboren</h3>
+          <p>Corona dwong alles digitaal, ik zette al mijn kennis om in online cursussen, video's en e-books.</p>
+        </div>
+        <div class="timeline-item ov-fade-up">
+          <div class="timeline-year">2024</div>
+          <h3>Ambassadrice MY WAY</h3>
+          <p>Gekozen voor topkwaliteit: ambassadrice van het merk MY WAY, producten die mijn werk naar een hoger niveau tillen.</p>
+        </div>
+        <div class="timeline-item ov-fade-up">
+          <div class="timeline-year">Nu</div>
+          <h3>+850 online cursisten & groeiend</h3>
+          <p>18 jaar nagelpassie, en nog steeds even gepassioneerd, leergierig, en overtuigd dat education key is.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALERIJ BANNER 4 (rechts) ========== -->
+  <div class="gallery-wrap bg-pink">
+    <div class="gallery-track go-right" style="animation-duration:45s;">
+      <img src="images/Over/nagels18.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels19.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels20.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels22.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels23.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels24.webp" alt="nagels" loading="lazy">
+      <!-- duplicate -->
+      <img src="images/Over/nagels18.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels19.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels20.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels22.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels23.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels24.webp" alt="nagels" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ========== GALERIJ BANNER 5 (links) ========== -->
+  <div class="gallery-wrap bg-light">
+    <div class="gallery-track go-left" style="animation-duration:38s;">
+      <img src="images/Over/nagels3.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels8.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels13.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels17.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels20.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels24.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/kleurappliactie nagels cateye (2).webp" alt="nagels" loading="lazy">
+      <!-- duplicate -->
+      <img src="images/Over/nagels3.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels8.webp"  alt="nagels" loading="lazy">
+      <img src="images/Over/nagels13.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels17.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels20.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/nagels24.webp" alt="nagels" loading="lazy">
+      <img src="images/Over/kleurappliactie nagels cateye (2).webp" alt="nagels" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="section-label ov-fade-up">Klaar om te starten?</div>
+      <h2 class="section-title ov-fade-up" style="color:#fff; max-width:700px; margin:0 auto 1.5rem;">Kom er ook bij. Ik help je het beste uit jezelf én je nagels te halen.</h2>
+      <p class="ov-fade-up d1" style="color:rgba(255,255,255,0.7); font-size:1rem; max-width:480px; margin:0 auto 2.5rem; line-height:1.7; font-weight:300;">Geen dure klassikale opleidingen. Geen losse tips van Instagram. Bewezen nageltechnieken. Online. Op jouw tempo.</p>
+      <div class="cta-btns ov-fade-up d2">
+        <a href="online-opleidingen.html" class="btn-primary">Bekijk de online opleidingen →</a>
+        <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="btn-pink">Volg me op Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INSTAGRAM ========== -->
+  <section class="insta-section">
+    <div class="section-label ov-fade-up">On The Gram</div>
+    <h2 class="section-title ov-fade-up d1" style="color:var(--title); text-align:center; font-size:clamp(1.5rem,3.5vw,2.2rem); margin-bottom:1rem;">Zin om geïnspireerd te worden?</h2>
+    <p class="ov-fade-up d2" style="color:#666; max-width:460px; margin:0 auto 2rem; line-height:1.7; font-size:0.95rem;">Regelmatige content, achter-de-schermen leven en een inkijk in hoe ik mijn onderneming run.</p>
+    <div class="ov-fade-up d3" style="display:flex; flex-direction:column; align-items:center; gap:2rem;">
+      <img src="images/Over/20250829_103918.webp" alt="Tabitha op Instagram" loading="lazy" style="width:240px; max-width:60vw; border-radius:20px; box-shadow:0 12px 40px rgba(181,144,241,0.3);">
+      <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="btn-primary">Ga naar Instagram →</a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="nc-footer">
+    <div class="nc-footer__mobile">
+      <img src="images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
+      <p>Online nagelschool voor iedereen die dunne, sterke en duurzame kunstnagels wil leren plaatsen.</p>
+      <div class="nc-footer__mobile-links">
+        <a href="online-opleidingen.html">Online Opleidingen</a>
+        <a href="blog.html">Blog</a>
+      </div>
+    </div>
+    <div class="nc-footer__grid">
+      <div>
+        <img class="nc-footer__logo" src="images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
+        <p class="nc-footer__tagline">Online nagelschool voor iedereen die dunne, sterke, perfecte kunstnagels wil leren plaatsen. 850+ cursisten gingen je voor.</p>
+      </div>
+      <div class="nc-footer__col">
+        <h4>Opleidingen</h4>
+        <ul>
+          <li><a href="salespaginas/manicure-pro.html">Manicure Pro</a></li>
+          <li><a href="salespaginas/easy-nails.html">Easy Nails</a></li>
+          <li><a href="salespaginas/upperforms.html">Upperforms</a></li>
+          <li><a href="salespaginas/babyboom.html">Babyboom</a></li>
+          <li><a href="online-opleidingen.html">Alle cursussen</a></li>
+        </ul>
+      </div>
+      <div class="nc-footer__col">
+        <h4>NailCraft</h4>
+        <ul>
+          <li><a href="over.html">Over Tabitha</a></li>
+          <li><a href="blog.html">Blog & Tips</a></li>
+          <li><a href="salespaginas/the-nailstylist.html">The Nailstylist</a></li>
+          <li><a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="nc-footer__col">
+        <h4>Gratis</h4>
+        <ul>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/startersgids" target="_blank" rel="noopener">Startersgids</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/killercontent" target="_blank" rel="noopener">Killer Content</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/snelheidstraining" target="_blank" rel="noopener">Snelheidstraining</a></li>
+          <li><a href="https://naillraftplatform.kennis.shop/pay/veiligaffrezen" target="_blank" rel="noopener">Veilig Affrezen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nc-footer__bottom">
+      <span>© 2026 NailCraft Platform, Tabitha Windels</span>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Nav toggle
+    document.getElementById('nc-toggle').addEventListener('click', function() {
+      document.getElementById('nc-mobile-menu').classList.toggle('open');
+    });
+
+    // Nav scroll shadow
+    window.addEventListener('scroll', function() {
+      document.getElementById('nc-nav').classList.toggle('scrolled', window.scrollY > 20);
+      // Progress bar
+      var docH = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('nc-progress').style.width = (window.scrollY / docH * 100) + '%';
+      // Scroll-to-top
+      document.getElementById('nc-totop').classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    // Scroll animations
+    var revObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.ov-fade-up, .ov-fade-left, .ov-fade-right').forEach(function(el) { revObs.observe(el); });
+
+    // Timeline stagger
+    document.querySelectorAll('.timeline-item').forEach(function(el, i) {
+      el.style.transitionDelay = (i * 0.08) + 's';
+    });
+
+    // Hero parallax (desktop only)
+    var heroBg = document.getElementById('heroBg');
+    if (window.innerWidth > 768 && heroBg) {
+      window.addEventListener('scroll', function() {
+        heroBg.style.transform = 'scale(1.05) translateY(' + (window.scrollY * 0.15) + 'px)';
+      }, { passive: true });
+    }
+  </script>
+</body>
+</html>
