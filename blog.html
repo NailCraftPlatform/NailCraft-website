@@ -2869,6 +2869,74 @@
     <a href="online-opleidingen.html" class="btn-white">Bekijk de opleidingen →</a>
   </section>
 
+  <!-- ========== ON THE GRAM ========== -->
+  <style>
+  :root { --nc-pink: #ff1fe3; --nc-rose: #fdecfc; --nc-muted: #7a6585; }
+  .nc-insta-section { background: var(--nc-rose); padding: 4rem 1.5rem; text-align: center; font-family: 'DM Sans', sans-serif; }
+  .nc-insta-inner { max-width: 520px; margin: 0 auto; }
+  .nc-insta-eyebrow { display: inline-flex; align-items: center; gap: 7px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--nc-pink); margin-bottom: 1rem; }
+  .nc-insta-eyebrow svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .nc-insta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2rem); color: #9c28b1; margin-bottom: 0.6rem; }
+  .nc-insta-section p { color: var(--nc-muted); font-size: 0.93rem; line-height: 1.65; margin-bottom: 1.5rem; }
+  .nc-insta-mockup { max-width: 180px; margin: 0 auto 1.8rem; display: block; }
+  .nc-insta-mockup img { width: 100%; display: block; border-radius: 24px; transition: transform 0.2s; }
+  .nc-insta-mockup img:hover { transform: scale(1.03); }
+  .nc-insta-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.88rem; padding: 0.85rem 2rem; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 18px rgba(220,39,67,0.3); }
+  .nc-insta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(220,39,67,0.4); }
+  .nc-insta-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .nc-insta-rev { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .nc-insta-rev.nc-insta-vis { opacity: 1; transform: none; }
+  @media (max-width: 768px) {
+    .nc-insta-section { padding: 3rem 1.2rem; }
+    .nc-insta-mockup { max-width: 120px; }
+    .nc-insta-btn { font-size: 0.70rem !important; padding: 0.65rem 1.4rem !important; box-shadow: none !important; }
+  }
+  </style>
+
+  <section class="nc-insta-section">
+    <div class="nc-insta-inner">
+
+      <div class="nc-insta-eyebrow nc-insta-rev">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        On The Gram
+      </div>
+
+      <h2 class="nc-insta-rev">Volg me op Instagram</h2>
+
+      <p class="nc-insta-rev">Zin om geïnspireerd te worden? Kom er gezellig bij, ik post regelmatig content die je een inkijk geeft in mijn studio, mijn achter-de-schermen leven en hoe ik mijn onderneming run.</p>
+
+      <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="nc-insta-mockup nc-insta-rev" style="text-decoration:none;">
+        <img src="images/Blog/instagram mockup telefoon.webp" alt="Instagram tabitha_nailcraft">
+      </a>
+
+      <a href="https://www.instagram.com/tabitha_nailcraft/" class="nc-insta-btn nc-insta-rev" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        Ga naar Instagram
+      </a>
+
+    </div>
+  </section>
+
+  <script>
+  (function() {
+    var els = document.querySelectorAll('.nc-insta-rev');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('nc-insta-vis'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el) { obs.observe(el); });
+  })();
+  </script>
+
   <!-- ========== FOOTER ========== -->
   <footer class="nc-footer">
     <div class="nc-footer__mobile">
