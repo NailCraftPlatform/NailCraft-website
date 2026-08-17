@@ -903,64 +903,215 @@
   </div>
 
   <!-- ========== ARTIKEL 2: FREESBITJES ========== -->
-  <section class="artikel-sectie" id="nc-article-freesbitjes">
-    <div class="artikel-sectie__badge">Materiaal</div>
-    <h2>Welke freesbitjes gebruik ik <em>en waarom?</em></h2>
-    <div class="artikel-meta">
-      <span>✍️ Tabitha Windels</span>
-      <span>📖 6 minuten leestijd</span>
-    </div>
-    <img src="images/Blog/welke freesbitjes gebruik ik en waarom.webp" alt="Freesbitjes overzicht" class="artikel-hero-img" loading="lazy">
-    <div class="artikel-sectie__content">
-      <p>Freesbitjes zijn niet zomaar freesbitjes. Elk bitje heeft een specifieke vorm, korrel en functie. Als je de verkeerde bit op het verkeerde moment gebruikt, beschadig je de nagel of het product.</p>
-      <p>Ik werk al jarenlang met hetzelfde select gezelschap aan bitjes. Hier is een eerlijk overzicht van wat ik gebruik en wanneer.</p>
+  <!-- BLOK 04b · FREESBITJES -->
+  <style>
+  .nc-b-section { background: #ffffff; padding: 4rem 1.5rem; font-family: 'DM Sans', sans-serif; }
+  .nc-b-inner { max-width: 780px; margin: 0 auto; }
+  .nc-b-tag-row { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; flex-wrap: wrap; }
+  .nc-b-tag { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(181,144,241,0.15); color: #9c28b1; padding: 0.3rem 0.85rem; border-radius: 50px; border: 1px solid rgba(181,144,241,0.3); }
+  .nc-b-date { font-size: 0.78rem; color: #7a6585; }
+  .nc-b-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 5vw, 2.8rem) !important; color: #9c28b1; line-height: 1.2; margin-bottom: 0.8rem; }
+  .nc-b-intro { font-size: 1.05rem; color: #7a6585; line-height: 1.75; font-style: italic; border-left: 3px solid #b590f1; padding-left: 1.1rem; }
+  .nc-b-divider { width: 50px; height: 2px; background: #b590f1; margin: 2rem 0; border-radius: 2px; }
+  .nc-b-h2 { font-family: 'Cormorant Garamond', serif !important; font-size: 1.45rem !important; color: #9c28b1 !important; margin: 2.5rem 0 0.8rem !important; }
+  .nc-b-h3 { font-size: 1rem !important; font-weight: 600 !important; color: #9c28b1 !important; margin: 1.6rem 0 0.4rem !important; }
+  .nc-b-p { font-size: 0.96rem; line-height: 1.8; color: #4a3558; margin-bottom: 0.9rem; }
+  .nc-bit-card { display: flex; gap: 1.2rem; align-items: flex-start; background: #f8f2ff; border: 1px solid rgba(181,144,241,0.2); border-radius: 16px; padding: 1.2rem 1.3rem; margin: 1.6rem 0; }
+  .nc-bit-img-wrap { flex-shrink: 0; width: 80px; height: 80px; border-radius: 12px; overflow: hidden; background: #ffffff; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(181,144,241,0.18); }
+  .nc-bit-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 6px; }
+  .nc-bit-body { flex: 1; min-width: 0; }
+  .nc-bit-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #9c28b1; margin-bottom: 0.35rem; line-height: 1.3; }
+  .nc-bit-desc { font-size: 0.88rem; line-height: 1.65; color: #4a3558; margin: 0; }
+  .nc-color-box { background: linear-gradient(135deg, #fdecfc, #f8f2ff); border: 1px solid rgba(181,144,241,0.25); border-radius: 16px; padding: 1.4rem 1.5rem; margin: 1.8rem 0; }
+  .nc-color-box h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #9c28b1; margin-bottom: 1rem; }
+  .nc-color-row { display: flex; align-items: center; gap: 10px; margin-bottom: 0.55rem; font-size: 0.88rem; color: #4a3558; }
+  .nc-color-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.1); }
+  .nc-zone-box { background: linear-gradient(135deg, #fcffec, #f8f2ff); border: 1px solid rgba(181,144,241,0.2); border-radius: 16px; padding: 1.4rem 1.5rem; margin: 1.2rem 0 1.8rem; }
+  .nc-zone-box h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #9c28b1; margin-bottom: 0.8rem; }
+  .nc-zone-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.6rem; font-size: 0.88rem; color: #4a3558; line-height: 1.5; }
+  .nc-zone-dot { width: 8px; height: 8px; border-radius: 50%; background: #9c28b1; flex-shrink: 0; margin-top: 5px; }
+  .nc-b-cta { background: #9c28b1; border-radius: 16px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; position: relative; overflow: hidden; }
+  .nc-b-cta::before { content: ''; position: absolute; inset: 0; background: url('images/Blog/welke freesbitjes gebruik ik en waarom.webp') center/cover; opacity: 0.07; pointer-events: none; }
+  .nc-b-cta-inner { position: relative; z-index: 1; }
+  .nc-b-cta h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.5rem; }
+  .nc-b-cta p { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-bottom: 1.1rem; line-height: 1.6; }
+  .nc-b-cta-btns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .nc-b-cta-btn { display: inline-block; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 0.8rem 1.7rem; border-radius: 50px; text-decoration: none; transition: transform 0.2s, opacity 0.2s; }
+  .nc-b-cta-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+  .nc-b-cta-btn.primary { background: #fe9b00; color: #fff; }
+  .nc-b-cta-btn.secondary { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.35); }
+  .nc-b-author { display: flex; align-items: center; gap: 1rem; padding: 1.5rem 0; flex-wrap: wrap; }
+  .nc-b-author img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(181,144,241,0.4); }
+  .nc-b-author-name { font-weight: 600; font-size: 0.95rem; color: #9c28b1; margin-bottom: 0.2rem; }
+  .nc-b-author-bio { font-size: 0.83rem; color: #7a6585; line-height: 1.5; }
+  .nc-b-rev { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .nc-b-rev.nc-b-vis { opacity: 1; transform: none; }
+  @media (max-width: 768px) {
+    .nc-b-section { padding: 2.5rem 1rem; }
+    .nc-b-title { font-size: 1.35rem !important; line-height: 1.25 !important; }
+    .nc-bit-card { flex-direction: column; gap: 0.9rem; }
+    .nc-bit-img-wrap { width: 70px; height: 70px; }
+    .nc-b-cta-btn { font-size: 0.70rem !important; padding: 0.65rem 1.4rem !important; box-shadow: none !important; }
+  }
+  </style>
 
-      <h3>Mijn vaste bitjes</h3>
-      <div class="bit-grid">
-        <div class="bit-card">
-          <img src="images/Blog/flame bit.webp" alt="Flame bit" loading="lazy">
-          <h4>Flame bit</h4>
-          <p>Voor het werken rondom de nagelwal en de zijkanten. De puntsvorm laat me precies werken zonder te branden.</p>
+  <div id="nc-article-freesbitjes" class="nc-b-section">
+    <div class="nc-b-inner">
+
+      <div class="nc-b-tag-row nc-b-rev">
+        <span class="nc-b-tag">Freestoestellen &amp; materiaal</span>
+        <span class="nc-b-date">Mei 2026</span>
+      </div>
+
+      <h1 class="nc-b-title nc-b-rev">Welke freesbitjes gebruik ik &amp; waarom</h1>
+
+      <p class="nc-b-intro nc-b-rev">Ik krijg deze vraag véél. Van stylistes die net beginnen, maar ook van mensen die al een tijdje werken en eigenlijk nooit echt hebben stilgestaan bij wat er in hun bitjeshouder zit. Dus ik ga je vandaag gewoon vertellen wat ík gebruik. Zonder omwegen.</p>
+
+      <div class="nc-b-divider nc-b-rev"></div>
+
+      <p class="nc-b-p nc-b-rev">Ik splits het op in twee delen: mijn manicure bitjes, en de bitjes die ik gebruik voor het affrezen en werken op kunstnagelproducten. Want dat zijn twee heel verschillende verhalen.</p>
+
+      <h2 class="nc-b-h2 nc-b-rev">Mijn manicure bitjes</h2>
+
+      <h3 class="nc-b-h3 nc-b-rev">De flame bit, mijn vaste start</h3>
+      <p class="nc-b-p nc-b-rev">Elke set begint voor mij met de flame bit. Die gebruik ik om het eponychium en de nagelriem te reinigen, en om de nagelplaat vrij te maken van pterygium, de velletjes van de nagelriem die op de nagelplaat zijn gaan groeien.</p>
+
+      <div class="nc-bit-card nc-b-rev">
+        <div class="nc-bit-img-wrap">
+          <img src="images/Blog/flame bit.webp" alt="Flame bit">
         </div>
-        <div class="bit-card">
-          <img src="images/Blog/bitbal.webp" alt="Bitbal" loading="lazy">
-          <h4>Bitbal</h4>
-          <p>Mijn go-to voor het verwijderen van de nagelriem en het reinigen van de proximale wal. Zacht maar effectief.</p>
-        </div>
-        <div class="bit-card">
-          <img src="images/Blog/polijstbit mineraalbit.webp" alt="Polijstbit" loading="lazy">
-          <h4>Polijstbit (mineraalbit)</h4>
-          <p>Voor de eindafwerking. Geeft het oppervlak een egale glans zonder het product te beschadigen.</p>
-        </div>
-        <div class="bit-card">
-          <img src="images/Blog/conische carbide bit.webp" alt="Conische carbide bit" loading="lazy">
-          <h4>Conische carbide bit</h4>
-          <p>Krachtig bitje voor het weg-frezen van gel of acryl. Ik gebruik hem altijd bij bijwerkingen.</p>
-        </div>
-        <div class="bit-card">
-          <img src="images/Blog/fijne carbide bit afgeronde top.png" alt="Fijne carbide bit" loading="lazy">
-          <h4>Fijne carbide bit (afgeronde top)</h4>
-          <p>Voor precisiework bij de cuticula. De afgeronde top voorkomt beschadiging van de huid.</p>
-        </div>
-        <div class="bit-card">
-          <img src="images/Blog/fijne carbide bit geel afgeronde top.webp" alt="Fijne carbide bit geel" loading="lazy">
-          <h4>Fijne carbide bit geel</h4>
-          <p>Gele korrel staat voor extra fijn. Gebruik ik voor de laatste verfijning en in gevoelige zones.</p>
+        <div class="nc-bit-body">
+          <p class="nc-bit-name">Flame bit / Diamant vlambit</p>
+          <p class="nc-bit-desc">Waarom is dit zo belangrijk? Omdat huid gelijkstaat aan vet. En vet op je nagelplaat betekent lifting. Punt. Ik werk altijd met een diameter tussen 2 en 2,5 mm, mijn persoonlijke voorkeur is 2,3 mm. Klein genoeg om nauwkeurig te werken, groot genoeg om efficiënt te zijn.</p>
         </div>
       </div>
 
-      <div class="citaat">"Een goed bitje dat je kent is meer waard dan tien nieuwe die je niet begrijpt."</div>
+      <h3 class="nc-b-h3 nc-b-rev">De bitbal, voor die superstrakke afwerking</h3>
+      <p class="nc-b-p nc-b-rev">Na het knippen van de nagelriem kom ik altijd terug met de bitbal. Knippen laat microscopisch kleine kniplijntjes achter op de huid, je ziet ze amper, maar je voelt ze. En je klant ook.</p>
 
-      <h3>Waar let ik op bij bitjes?</h3>
-      <ul>
-        <li><strong>Hygiëne:</strong> ik reinig en steriliseer elk bitje na elk gebruik</li>
-        <li><strong>Kwaliteit:</strong> goedkope bitjes slijten snel en kunnen ongelijkmatig snijden</li>
-        <li><strong>Passende schacht:</strong> check altijd of de schacht overeenkomt met je handstuk (2,35 mm of 3/32 inch)</li>
-      </ul>
+      <div class="nc-bit-card nc-b-rev">
+        <div class="nc-bit-img-wrap">
+          <img src="images/Blog/bitbal.webp" alt="Bitbal">
+        </div>
+        <div class="nc-bit-body">
+          <p class="nc-bit-name">Bitbal / Diamant bolkop</p>
+          <p class="nc-bit-desc">De bitbal egaliseert de huid helemaal glad. Zo krijg je die strakke, verzorgde afwerking waar je als styliste trots op mag zijn. Dat kleine stapje extra, dát zie je terug in het eindresultaat.</p>
+        </div>
+      </div>
+
+      <h3 class="nc-b-h3 nc-b-rev">Het polijstbitje in mineraalstof, voor wie het nodig heeft</h3>
+      <p class="nc-b-p nc-b-rev">Dit bitje gebruik ik niet altijd. Maar ik ben blij dat ik het heb.</p>
+
+      <div class="nc-bit-card nc-b-rev">
+        <div class="nc-bit-img-wrap">
+          <img src="images/Blog/polijstbit mineraalbit.webp" alt="Mineraalstof polijstbitje">
+        </div>
+        <div class="nc-bit-body">
+          <p class="nc-bit-name">Polijstbitje mineraalstof</p>
+          <p class="nc-bit-desc">Bij klanten met extreem gevoelige huid, of rijpere huid die echt heel dun is geworden, wissel ik de bitbal in voor dit bitje. Ze zijn nog zachter, zachter dan zacht. Het nadeel is dat ze minder wegnemen en oppervlakkiger egaliserend werken. Maar bij de juiste klant is dat precies wat je nodig hebt. Je past je werkwijze aan je klant aan, niet andersom.</p>
+        </div>
+      </div>
+
+      <h2 class="nc-b-h2 nc-b-rev">Mijn bitjes voor kunstnagelproducten</h2>
+
+      <h3 class="nc-b-h3 nc-b-rev">De conische carbide bit, voor het affrezen</h3>
+      <p class="nc-b-p nc-b-rev">Dit is mijn werkpaard bij bijwerkingen. Ik gebruik die om mijn oud product te verdunnen tot aan de base coat, of ik laat nog een heel dun laagje zitten, zo'n 10%. Altijd. Je wil de natuurlijke nagel niet onnodig opruwen of belasten met een extra ronde van je bit.</p>
+
+      <div class="nc-bit-card nc-b-rev">
+        <div class="nc-bit-img-wrap">
+          <img src="images/Blog/conische carbide bit.webp" alt="Conische carbide bit">
+        </div>
+        <div class="nc-bit-body">
+          <p class="nc-bit-name">Conische carbide bit</p>
+          <p class="nc-bit-desc">Bij een bijwerking moet je de apex van het uitgegroeid deel wegnemen zodat je opnieuw goed kan opbouwen. Ik werk zelf met een blauwe band. Maar ik adviseer beginners altijd één stap terug: rood voor BIAB, blauw voor hardgels en acrygel. Voor hardere producten mag je iets grover, voor zachter product ga je altijd een kleur terug.</p>
+        </div>
+      </div>
+
+      <p class="nc-b-p nc-b-rev">En dat brengt me meteen bij iets wat ik écht wil uitleggen, want hier gaat het zo vaak mis.</p>
+
+      <div class="nc-color-box nc-b-rev">
+        <h4>De kleurencodes van carbide bitjes</h4>
+        <div class="nc-color-row"><div class="nc-color-dot" style="background:#f5e642;"></div><strong>Geel</strong>, supersoft</div>
+        <div class="nc-color-row"><div class="nc-color-dot" style="background:#e8372a;"></div><strong>Rood</strong>, soft</div>
+        <div class="nc-color-row"><div class="nc-color-dot" style="background:#2563eb;"></div><strong>Blauw</strong>, medium</div>
+        <div class="nc-color-row"><div class="nc-color-dot" style="background:#7c3aed;"></div><strong>Paars</strong>, grof</div>
+        <div class="nc-color-row"><div class="nc-color-dot" style="background:#16a34a;"></div><strong>Groen</strong>, grof</div>
+        <div class="nc-color-row"><div class="nc-color-dot" style="background:#1a1a1a;"></div><strong>Zwart</strong>, heel grof</div>
+      </div>
+
+      <p class="nc-b-p nc-b-rev">Maar er is nog iets wat de meeste mensen niet weten, en dit is goud waard. De grofheid van een bitje is niet overal hetzelfde.</p>
+
+      <div class="nc-zone-box nc-b-rev">
+        <h4>De drie zones van je bit</h4>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>De buik</strong>, dit is de echte kleurcode-grofheid van het bitje. Een blauw bitje = medium in de buik.</div></div>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>De wang</strong> (het deel boven de buik), is altijd één stap fijner. Bij een blauw bitje is de wang dus eigenlijk rood.</div></div>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>De punt</strong>, is nog een stap fijner. Bij een blauw bitje is de punt dus geel, supersoft.</div></div>
+      </div>
+
+      <p class="nc-b-p nc-b-rev">Dat betekent dat je door simpelweg de <strong>positie van je bit aan te passen</strong>, automatisch met een andere grofheid werkt op de nagel. Dát is wat ik bedoel met een vaste techniek hebben. Kennis van je bit én kennis van de zones op de nagel, dáár zit het verschil tussen werken met of zonder controle.</p>
+
+      <h3 class="nc-b-h3 nc-b-rev">De fijne carbide bit voor de concave, verfijning met een reden</h3>
+
+      <div class="nc-bit-card nc-b-rev">
+        <div class="nc-bit-img-wrap">
+          <img src="images/Blog/fijne carbide bit afgeronde top.png" alt="Uitfreesbitje afgeronde top">
+        </div>
+        <div class="nc-bit-body">
+          <p class="nc-bit-name">Fijne carbide bit, afgeronde top</p>
+          <p class="nc-bit-desc">Voor het uitfrezen van de concave gebruik ik een fijne carbide bit met een afgeronde punt. Door die afronding heb je minder risico om de huid te verhitten of per ongeluk aan te raken, de vorm geeft je een ingebouwde veiligheid. Frees de nagel nooit dunner dan de dikte van een bankkaart. Dat is je grens. Heb je een langere nagel, dan gebruik je meer de buik en werk je sneller. Kortere nagel = meer punt = fijner.</p>
+        </div>
+      </div>
+
+      <h3 class="nc-b-h3 nc-b-rev">De carbide bit met geel bandje, mijn afwerkingsgeheim</h3>
+
+      <div class="nc-bit-card nc-b-rev">
+        <div class="nc-bit-img-wrap">
+          <img src="images/Blog/fijne carbide bit geel afgeronde top.webp" alt="Carbide bit geel nagelriem">
+        </div>
+        <div class="nc-bit-body">
+          <p class="nc-bit-name">Carbide bit geel, nagelriem &amp; nagelwallen</p>
+          <p class="nc-bit-desc">Als ik werk met upperforms kan ik zo strak aan de nagelriemen werken tijdens het plaatsen dat ik deze stap overslaan. Maar twijfel ik? Dan pak ik hem toch. Een geel bandje langs de nagelriem en nagelwallen geeft me die ultieme strakke afwerking. Voor beginners die met upperforms werken: gebruik dit bitje altijd. Bouw je free hand op in de easy nails techniek, dan werk je die randen al nauwkeurig af tijdens het plaatsen, dan is dit bitje overbodig.</p>
+        </div>
+      </div>
+
+      <div class="nc-b-divider nc-b-rev" style="margin-top:2.5rem;"></div>
+
+      <h2 class="nc-b-h2 nc-b-rev">Mijn conclusie</h2>
+      <p class="nc-b-p nc-b-rev">Weet wat je in je hand houdt. Weet wat de kleur betekent. Weet welk deel van het bitje je gebruikt op welke zone van de nagel. Als je dát onder de knie hebt, werk je sneller, nauwkeuriger én veiliger. En dat merk je, in je werk én bij je klant.</p>
+
+      <div class="nc-b-cta nc-b-rev">
+        <div class="nc-b-cta-inner">
+          <h4>Wil je dit volledig correct leren toepassen?</h4>
+          <p>In de Refill Removal Pro cursus leer je stap voor stap hoe je een bijwerking doet met de juiste bitjes, de juiste techniek en zonder de natuurlijke nagel te belasten.</p>
+          <div class="nc-b-cta-btns">
+            <a href="https://nailcraft.be/kunstnagels-affrezen/" class="nc-b-cta-btn primary">Meer info over de cursus</a>
+            <a href="https://naillraftplatform.kennis.shop/pay/refillremovalpro" class="nc-b-cta-btn secondary">Direct inschrijven</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nc-b-author nc-b-rev">
+        <img src="images/Over/Mijn verhaal — in mijn eigen woorden..webp" alt="Tabitha">
+        <div>
+          <p class="nc-b-author-name">Tabitha</p>
+          <p class="nc-b-author-bio">Nagelstyliste met 18+ jaar ervaring. Eigenaar van Nagelstudio Nailit en Nailcraft online opleidingen.</p>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
 
-  <div class="artikel-divider"></div>
+  <script>
+  (function() {
+    var els = document.querySelectorAll('#nc-article-freesbitjes .nc-b-rev');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('nc-b-vis'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function(el) { obs.observe(el); });
+  })();
+  </script>
 
   <!-- ========== NAGEL STRIP C ========== -->
   <div class="nagel-strip strip-left">
