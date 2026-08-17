@@ -471,14 +471,19 @@
     }
     .blog-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem,5vw,3rem); font-weight: 700; margin-bottom: 1rem; }
     .blog-cta p { font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto 2rem; opacity: 0.9; }
+    @keyframes btn-pulse {
+      0%, 100% { box-shadow: 0 4px 16px rgba(0,0,0,0.2), 0 0 0 0 rgba(255,255,255,0.55); }
+      50%       { box-shadow: 0 4px 24px rgba(0,0,0,0.25), 0 0 0 14px rgba(255,255,255,0); }
+    }
     .btn-white {
       display: inline-block; background: #fff; color: var(--nc-paars) !important;
       font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700;
       padding: 0.9rem 2rem; border-radius: 100px; letter-spacing: 0.04em;
       transition: transform .2s, box-shadow .2s;
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      animation: btn-pulse 2.2s ease-in-out infinite;
     }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); animation: none; }
   </style>
 </head>
 <body>
