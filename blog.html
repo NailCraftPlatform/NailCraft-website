@@ -1142,63 +1142,500 @@
   </div>
 
   <!-- ========== ARTIKEL 3: VOORBEREIDING ========== -->
-  <section class="artikel-sectie" id="nc-article-voorbereiding">
-    <div class="artikel-sectie__badge">Techniek</div>
-    <h2>Voorbereiding is alles: <em>zo bereid ik een nagel voor</em></h2>
-    <div class="artikel-meta">
-      <span>✍️ Tabitha Windels</span>
-      <span>📖 5 minuten leestijd</span>
+  <!-- BLOK 04d · VOORBEREIDING IS ALLES -->
+  <style>
+  #nc-article-voorbereiding {
+    font-family: 'DM Sans', sans-serif;
+    color: #2a1a35;
+    background: #ffffff;
+    padding: 0 0 4rem;
+  }
+  #nc-article-voorbereiding .nc-b-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 0;
+  }
+  #nc-article-voorbereiding .nc-b-tag-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  #nc-article-voorbereiding .nc-b-tag {
+    display: inline-block;
+    background: #9c28b1;
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.8rem;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  #nc-article-voorbereiding .nc-b-date {
+    font-size: 0.78rem;
+    color: #7a6585;
+    font-family: 'DM Sans', sans-serif;
+  }
+  #nc-article-voorbereiding .nc-b-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+    font-weight: 700;
+    color: #9c28b1;
+    line-height: 1.2;
+    margin: 0 0 1.4rem;
+  }
+  #nc-article-voorbereiding .nc-b-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.08rem;
+    color: #2a1a35;
+    border-left: 3px solid #b590f1;
+    padding-left: 1.2rem;
+    margin: 0 0 1.8rem;
+    line-height: 1.75;
+  }
+  #nc-article-voorbereiding .nc-b-divider {
+    border: none;
+    border-top: 1px solid rgba(181,144,241,0.3);
+    margin: 0.5rem 0 2.5rem;
+  }
+  #nc-article-voorbereiding .nc-b-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    font-weight: 700;
+    color: #9c28b1;
+    margin: 3rem 0 1rem;
+    line-height: 1.25;
+  }
+  #nc-article-voorbereiding .nc-b-h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #2a1a35;
+    margin: 1.8rem 0 0.6rem;
+  }
+  #nc-article-voorbereiding .nc-b-p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #2a1a35;
+    margin: 0 0 1.1rem;
+  }
+  #nc-article-voorbereiding .nc-b-p strong { color: #9c28b1; font-weight: 600; }
+  #nc-article-voorbereiding .nc-zone-box {
+    background: linear-gradient(135deg, #fcffec 0%, #f8f2ff 100%);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    margin: 1.2rem 0 1.8rem;
+    border: 1px solid rgba(181,144,241,0.18);
+  }
+  #nc-article-voorbereiding .nc-zone-box h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #7a6585;
+    margin: 0 0 1rem;
+  }
+  #nc-article-voorbereiding .nc-zone-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  #nc-article-voorbereiding .nc-zone-item:last-child { margin-bottom: 0; }
+  #nc-article-voorbereiding .nc-zone-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #9c28b1;
+    flex-shrink: 0;
+    margin-top: 0.42rem;
+  }
+  #nc-article-voorbereiding .nc-zone-item div {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: #2a1a35;
+  }
+  #nc-article-voorbereiding .nc-zone-item div strong { color: #9c28b1; }
+  #nc-article-voorbereiding .nc-color-box {
+    background: linear-gradient(135deg, #fdecfc 0%, #f8f2ff 100%);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    margin: 1.2rem 0 1.8rem;
+    border: 1px solid rgba(181,144,241,0.18);
+  }
+  #nc-article-voorbereiding .nc-color-box h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #7a6585;
+    margin: 0 0 1rem;
+  }
+  #nc-article-voorbereiding .nc-color-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    color: #2a1a35;
+  }
+  #nc-article-voorbereiding .nc-color-row:last-child { margin-bottom: 0; }
+  #nc-article-voorbereiding .nc-color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.28rem;
+  }
+  #nc-article-voorbereiding .nc-color-row strong { color: #9c28b1; }
+  #nc-article-voorbereiding .nc-step-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.4rem;
+  }
+  #nc-article-voorbereiding .nc-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #9c28b1;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    flex-shrink: 0;
+  }
+  #nc-article-voorbereiding .nc-step-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #2a1a35;
+  }
+  #nc-article-voorbereiding .nc-b-cta {
+    background: linear-gradient(135deg, #6a0dad 0%, #9c28b1 100%);
+    border-radius: 20px;
+    margin: 2.5rem 0;
+    overflow: hidden;
+  }
+  #nc-article-voorbereiding .nc-b-cta-inner {
+    padding: 2rem;
+    color: #fff;
+  }
+  #nc-article-voorbereiding .nc-b-cta-inner h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.6rem;
+    line-height: 1.3;
+  }
+  #nc-article-voorbereiding .nc-b-cta-inner p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.93rem;
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 1.4rem;
+    line-height: 1.65;
+  }
+  #nc-article-voorbereiding .nc-b-cta-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+  #nc-article-voorbereiding .nc-b-cta-btn {
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 0.65rem 1.4rem;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  #nc-article-voorbereiding .nc-b-cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  #nc-article-voorbereiding .nc-b-cta-btn.primary { background: #fe9b00; color: #fff; }
+  #nc-article-voorbereiding .nc-b-cta-btn.secondary {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.55);
+  }
+  #nc-article-voorbereiding .nc-b-author {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(181,144,241,0.25);
+  }
+  #nc-article-voorbereiding .nc-b-author img {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid #b590f1;
+  }
+  #nc-article-voorbereiding .nc-b-author-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #9c28b1;
+    margin: 0 0 0.2rem;
+  }
+  #nc-article-voorbereiding .nc-b-author-bio {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: #7a6585;
+    margin: 0;
+    line-height: 1.5;
+  }
+  #nc-article-voorbereiding .nc-b-rev {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  #nc-article-voorbereiding .nc-b-vis {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (max-width: 600px) {
+    #nc-article-voorbereiding .nc-b-inner { padding: 2.5rem 1rem 0; }
+    #nc-article-voorbereiding .nc-b-cta-inner { padding: 1.5rem 1.2rem; }
+    #nc-article-voorbereiding .nc-b-cta-btns { flex-direction: column; }
+    #nc-article-voorbereiding .nc-b-cta-btn { text-align: center; }
+  }
+  </style>
+
+  <div id="nc-article-voorbereiding" class="nc-b-section">
+    <div class="nc-b-inner">
+
+      <div class="nc-b-tag-row nc-b-rev">
+        <span class="nc-b-tag">Technieken &amp; werkproces</span>
+        <span class="nc-b-date">Mei 2026</span>
+      </div>
+
+      <h1 class="nc-b-title nc-b-rev">Voorbereiding is alles: zo bereid ik een nagel voor</h1>
+
+      <p class="nc-b-intro nc-b-rev">
+        Stap voor stap hoe mijn manicure-voorbereiding eruitziet, en waarom dit het verschil maakt voor hechting.
+      </p>
+
+      <hr class="nc-b-divider nc-b-rev">
+
+      <p class="nc-b-p nc-b-rev">
+        Ik heb in mijn carrière al meer sets gezien dan ik kan tellen. En als ik één ding weet, is het dit: de meeste problemen met hechting beginnen niet bij het product. Ze beginnen vijf stappen eerder, bij de voorbereiding.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        Een goede set start niet met gel. Hij start met een nagelplaat die klaar is om iets op te dragen. En daar zit precies het verschil tussen een set die drie weken mooi blijft zitten en een set die na enkele dagen begint te liften. In sommige gevallen zie je al onmiddellijk lifting aan de randen, aan de nagelriem en de nagelwallen.
+      </p>
+
+      <h2 class="nc-b-h2 nc-b-rev">De manicure is geen bijzaak</h2>
+
+      <p class="nc-b-p nc-b-rev">
+        Ik zie voorbereiding nog te vaak behandeld worden als iets dat snel moet gaan. Even bijwerken, en dan door. Maar de manicure is de fundering. En een fundering doe je niet snel. Denk aan een huis bouwen: de vloerplaat moet goed zijn en stevig. Als je een huis op zandgrond gaat bouwen zal die scheuren en in elkaar storten. Net hetzelfde bij een kunstnagel.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        Alles wat ik hieronder beschrijf, doe ik in vaste volgorde. Die volgorde is niet willekeurig. Elke stap bouwt voort op de vorige.
+      </p>
+
+      <div class="nc-zone-box nc-b-rev">
+        <h4>De vaste volgorde</h4>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>Stap 1</strong>, Verwijder de apex en egaliseer het oppervlak</div></div>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>Stap 2</strong>, Duw de nagelriem terug</div></div>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>Stap 3</strong>, Verwijder pterygium</div></div>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>Stap 4</strong>, Reinig het eponychium</div></div>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>Stap 5</strong>, Knip en verzorg de nagelriem</div></div>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>Stap 6</strong>, Reinig de nagelriem met water</div></div>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>Stap 7</strong>, Onvet de nagelplaat met cleanser</div></div>
+        <div class="nc-zone-item"><div class="nc-zone-dot"></div><div><strong>Stap 8</strong>, Primer (voor wie het nodig heeft)</div></div>
+      </div>
+
+      <h2 class="nc-b-h2 nc-b-rev">De stappen in detail</h2>
+
+      <div class="nc-step-label nc-b-rev">
+        <span class="nc-step-num">1</span>
+        <span class="nc-step-title">Verwijder de apex van de vorige set en egaliseer het oppervlak</span>
+      </div>
+      <p class="nc-b-p nc-b-rev">
+        Voordat ik begin met mijn eigenlijke manicure moet het vorige product verdund worden. Niet volledig verwijderen. Want dan belasten we de natuurlijke nagel opnieuw. Je laat sowieso de base coat zitten en graag nog 10% van het oude product, zo voorkom je dat je meerdere keren hetzelfde deel van de natuurlijke nagel gaat opruwen en dus dun gaat maken.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        De apex moet je wel volledig verwijderen, omdat we die opnieuw op de juiste plaats moeten kunnen opbouwen.
+      </p>
+
+      <div class="nc-color-box nc-b-rev">
+        <h4>Bijwerking of nieuwe klant?</h4>
+        <div class="nc-color-row">
+          <div class="nc-color-dot" style="background:#b590f1;"></div>
+          <div><strong>Bijwerking</strong>, Neem het product terug met het freestoestel tot vlak boven de base coat. Laat altijd een dun laagje zitten, zo'n tien procent.</div>
+        </div>
+        <div class="nc-color-row">
+          <div class="nc-color-dot" style="background:#fcffec; border: 1px solid rgba(181,144,241,0.4);"></div>
+          <div><strong>Nieuwe klant of geen kunstnagels</strong>, Start direct met de manicure. Heeft ze nagellak? Verwijder die eerst met nagellakremover zonder aceton. Ruw dan de nagelplaat zacht op met een handvijl, minimaal 2 mm weg van de nagelriem, want die zone behandel je in stap 2.</div>
+        </div>
+      </div>
+
+      <div class="nc-step-label nc-b-rev">
+        <span class="nc-step-num">2</span>
+        <span class="nc-step-title">Duw de nagelriem terug</span>
+      </div>
+      <p class="nc-b-p nc-b-rev">
+        Na het verwijderen van resten duw ik de nagelriem voorzichtig terug. Dit doe ik zacht, nooit met kracht. Het doel is om de nagelplaat zo veel mogelijk bloot te leggen en de nagelriem in positie te brengen voor de volgende stap.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        Ik gebruik hiervoor een houten of metalen pusher, afhankelijk van hoe gevoelig de huid van de klant is en hoe die aankleeft. Pas je tools aan op je klant, niet op waarmee jij zelf wil werken.
+      </p>
+
+      <div class="nc-step-label nc-b-rev">
+        <span class="nc-step-num">3</span>
+        <span class="nc-step-title">Verwijder pterygium</span>
+      </div>
+      <p class="nc-b-p nc-b-rev">
+        Pterygium zijn de huidcelletjes van de nagelriem die op de nagelplaat zijn gaan groeien. Dat is huid. En huid op de nagelplaat betekent vet. En vet betekent lifting.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        Ik verwijder pterygium altijd met mijn flame bit op het freestoestel. Die bit geef ik de voorkeur boven een vijl, omdat hij preciezer werkt op de nagelplaat zelf en minder kans geeft op beschadiging.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        Werk je met een vijl? Zorg dat je weet wat je doet. Dit is geen stap om te haasten en mag je niet te agressief aanpakken. De nagel is op die zone het dunst en je moet dus uiterst voorzichtig werken aan de nagelriem en lanula.
+      </p>
+
+      <div class="nc-step-label nc-b-rev">
+        <span class="nc-step-num">4</span>
+        <span class="nc-step-title">Reinig het eponychium (nagelriem)</span>
+      </div>
+      <p class="nc-b-p nc-b-rev">
+        Als het pterygium verwijderd is van de nagelplaat, verander ik de positie van mijn flame bit en ga ik de onderkant van de nagelriem zelf reinigen, links en rechts. Je verandert de stand van je bitje en ook de rotatie om de beide kanten te reinigen.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        In deze stap neem ik velletjes weg die onder de nagelriem zitten en zorg ik ervoor dat ik heel zuiver zal kunnen knippen en dat er me niets in de weg zal staan. Dit is een super belangrijke stap. Als je deze mist, kan je niet zuiver knippen en maak je mogelijk wondjes met je schaartje omdat je vast komt te zitten aan de onderkant van de nagelriem.
+      </p>
+
+      <div class="nc-step-label nc-b-rev">
+        <span class="nc-step-num">5</span>
+        <span class="nc-step-title">Knip en verzorg de nagelriem</span>
+      </div>
+      <p class="nc-b-p nc-b-rev">
+        Als de nagelriem is teruggeduwd, het pterygium is verwijderd en het eponychium is gereinigd, knip ik de nagelriem bij. Alleen wat echt los zit of te ver uitgroeit. Ik knip nooit in gezonde, aangehechte huid.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        Na het knippen kom ik altijd terug met mijn bitbal om de huid te egaliseren. Knippen laat microscopisch kleine snijranden achter. De bitbal maakt die glad. Het resultaat is die strakke, verzorgde afwerking die je op de foto ziet.
+      </p>
+
+      <div class="nc-step-label nc-b-rev">
+        <span class="nc-step-num">6</span>
+        <span class="nc-step-title">Reinig de nagelriem met water</span>
+      </div>
+      <p class="nc-b-p nc-b-rev">
+        Dit is een stap die mensen soms vreemd vinden, maar het is een bewuste keuze. Na het knippen reinig ik de nagelriem met water via een micro stick. Niet met een product, niet met cleanser. Water.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        De reden is simpel: cleanser is ontvettend. Op de nagelplaat wil je dat. Op de huid wil je het niet. Water reinigt de nagelriem zonder de huid uit te drogen.
+      </p>
+
+      <div class="nc-step-label nc-b-rev">
+        <span class="nc-step-num">7</span>
+        <span class="nc-step-title">Onvet de nagelplaat met cleanser</span>
+      </div>
+      <p class="nc-b-p nc-b-rev">
+        Nu pas komt de cleanser op de nagelplaat. Ik gebruik de cleanser van MY WAY. Een doekje en poets die in op de nagelplaat van basis naar punt.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        Dit verwijdert de laatste resten vet, vocht en stof. <strong>Na deze stap raak ik de nagelplaat niet meer aan.</strong>
+      </p>
+
+      <div class="nc-step-label nc-b-rev">
+        <span class="nc-step-num">8</span>
+        <span class="nc-step-title">Primer (voor wie het nodig heeft)</span>
+      </div>
+      <p class="nc-b-p nc-b-rev">
+        Als je beginner bent, gebruik dan een acid-free primer als extra stap voor hechting. Ik schreef er al uitgebreider over in mijn artikel over gel, topcoat en primer, maar de korte versie: een dunne, droge laag is alles wat je nodig hebt. Nooit te veel aanbrengen.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        Ik gebruik zelf al jaren geen primer meer. Mijn manicure is zo ver gevorderd dat de cleanser alleen volstaat. Maar zover zijn we pas als je de vorige stappen echt goed onder de knie hebt.
+      </p>
+
+      <h2 class="nc-b-h2 nc-b-rev">Optionele stap: vijl de vrije rand op vorm</h2>
+
+      <p class="nc-b-p nc-b-rev">
+        Ik vijl de vrije rand niet vaak meer op voorhand op vorm. Dit heeft verschillende redenen.
+      </p>
+
+      <div class="nc-zone-box nc-b-rev">
+        <h4>Wanneer vijl ik wel of niet vooraf?</h4>
+        <div class="nc-zone-item">
+          <div class="nc-zone-dot"></div>
+          <div><strong>Bijwerking met upperforms</strong>, Ik kort de nagel al in tijdens het affrezen met mijn frees. Je hebt een minimale lengte nodig om een upperform te plaatsen. Dat doe ik meteen, spaart me tijd.</div>
+        </div>
+        <div class="nc-zone-item">
+          <div class="nc-zone-dot"></div>
+          <div><strong>Easy nails techniek op de natuurlijke nagel</strong>, Ik laat alle lengte zitten. Na de topcoat kort ik de nagels in en frees ik de concave uit. Zo heb ik nog strakkere resultaten.</div>
+        </div>
+        <div class="nc-zone-item">
+          <div class="nc-zone-dot"></div>
+          <div><strong>Algemeen</strong>, Het vijlen van de vorm is in veel gevallen verloren tijd in de manicure. Je kan dit na de opbouw doen, anders doe je het soms twee keer. Denk altijd logisch na of het nu nodig is.</div>
+        </div>
+      </div>
+
+      <h2 class="nc-b-h2 nc-b-rev">Waarom dit allemaal zo belangrijk is</h2>
+
+      <p class="nc-b-p nc-b-rev">
+        Elke stap heeft een functie. Samen zorgen ze voor een nagelplaat die schoon, droog en licht geprepareerd is. Dat is de enige juiste ondergrond voor een kunstnagelproduct.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        Hechting is geen kwestie van geluk of van het juiste merk gebruiken. Het is een kwestie van voorbereiding. Altijd. Vanaf het openen van je pockets ben je al aan het bepalen of je product zal hechten en strak zal geplaatst kunnen worden. Ga dus echt elke stap altijd tot in perfectie uitvoeren voordat je naar de volgende gaat. Leer jezelf structuur aan en keer nooit terug op stappen. Pas ze altijd in dezelfde volgorde toe. Enkel dit zorgt voor snelheid en perfectie.
+      </p>
+      <p class="nc-b-p nc-b-rev">
+        Als je sets beginnen te liften, kijk dan eerst naar je voorbereiding voordat je het product de schuld geeft. Negen van de tien keer zit het antwoord daar.
+      </p>
+
+      <div class="nc-b-cta nc-b-rev">
+        <div class="nc-b-cta-inner">
+          <h4>Wil je mijn volledige manicure-techniek leren?</h4>
+          <p>In de Manicure Pro opleiding leer je stap voor stap hoe ik een manicure uitvoer, inclusief de techniek met het freestoestel en hoe je de nagelriemen zo strak afwerkt dat al je foto's flawless zijn.</p>
+          <div class="nc-b-cta-btns">
+            <a href="salespaginas/manicure-pro.html" class="nc-b-cta-btn primary">Bekijk de Manicure Pro opleiding</a>
+            <a href="online-opleidingen.html" class="nc-b-cta-btn secondary">Alle opleidingen bekijken</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nc-b-author nc-b-rev">
+        <img src="images/Over/Mijn verhaal — in mijn eigen woorden..webp" alt="Tabitha">
+        <div>
+          <p class="nc-b-author-name">Tabitha</p>
+          <p class="nc-b-author-bio">Nagelstyliste met 18+ jaar ervaring. Eigenaar van Nagelstudio Nailit en NailCraft online opleidingen.</p>
+        </div>
+      </div>
+
     </div>
-    <img src="images/Blog/voorbereiding is alles zo bereid ik een nagel voor.webp" alt="Voorbereiding nagel" class="artikel-hero-img" loading="lazy">
-    <div class="artikel-sectie__content">
-      <p>De meeste liftingproblemen beginnen niet bij het product of de techniek. Ze beginnen bij een slechte voorbereiding. Dat is de harde waarheid.</p>
-      <p>Na 14 jaar heb ik mijn voorbereidingsroutine helemaal uitgewerkt. Elke stap heeft een reden. Ik sla er geen over, ook niet als ik weinig tijd heb.</p>
+  </div>
 
-      <h3>Mijn stap-voor-stap voorbereiding</h3>
-
-      <div class="stap-kaart">
-        <div class="stap-nr">1</div>
-        <div class="stap-body">
-          <h4>Nagel reinigen</h4>
-          <p>Eerst verwijder ik alle resten van oude lak, gel of acryl. Daarna reinig ik de nagel met een ontvetter om huidvetten en vochtigheid te verwijderen. Dit is de allerbelangrijkste stap.</p>
-        </div>
-      </div>
-      <div class="stap-kaart">
-        <div class="stap-nr">2</div>
-        <div class="stap-body">
-          <h4>Nagelriem terugduwen en verwijderen</h4>
-          <p>Met de bitbal duw ik de nagelriem zacht terug. Losse velletjes verwijder ik voorzichtig. Ik snij nooit in levend weefsel.</p>
-        </div>
-      </div>
-      <div class="stap-kaart">
-        <div class="stap-nr">3</div>
-        <div class="stap-body">
-          <h4>Oppervlak ruwmaken</h4>
-          <p>Met een vijl of de conische carbide bit maak ik het nageloppervlak licht ruw. Dit vergroot het hechtend oppervlak voor het product.</p>
-        </div>
-      </div>
-      <div class="stap-kaart">
-        <div class="stap-nr">4</div>
-        <div class="stap-body">
-          <h4>Stof verwijderen</h4>
-          <p>Na het vijlen borstel ik het stof weg en reinig ik opnieuw met ontvetter. Stof onder het product = gegarandeerde lifting.</p>
-        </div>
-      </div>
-      <div class="stap-kaart">
-        <div class="stap-nr">5</div>
-        <div class="stap-body">
-          <h4>Primer aanbrengen</h4>
-          <p>Ik gebruik een zuurvrije primer. Dun laagje, laten drogen tot mat. Dan pas breng ik het product aan.</p>
-        </div>
-      </div>
-
-      <div class="citaat">"Vijf minuten extra voorbereiding bespaart je twintig minuten probleemoplossing later."</div>
-
-      <p>Is deze routine voor iedere klant hetzelfde? Ja, bijna. Bij sterk zwetende handen of broze nagels pas ik licht aan, maar de basisstappen zijn altijd identiek.</p>
-    </div>
-  </section>
-
-  <div class="artikel-divider"></div>
+  <script>
+  (function() {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, i) {
+        if (entry.isIntersecting) {
+          setTimeout(function() {
+            entry.target.classList.add('nc-b-vis');
+          }, i * 60);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('#nc-article-voorbereiding .nc-b-rev').forEach(function(el) {
+      obs.observe(el);
+    });
+  })();
+  </script>
 
   <!-- ========== NAGEL STRIP D ========== -->
   <div class="nagel-strip strip-right nagel-strip--paars">
