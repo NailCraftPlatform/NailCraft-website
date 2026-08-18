@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="images/Favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bedankt voor je aankoop! | NailCraft Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --light: #f8f2ff;
+      --purple: #b590f1;
+      --purple-dark: #9060d8;
+      --purple-deep: #1a0a2e;
+      --orange: #fe9b00;
+      --orange-dark: #e08800;
+      --mid: #5a4070;
+      --text: #2d1e45;
+      --text-light: #6b5585;
+      --white: #ffffff;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(90,64,112,0.10);
+      --shadow-lg: 0 8px 40px rgba(90,64,112,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--text); line-height: 1.65; font-size: 1rem; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; color: var(--purple-deep); }
+
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.delay-1 { transition-delay: 0.1s; }
+    .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; }
+    .fade-up.delay-4 { transition-delay: 0.4s; }
+
+    nav { background: rgba(248,242,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(181,144,241,0.15); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    nav img.logo { height: 38px; width: auto; }
+    nav a.nav-cta { background: var(--orange); color: var(--white); font-weight: 600; font-size: 0.88rem; padding: 0.55rem 1.4rem; border-radius: 50px; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+    nav a.nav-cta:hover { background: var(--orange-dark); }
+
+    .hero { background: linear-gradient(150deg, #f8f2ff 0%, #ede0ff 55%, #f0e8ff 100%); padding: 5rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: var(--purple); opacity: 0.07; border-radius: 50%; }
+    .hero::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 260px; height: 260px; background: var(--orange); opacity: 0.06; border-radius: 50%; }
+
+    .check-wrap { display: flex; justify-content: center; margin-bottom: 2rem; }
+    .check-circle { width: 90px; height: 90px; }
+    .check-circle svg { width: 90px; height: 90px; }
+    .check-circle .bg-circle { fill: none; stroke: rgba(181,144,241,0.2); stroke-width: 4; }
+    .check-circle .progress-circle { fill: none; stroke: var(--purple); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 251; stroke-dashoffset: 251; transform: rotate(-90deg); transform-origin: 50% 50%; animation: draw-circle 0.9s ease forwards 0.2s; }
+    .check-circle .checkmark { fill: none; stroke: var(--purple-dark); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 60; stroke-dashoffset: 60; animation: draw-check 0.4s ease forwards 1s; }
+    @keyframes draw-circle { to { stroke-dashoffset: 0; } }
+    @keyframes draw-check { to { stroke-dashoffset: 0; } }
+
+    .hero-badge { display: inline-block; background: var(--purple); color: var(--white); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 1.1rem; border-radius: 50px; margin-bottom: 1.2rem; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 1rem; }
+    .hero h1 em { font-style: italic; color: var(--purple-dark); }
+    .hero p.sub { font-size: 1.1rem; color: var(--text-light); max-width: 540px; margin: 0 auto; }
+
+    .section { padding: 4.5rem 1.5rem; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.5rem; }
+    .section-title { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 0.8rem; color: var(--purple-dark); }
+
+    .steps { background: var(--white); }
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .step-card { background: var(--light); border-radius: var(--radius); padding: 2rem 1.6rem; border: 1px solid rgba(181,144,241,0.2); }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--purple); color: var(--white); border-radius: 50%; font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; }
+    .step-card h3 { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--purple-deep); margin-bottom: 0.5rem; }
+    .step-card p { font-size: 0.92rem; color: var(--text-light); }
+    .step-card.highlight { background: rgba(181,144,241,0.12); border-color: var(--purple); }
+    .step-card.highlight h3 { color: var(--purple-dark); }
+
+    .login-tip { margin-top: 2rem; background: rgba(181,144,241,0.13); border: 1.5px solid rgba(144,96,216,0.28); border-radius: var(--radius); padding: 1.2rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .login-tip-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .login-tip-title { font-weight: 700; color: var(--purple-dark); font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .login-tip p { font-size: 0.87rem; color: var(--mid); line-height: 1.65; }
+    .login-tip a { color: var(--purple-dark); font-weight: 600; }
+
+    .contact-section { background: rgba(181,144,241,0.10); }
+    .contact-inner { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.8rem; }
+    .contact-card { background: var(--white); border-radius: var(--radius); padding: 1.4rem 1.8rem; box-shadow: var(--shadow); display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 220px; text-decoration: none; color: var(--text); transition: transform 0.2s, box-shadow 0.2s; }
+    .contact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .contact-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .contact-card span { font-size: 0.78rem; color: var(--text-light); display: block; margin-bottom: 0.15rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .contact-card strong { font-size: 0.97rem; color: var(--purple-deep); }
+
+    /* UPSELL */
+    .upsell-a { background: var(--white); }
+    .upsell-b { background: var(--light); }
+    .upsell-inner { background: linear-gradient(135deg, #f8f2ff 0%, #ede0ff 100%); border-radius: 24px; overflow: hidden; border: 2px solid rgba(181,144,241,0.3); }
+    .upsell-top { padding: 2.5rem 2.5rem 1.5rem; text-align: center; }
+    .upsell-badge { display: inline-block; background: var(--orange); color: var(--white); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 50px; margin-bottom: 1rem; }
+    .upsell-top h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 0.8rem; }
+    .upsell-top h2 em { font-style: italic; color: var(--purple-dark); }
+    .upsell-top p { font-size: 1rem; color: var(--text-light); max-width: 580px; margin: 0 auto; }
+
+    .upsell-points { padding: 0 2.5rem 0.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.85rem; }
+    .upsell-point { display: flex; align-items: flex-start; gap: 0.7rem; }
+    .upsell-point-icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .upsell-point-text strong { display: block; font-size: 0.93rem; color: var(--purple-deep); font-weight: 600; }
+    .upsell-point-text span { font-size: 0.85rem; color: var(--text-light); }
+
+    .upsell-includes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; padding: 1rem 2.5rem 1.5rem; }
+    .upsell-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.92rem; color: var(--text); }
+    .upsell-item::before { content: '\2713'; color: var(--purple-dark); font-weight: 700; flex-shrink: 0; }
+
+    .upsell-bottom { padding: 1.5rem 2.5rem 2.5rem; text-align: center; border-top: 1px solid rgba(181,144,241,0.2); }
+    .upsell-price { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: var(--orange); line-height: 1; }
+    .upsell-price sup { font-size: 1.3rem; vertical-align: super; }
+    .upsell-price-note { font-size: 0.9rem; color: var(--text-light); margin-top: 0.3rem; margin-bottom: 1.4rem; }
+    .upsell-price-note s { opacity: 0.6; }
+    .btn-upsell { display: inline-block; background: var(--purple-dark); color: var(--white); font-size: 1.05rem; font-weight: 700; padding: 1rem 2.4rem; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 20px rgba(144,96,216,0.35); transition: background 0.2s, transform 0.2s; }
+    .btn-upsell:hover { background: #7840c0; transform: translateY(-2px); }
+
+    /* FOTO BANNER */
+    .photo-banner {
+      background: var(--white);
+      padding: 2.5rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .photo-banner::before, .photo-banner::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
+    }
+    .photo-banner::before { left: 0; background: linear-gradient(90deg, var(--white), transparent); }
+    .photo-banner::after { right: 0; background: linear-gradient(270deg, var(--white), transparent); }
+    .photo-banner-label {
+      text-align: center;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 1.2rem;
+    }
+    .marquee-track {
+      display: flex; gap: 1rem; width: max-content;
+      animation: marquee-scroll 36s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-track img {
+      height: 200px; width: auto; aspect-ratio: 3/4;
+      object-fit: cover; border-radius: 12px;
+      box-shadow: var(--shadow); flex-shrink: 0;
+    }
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (max-width: 600px) { .marquee-track img { height: 150px; } }
+
+    @media (max-width: 768px) {
+      nav { padding: 0.65rem 1.2rem; }
+      nav a.nav-cta { font-size: 0.70rem !important; padding: 0.5rem 1rem !important; }
+      .upsell-top, .upsell-bottom, .upsell-includes, .upsell-points { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .hero { padding: 3.5rem 1.2rem 3rem; }
+      .section { padding: 3rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="online-opleidingen.html">
+    <img src="images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform" class="logo">
+  </a>
+  <a href="#manicure-pro" class="nav-cta">🎁 Speciaal voor jou</a>
+</nav>
+
+<section class="hero">
+  <div class="check-wrap">
+    <div class="check-circle">
+      <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+        <circle class="bg-circle" cx="45" cy="45" r="40"/>
+        <circle class="progress-circle" cx="45" cy="45" r="40"/>
+        <polyline class="checkmark" points="25,47 38,60 65,32"/>
+      </svg>
+    </div>
+  </div>
+  <span class="hero-badge fade-up">Aankoop bevestigd</span>
+  <h1 class="fade-up delay-1">Bedankt! Welkom bij de<br><em>Nail Content Creator</em></h1>
+  <p class="sub fade-up delay-2">
+    Je aankoop is bevestigd en je download staat klaar. Hieronder vind je alles wat je nu moet weten.
+  </p>
+  <div class="fade-up delay-3" style="margin-top:2rem;">
+    <img src="images/nail-content-creator/Nail Content Creator wit mockup transparant achtergrond.webp" alt="Nail Content Creator cursus" style="max-width:280px; width:80%; height:auto; filter:drop-shadow(0 8px 24px rgba(90,64,112,0.18));">
+  </div>
+</section>
+
+<section class="section steps">
+  <div class="container">
+    <p class="section-label fade-up">Wat nu?</p>
+    <h2 class="section-title fade-up delay-1">Zo verloopt het verder</h2>
+    <div class="steps-grid">
+      <div class="step-card fade-up delay-1">
+        <div class="step-num">1</div>
+        <h3>Bevestigingsmail</h3>
+        <p>Je ontvangt <strong>meteen</strong> een e-mail met de bevestiging van je aankoop. Controleer ook je spammap als je hem niet direct ziet.</p>
+      </div>
+      <div class="step-card fade-up delay-2">
+        <div class="step-num">2</div>
+        <h3>Jouw logingegevens</h3>
+        <p>Kort daarna krijg je een <strong>tweede e-mail</strong> met je persoonlijke login voor het NailCraft Platform. Daarmee heb je toegang tot je e-book en videoles.</p>
+      </div>
+      <div class="step-card highlight fade-up delay-3">
+        <div class="step-num">3</div>
+        <h3>Download en aan de slag!</h3>
+        <p>Na inloggen kan je de Nail Content Creator direct downloaden en de bonus videoles bekijken. Veel plezier!</p>
+      </div>
+    </div>
+    <div class="login-tip fade-up delay-4">
+      <span class="login-tip-icon">💡</span>
+      <div>
+        <p class="login-tip-title">Stel meteen je wachtwoord in</p>
+        <p>Na je eerste inlog via de mail met loginlink kan je rechtsboven op je profielicoon klikken en via <strong>Profielinstellingen</strong> een eigen wachtwoord instellen. Zo kan je de volgende keer gewoon inloggen op <a href="https://app.kennis.shop/login" target="_blank" rel="noopener">app.kennis.shop/login</a> met je e-mailadres en wachtwoord.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section">
+  <div class="container">
+    <p class="section-label fade-up">Hulp nodig?</p>
+    <h2 class="section-title fade-up delay-1">Vragen? Ik help je graag verder</h2>
+    <p class="fade-up delay-2" style="color:var(--text-light); font-size:0.97rem; max-width:520px;">
+      Heb je een vraag over je aankoop of de toegang? Aarzel niet om me te contacteren.
+    </p>
+    <div class="contact-inner fade-up delay-3">
+      <a href="https://wa.me/32478512039" class="contact-card" target="_blank" rel="noopener">
+        <span class="contact-icon">📱</span>
+        <div><span>WhatsApp</span><strong>+32 478 51 20 39</strong></div>
+      </a>
+      <a href="mailto:tabitha@nagelstudionailit.com" class="contact-card">
+        <span class="contact-icon">✉️</span>
+        <div><span>E-mail</span><strong>tabitha@nagelstudionailit.com</strong></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- UPSELL 1: MANICURE PRO -->
+<section class="section upsell-a" id="manicure-pro">
+  <div class="container">
+    <p class="section-label fade-up" style="text-align:center;">Speciaal voor jou</p>
+    <h2 class="section-title fade-up delay-1" style="text-align:center; margin-bottom:2rem;">Geen clean content zonder clean manicure</h2>
+    <div class="upsell-inner fade-up delay-2">
+      <div class="upsell-top">
+        <span class="upsell-badge">Aanbevolen cursus #1</span>
+        <h2>Manicure Pro: <em>de basis van elk perfect beeld</em></h2>
+        <p>
+          De beste camera, het mooiste licht, de perfectste hoek: als de nagelriem niet strak zit, valt het op. Altijd. Manicure Pro leert je op élke klant een foutloze combi-manicure uitvoeren, zodat je nagelriem op iedere foto strak, verzorgd en professioneel oogt. Want goede content begint bij een goed resultaat.
+        </p>
+      </div>
+
+      <div style="padding: 0 2.5rem 1.5rem; text-align:center;">
+        <img src="images/manicure-pro/Manicure pro wit zonder bol.webp" alt="Manicure Pro cursus" style="max-width:300px; width:80%; height:auto; filter:drop-shadow(0 6px 20px rgba(90,64,112,0.15)); margin:0 auto;">
+      </div>
+
+      <div class="upsell-points">
+        <div class="upsell-point">
+          <span class="upsell-point-icon">📸</span>
+          <div class="upsell-point-text">
+            <strong>Strakke nagelriem op élke foto</strong>
+            <span>Geen roodheid, geen restjes, geen onverzorgde randen. Jouw resultaat spreekt voor zich, ook in close-up.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">🚫</span>
+          <div class="upsell-point-text">
+            <strong>Nooit meer wondjes of irritaties</strong>
+            <span>Werk veilig op elk huid- en nagelriemtype. Geen giswerk, maar een systeem dat je elke keer herhaalt.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">💅</span>
+          <div class="upsell-point-text">
+            <strong>Lifting drastisch verminderen</strong>
+            <span>Als je voorbereiding klopt, ziet het resultaat er langer goed uit. Minder bijwerken, meer content-waardige nagels.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">⚡</span>
+          <div class="upsell-point-text">
+            <strong>Snellere workflow, meer tijd voor content</strong>
+            <span>Een strak systeem van A tot Z, zodat de behandeling vlot verloopt en jij meer tijd hebt voor je foto's.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="upsell-includes">
+        <div class="upsell-item">9 videolessen, stap voor stap opgebouwd</div>
+        <div class="upsell-item">Demonstraties op droge, gevoelige &amp; normale huid</div>
+        <div class="upsell-item">Tools &amp; bitjes: wanneer gebruik je wat?</div>
+        <div class="upsell-item">Volledig stappenplan &amp; workflow</div>
+        <div class="upsell-item">E-book van 142 pagina's inbegrepen</div>
+        <div class="upsell-item">Persoonlijke begeleiding na aankoop</div>
+        <div class="upsell-item">Levenslang toegang</div>
+      </div>
+
+      <div class="upsell-bottom">
+        <div class="upsell-price"><sup>€</sup>145</div>
+        <p class="upsell-price-note">Eenmalig · Levenslang toegang · E-book inbegrepen</p>
+        <a href="https://naillraftplatform.kennis.shop/pay/manicurepro" class="btn-upsell">
+          Ja, ik wil ook Manicure Pro! →
+        </a>
+        <br>
+        <a href="salespaginas/manicure-pro.html" style="display:inline-block; margin-top:1rem; font-size:0.92rem; color:var(--purple-dark); text-decoration:underline; font-weight:500;">
+          Meer info over Manicure Pro →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOTO BANNER -->
+<div class="photo-banner">
+  <p class="photo-banner-label">Resultaten die opvallen</p>
+  <div style="overflow:hidden;">
+    <div class="marquee-track">
+      <img src="images/manicure-ebook/clean manicure voorbeeld 2.webp" alt="Clean manicure" loading="lazy">
+      <img src="images/upperforms/nagels upperform babyboom (2).webp" alt="Upperform babyboom" loading="lazy">
+      <img src="images/manicure-ebook/clean manicure voorbeeld 4.webp" alt="Clean manicure" loading="lazy">
+      <img src="images/upperforms/nagels upperform colorboom2.webp" alt="Upperform colorboom" loading="lazy">
+      <img src="images/manicure-ebook/ik doe manicure actiefoto.webp" alt="Manicure actiefoto" loading="lazy">
+      <img src="images/upperforms/nagels upperform french.webp" alt="Upperform french" loading="lazy">
+      <img src="images/manicure-ebook/clean manicure voorbeeld 3.jpg" alt="Clean manicure" loading="lazy">
+      <img src="images/upperforms/nagels upperform marmer.webp" alt="Upperform marmer" loading="lazy">
+      <img src="images/manicure-ebook/ik doe manicure actiefoto2.webp" alt="Manicure actiefoto" loading="lazy">
+      <img src="images/upperforms/nagels upperform babyboom 2.webp" alt="Upperform babyboom" loading="lazy">
+      <!-- duplicaat voor naadloze loop -->
+      <img src="images/manicure-ebook/clean manicure voorbeeld 2.webp" alt="Clean manicure" loading="lazy">
+      <img src="images/upperforms/nagels upperform babyboom (2).webp" alt="Upperform babyboom" loading="lazy">
+      <img src="images/manicure-ebook/clean manicure voorbeeld 4.webp" alt="Clean manicure" loading="lazy">
+      <img src="images/upperforms/nagels upperform colorboom2.webp" alt="Upperform colorboom" loading="lazy">
+      <img src="images/manicure-ebook/ik doe manicure actiefoto.webp" alt="Manicure actiefoto" loading="lazy">
+      <img src="images/upperforms/nagels upperform french.webp" alt="Upperform french" loading="lazy">
+      <img src="images/manicure-ebook/clean manicure voorbeeld 3.jpg" alt="Clean manicure" loading="lazy">
+      <img src="images/upperforms/nagels upperform marmer.webp" alt="Upperform marmer" loading="lazy">
+      <img src="images/manicure-ebook/ik doe manicure actiefoto2.webp" alt="Manicure actiefoto" loading="lazy">
+      <img src="images/upperforms/nagels upperform babyboom 2.webp" alt="Upperform babyboom" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- UPSELL 2: UPPERFORM MASTER -->
+<section class="section upsell-b" id="upperform-master">
+  <div class="container">
+    <p class="section-label fade-up" style="text-align:center;">Ook interessant</p>
+    <h2 class="section-title fade-up delay-1" style="text-align:center; margin-bottom:2rem;">Nagels die altijd shinen op foto</h2>
+    <div class="upsell-inner fade-up delay-2">
+      <div class="upsell-top">
+        <span class="upsell-badge">Aanbevolen cursus #2</span>
+        <h2>Upperform Master: <em>perfecte nagels die de camera niet kan missen</em></h2>
+        <p>
+          De mooiste content comes from the most beautiful nails. Upperforms geven je de perfecte boog, de strakste vorm en een glans die op elke foto opvalt. Upperform Master leert je elk design beheersen: babyboom, colorboom, inlay, French en vrije hand. Zodat jij nooit meer zonder content-waardige nagels zit.
+        </p>
+      </div>
+
+      <div style="padding: 0 2.5rem 1.5rem; text-align:center;">
+        <img src="images/upperforms/Upperform Master wit (mockup-transparante achtergrond).webp" alt="Upperform Master cursus" style="max-width:320px; width:80%; height:auto; filter:drop-shadow(0 6px 20px rgba(90,64,112,0.15)); margin:0 auto;">
+      </div>
+
+      <div class="upsell-points">
+        <div class="upsell-point">
+          <span class="upsell-point-icon">✨</span>
+          <div class="upsell-point-text">
+            <strong>Perfecte boog en strakke vorm, altijd</strong>
+            <span>Upperforms geven structuur en gelijkheid aan elke nagel. Dat zie je op foto: elk shot is een portfolio-shot.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">🌸</span>
+          <div class="upsell-point-text">
+            <strong>Babyboom, colorboom, inlay &amp; French</strong>
+            <span>Elk design dat goed scoort op social, stap voor stap uitgelegd op video. Jij kiest wat je filmt.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">🎨</span>
+          <div class="upsell-point-text">
+            <strong>Eigen kleuren mengen op video</strong>
+            <span>Unieke kleuren trekken de aandacht. Je ziet het live gebeuren en leert het zelf toepassen.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">📚</span>
+          <div class="upsell-point-text">
+            <strong>E-book van 97 pagina's als naslagwerk</strong>
+            <span>Alles wat je leert op video, uitgeschreven zodat je het kan raadplegen tijdens het oefenen.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="upsell-includes">
+        <div class="upsell-item">24+ videolessen: babyboom, colorboom, inlay, French</div>
+        <div class="upsell-item">Eigen kleuren mengen op video</div>
+        <div class="upsell-item">Materialenlijst inbegrepen</div>
+        <div class="upsell-item">E-book van 97 pagina's als naslagwerk</div>
+        <div class="upsell-item">Handleiding te raadplegen tijdens oefenen</div>
+        <div class="upsell-item">Persoonlijke begeleiding na aankoop</div>
+        <div class="upsell-item">Levenslang toegang</div>
+      </div>
+
+      <div class="upsell-bottom">
+        <div class="upsell-price"><sup>€</sup>235</div>
+        <p class="upsell-price-note">Eenmalig · Levenslang toegang · E-book van 97 pagina's inbegrepen</p>
+        <a href="https://naillraftplatform.kennis.shop/pay/upperformmaster" class="btn-upsell">
+          Ja, ik wil ook Upperform Master! →
+        </a>
+        <br>
+        <a href="salespaginas/upperform-master.html" style="display:inline-block; margin-top:1rem; font-size:0.92rem; color:var(--purple-dark); text-decoration:underline; font-weight:500;">
+          Meer info over Upperform Master →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
