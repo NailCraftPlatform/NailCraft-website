@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="images/Favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bedankt voor je aankoop! | NailCraft Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --light: #f8f2ff;
+      --purple: #b590f1;
+      --purple-dark: #9060d8;
+      --purple-deep: #1a0a2e;
+      --orange: #fe9b00;
+      --orange-dark: #e08800;
+      --mid: #5a4070;
+      --text: #2d1e45;
+      --text-light: #6b5585;
+      --white: #ffffff;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(90,64,112,0.10);
+      --shadow-lg: 0 8px 40px rgba(90,64,112,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--text); line-height: 1.65; font-size: 1rem; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; color: var(--purple-deep); }
+
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.delay-1 { transition-delay: 0.1s; }
+    .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; }
+    .fade-up.delay-4 { transition-delay: 0.4s; }
+
+    /* NAV */
+    nav { background: rgba(248,242,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(181,144,241,0.15); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    nav img.logo { height: 38px; width: auto; }
+    nav a.nav-cta { background: var(--orange); color: var(--white); font-weight: 600; font-size: 0.88rem; padding: 0.55rem 1.4rem; border-radius: 50px; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+    nav a.nav-cta:hover { background: var(--orange-dark); }
+
+    /* HERO */
+    .hero { background: linear-gradient(150deg, #f8f2ff 0%, #ede0ff 55%, #f0e8ff 100%); padding: 5rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: var(--purple); opacity: 0.07; border-radius: 50%; }
+    .hero::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 260px; height: 260px; background: var(--orange); opacity: 0.06; border-radius: 50%; }
+
+    .check-wrap { display: flex; justify-content: center; margin-bottom: 2rem; }
+    .check-circle { width: 90px; height: 90px; }
+    .check-circle svg { width: 90px; height: 90px; }
+    .check-circle .bg-circle { fill: none; stroke: rgba(181,144,241,0.2); stroke-width: 4; }
+    .check-circle .progress-circle { fill: none; stroke: var(--purple); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 251; stroke-dashoffset: 251; transform: rotate(-90deg); transform-origin: 50% 50%; animation: draw-circle 0.9s ease forwards 0.2s; }
+    .check-circle .checkmark { fill: none; stroke: var(--purple-dark); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 60; stroke-dashoffset: 60; animation: draw-check 0.4s ease forwards 1s; }
+    @keyframes draw-circle { to { stroke-dashoffset: 0; } }
+    @keyframes draw-check { to { stroke-dashoffset: 0; } }
+
+    .hero-badge { display: inline-block; background: var(--purple); color: var(--white); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 1.1rem; border-radius: 50px; margin-bottom: 1.2rem; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 1rem; }
+    .hero h1 em { font-style: italic; color: var(--purple-dark); }
+    .hero p.sub { font-size: 1.1rem; color: var(--text-light); max-width: 540px; margin: 0 auto; }
+
+    /* SECTION */
+    .section { padding: 4.5rem 1.5rem; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.5rem; }
+    .section-title { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 0.8rem; color: var(--purple-dark); }
+
+    /* STEPS */
+    .steps { background: var(--white); }
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .step-card { background: var(--light); border-radius: var(--radius); padding: 2rem 1.6rem; border: 1px solid rgba(181,144,241,0.2); }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--purple); color: var(--white); border-radius: 50%; font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; }
+    .step-card h3 { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--purple-deep); margin-bottom: 0.5rem; }
+    .step-card p { font-size: 0.92rem; color: var(--text-light); }
+    .step-card.highlight { background: rgba(181,144,241,0.12); border-color: var(--purple); }
+    .step-card.highlight h3 { color: var(--purple-dark); }
+
+    .login-tip { margin-top: 2rem; background: rgba(181,144,241,0.13); border: 1.5px solid rgba(144,96,216,0.28); border-radius: var(--radius); padding: 1.2rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .login-tip-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .login-tip-title { font-weight: 700; color: var(--purple-dark); font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .login-tip p { font-size: 0.87rem; color: var(--mid); line-height: 1.65; }
+    .login-tip a { color: var(--purple-dark); font-weight: 600; }
+
+    /* CONTACT */
+    .contact-section { background: rgba(181,144,241,0.10); }
+    .contact-inner { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.8rem; }
+    .contact-card { background: var(--white); border-radius: var(--radius); padding: 1.4rem 1.8rem; box-shadow: var(--shadow); display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 220px; text-decoration: none; color: var(--text); transition: transform 0.2s, box-shadow 0.2s; }
+    .contact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .contact-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .contact-card span { font-size: 0.78rem; color: var(--text-light); display: block; margin-bottom: 0.15rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .contact-card strong { font-size: 0.97rem; color: var(--purple-deep); }
+
+    /* UPSELL: MANICURE E-BOOK */
+    .upsell { background: var(--white); }
+    .upsell-inner { background: linear-gradient(135deg, #f8f2ff 0%, #ede0ff 100%); border-radius: 24px; overflow: hidden; border: 2px solid rgba(181,144,241,0.3); }
+    .upsell-top { padding: 2.5rem 2.5rem 1.5rem; text-align: center; }
+    .upsell-badge { display: inline-block; background: var(--orange); color: var(--white); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 50px; margin-bottom: 1rem; }
+    .upsell-top h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 0.8rem; }
+    .upsell-top h2 em { font-style: italic; color: var(--purple-dark); }
+    .upsell-top p { font-size: 1rem; color: var(--text-light); max-width: 580px; margin: 0 auto; }
+
+    .upsell-points { padding: 0 2.5rem 0.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.85rem; }
+    .upsell-point { display: flex; align-items: flex-start; gap: 0.7rem; }
+    .upsell-point-icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .upsell-point-text strong { display: block; font-size: 0.93rem; color: var(--purple-deep); font-weight: 600; }
+    .upsell-point-text span { font-size: 0.85rem; color: var(--text-light); }
+
+    .upsell-includes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; padding: 1rem 2.5rem 1.5rem; }
+    .upsell-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.92rem; color: var(--text); }
+    .upsell-item::before { content: '\2713'; color: var(--purple-dark); font-weight: 700; flex-shrink: 0; }
+
+    .upsell-bottom { padding: 1.5rem 2.5rem 2.5rem; text-align: center; border-top: 1px solid rgba(181,144,241,0.2); }
+    .upsell-price { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: var(--orange); line-height: 1; }
+    .upsell-price sup { font-size: 1.3rem; vertical-align: super; }
+    .upsell-price-note { font-size: 0.9rem; color: var(--text-light); margin-top: 0.3rem; margin-bottom: 1.4rem; }
+    .upsell-price-note s { opacity: 0.6; }
+    .btn-upsell { display: inline-block; background: var(--purple-dark); color: var(--white); font-size: 1.05rem; font-weight: 700; padding: 1rem 2.4rem; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 20px rgba(144,96,216,0.35); transition: background 0.2s, transform 0.2s; }
+    .btn-upsell:hover { background: #7840c0; transform: translateY(-2px); }
+
+    /* MINI BANNER: MANICURE PRO */
+    .mini-banner { background: var(--light); }
+    .mini-card { background: var(--white); border-radius: var(--radius); border: 1.5px solid rgba(181,144,241,0.25); padding: 1.8rem 2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .mini-card-text { flex: 1; min-width: 200px; }
+    .mini-card-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.4rem; }
+    .mini-card-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--purple-deep); margin-bottom: 0.5rem; }
+    .mini-card-title em { font-style: italic; color: var(--purple-dark); }
+    .mini-card-desc { font-size: 0.92rem; color: var(--text-light); }
+    .mini-card-price { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--orange); white-space: nowrap; }
+    .mini-card-actions { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-end; flex-shrink: 0; }
+    .btn-mini { display: inline-block; background: var(--purple-dark); color: var(--white); font-size: 0.9rem; font-weight: 700; padding: 0.7rem 1.6rem; border-radius: 50px; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+    .btn-mini:hover { background: #7840c0; }
+    .btn-mini-ghost { font-size: 0.85rem; color: var(--purple-dark); text-decoration: underline; font-weight: 500; text-align: right; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0.65rem 1.2rem; }
+      nav a.nav-cta { font-size: 0.70rem !important; padding: 0.5rem 1rem !important; }
+      .upsell-top, .upsell-bottom, .upsell-includes, .upsell-points { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .hero { padding: 3.5rem 1.2rem 3rem; }
+      .section { padding: 3rem 1.2rem; }
+      .mini-card-actions { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="online-opleidingen.html">
+    <img src="images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform" class="logo">
+  </a>
+  <a href="#manicure-ebook" class="nav-cta">🎁 Speciaal voor jou</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="check-wrap">
+    <div class="check-circle">
+      <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+        <circle class="bg-circle" cx="45" cy="45" r="40"/>
+        <circle class="progress-circle" cx="45" cy="45" r="40"/>
+        <polyline class="checkmark" points="25,47 38,60 65,32"/>
+      </svg>
+    </div>
+  </div>
+  <span class="hero-badge fade-up">Aankoop bevestigd</span>
+  <h1 class="fade-up delay-1">Bedankt! Welkom bij de<br><em>Upperform Guide</em></h1>
+  <p class="sub fade-up delay-2">
+    Je aankoop is bevestigd en je download staat klaar. Hieronder vind je alles wat je nu moet weten.
+  </p>
+  <div class="fade-up delay-3" style="margin-top:2rem;">
+    <img src="images/upperforms/Upperform Guide wit (mockup-transparante achtergrond).webp" alt="Upperform Guide" style="max-width:280px; width:80%; height:auto; filter:drop-shadow(0 8px 24px rgba(90,64,112,0.18));">
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="section steps">
+  <div class="container">
+    <p class="section-label fade-up">Wat nu?</p>
+    <h2 class="section-title fade-up delay-1">Zo verloopt het verder</h2>
+    <div class="steps-grid">
+      <div class="step-card fade-up delay-1">
+        <div class="step-num">1</div>
+        <h3>Bevestigingsmail</h3>
+        <p>Je ontvangt <strong>meteen</strong> een e-mail met de bevestiging van je aankoop. Controleer ook je spammap als je hem niet direct ziet.</p>
+      </div>
+      <div class="step-card fade-up delay-2">
+        <div class="step-num">2</div>
+        <h3>Jouw logingegevens</h3>
+        <p>Kort daarna krijg je een <strong>tweede e-mail</strong> met je persoonlijke login voor het NailCraft Platform. Daarmee heb je toegang tot je e-book.</p>
+      </div>
+      <div class="step-card highlight fade-up delay-3">
+        <div class="step-num">3</div>
+        <h3>Download en aan de slag!</h3>
+        <p>Na inloggen kan je de Upperform Guide direct downloaden als PDF en er meteen mee aan de slag.</p>
+      </div>
+    </div>
+    <div class="login-tip fade-up delay-4">
+      <span class="login-tip-icon">💡</span>
+      <div>
+        <p class="login-tip-title">Stel meteen je wachtwoord in</p>
+        <p>Na je eerste inlog via de mail met loginlink kan je rechtsboven op je profielicoon klikken en via <strong>Profielinstellingen</strong> een eigen wachtwoord instellen. Zo kan je de volgende keer gewoon inloggen op <a href="https://app.kennis.shop/login" target="_blank" rel="noopener">app.kennis.shop/login</a> met je e-mailadres en wachtwoord.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section">
+  <div class="container">
+    <p class="section-label fade-up">Hulp nodig?</p>
+    <h2 class="section-title fade-up delay-1">Vragen? Ik help je graag verder</h2>
+    <p class="fade-up delay-2" style="color:var(--text-light); font-size:0.97rem; max-width:520px;">
+      Heb je een vraag over je aankoop of de toegang tot je e-book? Aarzel niet om me te contacteren.
+    </p>
+    <div class="contact-inner fade-up delay-3">
+      <a href="https://wa.me/32478512039" class="contact-card" target="_blank" rel="noopener">
+        <span class="contact-icon">📱</span>
+        <div><span>WhatsApp</span><strong>+32 478 51 20 39</strong></div>
+      </a>
+      <a href="mailto:tabitha@nagelstudionailit.com" class="contact-card">
+        <span class="contact-icon">✉️</span>
+        <div><span>E-mail</span><strong>tabitha@nagelstudionailit.com</strong></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- UPSELL: MANICURE E-BOOK -->
+<section class="section upsell" id="manicure-ebook">
+  <div class="container">
+    <p class="section-label fade-up" style="text-align:center;">Speciaal voor jou</p>
+    <h2 class="section-title fade-up delay-1" style="text-align:center; margin-bottom:2rem;">Je houdt van leren met een boek, dit is jouw volgende</h2>
+    <div class="upsell-inner fade-up delay-2">
+      <div class="upsell-top">
+        <span class="upsell-badge">Aanbevolen e-book</span>
+        <h2>Manicure e-book: <em>142 pagina's zuivere techniek</em></h2>
+        <p>
+          Een perfecte upperform applicatie begint bij een perfecte nagel. Dit e-book geeft je alles wat je moet weten over de professionele combi-manicure: van nagelriemtypes tot stappenplan, van hygiëne tot wondzorg. Uitgeschreven zodat je het kunt herlezen wanneer je wil.
+        </p>
+      </div>
+
+      <!-- MOCKUP -->
+      <div style="padding: 0 2.5rem 1.5rem; text-align:center;">
+        <img src="images/manicure-ebook/Manicure e-book mockup transparante achtergrond (2).webp" alt="Manicure e-book" style="max-width:320px; width:80%; height:auto; filter:drop-shadow(0 6px 20px rgba(90,64,112,0.15)); margin:0 auto;">
+      </div>
+
+      <!-- VERKOOPPUNTEN -->
+      <div class="upsell-points">
+        <div class="upsell-point">
+          <span class="upsell-point-icon">📖</span>
+          <div class="upsell-point-text">
+            <strong>Begrijp wat je doet, en waarom</strong>
+            <span>Niet alleen de stappen, maar ook de logica erachter. Zo maak je slimmere keuzes aan elke tafel.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">✋</span>
+          <div class="upsell-point-text">
+            <strong>6 nagelriemtypes, elk apart uitgelegd</strong>
+            <span>Van dun en gevoelig tot vochtig: de juiste aanpak per type, zodat je nooit meer twijfelt.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">🗺️</span>
+          <div class="upsell-point-text">
+            <strong>Volledig stappenplan combi-manicure</strong>
+            <span>10 stappen met overzichtelijke roadmap, van pocket openen tot de laatste polijstslag.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">📸</span>
+          <div class="upsell-point-text">
+            <strong>Fouten herkennen met foto's</strong>
+            <span>Ring of fire, beschadiging nagelplaat, verkeerd toerental, alles uitgelegd met beelden.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WAT ZIT ERIN -->
+      <div class="upsell-includes">
+        <div class="upsell-item">142 pagina's professionele manicure-inhoud</div>
+        <div class="upsell-item">Tools &amp; materialen: 13 onderdelen uitgelegd</div>
+        <div class="upsell-item">6 nagelriemtypes + aanpak per type</div>
+        <div class="upsell-item">Volledig stappenplan combi-manicure</div>
+        <div class="upsell-item">Hygiëne, desinfectie &amp; sterilisatie</div>
+        <div class="upsell-item">Wondzorg: stap voor stap, professioneel</div>
+        <div class="upsell-item">Direct downloadbaar als PDF</div>
+        <div class="upsell-item">Levenslang toegang</div>
+      </div>
+
+      <div class="upsell-bottom">
+        <div class="upsell-price"><sup>€</sup>18,99</div>
+        <p class="upsell-price-note">Actieprijs, normaal <s>€45</s> · Eenmalig · Geen abonnement</p>
+        <a href="https://naillraftplatform.kennis.shop/pay/manicureebook" class="btn-upsell">
+          Ja, ik wil het Manicure e-book! →
+        </a>
+        <br>
+        <a href="salespaginas/manicure-ebook.html" style="display:inline-block; margin-top:1rem; font-size:0.92rem; color:var(--purple-dark); text-decoration:underline; font-weight:500;">
+          Meer info over het Manicure e-book →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MINI BANNER: MANICURE PRO -->
+<section class="section mini-banner">
+  <div class="container">
+    <p class="section-label fade-up" style="margin-bottom:1rem;">Liever leren via video?</p>
+    <div class="mini-card fade-up delay-1">
+      <div class="mini-card-text">
+        <p class="mini-card-label">Volledige videotraining + e-book gratis</p>
+        <h3 class="mini-card-title"><em>Manicure Pro</em></h3>
+        <p class="mini-card-desc">Dezelfde manicure-inhoud, maar dan als uitgebreide videotraining met live demonstraties op gevoelige, droge en normale huid. Het e-book van 142 pagina's is er gratis bij inbegrepen. Perfect als je liever kijkt dan leest.</p>
+      </div>
+      <div class="mini-card-actions">
+        <div class="mini-card-price">€145</div>
+        <a href="https://naillraftplatform.kennis.shop/pay/manicurepro" class="btn-mini">Manicure Pro →</a>
+        <a href="salespaginas/manicure-pro.html" class="btn-mini-ghost">Meer info</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
