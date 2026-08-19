@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="images/Favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bedankt! Je Veilig Affrezen training staat klaar | NailCraft Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --light: #f8f2ff; --purple: #b590f1; --purple-dark: #9060d8; --purple-deep: #1a0a2e;
+      --orange: #fe9b00; --orange-dark: #e08800; --mid: #5a4070; --text: #2d1e45;
+      --text-light: #6b5585; --white: #ffffff; --radius: 16px;
+      --shadow: 0 4px 24px rgba(90,64,112,0.10); --shadow-lg: 0 8px 40px rgba(90,64,112,0.16);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--text); line-height: 1.65; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; color: var(--purple-deep); }
+
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.delay-1 { transition-delay: 0.1s; } .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; } .fade-up.delay-4 { transition-delay: 0.4s; }
+
+    nav { background: rgba(248,242,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(181,144,241,0.15); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    nav img.logo { height: 38px; width: auto; }
+    nav a.nav-cta { background: var(--orange); color: var(--white); font-weight: 600; font-size: 0.88rem; padding: 0.55rem 1.4rem; border-radius: 50px; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+    nav a.nav-cta:hover { background: var(--orange-dark); }
+
+    .hero { background: linear-gradient(150deg, #f8f2ff 0%, #ede0ff 55%, #f0e8ff 100%); padding: 5rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: var(--purple); opacity: 0.07; border-radius: 50%; }
+    .hero::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 260px; height: 260px; background: var(--orange); opacity: 0.06; border-radius: 50%; }
+    .check-wrap { display: flex; justify-content: center; margin-bottom: 2rem; }
+    .check-circle svg { width: 90px; height: 90px; }
+    .check-circle .bg-circle { fill: none; stroke: rgba(181,144,241,0.2); stroke-width: 4; }
+    .check-circle .progress-circle { fill: none; stroke: var(--purple); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 251; stroke-dashoffset: 251; transform: rotate(-90deg); transform-origin: 50% 50%; animation: draw-circle 0.9s ease forwards 0.2s; }
+    .check-circle .checkmark { fill: none; stroke: var(--purple-dark); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 60; stroke-dashoffset: 60; animation: draw-check 0.4s ease forwards 1s; }
+    @keyframes draw-circle { to { stroke-dashoffset: 0; } }
+    @keyframes draw-check { to { stroke-dashoffset: 0; } }
+    .hero-badge { display: inline-block; background: var(--purple); color: var(--white); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 1.1rem; border-radius: 50px; margin-bottom: 1.2rem; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 1rem; }
+    .hero h1 em { font-style: italic; color: var(--purple-dark); }
+    .hero p.sub { font-size: 1.1rem; color: var(--text-light); max-width: 540px; margin: 0 auto; }
+
+    .section { padding: 4.5rem 1.5rem; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.5rem; }
+    .section-title { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 0.8rem; color: var(--purple-dark); }
+
+    .steps { background: var(--white); }
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .step-card { background: var(--light); border-radius: var(--radius); padding: 2rem 1.6rem; border: 1px solid rgba(181,144,241,0.2); }
+    .step-card.highlight { background: rgba(181,144,241,0.12); border-color: var(--purple); }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--purple); color: var(--white); border-radius: 50%; font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; }
+    .step-card h3 { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--purple-deep); margin-bottom: 0.5rem; }
+    .step-card p { font-size: 0.92rem; color: var(--text-light); }
+    .step-card.highlight h3 { color: var(--purple-dark); }
+
+    .login-tip { margin-top: 2rem; background: rgba(181,144,241,0.13); border: 1.5px solid rgba(144,96,216,0.28); border-radius: var(--radius); padding: 1.2rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .login-tip-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .login-tip-title { font-weight: 700; color: var(--purple-dark); font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .login-tip p { font-size: 0.87rem; color: var(--mid); line-height: 1.65; }
+    .login-tip a { color: var(--purple-dark); font-weight: 600; }
+
+    .contact-section { background: rgba(181,144,241,0.10); }
+    .contact-inner { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.8rem; }
+    .contact-card { background: var(--white); border-radius: var(--radius); padding: 1.4rem 1.8rem; box-shadow: var(--shadow); display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 220px; text-decoration: none; color: var(--text); transition: transform 0.2s, box-shadow 0.2s; }
+    .contact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .contact-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .contact-card span { font-size: 0.78rem; color: var(--text-light); display: block; margin-bottom: 0.15rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .contact-card strong { font-size: 0.97rem; color: var(--purple-deep); }
+
+    /* TIPS */
+    .tips-section { background: var(--white); }
+    .tips-intro { font-size: 1rem; color: var(--text-light); max-width: 620px; margin-bottom: 2rem; }
+    .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+    .tip-card { border-left: 4px solid var(--purple); background: var(--light); border-radius: 0 var(--radius) var(--radius) 0; padding: 1.4rem 1.6rem; }
+    .tip-num { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.4rem; }
+    .tip-card h3 { font-family: 'DM Sans', sans-serif; font-size: 0.97rem; font-weight: 700; color: var(--purple-deep); margin-bottom: 0.4rem; }
+    .tip-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+    .tips-bridge { background: linear-gradient(135deg, rgba(181,144,241,0.12) 0%, rgba(254,155,0,0.08) 100%); border-radius: var(--radius); padding: 1.5rem 1.8rem; border: 1.5px solid rgba(181,144,241,0.25); }
+    .tips-bridge p { font-size: 0.97rem; color: var(--text); line-height: 1.7; }
+    .tips-bridge strong { color: var(--purple-dark); }
+
+    /* UPSELL VOLLEDIG */
+    .upsell-section { background: var(--light); }
+    .upsell-inner { background: linear-gradient(135deg, #f8f2ff 0%, #ede0ff 100%); border-radius: 24px; overflow: hidden; border: 2px solid rgba(181,144,241,0.3); }
+    .upsell-top { padding: 2.5rem 2.5rem 1.5rem; text-align: center; }
+    .upsell-badge { display: inline-block; background: var(--orange); color: var(--white); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 50px; margin-bottom: 1rem; }
+    .upsell-top h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 0.8rem; }
+    .upsell-top h2 em { font-style: italic; color: var(--purple-dark); }
+    .upsell-top p { font-size: 1rem; color: var(--text-light); max-width: 580px; margin: 0 auto; }
+    .upsell-points { padding: 0 2.5rem 0.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.85rem; }
+    .upsell-point { display: flex; align-items: flex-start; gap: 0.7rem; }
+    .upsell-point-icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .upsell-point-text strong { display: block; font-size: 0.93rem; color: var(--purple-deep); font-weight: 600; }
+    .upsell-point-text span { font-size: 0.85rem; color: var(--text-light); }
+    .upsell-includes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; padding: 1rem 2.5rem 1.5rem; }
+    .upsell-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.92rem; color: var(--text); }
+    .upsell-item::before { content: '\2713'; color: var(--purple-dark); font-weight: 700; flex-shrink: 0; }
+    .upsell-bottom { padding: 1.5rem 2.5rem 2.5rem; text-align: center; border-top: 1px solid rgba(181,144,241,0.2); }
+    .upsell-price { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: var(--orange); line-height: 1; }
+    .upsell-price sup { font-size: 1.3rem; vertical-align: super; }
+    .upsell-price-note { font-size: 0.9rem; color: var(--text-light); margin-top: 0.3rem; margin-bottom: 1.4rem; }
+    .btn-upsell { display: inline-block; background: var(--purple-dark); color: var(--white); font-size: 1.05rem; font-weight: 700; padding: 1rem 2.4rem; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 20px rgba(144,96,216,0.35); transition: background 0.2s, transform 0.2s; }
+    .btn-upsell:hover { background: #7840c0; transform: translateY(-2px); }
+
+    /* MEDIUM CARDS */
+    .medium-cards-section { background: var(--purple-deep); padding: 3.5rem 1.5rem; }
+    .medium-cards-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 0.5rem; }
+    .medium-cards-sub { text-align: center; font-size: 0.9rem; color: rgba(255,255,255,0.55); margin-bottom: 2rem; font-style: italic; }
+    .medium-cards-grid { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .medium-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(181,144,241,0.22); border-radius: 20px; padding: 2rem 1.8rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.9rem; }
+    .medium-card img { width: 130px; height: auto; filter: drop-shadow(0 4px 14px rgba(0,0,0,0.3)); }
+    .medium-card-badge { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); }
+    .medium-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); line-height: 1.3; }
+    .medium-card h3 em { font-style: italic; color: var(--purple); }
+    .medium-card p { font-size: 0.88rem; color: rgba(255,255,255,0.68); line-height: 1.65; flex: 1; }
+    .medium-card-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--orange); }
+    .medium-card-cta { display: inline-block; background: var(--orange); color: var(--white); font-weight: 700; font-size: 0.9rem; padding: 0.7rem 1.6rem; border-radius: 50px; text-decoration: none; transition: background 0.2s; width: 100%; }
+    .medium-card-cta:hover { background: var(--orange-dark); }
+    .medium-card-link { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: underline; }
+    .medium-card-link:hover { color: rgba(255,255,255,0.7); }
+
+    @media (max-width: 640px) { .medium-cards-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      nav { padding: 0.65rem 1.2rem; } nav a.nav-cta { font-size: 0.70rem; padding: 0.5rem 1rem; }
+      .upsell-top, .upsell-bottom, .upsell-includes, .upsell-points { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .hero { padding: 3.5rem 1.2rem 3rem; } .section { padding: 3rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="online-opleidingen.html"><img src="images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform" class="logo"></a>
+  <a href="#refill-removal-pro" class="nav-cta">🎁 Jouw volgende stap</a>
+</nav>
+
+<section class="hero">
+  <div class="check-wrap">
+    <div class="check-circle">
+      <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+        <circle class="bg-circle" cx="45" cy="45" r="40"/>
+        <circle class="progress-circle" cx="45" cy="45" r="40"/>
+        <polyline class="checkmark" points="25,47 38,60 65,32"/>
+      </svg>
+    </div>
+  </div>
+  <span class="hero-badge fade-up">Gratis training activé</span>
+  <h1 class="fade-up delay-1">Bedankt! Je training<br><em>Veilig Affrezen</em> staat klaar</h1>
+  <p class="sub fade-up delay-2">Je aanvraag is bevestigd. Hieronder vind je hoe je toegang krijgt, plus 3 tips die je meteen veiliger laten werken.</p>
+  <div class="fade-up delay-3" style="margin-top:2rem;">
+    <img src="images/veilig-affrezen/mockup.webp" alt="Veilig Affrezen training" style="max-width:280px; width:80%; height:auto; filter:drop-shadow(0 8px 24px rgba(90,64,112,0.18));">
+  </div>
+</section>
+
+<section class="section steps">
+  <div class="container">
+    <p class="section-label fade-up">Hoe krijg ik toegang?</p>
+    <h2 class="section-title fade-up delay-1">Zo start je de training</h2>
+    <div class="steps-grid">
+      <div class="step-card fade-up delay-1">
+        <div class="step-num">1</div>
+        <h3>Bevestigingsmail</h3>
+        <p>Je ontvangt <strong>meteen</strong> een e-mail met je bevestiging. Controleer ook je spammap als je hem niet direct ziet.</p>
+      </div>
+      <div class="step-card fade-up delay-2">
+        <div class="step-num">2</div>
+        <h3>Logingegevens</h3>
+        <p>Kort daarna krijg je een <strong>tweede e-mail</strong> met je persoonlijke login voor het NailCraft Platform.</p>
+      </div>
+      <div class="step-card highlight fade-up delay-3">
+        <div class="step-num">3</div>
+        <h3>Direct starten!</h3>
+        <p>Na inloggen heb je meteen toegang. Zet je frees klaar en leer veilig affrezen van A tot Z.</p>
+      </div>
+    </div>
+    <div class="login-tip fade-up delay-4">
+      <span class="login-tip-icon">💡</span>
+      <div>
+        <p class="login-tip-title">Stel meteen je wachtwoord in</p>
+        <p>Na je eerste inlog via de loginlink kan je rechtsboven op je profielicoon klikken en via <strong>Profielinstellingen</strong> een eigen wachtwoord instellen. Zo log je de volgende keer gewoon in op <a href="https://app.kennis.shop/login" target="_blank" rel="noopener">app.kennis.shop/login</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section">
+  <div class="container">
+    <p class="section-label fade-up">Hulp nodig?</p>
+    <h2 class="section-title fade-up delay-1">Vragen? Ik help je graag</h2>
+    <div class="contact-inner fade-up delay-2">
+      <a href="https://wa.me/32478512039" class="contact-card" target="_blank" rel="noopener">
+        <span class="contact-icon">📱</span>
+        <div><span>WhatsApp</span><strong>+32 478 51 20 39</strong></div>
+      </a>
+      <a href="mailto:tabitha@nagelstudionailit.com" class="contact-card">
+        <span class="contact-icon">✉️</span>
+        <div><span>E-mail</span><strong>tabitha@nagelstudionailit.com</strong></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="section tips-section">
+  <div class="container">
+    <p class="section-label fade-up">Alvast aan de slag</p>
+    <h2 class="section-title fade-up delay-1">3 regels voor veilig affrezen die je nooit meer vergeet</h2>
+    <p class="tips-intro fade-up delay-2">Voordat je de frees aanraakt, zijn er drie basisregels die schade aan de nagelplaat voorkomen. Onthoud ze, en je begint al veiliger te werken.</p>
+    <div class="tips-grid">
+      <div class="tip-card fade-up delay-1">
+        <p class="tip-num">Tip 1</p>
+        <h3>Start nooit met een te lage grit op de nagelplaat</h3>
+        <p>Een grove bit (onder de 100) vreet te snel door product en beschadigt de nagelplaat als je even afdwaalt. Begin altijd met minimaal 100 of 150 grit, en ga fijner naarmate je dichter bij de nagel komt.</p>
+      </div>
+      <div class="tip-card fade-up delay-2">
+        <p class="tip-num">Tip 2</p>
+        <h3>Houd de bit vlak, nooit in een hoek</h3>
+        <p>Een bit in een scherpe hoek aan de zijkanten snijdt in de nagelwal of de huid. Werk altijd met de bit plat op het oppervlak, zeker bij de randen. Druk verminderen is beter dan hoek aanpassen.</p>
+      </div>
+      <div class="tip-card fade-up delay-3">
+        <p class="tip-num">Tip 3</p>
+        <h3>Warmte = stoppen</h3>
+        <p>Check tussendoor met je vinger of de nagel warm aanvoelt. Warmte betekent dat de frees te lang op dezelfde plek heeft gestaan of met te veel druk werkt. Even stoppen en afkoelen beschermt de nagelplaat.</p>
+      </div>
+    </div>
+    <div class="tips-bridge fade-up delay-4">
+      <p>Affrezen is de eerste stap. Maar wat daarna komt is minstens even belangrijk: <strong>een probleemloze refill of een volledig nieuwe set plaatsen</strong>. Hieronder vind je de cursussen die je leren hoe je dat doet, van lifting oplossen tot een complete nieuwe opbouw.</p>
+    </div>
+  </div>
+</section>
+
+<!-- UPSELL VOLLEDIG: REFILL REMOVAL PRO -->
+<section class="section upsell-section" id="refill-removal-pro">
+  <div class="container">
+    <p class="section-label fade-up" style="text-align:center;">Ga verder dan de basis</p>
+    <h2 class="section-title fade-up delay-1" style="text-align:center; margin-bottom:2rem;">Alles leren over refills, probleemnagels en veilig affrezen op video</h2>
+    <div class="upsell-inner fade-up delay-2">
+      <div class="upsell-top">
+        <span class="upsell-badge">Aanbevolen cursus</span>
+        <h2>Refill Removal Pro: <em>de volledige cursus voor refills en affrezen</em></h2>
+        <p>De gratis training legt de basis. In Refill Removal Pro ga ik veel dieper: gedetailleerde video's van elke stap, probleemnagels met lifting aanpakken, wat te doen als de nagel beschadigd is, en hoe je een volledige refill uitvoert zonder nieuw af te frezen. Alles wat je nodig hebt om professioneel te werken.</p>
+      </div>
+      <div style="padding:0 2.5rem 1.5rem; text-align:center;">
+        <img src="images/refill-removal-pro/refill removal pro mockup transparant achtergrond 2.webp" alt="Refill Removal Pro" style="max-width:300px; width:80%; height:auto; filter:drop-shadow(0 6px 20px rgba(90,64,112,0.15)); margin:0 auto;">
+      </div>
+      <div class="upsell-points">
+        <div class="upsell-point">
+          <span class="upsell-point-icon">🎥</span>
+          <div class="upsell-point-text">
+            <strong>Gedetailleerde video's van elke stap</strong>
+            <span>Niet enkel de theorie, maar alles op video zodat je precies ziet hoe het er in de praktijk uitziet en aanvoelt.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">🩹</span>
+          <div class="upsell-point-text">
+            <strong>Probleemnagels en lifting aanpakken</strong>
+            <span>Wat doe je als een nagel loslaat, scheurt of beschadigd is? Je leert het herkennen en correct oplossen.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">🔄</span>
+          <div class="upsell-point-text">
+            <strong>Volledige refill van A tot Z</strong>
+            <span>Bijwerken zonder opnieuw volledig af te frezen. De techniek die tijd bespaart en de nagel intact houdt.</span>
+          </div>
+        </div>
+        <div class="upsell-point">
+          <span class="upsell-point-icon">🛡️</span>
+          <div class="upsell-point-text">
+            <strong>Veilig werken op beschadigde nagels</strong>
+            <span>Wanneer mag je affrezen en wanneer niet? Je leert de signalen lezen zodat je nooit schade verergert.</span>
+          </div>
+        </div>
+      </div>
+      <div class="upsell-includes">
+        <div class="upsell-item">Volledige afrreeztechniek op video</div>
+        <div class="upsell-item">Refill uitvoeren stap voor stap</div>
+        <div class="upsell-item">Probleemnagels en lifting herkennen en aanpakken</div>
+        <div class="upsell-item">Veilig werken op elk nageltype</div>
+        <div class="upsell-item">Wanneer wel en niet affrezen</div>
+        <div class="upsell-item">Persoonlijke begeleiding na aankoop</div>
+        <div class="upsell-item">Levenslang toegang</div>
+      </div>
+      <div class="upsell-bottom">
+        <div class="upsell-price"><sup>€</sup>65</div>
+        <p class="upsell-price-note">Eenmalig · Levenslang toegang</p>
+        <a href="https://naillraftplatform.kennis.shop/pay/refillremovalpro" class="btn-upsell">Ja, ik leer professioneel affrezen en bijwerken! →</a>
+        <br>
+        <a href="salespaginas/kunstnagels-affrezen.html" style="display:inline-block; margin-top:1rem; font-size:0.92rem; color:var(--purple-dark); text-decoration:underline; font-weight:500;">Meer info over Refill Removal Pro →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIUM CARDS: EASY NAILS + UPPERFORM PRO -->
+<div class="medium-cards-section">
+  <h2 class="medium-cards-title fade-up">Na het affrezen: leer ook opbouwen</h2>
+  <p class="medium-cards-sub fade-up delay-1">Na elke affrezen volgt een nieuwe set. Kies de opbouwtechniek die bij jou past.</p>
+  <div class="medium-cards-grid">
+
+    <div class="medium-card fade-up delay-1">
+      <img src="images/easy-nails/Easy nails techniek volleidge header mockup transparant.webp" alt="Easy Nails">
+      <p class="medium-card-badge">Videocursus</p>
+      <h3>Easy Nails: <em>opbouwen met BIAB en hardgel</em></h3>
+      <p>Na het affrezen moet je opbouwen. Easy Nails leert je de volledige opbouwtechniek met rubber based gel en hardgel: van architectuur tot het vijlen van de vorm. Dunne, sterke nagels die 4 weken blijven zitten, zonder navijlen op het oppervlak.</p>
+      <div class="medium-card-price">€150</div>
+      <a href="https://naillraftplatform.kennis.shop/pay/easynails" class="medium-card-cta">Bekijk Easy Nails →</a>
+      <a href="salespaginas/easy-nails.html" class="medium-card-link">Meer info →</a>
+    </div>
+
+    <div class="medium-card fade-up delay-2">
+      <img src="images/upperforms/Upperform Pro wit  (mockup-transparante achtergrond).webp" alt="Upperform Pro">
+      <p class="medium-card-badge">Videocursus</p>
+      <h3>Upperform Pro: <em>opbouwen met upperforms</em></h3>
+      <p>Wil je leren werken met upperforms na het affrezen? Upperform Pro leert je de volledige techniek: de juiste vorm kiezen, correct opbouwen, nagelriem perfect afwerken en lifting drastisch verminderen. Een complete techniek voor de professionele nagelstyliste.</p>
+      <div class="medium-card-price">€185</div>
+      <a href="https://naillraftplatform.kennis.shop/pay/upperformpro" class="medium-card-cta">Bekijk Upperform Pro →</a>
+      <a href="salespaginas/upperform-pro.html" class="medium-card-link">Meer info →</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
