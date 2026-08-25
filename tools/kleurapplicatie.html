@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kleurapplicatie Tool — Nail It</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c-purple:#9c28b1;--c-purple-dark:#7b1f8c;--c-purple-deeper:#5c1669;
+  --c-light:#f8f2ff;--c-lighter:#fdf9ff;
+  --c-accent:#fe9b00;--c-accent-light:#fff4e0;
+  --c-white:#ffffff;--c-text:#1e0a2a;--c-text-mid:#5a3d6b;--c-text-muted:#9b82aa;
+  --c-border:#e8d9f5;--c-border-strong:#d4b8e8;
+  --radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--c-lighter);color:var(--c-text);min-height:100vh;padding:2rem 1rem 4rem;}
+.tool-wrap{max-width:560px;margin:0 auto;}
+
+.tool-header{background:var(--c-purple);border-radius:var(--radius-xl);padding:2rem 2rem 1.75rem;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+.tool-header::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.06);}
+.tool-header::after{content:'';position:absolute;bottom:-60px;right:20px;width:200px;height:200px;border-radius:50%;background:rgba(254,155,0,0.12);}
+.header-label{font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.5rem;}
+.header-title{font-family:var(--font-display);font-size:1.7rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:0.6rem;position:relative;z-index:1;}
+.header-sub{font-size:0.82rem;color:rgba(255,255,255,0.72);line-height:1.5;position:relative;z-index:1;}
+
+.step-card{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1rem;box-shadow:0 2px 20px rgba(156,40,177,0.08);animation:fadeUp 0.3s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--c-light);border-radius:50%;font-size:0.7rem;font-weight:500;color:var(--c-purple);margin-bottom:0.75rem;}
+.step-label{font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:1rem;}
+
+.opt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;}
+.opt-grid.cols-3{grid-template-columns:repeat(3,1fr);}
+.opt-btn{display:flex;flex-direction:column;align-items:flex-start;gap:0.4rem;padding:0.85rem 0.9rem;background:var(--c-lighter);border:1.5px solid var(--c-border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s ease;text-align:left;font-family:var(--font-body);}
+.opt-btn:hover{border-color:var(--c-purple);background:var(--c-light);transform:translateY(-1px);box-shadow:0 4px 16px rgba(156,40,177,0.1);}
+.opt-btn.selected{border-color:var(--c-purple);background:var(--c-light);box-shadow:0 0 0 3px rgba(156,40,177,0.12);}
+.opt-btn.selected .opt-name{color:var(--c-purple);font-weight:500;}
+.opt-dot{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,0.5);box-shadow:0 1px 4px rgba(0,0,0,0.15);flex-shrink:0;}
+.opt-name{font-size:0.78rem;color:var(--c-text);line-height:1.3;font-weight:400;}
+
+.result-card{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1rem;box-shadow:0 4px 32px rgba(156,40,177,0.12);animation:fadeUp 0.35s ease both;}
+.result-header{background:var(--c-purple);padding:1.25rem 1.5rem;position:relative;overflow:hidden;}
+.result-header::after{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(254,155,0,0.15);}
+.result-badge{font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:0.35rem;}
+.result-title{font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:#fff;position:relative;z-index:1;}
+.result-body{padding:0.25rem 0;}
+.result-row{padding:0.9rem 1.5rem;border-bottom:1px solid var(--c-border);}
+.result-row:last-child{border-bottom:none;}
+.row-top{display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;}
+.row-label{font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:0.3rem;}
+.row-value{font-size:0.88rem;font-weight:500;color:var(--c-text);line-height:1.4;}
+.info-toggle{background:none;border:none;cursor:pointer;padding:2px;color:var(--c-accent);flex-shrink:0;line-height:1;transition:transform 0.2s;margin-top:2px;}
+.info-toggle:hover{transform:scale(1.15);}
+.info-toggle svg{display:block;width:18px;height:18px;}
+.info-panel{font-size:0.78rem;color:var(--c-text-mid);line-height:1.65;margin-top:0.6rem;padding:0.75rem 1rem;background:var(--c-light);border-radius:var(--radius-sm);border-left:3px solid var(--c-accent);display:none;animation:fadeUp 0.2s ease both;}
+.info-panel.open{display:block;}
+.tip-box{margin:0 1.5rem 1rem;padding:0.85rem 1rem;background:var(--c-accent-light);border:1px solid rgba(254,155,0,0.3);border-radius:var(--radius-md);display:flex;gap:0.6rem;align-items:flex-start;}
+.tip-icon{font-size:1rem;flex-shrink:0;margin-top:1px;}
+.tip-text{font-size:0.78rem;color:#7a4800;line-height:1.6;}
+
+.action-btn{width:100%;padding:0.8rem 1rem;border-radius:var(--radius-md);font-family:var(--font-body);font-size:0.82rem;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.18s ease;border:none;}
+.btn-primary{background:var(--c-purple);color:#fff;box-shadow:0 4px 16px rgba(156,40,177,0.25);}
+.btn-primary:hover{background:var(--c-purple-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(156,40,177,0.3);}
+.btn-secondary{background:transparent;color:var(--c-text-muted);border:1px solid var(--c-border);margin-top:0.6rem;}
+.btn-secondary:hover{border-color:var(--c-border-strong);color:var(--c-text);}
+.btn-icon{width:16px;height:16px;display:block;}
+.hidden{display:none!important;}
+
+@media(max-width:420px){
+  .opt-grid.cols-3{grid-template-columns:1fr 1fr;}
+  .opt-btn{padding:0.75rem 0.7rem;}
+  .header-title{font-size:1.4rem;}
+  .result-row{padding:0.8rem 1.1rem;}
+  .tip-box{margin:0 1rem 1rem;}
+}
+</style>
+</head>
+<body>
+<div class="tool-wrap">
+
+  <div class="tool-header">
+    <div class="header-label">Nail It — cursusmateriaal</div>
+    <div class="header-title">Kleurapplicatie<br>advies tool</div>
+    <div class="header-sub">Beantwoord de vragen en ontvang direct advies over je ondergrond, aanpak en workflow.</div>
+  </div>
+
+  <div class="step-card" id="q1">
+    <div class="step-num">1</div>
+    <div class="step-label">Welk type kleur gebruik je?</div>
+    <div class="opt-grid cols-3">
+      <button class="opt-btn" onclick="selectType('donker')" id="btn-donker">
+        <span class="opt-dot" style="background:#4a1560;"></span>
+        <span class="opt-name">Donkere kleur</span>
+      </button>
+      <button class="opt-btn" onclick="selectType('neon')" id="btn-neon">
+        <span class="opt-dot" style="background:#ff2fa0;"></span>
+        <span class="opt-name">Neon kleur</span>
+      </button>
+      <button class="opt-btn" onclick="selectType('pastel')" id="btn-pastel">
+        <span class="opt-dot" style="background:#f4b8da;"></span>
+        <span class="opt-name">Pastel kleur</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="step-card hidden" id="q2-donker">
+    <div class="step-num">2</div>
+    <div class="step-label">Welke toon is je donkere kleur?</div>
+    <div class="opt-grid">
+      <button class="opt-btn" onclick="selectDonker('rood')" id="btn-rood">
+        <span class="opt-dot" style="background:#b91c1c;"></span>
+        <span class="opt-name">Rood / rood-roze</span>
+      </button>
+      <button class="opt-btn" onclick="selectDonker('bordeaux')" id="btn-bordeaux">
+        <span class="opt-dot" style="background:#6b1a1a;"></span>
+        <span class="opt-name">Bordeaux / donkerrood</span>
+      </button>
+      <button class="opt-btn" onclick="selectDonker('paars')" id="btn-paars">
+        <span class="opt-dot" style="background:#6b21a8;"></span>
+        <span class="opt-name">Paars / donkerpaars</span>
+      </button>
+      <button class="opt-btn" onclick="selectDonker('bruin')" id="btn-bruin">
+        <span class="opt-dot" style="background:#7c4a1e;"></span>
+        <span class="opt-name">Bruin / taupe</span>
+      </button>
+      <button class="opt-btn" onclick="selectDonker('blauw')" id="btn-blauw">
+        <span class="opt-dot" style="background:#1e3a5f;"></span>
+        <span class="opt-name">Donkerblauw / navy</span>
+      </button>
+      <button class="opt-btn" onclick="selectDonker('zwart')" id="btn-zwart">
+        <span class="opt-dot" style="background:#1c1c1c;"></span>
+        <span class="opt-name">Zwart / antraciet</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="step-card hidden" id="q2-neon">
+    <div class="step-num">2</div>
+    <div class="step-label">Welke neon kleur?</div>
+    <div class="opt-grid">
+      <button class="opt-btn" onclick="selectNeon('roze')" id="btn-nroze">
+        <span class="opt-dot" style="background:#ff2fa0;"></span>
+        <span class="opt-name">Neon roze</span>
+      </button>
+      <button class="opt-btn" onclick="selectNeon('paars')" id="btn-npaars">
+        <span class="opt-dot" style="background:#bf00ff;"></span>
+        <span class="opt-name">Neon paars</span>
+      </button>
+      <button class="opt-btn" onclick="selectNeon('geel')" id="btn-ngeel">
+        <span class="opt-dot" style="background:#e8d800;"></span>
+        <span class="opt-name">Neon geel</span>
+      </button>
+      <button class="opt-btn" onclick="selectNeon('oranje')" id="btn-noranje">
+        <span class="opt-dot" style="background:#ff6200;"></span>
+        <span class="opt-name">Neon oranje</span>
+      </button>
+      <button class="opt-btn" onclick="selectNeon('groen')" id="btn-ngroen">
+        <span class="opt-dot" style="background:#39c814;"></span>
+        <span class="opt-name">Neon groen</span>
+      </button>
+      <button class="opt-btn" onclick="selectNeon('blauw')" id="btn-nblauw">
+        <span class="opt-dot" style="background:#00b4ff;"></span>
+        <span class="opt-name">Neon blauw</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="result-section" class="hidden">
+    <div class="result-card">
+      <div class="result-header">
+        <div class="result-badge" id="result-badge"></div>
+        <div class="result-title" id="result-title"></div>
+      </div>
+      <div class="result-body">
+        <div class="result-row">
+          <div class="row-label">Ondergrond</div>
+          <div class="row-top">
+            <div class="row-value" id="res-ondergrond"></div>
+            <button class="info-toggle" onclick="toggleInfo('info-ondergrond')" aria-label="Meer info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </button>
+          </div>
+          <div class="info-panel" id="info-ondergrond"></div>
+        </div>
+        <div class="result-row">
+          <div class="row-label">Kleurlagen</div>
+          <div class="row-top">
+            <div class="row-value" id="res-lagen"></div>
+            <button class="info-toggle" onclick="toggleInfo('info-lagen')" aria-label="Meer info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </button>
+          </div>
+          <div class="info-panel" id="info-lagen"></div>
+        </div>
+        <div class="result-row">
+          <div class="row-label">Aandachtspunt</div>
+          <div class="row-top">
+            <div class="row-value" id="res-aandacht"></div>
+            <button class="info-toggle" onclick="toggleInfo('info-aandacht')" aria-label="Meer info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </button>
+          </div>
+          <div class="info-panel" id="info-aandacht"></div>
+        </div>
+      </div>
+    </div>
+    <div id="tip-container"></div>
+    <button class="action-btn btn-primary" onclick="downloadPDF()">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Werkblad downloaden als PDF
+    </button>
+    <button class="action-btn btn-secondary" onclick="resetTool()">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+      Opnieuw starten
+    </button>
+  </div>
+
+</div>
+<script>
+var currentAdvies={};
+var workflow=["Manicure uitvoeren.","Prep primer base aanbrengen.","Opbouw doen van de volledige nagel in acrygel of hardgel.","Vorm vijlen, nagelriemen en nagelwallen afwerken en concave uitfrezen.","Nagel bufferen als je met upperforms werkte (te glad oppervlak kan chippen). Ontvetten als je met hardgel of acrygel free hand hebt opgebouwd.","Per vinger: nagelriem achteruit duwen met pusher of houten stokje. Dan 1e kleurlaag aanbrengen met gelpenseel of kwastje, afwerken met fine liner (6-9 mm). Doe dit op alle 10 vingers na elkaar.","2e kleurlaag per vinger aanbrengen - je hoeft niet opnieuw te pushen of de fine liner te gebruiken, de gel loopt naar de lijn van de eerste laag. Mag wel als je een correctie wil. Afwisselend per hand, telkens 1 vinger in de lamp.","Topcoat aanbrengen per vinger en laten levelen.","Vorm lichtjes navijlen - niet te veel, anders moet je de concave opnieuw bewerken.","Nagelriemolie aanbrengen.","Fotos nemen!"];
+var workflowNeonPastel=["Manicure uitvoeren.","Prep primer base aanbrengen.","Opbouw doen van de volledige nagel in acrygel of hardgel.","Vorm vijlen, nagelriemen en nagelwallen afwerken en concave uitfrezen.","Nagel bufferen als je met upperforms werkte (te glad oppervlak kan chippen). Ontvetten als je met hardgel of acrygel free hand hebt opgebouwd.","Per vinger: nagelriem achteruit duwen met pusher of houten stokje. Dan 1e kleurlaag aanbrengen met gelpenseel of kwastje, afwerken met fine liner (6-9 mm). Doe dit op alle 10 vingers na elkaar.","2e kleurlaag per vinger aanbrengen en opnieuw de randen afwerken met je fine liner. Pastel en neon zijn gevoelig voor schaduwplekken en ongelijkmatige dekking - een strakke fine liner bij de 2e laag geeft een egale finish. Afwisselend per hand, telkens 1 vinger in de lamp.","Topcoat aanbrengen per vinger en laten levelen.","Vorm lichtjes navijlen - niet te veel, anders moet je de concave opnieuw bewerken.","Nagelriemolie aanbrengen.","Fotos nemen!"];
+var donkerMap={rood:{badge:"Donkere kleur - rood / rood-roze",title:"Advies voor donker rood",ondergrond:"Zacht roze hardgel of acrygel",ondergrondInfo:"Donkere kleuren dekken goed, maar aan de vrije rand - de onderkant bij langere nagels - is de ondergrond zichtbaar van opzij. Een roze ondertoon matcht daar veel mooier dan een neutrale of afwijkende tint.",lagen:"2 dunne deklagen",lagenInfo:"Rode tinten zijn doorgaans goed dekkend. Werk egaal van cuticula naar vrije rand. Als je polish niet dekt met 2 dunne lagen, is de kwaliteit van de polish het probleem - niet het aantal lagen.",aandacht:"Ondergrond zichtbaar aan vrije rand - kies op toon",aandachtInfo:"Bij langere nagels kijk je van opzij ook naar de onderkant van de vrije rand. Een contraststerk verschil tussen ondergrond en polish trekt de verkeerde aandacht.",tip:"Optionele tip: een licht roze hardgel of acrygel als opbouw geeft de nagel ook langs de zijkant een warme, complementaire ondertoon."},bordeaux:{badge:"Donkere kleur - bordeaux / donkerrood",title:"Advies voor bordeaux en donkerrood",ondergrond:"Diepere roze of nude-rood hardgel / acrygel",ondergrondInfo:"Bordeaux en donkerrood hebben een warme ondertoon. Een nude-rood of diep roze opbouw zorgt voor harmonie als de onderkant van de vrije rand zichtbaar is.",lagen:"2 dunne deklagen",lagenInfo:"Donkere tinten bedekken snel. Werk dun en egaal per laag voor het beste eindresultaat.",aandacht:"Kies een ondergrond die past bij de warme rode ondertoon",aandachtInfo:"Een te lichte of koele ondergrond (zoals neutrale nude) geeft bij deze tinten een ongewenst contrast aan de vrije rand.",tip:"Optionele tip: een bordeaux of rode ondertoon in je opbouwgel maakt de kleur dieper en rijker."},paars:{badge:"Donkere kleur - paars / donkerpaars",title:"Advies voor paarse tinten",ondergrond:"Licht paarsige of mauve hardgel / acrygel",ondergrondInfo:"Bij paarse polish is een licht paarse of mauve ondertoon in je opbouw de beste match. De kleur blijft coherent, ook aan de vrije rand.",lagen:"2 dunne deklagen",lagenInfo:"Donkerpaarse tinten dekken sterk. Breng dun aan en controleer na de 1e laag of de kleur egaal is.",aandacht:"Vrije rand toont de ondergrond - houd de toon coherent",aandachtInfo:"Een te afwijkende ondergrond (zoals nude-beige) onder donkerpaars geeft een zichtbaar contrast aan de onderkant bij langere nagels.",tip:"Optionele tip: een mauve of licht lavendel hardgel als basis geeft de kleur extra diepte."},bruin:{badge:"Donkere kleur - bruin / taupe",title:"Advies voor bruine en taupe tinten",ondergrond:"Nude of beige hardgel / acrygel",ondergrondInfo:"Bruin en taupe passen perfect bij een nude-beige opbouw. De ondertoon sluit aan en de nagel oogt consistent van boven en van opzij.",lagen:"2 dunne deklagen",lagenInfo:"Bruine tinten variëren in dekking. Werk egaal en dun. Dekt je polish niet goed met 2 lagen, dan is dat een kwaliteitskwestie van de polish zelf.",aandacht:"Nude-beige is de veiligste keuze voor alle bruinige tinten",aandachtInfo:"Stem de nude af op de ondertoon: warm nude bij warm bruin, koelere nude bij koele taupe. Dat detail maakt het verschil.",tip:"Optionele tip: bij caramel- of chocoladebruine tinten kun je ook een licht oranje-nude ondertoon kiezen - dat versterkt de warmte van de kleur subtiel."},blauw:{badge:"Donkere kleur - donkerblauw / navy",title:"Advies voor donkerblauw en navy",ondergrond:"Licht blauwige of neutrale nude hardgel / acrygel",ondergrondInfo:"Navy en donkerblauw zijn koel van toon. Een licht blauwige of grijzig-nude opbouw vermijdt een warme ondertoon die zichtbaar wordt aan de vrije rand.",lagen:"2 dunne deklagen",lagenInfo:"Donkerblauw kan transparanter zijn dan het lijkt. Werk gecontroleerd en egaal. 2 goede lagen zijn altijd genoeg bij kwaliteitsproducten.",aandacht:"Vrije rand toont de kleur - houd koel en consistent",aandachtInfo:"Een warme nude of roze ondergrond kan bij navy een ongewenst bruinig randje geven. Kies koel of neutraal.",tip:"Optionele tip: een licht grijsblauw of ijsblauw hardgel als opbouw geeft extra diepte en sluit naadloos aan."},zwart:{badge:"Donkere kleur - zwart / antraciet",title:"Advies voor zwart en antraciet",ondergrond:"Donkere neutrale of grijze hardgel / acrygel",ondergrondInfo:"Bij zwart is de ondergrond het minst zichtbaar van alle donkere kleuren. Een donker grijze of neutrale opbouw is alsnog de meest coherente keuze.",lagen:"2 dunne deklagen",lagenInfo:"Zwart dekt uitstekend. Werk dun - dikke lagen kunnen krimpen bij het uitharden. Een dunne en een normale laag werkt beter dan een dikke laag.",aandacht:"Werk dun en precies - zwart vergeeft geen fouten",aandachtInfo:"Zwart toont elke oneffenheid, luchtbel of onnauwkeurige penseelstreek direct. Precisie bij de nagelriemen is extra belangrijk.",tip:null}};
+var neonMap={roze:{badge:"Neon - roze",title:"Advies voor neon roze",ondergrond:"Milky white OF fel roze hardgel / acrygel",ondergrondInfo:"Neon roze heeft twee goede opties. Milky white maximaliseert de helderheid van de neonkleur. Een fel roze opbouw maakt de kleur intenser en verzadigder. Kies op basis van het gewenste effect.",lagen:"2 dunne deklagen",lagenInfo:"Neon kleuren zijn minder dekkend van nature - dit is een eigenschap van het pigment, geen kwaliteitsfout. Een goede ondergrond compenseert dit. Bij kwaliteitspolish volstaan 2 lagen.",aandacht:"Neon dekt minder - de ondergrond doet het zware werk",aandachtInfo:"De keuze van je ondergrond bepaalt bij neon kleuren het meeste van het eindresultaat. Investeer in de juiste basis.",tip:"Tip: wil je een intense, saturated look? Kies fel roze hardgel. Wil je dat de neon zo helder mogelijk straalt? Ga voor milky white."},paars:{badge:"Neon - paars",title:"Advies voor neon paars",ondergrond:"Milky white OF paarse hardgel / acrygel",ondergrondInfo:"Neon paars werkt goed op milky white voor een heldere, stralende neon toon. Kies je voor een paarse opbouwgel in dezelfde toon, dan wordt de kleur intenser en voller. Beide zijn goede opties.",lagen:"2 dunne deklagen",lagenInfo:"Neon paars is doorgaans matig dekkend. Een goede basis maakt het verschil. 2 dunne, egale lagen zijn het doel.",aandacht:"Intensiteit hangt sterk af van de ondergrond",aandachtInfo:"Paarse neon kan op een neutrale basis dof lijken. Een milky white of paarse basis geeft het de neon-intensiteit die het verdient.",tip:"Tip: kies bij een paarse opbouwgel dezelfde toon als je polish - niet donkerder, anders overheerst de basis."},geel:{badge:"Neon - geel",title:"Advies voor neon geel",ondergrond:"Milky white hardgel / acrygel",ondergrondInfo:"Neon geel is de meest transparante neonkleur. Milky white is de enige juiste keuze: het geeft de heldere, koele basis die de gele toon maximaal laat stralen.",lagen:"2 dunne deklagen",lagenInfo:"Neon geel vraagt om precisie. Breng dun aan per laag. 2 goede lagen op een correcte basis geven altijd een egaal resultaat.",aandacht:"Meest transparante neon - milky white is een must",aandachtInfo:"Een warme of pure witte basis geeft neon geel een troebele of te warme uitkomst. Milky white geeft precies de koele, heldere basis die dit pigment nodig heeft.",tip:null},oranje:{badge:"Neon - oranje",title:"Advies voor neon oranje",ondergrond:"Milky white hardgel / acrygel",ondergrondInfo:"Neon oranje is warm van toon. Milky white geeft de kleur ruimte om helder en fris te stralen zonder de warmte te overdrijven.",lagen:"2 dunne deklagen",lagenInfo:"Neon oranje heeft neiging tot ongelijkmatige dekking. Werk egaal en dun - dat is hier extra belangrijk.",aandacht:"Warm en intens - werk met dunne, gelijkmatige lagen",aandachtInfo:"Neon oranje is een van de meest levendige kleuren. Elke oneffenheid in de applicatie is meteen zichtbaar. Neem de tijd per laag.",tip:null},groen:{badge:"Neon - groen",title:"Advies voor neon groen",ondergrond:"Milky white hardgel / acrygel",ondergrondInfo:"Neon groen heeft een elektrische, frisse toon die het beste tot zijn recht komt op een milky white basis. Andere ondergronden geven een gedempte of vuile uitkomst.",lagen:"2 dunne deklagen",lagenInfo:"Neon groen varieert in dekking per merk. Werk dun en egaal - 2 goede lagen op de juiste basis zijn voldoende.",aandacht:"Laat de witte basis het neon-effect versterken",aandachtInfo:"Een heldere basis maximaliseert het UV-effect van neon groen en maakt de kleur visueel intenser.",tip:null},blauw:{badge:"Neon - blauw",title:"Advies voor neon blauw",ondergrond:"Milky white hardgel / acrygel",ondergrondInfo:"Neon blauw is koel van toon en werkt uitstekend op milky white. De koele ondertoon van de milky basis versterkt de helderheid van het blauw.",lagen:"2 dunne deklagen",lagenInfo:"Neon blauw is redelijk dekkend. 2 dunne lagen op milky white geven altijd een egaal, helder resultaat.",aandacht:"Koel en helder - milky white is de perfecte match",aandachtInfo:"Een warme of gekleurde basis maakt neon blauw dof en vuil van toon. Blijf bij milky white.",tip:null}};
+var pastelAdvies={badge:"Pastel kleur",title:"Advies voor pastel tinten",ondergrond:"Milky white hardgel / acrygel",ondergrondInfo:"Pastel kleuren bestaan grotendeels uit wit met een kleine hoeveelheid pigment. Zet je een andere kleur eronder, dan verschuift de uiteindelijke tint. Milky white geeft de meest nauwkeurige en mooiste weergave van elke pasteltint.",lagen:"2 dunne deklagen",lagenInfo:"Pastels zijn transparant van nature. Werk dun en egaal. Op een correcte milky white basis zijn 2 goede lagen altijd voldoende. Dekt je polish niet - dan is dat een kwaliteitskwestie van de polish.",aandacht:"Vrije rand blijft mooi wit - zachter eindresultaat",aandachtInfo:"Met milky white als opbouw ziet ook de onderkant van de vrije rand er netjes uit: puur wit en niet gekleurd. Dat draagt bij aan het zachte, frisse effect van pastels.",tip:"Uitzondering: bij pastel roze of pastelpaars kun je overwegen een heel lichte roze of licht paarse opbouwgel te gebruiken als je de toon iets wil versterken. Maar milky white is en blijft de veiligste standaard."};
+
+function selectType(type){['donker','neon','pastel'].forEach(function(t){document.getElementById('btn-'+t).classList.remove('selected');});document.getElementById('btn-'+type).classList.add('selected');document.getElementById('q2-donker').classList.add('hidden');document.getElementById('q2-neon').classList.add('hidden');document.getElementById('result-section').classList.add('hidden');if(type==='donker'){document.getElementById('q2-donker').classList.remove('hidden');}else if(type==='neon'){document.getElementById('q2-neon').classList.remove('hidden');}else if(type==='pastel'){showResult(pastelAdvies);}}
+function selectDonker(toon){['rood','bordeaux','paars','bruin','blauw','zwart'].forEach(function(t){document.getElementById('btn-'+t).classList.remove('selected');});document.getElementById('btn-'+toon).classList.add('selected');showResult(donkerMap[toon]);}
+function selectNeon(kleur){['roze','paars','geel','oranje','groen','blauw'].forEach(function(k){document.getElementById('btn-n'+k).classList.remove('selected');});document.getElementById('btn-n'+kleur).classList.add('selected');showResult(neonMap[kleur]);}
+function showResult(data){currentAdvies=data;document.getElementById('result-badge').textContent=data.badge;document.getElementById('result-title').textContent=data.title;document.getElementById('res-ondergrond').textContent=data.ondergrond;document.getElementById('info-ondergrond').textContent=data.ondergrondInfo;document.getElementById('res-lagen').textContent=data.lagen;document.getElementById('info-lagen').textContent=data.lagenInfo;document.getElementById('res-aandacht').textContent=data.aandacht;document.getElementById('info-aandacht').textContent=data.aandachtInfo;var tc=document.getElementById('tip-container');if(data.tip){tc.innerHTML='<div class="tip-box"><span class="tip-icon">&#128161;</span><span class="tip-text">'+data.tip+'</span></div>';}else{tc.innerHTML='';}['info-ondergrond','info-lagen','info-aandacht'].forEach(function(id){document.getElementById(id).classList.remove('open');});var rs=document.getElementById('result-section');rs.classList.remove('hidden');setTimeout(function(){rs.scrollIntoView({behavior:'smooth',block:'nearest'});},50);}
+function toggleInfo(id){document.getElementById(id).classList.toggle('open');}
+function resetTool(){['donker','neon','pastel'].forEach(function(t){document.getElementById('btn-'+t).classList.remove('selected');});['rood','bordeaux','paars','bruin','blauw','zwart'].forEach(function(t){var el=document.getElementById('btn-'+t);if(el)el.classList.remove('selected');});['roze','paars','geel','oranje','groen','blauw'].forEach(function(k){var el=document.getElementById('btn-n'+k);if(el)el.classList.remove('selected');});document.getElementById('q2-donker').classList.add('hidden');document.getElementById('q2-neon').classList.add('hidden');document.getElementById('result-section').classList.add('hidden');currentAdvies={};window.scrollTo({top:0,behavior:'smooth'});}
+
+function downloadPDF(){
+if(!currentAdvies.title)return;
+var jsPDF=window.jspdf.jsPDF;
+var doc=new jsPDF({orientation:'p',unit:'mm',format:'a4'});
+var p=[156,40,177],pd=[92,22,105],a=[254,155,0],lb=[248,242,255],td=[30,10,40],tm=[120,90,140],w=[255,255,255],b=[232,217,245];
+var pW=210,mg=18,cW=174,pageH=297,footerH=18;
+
+function checkPage(neededH){
+  if(y+neededH>pageH-footerH){
+    doc.addPage();
+    y=16;
+  }
+}
+
+doc.setFillColor(pd[0],pd[1],pd[2]);doc.rect(0,0,pW,40,'F');
+doc.setFillColor(p[0],p[1],p[2]);doc.rect(0,22,pW,18,'F');
+doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(200,180,215);doc.text('NAIL IT - KLEURAPPLICATIE WERKBLAD',mg,11);
+doc.setFont('helvetica','bold');doc.setFontSize(19);doc.setTextColor(w[0],w[1],w[2]);doc.text('Kleurapplicatie advies',mg,26);
+doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(220,190,235);doc.text('Gegenereerd via de Nail It kleurapplicatie tool - uitsluitend voor cursusdeelnemers',mg,34);
+var y=48;
+
+doc.setFillColor(lb[0],lb[1],lb[2]);doc.setDrawColor(b[0],b[1],b[2]);doc.setLineWidth(0.4);doc.roundedRect(mg,y,cW,9,2,2,'FD');
+doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(p[0],p[1],p[2]);doc.text(currentAdvies.badge.toUpperCase(),mg+4,y+6);y+=14;
+doc.setFont('helvetica','bold');doc.setFontSize(14);doc.setTextColor(td[0],td[1],td[2]);doc.text(currentAdvies.title,mg,y);y+=10;
+
+var rows=[{label:'ONDERGROND',value:currentAdvies.ondergrond,info:currentAdvies.ondergrondInfo},{label:'KLEURLAGEN',value:currentAdvies.lagen,info:currentAdvies.lagenInfo},{label:'AANDACHTSPUNT',value:currentAdvies.aandacht,info:currentAdvies.aandachtInfo}];
+rows.forEach(function(row){
+  var iL=doc.splitTextToSize(row.info,cW-12);
+  var vL=doc.splitTextToSize(row.value,cW-12);
+  var bH=Math.max(8+vL.length*5+3+iL.length*4.5+6,26);
+  checkPage(bH+5);
+  doc.setFillColor(w[0],w[1],w[2]);doc.setDrawColor(b[0],b[1],b[2]);doc.setLineWidth(0.4);doc.roundedRect(mg,y,cW,bH,3,3,'FD');
+  doc.setFillColor(p[0],p[1],p[2]);doc.roundedRect(mg,y,3,bH,1,0,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(tm[0],tm[1],tm[2]);doc.text(row.label,mg+7,y+6);
+  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(td[0],td[1],td[2]);doc.text(vL,mg+7,y+12);
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(tm[0],tm[1],tm[2]);doc.text(iL,mg+7,y+12+vL.length*5+3);
+  y+=bH+5;
+});
+
+if(currentAdvies.tip){
+  var tL=doc.splitTextToSize(currentAdvies.tip,cW-14);
+  var tH=tL.length*5+14;
+  checkPage(tH+8);
+  doc.setFillColor(255,248,236);doc.setDrawColor(a[0],a[1],a[2]);doc.setLineWidth(0.5);doc.roundedRect(mg,y,cW,tH,3,3,'FD');
+  doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(a[0],a[1],a[2]);doc.text('EXTRA TIP',mg+5,y+7);
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(122,72,0);doc.text(tL,mg+5,y+13);
+  y+=tH+8;
+}else{y+=4;}
+
+checkPage(24);
+doc.setFillColor(p[0],p[1],p[2]);doc.rect(mg,y,cW,10,'F');
+doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(w[0],w[1],w[2]);doc.text('Werkprotocol kleurapplicatie',mg+4,y+7);
+y+=14;
+
+var badge=currentAdvies.badge||'';
+var activeWorkflow=(badge.indexOf('Neon')!==-1||badge.indexOf('Pastel')!==-1)?workflowNeonPastel:workflow;
+
+activeWorkflow.forEach(function(stap,i){
+  var sL=doc.splitTextToSize(stap,cW-18);
+  var sH=Math.max(sL.length*5+8,13);
+  checkPage(sH);
+  var bg=i%2===0?lb:w;
+  doc.setFillColor(bg[0],bg[1],bg[2]);doc.rect(mg,y,cW,sH,'F');
+  doc.setFillColor(p[0],p[1],p[2]);doc.circle(mg+5,y+sH/2,3.5,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(w[0],w[1],w[2]);
+  doc.text(String(i+1),mg+5,y+sH/2+2.5,{align:'center'});
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(td[0],td[1],td[2]);
+  doc.text(sL,mg+12,y+sH/2-(sL.length-1)*2.5+3);
+  y+=sH;
+});
+
+checkPage(20);
+y+=10;
+doc.setDrawColor(b[0],b[1],b[2]);doc.setLineWidth(0.3);doc.line(mg,y,pW-mg,y);y+=5;
+doc.setFont('helvetica','italic');doc.setFontSize(7.5);doc.setTextColor(tm[0],tm[1],tm[2]);
+doc.text('© Nail It - dit werkblad is uitsluitend bestemd voor cursusdeelnemers en intern gebruik.',mg,y);
+doc.save('kleurapplicatie-werkblad-nailit.pdf');}
+</script>
+</body>
+</html>
