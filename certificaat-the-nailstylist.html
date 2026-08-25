@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificaat The Nailstylist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── TOKENS ── */
+:root {
+  --cream:      #f8f2ff;
+  --violet:     #9c28b1;
+  --lila:       #b590f1;
+  --amber:      #fe9b00;
+  --plum:       #2d1a3e;
+  --mid:        #5a4270;
+  --rule:       rgba(156, 40, 177, 0.22);
+  --rule-strong: rgba(156, 40, 177, 0.55);
+}
+
+/* ── SCREEN: A4 LANDSCAPE ── */
+html, body {
+  background: #e0d6ee;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page {
+  width: 297mm;
+  height: 210mm;
+  background: var(--cream);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── CORNER FLOURISH (CSS-only, no SVG paths) ── */
+.page::before,
+.page::after {
+  content: '';
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  pointer-events: none;
+}
+.page::before {
+  top: 18px; left: 18px;
+  border-top: 2px solid var(--violet);
+  border-left: 2px solid var(--violet);
+}
+.page::after {
+  bottom: 18px; right: 18px;
+  border-bottom: 2px solid var(--violet);
+  border-right: 2px solid var(--violet);
+}
+.corner-tr, .corner-bl {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  pointer-events: none;
+}
+.corner-tr {
+  top: 18px; right: 18px;
+  border-top: 2px solid var(--violet);
+  border-right: 2px solid var(--violet);
+}
+.corner-bl {
+  bottom: 18px; left: 18px;
+  border-bottom: 2px solid var(--violet);
+  border-left: 2px solid var(--violet);
+}
+
+/* ── OUTER + INNER BORDER ── */
+.border-outer {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid var(--rule-strong);
+  pointer-events: none;
+}
+.border-inner {
+  position: absolute;
+  inset: 20px;
+  border: 1px solid var(--rule);
+  pointer-events: none;
+}
+
+/* ── SUBTLE BACKGROUND TEXTURE ── */
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.bg-circle-1 {
+  width: 280px; height: 280px;
+  top: -80px; left: -60px;
+  background: radial-gradient(circle, rgba(181,144,241,0.10) 0%, transparent 70%);
+}
+.bg-circle-2 {
+  width: 220px; height: 220px;
+  bottom: -60px; right: -40px;
+  background: radial-gradient(circle, rgba(254,155,0,0.07) 0%, transparent 70%);
+}
+
+/* ── CONTENT ── */
+.cert-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 72px 28px;
+  gap: 0;
+  text-align: center;
+}
+
+/* ── HEADER ROW ── */
+.cert-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 14px;
+}
+
+.logo {
+  height: 42px;
+  width: auto;
+  opacity: 0.9;
+}
+
+.cert-header-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--rule-strong);
+}
+
+/* ── SHIMMER WORDMARK ── */
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
+.wordmark {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #9c28b1, #b590f1, #fe9b00, #b590f1, #9c28b1);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ── TITLE ── */
+.cert-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 8px;
+}
+
+.cert-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--violet);
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: 6px;
+}
+
+/* ── SUBTITLE (The Nailstylist groot) ── */
+.cert-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.0rem;
+  font-weight: 600;
+  font-style: italic;
+  background: linear-gradient(90deg, #9c28b1, #b590f1, #fe9b00, #b590f1, #9c28b1);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+/* ── ORNAMENT DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  width: 100%;
+  max-width: 380px;
+}
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--rule-strong));
+}
+.divider-line.right {
+  background: linear-gradient(to left, transparent, var(--rule-strong));
+}
+.divider-star {
+  color: var(--lila);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+}
+
+/* ── INTRO TEXT ── */
+.cert-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--mid);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* ── NAME FIELD ── */
+.cert-name-wrap {
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 440px;
+}
+
+.cert-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--plum);
+  line-height: 1;
+  display: block;
+  border-bottom: 1.5px solid var(--violet);
+  padding-bottom: 6px;
+  min-width: 420px;
+  letter-spacing: 0.02em;
+}
+
+/* ── BODY TEXT ── */
+.cert-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--plum);
+  line-height: 1.5;
+  margin-bottom: 22px;
+  max-width: 500px;
+}
+.cert-body em {
+  font-style: italic;
+  color: var(--violet);
+}
+
+/* ── FOOTER ROW ── */
+.cert-footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 580px;
+  gap: 40px;
+}
+
+.cert-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.cert-field-line {
+  width: 170px;
+  height: 1px;
+  background: var(--rule-strong);
+}
+
+.cert-field-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.cert-field-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--plum);
+  letter-spacing: 0.04em;
+}
+
+.cert-sig-space {
+  height: 32px;
+}
+
+/* ── AMBER ACCENT DOT ── */
+.amber-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--amber);
+  display: inline-block;
+  margin: 0 4px;
+  vertical-align: middle;
+}
+
+/* ── PRINT ── */
+@media print {
+  html, body {
+    background: white;
+    margin: 0;
+    display: block;
+  }
+  .page {
+    width: 297mm;
+    height: 210mm;
+    page-break-after: avoid;
+    box-shadow: none;
+  }
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Background texture -->
+  <div class="bg-circle bg-circle-1"></div>
+  <div class="bg-circle bg-circle-2"></div>
+
+  <!-- Borders & corners -->
+  <div class="border-outer"></div>
+  <div class="border-inner"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+
+  <!-- Content -->
+  <div class="cert-inner">
+
+    <!-- Header: logo + wordmark -->
+    <div class="cert-header">
+      <img src="images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform" class="logo">
+      <div class="cert-header-divider"></div>
+      <span class="wordmark">The Nailstylist</span>
+    </div>
+
+    <!-- Eyebrow -->
+    <p class="cert-eyebrow">Officieel document</p>
+
+    <!-- Main title -->
+    <h1 class="cert-title">Certificaat van voltooiing</h1>
+    <h2 class="cert-subtitle">The Nailstylist</h2>
+
+    <!-- Divider ornament -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-star">✦ <span class="amber-dot"></span> ✦</span>
+      <div class="divider-line right"></div>
+    </div>
+
+    <!-- Intro -->
+    <p class="cert-intro">Dit certificaat wordt uitgereikt aan</p>
+
+    <!-- Name field -->
+    <div class="cert-name-wrap">
+      <span class="cert-name">&nbsp;</span>
+    </div>
+
+    <!-- Body text -->
+    <p class="cert-body">
+      heeft het volledige nageltraject <em>The Nailstylist</em> succesvol voltooid.
+    </p>
+
+    <!-- Footer: year + signature -->
+    <div class="cert-footer">
+
+      <div class="cert-field">
+        <div class="cert-sig-space"></div>
+        <div class="cert-field-line"></div>
+        <div class="cert-field-label">Jaar</div>
+      </div>
+
+      <div class="cert-field">
+        <div class="cert-sig-space"></div>
+        <div class="cert-field-line"></div>
+        <div class="cert-field-value">Tabitha Windels</div>
+        <div class="cert-field-label">NailCraft Platform</div>
+        <img src="images/Untitled-design-6.webp" alt="Tabitha Windels" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:1.5px solid var(--lila); margin-top:6px;">
+      </div>
+
+    </div>
+
+  </div><!-- /.cert-inner -->
+</div><!-- /.page -->
+
+</body>
+</html>
