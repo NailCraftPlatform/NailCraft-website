@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>NailCraft Platform — Sitekaart (intern)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --purple:#9c28b1;
+  --purple-deep:#4a1656;
+  --purple-soft:#f1e2f7;
+  --paper:#faf6fb;
+  --panel:#ffffff;
+  --ink:#241528;
+  --ink-soft:#5c4a67;
+  --ink-faint:#8a7897;
+  --line:#e7d8ef;
+  --line-soft:#f0e5f5;
+  --accent:#fe9b00;
+  --accent-soft:#fff1dc;
+  --external:#6b5b78;
+  --external-soft:#ece3f0;
+  --warn:#b8382f;
+  --warn-soft:#fbe4e1;
+  --free:#2f8a5b;
+  --free-soft:#e2f3e9;
+  --radius:14px;
+  --radius-sm:8px;
+  --shadow:0 2px 18px rgba(74,22,86,0.07);
+  --font-display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --font-body:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-mono:'IBM Plex Mono','SF Mono',Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --purple:#c964d9;
+    --purple-deep:#2a0e33;
+    --purple-soft:#3a1f43;
+    --paper:#1c1220;
+    --panel:#251829;
+    --ink:#f3e9f6;
+    --ink-soft:#c9b6d1;
+    --ink-faint:#8f7a97;
+    --line:#3a2740;
+    --line-soft:#2e1f34;
+    --accent:#ffb238;
+    --accent-soft:#3a2a12;
+    --external:#b7a5c0;
+    --external-soft:#332638;
+    --warn:#e37066;
+    --warn-soft:#3d1f1c;
+    --free:#6bcf9a;
+    --free-soft:#173324;
+    --shadow:0 2px 24px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"]{
+  --purple:#c964d9;
+  --purple-deep:#2a0e33;
+  --purple-soft:#3a1f43;
+  --paper:#1c1220;
+  --panel:#251829;
+  --ink:#f3e9f6;
+  --ink-soft:#c9b6d1;
+  --ink-faint:#8f7a97;
+  --line:#3a2740;
+  --line-soft:#2e1f34;
+  --accent:#ffb238;
+  --accent-soft:#3a2a12;
+  --external:#b7a5c0;
+  --external-soft:#332638;
+  --warn:#e37066;
+  --warn-soft:#3d1f1c;
+  --free:#6bcf9a;
+  --free-soft:#173324;
+  --shadow:0 2px 24px rgba(0,0,0,0.35);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;color:var(--ink);}
+a{color:var(--purple);}
+code,.mono{font-family:var(--font-mono);}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px;}
+
+/* Header */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  background:linear-gradient(180deg, var(--paper) 78%, transparent);
+  backdrop-filter:blur(6px);
+  padding:22px 0 14px;
+}
+.topbar-inner{max-width:1180px;margin:0 auto;padding:0 20px;}
+.eyebrow{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:6px;
+}
+.title-row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+h1.page-title{font-size:1.85rem;font-weight:700;}
+.subtitle{color:var(--ink-soft);font-size:0.95rem;margin-top:4px;max-width:60ch;}
+
+.search-box{
+  margin-top:16px;position:relative;
+}
+.search-box input{
+  width:100%;
+  font-family:var(--font-body);
+  font-size:0.95rem;
+  padding:11px 16px 11px 40px;
+  border-radius:999px;
+  border:1.5px solid var(--line);
+  background:var(--panel);
+  color:var(--ink);
+  outline:none;
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+.search-box input:focus{border-color:var(--purple);box-shadow:0 0 0 3px var(--purple-soft);}
+.search-box::before{
+  content:'⌕';
+  position:absolute;left:16px;top:50%;transform:translateY(-50%);
+  color:var(--ink-faint);font-size:1.1rem;pointer-events:none;
+}
+.search-hint{font-size:0.76rem;color:var(--ink-faint);margin-top:6px;}
+
+/* jump nav */
+.jumpnav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.jumpnav a{
+  font-size:0.78rem;font-weight:500;color:var(--ink-soft);text-decoration:none;
+  padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);
+  transition:border-color .15s, color .15s;
+  white-space:nowrap;
+}
+.jumpnav a:hover{border-color:var(--purple);color:var(--purple);}
+
+/* Sections */
+section.panel{
+  margin-top:34px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:28px 28px 30px;
+}
+section.panel h2{font-size:1.35rem;margin-bottom:6px;}
+.panel-desc{color:var(--ink-soft);font-size:0.9rem;margin-bottom:20px;max-width:78ch;}
+.panel-num{
+  display:inline-block;font-family:var(--font-mono);font-size:0.72rem;color:var(--purple);
+  background:var(--purple-soft);padding:2px 8px;border-radius:6px;margin-bottom:10px;letter-spacing:0.04em;
+}
+
+/* Legend chips */
+.chip{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:0.68rem;font-weight:600;letter-spacing:0.03em;
+  padding:3px 9px;border-radius:999px;white-space:nowrap;
+}
+.chip-hoofd{background:var(--purple-soft);color:var(--purple-deep);}
+:root[data-theme="dark"] .chip-hoofd,:root:not([data-theme="light"]) .chip-hoofd{color:var(--purple);}
+.chip-sales{background:var(--accent-soft);color:#8a5300;}
+:root[data-theme="dark"] .chip-sales,:root:not([data-theme="light"]) .chip-sales{color:var(--accent);}
+.chip-bedankt{background:var(--free-soft);color:var(--free);}
+.chip-hidden{background:var(--warn-soft);color:var(--warn);}
+.chip-extern{background:var(--external-soft);color:var(--external);}
+.chip-gratis{background:var(--free-soft);color:var(--free);}
+.chip-fixed{background:var(--free-soft);color:var(--free);}
+
+.legend-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:4px;}
+
+/* External systems cards */
+.sys-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.sys-card{border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px;background:var(--paper);}
+.sys-card .sys-name{font-weight:600;font-size:0.92rem;margin-bottom:4px;}
+.sys-card .sys-url{font-family:var(--font-mono);font-size:0.78rem;color:var(--purple);word-break:break-all;display:block;margin-bottom:6px;}
+.sys-card .sys-note{font-size:0.8rem;color:var(--ink-soft);}
+.sys-card.sys-warn{border-color:rgba(184,56,47,0.35);background:var(--warn-soft);}
+.sys-card.sys-warn .sys-url{color:var(--warn);}
+.sys-card.sys-warn .sys-note{color:var(--ink);}
+
+/* Table */
+.table-scroll{overflow-x:auto;border-radius:var(--radius-sm);border:1px solid var(--line-soft);}
+table{width:100%;border-collapse:collapse;font-size:0.86rem;min-width:640px;}
+thead th{
+  text-align:left;font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;padding:10px 14px;background:var(--paper);
+  border-bottom:1px solid var(--line);position:sticky;top:0;
+}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:var(--paper);}
+tbody tr.js-hidden{display:none;}
+tbody tr.total-row td{background:var(--purple-soft);font-weight:700;color:var(--purple-deep);}
+.cell-title{font-weight:600;color:var(--ink);}
+.cell-url a{font-family:var(--font-mono);font-size:0.78rem;color:var(--purple);text-decoration:none;}
+.cell-url a:hover{text-decoration:underline;}
+.cell-func{color:var(--ink-soft);font-size:0.82rem;}
+.cell-func b{color:var(--ink);font-weight:600;}
+.cell-count{font-family:var(--font-mono);text-align:right;}
+.no-results{padding:26px;text-align:center;color:var(--ink-faint);font-size:0.88rem;display:none;}
+
+/* Funnel cards */
+.funnel-list{display:flex;flex-direction:column;gap:10px;}
+.funnel-row{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:14px 16px;border:1px solid var(--line-soft);border-radius:var(--radius-sm);background:var(--paper);
+}
+.funnel-source{
+  display:flex;flex-direction:column;gap:2px;min-width:180px;
+}
+.funnel-source .fs-label{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-faint);}
+.funnel-source .fs-name{font-weight:700;font-family:var(--font-display);font-size:1.02rem;}
+.funnel-source .fs-url{font-family:var(--font-mono);font-size:0.72rem;color:var(--purple);}
+.funnel-arrow{color:var(--ink-faint);font-size:1.1rem;flex-shrink:0;}
+.funnel-upsells{display:flex;gap:8px;flex-wrap:wrap;flex:1;}
+.upsell-chip{
+  display:flex;flex-direction:column;gap:1px;
+  padding:7px 12px;border-radius:10px;background:var(--accent-soft);border:1px solid rgba(254,155,0,0.35);
+}
+.upsell-chip .uc-name{font-size:0.8rem;font-weight:600;color:#8a5300;}
+:root[data-theme="dark"] .upsell-chip .uc-name,:root:not([data-theme="light"]) .upsell-chip .uc-name{color:var(--accent);}
+.upsell-chip .uc-url{font-family:var(--font-mono);font-size:0.66rem;color:var(--ink-soft);}
+
+/* Quiz outcomes */
+.quiz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;}
+.quiz-card{border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:14px 16px;background:var(--paper);}
+.quiz-card .qc-result{font-weight:700;font-size:0.95rem;color:var(--purple-deep);}
+:root[data-theme="dark"] .quiz-card .qc-result,:root:not([data-theme="light"]) .quiz-card .qc-result{color:var(--purple);}
+.quiz-card .qc-extra{font-size:0.78rem;color:var(--ink-soft);margin-top:5px;}
+
+/* Flag list */
+.flag-list{display:flex;flex-direction:column;gap:12px;}
+.flag-item{
+  display:flex;gap:12px;padding:14px 16px;border-radius:var(--radius-sm);
+  background:var(--warn-soft);border:1px solid rgba(184,56,47,0.25);
+}
+.flag-item.flag-resolved{background:var(--free-soft);border-color:rgba(47,138,91,0.3);}
+.flag-icon{color:var(--warn);font-size:1.1rem;line-height:1.4;flex-shrink:0;}
+.flag-item.flag-resolved .flag-icon{color:var(--free);}
+.flag-text b{color:var(--ink);}
+.flag-text{font-size:0.86rem;color:var(--ink-soft);}
+
+/* Dossier (typo deep-dive) */
+.dossier-block{margin-bottom:22px;}
+.dossier-block h3{font-size:1.02rem;margin-bottom:8px;color:var(--purple-deep);}
+:root[data-theme="dark"] .dossier-block h3,:root:not([data-theme="light"]) .dossier-block h3{color:var(--purple);}
+.dossier-block p{font-size:0.9rem;color:var(--ink-soft);margin:0 0 8px;line-height:1.6;max-width:82ch;}
+.step-list{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
+.step-item{display:flex;gap:12px;padding:12px 14px;border:1px solid var(--line-soft);border-radius:var(--radius-sm);background:var(--paper);}
+.step-num{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--purple);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;font-family:var(--font-mono);
+}
+.step-text{font-size:0.88rem;color:var(--ink);line-height:1.55;}
+.step-text b{color:var(--purple-deep);}
+:root[data-theme="dark"] .step-text b,:root:not([data-theme="light"]) .step-text b{color:var(--purple);}
+.note-box{
+  margin-top:18px;padding:16px 18px;border-radius:var(--radius-sm);
+  background:var(--accent-soft);border:1px solid rgba(254,155,0,0.35);
+}
+.note-box .nb-title{font-weight:700;font-size:0.85rem;color:#8a5300;margin-bottom:4px;}
+:root[data-theme="dark"] .note-box .nb-title,:root:not([data-theme="light"]) .note-box .nb-title{color:var(--accent);}
+.note-box p{font-size:0.86rem;color:var(--ink);margin:0;max-width:none;}
+.subtable-title{font-size:0.85rem;font-weight:700;color:var(--ink);margin:18px 0 8px;}
+
+footer.page-footer{
+  margin-top:40px;text-align:center;color:var(--ink-faint);font-size:0.78rem;
+}
+
+@media (max-width:640px){
+  section.panel{padding:20px 16px;}
+  .funnel-row{flex-direction:column;align-items:flex-start;}
+  .funnel-arrow{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="eyebrow">NailCraft Platform · intern naslagwerk · niet gelinkt, niet geïndexeerd</div>
+      <div class="title-row">
+        <h1 class="page-title">Sitekaart &amp; verkoopfunnels</h1>
+      </div>
+      <p class="subtitle">Elke pagina, elke knop en elke betaal-URL van nailcraft.be op één plek — inclusief de verborgen tool- en certificaatpagina's, welke cursus je promoot op elke bedankt-pagina, en het dossier over de domeinnaam-typo in de checkout-links.</p>
+
+      <div class="search-box">
+        <input type="text" id="globalSearch" placeholder="Zoek op paginanaam, URL, cursus of trefwoord…" autocomplete="off">
+      </div>
+      <p class="search-hint">Filtert de volledige paginatabel hieronder. De overige overzichten (funnels, weggevers, verborgen pagina's, dossier) blijven altijd zichtbaar.</p>
+
+      <nav class="jumpnav">
+        <a href="#systemen">Platformen</a>
+        <a href="#paginas">Alle pagina's</a>
+        <a href="#cursussen">Cursus-URL's</a>
+        <a href="#funnel">Bedankt-pagina funnels</a>
+        <a href="#weggevers">Gratis weggevers</a>
+        <a href="#quiz">Cursus-kiezer</a>
+        <a href="#verborgen">Verborgen pagina's</a>
+        <a href="#aandacht">Aandachtspunten</a>
+        <a href="#typo-dossier">Typo-dossier</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- SYSTEMEN -->
+  <section class="panel" id="systemen">
+    <span class="panel-num">Basis</span>
+    <h2>Platformen &amp; externe systemen</h2>
+    <p class="panel-desc">Elke knop op de site verwijst uiteindelijk naar één van deze systemen. Handig om te weten voor je de rest van dit document leest.</p>
+    <div class="sys-grid">
+      <div class="sys-card">
+        <div class="sys-name">Hoofdsite</div>
+        <span class="sys-url">nailcraft.be</span>
+        <div class="sys-note">De statische site zelf (dit document). Alle relatieve paden hieronder zijn t.o.v. dit domein.</div>
+      </div>
+      <div class="sys-card sys-warn">
+        <div class="sys-name">Afrekenpagina's (checkout) ⚑</div>
+        <span class="sys-url">naillraftplatform.kennis.shop/pay/&lbrace;product&rbrace;</span>
+        <div class="sys-note">Elke cursus heeft een eigen slug na <code>/pay/</code>. Bevat een bekende typo ("naillraft" i.p.v. "nailcraft") — zie het volledige dossier onderaan bij <a href="#typo-dossier">Typo-dossier</a>.</div>
+      </div>
+      <div class="sys-card">
+        <div class="sys-name">Cursistenportaal / login</div>
+        <span class="sys-url">app.kennis.shop/login</span>
+        <div class="sys-note">Waar bestaande klanten inloggen om hun aangekochte cursus te bekijken. Gelinkt vanaf elke bedankt-pagina. Correct gespeld — de typo zit alleen in het checkout-subdomein hierboven.</div>
+      </div>
+      <div class="sys-card">
+        <div class="sys-name">Wachtlijst The Nailstylist</div>
+        <span class="sys-url">tabitha-nail-it.kit.com/thenailstylist</span>
+        <div class="sys-note">Extern opt-in formulier (Kit/ConvertKit). Dit is de enige salespagina zonder rechtstreekse /pay/-link.</div>
+      </div>
+      <div class="sys-card">
+        <div class="sys-name">WhatsApp</div>
+        <span class="sys-url">wa.me/32478512039</span>
+        <div class="sys-note">Contactknop, aanwezig op vrijwel elke hoofdpagina.</div>
+      </div>
+      <div class="sys-card">
+        <div class="sys-name">Instagram</div>
+        <span class="sys-url">instagram.com/tabitha_nailcraft</span>
+        <div class="sys-note">Sinds de laatste opschoning wijst elke Instagram-link op de site naar dit ene account.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALLE PAGINA'S -->
+  <section class="panel" id="paginas">
+    <span class="panel-num">01</span>
+    <h2>Alle pagina's</h2>
+    <p class="panel-desc">Volledige lijst van elk HTML-bestand op de site: URL-pad, titel, of hij zichtbaar is in de navigatie, en de belangrijkste knoppen/functies met hun bestemming.</p>
+    <div class="legend-row">
+      <span class="chip chip-hoofd">Hoofdpagina</span>
+      <span class="chip chip-sales">Salespagina</span>
+      <span class="chip chip-bedankt">Bedankt-pagina</span>
+      <span class="chip chip-gratis">Gratis weggever</span>
+      <span class="chip chip-hidden">Verborgen / niet gelinkt</span>
+    </div>
+    <div class="table-scroll" style="margin-top:16px;">
+      <table id="pageTable">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Pagina</th>
+            <th>URL-pad</th>
+            <th>Titel</th>
+            <th>Belangrijkste functies</th>
+          </tr>
+        </thead>
+        <tbody id="pageTableBody"></tbody>
+      </table>
+      <div class="no-results" id="noResults">Geen pagina's gevonden voor deze zoekterm.</div>
+    </div>
+  </section>
+
+  <!-- CURSUSSEN -->
+  <section class="panel" id="cursussen">
+    <span class="panel-num">02</span>
+    <h2>Cursusaanbod &amp; betaal-URL's</h2>
+    <p class="panel-desc">Elke cursus met zijn salespagina, prijs en de exacte checkout-URL die naar de betaalpagina leidt.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Cursus</th><th>Prijs</th><th>Salespagina</th><th>Checkout-URL</th><th>Bedankt-pagina</th></tr>
+        </thead>
+        <tbody id="courseTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FUNNEL -->
+  <section class="panel" id="funnel">
+    <span class="panel-num">03</span>
+    <h2>Bedankt-pagina's: wat promoot je na elke aankoop</h2>
+    <p class="panel-desc">Voor elke bedankt-pagina: welke cursus net gekocht werd, en welke upsell(s) er direct op de bedankt-pagina worden aangeboden — met hun checkout-URL.</p>
+    <div class="funnel-list" id="funnelList"></div>
+  </section>
+
+  <!-- WEGGEVERS -->
+  <section class="panel" id="weggevers">
+    <span class="panel-num">04</span>
+    <h2>Gratis weggevers (lead magnets)</h2>
+    <p class="panel-desc">Vier gratis downloads, aangeboden via dezelfde /pay/-links (op €0) als de betaalde cursussen. Verschijnen als knoppen in de footer van vrijwel elke hoofdpagina.</p>
+    <div class="funnel-list" id="freebieList"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="panel" id="quiz">
+    <span class="panel-num">05</span>
+    <h2>Cursus-kiezer (interactieve quiz)</h2>
+    <p class="panel-desc">Verborgen functie op <span class="mono">online-opleidingen.html#nc-quiz-widget</span>: een vertakkende vragenlijst van 1 tot 3 vragen die eindigt in één van onderstaande 13 uitkomsten, telkens met een cursusaanbeveling en soms extra combinatie-voorstellen.</p>
+    <div class="quiz-grid" id="quizGrid"></div>
+  </section>
+
+  <!-- VERBORGEN -->
+  <section class="panel" id="verborgen">
+    <span class="panel-num">06</span>
+    <h2>Verborgen pagina's (niet gelinkt vanaf enige andere pagina)</h2>
+    <p class="panel-desc">Deze pagina's bestaan wél live op de site, maar zijn nergens intern aangelinkt — enkel bereikbaar als je de exacte URL kent of intypt. Dit bestand zelf (sitekaart-intern.html) hoort ook in dit rijtje.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Pagina</th><th>URL-pad</th><th>Wat het is</th></tr></thead>
+        <tbody id="hiddenTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- AANDACHT -->
+  <section class="panel" id="aandacht">
+    <span class="panel-num">07</span>
+    <h2>Aandachtspunten</h2>
+    <p class="panel-desc">Een paar dingen die opvielen tijdens het opstellen van dit overzicht.</p>
+    <div class="flag-list" id="flagList"></div>
+  </section>
+
+  <!-- TYPO DOSSIER -->
+  <section class="panel" id="typo-dossier">
+    <span class="panel-num">08</span>
+    <h2>Dossier: de domeinnaam-typo in de betaal-links</h2>
+    <p class="panel-desc">Volledig overzicht van de bekende typo in het checkout-domein — waar ze zit, waarom ze nu bewust niet aangepast wordt, waar ze overal op de site staat, en het stappenplan voor zodra ze wél gecorrigeerd mag worden.</p>
+
+    <div class="dossier-block">
+      <h3>Wat is er precies mis</h3>
+      <p>Elke betaalknop op nailcraft.be leidt naar een checkoutpagina op het domein <span class="mono">naillraftplatform.kennis.shop/pay/&lt;cursusnaam&gt;</span>. Dat woord bevat een typfout: er staat "naillraft" (met dubbele L) in plaats van "nailcraft".</p>
+      <p>Ter vergelijking: de inlogpagina voor cursisten, <span class="mono">app.kennis.shop/login</span>, gebruikt wél de juiste schrijfwijze. De fout zit dus specifiek in de subdomeinnaam die destijds voor de betaalpagina's is aangemaakt — niet in kennis.shop zelf, en niet in de rest van het platform.</p>
+    </div>
+
+    <div class="dossier-block">
+      <h3>Waar deze instelling precies zit</h3>
+      <p>Dit is geen instelling op de website nailcraft.be zelf — ze zit in het platform kennis.shop, het systeem waar de cursussen en betalingen verlopen. Bij het aanmaken van de werkruimte/shop in kennis.shop is de subdomeinnaam ongeveer een jaar geleden ingevuld als "naillraftplatform" in plaats van "nailcraftplatform". Die subdomeinnaam bepaalt automatisch het webadres van elke betaalpagina die kennis.shop aanmaakt.</p>
+      <p>De exacte plek in het kennis.shop-dashboard hangt af van hun huidige menu-indeling — kijk onder een instelling als "domeinnaam", "subdomein" of "winkelnaam" in de accountinstellingen, of vraag het na bij kennis.shop-support zodra je zover bent.</p>
+    </div>
+
+    <div class="dossier-block">
+      <h3>Waarom dit nu nog niet wijzigt</h3>
+      <p>Dit is een bewuste keuze: de instelling mag momenteel nog niet aangepast worden. Dit dossier dient als naslagwerk, zodat op elk moment duidelijk is waar de fout zit en wat er moet gebeuren zodra er wél groen licht is.</p>
+    </div>
+
+    <div class="dossier-block">
+      <h3>Waar deze link overal op de site gebruikt wordt</h3>
+      <p>In totaal komt <span class="mono">naillraftplatform.kennis.shop</span> op <b>154 plaatsen</b> voor, verspreid over <b>36 bestanden</b>. Onderstaande tabellen tonen per pagina hoeveel keer de link erin staat.</p>
+
+      <div class="subtable-title">Hoofdpagina's — 36 links</div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Bestand</th><th style="text-align:right">Aantal links</th></tr></thead>
+          <tbody id="typoHoofdBody"></tbody>
+        </table>
+      </div>
+
+      <div class="subtable-title">Salespagina's — 82 links</div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Bestand</th><th style="text-align:right">Aantal links</th></tr></thead>
+          <tbody id="typoSalesBody"></tbody>
+        </table>
+      </div>
+
+      <div class="subtable-title">Bedankt-pagina's — 36 links</div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Bestand</th><th style="text-align:right">Aantal links</th></tr></thead>
+          <tbody id="typoBedanktBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dossier-block">
+      <h3>Stappenplan voor wanneer het wel mag aangepast worden</h3>
+      <div class="step-list">
+        <div class="step-item"><span class="step-num">1</span><span class="step-text">Nieuw subdomein instellen in kennis.shop — <b>nailcraftplatform</b> in plaats van naillraftplatform — en bij kennis.shop navragen of het oude subdomein automatisch blijft doorverwijzen (redirect) naar het nieuwe.</span></div>
+        <div class="step-item"><span class="step-num">2</span><span class="step-text">Bevestigen dat die redirect werkt. Dit is de belangrijkste stap: zonder redirect breken alle links die al ergens buiten de website staan — oude e-mails, lopende advertenties, social media bio's, en bookmarks van bestaande cursisten.</span></div>
+        <div class="step-item"><span class="step-num">3</span><span class="step-text">Pas daarna: de 154 links in de 36 bestanden op de website zelf vervangen (naillraftplatform → nailcraftplatform). Dit is één zoek-en-vervang-actie over alle bestanden — dat kan in enkele minuten gebeuren zodra het woord gegeven wordt.</span></div>
+        <div class="step-item"><span class="step-num">4</span><span class="step-text">Live testen: van elke salespagina en elke bedankt-pagina de betaalknop opnieuw doorklikken om te controleren dat de checkout nog correct werkt.</span></div>
+        <div class="step-item"><span class="step-num">5</span><span class="step-text">Extern nakijken: e-mailflows/automations, lopende advertenties, social media bio-links en eventuele PDF's of werkbladen die het oude webadres nog vermelden.</span></div>
+        <div class="step-item"><span class="step-num">6</span><span class="step-text">Pas als alles bevestigd werkt: het oude subdomein eventueel laten vervallen in kennis.shop, indien gewenst.</span></div>
+      </div>
+      <div class="note-box">
+        <div class="nb-title">Wanneer het zover is</div>
+        <p>Stap 3 (de 154 links op de website vervangen) is een kwestie van minuten, zodra stap 1 en 2 bij kennis.shop bevestigd zijn.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">Opgesteld op basis van de bestanden in de website-map · laatst bijgewerkt: 27 augustus 2026 · pas de checkout-slugs of paginanamen hier niets aan, ze zijn 1-op-1 overgenomen uit de broncode.</footer>
+
+</div>
+
+<script>
+const BASE = ''; // relative paths, open t.o.v. je eigen domein
+
+const pages = [
+  {type:'hoofd', name:'Home', url:'index.html', title:'NailCraft Platform – Online Nagelschool België | Tabitha Windels',
+   func:'Navigatie (Home/Opleidingen/The Nailstylist/Over/Blog) · hero-CTA → <b>online-opleidingen.html</b> · "Doe de cursus-quiz" → <b>online-opleidingen.html#nc-quiz-widget</b> · 4 weggever-knoppen (Startersgids, Killer Content, Snelheidstraining, Veilig Affrezen) → checkout · WhatsApp- en Instagram-knop in footer'},
+  {type:'hoofd', name:'Online Opleidingen', url:'online-opleidingen.html', title:'Online Opleidingen – Nagelcursussen voor Stylisten | NailCraft Platform',
+   func:'Hub-pagina met alle cursuskaarten (elk → eigen salespagina) · knop "Alle cursussen" → <b>pay/nailcraftplatformcursussen</b> · ingebouwde <b>cursus-kiezer quiz</b> (zie sectie 05) · 4 weggever-knoppen in footer'},
+  {type:'sales', name:'The Nailstylist (traject)', url:'salespaginas/the-nailstylist.html', title:'The Nailstylist – Complete Online Nagelcursus',
+   func:'7 CTA-knoppen → extern opt-in <b>tabitha-nail-it.kit.com/thenailstylist</b> (wachtlijst, géén rechtstreekse checkout) · footer-links naar The Gel Code en The Basics'},
+  {type:'hoofd', name:'Over', url:'over.html', title:'Over Tabitha Windels – NailCraft Platform',
+   func:'Navigatie · 4 weggever-knoppen · links naar salespagina\'s Manicure Pro, Easy Nails, Upperforms, Babyboom'},
+  {type:'hoofd', name:'Blog', url:'blog.html', title:'Blog – Tips & Tricks voor Nagelstyling | NailCraft Platform',
+   func:'Interne artikel-ankers · affiliate-links (Amazon, Tanya Savchenko, MyWay Professional) · CTA\'s → The Basics, Manicure Pro, Veilig Affrezen · 4 weggever-knoppen in footer'},
+
+  {type:'sales', name:'Manicure Pro', url:'salespaginas/manicure-pro.html', title:'Manicure Pro Cursus – Perfecte Combi-Manicure Leren',
+   func:'Meerdere CTA-knoppen → <b>pay/manicurepro</b> · sidebar-kaarten naar Easy Nails, Upperforms, Babyboom'},
+  {type:'sales', name:'Easy Nails', url:'salespaginas/easy-nails.html', title:'Easy Nails Techniek – Gelnagels Leren Plaatsen die 4 Weken Blijven',
+   func:'Meerdere CTA-knoppen → <b>pay/easynails</b> · sidebar-kaarten naar Manicure Pro, Upperforms, Babyboom'},
+  {type:'sales', name:'Upperforms (hub)', url:'salespaginas/upperforms.html', title:'Upperform Opleidingen – Kies jouw niveau',
+   func:'Vergelijkingstabel van de 3 niveaus → doorklikken naar <b>upperform-guide.html</b>, <b>upperform-pro.html</b> of <b>upperform-master.html</b> (geen eigen checkout)'},
+  {type:'sales', name:'Upperform Guide', url:'salespaginas/upperform-guide.html', title:'Upperform Guide – Het Complete E-book',
+   func:'CTA-knoppen → <b>pay/upperformguide</b> (€70, was €97) · kruisverkoop-kaarten naar Pro/Master'},
+  {type:'sales', name:'Upperform Pro', url:'salespaginas/upperform-pro.html', title:'Upperform Pro – Videocursus',
+   func:'CTA-knoppen → <b>pay/upperformpro</b> · kruisverkoop-kaarten naar Guide/Master'},
+  {type:'sales', name:'Upperform Master', url:'salespaginas/upperform-master.html', title:'Upperform Master – De Complete Training',
+   func:'CTA-knoppen → <b>pay/upperformmaster</b> · kruisverkoop-kaarten naar Guide/Pro'},
+  {type:'sales', name:'Babyboom', url:'salespaginas/babyboom.html', title:'Babyboom Cursus – Perfecte Fading met Upperforms',
+   func:'CTA-knoppen → <b>pay/babyboom</b>'},
+  {type:'sales', name:'Perfecte Kleurapplicatie', url:'salespaginas/kleurapplicatie.html', title:'Perfecte Kleurapplicatie – Online cursus',
+   func:'CTA-knoppen → <b>pay/kleurapplicatie</b>'},
+  {type:'sales', name:'Sjabloon Applicatie', url:'salespaginas/sjablonen.html', title:'Sjabloon Applicatie – Online cursus',
+   func:'CTA-knoppen → <b>pay/sjabloonapplicatie</b>'},
+  {type:'sales', name:'Refill Removal Pro', url:'salespaginas/kunstnagels-affrezen.html', title:'Refill Removal Pro – Veilig bijwerken & affrezen',
+   func:'CTA-knoppen → <b>pay/refillremovalpro</b> (dit is de actief gelinkte versie, zie sectie 06 voor een ongebruikt duplicaat)'},
+  {type:'sales', name:'The Gel Code', url:'salespaginas/the-gel-code.html', title:'The Gel Code – e-book cursus',
+   func:'CTA-knoppen → <b>pay/thegelcode</b>'},
+  {type:'sales', name:'The Basics', url:'salespaginas/the-basics.html', title:'The Basics – e-book cursus',
+   func:'CTA-knoppen → <b>pay/thebasics</b>'},
+  {type:'sales', name:'Manicure E-book', url:'salespaginas/manicure-ebook.html', title:'Manicure E-book – combi-manicure van A tot Z',
+   func:'CTA-knoppen → <b>pay/manicureebook</b> (actieprijs €18,99, normaal €45) · interne link naar Manicure Pro'},
+  {type:'sales', name:'Nail Content Creator', url:'salespaginas/nail-content-creator.html', title:'Nail Content Creator – e-book + video tutorials',
+   func:'CTA-knoppen → <b>pay/nailcontentcreator</b>'},
+
+  {type:'bedankt', name:'Bedankt: Manicure Pro', url:'bedankt-manicure-pro.html', title:'Bedankt voor je aankoop!',
+   func:'Login-knop → app.kennis.shop/login · upsell → <b>Easy Nails</b> (pay/easynails)'},
+  {type:'bedankt', name:'Bedankt: Easy Nails', url:'bedankt-easy-nails.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Perfecte Kleurapplicatie</b> (pay/kleurapplicatie) + <b>Manicure Pro</b> (pay/manicurepro)'},
+  {type:'bedankt', name:'Bedankt: Perfecte Kleurapplicatie', url:'bedankt-kleurapplicatie.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Easy Nails</b> (pay/easynails)'},
+  {type:'bedankt', name:'Bedankt: Sjabloon Applicatie', url:'bedankt-sjablonen.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Easy Nails</b> + <b>Manicure Pro</b>'},
+  {type:'bedankt', name:'Bedankt: Refill Removal Pro', url:'bedankt-refill-removal-pro.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Easy Nails</b> + <b>Manicure Pro</b>'},
+  {type:'bedankt', name:'Bedankt: The Basics', url:'bedankt-the-basics.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Manicure Pro</b> + <b>Manicure E-book</b> + <b>The Gel Code</b>'},
+  {type:'bedankt', name:'Bedankt: The Gel Code', url:'bedankt-the-gel-code.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Easy Nails</b> + <b>The Basics</b>'},
+  {type:'bedankt', name:'Bedankt: Manicure E-book', url:'bedankt-manicure-ebook.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Easy Nails</b> + <b>The Gel Code</b> + <b>The Basics</b>'},
+  {type:'bedankt', name:'Bedankt: Upperform Guide', url:'bedankt-upperform-guide.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Manicure E-book</b> + <b>Manicure Pro</b>'},
+  {type:'bedankt', name:'Bedankt: Upperform Pro', url:'bedankt-upperform-pro.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Manicure Pro</b> + <b>Refill Removal Pro</b>'},
+  {type:'bedankt', name:'Bedankt: Upperform Master', url:'bedankt-upperform-master.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Manicure Pro</b> + <b>Perfecte Kleurapplicatie</b>'},
+  {type:'bedankt', name:'Bedankt: Babyboom', url:'bedankt-babyboom.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Easy Nails</b> + <b>Upperform Master</b>'},
+  {type:'bedankt', name:'Bedankt: Nail Content Creator', url:'bedankt-nail-content-creator.html', title:'Bedankt voor je aankoop!',
+   func:'Upsell → <b>Manicure Pro</b> + <b>Upperform Master</b>'},
+
+  {type:'gratis', name:'Bedankt: Startersgids (gratis)', url:'bedankt-startersgids.html', title:'Bedankt! Je Startersgids staat klaar',
+   func:'Upsell → <b>Manicure Pro</b> + <b>The Basics</b> + <b>Easy Nails</b>'},
+  {type:'gratis', name:'Bedankt: Killer Content (gratis)', url:'bedankt-killer-content.html', title:'Bedankt! Je Killer Content training staat klaar',
+   func:'Upsell → <b>Nail Content Creator</b> + <b>Upperform Master</b>'},
+  {type:'gratis', name:'Bedankt: Snelheidstraining (gratis)', url:'bedankt-snelheidstraining.html', title:'Bedankt! Je snelheidstraining staat klaar',
+   func:'Upsell → <b>Easy Nails</b> + <b>Manicure Pro</b>'},
+  {type:'gratis', name:'Bedankt: Veilig Affrezen (gratis)', url:'bedankt-veilig-affrezen.html', title:'Bedankt! Je Veilig Affrezen training staat klaar',
+   func:'Upsell → <b>Refill Removal Pro</b> + <b>Easy Nails</b> + <b>Upperform Pro</b>'},
+
+  {type:'hidden', name:'Sitekaart (dit document)', url:'sitekaart-intern.html', title:'NailCraft Platform — Sitekaart (intern)',
+   func:'Dit overzicht zelf · <span class="mono">noindex, nofollow</span> · nergens intern gelinkt'},
+  {type:'hidden', name:'Kleurapplicatie-tool', url:'tools/kleurapplicatie.html', title:'Kleurapplicatie Tool — Nail It',
+   func:'Interactieve advies-tool (kleurtype kiezen → ondergrond/lagen/aandachtspunt) + "Werkblad downloaden als PDF" · <span class="mono">noindex, nofollow</span> · nergens intern gelinkt'},
+  {type:'hidden', name:'Certificaat The Nailstylist', url:'certificaat-the-nailstylist.html', title:'Certificaat The Nailstylist',
+   func:'Print-vriendelijk certificaatsjabloon met lege naam- en jaarvelden, handmatig in te vullen per cursist · nergens intern gelinkt'},
+  {type:'hidden', name:'Refill Removal Pro (duplicaat)', url:'salespaginas/refill-removal-pro.html', title:'Refill Removal Pro – Veilig bijwerken & affrezen',
+   func:'Identieke inhoud als kunstnagels-affrezen.html, zelfde checkout <b>pay/refillremovalpro</b> · nergens intern gelinkt, lijkt een oude/overbodige kopie'},
+];
+
+const courses = [
+  {name:'Manicure Pro', price:'€145', sales:'salespaginas/manicure-pro.html', pay:'pay/manicurepro', bedankt:'bedankt-manicure-pro.html'},
+  {name:'Easy Nails', price:'€150', sales:'salespaginas/easy-nails.html', pay:'pay/easynails', bedankt:'bedankt-easy-nails.html'},
+  {name:'Upperform Guide (e-book)', price:'€70 <span class="mono" style="opacity:.6">(was €97)</span>', sales:'salespaginas/upperform-guide.html', pay:'pay/upperformguide', bedankt:'bedankt-upperform-guide.html'},
+  {name:'Upperform Pro (video)', price:'€185', sales:'salespaginas/upperform-pro.html', pay:'pay/upperformpro', bedankt:'bedankt-upperform-pro.html'},
+  {name:'Upperform Master', price:'€235', sales:'salespaginas/upperform-master.html', pay:'pay/upperformmaster', bedankt:'bedankt-upperform-master.html'},
+  {name:'Babyboom', price:'€90', sales:'salespaginas/babyboom.html', pay:'pay/babyboom', bedankt:'bedankt-babyboom.html'},
+  {name:'Perfecte Kleurapplicatie', price:'€89', sales:'salespaginas/kleurapplicatie.html', pay:'pay/kleurapplicatie', bedankt:'bedankt-kleurapplicatie.html'},
+  {name:'Sjabloon Applicatie', price:'€65', sales:'salespaginas/sjablonen.html', pay:'pay/sjabloonapplicatie', bedankt:'bedankt-sjablonen.html'},
+  {name:'Refill Removal Pro', price:'€65', sales:'salespaginas/kunstnagels-affrezen.html', pay:'pay/refillremovalpro', bedankt:'bedankt-refill-removal-pro.html'},
+  {name:'The Gel Code', price:'€45', sales:'salespaginas/the-gel-code.html', pay:'pay/thegelcode', bedankt:'bedankt-the-gel-code.html'},
+  {name:'The Basics', price:'€45', sales:'salespaginas/the-basics.html', pay:'pay/thebasics', bedankt:'bedankt-the-basics.html'},
+  {name:'Manicure E-book', price:'€18,99 <span class="mono" style="opacity:.6">(was €45)</span>', sales:'salespaginas/manicure-ebook.html', pay:'pay/manicureebook', bedankt:'bedankt-manicure-ebook.html'},
+  {name:'Nail Content Creator', price:'€60', sales:'salespaginas/nail-content-creator.html', pay:'pay/nailcontentcreator', bedankt:'bedankt-nail-content-creator.html'},
+  {name:'The Nailstylist (traject)', price:'€1.250 <span class="mono" style="opacity:.6">(of 6× €249,50)</span>', sales:'salespaginas/the-nailstylist.html', pay:'— geen checkout, extern via Kit-wachtlijst', bedankt:'—'},
+  {name:'Alle cursussen (bundel)', price:'—', sales:'alleen gelinkt vanaf online-opleidingen.html', pay:'pay/nailcraftplatformcursussen', bedankt:'—'},
+];
+
+const funnels = [
+  {source:'Babyboom', url:'bedankt-babyboom.html', upsells:[['Easy Nails','pay/easynails'],['Upperform Master','pay/upperformmaster']]},
+  {source:'Easy Nails', url:'bedankt-easy-nails.html', upsells:[['Perfecte Kleurapplicatie','pay/kleurapplicatie'],['Manicure Pro','pay/manicurepro']]},
+  {source:'Perfecte Kleurapplicatie', url:'bedankt-kleurapplicatie.html', upsells:[['Easy Nails','pay/easynails']]},
+  {source:'Manicure E-book', url:'bedankt-manicure-ebook.html', upsells:[['Easy Nails','pay/easynails'],['The Gel Code','pay/thegelcode'],['The Basics','pay/thebasics']]},
+  {source:'Manicure Pro', url:'bedankt-manicure-pro.html', upsells:[['Easy Nails','pay/easynails']]},
+  {source:'Nail Content Creator', url:'bedankt-nail-content-creator.html', upsells:[['Manicure Pro','pay/manicurepro'],['Upperform Master','pay/upperformmaster']]},
+  {source:'Refill Removal Pro', url:'bedankt-refill-removal-pro.html', upsells:[['Easy Nails','pay/easynails'],['Manicure Pro','pay/manicurepro']]},
+  {source:'Sjabloon Applicatie', url:'bedankt-sjablonen.html', upsells:[['Easy Nails','pay/easynails'],['Manicure Pro','pay/manicurepro']]},
+  {source:'The Basics', url:'bedankt-the-basics.html', upsells:[['Manicure Pro','pay/manicurepro'],['Manicure E-book','pay/manicureebook'],['The Gel Code','pay/thegelcode']]},
+  {source:'The Gel Code', url:'bedankt-the-gel-code.html', upsells:[['Easy Nails','pay/easynails'],['The Basics','pay/thebasics']]},
+  {source:'Upperform Guide', url:'bedankt-upperform-guide.html', upsells:[['Manicure E-book','pay/manicureebook'],['Manicure Pro','pay/manicurepro']]},
+  {source:'Upperform Pro', url:'bedankt-upperform-pro.html', upsells:[['Manicure Pro','pay/manicurepro'],['Refill Removal Pro','pay/refillremovalpro']]},
+  {source:'Upperform Master', url:'bedankt-upperform-master.html', upsells:[['Manicure Pro','pay/manicurepro'],['Perfecte Kleurapplicatie','pay/kleurapplicatie']]},
+];
+
+const freebies = [
+  {source:'Startersgids (gratis)', url:'bedankt-startersgids.html', upsells:[['Manicure Pro','pay/manicurepro'],['The Basics','pay/thebasics'],['Easy Nails','pay/easynails']]},
+  {source:'Killer Content training (gratis)', url:'bedankt-killer-content.html', upsells:[['Nail Content Creator','pay/nailcontentcreator'],['Upperform Master','pay/upperformmaster']]},
+  {source:'Snelheidstraining (gratis)', url:'bedankt-snelheidstraining.html', upsells:[['Easy Nails','pay/easynails'],['Manicure Pro','pay/manicurepro']]},
+  {source:'Veilig Affrezen (gratis)', url:'bedankt-veilig-affrezen.html', upsells:[['Refill Removal Pro','pay/refillremovalpro'],['Easy Nails','pay/easynails'],['Upperform Pro','pay/upperformpro']]},
+];
+
+const quizOutcomes = [
+  {result:'The Nailstylist Traject', extra:'Enige uitkomst zonder cursusaanbeveling naast zich — dit ís het traject.'},
+  {result:'Manicure Pro (alleen)', extra:'Extra voorgesteld: Easy Nails, The Gel Code, The Basics'},
+  {result:'Manicure Pro + Easy Nails', extra:'Extra voorgesteld: Easy Nails, The Gel Code, The Basics'},
+  {result:'The Gel Code', extra:'Extra voorgesteld: The Basics'},
+  {result:'Easy Nails', extra:'Extra voorgesteld: The Gel Code'},
+  {result:'Perfecte Kleurapplicatie', extra:'Geen extra voorstel'},
+  {result:'Easy Nails (eerst), dan Kleurapplicatie', extra:'Voor wie nog geen gel kan opbouwen'},
+  {result:'Sjabloon Applicatie', extra:'Geen extra voorstel'},
+  {result:'Babyboom', extra:'Geen extra voorstel'},
+  {result:'Upperform Pro', extra:'Voor wie liever via video leert'},
+  {result:'Upperform Master', extra:'Voor wie ook een e-book erbij wil'},
+  {result:'Refill Removal Pro', extra:'Geen extra voorstel'},
+  {result:'Nail Content Creator', extra:'Geen extra voorstel'},
+];
+
+const flags = [
+  {resolved:false, text:'<b>Domeinnaam met typo:</b> alle checkout-links gebruiken <span class="mono">naillraftplatform.kennis.shop</span> (dubbele L) in plaats van "nailcraftplatform". Bekend en bewust nog niet aangepast — zie het volledige <a href="#typo-dossier">Typo-dossier</a> onderaan met de exacte locatie, alle 154 plekken op de site, en het stappenplan voor later.'},
+  {resolved:false, text:'<b>Verouderde canonical-URL\'s:</b> een aantal salespagina\'s (o.a. Manicure Pro, Easy Nails, Online Opleidingen) verwijzen in hun canonical tag nog naar oude WordPress-URL\'s zoals <span class="mono">nailcraft.be/manicure-pro/</span> of <span class="mono">nailcraft.be/easynailstechniek/</span>. Er is geen redirect-bestand (vercel.json / _redirects) gevonden, dus deze oude URL\'s bestaan momenteel niet echt op de nieuwe site.'},
+  {resolved:true, text:'<b>Twee Instagram-accounts (opgelost):</b> een aantal pagina\'s linkten nog naar @tabitha_nail_it terwijl de rest naar @tabitha_nailcraft linkte. Alle 6 verkeerde links zijn rechtgezet — de hele site wijst nu naar instagram.com/tabitha_nailcraft.'},
+  {resolved:false, text:'<b>Ongebruikt duplicaat:</b> <span class="mono">salespaginas/refill-removal-pro.html</span> is een exacte kopie van <span class="mono">salespaginas/kunstnagels-affrezen.html</span> (zelfde titel, zelfde checkout) maar wordt nergens gelinkt. Waarschijnlijk veilig te verwijderen, tenzij hij ergens extern (advertentie, oude e-mail) nog gebruikt wordt.'},
+];
+
+const typoHoofd = [
+  ['online-opleidingen.html', 16], ['index.html', 10], ['blog.html', 6], ['over.html', 4],
+];
+const typoSales = [
+  ['salespaginas/easy-nails.html', 8], ['salespaginas/nail-content-creator.html', 7], ['salespaginas/manicure-pro.html', 7],
+  ['salespaginas/the-gel-code.html', 6], ['salespaginas/the-basics.html', 6], ['salespaginas/sjablonen.html', 6],
+  ['salespaginas/manicure-ebook.html', 6], ['salespaginas/upperform-pro.html', 5], ['salespaginas/upperform-master.html', 5],
+  ['salespaginas/upperform-guide.html', 5], ['salespaginas/refill-removal-pro.html (duplicaat)', 5], ['salespaginas/kunstnagels-affrezen.html', 5],
+  ['salespaginas/upperforms.html', 4], ['salespaginas/kleurapplicatie.html', 4], ['salespaginas/babyboom.html', 3],
+];
+const typoBedankt = [
+  ['bedankt-veilig-affrezen.html', 3], ['bedankt-the-basics.html', 3], ['bedankt-startersgids.html', 3], ['bedankt-manicure-ebook.html', 3],
+  ['bedankt-upperform-pro.html', 2], ['bedankt-upperform-master.html', 2], ['bedankt-upperform-guide.html', 2], ['bedankt-the-gel-code.html', 2],
+  ['bedankt-snelheidstraining.html', 2], ['bedankt-sjablonen.html', 2], ['bedankt-refill-removal-pro.html', 2], ['bedankt-nail-content-creator.html', 2],
+  ['bedankt-killer-content.html', 2], ['bedankt-easy-nails.html', 2], ['bedankt-babyboom.html', 2],
+  ['bedankt-manicure-pro.html', 1], ['bedankt-kleurapplicatie.html', 1],
+];
+
+function typeChip(t){
+  const map = {hoofd:['chip-hoofd','Hoofdpagina'], sales:['chip-sales','Salespagina'], bedankt:['chip-bedankt','Bedankt'], gratis:['chip-gratis','Gratis'], hidden:['chip-hidden','Verborgen']};
+  const [cls,label] = map[t];
+  return `<span class="chip ${cls}">${label}</span>`;
+}
+
+function renderPages(filter){
+  const tbody = document.getElementById('pageTableBody');
+  const q = (filter||'').toLowerCase().trim();
+  let shown = 0;
+  tbody.innerHTML = pages.map(p=>{
+    const hay = (p.name+' '+p.url+' '+p.title+' '+p.func).toLowerCase();
+    const match = !q || hay.includes(q);
+    if(match) shown++;
+    return `<tr class="${match?'':'js-hidden'}">
+      <td>${typeChip(p.type)}</td>
+      <td class="cell-title">${p.name}</td>
+      <td class="cell-url"><a href="${BASE}${p.url}" target="_blank" rel="noopener">/${p.url}</a></td>
+      <td class="cell-func">${p.title}</td>
+      <td class="cell-func">${p.func}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('noResults').style.display = shown===0 ? 'block' : 'none';
+}
+
+function renderCourses(){
+  document.getElementById('courseTableBody').innerHTML = courses.map(c=>`
+    <tr>
+      <td class="cell-title">${c.name}</td>
+      <td class="cell-func">${c.price}</td>
+      <td class="cell-url">${c.sales.startsWith('salespaginas')?`<a href="${BASE}${c.sales}" target="_blank" rel="noopener">/${c.sales}</a>`:`<span class="cell-func">${c.sales}</span>`}</td>
+      <td class="cell-url">${c.pay.startsWith('pay/')?`<a href="https://naillraftplatform.kennis.shop/${c.pay}" target="_blank" rel="noopener">${c.pay}</a>`:`<span class="cell-func">${c.pay}</span>`}</td>
+      <td class="cell-url">${c.bedankt!=='—'?`<a href="${BASE}${c.bedankt}" target="_blank" rel="noopener">/${c.bedankt}</a>`:'—'}</td>
+    </tr>`).join('');
+}
+
+function renderFunnel(list, targetId){
+  document.getElementById(targetId).innerHTML = list.map(f=>`
+    <div class="funnel-row">
+      <div class="funnel-source">
+        <span class="fs-label">na aankoop</span>
+        <span class="fs-name">${f.source}</span>
+        <a class="fs-url" href="${BASE}${f.url}" target="_blank" rel="noopener">/${f.url}</a>
+      </div>
+      <span class="funnel-arrow">→</span>
+      <div class="funnel-upsells">
+        ${f.upsells.map(u=>`<div class="upsell-chip"><span class="uc-name">${u[0]}</span><a class="uc-url" href="https://naillraftplatform.kennis.shop/${u[1]}" target="_blank" rel="noopener">${u[1]}</a></div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function renderQuiz(){
+  document.getElementById('quizGrid').innerHTML = quizOutcomes.map(o=>`
+    <div class="quiz-card">
+      <div class="qc-result">${o.result}</div>
+      <div class="qc-extra">${o.extra}</div>
+    </div>`).join('');
+}
+
+function renderHidden(){
+  const hiddenPages = pages.filter(p=>p.type==='hidden');
+  document.getElementById('hiddenTableBody').innerHTML = hiddenPages.map(p=>`
+    <tr>
+      <td class="cell-title">${p.name}</td>
+      <td class="cell-url"><a href="${BASE}${p.url}" target="_blank" rel="noopener">/${p.url}</a></td>
+      <td class="cell-func">${p.func}</td>
+    </tr>`).join('');
+}
+
+function renderFlags(){
+  document.getElementById('flagList').innerHTML = flags.map(f=>`
+    <div class="flag-item ${f.resolved?'flag-resolved':''}"><span class="flag-icon">${f.resolved?'✓':'⚑'}</span><span class="flag-text">${f.text}</span></div>`).join('');
+}
+
+function renderTypoTable(rows, targetId){
+  const total = rows.reduce((a,[,n])=>a+n,0);
+  const trs = rows.map(([name,count])=>`<tr><td class="cell-title mono">${name}</td><td class="cell-count">${count}</td></tr>`).join('');
+  document.getElementById(targetId).innerHTML = trs + `<tr class="total-row"><td>Totaal</td><td class="cell-count">${total}</td></tr>`;
+}
+
+renderPages('');
+renderCourses();
+renderFunnel(funnels,'funnelList');
+renderFunnel(freebies,'freebieList');
+renderQuiz();
+renderHidden();
+renderFlags();
+renderTypoTable(typoHoofd,'typoHoofdBody');
+renderTypoTable(typoSales,'typoSalesBody');
+renderTypoTable(typoBedankt,'typoBedanktBody');
+
+document.getElementById('globalSearch').addEventListener('input', e=>renderPages(e.target.value));
+</script>
+</body>
+</html>
