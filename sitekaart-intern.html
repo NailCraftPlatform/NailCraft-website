@@ -496,6 +496,22 @@ footer.page-footer{
     </div>
 
     <div class="dossier-block">
+      <h3>Status: migratie in voorbereiding</h3>
+      <p>De correctie wordt voorbereid, maar is nog niet doorgevoerd. Eerst wordt bij kennis.shop-support nagevraagd of het oude subdomein automatisch blijft doorverwijzen na de wissel, en of een tijdelijke tweede subdomeinnaam (nailcraftplatform naast naillraftplatform) mogelijk is. Tot dat antwoord er is, en tot alle mailsequenties, cursussen en ebooks klaarstaan, blijft de huidige (foutieve) URL de enige die echt werkt. Gebruik de nieuwe URL's hieronder dus nog niet in verstuurde mails of live gepubliceerde content, enkel om alvast klaar te zetten.</p>
+    </div>
+
+    <div class="dossier-block">
+      <h3>Nieuwe URL's, klaar om te gebruiken zodra de wissel bij kennis.shop is bevestigd</h3>
+      <p>Enkel het subdomein verandert (<span class="mono">naillraftplatform</span> → <span class="mono">nailcraftplatform</span>), de rest van elke URL blijft identiek. Onderstaande lijst kan je 1-op-1 gebruiken om mailsequenties, cursusteksten en ebooks alvast te herschrijven.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Cursus / product</th><th>Huidige URL (werkt nu)</th><th>Nieuwe URL (nog niet live)</th></tr></thead>
+          <tbody id="typoUrlMapBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dossier-block">
       <h3>Stappenplan voor wanneer het wel mag aangepast worden</h3>
       <div class="step-list">
         <div class="step-item"><span class="step-num">1</span><span class="step-text">Nieuw subdomein instellen in kennis.shop, <b>nailcraftplatform</b> in plaats van naillraftplatform, en bij kennis.shop navragen of het oude subdomein automatisch blijft doorverwijzen (redirect) naar het nieuwe.</span></div>
@@ -678,6 +694,27 @@ const typoSales = [
   ['salespaginas/upperform-guide.html', 5], ['salespaginas/kunstnagels-affrezen.html', 5],
   ['salespaginas/upperforms.html', 4], ['salespaginas/kleurapplicatie.html', 4], ['salespaginas/babyboom.html', 3],
 ];
+const urlMap = [
+  ['Manicure Pro', 'manicurepro'],
+  ['Easy Nails', 'easynails'],
+  ['Upperform Guide', 'upperformguide'],
+  ['Upperform Pro', 'upperformpro'],
+  ['Upperform Master', 'upperformmaster'],
+  ['Babyboom', 'babyboom'],
+  ['Perfecte Kleurapplicatie', 'kleurapplicatie'],
+  ['Sjabloon Applicatie', 'sjabloonapplicatie'],
+  ['Refill Removal Pro', 'refillremovalpro'],
+  ['The Gel Code', 'thegelcode'],
+  ['The Basics', 'thebasics'],
+  ['Manicure E-book', 'manicureebook'],
+  ['Nail Content Creator', 'nailcontentcreator'],
+  ['Startersgids (gratis)', 'startersgids'],
+  ['Killer Content (gratis)', 'killercontent'],
+  ['Snelheidstraining (gratis)', 'snelheidstraining'],
+  ['Veilig Affrezen (gratis)', 'veiligaffrezen'],
+  ['Alle cursussen (bundel)', 'nailcraftplatformcursussen'],
+];
+
 const typoBedankt = [
   ['bedankt-veilig-affrezen.html', 3], ['bedankt-the-basics.html', 3], ['bedankt-startersgids.html', 3], ['bedankt-manicure-ebook.html', 3],
   ['bedankt-upperform-pro.html', 2], ['bedankt-upperform-master.html', 2], ['bedankt-upperform-guide.html', 2], ['bedankt-the-gel-code.html', 2],
@@ -760,6 +797,15 @@ function renderFlags(){
     <div class="flag-item ${f.resolved?'flag-resolved':''}"><span class="flag-icon">${f.resolved?'✓':'⚑'}</span><span class="flag-text">${f.text}</span></div>`).join('');
 }
 
+function renderUrlMap(){
+  document.getElementById('typoUrlMapBody').innerHTML = urlMap.map(([naam, slug]) => `
+    <tr>
+      <td class="cell-title">${naam}</td>
+      <td class="cell-url mono">naillraftplatform.kennis.shop/pay/${slug}</td>
+      <td class="cell-url mono">nailcraftplatform.kennis.shop/pay/${slug}</td>
+    </tr>`).join('');
+}
+
 function renderTypoTable(rows, targetId){
   const total = rows.reduce((a,[,n])=>a+n,0);
   const trs = rows.map(([name,count])=>`<tr><td class="cell-title mono">${name}</td><td class="cell-count">${count}</td></tr>`).join('');
@@ -773,6 +819,7 @@ renderFunnel(freebies,'freebieList');
 renderQuiz();
 renderHidden();
 renderFlags();
+renderUrlMap();
 renderTypoTable(typoHoofd,'typoHoofdBody');
 renderTypoTable(typoSales,'typoSalesBody');
 renderTypoTable(typoBedankt,'typoBedanktBody');
