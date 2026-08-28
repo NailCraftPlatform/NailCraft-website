@@ -38,7 +38,7 @@ Elke pagina krijgt standaard:
 
 Volledig overzicht van alle pagina's, checkout-URL's, upsell-funnels per bedankt-pagina, en een dossier over een bekende domeinnaam-typo staat in `sitekaart-intern.html`, live te bekijken op https://nailcraft.be/sitekaart-intern.html (niet geïndexeerd, niet gelinkt, enkel bereikbaar via directe URL).
 
-Checkout-platform: kennis.shop, via `https://naillraftplatform.kennis.shop/pay/<slug>`. Let op: deze domeinnaam bevat een bekende typo ("naillraft" i.p.v. "nailcraft"), dit is bewust nog niet aangepast, zie het dossier in sitekaart-intern.html voor de volledige uitleg en het stappenplan.
+Checkout-platform: kennis.shop, via `https://nailcraftplatform.kennis.shop/pay/<slug>`. De domeinnaam bevatte lange tijd een bekende typo ("naillraft" i.p.v. "nailcraft"), deze is inmiddels gecorrigeerd, zowel in de kennis.shop-instellingen zelf als op alle 35 pagina's van de website en in alle Kit-mails (templates en sequenties). Het historische dossier (oude vs. nieuwe URL's, stappenplan) staat nog ter referentie in sitekaart-intern.html.
 
 ## Back-upopzet
 
