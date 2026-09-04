@@ -217,6 +217,15 @@ tbody tr.total-row td{background:var(--purple-soft);font-weight:700;color:var(--
 .cell-title{font-weight:600;color:var(--ink);}
 .cell-url a{font-family:var(--font-mono);font-size:0.78rem;color:var(--purple);text-decoration:none;}
 .cell-url a:hover{text-decoration:underline;}
+.copy-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;margin-left:6px;padding:0;
+  border:1px solid var(--line);border-radius:6px;background:var(--panel);
+  color:var(--ink-faint);cursor:pointer;font-size:0.75rem;line-height:1;
+  vertical-align:middle;transition:border-color .15s,color .15s,background .15s;
+}
+.copy-btn:hover{border-color:var(--purple);color:var(--purple);}
+.copy-btn.copied{border-color:var(--free);color:var(--free);background:var(--free-soft);}
 .cell-func{color:var(--ink-soft);font-size:0.82rem;}
 .cell-func b{color:var(--ink);font-weight:600;}
 .cell-count{font-family:var(--font-mono);text-align:right;}
@@ -741,6 +750,16 @@ function typeChip(t){
   return `<span class="chip ${cls}">${label}</span>`;
 }
 
+function copyUrl(btn){
+  const url = btn.getAttribute('data-url');
+  navigator.clipboard.writeText(url).then(()=>{
+    const original = btn.textContent;
+    btn.textContent = '✓';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent = original; btn.classList.remove('copied'); }, 1200);
+  });
+}
+
 function renderPages(filter){
   const tbody = document.getElementById('pageTableBody');
   const q = (filter||'').toLowerCase().trim();
@@ -752,7 +771,7 @@ function renderPages(filter){
     return `<tr class="${match?'':'js-hidden'}">
       <td>${typeChip(p.type)}</td>
       <td class="cell-title">${p.name}</td>
-      <td class="cell-url"><a href="${BASE}${p.url}" target="_blank" rel="noopener">/${p.url}</a></td>
+      <td class="cell-url"><a href="${BASE}${p.url}" target="_blank" rel="noopener">/${p.url}</a><button class="copy-btn" data-url="${BASE}${p.url}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button></td>
       <td class="cell-func">${p.title}</td>
       <td class="cell-func">${p.func}</td>
     </tr>`;
@@ -765,9 +784,9 @@ function renderCourses(){
     <tr>
       <td class="cell-title">${c.name}</td>
       <td class="cell-func">${c.price}</td>
-      <td class="cell-url">${c.sales.startsWith('salespaginas')?`<a href="${BASE}${c.sales}" target="_blank" rel="noopener">/${c.sales}</a>`:`<span class="cell-func">${c.sales}</span>`}</td>
-      <td class="cell-url">${c.pay.startsWith('pay/')?`<a href="https://naillraftplatform.kennis.shop/${c.pay}" target="_blank" rel="noopener">${c.pay}</a>`:`<span class="cell-func">${c.pay}</span>`}</td>
-      <td class="cell-url">${c.bedankt!=='n.v.t.'?`<a href="${BASE}${c.bedankt}" target="_blank" rel="noopener">/${c.bedankt}</a>`:'n.v.t.'}</td>
+      <td class="cell-url">${c.sales.startsWith('salespaginas')?`<a href="${BASE}${c.sales}" target="_blank" rel="noopener">/${c.sales}</a><button class="copy-btn" data-url="${BASE}${c.sales}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:`<span class="cell-func">${c.sales}</span>`}</td>
+      <td class="cell-url">${c.pay.startsWith('pay/')?`<a href="https://nailcraftplatform.kennis.shop/${c.pay}" target="_blank" rel="noopener">${c.pay}</a><button class="copy-btn" data-url="https://nailcraftplatform.kennis.shop/${c.pay}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:`<span class="cell-func">${c.pay}</span>`}</td>
+      <td class="cell-url">${c.bedankt!=='n.v.t.'?`<a href="${BASE}${c.bedankt}" target="_blank" rel="noopener">/${c.bedankt}</a><button class="copy-btn" data-url="${BASE}${c.bedankt}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:'n.v.t.'}</td>
     </tr>`).join('');
 }
 
@@ -781,7 +800,7 @@ function renderFunnel(list, targetId){
       </div>
       <span class="funnel-arrow">→</span>
       <div class="funnel-upsells">
-        ${f.upsells.map(u=>`<div class="upsell-chip"><span class="uc-name">${u[0]}</span><a class="uc-url" href="https://naillraftplatform.kennis.shop/${u[1]}" target="_blank" rel="noopener">${u[1]}</a></div>`).join('')}
+        ${f.upsells.map(u=>`<div class="upsell-chip"><span class="uc-name">${u[0]}</span><a class="uc-url" href="https://nailcraftplatform.kennis.shop/${u[1]}" target="_blank" rel="noopener">${u[1]}</a><button class="copy-btn" data-url="https://nailcraftplatform.kennis.shop/${u[1]}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button></div>`).join('')}
       </div>
     </div>`).join('');
 }
@@ -799,7 +818,7 @@ function renderHidden(){
   document.getElementById('hiddenTableBody').innerHTML = hiddenPages.map(p=>`
     <tr>
       <td class="cell-title">${p.name}</td>
-      <td class="cell-url"><a href="${BASE}${p.url}" target="_blank" rel="noopener">/${p.url}</a></td>
+      <td class="cell-url"><a href="${BASE}${p.url}" target="_blank" rel="noopener">/${p.url}</a><button class="copy-btn" data-url="${BASE}${p.url}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button></td>
       <td class="cell-func">${p.func}</td>
     </tr>`).join('');
 }
