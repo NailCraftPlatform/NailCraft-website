@@ -555,6 +555,7 @@ footer.page-footer{
 
 <script>
 const BASE = ''; // relative paths, open t.o.v. je eigen domein
+const SITE_ORIGIN = 'https://www.nailcraft.be/'; // absolute basis, enkel gebruikt om volledige URL's te kopiëren
 
 const pages = [
   {type:'hoofd', name:'Home', url:'index.html', title:'NailCraft Platform – Online Nagelschool België | Tabitha Windels',
@@ -752,12 +753,30 @@ function typeChip(t){
 
 function copyUrl(btn){
   const url = btn.getAttribute('data-url');
-  navigator.clipboard.writeText(url).then(()=>{
+  const done = ()=>{
     const original = btn.textContent;
     btn.textContent = '✓';
     btn.classList.add('copied');
     setTimeout(()=>{ btn.textContent = original; btn.classList.remove('copied'); }, 1200);
-  });
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(done).catch(()=>fallbackCopy(url, done));
+  } else {
+    fallbackCopy(url, done);
+  }
+}
+
+function fallbackCopy(text, cb){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try{ document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta);
+  cb();
 }
 
 function renderPages(filter){
@@ -771,7 +790,7 @@ function renderPages(filter){
     return `<tr class="${match?'':'js-hidden'}">
       <td>${typeChip(p.type)}</td>
       <td class="cell-title">${p.name}</td>
-      <td class="cell-url"><a href="${BASE}${p.url}" target="_blank" rel="noopener">/${p.url}</a><button class="copy-btn" data-url="${BASE}${p.url}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button></td>
+      <td class="cell-url"><a href="${BASE}${p.url}" target="_blank" rel="noopener">/${p.url}</a><button class="copy-btn" data-url="${SITE_ORIGIN}${p.url}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button></td>
       <td class="cell-func">${p.title}</td>
       <td class="cell-func">${p.func}</td>
     </tr>`;
@@ -784,9 +803,9 @@ function renderCourses(){
     <tr>
       <td class="cell-title">${c.name}</td>
       <td class="cell-func">${c.price}</td>
-      <td class="cell-url">${c.sales.startsWith('salespaginas')?`<a href="${BASE}${c.sales}" target="_blank" rel="noopener">/${c.sales}</a><button class="copy-btn" data-url="${BASE}${c.sales}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:`<span class="cell-func">${c.sales}</span>`}</td>
+      <td class="cell-url">${c.sales.startsWith('salespaginas')?`<a href="${BASE}${c.sales}" target="_blank" rel="noopener">/${c.sales}</a><button class="copy-btn" data-url="${SITE_ORIGIN}${c.sales}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:`<span class="cell-func">${c.sales}</span>`}</td>
       <td class="cell-url">${c.pay.startsWith('pay/')?`<a href="https://nailcraftplatform.kennis.shop/${c.pay}" target="_blank" rel="noopener">${c.pay}</a><button class="copy-btn" data-url="https://nailcraftplatform.kennis.shop/${c.pay}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:`<span class="cell-func">${c.pay}</span>`}</td>
-      <td class="cell-url">${c.bedankt!=='n.v.t.'?`<a href="${BASE}${c.bedankt}" target="_blank" rel="noopener">/${c.bedankt}</a><button class="copy-btn" data-url="${BASE}${c.bedankt}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:'n.v.t.'}</td>
+      <td class="cell-url">${c.bedankt!=='n.v.t.'?`<a href="${BASE}${c.bedankt}" target="_blank" rel="noopener">/${c.bedankt}</a><button class="copy-btn" data-url="${SITE_ORIGIN}${c.bedankt}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:'n.v.t.'}</td>
     </tr>`).join('');
 }
 
@@ -818,7 +837,7 @@ function renderHidden(){
   document.getElementById('hiddenTableBody').innerHTML = hiddenPages.map(p=>`
     <tr>
       <td class="cell-title">${p.name}</td>
-      <td class="cell-url"><a href="${BASE}${p.url}" target="_blank" rel="noopener">/${p.url}</a><button class="copy-btn" data-url="${BASE}${p.url}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button></td>
+      <td class="cell-url"><a href="${BASE}${p.url}" target="_blank" rel="noopener">/${p.url}</a><button class="copy-btn" data-url="${SITE_ORIGIN}${p.url}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button></td>
       <td class="cell-func">${p.func}</td>
     </tr>`).join('');
 }
