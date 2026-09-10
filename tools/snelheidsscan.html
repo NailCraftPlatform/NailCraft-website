@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Snelheidsscan | NailCraft Platform</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -102,6 +103,18 @@ body{font-family:var(--font-body);background:var(--c-lighter);color:var(--c-text
 .cursus-btn:hover{background:var(--c-purple-dark);}
 .cursus-btn.secondary{background:transparent;border:1.5px solid var(--c-purple);color:var(--c-purple);}
 
+.chk-goed{display:flex;align-items:center;gap:0.6rem;padding:0.7rem 0.85rem;margin-bottom:0.7rem;border:1.5px solid var(--c-border);border-radius:var(--radius-md);cursor:pointer;background:var(--c-lighter);transition:all 0.18s ease;}
+.chk-goed:hover{border-color:var(--c-ok);}
+.chk-goed.selected{border-color:var(--c-ok);background:var(--c-ok-light);}
+.chk-goed-icon{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--c-border-strong);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:transparent;}
+.chk-goed.selected .chk-goed-icon{background:var(--c-ok);border-color:var(--c-ok);color:#fff;}
+.chk-goed span:last-child{font-size:0.82rem;font-weight:500;color:var(--c-text-mid);}
+.chk-goed.selected span:last-child{color:var(--c-ok);}
+.chk-list.dimmed{opacity:0.4;pointer-events:none;}
+.pdf-btn{display:block;width:100%;text-align:center;padding:0.85rem 1rem;background:var(--c-white);color:var(--c-purple);border:1.5px solid var(--c-purple);text-decoration:none;border-radius:var(--radius-md);font-size:0.85rem;font-weight:500;margin:0.5rem 0 1rem;cursor:pointer;}
+.pdf-btn:hover{background:var(--c-light);}
+.signature{font-family:var(--font-display);font-style:italic;font-size:0.85rem;color:var(--c-text-mid);margin-top:0.8rem;}
+
 .hidden{display:none!important;}
 @media(max-width:420px){
   .opt-grid{grid-template-columns:1fr;}
@@ -140,6 +153,18 @@ var TAG_IDS = {
 
 var DOEL = { affrezen: 10, manicure: 30, applicatie: 30, kleurfrench: 20, afwerking: 10 };
 
+var COURSE_WHY = {
+  refillremovalpro: { naam: 'Refill Removal Pro', waarom: 'Ik leer je hierin een vast stappenplan voor affrezen, zodat je sneller en veiliger werkt.' },
+  manicurepro: { naam: 'Manicure Pro', waarom: 'Ik leer je hier de manicure foutloos en grondig uitvoeren, zodat je verderop in het proces geen tijd verliest.' },
+  easynails: { naam: 'Easy Nails', waarom: 'Ik leer je hier zo strak opbouwen dat navijlen overbodig wordt, dat bespaart je enorm veel tijd.' },
+  thegelcode: { naam: 'The Gel Code', waarom: 'Ik leg je hier precies uit wat elk gelproduct wel en niet kan, zodat je met vertrouwen de juiste keuzes maakt.' },
+  upperformmaster: { naam: 'Upperform Master', waarom: 'Ik leer je hier de juiste upperform kiezen en gebruiken, zodat je achteraf nauwelijks nog hoeft te vijlen.' },
+  kleurapplicatie: { naam: 'Kleurapplicatie', waarom: 'Ik leer je hier kleur in een keer strak en dekkend aanbrengen, zonder tijdverlies aan extra lagen.' },
+  softfrench: { naam: 'Soft French', waarom: 'Ik leer je hier French tekenen op een manier die precies en snel gaat, in plaats van steeds te moeten corrigeren.' },
+  thebasics: { naam: 'The Basics', waarom: 'Ik laat je hier zien welke materialen ik zelf gebruik en waarom, zodat jij niet hoeft te gokken bij je eigen aankopen.' },
+  nailcontentcreator: { naam: 'Nail Content Creator', waarom: 'Ik leer je hier snel en professioneel klantfoto\'s maken, zonder dat het je kostbare behandeltijd opslokt.' }
+};
+
 var CHECKLISTS = {
   voorbereiding: [
     { key: 'nagelriemen_reinigen', label: 'Nagelriemen reinigen kost me veel tijd' },
@@ -159,7 +184,9 @@ var CHECKLISTS = {
     { key: 'bits', label: 'Ik ken de verschillende zones van mijn freesbit niet goed' },
     { key: 'handpositie', label: 'Ik heb geen stevige, stabiele handpositie met mijn frees' },
     { key: 'kracht', label: 'Ik werk weleens met kracht in plaats van de frees het werk te laten doen' },
-    { key: 'gelijkmatig', label: 'Mijn affrezen verloopt niet gelijkmatig' }
+    { key: 'gelijkmatig', label: 'Mijn affrezen verloopt niet gelijkmatig' },
+    { key: 'hitte_pijn', label: 'Mijn klant ervaart hitte of pijn tijdens het affrezen' },
+    { key: 'lifting_herkennen', label: 'Ik vind het moeilijk om lifting te herkennen en weg te frezen' }
   ],
   werkplek: [
     { key: 'opruimen', label: 'Ik ruim niet tussendoor op tijdens de behandeling' },
@@ -180,6 +207,7 @@ var state = {
   tijden: { affrezen: '', manicure: '', applicatie: '', kleurfrench: '', afwerking: '' },
   kleurfrenchType: null,
   checklist: { voorbereiding: [], applicatie: [], frees: [], werkplek: [], afwerking: [] },
+  goedFase: { voorbereiding: false, applicatie: false, frees: false, werkplek: false, afwerking: false },
   email: ''
 };
 
@@ -200,18 +228,28 @@ function checklistHTML(fase) {
     var sub = state.subtechniek || state.techniek;
     return it.techniekOnly.indexOf(sub) > -1;
   });
-  return items.map(function (it) {
+  var goedActive = state.goedFase[fase];
+  var goedRow = '<div class="chk-goed' + (goedActive ? ' selected' : '') + '" onclick="toggleGoed(\'' + fase + '\')">' +
+    '<span class="chk-goed-icon">&#10003;</span><span>Dit gaat bij mij al goed, niet van toepassing</span></div>';
+  var rows = items.map(function (it) {
     var checked = state.checklist[fase].indexOf(it.key) > -1;
     return '<div class="chk-row" onclick="toggleChk(this,\'' + fase + '\',\'' + it.key + '\')">' +
       '<input type="checkbox" ' + (checked ? 'checked' : '') + ' onclick="event.stopPropagation();toggleChk(this.parentNode,\'' + fase + '\',\'' + it.key + '\',this.checked)">' +
       '<label>' + it.label + '</label></div>';
   }).join('');
+  return goedRow + '<div class="chk-list' + (goedActive ? ' dimmed' : '') + '">' + rows + '</div>';
+}
+function toggleGoed(fase) {
+  state.goedFase[fase] = !state.goedFase[fase];
+  if (state.goedFase[fase]) state.checklist[fase] = [];
+  render();
 }
 function toggleChk(row, fase, key, forceVal) {
   var input = row.querySelector('input');
   var val = (forceVal !== undefined) ? forceVal : !input.checked;
   input.checked = val;
   setChecklist(fase, key, val);
+  if (val) state.goedFase[fase] = false;
 }
 function timeInputRow(key, label, doel) {
   var val = state.tijden[key];
@@ -336,7 +374,7 @@ function renderAfwerking() {
 function renderEmail() {
   return '<div class="step-card">' +
     '<div class="step-label">Je persoonlijk resultaat staat klaar</div>' +
-    '<div class="teaser-box"><span class="teaser-icon">&#10024;</span><span class="teaser-text">Op basis van je antwoorden hebben we al gerichte tips, materiaalaanbevelingen en eventueel een passende vervolgcursus voor je klaarstaan. Vul je mailadres in om je resultaat te bekijken, dan sturen we je ook nog extra tips na.</span></div>' +
+    '<div class="teaser-box"><span class="teaser-icon">&#10024;</span><span class="teaser-text">Op basis van je antwoorden heb ik gerichte tips die je onmiddellijk kan toepassen, materiaalaanbevelingen die je werk makkelijker en sneller zullen maken en eventueel een passende vervolgcursus voor je klaarstaan. Vul je mailadres in en bekijk je resultaat hier, ik stuur je ook nog extra tips na die vast en zeker zullen helpen.<br><span class="signature">Liefs, Tabitha</span></span></div>' +
     '<input type="email" class="email-input" id="email-input" placeholder="jouw@mailadres.be" value="' + state.email + '" oninput="state.email=this.value">' +
     '<div class="email-error" id="email-error">Vul een geldig mailadres in.</div>' +
     navButtons(true) +
@@ -371,90 +409,210 @@ function matRow(img, label) {
   return '<div class="mat-row"><img src="snelheidsscan-afbeeldingen/' + img + '" alt="' + label + '" onerror="this.style.visibility=\'hidden\'"><span class="mat-label">' + label + '</span></div>';
 }
 
-function buildFaseCard(titel, triggered, tipsHTML, cursusHTML) {
-  var status = triggered ? 'aandacht' : 'ok';
-  var badge = triggered ? 'Aandachtspunt' : 'Helemaal goed';
+function buildFaseData() {
+  var techniek = state.subtechniek || state.techniek;
+  var fases = [];
+
+  var vCursus = [];
+  if (overTijd('affrezen')) vCursus.push('refillremovalpro');
+  if (overTijd('manicure') || heeftStruggle('voorbereiding')) vCursus.push('manicurepro');
+  fases.push({
+    titel: 'Voorbereiding',
+    triggered: faseTriggerd('voorbereiding'),
+    tips: [
+      'Gebruik een conische freesbit voor het affrezen: de buik heeft de kleurencode van het bandje, de wang is een tint zachter, de top is extra fijn voor de nagelriemzone. Werk minimaal op 25.000 toeren, liefst 30.000.',
+      'Kies een pusher met een dunne, zachte c-curve om makkelijker onder de nagelriem te komen. Ga voor het knippen met een flame bitje over de nagelriemen en nagelplaat voor een vlottere kniplijn.',
+      'Mijn bespaartip: alcohol +90% (apotheek) ontvet net zo krachtig als dure cleanser-producten.'
+    ],
+    materialen: [
+      { img: 'conische-freesbit.webp', label: 'Conische freesbit' },
+      { img: 'pusher-staleks.webp', label: 'Pusher met dunne c-curve' },
+      { img: 'flame-bit.webp', label: 'Flame bitje' }
+    ],
+    cursussen: vCursus
+  });
+
+  var aTips = [];
+  var aMat = [];
+  if (techniek === 'biab' || techniek === 'hardgel') {
+    aTips.push('Gebruik een kattentong penseel (afgeronde hoeken) en een fine liner van 6 tot 11 mm voor de randen. Leer zo strak opbouwen dat navijlen van het oppervlak niet meer nodig is, dat bespaart enorm veel tijd.');
+    aMat.push({ img: 'penseel-kattentong.webp', label: 'Kattentong penseel' });
+  } else if (techniek === 'acrylgel') {
+    aTips.push('Gebruik altijd een apart penseel voor acrylgel. Werk niet te dik: less is more, anders krijg je sneller lifting. Vergeet de voorkant van de natuurlijke nagel niet mee te onderfrezen.');
+  } else if (techniek === 'upperform') {
+    aTips.push('Kies de juiste upperform per klant, verkeerde keuze betekent meer vijlwerk. Vul niet veel langer dan de gewenste lengte, max 1 tot 2 mm extra.');
+  }
+  aTips.push('Mijn geheim om in een keer perfect op te bouwen: correcte kennis van de architectuur (waar de apex moet zitten) en hoe je levelt met je product.');
+  var aCursus = [];
+  if (techniek === 'biab' || techniek === 'hardgel') aCursus.push('easynails');
+  if (techniek === 'upperform') aCursus.push('upperformmaster');
+  aCursus.push('thegelcode');
+  fases.push({ titel: 'Productapplicatie', triggered: faseTriggerd('applicatie'), tips: aTips, materialen: aMat, cursussen: aCursus });
+
+  var kCursus = [];
+  if (state.kleurfrenchType === 'kleur' || state.kleurfrenchType === 'beide') kCursus.push('kleurapplicatie');
+  if (state.kleurfrenchType === 'french' || state.kleurfrenchType === 'beide') kCursus.push('softfrench');
+  fases.push({
+    titel: 'Kleur & French',
+    triggered: faseTriggerd('kleurfrench'),
+    tips: [
+      'Kies een kleur die bijna volledig dekkend is in 1 laag, test dit bij aankoop op een tipje. Voor French: gebruik een kleur die al dekkend is in 1 dunne laag, bij voorkeur een paint gel.',
+      'Mijn favoriete tool voor precisiewerk is een 6mm fine liner, ideaal vlak onder de nagelriem en aan de nagelwallen.'
+    ],
+    materialen: [{ img: 'fine-liner.webp', label: 'Fine liner 6mm' }],
+    cursussen: kCursus
+  });
+
+  fases.push({
+    titel: 'De frees als snelheidsmachine',
+    triggered: faseTriggerd('frees'),
+    tips: [
+      'Ken de zones van je freesbit: bij de nagelriemzone en nagelwallen gebruik je de zachtere delen (wang en top), bij de apex en het midden de buik. Ga nooit meer dan 2 keer na elkaar direct over dezelfde zone.',
+      'Werk met een vast stappenplan in plaats van random te frezen, dat geeft altijd consistente resultaten.',
+      'Zelf werkte ik 16 jaar met een Marathon freestoestel, budgetvriendelijk en betrouwbaar om mee te starten. De laatste jaren werk ik met een Micro NX, met digitaal instelbaar toerental.'
+    ],
+    materialen: [],
+    cursussen: ['refillremovalpro']
+  });
+
+  fases.push({
+    titel: 'Je werkplek',
+    triggered: heeftStruggle('werkplek'),
+    tips: [
+      'Verdeel je materiaal: wat je maar 1 keer per behandeling nodig hebt komt aan je niet-dominante kant, wat je meerdere keren nodig hebt komt aan je dominante kant.',
+      'Ruim tussendoor op: wanneer de klant beide handen in de lamp heeft, is dat het moment om op te ruimen en de volgende stap klaar te zetten.',
+      'Vraag vooraf een inspiratiefoto aan je klant, zo heb je je plan en materiaal al klaar voor de behandeling begint.'
+    ],
+    materialen: [],
+    cursussen: ['thebasics'],
+    secondaryOnly: true,
+    cursusLabelPrefix: 'Benieuwd welke materialen ik gebruik? '
+  });
+
+  fases.push({
+    titel: 'Afwerking',
+    triggered: faseTriggerd('afwerking'),
+    tips: [
+      'Gebruik een no-wipe topcoat zonder kleeflaag, en zorg dat het product stofvrij blijft (potje goed sluiten na gebruik).',
+      'Gebruik voor foto\'s een niet-vette, dunne olie. Dikke olie geeft geen mooie, scherpe foto\'s.',
+      'Mijn tip voor een natuurlijke huidglans op foto\'s: gebruik een tonic (zoals voor het gezicht) rond de nagel.'
+    ],
+    materialen: [],
+    cursussen: ['nailcontentcreator']
+  });
+
+  return fases;
+}
+
+function buildFaseCard(f) {
+  var status = f.triggered ? 'aandacht' : 'ok';
+  var badge = f.triggered ? 'Aandachtspunt' : 'Helemaal goed';
   var html = '<div class="fase-card"><div class="fase-head ' + status + '">' +
-    '<span class="fase-title">' + titel + '</span>' +
+    '<span class="fase-title">' + f.titel + '</span>' +
     '<span class="fase-badge ' + status + '">' + badge + '</span></div>';
-  if (triggered) {
-    html += '<div class="fase-body">' + tipsHTML + (cursusHTML || '') + '</div>';
+  if (f.triggered) {
+    var tipsHTML = f.tips.map(function (t) { return '<p class="fase-tip">' + t + '</p>'; }).join('');
+    var matHTML = (f.materialen || []).map(function (m) { return matRow(m.img, m.label); }).join('');
+    var cursusHTML = (f.cursussen || []).map(function (slug, i) {
+      var c = COURSE_WHY[slug];
+      var secondary = f.secondaryOnly || i > 0;
+      var label = (f.cursusLabelPrefix || 'Bekijk ') + c.naam;
+      return '<a class="cursus-btn' + (secondary ? ' secondary' : '') + '" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/' + slug + '">' + label + '</a>';
+    }).join('');
+    html += '<div class="fase-body">' + tipsHTML + matHTML + cursusHTML + '</div>';
   }
   html += '</div>';
   return html;
 }
 
+var laatsteFases = null;
+
 function renderResultaat() {
+  laatsteFases = buildFaseData();
   var out = '<div class="result-intro"><div class="result-summary">Jouw resultaat</div>' +
-    '<p>Hieronder zie je per onderdeel hoe je ervoor staat, met gerichte tips waar je tijd kan winnen.</p></div>';
-
-  // Voorbereiding
-  var vTriggered = faseTriggerd('voorbereiding');
-  var vTips = '<p class="fase-tip">Gebruik een conische freesbit voor het affrezen: de buik heeft de kleurencode van het bandje, de wang is een tint zachter, de top is extra fijn voor de nagelriemzone. Werk minimaal op 25.000 toeren, liefst 30.000.</p>' +
-    '<p class="fase-tip">Kies een pusher met een dunne, zachte c-curve om makkelijker onder de nagelriem te komen. Ga voor het knippen met een flame bitje over de nagelriemen en nagelplaat voor een vlottere kniplijn.</p>' +
-    '<p class="fase-tip">Bespaar geld: alcohol +90% (apotheek) ontvet net zo krachtig als dure cleanser-producten.</p>' +
-    matRow('conische-freesbit.webp', 'Conische freesbit') +
-    matRow('pusher-staleks.webp', 'Pusher met dunne c-curve') +
-    matRow('flame-bit.webp', 'Flame bitje');
-  var vCursus = '';
-  if (overTijd('affrezen')) vCursus += '<a class="cursus-btn" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/refillremovalpro">Bekijk Refill Removal Pro</a>';
-  if (overTijd('manicure') || state.checklist.voorbereiding.length > 0) vCursus += '<a class="cursus-btn' + (vCursus ? ' secondary' : '') + '" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/manicurepro">Bekijk Manicure Pro</a>';
-  out += buildFaseCard('Voorbereiding', vTriggered, vTips, vCursus);
-
-  // Applicatie
-  var aTriggered = faseTriggerd('applicatie');
-  var techniek = state.subtechniek || state.techniek;
-  var aTips = '';
-  if (techniek === 'biab' || techniek === 'hardgel') {
-    aTips += '<p class="fase-tip">Gebruik een kattentong penseel (afgeronde hoeken) en een fine liner van 6 tot 11 mm voor de randen. Leer zo strak opbouwen dat navijlen van het oppervlak niet meer nodig is, dat bespaart enorm veel tijd.</p>' + matRow('penseel-kattentong.webp', 'Kattentong penseel');
-  } else if (techniek === 'acrylgel') {
-    aTips += '<p class="fase-tip">Gebruik altijd een apart penseel voor acrylgel. Werk niet te dik: less is more, anders krijg je sneller lifting. Vergeet de voorkant van de natuurlijke nagel niet mee te onderfrezen.</p>';
-  } else if (techniek === 'upperform') {
-    aTips += '<p class="fase-tip">Kies de juiste upperform per klant, verkeerde keuze betekent meer vijlwerk. Vul niet veel langer dan de gewenste lengte, max 1 tot 2 mm extra.</p>';
-  }
-  aTips += '<p class="fase-tip">Het geheim van in een keer perfect opbouwen: correcte kennis van de architectuur (waar de apex moet zitten) en hoe je levelt met je product.</p>';
-  var aCursus = '';
-  if (techniek === 'biab' || techniek === 'hardgel') aCursus += '<a class="cursus-btn" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/easynails">Bekijk Easy Nails</a>';
-  if (techniek === 'upperform') aCursus += '<a class="cursus-btn' + (aCursus ? ' secondary' : '') + '" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/upperformmaster">Bekijk Upperform Master</a>';
-  aCursus += '<a class="cursus-btn secondary" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/thegelcode">Meer weten over gelproducten? The Gel Code</a>';
-  out += buildFaseCard('Productapplicatie', aTriggered, aTips, aCursus);
-
-  // Kleur & French
-  var kTriggered = faseTriggerd('kleurfrench');
-  var kTips = '<p class="fase-tip">Kies een kleur die bijna volledig dekkend is in 1 laag, test dit bij aankoop op een tipje. Voor French: gebruik een kleur die al dekkend is in 1 dunne laag, bij voorkeur een paint gel.</p>' +
-    '<p class="fase-tip">Tabitha\'s favoriete tool voor precisiewerk: een 6mm fine liner, ideaal vlak onder de nagelriem en aan de nagelwallen.</p>' +
-    matRow('fine-liner.webp', 'Fine liner 6mm');
-  var kCursus = '';
-  if (state.kleurfrenchType === 'kleur' || state.kleurfrenchType === 'beide') kCursus += '<a class="cursus-btn" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/kleurapplicatie">Bekijk Kleurapplicatie</a>';
-  if (state.kleurfrenchType === 'french' || state.kleurfrenchType === 'beide') kCursus += '<a class="cursus-btn' + (kCursus ? ' secondary' : '') + '" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/softfrench">Bekijk Soft French</a>';
-  out += buildFaseCard('Kleur & French', kTriggered, kTips, kCursus);
-
-  // Frees
-  var fTriggered = faseTriggerd('frees');
-  var fTips = '<p class="fase-tip">Ken de zones van je freesbit: bij de nagelriemzone en nagelwallen gebruik je de zachtere delen (wang en top), bij de apex en het midden de buik. Ga nooit meer dan 2 keer na elkaar direct over dezelfde zone.</p>' +
-    '<p class="fase-tip">Werk met een vast stappenplan in plaats van random te frezen, dat geeft altijd consistente resultaten.</p>' +
-    '<p class="fase-tip">Freestoestel voor beginners: Marathon (budgetvriendelijk, betrouwbaar). Voor wie meer functies wil: Micro NX met digitaal instelbaar toerental.</p>';
-  var fCursus = '<a class="cursus-btn" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/refillremovalpro">Bekijk Refill Removal Pro</a>';
-  out += buildFaseCard('De frees als snelheidsmachine', fTriggered, fTips, fCursus);
-
-  // Werkplek (geen tag)
-  var wTriggered = heeftStruggle('werkplek');
-  var wTips = '<p class="fase-tip">Verdeel je materiaal: wat je maar 1 keer per behandeling nodig hebt komt aan je niet-dominante kant, wat je meerdere keren nodig hebt komt aan je dominante kant.</p>' +
-    '<p class="fase-tip">Ruim tussendoor op: wanneer de klant beide handen in de lamp heeft, is dat het moment om op te ruimen en de volgende stap klaar te zetten.</p>' +
-    '<p class="fase-tip">Vraag vooraf een inspiratiefoto aan je klant, zo heb je je plan en materiaal al klaar voor de behandeling begint.</p>';
-  var wCursus = '<a class="cursus-btn secondary" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/thebasics">Benieuwd welke materialen Tabitha gebruikt? The Basics</a>';
-  out += buildFaseCard('Je werkplek', wTriggered, wTips, wCursus);
-
-  // Afwerking
-  var afTriggered = faseTriggerd('afwerking');
-  var afTips = '<p class="fase-tip">Gebruik een no-wipe topcoat zonder kleeflaag, en zorg dat het product stofvrij blijft (potje goed sluiten na gebruik).</p>' +
-    '<p class="fase-tip">Gebruik voor foto\'s een niet-vette, dunne olie. Dikke olie geeft geen mooie, scherpe foto\'s.</p>' +
-    '<p class="fase-tip">Voor een natuurlijke huidglans op foto\'s: gebruik een tonic (zoals voor het gezicht) rond de nagel.</p>';
-  var afCursus = '<a class="cursus-btn" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/nailcontentcreator">Bekijk Nail Content Creator</a>';
-  out += buildFaseCard('Afwerking', afTriggered, afTips, afCursus);
-
+    '<p>Hieronder zie je per onderdeel hoe je ervoor staat, met mijn gerichte tips waar je tijd kan winnen.</p></div>';
+  out += laatsteFases.map(buildFaseCard).join('');
+  out += '<button type="button" class="pdf-btn" onclick="downloadPDF()">Download je PDF met tips en cursusadvies &darr;</button>';
   submitTags();
   return out;
+}
+
+function downloadPDF() {
+  if (!window.jspdf) { console.error('jsPDF niet geladen'); return; }
+  var fases = laatsteFases || buildFaseData();
+  var doc = new window.jspdf.jsPDF();
+  var W = doc.internal.pageSize.getWidth();
+  var H = doc.internal.pageSize.getHeight();
+  var margin = 18;
+  var maxW = W - margin * 2;
+  var y = margin;
+
+  function ensureSpace(needed) {
+    if (y + needed > H - margin) { doc.addPage(); y = margin; }
+  }
+  function heading(text) {
+    ensureSpace(12);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(13); doc.setTextColor(156, 40, 177);
+    doc.text(text, margin, y); y += 8;
+  }
+  function paragraph(text, opts) {
+    doc.setFont('helvetica', opts && opts.bold ? 'bold' : 'normal');
+    doc.setFontSize(opts && opts.size ? opts.size : 10.5);
+    doc.setTextColor(30, 10, 42);
+    var lines = doc.splitTextToSize(text, maxW);
+    ensureSpace(lines.length * 5.2 + 2);
+    doc.text(lines, margin, y);
+    y += lines.length * 5.2 + 2;
+  }
+
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(18); doc.setTextColor(156, 40, 177);
+  doc.text('Snelheidsscan, jouw resultaat', margin, y); y += 10;
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(90, 74, 110);
+  doc.text('Persoonlijk advies van Tabitha, NailCraft Platform', margin, y); y += 12;
+
+  fases.forEach(function (f) {
+    heading(f.titel + (f.triggered ? '' : ' (helemaal goed)'));
+    if (!f.triggered) { paragraph('Hier zitten geen aandachtspunten, ga zo door.'); y += 2; return; }
+    f.tips.forEach(function (t) { paragraph('- ' + t); });
+    (f.cursussen || []).forEach(function (slug) {
+      var c = COURSE_WHY[slug];
+      if (!c) return;
+      paragraph(c.naam + ':', { bold: true, size: 10.5 });
+      paragraph(c.waarom);
+      paragraph('https://nailcraftplatform.kennis.shop/pay/' + slug, { size: 9 });
+    });
+    y += 3;
+  });
+
+  ensureSpace(16);
+  doc.setFont('helvetica', 'italic'); doc.setFontSize(11); doc.setTextColor(90, 74, 110);
+  doc.text('Liefs, Tabitha', margin, y);
+
+  doc.save('snelheidsscan-resultaat.pdf');
+}
+
+function encodeResultLink() {
+  var payload = {
+    techniek: state.techniek,
+    subtechniek: state.subtechniek,
+    tijden: state.tijden,
+    kleurfrenchType: state.kleurfrenchType,
+    checklist: state.checklist
+  };
+  var b64 = btoa(encodeURIComponent(JSON.stringify(payload)));
+  return window.location.origin + window.location.pathname + '?r=' + b64;
+}
+
+function restoreFromURL() {
+  var params = new URLSearchParams(window.location.search);
+  var r = params.get('r');
+  if (!r) return false;
+  try {
+    var payload = JSON.parse(decodeURIComponent(atob(r)));
+    Object.keys(payload).forEach(function (k) { state[k] = payload[k]; });
+    stepIndex = STEPS.indexOf('resultaat');
+    return true;
+  } catch (e) { console.error('Kon resultaat-link niet lezen', e); return false; }
 }
 
 function collectTagIds() {
@@ -534,6 +692,7 @@ function handleNext() {
   next();
 }
 
+restoreFromURL();
 render();
 </script>
 </body>
