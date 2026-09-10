@@ -150,6 +150,8 @@ html, body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 /* ── TITLE ── */
@@ -186,6 +188,8 @@ html, body {
   letter-spacing: 0.03em;
   line-height: 1;
   margin-bottom: 12px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 /* ── ORNAMENT DIVIDER ── */
@@ -329,6 +333,13 @@ html, body {
   @page {
     size: A4 landscape;
     margin: 0;
+  }
+  /* Gradient-tekst afdwingen bij afdrukken */
+  .wordmark,
+  .cert-subtitle {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
   }
 }
 

@@ -8,4 +8,8 @@ Zet hier de foto's onder exact deze bestandsnaam (kleine letters, koppeltekens),
 - `pusher-staleks.jpg`, de aanbevolen pusher met dunne, zachte c-curve
 - `flame-bit.jpg`, flame bitje voor nagelriemen en nagelplaat reinigen
 
+## Fase 2: Productapplicatie
+
+- `penseel-kattentong.jpg`, het aanbevolen kattentong-penseel voor BIAB/hardgel
+
 (wordt verder aangevuld per fase)

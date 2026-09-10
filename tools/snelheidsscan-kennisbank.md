@@ -52,7 +52,38 @@ Beslisregel voor de tool: als affreestijd > 10 min (1 min/nagel) → Refill Remo
 
 ## Fase 2: Productapplicatie (tag: struggle-applicatie)
 
-*Nog te bespreken.*
+Struggles uit checklist: opbouwen met gel, navijlen na opbouwen (oppervlak). Techniek eerder aangeduid in de tool (BIAB, hardgel, acrylgel, upperform) bepaalt welke tips en cursus getoond worden.
+
+### BIAB en hardgel
+
+**Penseel:** geen te groot penseel, vooral bij kleine nagels (pink) zorgt dat voor te snel te veel product. Ideaal: een kattentong, penseel met afgeronde hoeken die de bocht van nagelriem naar nagelwal volgt, zo minder kans op huidcontact.
+Foto nodig: `penseel-kattentong.jpg`
+
+**Fine liner:** 6 tot 11 mm, voor het afwerken van de randen aan nagelriem en nagelwal.
+
+**Kerntip:** leer zo strak opbouwen dat navijlen van het oppervlak niet meer nodig is. Bespaart enorm veel tijd en arbeid (minder belasting gewrichten). Dit is exact wat de Easy Nails cursus aanleert.
+
+### Acrylgel
+
+Altijd een apart penseel gebruiken, niet hetzelfde penseel als voor andere gelproducten.
+Niet te dik werken: less is more. Te dik bouwen geeft een groot contrast tussen de flexibiliteit van de natuurlijke nagelplaat en de hardheid van het product, wat sneller tot lifting leidt. Vergeet de voorkant van de natuurlijke nagel niet mee te onderfrezen, anders ontstaat daar altijd lifting.
+
+### Upperform
+
+Juiste upperform kiezen per klant is cruciaal, er bestaan veel varianten om een reden: elke natuurlijke nagel en elke gewenste vorm/lengte is anders. Verkeerde keuze = meer vijlwerk.
+**Tip:** niet veel langer vullen dan de gewenste lengte, max 1 à 2 mm extra. Genoeg ruimte om de vorm te vijlen, maar geen tijdverlies (tot 15 min) aan onnodig inkorten en productverspilling.
+
+### Extra tip (niet in gratis ebook)
+
+Het geheim van in één keer perfect opbouwen zonder achteraf te corrigeren: correcte kennis van de architectuur (waar de apex moet zitten) en hoe je levelt met je product. Dit wordt aangeleerd in Easy Nails.
+
+### Cursus-koppeling
+
+- **Easy Nails** (`https://nailcraftplatform.kennis.shop/pay/easynails`): sneller opbouwen zonder navijlen. Standaardkeuze bij BIAB/hardgel-struggles of bij "navijlen na opbouwen" als struggle.
+- **The Gel Code** (`https://nailcraftplatform.kennis.shop/pay/thegelcode`, e-book): gelproducten begrijpen, hun mogelijkheden en limieten kennen. Kiezen wanneer het probleem meer bij productkennis/keuzes lijkt te liggen dan bij handtechniek.
+- **Upperform Master** (`https://nailcraftplatform.kennis.shop/pay/upperformmaster`): wanneer techniek = upperform. (Lichtere varianten bestaan ook: Upperform Guide, e-book €70, en Upperform Pro, videocursus €185, voor wie liever instapt. Standaard raden we Master aan als volledigste optie, tenzij je liever prijsgetrapt aanbeveelt.)
+
+**Open vraag voor Tabitha:** bij techniek = acrylgel is er nog geen directe cursus-match aangeduid. Easy Nails is gericht op "hardgel & rubber based gels" volgens je cursusoverzicht, dus mogelijk niet het juiste antwoord voor acrylgel-struggles. Welke cursus (of geen, gewoon de tips tonen) hoort hierbij?
 
 ---
 
