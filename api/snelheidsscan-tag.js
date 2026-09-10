@@ -18,15 +18,17 @@ export default async function handler(req, res) {
     return;
   }
 
+  const kitHeaders = {
+    'Content-Type': 'application/json',
+    'X-Kit-Api-Key': apiKey,
+  };
+
   try {
     const tagResults = await Promise.all(
       ids.map(async (tagId) => {
         const r = await fetch(`https://api.kit.com/v4/tags/${tagId}/subscribers`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Kit-Api-Key': apiKey,
-          },
+          headers: kitHeaders,
           body: JSON.stringify({ email_address: email }),
         });
         return { tagId, ok: r.ok, status: r.status };
@@ -35,18 +37,36 @@ export default async function handler(req, res) {
 
     let linkResult = null;
     if (resultLink && typeof resultLink === 'string') {
-      const r = await fetch('https://api.kit.com/v4/subscribers', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Kit-Api-Key': apiKey,
-        },
-        body: JSON.stringify({
-          email_address: email,
-          fields: { snelheidsscan_resultaat_link: resultLink },
-        }),
-      });
-      linkResult = { ok: r.ok, status: r.status };
+      const lookup = await fetch(
+        `https://api.kit.com/v4/subscribers?email_address=${encodeURIComponent(email)}`,
+        { headers: kitHeaders }
+      );
+      const lookupBody = await lookup.json().catch(() => ({}));
+      const subscriberId = lookupBody?.subscribers?.[0]?.id;
+
+      if (subscriberId) {
+        const upd = await fetch(`https://api.kit.com/v4/subscribers/${subscriberId}`, {
+          method: 'PUT',
+          headers: kitHeaders,
+          body: JSON.stringify({
+            email_address: email,
+            fields: { snelheidsscan_resultaat_link: resultLink },
+          }),
+        });
+        const updBody = await upd.json().catch(() => ({}));
+        linkResult = { ok: upd.ok, status: upd.status, warnings: updBody?.warnings || null };
+      } else {
+        const create = await fetch('https://api.kit.com/v4/subscribers', {
+          method: 'POST',
+          headers: kitHeaders,
+          body: JSON.stringify({
+            email_address: email,
+            fields: { snelheidsscan_resultaat_link: resultLink },
+          }),
+        });
+        const createBody = await create.json().catch(() => ({}));
+        linkResult = { ok: create.ok, status: create.status, warnings: createBody?.warnings || null };
+      }
     }
 
     const allOk = tagResults.every((r) => r.ok) && (!linkResult || linkResult.ok);
