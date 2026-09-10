@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Snelheidsscan | NailCraft Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c-purple:#9c28b1;--c-purple-dark:#7b1f8c;--c-purple-deeper:#5c1669;
+  --c-light:#f8f2ff;--c-lighter:#fdf9ff;
+  --c-accent:#fe9b00;--c-accent-light:#fff4e0;
+  --c-white:#ffffff;--c-text:#1e0a2a;--c-text-mid:#5a3d6b;--c-text-muted:#9b82aa;
+  --c-border:#e8d9f5;--c-border-strong:#d4b8e8;
+  --c-ok:#1f9d55;--c-ok-light:#e8f8ee;
+  --radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--c-lighter);color:var(--c-text);min-height:100vh;padding:2rem 1rem 4rem;}
+.tool-wrap{max-width:560px;margin:0 auto;}
+
+.tool-header{background:var(--c-purple);border-radius:var(--radius-xl);padding:2rem 2rem 1.75rem;margin-bottom:1.25rem;position:relative;overflow:hidden;}
+.tool-header::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.06);}
+.tool-header::after{content:'';position:absolute;bottom:-60px;right:20px;width:200px;height:200px;border-radius:50%;background:rgba(254,155,0,0.12);}
+.header-label{font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.5rem;}
+.header-title{font-family:var(--font-display);font-size:1.7rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:0.6rem;position:relative;z-index:1;}
+.header-sub{font-size:0.82rem;color:rgba(255,255,255,0.72);line-height:1.5;position:relative;z-index:1;}
+
+.progress-wrap{margin-bottom:1.25rem;}
+.progress-track{width:100%;height:6px;background:var(--c-border);border-radius:99px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--c-accent);border-radius:99px;transition:width 0.3s ease;}
+.progress-label{font-size:0.72rem;color:var(--c-text-muted);margin-top:0.5rem;text-align:center;}
+
+.step-card{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1rem;box-shadow:0 2px 20px rgba(156,40,177,0.08);animation:fadeUp 0.3s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.step-label{font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:var(--c-text);margin-bottom:0.4rem;}
+.step-sub{font-size:0.82rem;color:var(--c-text-mid);line-height:1.5;margin-bottom:1.1rem;}
+.step-coach{font-size:0.78rem;color:var(--c-purple);background:var(--c-light);border-radius:var(--radius-sm);padding:0.6rem 0.85rem;margin-bottom:1.1rem;line-height:1.5;}
+
+.opt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;}
+.opt-grid.cols-1{grid-template-columns:1fr;}
+.opt-btn{display:flex;flex-direction:column;align-items:flex-start;gap:0.2rem;padding:0.85rem 0.9rem;background:var(--c-lighter);border:1.5px solid var(--c-border);border-radius:var(--radius-md);cursor:pointer;transition:all 0.18s ease;text-align:left;font-family:var(--font-body);width:100%;}
+.opt-btn:hover{border-color:var(--c-purple);background:var(--c-light);transform:translateY(-1px);}
+.opt-btn.selected{border-color:var(--c-purple);background:var(--c-light);box-shadow:0 0 0 3px rgba(156,40,177,0.12);}
+.opt-btn.selected .opt-name{color:var(--c-purple);font-weight:500;}
+.opt-name{font-size:0.85rem;color:var(--c-text);line-height:1.3;font-weight:400;}
+
+.field-row{margin-bottom:1rem;}
+.field-row:last-child{margin-bottom:0;}
+.field-label{display:flex;justify-content:space-between;align-items:baseline;font-size:0.82rem;font-weight:500;color:var(--c-text);margin-bottom:0.4rem;}
+.field-doel{font-size:0.7rem;color:var(--c-text-muted);font-weight:400;}
+.field-input{width:100%;padding:0.65rem 0.8rem;border:1.5px solid var(--c-border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.88rem;color:var(--c-text);background:var(--c-lighter);}
+.field-input:focus{outline:none;border-color:var(--c-purple);}
+.field-hint{font-size:0.72rem;color:var(--c-text-muted);margin-top:0.35rem;}
+.field-hint.over{color:var(--c-accent);font-weight:500;}
+
+.chk-row{display:flex;align-items:flex-start;gap:0.65rem;padding:0.6rem 0;border-bottom:1px solid var(--c-border);cursor:pointer;}
+.chk-row:last-child{border-bottom:none;}
+.chk-row input{margin-top:3px;width:16px;height:16px;accent-color:var(--c-purple);flex-shrink:0;}
+.chk-row label{font-size:0.82rem;color:var(--c-text-mid);line-height:1.4;cursor:pointer;}
+
+.email-input{width:100%;padding:0.8rem 1rem;border:1.5px solid var(--c-border);border-radius:var(--radius-md);font-family:var(--font-body);font-size:0.95rem;color:var(--c-text);background:var(--c-lighter);margin-bottom:0.6rem;}
+.email-input:focus{outline:none;border-color:var(--c-purple);}
+.email-error{font-size:0.76rem;color:#c0392b;margin-top:0.3rem;display:none;}
+.email-error.show{display:block;}
+.teaser-box{background:var(--c-accent-light);border:1px solid rgba(254,155,0,0.3);border-radius:var(--radius-md);padding:0.9rem 1rem;display:flex;gap:0.6rem;align-items:flex-start;margin-bottom:1.1rem;}
+.teaser-icon{font-size:1.1rem;flex-shrink:0;}
+.teaser-text{font-size:0.8rem;color:#7a4800;line-height:1.6;}
+
+.nav-row{display:flex;gap:0.6rem;margin-top:0.2rem;}
+.action-btn{padding:0.8rem 1rem;border-radius:var(--radius-md);font-family:var(--font-body);font-size:0.85rem;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.18s ease;border:none;flex:1;}
+.btn-primary{background:var(--c-purple);color:#fff;box-shadow:0 4px 16px rgba(156,40,177,0.25);}
+.btn-primary:hover{background:var(--c-purple-dark);transform:translateY(-1px);}
+.btn-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+.btn-secondary{background:transparent;color:var(--c-text-mid);border:1.5px solid var(--c-border);flex:0 0 auto;padding-left:1.1rem;padding-right:1.1rem;}
+.btn-secondary:hover{border-color:var(--c-border-strong);color:var(--c-text);}
+
+.result-summary{font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:var(--c-white);margin-bottom:0.3rem;}
+.result-intro{background:var(--c-purple);border-radius:var(--radius-xl);padding:1.75rem 2rem;margin-bottom:1.25rem;position:relative;overflow:hidden;}
+.result-intro::after{content:'';position:absolute;bottom:-60px;right:-20px;width:200px;height:200px;border-radius:50%;background:rgba(254,155,0,0.15);}
+.result-intro p{position:relative;z-index:1;font-size:0.85rem;color:rgba(255,255,255,0.8);line-height:1.55;}
+
+.fase-card{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1rem;box-shadow:0 2px 20px rgba(156,40,177,0.08);}
+.fase-head{display:flex;align-items:center;justify-content:space-between;gap:0.75rem;padding:1.1rem 1.4rem;}
+.fase-head.ok{background:var(--c-ok-light);}
+.fase-head.aandacht{background:var(--c-light);}
+.fase-title{font-family:var(--font-display);font-size:1.05rem;font-weight:600;color:var(--c-text);}
+.fase-badge{font-size:0.68rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:0.3rem 0.65rem;border-radius:99px;flex-shrink:0;}
+.fase-badge.ok{background:var(--c-ok);color:#fff;}
+.fase-badge.aandacht{background:var(--c-accent);color:#fff;}
+.fase-body{padding:0 1.4rem 1.3rem;}
+.fase-tip{font-size:0.83rem;color:var(--c-text-mid);line-height:1.65;margin-bottom:0.6rem;}
+.fase-tip:last-of-type{margin-bottom:0.9rem;}
+.mat-row{display:flex;gap:0.8rem;align-items:center;background:var(--c-lighter);border-radius:var(--radius-md);padding:0.6rem;margin-bottom:0.6rem;}
+.mat-row img{width:56px;height:56px;object-fit:cover;border-radius:var(--radius-sm);flex-shrink:0;background:var(--c-border);}
+.mat-row .mat-label{font-size:0.78rem;color:var(--c-text-mid);}
+.mat-row .mat-link{font-size:0.74rem;color:var(--c-purple);text-decoration:none;font-weight:500;}
+.cursus-btn{display:block;width:100%;text-align:center;padding:0.75rem 1rem;background:var(--c-purple);color:#fff;text-decoration:none;border-radius:var(--radius-md);font-size:0.83rem;font-weight:500;margin-top:0.5rem;}
+.cursus-btn:hover{background:var(--c-purple-dark);}
+.cursus-btn.secondary{background:transparent;border:1.5px solid var(--c-purple);color:var(--c-purple);}
+
+.hidden{display:none!important;}
+@media(max-width:420px){
+  .opt-grid{grid-template-columns:1fr;}
+  .header-title{font-size:1.4rem;}
+  .step-card{padding:1.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="tool-wrap">
+
+  <div class="tool-header">
+    <div class="header-label">NailCraft Platform, Snelheidstraining</div>
+    <div class="header-title">Snelheidsscan</div>
+    <div class="header-sub">Ontdek waar jij tijd verliest en krijg direct persoonlijk advies, materiaaltips en de juiste vervolgstap.</div>
+  </div>
+
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <div class="progress-label" id="progress-label"></div>
+  </div>
+
+  <div id="step-container"></div>
+
+</div>
+
+<script>
+/* ---------- data ---------- */
+var TAG_IDS = {
+  voorbereiding: 23273712,
+  applicatie: 23273713,
+  kleurfrench: 23273714,
+  frees: 23273715,
+  afwerking: 23273716
+};
+
+var DOEL = { affrezen: 10, manicure: 30, applicatie: 30, kleurfrench: 20, afwerking: 10 };
+
+var CHECKLISTS = {
+  voorbereiding: [
+    { key: 'nagelriemen_reinigen', label: 'Nagelriemen reinigen kost me veel tijd' },
+    { key: 'nagelriemen_knippen', label: 'Nagelriemen knippen kost me veel tijd' },
+    { key: 'huid_polijsten', label: 'Huid polijsten kost me veel tijd' },
+    { key: 'nagelplaat_opruwen', label: 'Nagelplaat opruwen kost me veel tijd' },
+    { key: 'prep_primer_base', label: 'Prep, primer en base aanbrengen kost me veel tijd' }
+  ],
+  applicatie: [
+    { key: 'opbouwen_gel', label: 'Opbouwen met gel gaat bij mij traag' },
+    { key: 'navijlen', label: 'Ik moet achteraf veel navijlen' },
+    { key: 'vorm_vijlen', label: 'De juiste vorm vijlen kost me veel tijd' },
+    { key: 'uitfrezen', label: 'Uitfrezen van de natuurlijke nagel na de opbouw kost me veel tijd', techniekOnly: ['hardgel', 'upperform'] }
+  ],
+  frees: [
+    { key: 'toerental', label: 'Ik weet niet zeker op welk toerental ik moet werken' },
+    { key: 'bits', label: 'Ik ken de verschillende zones van mijn freesbit niet goed' },
+    { key: 'handpositie', label: 'Ik heb geen stevige, stabiele handpositie met mijn frees' },
+    { key: 'kracht', label: 'Ik werk weleens met kracht in plaats van de frees het werk te laten doen' },
+    { key: 'gelijkmatig', label: 'Mijn affrezen verloopt niet gelijkmatig' }
+  ],
+  werkplek: [
+    { key: 'opruimen', label: 'Ik ruim niet tussendoor op tijdens de behandeling' },
+    { key: 'indeling', label: 'Mijn materiaal ligt niet ingedeeld volgens mijn dominante hand' },
+    { key: 'inspo', label: 'Ik weet vaak niet vooraf precies wat de klant wil' }
+  ],
+  afwerking: [
+    { key: 'topcoat', label: 'Topcoat aanbrengen kost me veel tijd of gaat niet vlekkeloos' },
+    { key: 'foto', label: 'Foto\'s nemen van het eindresultaat kost me veel tijd' },
+    { key: 'olie', label: 'Olie aanbrengen kost me veel tijd' }
+  ]
+};
+
+/* ---------- state ---------- */
+var state = {
+  techniek: null,
+  subtechniek: null,
+  tijden: { affrezen: '', manicure: '', applicatie: '', kleurfrench: '', afwerking: '' },
+  kleurfrenchType: null,
+  checklist: { voorbereiding: [], applicatie: [], frees: [], werkplek: [], afwerking: [] },
+  email: ''
+};
+
+var STEPS = ['intro', 'techniek', 'voorbereiding', 'applicatie', 'kleurfrench', 'frees', 'werkplek', 'afwerking', 'email', 'resultaat'];
+var stepIndex = 0;
+
+/* ---------- helpers ---------- */
+function el(id) { return document.getElementById(id); }
+function setChecklist(fase, key, checked) {
+  var arr = state.checklist[fase];
+  var i = arr.indexOf(key);
+  if (checked && i === -1) arr.push(key);
+  if (!checked && i > -1) arr.splice(i, 1);
+}
+function checklistHTML(fase) {
+  var items = CHECKLISTS[fase].filter(function (it) {
+    if (!it.techniekOnly) return true;
+    var sub = state.subtechniek || state.techniek;
+    return it.techniekOnly.indexOf(sub) > -1;
+  });
+  return items.map(function (it) {
+    var checked = state.checklist[fase].indexOf(it.key) > -1;
+    return '<div class="chk-row" onclick="toggleChk(this,\'' + fase + '\',\'' + it.key + '\')">' +
+      '<input type="checkbox" ' + (checked ? 'checked' : '') + ' onclick="event.stopPropagation();toggleChk(this.parentNode,\'' + fase + '\',\'' + it.key + '\',this.checked)">' +
+      '<label>' + it.label + '</label></div>';
+  }).join('');
+}
+function toggleChk(row, fase, key, forceVal) {
+  var input = row.querySelector('input');
+  var val = (forceVal !== undefined) ? forceVal : !input.checked;
+  input.checked = val;
+  setChecklist(fase, key, val);
+}
+function timeInputRow(key, label, doel) {
+  var val = state.tijden[key];
+  return '<div class="field-row">' +
+    '<div class="field-label"><span>' + label + '</span><span class="field-doel">doel: max ' + doel + ' min</span></div>' +
+    '<input type="number" min="0" class="field-input" id="tijd-' + key + '" value="' + val + '" placeholder="minuten" oninput="state.tijden[\'' + key + '\']=this.value">' +
+    '</div>';
+}
+
+/* ---------- render per step ---------- */
+function renderIntro() {
+  return '<div class="step-card">' +
+    '<div class="step-label">Klaar om te ontdekken waar jij tijd verliest?</div>' +
+    '<div class="step-sub">10 korte vragen, gebaseerd op je eigen werkboek. Aan het einde krijg je meteen persoonlijk advies: gerichte tips, materiaalaanbevelingen en, waar relevant, de juiste vervolgcursus.</div>' +
+    '<div class="nav-row"><button class="action-btn btn-primary" onclick="next()">Start de scan &rarr;</button></div>' +
+    '</div>';
+}
+
+function renderTechniek() {
+  var opts = [
+    { v: 'biab', l: 'BIAB' },
+    { v: 'hardgel-acrylgel', l: 'Hardgel & Acrylgel' },
+    { v: 'upperform', l: 'Upperform' }
+  ];
+  return '<div class="step-card">' +
+    '<div class="step-label">Welke techniek gebruik je meestal?</div>' +
+    '<div class="opt-grid cols-1">' +
+    opts.map(function (o) {
+      return '<button class="opt-btn' + (state.techniek === o.v ? ' selected' : '') + '" onclick="selectTechniek(\'' + o.v + '\')"><span class="opt-name">' + o.l + '</span></button>';
+    }).join('') +
+    '</div>' +
+    navButtons(state.techniek !== null) +
+    '</div>';
+}
+function selectTechniek(v) {
+  state.techniek = v;
+  if (v !== 'hardgel-acrylgel') state.subtechniek = null;
+  render();
+}
+
+function renderVoorbereiding() {
+  return '<div class="step-card">' +
+    '<div class="step-label">Voorbereiding</div>' +
+    '<div class="step-sub">Hoeveel tijd besteed je gemiddeld aan onderstaande stappen?</div>' +
+    timeInputRow('affrezen', 'Affrezen oud product', DOEL.affrezen) +
+    timeInputRow('manicure', 'Manicure', DOEL.manicure) +
+    '<div class="step-sub" style="margin-top:1rem;">Herken je jezelf hierin?</div>' +
+    checklistHTML('voorbereiding') +
+    navButtons(true, true) +
+    '</div>';
+}
+
+function renderApplicatie() {
+  var sub = '';
+  if (state.techniek === 'hardgel-acrylgel') {
+    sub = '<div class="field-row"><div class="field-label"><span>Werk je vooral met hardgel of met acrylgel?</span></div>' +
+      '<div class="opt-grid">' +
+      '<button class="opt-btn' + (state.subtechniek === 'hardgel' ? ' selected' : '') + '" onclick="selectSubtechniek(\'hardgel\')"><span class="opt-name">Hardgel</span></button>' +
+      '<button class="opt-btn' + (state.subtechniek === 'acrylgel' ? ' selected' : '') + '" onclick="selectSubtechniek(\'acrylgel\')"><span class="opt-name">Acrylgel</span></button>' +
+      '</div></div>';
+  }
+  return '<div class="step-card">' +
+    '<div class="step-label">Productapplicatie</div>' +
+    '<div class="step-sub">De opbouwfase, van eerste laag tot klaar voor kleur.</div>' +
+    sub +
+    timeInputRow('applicatie', 'Productapplicatie', DOEL.applicatie) +
+    '<div class="step-sub" style="margin-top:1rem;">Herken je jezelf hierin?</div>' +
+    checklistHTML('applicatie') +
+    navButtons(true, true) +
+    '</div>';
+}
+function selectSubtechniek(v) { state.subtechniek = v; render(); }
+
+function renderKleurfrench() {
+  var opts = [
+    { v: 'kleur', l: 'Vooral kleur' },
+    { v: 'french', l: 'Vooral French' },
+    { v: 'beide', l: 'Beide' }
+  ];
+  return '<div class="step-card">' +
+    '<div class="step-label">Kleur & French</div>' +
+    timeInputRow('kleurfrench', 'Kleur of French aanbrengen', DOEL.kleurfrench) +
+    '<div class="field-row"><div class="field-label"><span>Waar struggel je het meest mee?</span></div>' +
+    '<div class="opt-grid">' +
+    opts.map(function (o) {
+      return '<button class="opt-btn' + (state.kleurfrenchType === o.v ? ' selected' : '') + '" onclick="selectKleurfrenchType(\'' + o.v + '\')"><span class="opt-name">' + o.l + '</span></button>';
+    }).join('') +
+    '</div></div>' +
+    navButtons(state.kleurfrenchType !== null, true) +
+    '</div>';
+}
+function selectKleurfrenchType(v) { state.kleurfrenchType = v; render(); }
+
+function renderFrees() {
+  return '<div class="step-card">' +
+    '<div class="step-label">De frees als snelheidsmachine</div>' +
+    '<div class="step-sub">Herken je jezelf hierin?</div>' +
+    checklistHTML('frees') +
+    navButtons(true, true) +
+    '</div>';
+}
+
+function renderWerkplek() {
+  return '<div class="step-card">' +
+    '<div class="step-label">Je werkplek</div>' +
+    '<div class="step-sub">Herken je jezelf hierin?</div>' +
+    checklistHTML('werkplek') +
+    navButtons(true, true) +
+    '</div>';
+}
+
+function renderAfwerking() {
+  return '<div class="step-card">' +
+    '<div class="step-label">Afwerking</div>' +
+    timeInputRow('afwerking', 'Topcoat + foto\'s', DOEL.afwerking) +
+    '<div class="step-sub" style="margin-top:1rem;">Herken je jezelf hierin?</div>' +
+    checklistHTML('afwerking') +
+    navButtons(true, true) +
+    '</div>';
+}
+
+function renderEmail() {
+  return '<div class="step-card">' +
+    '<div class="step-label">Je persoonlijk resultaat staat klaar</div>' +
+    '<div class="teaser-box"><span class="teaser-icon">&#10024;</span><span class="teaser-text">Op basis van je antwoorden hebben we al gerichte tips, materiaalaanbevelingen en eventueel een passende vervolgcursus voor je klaarstaan. Vul je mailadres in om je resultaat te bekijken, dan sturen we je ook nog extra tips na.</span></div>' +
+    '<input type="email" class="email-input" id="email-input" placeholder="jouw@mailadres.be" value="' + state.email + '" oninput="state.email=this.value">' +
+    '<div class="email-error" id="email-error">Vul een geldig mailadres in.</div>' +
+    navButtons(true) +
+    '</div>';
+}
+
+function navButtons(canNext, isLast) {
+  var label = (STEPS[stepIndex] === 'email') ? 'Bekijk mijn resultaat &rarr;' : 'Volgende &rarr;';
+  return '<div class="nav-row">' +
+    (stepIndex > 0 ? '<button class="action-btn btn-secondary" onclick="back()">Terug</button>' : '') +
+    '<button class="action-btn btn-primary" onclick="handleNext()">' + label + '</button>' +
+    '</div>';
+}
+
+/* ---------- resultaat ---------- */
+function overTijd(key) {
+  var v = parseFloat(state.tijden[key]);
+  return !isNaN(v) && v > DOEL[key];
+}
+function heeftStruggle(fase) { return state.checklist[fase].length > 0; }
+
+function faseTriggerd(faseKey) {
+  if (faseKey === 'voorbereiding') return overTijd('affrezen') || overTijd('manicure') || heeftStruggle('voorbereiding');
+  if (faseKey === 'applicatie') return overTijd('applicatie') || heeftStruggle('applicatie');
+  if (faseKey === 'kleurfrench') return overTijd('kleurfrench');
+  if (faseKey === 'frees') return heeftStruggle('frees');
+  if (faseKey === 'afwerking') return overTijd('afwerking') || heeftStruggle('afwerking');
+  return false;
+}
+
+function matRow(img, label) {
+  return '<div class="mat-row"><img src="snelheidsscan-afbeeldingen/' + img + '" alt="' + label + '" onerror="this.style.visibility=\'hidden\'"><span class="mat-label">' + label + '</span></div>';
+}
+
+function buildFaseCard(titel, triggered, tipsHTML, cursusHTML) {
+  var status = triggered ? 'aandacht' : 'ok';
+  var badge = triggered ? 'Aandachtspunt' : 'Helemaal goed';
+  var html = '<div class="fase-card"><div class="fase-head ' + status + '">' +
+    '<span class="fase-title">' + titel + '</span>' +
+    '<span class="fase-badge ' + status + '">' + badge + '</span></div>';
+  if (triggered) {
+    html += '<div class="fase-body">' + tipsHTML + (cursusHTML || '') + '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderResultaat() {
+  var out = '<div class="result-intro"><div class="result-summary">Jouw resultaat</div>' +
+    '<p>Hieronder zie je per onderdeel hoe je ervoor staat, met gerichte tips waar je tijd kan winnen.</p></div>';
+
+  // Voorbereiding
+  var vTriggered = faseTriggerd('voorbereiding');
+  var vTips = '<p class="fase-tip">Gebruik een conische freesbit voor het affrezen: de buik heeft de kleurencode van het bandje, de wang is een tint zachter, de top is extra fijn voor de nagelriemzone. Werk minimaal op 25.000 toeren, liefst 30.000.</p>' +
+    '<p class="fase-tip">Kies een pusher met een dunne, zachte c-curve om makkelijker onder de nagelriem te komen. Ga voor het knippen met een flame bitje over de nagelriemen en nagelplaat voor een vlottere kniplijn.</p>' +
+    '<p class="fase-tip">Bespaar geld: alcohol +90% (apotheek) ontvet net zo krachtig als dure cleanser-producten.</p>' +
+    matRow('conische-freesbit.webp', 'Conische freesbit') +
+    matRow('pusher-staleks.webp', 'Pusher met dunne c-curve') +
+    matRow('flame-bit.webp', 'Flame bitje');
+  var vCursus = '';
+  if (overTijd('affrezen')) vCursus += '<a class="cursus-btn" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/refillremovalpro">Bekijk Refill Removal Pro</a>';
+  if (overTijd('manicure') || state.checklist.voorbereiding.length > 0) vCursus += '<a class="cursus-btn' + (vCursus ? ' secondary' : '') + '" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/manicurepro">Bekijk Manicure Pro</a>';
+  out += buildFaseCard('Voorbereiding', vTriggered, vTips, vCursus);
+
+  // Applicatie
+  var aTriggered = faseTriggerd('applicatie');
+  var techniek = state.subtechniek || state.techniek;
+  var aTips = '';
+  if (techniek === 'biab' || techniek === 'hardgel') {
+    aTips += '<p class="fase-tip">Gebruik een kattentong penseel (afgeronde hoeken) en een fine liner van 6 tot 11 mm voor de randen. Leer zo strak opbouwen dat navijlen van het oppervlak niet meer nodig is, dat bespaart enorm veel tijd.</p>' + matRow('penseel-kattentong.webp', 'Kattentong penseel');
+  } else if (techniek === 'acrylgel') {
+    aTips += '<p class="fase-tip">Gebruik altijd een apart penseel voor acrylgel. Werk niet te dik: less is more, anders krijg je sneller lifting. Vergeet de voorkant van de natuurlijke nagel niet mee te onderfrezen.</p>';
+  } else if (techniek === 'upperform') {
+    aTips += '<p class="fase-tip">Kies de juiste upperform per klant, verkeerde keuze betekent meer vijlwerk. Vul niet veel langer dan de gewenste lengte, max 1 tot 2 mm extra.</p>';
+  }
+  aTips += '<p class="fase-tip">Het geheim van in een keer perfect opbouwen: correcte kennis van de architectuur (waar de apex moet zitten) en hoe je levelt met je product.</p>';
+  var aCursus = '';
+  if (techniek === 'biab' || techniek === 'hardgel') aCursus += '<a class="cursus-btn" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/easynails">Bekijk Easy Nails</a>';
+  if (techniek === 'upperform') aCursus += '<a class="cursus-btn' + (aCursus ? ' secondary' : '') + '" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/upperformmaster">Bekijk Upperform Master</a>';
+  aCursus += '<a class="cursus-btn secondary" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/thegelcode">Meer weten over gelproducten? The Gel Code</a>';
+  out += buildFaseCard('Productapplicatie', aTriggered, aTips, aCursus);
+
+  // Kleur & French
+  var kTriggered = faseTriggerd('kleurfrench');
+  var kTips = '<p class="fase-tip">Kies een kleur die bijna volledig dekkend is in 1 laag, test dit bij aankoop op een tipje. Voor French: gebruik een kleur die al dekkend is in 1 dunne laag, bij voorkeur een paint gel.</p>' +
+    '<p class="fase-tip">Tabitha\'s favoriete tool voor precisiewerk: een 6mm fine liner, ideaal vlak onder de nagelriem en aan de nagelwallen.</p>' +
+    matRow('fine-liner.webp', 'Fine liner 6mm');
+  var kCursus = '';
+  if (state.kleurfrenchType === 'kleur' || state.kleurfrenchType === 'beide') kCursus += '<a class="cursus-btn" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/kleurapplicatie">Bekijk Kleurapplicatie</a>';
+  if (state.kleurfrenchType === 'french' || state.kleurfrenchType === 'beide') kCursus += '<a class="cursus-btn' + (kCursus ? ' secondary' : '') + '" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/softfrench">Bekijk Soft French</a>';
+  out += buildFaseCard('Kleur & French', kTriggered, kTips, kCursus);
+
+  // Frees
+  var fTriggered = faseTriggerd('frees');
+  var fTips = '<p class="fase-tip">Ken de zones van je freesbit: bij de nagelriemzone en nagelwallen gebruik je de zachtere delen (wang en top), bij de apex en het midden de buik. Ga nooit meer dan 2 keer na elkaar direct over dezelfde zone.</p>' +
+    '<p class="fase-tip">Werk met een vast stappenplan in plaats van random te frezen, dat geeft altijd consistente resultaten.</p>' +
+    '<p class="fase-tip">Freestoestel voor beginners: Marathon (budgetvriendelijk, betrouwbaar). Voor wie meer functies wil: Micro NX met digitaal instelbaar toerental.</p>';
+  var fCursus = '<a class="cursus-btn" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/refillremovalpro">Bekijk Refill Removal Pro</a>';
+  out += buildFaseCard('De frees als snelheidsmachine', fTriggered, fTips, fCursus);
+
+  // Werkplek (geen tag)
+  var wTriggered = heeftStruggle('werkplek');
+  var wTips = '<p class="fase-tip">Verdeel je materiaal: wat je maar 1 keer per behandeling nodig hebt komt aan je niet-dominante kant, wat je meerdere keren nodig hebt komt aan je dominante kant.</p>' +
+    '<p class="fase-tip">Ruim tussendoor op: wanneer de klant beide handen in de lamp heeft, is dat het moment om op te ruimen en de volgende stap klaar te zetten.</p>' +
+    '<p class="fase-tip">Vraag vooraf een inspiratiefoto aan je klant, zo heb je je plan en materiaal al klaar voor de behandeling begint.</p>';
+  var wCursus = '<a class="cursus-btn secondary" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/thebasics">Benieuwd welke materialen Tabitha gebruikt? The Basics</a>';
+  out += buildFaseCard('Je werkplek', wTriggered, wTips, wCursus);
+
+  // Afwerking
+  var afTriggered = faseTriggerd('afwerking');
+  var afTips = '<p class="fase-tip">Gebruik een no-wipe topcoat zonder kleeflaag, en zorg dat het product stofvrij blijft (potje goed sluiten na gebruik).</p>' +
+    '<p class="fase-tip">Gebruik voor foto\'s een niet-vette, dunne olie. Dikke olie geeft geen mooie, scherpe foto\'s.</p>' +
+    '<p class="fase-tip">Voor een natuurlijke huidglans op foto\'s: gebruik een tonic (zoals voor het gezicht) rond de nagel.</p>';
+  var afCursus = '<a class="cursus-btn" target="_blank" href="https://nailcraftplatform.kennis.shop/pay/nailcontentcreator">Bekijk Nail Content Creator</a>';
+  out += buildFaseCard('Afwerking', afTriggered, afTips, afCursus);
+
+  submitTags();
+  return out;
+}
+
+function collectTagIds() {
+  var ids = [];
+  if (faseTriggerd('voorbereiding')) ids.push(TAG_IDS.voorbereiding);
+  if (faseTriggerd('applicatie')) ids.push(TAG_IDS.applicatie);
+  if (faseTriggerd('kleurfrench')) ids.push(TAG_IDS.kleurfrench);
+  if (faseTriggerd('frees')) ids.push(TAG_IDS.frees);
+  if (faseTriggerd('afwerking')) ids.push(TAG_IDS.afwerking);
+  return ids;
+}
+
+function submitTags() {
+  var tagIds = collectTagIds();
+  if (!state.email || tagIds.length === 0) return;
+  fetch('/api/snelheidsscan-tag', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: state.email, tagIds: tagIds })
+  }).catch(function (err) { console.error('Snelheidsscan tag-koppeling mislukt', err); });
+}
+
+/* ---------- navigation ---------- */
+var RENDERERS = {
+  intro: renderIntro,
+  techniek: renderTechniek,
+  voorbereiding: renderVoorbereiding,
+  applicatie: renderApplicatie,
+  kleurfrench: renderKleurfrench,
+  frees: renderFrees,
+  werkplek: renderWerkplek,
+  afwerking: renderAfwerking,
+  email: renderEmail,
+  resultaat: renderResultaat
+};
+
+var COACH_MSG = {
+  techniek: 'Goed bezig, we starten meteen gericht.',
+  voorbereiding: 'Oke, daar weet ik al meer over, ik ga je zo gericht mogelijk helpen.',
+  applicatie: 'Duidelijk, nog een paar vragen te gaan.',
+  kleurfrench: 'Mooi, je bent al over de helft.',
+  frees: 'Bijna klaar, nog even volhouden.',
+  werkplek: 'Je bent er bijna.',
+  afwerking: 'Laatste inhoudelijke vraag.',
+  email: 'Helemaal klaar, je resultaat staat te wachten.'
+};
+
+function render() {
+  var key = STEPS[stepIndex];
+  el('step-container').innerHTML = RENDERERS[key]();
+  if (key === 'resultaat') {
+    el('progress-wrap').classList.add('hidden');
+  } else {
+    el('progress-wrap').classList.remove('hidden');
+    var pct = Math.round((stepIndex / (STEPS.length - 1)) * 100);
+    el('progress-fill').style.width = pct + '%';
+    var label = 'Vraag ' + stepIndex + ' van ' + (STEPS.length - 2);
+    if (COACH_MSG[key]) label = COACH_MSG[key];
+    el('progress-label').textContent = key === 'intro' ? 'Nog maar 9 korte vragen' : label;
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function next() { stepIndex++; render(); }
+function back() { stepIndex--; render(); }
+
+function handleNext() {
+  var key = STEPS[stepIndex];
+  if (key === 'techniek' && !state.techniek) return;
+  if (key === 'applicatie' && state.techniek === 'hardgel-acrylgel' && !state.subtechniek) return;
+  if (key === 'kleurfrench' && !state.kleurfrenchType) return;
+  if (key === 'email') {
+    var valid = /^\S+@\S+\.\S+$/.test(state.email);
+    if (!valid) { el('email-error').classList.add('show'); return; }
+    el('email-error').classList.remove('show');
+  }
+  next();
+}
+
+render();
+</script>
+</body>
+</html>

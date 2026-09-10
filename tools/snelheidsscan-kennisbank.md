@@ -30,8 +30,14 @@ Niet zomaar "vul je mailadres in". Eerst kort laten voelen wat ze krijgen: bijvo
 
 Dit bestand verzamelt Tabitha's expertkennis per fase, als basis voor de content van de Snelheidsscan-tool. Wordt fase per fase aangevuld tijdens gesprekken met Claude.
 
-Tag-structuur: 5 tags, meerdere tegelijk mogelijk per gebruiker.
-`struggle-voorbereiding`, `struggle-applicatie`, `struggle-kleurfrench`, `struggle-frees`, `struggle-afwerking`
+Tag-structuur: 5 tags, meerdere tegelijk mogelijk per gebruiker. Aangemaakt in Kit op 2026-09-10:
+- `struggle-voorbereiding` (id 23273712)
+- `struggle-applicatie` (id 23273713)
+- `struggle-kleurfrench` (id 23273714)
+- `struggle-frees` (id 23273715)
+- `struggle-afwerking` (id 23273716)
+
+Kit API voor taggen (bevestigd via developers.kit.com): `POST https://api.kit.com/v4/tags/{tag_id}/subscribers`, header `X-Kit-Api-Key`, body `{"email_address": "..."}`. Subscriber moet al bestaan (klopt, komt al binnen via de Kennis.shop-koppeling).
 
 Werkplek (fase 4) krijgt bewust GEEN eigen tag/sequence: geen cursus in het aanbod hiervoor. De werkplek-tips worden wel getoond op het resultaatscherm (als algemene tip, niet gekoppeld aan een specifieke tag), maar triggeren geen Kit-tag.
 
@@ -115,8 +121,13 @@ Het geheim van in één keer perfect opbouwen zonder achteraf te corrigeren: cor
 
 Techniekopties in de tool (schermenplan): **BIAB** / **Hardgel & Acrylgel** (samengevoegd) / **Upperform**.
 
-- Techniek = BIAB, of Hardgel & Acrylgel → **Easy Nails** (`https://nailcraftplatform.kennis.shop/pay/easynails`): sneller opbouwen zonder navijlen. Standaardkeuze bij deze technieken of bij "navijlen na opbouwen"/"opbouwen met gel" als struggle. (Acrylgel-specifieke tips blijven getoond, maar er is geen apart cursusaanbod enkel voor acrylgel: Easy Nails is de dichtstbijzijnde match.)
-- **The Gel Code** (`https://nailcraftplatform.kennis.shop/pay/thegelcode`, e-book): gelproducten begrijpen, hun mogelijkheden en limieten kennen. Kiezen wanneer het probleem meer bij productkennis/keuzes lijkt te liggen dan bij handtechniek.
+Bij acrylgel wil Tabitha expliciet GEEN cursus tonen (geen aanbod hiervoor), enkel de tips. Probleem: omdat Hardgel en Acrylgel op scherm 2 samen als één techniekknop staan, weet de tool op basis van die keuze alleen niet of iemand specifiek hardgel of specifiek acrylgel bedoelt, en dus niet of Easy Nails wel of niet mag getoond worden.
+
+**Bevestigd:** op het Productapplicatie-scherm (4), enkel wanneer "Hardgel & Acrylgel" werd gekozen op scherm 2, verschijnt een kleine extra subvraag: "werk je vooral met hardgel of met acrylgel?" Op basis daarvan: hardgel → Easy Nails tonen, acrylgel → geen cursus, enkel tips.
+
+- Techniek = BIAB, of Hardgel (via subvraag) → **Easy Nails** (`https://nailcraftplatform.kennis.shop/pay/easynails`): sneller opbouwen zonder navijlen.
+- Techniek = Acrylgel (via subvraag) → geen cursus, enkel tips.
+- **The Gel Code** (`https://nailcraftplatform.kennis.shop/pay/thegelcode`, e-book): gelproducten begrijpen, hun mogelijkheden en limieten kennen. Kiezen wanneer het probleem meer bij productkennis/keuzes lijkt te liggen dan bij handtechniek, ongeacht techniek.
 - Techniek = Upperform → **Upperform Master** (`https://nailcraftplatform.kennis.shop/pay/upperformmaster`). (Lichtere varianten bestaan ook: Upperform Guide, e-book €70, en Upperform Pro, videocursus €185. Standaard raden we Master aan als volledigste optie, tenzij later gekozen wordt voor prijsgetrapt aanbevelen.)
 
 ---
