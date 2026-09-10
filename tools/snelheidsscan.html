@@ -633,14 +633,46 @@ function restoreFromURL() {
   } catch (e) { console.error('Kon resultaat-link niet lezen', e); return false; }
 }
 
+var MAX_TAGS = 3;
+
+function overage(actual, doel) {
+  if (!actual || actual <= 0) return 0;
+  var ratio = actual / doel;
+  return ratio > 1 ? ratio - 1 : 0;
+}
+
+function checklistFraction(fase) {
+  var totaal = CHECKLISTS[fase].length;
+  if (!totaal) return 0;
+  return state.checklist[fase].length / totaal;
+}
+
+function severityScore(faseKey) {
+  if (faseKey === 'voorbereiding') {
+    var oa = overage(parseFloat(state.tijden.affrezen), DOEL.affrezen);
+    var om = overage(parseFloat(state.tijden.manicure), DOEL.manicure);
+    return Math.max(oa, om) + checklistFraction('voorbereiding');
+  }
+  if (faseKey === 'applicatie') {
+    return overage(parseFloat(state.tijden.applicatie), DOEL.applicatie) + checklistFraction('applicatie');
+  }
+  if (faseKey === 'kleurfrench') {
+    return overage(parseFloat(state.tijden.kleurfrench), DOEL.kleurfrench);
+  }
+  if (faseKey === 'frees') {
+    return checklistFraction('frees');
+  }
+  if (faseKey === 'afwerking') {
+    return overage(parseFloat(state.tijden.afwerking), DOEL.afwerking) + checklistFraction('afwerking');
+  }
+  return 0;
+}
+
 function collectTagIds() {
-  var ids = [];
-  if (faseTriggerd('voorbereiding')) ids.push(TAG_IDS.voorbereiding);
-  if (faseTriggerd('applicatie')) ids.push(TAG_IDS.applicatie);
-  if (faseTriggerd('kleurfrench')) ids.push(TAG_IDS.kleurfrench);
-  if (faseTriggerd('frees')) ids.push(TAG_IDS.frees);
-  if (faseTriggerd('afwerking')) ids.push(TAG_IDS.afwerking);
-  return ids;
+  var faseKeys = ['voorbereiding', 'applicatie', 'kleurfrench', 'frees', 'afwerking'];
+  var getriggerd = faseKeys.filter(faseTriggerd);
+  getriggerd.sort(function (a, b) { return severityScore(b) - severityScore(a); });
+  return getriggerd.slice(0, MAX_TAGS).map(function (faseKey) { return TAG_IDS[faseKey]; });
 }
 
 function submitTags() {
