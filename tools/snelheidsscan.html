@@ -372,6 +372,9 @@ function renderAfwerking() {
 }
 
 function renderEmail() {
+  if (!state.email) {
+    try { state.email = localStorage.getItem('snelheidsscan_email') || ''; } catch (e) {}
+  }
   return '<div class="step-card">' +
     '<div class="step-label">Je persoonlijk resultaat staat klaar</div>' +
     '<div class="teaser-box"><span class="teaser-icon">&#10024;</span><span class="teaser-text">Op basis van je antwoorden heb ik gerichte tips die je onmiddellijk kan toepassen, materiaalaanbevelingen die je werk makkelijker en sneller zullen maken en eventueel een passende vervolgcursus voor je klaarstaan. Vul je mailadres in en bekijk je resultaat hier, ik stuur je ook nog extra tips na die vast en zeker zullen helpen.<br><span class="signature">Liefs, Tabitha</span></span></div>' +
@@ -533,8 +536,23 @@ function renderResultaat() {
     '<p>Hieronder zie je per onderdeel hoe je ervoor staat, met mijn gerichte tips waar je tijd kan winnen.</p></div>';
   out += laatsteFases.map(buildFaseCard).join('');
   out += '<button type="button" class="pdf-btn" onclick="downloadPDF()">Download je PDF met tips en cursusadvies &darr;</button>';
+  out += '<button type="button" class="pdf-btn" onclick="opnieuwBeginnen()">Doe de scan opnieuw</button>';
   submitTags();
   return out;
+}
+
+function opnieuwBeginnen() {
+  var bewaardEmail = state.email;
+  state.techniek = null;
+  state.subtechniek = null;
+  state.tijden = { affrezen: '', manicure: '', applicatie: '', kleurfrench: '', afwerking: '' };
+  state.kleurfrenchType = null;
+  state.checklist = { voorbereiding: [], applicatie: [], frees: [], werkplek: [], afwerking: [] };
+  state.goedFase = { voorbereiding: false, applicatie: false, frees: false, werkplek: false, afwerking: false };
+  state.email = bewaardEmail;
+  history.replaceState(null, '', window.location.pathname);
+  stepIndex = 0;
+  render();
 }
 
 function downloadPDF() {
@@ -627,11 +645,12 @@ function collectTagIds() {
 
 function submitTags() {
   var tagIds = collectTagIds();
-  if (!state.email || tagIds.length === 0) return;
+  if (!state.email) return;
+  try { localStorage.setItem('snelheidsscan_email', state.email); } catch (e) {}
   fetch('/api/snelheidsscan-tag', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: state.email, tagIds: tagIds })
+    body: JSON.stringify({ email: state.email, tagIds: tagIds, resultLink: encodeResultLink() })
   }).catch(function (err) { console.error('Snelheidsscan tag-koppeling mislukt', err); });
 }
 
