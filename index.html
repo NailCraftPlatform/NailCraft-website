@@ -165,9 +165,21 @@
     .nc-nav__mobile.open { display: flex; }
     .nc-nav__mobile a { font-size: 1rem; font-weight: 500; color: var(--nc-tekst); padding: .5rem 0; border-bottom: 1px solid rgba(156,40,177,.08); }
     .nc-nav__mobile a:last-child { border-bottom: none; color: var(--nc-paars); font-weight: 700; }
+    /* Inloggen: gewone navlink op desktop, apart vast knopje op mobiel */
+    .nc-nav__login {
+      display: none;
+      font-size: .82rem; font-weight: 600; color: #fff !important;
+      background: var(--nc-paars); padding: .45rem 1.1rem; border-radius: 50px;
+      white-space: nowrap; transition: background .2s;
+    }
+    .nc-nav__login:hover { background: #7a1e8e !important; color: #fff !important; }
     @media(max-width: 900px) {
       .nc-nav__links { display: none; }
       .nc-nav__toggle { display: flex; }
+      .nc-nav { display: grid; grid-template-columns: auto 1fr auto; }
+      .nc-nav__login { display: inline-flex; justify-self: start; }
+      .nc-nav__logo { justify-self: center; }
+      .nc-nav__toggle { justify-self: end; }
     }
 
     /* Globale override: alle secundaire knoppen altijd paars */
