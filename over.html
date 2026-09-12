@@ -55,6 +55,14 @@
     .nc-nav__links a:hover { color: var(--nc-paars); }
     .nc-nav__links a.active { color: var(--nc-paars); font-weight: 600; }
     .nc-nav__cta { background: var(--nc-paars); color: #fff !important; padding: .5rem 1.4rem; border-radius: 50px; font-size: .85rem; font-weight: 600; transition: background .2s; }
+    /* Grotere balk, logo en tekst op desktop */
+    @media(min-width: 901px) {
+      .nc-nav { height: 84px; }
+      .nc-nav__logo img { height: 66px; }
+      .nc-nav__links { gap: 2.3rem; }
+      .nc-nav__links a { font-size: 1.18rem; }
+      .nc-nav__cta { padding: .7rem 1.8rem; font-size: 1.08rem; }
+    }
     .nc-nav__cta:hover { background: #7a1e8e !important; color: #fff !important; }
     .nc-nav__toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .nc-nav__toggle span { display: block; width: 24px; height: 2px; background: var(--nc-tekst); border-radius: 2px; transition: all .3s; }
