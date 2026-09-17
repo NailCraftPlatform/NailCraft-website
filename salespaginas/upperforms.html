@@ -350,25 +350,49 @@
     @keyframes scFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes scPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.85); } }
   </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1164907968574291');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1164907968574291&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
+<!-- NailCraft cookiebanner + Meta Pixel (laadt pas na toestemming) -->
+<div id="nc-cookie-banner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#2a1a3e;color:#fff;padding:1.1rem 1.5rem;box-shadow:0 -4px 24px rgba(0,0,0,0.18);flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;font-family:'DM Sans',sans-serif;">
+  <p style="margin:0;flex:1;min-width:240px;font-size:0.92rem;line-height:1.55;">We gebruiken cookies om deze website goed te laten werken en, met jouw toestemming, om je gerichte advertenties te tonen. Lees meer in ons <a href="/cookiebeleid.html" style="color:#fff;text-decoration:underline;">cookiebeleid</a>.</p>
+  <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+    <button id="nc-cookie-reject" style="background:transparent;color:#fff;border:1.5px solid #fff;border-radius:50px;padding:0.6rem 1.3rem;font-size:0.88rem;font-weight:600;cursor:pointer;">Alleen noodzakelijke</button>
+    <button id="nc-cookie-accept" style="background:#fe9b00;color:#fff;border:none;border-radius:50px;padding:0.6rem 1.3rem;font-size:0.88rem;font-weight:700;cursor:pointer;">Alles accepteren</button>
+  </div>
+</div>
+<script>
+(function(){
+  function ncLoadPixel(){
+    if(window.ncPixelLoaded)return;window.ncPixelLoaded=true;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1164907968574291');
+    fbq('track', 'PageView');
+  }
+  var ncBanner = document.getElementById('nc-cookie-banner');
+  var ncConsent = localStorage.getItem('nc_cookie_consent');
+  if (ncConsent === 'accepted') { ncLoadPixel(); }
+  else if (!ncConsent && ncBanner) { ncBanner.style.display = 'flex'; }
+  if (ncBanner) {
+    document.getElementById('nc-cookie-accept').onclick = function(){
+      localStorage.setItem('nc_cookie_consent','accepted');
+      ncBanner.style.display = 'none';
+      ncLoadPixel();
+    };
+    document.getElementById('nc-cookie-reject').onclick = function(){
+      localStorage.setItem('nc_cookie_consent','rejected');
+      ncBanner.style.display = 'none';
+    };
+  }
+})();
+</script>
+<!-- Einde cookiebanner + Meta Pixel -->
   <div id="nc-progress" style="position:fixed;top:70px;left:0;height:2px;width:0%;background:#9c28b1;z-index:1001;transition:width .25s linear;pointer-events:none;"></div>
 
   <!-- NAV -->
