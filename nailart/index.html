@@ -89,7 +89,28 @@
     .nc-hero__inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr .85fr; gap: 3.5rem; align-items: center; }
     .nc-hero__badge { display: inline-flex; align-items: center; gap: .5rem; background: #fff; border: 1px solid rgba(156,40,177,.2); border-radius: 50px; padding: .4rem 1rem; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--nc-kerstrood); margin-bottom: 1.4rem; box-shadow: 0 4px 14px rgba(156,40,177,.08); }
     .nc-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.3rem, 5.2vw, 3.8rem); line-height: 1.08; color: var(--nc-paars); margin-bottom: 1.2rem; }
-    .nc-hero h1 em { font-style: italic; color: var(--nc-kerstrood); }
+    /* "tot kerstavond": goudrode kerstgloed die zacht beweegt, met twinkelende sterretjes */
+    .nc-hero h1 em {
+      font-style: italic; position: relative; display: inline-block; padding: 0 .08em;
+      color: #b3122e;
+      background: linear-gradient(100deg, #a50f2a 0%, #d42a3a 18%, #e0a83a 36%, #f5d77e 48%, #d4a849 60%, #c41e3a 80%, #a50f2a 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 10px rgba(220, 60, 40, .35));
+      animation: ncGloed 5s ease-in-out infinite;
+    }
+    .nc-hero h1 em::before, .nc-hero h1 em::after {
+      content: '✦'; position: absolute; -webkit-text-fill-color: #e6b84a; color: #e6b84a;
+      font-style: normal; animation: ncSter 2.4s ease-in-out infinite;
+    }
+    .nc-hero h1 em::before { font-size: .32em; top: -.15em; left: -.25em; }
+    .nc-hero h1 em::after  { font-size: .42em; bottom: .05em; right: -.45em; animation-delay: 1.2s; }
+    @keyframes ncGloed {
+      0%, 100% { background-position: 0% 50%; filter: drop-shadow(0 0 8px rgba(212, 42, 58, .35)); }
+      50% { background-position: 100% 50%; filter: drop-shadow(0 0 16px rgba(230, 180, 70, .6)); }
+    }
+    @keyframes ncSter { 0%, 100% { opacity: .2; transform: scale(.7) rotate(0deg); } 50% { opacity: 1; transform: scale(1.15) rotate(20deg); } }
+    @media (prefers-reduced-motion: reduce) { .nc-hero h1 em, .nc-hero h1 em::before, .nc-hero h1 em::after { animation: none; } }
     .nc-hero__tekst { font-size: 1.05rem; line-height: 1.75; color: var(--nc-tekst-zacht); max-width: 520px; margin-bottom: 1.8rem; }
     .nc-hero__tekst strong { color: var(--nc-tekst); }
     .nc-hero__knoppen { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 2rem; }
