@@ -400,30 +400,31 @@
        Geen foto ingevuld = "Foto volgt". fiche: false = "Fiche volgt binnenkort"
     ============================================= */
     var ncDesigns = [
-      { nr: 11, slug: '11-pink-scream', foto: '11-pink-scream.jpg', naam: 'Pink Scream', tekst: 'Een roze masker met cat eye ogen die oplichten als je beweegt.', kleur: '#d6338a', fiche: true },
-      { nr: 10, slug: '10-lava-lines', naam: 'Lava lines', tekst: 'Felle kleurvlakken met fijne zwarte lijntjes, in mat.', kleur: '#e8590c', fiche: false },
-      { nr: 9, slug: '09-bambi', foto: '09-bambi.jpg', naam: 'Bambi', tekst: 'Zachte bruintinten met parelmoer chrome en witte vlekjes.', kleur: '#8b5e3c', fiche: false },
-      { nr: 8, slug: '08-3d-spider', foto: '08-3d-spider.jpg', naam: '3D spider', tekst: 'Een spin met pootjes in relief op neon oranje.', kleur: '#f76707', fiche: false },
-      { nr: 7, slug: '07-zebra', foto: '07-zebra.jpg', naam: 'Zebra', tekst: 'Een fijn zebrapatroon met een gouden chrome band.', kleur: '#1a1a1a', fiche: false },
-      { nr: 6, slug: '06-tiger', naam: 'Tiger', tekst: 'Cat eye met golden flakes en tijgervlekjes, drie varianten.', kleur: '#c77700', fiche: false },
-      { nr: 5, slug: '05-cow', naam: 'Cow', tekst: 'Fluffy cow en classic cow, met een chrome swirl.', kleur: '#6b4a2b', fiche: false },
-      { nr: 4, slug: '04-snake', naam: 'Snake', tekst: 'Slangenprint met cat eye en flakes die erdoor schijnen.', kleur: '#2b8a3e', fiche: false },
-      { nr: 3, slug: '03-metal-flower', naam: 'Metal flower', tekst: 'Een bloem in 3D metal gel met gouden steentjes.', kleur: '#556b2f', fiche: false },
-      { nr: 2, slug: '02-gemstone', naam: 'Gemstone', tekst: 'Edelstenen met een gouden kader en een bol effect.', kleur: '#6741d9', fiche: false },
-      { nr: 1, slug: '01-herfstblaadjes', naam: 'Herfstblaadjes', tekst: 'Gestempelde blaadjes met diepte en gouden accenten.', kleur: '#c2410c', fiche: false }
+      { nr: 9, slug: '09-bambi', foto: '09-bambi.webp', naam: 'Bambi', tekst: 'Zachte bruintinten met parelmoer chrome en witte vlekjes.', kleur: '#8b5e3c', fiche: false },
+      { nr: 8, slug: '08-3d-spider', foto: '08-3d-spider.webp', naam: '3D spider', tekst: 'Een spin met pootjes in relief op neon oranje.', kleur: '#f76707', fiche: false },
+      { nr: 7, slug: '07-zebra', foto: '07-zebra.webp', naam: 'Zebra', tekst: 'Een fijn zebrapatroon met een gouden chrome band.', kleur: '#1a1a1a', fiche: false },
+      { nr: 6, slug: '06-tiger', foto: '06-tiger.webp', naam: 'Tiger', tekst: 'Cat eye met golden flakes en zwarte vlekjes, in drie varianten.', kleur: '#a8741a', fiche: false },
+      { nr: 5, slug: '05-cow', foto: '05-cow.webp', naam: 'Cow', tekst: 'Fluffy cow en classic cow, afgewerkt met gouden chrome.', kleur: '#8b4a2b', fiche: false },
+      { nr: 4, slug: '04-snake', foto: '04-snake.webp', naam: 'Snake', tekst: 'Een slangenhuid met cat eye en gouden flakes die erdoor schijnen.', kleur: '#6b5a1e', fiche: false },
+      { nr: 3, slug: '03-metal-flower', foto: '03-metal-flower.webp', naam: 'Metal flower', tekst: 'Bloemen in 3D metal gel met gouden steentjes, op mat groen.', kleur: '#3f5e3a', fiche: false },
+      { nr: 2, slug: '02-gemstone', foto: '02-gemstone.webp', naam: 'Gemstone', tekst: 'Glanzende edelstenen in een gouden kader, op mat petrol.', kleur: '#1f5f73', fiche: false },
+      { nr: 1, slug: '01-herfstblaadjes', foto: '01-herfstblaadjes.webp', naam: 'Herfstblaadjes', tekst: 'Gestempelde blaadjes met diepte en gouden accenten.', kleur: '#9b1c2c', fiche: false }
     ];
 
     var ncBonus = [
-      { slug: 'bonus-pompoen', naam: 'Pompoen', tekst: 'Mijn populairste design op Instagram.', kleur: '#e8590c', fiche: false },
-      { slug: 'bonus-halloween-cat-eye', naam: 'Halloween cat eye', tekst: 'Een verborgen stempel die verschijnt in het licht.', kleur: '#2b8a3e', fiche: false },
-      { slug: 'bonus-realistische-bloemen', naam: 'Realistische bloemen', tekst: 'Pastel bloemetjes met diepte en relief.', kleur: '#d6336c', fiche: false }
+      { slug: 'bonus-pompoen', foto: 'bonus-pompoen.webp', naam: 'Pompoen', tekst: 'Mijn populairste design op Instagram.', kleur: '#b8860b', fiche: false },
+      { slug: 'bonus-halloween-cat-eye', foto: 'bonus-halloween-cat-eye.webp', naam: 'Halloween cat eye', tekst: 'Een verborgen stempel die verschijnt in het licht.', kleur: '#24402f', fiche: false },
+      { slug: 'bonus-realistische-bloemen', foto: 'bonus-realistische-bloemen.webp', naam: 'Realistische bloemen', tekst: 'Pastel bloemetjes met diepte en relief.', kleur: '#9b6fd6', fiche: false },
+      { slug: 'bonus-burgundy', foto: 'bonus-burgundy.webp', naam: 'Burgundy nails', tekst: 'Burgundy en goud met een fluweelzacht effect.', kleur: '#7a1f3d', fiche: false }
     ];
 
     /* Cursustips: verschijnen in het raster na het aantal designs dat bij 'na' staat */
     var ncTips = [
       { na: 4, icoon: '🎬', label: 'Zelf zulke reels maken?', titel: 'Nail Content Creator', tekst: 'Leer hoe je jouw nagels mooi filmt en fotografeert, zodat jouw werk opvalt op Instagram en TikTok.', link: '/salespaginas/nail-content-creator.html' },
-      { na: 8, icoon: '🎨', label: 'De basis van elke nail art', titel: 'Perfecte Kleurapplicatie', tekst: 'Nail art valt pas echt op met een strakke basis. Leer kleur aanbrengen zonder vlekken, tot vlak tegen de nagelriem.', link: '/salespaginas/kleurapplicatie.html' }
+      { na: 8, icoon: '🎨', label: 'De basis van elke nail art', titel: 'Perfecte Kleurapplicatie', tekst: 'Nail art valt pas echt op met een strakke basis. Leer kleur aanbrengen zonder vlekken, tot vlak tegen de nagelriem.', link: '/salespaginas/kleurapplicatie.html' },
+      { na: 12, icoon: '💪', label: 'Een sterke ondergrond', titel: 'Easy Nails Techniek', tekst: 'Mooie nail art begint bij een goed opgebouwde nagel. Leer gelnagels plaatsen die dun, sterk en 4 weken mooi blijven.', link: '/salespaginas/easy-nails.html' }
     ];
+    /* Een tip waarvoor nog niet genoeg designs online staan, komt onderaan het raster */
 
     var ncPijl = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>';
 
@@ -455,6 +456,7 @@
       html += ncKaart(d, i === 0);
       ncTips.forEach(function (t) { if (t.na === i + 1 && i < ncDesigns.length - 1) html += ncTip(t); });
     });
+    ncTips.forEach(function (t) { if (t.na >= ncDesigns.length) html += ncTip(t); });
     document.querySelector('.nc-js-raster').innerHTML = html;
     document.querySelector('.nc-js-bonus').innerHTML = ncBonus.map(function (d) { return ncKaart(d, false); }).join('');
 
