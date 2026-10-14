@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="/images/Favicon.png">
+  <title>Nail Art Challenge: 80 dagen tot kerst | NailCraft Platform</title>
+  <meta name="description" content="Elke dag een nieuw nail art design tot kerstavond. Download gratis de materialenfiche met alle producten en een korte stap voor stap uitleg.">
+  <meta name="author" content="Tabitha Windels">
+
+  <!-- Open Graph (voor een mooi voorbeeld als de link gedeeld wordt) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="80 dagen tot kerst: de nail art challenge van Tabitha">
+  <meta property="og:description" content="Elke dag een nieuw nail art design, met een gratis materialenfiche om te downloaden.">
+  <meta property="og:url" content="https://nailcraft.be/nailart/">
+  <meta property="og:image" content="https://nailcraft.be/images/kerstfoto.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =============================================
+       RESET & GLOBALS
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; background: #f8f2ff; color: #2a1a3e; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; }
+
+    :root {
+      --nc-paars: #9c28b1;
+      --nc-paars-donker: #7a1e8e;
+      --nc-oranje: #fe9b00;
+      --nc-licht: #f8f2ff;
+      --nc-lila: #b590f1;
+      --nc-tekst: #2a1a3e;
+      --nc-tekst-zacht: #5a4a6e;
+      --nc-kerstrood: #8e1b2c;
+      --nc-goud: #c9a227;
+    }
+
+    /* =============================================
+       NAVIGATIE
+    ============================================= */
+    .nc-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(248,242,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(156,40,177,.1); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 70px; transition: box-shadow .3s; }
+    .nc-nav.scrolled { box-shadow: 0 4px 24px rgba(156,40,177,.1); }
+    .nc-nav__logo img { height: 44px; width: auto; }
+    .nc-nav__links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nc-nav__links a { font-size: .9rem; font-weight: 500; color: var(--nc-tekst); transition: color .2s; }
+    .nc-nav__links a:hover { color: var(--nc-paars); }
+    .nc-nav__cta { background: var(--nc-paars); color: #fff !important; padding: .5rem 1.4rem; border-radius: 50px; font-size: .85rem; font-weight: 600; transition: background .2s; }
+    .nc-nav__cta:hover { background: var(--nc-paars-donker) !important; }
+    @media(min-width: 901px) {
+      .nc-nav { height: 84px; }
+      .nc-nav__logo img { height: 66px; }
+      .nc-nav__links { gap: 2.3rem; }
+      .nc-nav__links a { font-size: 1.18rem; }
+      .nc-nav__cta { padding: .7rem 1.8rem; font-size: 1.08rem; }
+    }
+    .nc-nav__toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nc-nav__toggle span { display: block; width: 24px; height: 2px; background: var(--nc-tekst); border-radius: 2px; }
+    .nc-nav__mobile { display: none; position: fixed; top: 70px; left: 0; right: 0; background: #fff; border-bottom: 1px solid rgba(156,40,177,.1); padding: 1.5rem 5vw; flex-direction: column; gap: 1rem; z-index: 999; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    .nc-nav__mobile.open { display: flex; }
+    .nc-nav__mobile a { font-size: 1rem; font-weight: 500; color: var(--nc-tekst); padding: .5rem 0; border-bottom: 1px solid rgba(156,40,177,.08); }
+    .nc-nav__mobile a:last-child { border-bottom: none; color: var(--nc-paars); font-weight: 700; }
+    @media(max-width:900px) { .nc-nav__links { display: none; } .nc-nav__toggle { display: flex; } }
+
+    /* =============================================
+       KNOPPEN
+    ============================================= */
+    .nc-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 50px; font-weight: 700; font-size: .95rem; padding: .85rem 1.8rem; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s; border: 2px solid transparent; font-family: inherit; }
+    .nc-btn:hover { transform: translateY(-2px); }
+    .nc-btn--oranje { background: var(--nc-oranje); color: #fff; box-shadow: 0 6px 20px rgba(254,155,0,.35); }
+    .nc-btn--paars { background: transparent; color: var(--nc-paars); border-color: var(--nc-paars); }
+    .nc-btn--paars:hover { background: var(--nc-paars); color: #fff; }
+    @media(max-width:768px) { .nc-btn { font-size: .82rem; padding: .65rem 1.4rem; } }
+
+    .nc-label { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--nc-paars); margin-bottom: .8rem; }
+    .nc-titel { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--nc-paars); line-height: 1.15; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .nc-hero { padding: 110px 5vw 60px; background: linear-gradient(160deg, #f8f2ff 0%, #fdecfc 60%, #f3e6ff 100%); position: relative; overflow: hidden; }
+    .nc-hero__inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr .85fr; gap: 3.5rem; align-items: center; }
+    .nc-hero__badge { display: inline-flex; align-items: center; gap: .5rem; background: #fff; border: 1px solid rgba(156,40,177,.2); border-radius: 50px; padding: .4rem 1rem; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--nc-kerstrood); margin-bottom: 1.4rem; box-shadow: 0 4px 14px rgba(156,40,177,.08); }
+    .nc-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.3rem, 5.2vw, 3.8rem); line-height: 1.08; color: var(--nc-paars); margin-bottom: 1.2rem; }
+    .nc-hero h1 em { font-style: italic; color: var(--nc-kerstrood); }
+    .nc-hero__tekst { font-size: 1.05rem; line-height: 1.75; color: var(--nc-tekst-zacht); max-width: 520px; margin-bottom: 1.8rem; }
+    .nc-hero__tekst strong { color: var(--nc-tekst); }
+    .nc-hero__knoppen { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 2rem; }
+
+    /* Teller: designs online + dagen tot kerst */
+    .nc-teller { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .nc-teller__blok { background: #fff; border-radius: 18px; padding: .9rem 1.3rem; box-shadow: 0 6px 22px rgba(156,40,177,.08); min-width: 150px; }
+    .nc-teller__getal { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--nc-paars); line-height: 1; }
+    .nc-teller__getal small { font-size: 1rem; color: var(--nc-lila); font-weight: 700; }
+    .nc-teller__label { font-size: .78rem; color: var(--nc-tekst-zacht); margin-top: .3rem; }
+    .nc-teller__balk { height: 6px; background: #efe3fb; border-radius: 6px; margin-top: .6rem; overflow: hidden; }
+    .nc-teller__balk span { display: block; height: 100%; background: linear-gradient(90deg, var(--nc-paars), var(--nc-oranje)); border-radius: 6px; }
+
+    .nc-hero__foto { position: relative; }
+    .nc-hero__foto img { border-radius: 28px; box-shadow: 0 24px 60px rgba(90,30,110,.22); aspect-ratio: 4/5; object-fit: cover; width: 100%; }
+    .nc-hero__sticker { position: absolute; left: -22px; bottom: 28px; background: var(--nc-kerstrood); color: #fff; border-radius: 18px; padding: .8rem 1.1rem; font-size: .85rem; line-height: 1.35; box-shadow: 0 10px 28px rgba(142,27,44,.35); transform: rotate(-4deg); }
+    .nc-hero__sticker strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.15rem; }
+
+    /* Twinkelende lichtjes in de achtergrond */
+    .nc-lichtje { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: var(--nc-goud); opacity: .5; animation: ncTwinkel 3s ease-in-out infinite; pointer-events: none; }
+    @keyframes ncTwinkel { 0%,100% { opacity: .15; transform: scale(.8); } 50% { opacity: .8; transform: scale(1.2); } }
+
+    @media(max-width:900px) {
+      .nc-hero { padding: 92px 1.25rem 48px; }
+      .nc-hero__inner { grid-template-columns: 1fr; gap: 2rem; }
+      .nc-hero__foto { order: -1; max-width: 230px; margin: 0 auto; }
+      .nc-hero__foto img { aspect-ratio: 1/1; object-position: center 20%; border-radius: 50%; }
+      .nc-hero__sticker { padding: .55rem .8rem; }
+      .nc-hero__sticker strong { font-size: .95rem; }
+      .nc-hero__sticker { left: -10px; bottom: 18px; font-size: .78rem; }
+      .nc-hero__tekst { font-size: .98rem; }
+      .nc-teller__blok { flex: 1; min-width: 0; }
+    }
+
+    /* =============================================
+       ZO WERKT HET
+    ============================================= */
+    .nc-stappen { padding: 56px 5vw; background: #fff; }
+    .nc-stappen__inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .nc-stap { text-align: center; padding: 1.2rem; }
+    .nc-stap__icoon { width: 58px; height: 58px; border-radius: 50%; background: var(--nc-licht); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto .9rem; }
+    .nc-stap h3 { font-family: 'Playfair Display', serif; color: var(--nc-paars); font-size: 1.2rem; margin-bottom: .4rem; }
+    .nc-stap p { font-size: .92rem; line-height: 1.6; color: var(--nc-tekst-zacht); }
+    @media(max-width:768px) {
+      .nc-stappen { padding: 40px 1.25rem; }
+      .nc-stappen__inner { grid-template-columns: 1fr; gap: .5rem; }
+      .nc-stap { display: grid; grid-template-columns: 52px 1fr; gap: 1rem; text-align: left; align-items: center; padding: .6rem 0; }
+      .nc-stap__icoon { margin: 0; width: 52px; height: 52px; font-size: 1.3rem; }
+    }
+
+    /* =============================================
+       DESIGNS RASTER
+    ============================================= */
+    .nc-designs { padding: 70px 5vw 40px; }
+    .nc-designs__kop { max-width: 1100px; margin: 0 auto 2.2rem; display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; }
+    .nc-designs__kop p { color: var(--nc-tekst-zacht); max-width: 460px; line-height: 1.6; font-size: .95rem; }
+    .nc-raster { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.6rem; }
+
+    .nc-kaart { background: #fff; border-radius: 22px; overflow: hidden; box-shadow: 0 8px 28px rgba(156,40,177,.08); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; color: inherit; }
+    a.nc-kaart:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(156,40,177,.16); }
+    .nc-kaart__foto { position: relative; aspect-ratio: 4/5; background: var(--nc-licht); overflow: hidden; }
+    .nc-kaart__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    a.nc-kaart:hover .nc-kaart__foto img { transform: scale(1.04); }
+    .nc-kaart__nr { position: absolute; top: 12px; left: 12px; background: var(--kaart-kleur, var(--nc-paars)); color: #fff; font-weight: 700; font-size: .78rem; letter-spacing: .06em; padding: .35rem .75rem; border-radius: 50px; box-shadow: 0 4px 12px rgba(0,0,0,.18); }
+    .nc-kaart__nieuw { position: absolute; top: 12px; right: 12px; background: var(--nc-oranje); color: #fff; font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .7rem; border-radius: 50px; }
+    .nc-kaart__body { padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .35rem; flex: 1; }
+    .nc-kaart__naam { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--nc-tekst); }
+    .nc-kaart__tekst { font-size: .86rem; line-height: 1.5; color: var(--nc-tekst-zacht); flex: 1; }
+    .nc-kaart__knop { margin-top: .7rem; display: inline-flex; align-items: center; gap: .45rem; font-weight: 700; font-size: .86rem; color: var(--kaart-kleur, var(--nc-paars)); }
+    .nc-kaart__knop svg { width: 16px; height: 16px; }
+    .nc-kaart--binnenkort .nc-kaart__knop { color: #a99bb8; }
+    .nc-kaart__leeg { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; color: var(--nc-lila); font-size: .85rem; text-align: center; padding: 1rem; background: repeating-linear-gradient(45deg, #f8f2ff, #f8f2ff 12px, #f3e9ff 12px, #f3e9ff 24px); }
+    .nc-kaart__leeg span { font-size: 2rem; }
+
+    /* Cursustip tussen de designs */
+    .nc-tip { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr auto; gap: 1.5rem; align-items: center; background: linear-gradient(120deg, var(--nc-paars) 0%, #6d1a80 100%); color: #fff; border-radius: 22px; padding: 1.6rem 2rem; box-shadow: 0 12px 34px rgba(156,40,177,.25); }
+    .nc-tip__icoon { font-size: 2.2rem; }
+    .nc-tip__label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ffd28a; margin-bottom: .3rem; }
+    .nc-tip h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-bottom: .3rem; }
+    .nc-tip p { font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.85); }
+    @media(max-width:768px) {
+      .nc-designs { padding: 50px 1.25rem 30px; }
+      .nc-raster { grid-template-columns: 1fr 1fr; gap: .9rem; }
+      .nc-kaart { border-radius: 16px; }
+      .nc-kaart__body { padding: .8rem .85rem 1rem; }
+      .nc-kaart__naam { font-size: 1.05rem; }
+      .nc-kaart__tekst { display: none; }
+      .nc-kaart__knop { font-size: .78rem; margin-top: .3rem; }
+      .nc-kaart__nr { font-size: .7rem; top: 8px; left: 8px; }
+      .nc-kaart__nieuw { font-size: .62rem; top: 8px; right: 8px; }
+      .nc-tip { grid-template-columns: 1fr; text-align: center; padding: 1.4rem 1.2rem; gap: .8rem; }
+      .nc-tip h3 { font-size: 1.15rem; }
+    }
+
+    /* =============================================
+       BONUS
+    ============================================= */
+    .nc-bonus { padding: 60px 5vw 70px; background: linear-gradient(180deg, #f8f2ff 0%, #fff6ea 100%); }
+    .nc-bonus__kop { max-width: 1100px; margin: 0 auto 2rem; text-align: center; }
+    .nc-bonus__kop p { color: var(--nc-tekst-zacht); max-width: 520px; margin: .6rem auto 0; line-height: 1.6; }
+    .nc-bonus .nc-kaart__nr { background: var(--nc-oranje); }
+    @media(max-width:768px) { .nc-bonus { padding: 46px 1.25rem 50px; } }
+
+    /* =============================================
+       AFSLUITER
+    ============================================= */
+    .nc-slot { background: linear-gradient(135deg, #1a0a2e 0%, #3d0f6b 100%); color: #fff; text-align: center; padding: 70px 1.5rem; }
+    .nc-slot h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 4vw, 2.5rem); max-width: 680px; margin: 0 auto 1rem; line-height: 1.2; }
+    .nc-slot p { color: rgba(255,255,255,.75); max-width: 520px; margin: 0 auto 2rem; line-height: 1.7; }
+    .nc-slot__knoppen { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; }
+    .nc-slot .nc-btn--paars { color: #fff; border-color: rgba(255,255,255,.6); }
+    .nc-slot .nc-btn--paars:hover { background: #fff; color: var(--nc-paars); }
+    .nc-socials { margin-top: 2rem; font-size: .9rem; color: rgba(255,255,255,.7); }
+    .nc-socials a { color: #ffd28a; font-weight: 600; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .nc-footer { background: #9c28b1; color: rgba(255,255,255,.85); padding: 36px 5vw 24px; text-align: center; }
+    .nc-footer img { height: 38px; margin: 0 auto 1rem; }
+    .nc-footer p { font-size: .85rem; line-height: 1.6; max-width: 380px; margin: 0 auto 1rem; }
+    .nc-footer__links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .nc-footer__links a { color: #fff; font-weight: 600; font-size: .88rem; }
+    .nc-footer small { font-size: .75rem; color: rgba(255,255,255,.7); }
+
+    /* =============================================
+       SCROLL-TO-TOP & ANIMATIES
+    ============================================= */
+    #nc-totop { position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:#9c28b1; color:#fff; border:none; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(156,40,177,.4); opacity:0; pointer-events:none; transition:opacity .3s,transform .3s; z-index:999; }
+    #nc-totop.visible { opacity:1; pointer-events:auto; }
+    .nc-fade { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .nc-fade.vis { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+<!-- NailCraft cookiebanner + Meta Pixel (laadt pas na toestemming) -->
+<div id="nc-cookie-banner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#2a1a3e;color:#fff;padding:1.1rem 1.5rem;box-shadow:0 -4px 24px rgba(0,0,0,0.18);flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;font-family:'DM Sans',sans-serif;">
+  <p style="margin:0;flex:1;min-width:240px;font-size:0.92rem;line-height:1.55;">We gebruiken cookies om deze website goed te laten werken en, met jouw toestemming, om je gerichte advertenties te tonen. Lees meer in ons <a href="/cookiebeleid.html" style="color:#fff;text-decoration:underline;">cookiebeleid</a>.</p>
+  <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+    <button id="nc-cookie-reject" style="background:transparent;color:#fff;border:1.5px solid #fff;border-radius:50px;padding:0.6rem 1.3rem;font-size:0.88rem;font-weight:600;cursor:pointer;">Alleen noodzakelijke</button>
+    <button id="nc-cookie-accept" style="background:#fe9b00;color:#fff;border:none;border-radius:50px;padding:0.6rem 1.3rem;font-size:0.88rem;font-weight:700;cursor:pointer;">Alles accepteren</button>
+  </div>
+</div>
+<script>
+(function(){
+  function ncLoadPixel(){
+    if(window.ncPixelLoaded)return;window.ncPixelLoaded=true;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1164907968574291');
+    fbq('track', 'PageView');
+  }
+  var ncBanner = document.getElementById('nc-cookie-banner');
+  var ncConsent = localStorage.getItem('nc_cookie_consent');
+  if (ncConsent === 'accepted') { ncLoadPixel(); }
+  else if (!ncConsent && ncBanner) { ncBanner.style.display = 'flex'; }
+  if (ncBanner) {
+    document.getElementById('nc-cookie-accept').onclick = function(){
+      localStorage.setItem('nc_cookie_consent','accepted');
+      ncBanner.style.display = 'none';
+      ncLoadPixel();
+    };
+    document.getElementById('nc-cookie-reject').onclick = function(){
+      localStorage.setItem('nc_cookie_consent','rejected');
+      ncBanner.style.display = 'none';
+    };
+  }
+})();
+</script>
+<!-- Einde cookiebanner + Meta Pixel -->
+
+  <!-- Progress bar -->
+  <div id="nc-progress" style="position:fixed;top:70px;left:0;height:1px !important;width:0%;background:#9c28b1;z-index:1001;transition:width .25s linear;pointer-events:none;padding:0 !important;margin:0 !important;display:block;">
+    <span style="position:absolute;right:-8px;top:-9px;font-size:14px;line-height:1;pointer-events:none;">⭐</span>
+  </div>
+
+  <!-- Scroll-to-top -->
+  <button id="nc-totop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Terug naar boven">↑</button>
+
+  <!-- Navigatie -->
+  <nav class="nc-nav" id="nc-nav">
+    <a href="/index.html" class="nc-nav__logo">
+      <img src="/images/Logo-NailCraft-Platform.png" alt="NailCraft Platform">
+    </a>
+    <ul class="nc-nav__links">
+      <li><a href="#designs">Designs</a></li>
+      <li><a href="#bonus">Bonus</a></li>
+      <li><a href="/online-opleidingen.html">Online Opleidingen</a></li>
+      <li><a href="/online-opleidingen.html#nc-quiz-widget" class="nc-nav__cta">Cursuskiezer →</a></li>
+    </ul>
+    <button class="nc-nav__toggle" id="nc-toggle" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nc-nav__mobile" id="nc-mobile-menu">
+    <a href="#designs">Designs</a>
+    <a href="#bonus">Bonus designs</a>
+    <a href="/online-opleidingen.html">Online Opleidingen</a>
+    <a href="/online-opleidingen.html#nc-quiz-widget">Cursuskiezer →</a>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="nc-hero">
+    <div class="nc-hero__inner">
+      <div>
+        <div class="nc-hero__badge">🎄 80 dagen tot kerst challenge</div>
+        <h1>Elke dag een nieuw nail art design, <em>tot kerstavond</em></h1>
+        <p class="nc-hero__tekst">Van 6 oktober tot en met 24 december post ik <strong>elke dag een nail art reel</strong>. Bij elk design hoort een gratis <strong>materialenfiche</strong>: alle producten die ik gebruikte en een korte stap voor stap uitleg. Tik op een design en de fiche staat op je toestel.</p>
+        <div class="nc-hero__knoppen">
+          <a href="#designs" class="nc-btn nc-btn--oranje">Bekijk de designs ↓</a>
+          <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener" class="nc-btn nc-btn--paars">Volg de challenge</a>
+        </div>
+        <div class="nc-teller">
+          <div class="nc-teller__blok">
+            <div class="nc-teller__getal"><span class="nc-js-aantal">0</span> <small>/ 80</small></div>
+            <div class="nc-teller__label">designs online</div>
+            <div class="nc-teller__balk"><span class="nc-js-balk" style="width:0%"></span></div>
+          </div>
+          <div class="nc-teller__blok">
+            <div class="nc-teller__getal nc-js-kerst">0</div>
+            <div class="nc-teller__label">dagen tot kerstavond</div>
+          </div>
+        </div>
+      </div>
+      <div class="nc-hero__foto">
+        <img src="/images/kerstfoto.webp" alt="Tabitha Windels voor de kerstboom" width="896" height="1195">
+        <div class="nc-hero__sticker"><strong>Hoi, ik ben Tabitha!</strong>Nagelstyliste en docente</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ZO WERKT HET ========== -->
+  <section class="nc-stappen">
+    <div class="nc-stappen__inner">
+      <div class="nc-stap nc-fade">
+        <div class="nc-stap__icoon">💅</div>
+        <div><h3>Kies je design</h3><p>Zoek het design uit de reel die je zag, het nummer staat linksboven.</p></div>
+      </div>
+      <div class="nc-stap nc-fade">
+        <div class="nc-stap__icoon">📄</div>
+        <div><h3>Download de fiche</h3><p>Eén pagina met alle materialen en 6 korte stappen. Handig om naast je tafel te leggen.</p></div>
+      </div>
+      <div class="nc-stap nc-fade">
+        <div class="nc-stap__icoon">📸</div>
+        <div><h3>Deel je resultaat</h3><p>Nagemaakt? Tag me op Instagram via @tabitha_nailcraft, ik kijk er graag naar!</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DESIGNS ========== -->
+  <section class="nc-designs" id="designs">
+    <div class="nc-designs__kop">
+      <div>
+        <div class="nc-label">✦ De challenge</div>
+        <h2 class="nc-titel">Alle nail art designs</h2>
+      </div>
+      <p>Het nieuwste design staat altijd vooraan. Elke dag komt er eentje bij, kom dus gerust terug!</p>
+    </div>
+    <div class="nc-raster nc-js-raster"></div>
+  </section>
+
+  <!-- ========== BONUS ========== -->
+  <section class="nc-bonus" id="bonus">
+    <div class="nc-bonus__kop">
+      <div class="nc-label">⭐ Bonus</div>
+      <h2 class="nc-titel">Mijn favorieten van vóór de challenge</h2>
+      <p>Deze designs maakte ik net voor de start van de challenge. Jullie vonden ze zo leuk dat ze hier niet mochten ontbreken.</p>
+    </div>
+    <div class="nc-raster nc-js-bonus"></div>
+  </section>
+
+  <!-- ========== AFSLUITER ========== -->
+  <section class="nc-slot">
+    <h2>Wil je verder gaan dan één design?</h2>
+    <p>In mijn online cursussen leer je de basis die elke nail art mooier maakt: een strakke kleurapplicatie, dunne en sterke nagels en de perfecte vorm.</p>
+    <div class="nc-slot__knoppen">
+      <a href="/online-opleidingen.html" class="nc-btn nc-btn--oranje">Ontdek alle cursussen →</a>
+      <a href="/online-opleidingen.html#nc-quiz-widget" class="nc-btn nc-btn--paars">Welke cursus past bij mij?</a>
+    </div>
+    <div class="nc-socials">Volg de challenge op <a href="https://www.instagram.com/tabitha_nailcraft/" target="_blank" rel="noopener">Instagram</a> en <a href="https://www.tiktok.com/@nailcraft.platform" target="_blank" rel="noopener">TikTok</a></div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="nc-footer">
+    <img src="/images/logo-wit-nailcraft-platform.png" alt="NailCraft Platform">
+    <p>Online nagelschool voor iedereen die dunne, sterke en duurzame kunstnagels wil leren plaatsen.</p>
+    <div class="nc-footer__links">
+      <a href="/index.html">Home</a>
+      <a href="/online-opleidingen.html">Online Opleidingen</a>
+      <a href="/over.html">Over Tabitha</a>
+    </div>
+    <small>© 2026 NailCraft Platform, Tabitha Windels</small>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    /* =============================================
+       DE DESIGNS
+       Nieuw design toevoegen? Voeg bovenaan de lijst één regel toe:
+       { nr: 12, slug: '12-naam-design', foto: '12-naam-design.webp', naam: 'Naam', tekst: 'Korte zin', kleur: '#hex', fiche: true }
+       De foto hoort in /images/nailart/ en de fiche in /nailart/fiches/<slug>.pdf
+       Geen foto ingevuld = "Foto volgt". fiche: false = "Fiche volgt binnenkort"
+    ============================================= */
+    var ncDesigns = [
+      { nr: 11, slug: '11-pink-scream', foto: '11-pink-scream.jpg', naam: 'Pink Scream', tekst: 'Een roze masker met cat eye ogen die oplichten als je beweegt.', kleur: '#d6338a', fiche: true },
+      { nr: 10, slug: '10-lava-lines', naam: 'Lava lines', tekst: 'Felle kleurvlakken met fijne zwarte lijntjes, in mat.', kleur: '#e8590c', fiche: false },
+      { nr: 9, slug: '09-bambi', foto: '09-bambi.jpg', naam: 'Bambi', tekst: 'Zachte bruintinten met parelmoer chrome en witte vlekjes.', kleur: '#8b5e3c', fiche: false },
+      { nr: 8, slug: '08-3d-spider', foto: '08-3d-spider.jpg', naam: '3D spider', tekst: 'Een spin met pootjes in relief op neon oranje.', kleur: '#f76707', fiche: false },
+      { nr: 7, slug: '07-zebra', foto: '07-zebra.jpg', naam: 'Zebra', tekst: 'Een fijn zebrapatroon met een gouden chrome band.', kleur: '#1a1a1a', fiche: false },
+      { nr: 6, slug: '06-tiger', naam: 'Tiger', tekst: 'Cat eye met golden flakes en tijgervlekjes, drie varianten.', kleur: '#c77700', fiche: false },
+      { nr: 5, slug: '05-cow', naam: 'Cow', tekst: 'Fluffy cow en classic cow, met een chrome swirl.', kleur: '#6b4a2b', fiche: false },
+      { nr: 4, slug: '04-snake', naam: 'Snake', tekst: 'Slangenprint met cat eye en flakes die erdoor schijnen.', kleur: '#2b8a3e', fiche: false },
+      { nr: 3, slug: '03-metal-flower', naam: 'Metal flower', tekst: 'Een bloem in 3D metal gel met gouden steentjes.', kleur: '#556b2f', fiche: false },
+      { nr: 2, slug: '02-gemstone', naam: 'Gemstone', tekst: 'Edelstenen met een gouden kader en een bol effect.', kleur: '#6741d9', fiche: false },
+      { nr: 1, slug: '01-herfstblaadjes', naam: 'Herfstblaadjes', tekst: 'Gestempelde blaadjes met diepte en gouden accenten.', kleur: '#c2410c', fiche: false }
+    ];
+
+    var ncBonus = [
+      { slug: 'bonus-pompoen', naam: 'Pompoen', tekst: 'Mijn populairste design op Instagram.', kleur: '#e8590c', fiche: false },
+      { slug: 'bonus-halloween-cat-eye', naam: 'Halloween cat eye', tekst: 'Een verborgen stempel die verschijnt in het licht.', kleur: '#2b8a3e', fiche: false },
+      { slug: 'bonus-realistische-bloemen', naam: 'Realistische bloemen', tekst: 'Pastel bloemetjes met diepte en relief.', kleur: '#d6336c', fiche: false }
+    ];
+
+    /* Cursustips: verschijnen in het raster na het aantal designs dat bij 'na' staat */
+    var ncTips = [
+      { na: 4, icoon: '🎬', label: 'Zelf zulke reels maken?', titel: 'Nail Content Creator', tekst: 'Leer hoe je jouw nagels mooi filmt en fotografeert, zodat jouw werk opvalt op Instagram en TikTok.', link: '/salespaginas/nail-content-creator.html' },
+      { na: 8, icoon: '🎨', label: 'De basis van elke nail art', titel: 'Perfecte Kleurapplicatie', tekst: 'Nail art valt pas echt op met een strakke basis. Leer kleur aanbrengen zonder vlekken, tot vlak tegen de nagelriem.', link: '/salespaginas/kleurapplicatie.html' }
+    ];
+
+    var ncPijl = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>';
+
+    function ncKaart(d, isNieuw) {
+      var foto = d.foto
+        ? '<img src="/images/nailart/' + d.foto + '" alt="Nail art design ' + d.naam + '" loading="lazy">'
+        : '<div class="nc-kaart__leeg"><span>📷</span>Foto volgt</div>';
+      var nr = d.nr ? '<span class="nc-kaart__nr">' + d.nr + ' / 80</span>' : '<span class="nc-kaart__nr">Bonus</span>';
+      var nieuw = isNieuw ? '<span class="nc-kaart__nieuw">Nieuw</span>' : '';
+      var knop = d.fiche ? ncPijl + ' Download de fiche' : 'Fiche volgt binnenkort';
+      var binnen = '<div class="nc-kaart__foto">' + foto + nr + nieuw + '</div>' +
+        '<div class="nc-kaart__body"><div class="nc-kaart__naam">' + d.naam + '</div>' +
+        '<div class="nc-kaart__tekst">' + d.tekst + '</div>' +
+        '<div class="nc-kaart__knop">' + knop + '</div></div>';
+      if (d.fiche) {
+        return '<a class="nc-kaart nc-fade" style="--kaart-kleur:' + d.kleur + '" href="/nailart/fiches/' + d.slug + '.pdf" download>' + binnen + '</a>';
+      }
+      return '<div class="nc-kaart nc-kaart--binnenkort nc-fade" style="--kaart-kleur:' + d.kleur + '">' + binnen + '</div>';
+    }
+
+    function ncTip(t) {
+      return '<a class="nc-tip nc-fade" href="' + t.link + '"><div class="nc-tip__icoon">' + t.icoon + '</div>' +
+        '<div><div class="nc-tip__label">' + t.label + '</div><h3>' + t.titel + '</h3><p>' + t.tekst + '</p></div>' +
+        '<span class="nc-btn nc-btn--oranje">Bekijk de cursus →</span></a>';
+    }
+
+    var html = '';
+    ncDesigns.forEach(function (d, i) {
+      html += ncKaart(d, i === 0);
+      ncTips.forEach(function (t) { if (t.na === i + 1 && i < ncDesigns.length - 1) html += ncTip(t); });
+    });
+    document.querySelector('.nc-js-raster').innerHTML = html;
+    document.querySelector('.nc-js-bonus').innerHTML = ncBonus.map(function (d) { return ncKaart(d, false); }).join('');
+
+    // Teller: hoogste nummer online + dagen tot kerstavond
+    var ncHoogste = ncDesigns.reduce(function (m, d) { return Math.max(m, d.nr); }, 0);
+    document.querySelector('.nc-js-aantal').textContent = ncHoogste;
+    document.querySelector('.nc-js-balk').style.width = (ncHoogste / 80 * 100) + '%';
+    var ncVandaag = new Date(); ncVandaag.setHours(0, 0, 0, 0);
+    var ncKerst = new Date(ncVandaag.getFullYear(), 11, 24);
+    var ncDagen = Math.max(0, Math.round((ncKerst - ncVandaag) / 86400000));
+    document.querySelector('.nc-js-kerst').textContent = ncDagen;
+
+    // Twinkelende lichtjes in de hero
+    (function () {
+      var hero = document.querySelector('.nc-hero');
+      for (var i = 0; i < 14; i++) {
+        var l = document.createElement('span');
+        l.className = 'nc-lichtje';
+        l.style.left = (Math.random() * 100) + '%';
+        l.style.top = (Math.random() * 100) + '%';
+        l.style.animationDelay = (Math.random() * 3) + 's';
+        hero.appendChild(l);
+      }
+    })();
+
+    // Nav, progress bar en scroll-to-top
+    document.getElementById('nc-toggle').addEventListener('click', function () {
+      document.getElementById('nc-mobile-menu').classList.toggle('open');
+    });
+    document.querySelectorAll('.nc-nav__mobile a').forEach(function (a) {
+      a.addEventListener('click', function () { document.getElementById('nc-mobile-menu').classList.remove('open'); });
+    });
+    window.addEventListener('scroll', function () {
+      document.getElementById('nc-nav').classList.toggle('scrolled', window.scrollY > 20);
+      var docH = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('nc-progress').style.width = (window.scrollY / docH * 100) + '%';
+      document.getElementById('nc-totop').classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    // Inschuif-animaties
+    var ncObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('vis'); ncObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.nc-fade').forEach(function (el) { ncObs.observe(el); });
+  </script>
+</body>
+</html>
