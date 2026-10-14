@@ -108,9 +108,17 @@
     .nc-hero__sticker { position: absolute; left: -22px; bottom: 28px; background: var(--nc-kerstrood); color: #fff; border-radius: 18px; padding: .8rem 1.1rem; font-size: .85rem; line-height: 1.35; box-shadow: 0 10px 28px rgba(142,27,44,.35); transform: rotate(-4deg); }
     .nc-hero__sticker strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.15rem; }
 
-    /* Twinkelende lichtjes in de achtergrond */
-    .nc-lichtje { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: var(--nc-goud); opacity: .5; animation: ncTwinkel 3s ease-in-out infinite; pointer-events: none; }
-    @keyframes ncTwinkel { 0%,100% { opacity: .15; transform: scale(.8); } 50% { opacity: .8; transform: scale(1.2); } }
+    /* Gouden sneeuwvlokjes die zacht naar beneden dwarrelen */
+    .nc-vlokje { position: absolute; top: -30px; color: var(--nc-goud); pointer-events: none; animation: ncSneeuw linear infinite; }
+    .nc-vlokje svg { display: block; width: 100%; height: 100%; }
+    @keyframes ncSneeuw {
+      0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10%  { opacity: .75; }
+      50%  { transform: translate(18px, 50vh) rotate(180deg); }
+      90%  { opacity: .6; }
+      100% { transform: translate(-12px, 100vh) rotate(360deg); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { .nc-vlokje { animation: none; top: var(--y); opacity: .55; } }
 
     @media(max-width:900px) {
       .nc-hero { padding: 92px 1.25rem 48px; }
@@ -469,16 +477,23 @@
     var ncDagen = Math.max(0, Math.round((ncKerst - ncVandaag) / 86400000));
     document.querySelector('.nc-js-kerst').textContent = ncDagen;
 
-    // Twinkelende lichtjes in de hero
+    // Gouden sneeuwvlokjes in de hero
     (function () {
       var hero = document.querySelector('.nc-hero');
-      for (var i = 0; i < 14; i++) {
-        var l = document.createElement('span');
-        l.className = 'nc-lichtje';
-        l.style.left = (Math.random() * 100) + '%';
-        l.style.top = (Math.random() * 100) + '%';
-        l.style.animationDelay = (Math.random() * 3) + 's';
-        hero.appendChild(l);
+      var vlok = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">' +
+        '<path d="M12 2v20M3.3 7l17.4 10M3.3 17l17.4-10"/>' +
+        '<path d="M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5M3.6 10.4l3.4-.9-.9-3.4M20.4 13.6l-3.4.9.9 3.4M3.6 13.6l3.4.9-.9 3.4M20.4 10.4l-3.4-.9.9-3.4"/></svg>';
+      for (var i = 0; i < 18; i++) {
+        var v = document.createElement('span');
+        var maat = 10 + Math.random() * 14;
+        v.className = 'nc-vlokje';
+        v.innerHTML = vlok;
+        v.style.width = v.style.height = maat + 'px';
+        v.style.left = (Math.random() * 100) + '%';
+        v.style.setProperty('--y', (Math.random() * 95) + '%');
+        v.style.animationDuration = (12 + Math.random() * 12) + 's';
+        v.style.animationDelay = (-Math.random() * 24) + 's';
+        hero.appendChild(v);
       }
     })();
 
