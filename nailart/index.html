@@ -425,8 +425,13 @@
        { nr: 12, slug: '12-naam-design', foto: '12-naam-design.webp', naam: 'Naam', tekst: 'Korte zin', kleur: '#hex', fiche: true }
        De foto hoort in /images/nailart/ en de fiche in /nailart/fiches/<slug>.pdf
        Geen foto ingevuld = "Foto volgt". fiche: false = "Fiche volgt binnenkort"
+       Inplannen? Voeg toe: vanaf: '2026-10-16T18:00:00+02:00' (Belgische tijd: +02:00 zomertijd, +01:00 vanaf 25 oktober)
+       Dan verschijnt de kaart pas vanaf dat moment, zonder opnieuw te pushen.
     ============================================= */
     var ncDesigns = [
+      { nr: 13, slug: '13-autumn-3d', foto: '13-autumn-3d.webp', naam: 'Autumn 3D', tekst: '3D blaadjes uit een mold op een herfstmarmer.', kleur: '#6b5a2a', fiche: true, vanaf: '2026-10-18T18:00:00+02:00' },
+      { nr: 12, slug: '12-marble', foto: '12-marble.webp', naam: 'Marble', tekst: 'Een watercolor marmer met gouden chrome, in drie varianten.', kleur: '#8a6420', fiche: true, vanaf: '2026-10-17T12:00:00+02:00' },
+      { nr: 11, slug: '11-pink-scream', foto: '11-pink-scream.webp', naam: 'Pink Scream', tekst: 'Een roze masker met cat eye ogen die oplichten als je beweegt.', kleur: '#d6338a', fiche: true, vanaf: '2026-10-16T18:00:00+02:00' },
       { nr: 10, slug: '10-lava-lines', foto: '10-lava-lines.webp', naam: 'Lava lines', tekst: 'Felle roze kleurvlakken met fijne zwarte lijntjes, in mat.', kleur: '#d6266e', fiche: true },
       { nr: 9, slug: '09-bambi', foto: '09-bambi.webp', naam: 'Bambi', tekst: 'Zachte bruintinten met parelmoer chrome en witte vlekjes.', kleur: '#8b5e3c', fiche: true },
       { nr: 8, slug: '08-3d-spider', foto: '08-3d-spider.webp', naam: '3D spider', tekst: 'Een spin met pootjes in relief op neon oranje.', kleur: '#f76707', fiche: true },
@@ -478,6 +483,12 @@
         '<div><div class="nc-tip__label">' + t.label + '</div><h3>' + t.titel + '</h3><p>' + t.tekst + '</p></div>' +
         '<span class="nc-btn nc-btn--oranje">Bekijk de cursus →</span></a>';
     }
+
+    // Ingeplande designs pas tonen vanaf hun tijdstip
+    var ncNu = new Date();
+    function ncZichtbaar(d) { return !d.vanaf || new Date(d.vanaf) <= ncNu; }
+    ncDesigns = ncDesigns.filter(ncZichtbaar);
+    ncBonus = ncBonus.filter(ncZichtbaar);
 
     var html = '';
     ncDesigns.forEach(function (d, i) {
