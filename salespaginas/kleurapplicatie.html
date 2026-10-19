@@ -103,11 +103,11 @@
       position: absolute; inset: 0;
       background-image: url('../images/kleurapplicatie/glitter-cateye.webp');
       background-size: cover; background-position: center 60%;
-      background-attachment: fixed; opacity: .8;
+      background-attachment: fixed;
     }
     .hero::after {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 55% 60% at 50% 50%, rgba(248,242,255,.88) 0%, rgba(248,242,255,.7) 45%, rgba(248,242,255,0) 100%);
+      background: linear-gradient(180deg, rgba(26,10,46,.55) 0%, rgba(26,10,46,.68) 100%);
     }
     .hero-content {
       position: relative; z-index: 1;
@@ -120,11 +120,11 @@
     }
     .hero h1 {
       font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700;
-      color: var(--purple-deep); margin-bottom: 1.2rem;
+      color: var(--white); margin-bottom: 1.2rem;
     }
-    .hero h1 em { font-style: italic; color: var(--purple-dark); }
+    .hero h1 em { font-style: italic; color: #d9bfff; }
     .hero p.sub {
-      font-size: 1.15rem; color: var(--mid);
+      font-size: 1.15rem; color: rgba(255,255,255,.92);
       max-width: 520px; margin: 0 auto 2rem; font-weight: 400;
     }
     .btn-primary {
@@ -135,8 +135,8 @@
       transition: background .2s, transform .2s, box-shadow .2s;
     }
     .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(254,155,0,.4); }
-    .hero-price { margin-top: 1.4rem; font-size: .92rem; color: var(--text-light); }
-    .hero-price strong { color: var(--purple-dark); font-size: 1.1rem; }
+    .hero-price { margin-top: 1.4rem; font-size: .92rem; color: rgba(255,255,255,.85); }
+    .hero-price strong { color: var(--white); font-size: 1.1rem; }
     .hero-price s { opacity: .6; }
 
     @keyframes pulse-btn {
