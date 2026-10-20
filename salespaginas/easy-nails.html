@@ -193,6 +193,13 @@
       .nc-footer__bottom { text-align: center; font-size: .75rem; }
     }
     @media(min-width:769px) { .nc-footer__mobile { display: none; } .nc-footer__mobile-links { display: none; } }
+    .sp-faq { max-width: 720px; margin: 0 auto; text-align: left; }
+    .sp-faq details { background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(156,40,177,0.10); margin-bottom: 10px; overflow: hidden; }
+    .sp-faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 16px 20px; font-weight: 600; font-size: 0.95rem; color: var(--nc-paars); }
+    .sp-faq summary::-webkit-details-marker { display: none; }
+    .sp-faq summary::after { content: '+'; flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #b590f1; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; line-height: 1; }
+    .sp-faq details[open] summary::after { content: '\2212'; }
+    .sp-faq p { padding: 0 20px 18px; font-size: 0.9rem; color: var(--nc-tekst-zacht); line-height: 1.7; }
     @media(max-width:768px) { .sp-section { padding: 56px 5vw; } .sp-prijsblok { padding: 32px 24px; } .sp-prijsblok__prijs { font-size: 2.8rem; } }
 
     /* MODULE CARD UITBREIDING */
@@ -684,6 +691,30 @@
       <p style="font-size:1rem;color:var(--nc-tekst-zacht);line-height:1.7;margin-bottom:32px;">Dan ben je klaar voor Easy Nails. Het duidelijke nagelsysteem om kunstnagels te plaatsen die niet loskomen. Laten we je techniek omvormen in nagelklanten die blijven terugkomen, meer tijd, meer omzet, meer zelfvertrouwen.</p>
       <a href="https://nailcraftplatform.kennis.shop/pay/easynails" target="_blank" class="sp-btn-cta" style="max-width:400px;margin:0 auto;">Ik plaats nagels, easy! →</a>
       <p style="margin-top:14px;font-size:0.8rem;color:var(--nc-tekst-zacht);">Eenmalig €150 &nbsp;|&nbsp; Levenslange toegang &nbsp;|&nbsp; Persoonlijke begeleiding</p>
+    </div>
+  </section>
+
+  <!-- ===================== VEELGESTELDE VRAGEN ===================== -->
+  <section class="sp-section sp-section--licht">
+    <div class="sp-inner">
+      <div style="text-align:center;margin-bottom:32px;">
+        <div class="sp-label">Veelgestelde vragen</div>
+        <h2 class="sp-title">Heb je een vraag?</h2>
+      </div>
+      <div class="sp-faq">
+        <details>
+          <summary>Krijg ik een certificaat na het afronden van deze cursus?</summary>
+          <p>Ja. Heb je de volledige cursus afgerond, dan kan je een certificaat van voltooiing aanvragen. Je stuurt me duidelijke, scherpe foto's van de techniek uit de cursus, waarop ik goed kan zien hoe je gewerkt hebt. Ik beoordeel je foto's en is de techniek goed toegepast, dan ontvang je je certificaat in je mailbox. In de leeromgeving lees je precies hoe je de foto's doorstuurt.</p>
+        </details>
+        <details>
+          <summary>Hoe lang heb ik toegang?</summary>
+          <p>Levenslang. Je betaalt één keer en kan de lessen bekijken wanneer je wilt, zo vaak je wilt.</p>
+        </details>
+        <details>
+          <summary>Kan ik vragen stellen?</summary>
+          <p>Ja. Na aankoop kan je me altijd bereiken met je vragen. Ik begeleid je persoonlijk.</p>
+        </details>
+      </div>
     </div>
   </section>
 

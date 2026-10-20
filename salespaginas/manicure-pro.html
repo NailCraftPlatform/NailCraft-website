@@ -215,6 +215,13 @@
     .sp-btn-cta { display: block; background: var(--nc-cta); color: #fff !important; font-weight: 700; font-size: 1rem; padding: 16px 40px; border-radius: 100px; box-shadow: 0 8px 28px rgba(254,155,0,0.45); transition: transform .2s, box-shadow .2s; text-align: center; }
     .sp-btn-cta:hover { transform: scale(1.04); box-shadow: 0 14px 40px rgba(254,155,0,.6); }
     .sp-prijsblok__garantie { margin-top: 16px; font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+    .sp-faq { max-width: 720px; margin: 0 auto; text-align: left; }
+    .sp-faq details { background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(156,40,177,0.10); margin-bottom: 10px; overflow: hidden; }
+    .sp-faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 16px 20px; font-weight: 600; font-size: 0.95rem; color: var(--nc-paars); }
+    .sp-faq summary::-webkit-details-marker { display: none; }
+    .sp-faq summary::after { content: '+'; flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #b590f1; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; line-height: 1; }
+    .sp-faq details[open] summary::after { content: '\2212'; }
+    .sp-faq p { padding: 0 20px 18px; font-size: 0.9rem; color: var(--nc-tekst-zacht); line-height: 1.7; }
     @media(max-width:768px) { .sp-section { padding: 56px 5vw; } .sp-prijsblok { padding: 32px 24px; } .sp-prijsblok__prijs { font-size: 2.8rem; } }
 
     /* FOOTER */
@@ -659,6 +666,30 @@
             <div class="sp-tabitha__stat"><strong>15 jaar</strong><span>Vakdocent</span></div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VEELGESTELDE VRAGEN ===================== -->
+  <section class="sp-section sp-section--licht">
+    <div class="sp-inner">
+      <div style="text-align:center;margin-bottom:32px;">
+        <div class="sp-label">Veelgestelde vragen</div>
+        <h2 class="sp-title">Heb je een vraag?</h2>
+      </div>
+      <div class="sp-faq">
+        <details>
+          <summary>Krijg ik een certificaat na het afronden van deze cursus?</summary>
+          <p>Ja. Heb je de volledige cursus afgerond, dan kan je een certificaat van voltooiing aanvragen. Je stuurt me duidelijke, scherpe foto's van de techniek uit de cursus, waarop ik goed kan zien hoe je gewerkt hebt. Ik beoordeel je foto's en is de techniek goed toegepast, dan ontvang je je certificaat in je mailbox. In de leeromgeving lees je precies hoe je de foto's doorstuurt.</p>
+        </details>
+        <details>
+          <summary>Hoe lang heb ik toegang?</summary>
+          <p>Levenslang. Je betaalt één keer en kan de lessen bekijken wanneer je wilt, zo vaak je wilt.</p>
+        </details>
+        <details>
+          <summary>Kan ik vragen stellen?</summary>
+          <p>Ja. Na aankoop kan je me altijd bereiken met je vragen. Ik begeleid je persoonlijk.</p>
+        </details>
       </div>
     </div>
   </section>
