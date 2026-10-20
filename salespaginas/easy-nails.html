@@ -117,6 +117,7 @@
     .sp-module-card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 28px rgba(156,40,177,.09); transition: transform .3s, box-shadow .3s; }
     .sp-module-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(156,40,177,.16); }
     .sp-module-card__img { width: 100%; display: block; object-fit: contain; background: #f0e8fa; }
+    @media(min-width:769px) { .sp-module-card__img { aspect-ratio: 4 / 5; object-fit: cover; object-position: center; } }
     .sp-module-card__body { padding: 14px 16px; }
     .sp-module-card__num { font-size: 0.68rem; font-weight: 700; color: var(--nc-accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
     .sp-module-card__title { font-size: 0.9rem; font-weight: 600; color: var(--nc-tekst); line-height: 1.4; }
