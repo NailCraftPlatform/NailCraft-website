@@ -185,6 +185,7 @@ section.panel h2{font-size:1.35rem;margin-bottom:6px;}
 .chip-hidden{background:var(--warn-soft);color:var(--warn);}
 .chip-extern{background:var(--external-soft);color:var(--external);}
 .chip-gratis{background:var(--free-soft);color:var(--free);}
+.chip-juridisch{background:var(--external-soft);color:var(--external);}
 .chip-fixed{background:var(--free-soft);color:var(--free);}
 
 .legend-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:4px;}
@@ -424,6 +425,7 @@ footer.page-footer{
       <span class="chip chip-sales">Salespagina</span>
       <span class="chip chip-bedankt">Bedankt-pagina</span>
       <span class="chip chip-gratis">Gratis weggever</span>
+      <span class="chip chip-juridisch">Juridisch</span>
       <span class="chip chip-hidden">Verborgen / niet gelinkt</span>
     </div>
     <div class="table-scroll" style="margin-top:16px;">
@@ -673,15 +675,26 @@ const pages = [
   {type:'gratis', name:'Bedankt: Veilig Affrezen (gratis)', url:'bedankt-veilig-affrezen.html', title:'Bedankt! Je Veilig Affrezen training staat klaar',
    func:'Upsell → <b>Refill Removal Pro</b> + <b>Easy Nails</b> + <b>Upperform Pro</b>'},
 
+  {type:'juridisch', name:'Privacy en bedrijfsgegevens', url:'privacy.html', title:'Privacy en bedrijfsgegevens | NailCraft Platform',
+   func:'Bedrijfsgegevens + privacyverklaring · de link "Privacy en bedrijfsgegevens" staat in de footer van elke pagina met een footer · linkt door naar de algemene voorwaarden en het cookiebeleid · <span class="mono">noindex, follow</span>'},
+  {type:'juridisch', name:'Cookiebeleid', url:'cookiebeleid.html', title:'Cookiebeleid | NailCraft Platform',
+   func:'Uitleg over cookies en de Meta Pixel (laadt enkel na "Alles accepteren") · gelinkt vanuit de cookiebanner en de footer van de homepage · <span class="mono">noindex, follow</span>'},
+  {type:'juridisch', name:'Algemene voorwaarden', url:'algemene-voorwaarden.html', title:'Algemene voorwaarden | NailCraft Platform',
+   func:'Voorwaarden voor de aankoop van digitale producten, inclusief herroepingsregeling · dezelfde tekst als de PDF die in kennis.shop bij de betaalpagina\'s staat (verplicht vinkje) · gelinkt vanaf privacy.html · <span class="mono">noindex, follow</span>'},
+
   {type:'hidden', name:'Sitekaart (dit document)', url:'sitekaart-intern.html', title:'NailCraft Platform, Sitekaart (intern)',
    func:'Dit overzicht zelf · <span class="mono">noindex, nofollow</span> · nergens intern gelinkt'},
   {type:'hidden', name:'Kleurapplicatie-tool', url:'tools/kleurapplicatie.html', title:'Kleurapplicatie Tool, Nail It',
    func:'Interactieve advies-tool (kleurtype kiezen → ondergrond/lagen/aandachtspunt) + "Werkblad downloaden als PDF" · <span class="mono">noindex, nofollow</span> · nergens intern gelinkt'},
-  {type:'hidden', name:'Certificaat The Nailstylist', url:'certificaat-the-nailstylist.html', title:'Certificaat The Nailstylist',
-   func:'Print-vriendelijk certificaatsjabloon met lege naam- en jaarvelden, handmatig in te vullen per cursist · nergens intern gelinkt'},
-  {type:'hidden', name:'Certificaat praktijkcursussen', url:'certificaat.html', title:'Certificaat van voltooiing | NailCraft Platform',
-   func:'Certificaatgenerator voor de 9 praktijkcursussen: kies cursus, typ naam en jaar, "Opslaan als PDF" · niets wordt opgeslagen · <span class="mono">noindex, nofollow</span> · nergens intern gelinkt'},
+  {type:'hidden', name:'Certificaten (alle praktijkcursussen)', url:'certificaat.html', title:'Certificaat van voltooiing | NailCraft Platform',
+   func:'Certificaatgenerator: kies de cursus (9 praktijkcursussen, inclusief The Nailstylist), typ de naam van de cursist en het jaar, klik op "Opslaan als PDF" · handtekening en foto staan er automatisch op · niets wordt opgeslagen of verstuurd · <span class="mono">noindex, nofollow</span> · nergens intern gelinkt, enkel via deze sitekaart of de URL'},
+  {type:'hidden', name:'Snelheidsscan', url:'tools/snelheidsscan.html', title:'Snelheidsscan | NailCraft Platform',
+   func:'Interactieve scan voor cursisten: antwoorden → persoonlijk resultaat (PDF) · stuurt het e-mailadres en de uitkomst als tags naar Kit via <span class="mono">api/snelheidsscan-tag.js</span> · <span class="mono">noindex, nofollow</span> · nergens intern gelinkt'},
+  {type:'hidden', name:'Nail art challenge (80 dagen tot kerst)', url:'nailart/index.html', title:'Nail Art Challenge: 80 dagen tot kerst | NailCraft Platform',
+   func:'Overzicht van de dagelijkse nail art reels (6 oktober tot 24 december) met per design een gratis PDF-materialenfiche (22 PDF\'s in <span class="mono">nailart/fiches/</span>) · <span class="mono">noindex, nofollow</span> · nergens intern gelinkt, enkel via Instagram/ManyChat'},
 ];
+
+const certCourses = new Set(['Manicure Pro','Easy Nails','Upperform Pro (video)','Upperform Master','Babyboom','Perfecte Kleurapplicatie','Sjabloon Applicatie','Refill Removal Pro','The Nailstylist (traject)']);
 
 const courses = [
   {name:'Manicure Pro', price:'€145', sales:'salespaginas/manicure-pro.html', pay:'pay/manicurepro', bedankt:'bedankt-manicure-pro.html'},
@@ -787,7 +800,7 @@ const typoBedankt = [
 ];
 
 function typeChip(t){
-  const map = {hoofd:['chip-hoofd','Hoofdpagina'], sales:['chip-sales','Salespagina'], bedankt:['chip-bedankt','Bedankt'], gratis:['chip-gratis','Gratis'], hidden:['chip-hidden','Verborgen']};
+  const map = {hoofd:['chip-hoofd','Hoofdpagina'], sales:['chip-sales','Salespagina'], bedankt:['chip-bedankt','Bedankt'], gratis:['chip-gratis','Gratis'], juridisch:['chip-juridisch','Juridisch'], hidden:['chip-hidden','Verborgen']};
   const [cls,label] = map[t];
   return `<span class="chip ${cls}">${label}</span>`;
 }
