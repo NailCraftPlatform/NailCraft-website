@@ -113,6 +113,7 @@
 
     /* MODULE KAARTEN */
     .sp-modules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; margin-top: 32px; }
+    @media(min-width:769px) { .sp-modules-grid { display: flex; flex-wrap: wrap; justify-content: center; } .sp-module-card { flex: 0 0 261px; } }
     .sp-module-card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 28px rgba(156,40,177,.09); transition: transform .3s, box-shadow .3s; }
     .sp-module-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(156,40,177,.16); }
     .sp-module-card__img { width: 100%; display: block; object-fit: contain; background: #f0e8fa; }
