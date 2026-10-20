@@ -387,10 +387,10 @@ footer.page-footer{
         <span class="sys-url">nailcraft.be</span>
         <div class="sys-note">De statische site zelf (dit document). Alle relatieve paden hieronder zijn t.o.v. dit domein.</div>
       </div>
-      <div class="sys-card sys-warn">
-        <div class="sys-name">Afrekenpagina's (checkout) ⚑</div>
-        <span class="sys-url">naillraftplatform.kennis.shop/pay/&lbrace;product&rbrace;</span>
-        <div class="sys-note">Elke cursus heeft een eigen slug na <code>/pay/</code>. Bevat een bekende typo ("naillraft" i.p.v. "nailcraft"), zie het volledige dossier onderaan bij <a href="#typo-dossier">Typo-dossier</a>.</div>
+      <div class="sys-card">
+        <div class="sys-name">Afrekenpagina's (checkout)</div>
+        <span class="sys-url">nailcraftplatform.kennis.shop/pay/&lbrace;product&rbrace;</span>
+        <div class="sys-note">Elke cursus heeft een eigen slug na <code>/pay/</code>. De vroegere typo ("naillraft") is opgelost, zie het historische dossier onderaan bij <a href="#typo-dossier">Typo-dossier</a>. Bij elke betaalpagina staan de algemene voorwaarden (PDF) en het vinkje voor het afstand doen van het herroepingsrecht.</div>
       </div>
       <div class="sys-card">
         <div class="sys-name">Cursistenportaal / login</div>
@@ -449,11 +449,11 @@ footer.page-footer{
   <section class="panel" id="cursussen">
     <span class="panel-num">02</span>
     <h2>Cursusaanbod &amp; betaal-URL's</h2>
-    <p class="panel-desc">Elke cursus met zijn salespagina, prijs en de exacte checkout-URL die naar de betaalpagina leidt.</p>
+    <p class="panel-desc">Elke cursus met zijn salespagina, prijs en de exacte checkout-URL die naar de betaalpagina leidt. De laatste kolom toont welke cursussen een certificaat van voltooiing krijgen (na beoordeling van de praktijkfoto's); de e-books niet.</p>
     <div class="table-scroll">
       <table>
         <thead>
-          <tr><th>Cursus</th><th>Prijs</th><th>Salespagina</th><th>Checkout-URL</th><th>Bedankt-pagina</th></tr>
+          <tr><th>Cursus</th><th>Prijs</th><th>Salespagina</th><th>Checkout-URL</th><th>Bedankt-pagina</th><th>Certificaat</th></tr>
         </thead>
         <tbody id="courseTableBody"></tbody>
       </table>
@@ -508,8 +508,8 @@ footer.page-footer{
   <!-- TYPO DOSSIER -->
   <section class="panel" id="typo-dossier">
     <span class="panel-num">08</span>
-    <h2>Dossier: de domeinnaam-typo in de betaal-links</h2>
-    <p class="panel-desc">Volledig overzicht van de bekende typo in het checkout-domein, waar ze zit, waarom ze nu bewust niet aangepast wordt, waar ze overal op de site staat, en het stappenplan voor zodra ze wél gecorrigeerd mag worden.</p>
+    <h2>Dossier (afgerond): de domeinnaam-typo in de betaal-links</h2>
+    <p class="panel-desc"><b>Afgerond:</b> de typo is gecorrigeerd en de hele site gebruikt nu het juiste checkout-domein. Onderstaand dossier blijft staan als historisch naslagwerk. Volledig overzicht van de bekende typo in het checkout-domein, waar ze zit, waarom ze nu bewust niet aangepast wordt, waar ze overal op de site staat, en het stappenplan voor zodra ze wél gecorrigeerd mag worden.</p>
 
     <div class="dossier-block">
       <h3>Wat is er precies mis</h3>
@@ -600,7 +600,7 @@ const SITE_ORIGIN = 'https://www.nailcraft.be/'; // absolute basis, enkel gebrui
 
 const pages = [
   {type:'hoofd', name:'Home', url:'index.html', title:'NailCraft Platform – Online Nagelschool België | Tabitha Windels',
-   func:'Navigatie (Home/Opleidingen/The Nailstylist/Over/Blog) · hero-CTA → <b>online-opleidingen.html</b> · "Doe de cursus-quiz" → <b>online-opleidingen.html#nc-quiz-widget</b> · 4 weggever-knoppen (Startersgids, Killer Content, Snelheidstraining, Veilig Affrezen) → checkout · WhatsApp- en Instagram-knop in footer'},
+   func:'Navigatie (Home/Opleidingen/The Nailstylist/Over/Blog) · hero-CTA → <b>online-opleidingen.html</b> · "Doe de cursus-quiz" → <b>online-opleidingen.html#nc-quiz-widget</b> · 4 weggever-knoppen (Startersgids, Killer Content, Snelheidstraining, Veilig Affrezen) → checkout · WhatsApp- en Instagram-knop in footer · footer-links naar <b>privacy.html</b> en <b>cookiebeleid.html</b>'},
   {type:'hoofd', name:'Online Opleidingen', url:'online-opleidingen.html', title:'Online Opleidingen – Nagelcursussen voor Stylisten | NailCraft Platform',
    func:'Hub-pagina met alle cursuskaarten (elk → eigen salespagina) · knop "Alle cursussen" → <b>pay/nailcraftplatformcursussen</b> · ingebouwde <b>cursus-kiezer quiz</b> (zie sectie 05) · 4 weggever-knoppen in footer'},
   {type:'sales', name:'The Nailstylist (traject)', url:'salespaginas/the-nailstylist.html', title:'The Nailstylist – Complete Online Nagelcursus',
@@ -754,7 +754,7 @@ const quizOutcomes = [
 ];
 
 const flags = [
-  {resolved:false, text:'<b>Domeinnaam met typo (voor later):</b> alle checkout-links gebruiken <span class="mono">naillraftplatform.kennis.shop</span> (dubbele L) in plaats van "nailcraftplatform". Dit moet nog aangepast worden in kennis.shop zelf, zie het volledige <a href="#typo-dossier">Typo-dossier</a> onderaan met de exacte locatie, alle 149 plekken op de site, en het stappenplan voor later.'},
+  {resolved:true, text:'<b>Domeinnaam met typo (opgelost):</b> de checkout-links gebruikten <span class="mono">naillraftplatform.kennis.shop</span> (dubbele L). Dit is gecorrigeerd in kennis.shop zelf en op alle pagina\'s van de website: de hele site gebruikt nu <span class="mono">nailcraftplatform.kennis.shop</span>. Het <a href="#typo-dossier">Typo-dossier</a> onderaan blijft staan als historisch naslagwerk.'},
   {resolved:true, text:'<b>Verouderde canonical-URL\'s (opgelost):</b> online-opleidingen.html, easy-nails.html en manicure-pro.html verwezen in hun canonical tag nog naar oude WordPress-URL\'s die niet meer bestaan. De 3 verouderde canonical tags zijn verwijderd, dit heeft geen invloed op de werking van de pagina\'s zelf, canonical tags zijn puur een signaal voor zoekmachines.'},
   {resolved:true, text:'<b>Twee Instagram-accounts (opgelost):</b> een aantal pagina\'s linkten nog naar @tabitha_nail_it terwijl de rest naar @tabitha_nailcraft linkte. Alle 6 verkeerde links zijn rechtgezet, de hele site wijst nu naar instagram.com/tabitha_nailcraft.'},
   {resolved:true, text:'<b>Ongebruikt duplicaat (opgelost):</b> <span class="mono">salespaginas/refill-removal-pro.html</span> was een exacte kopie van <span class="mono">salespaginas/kunstnagels-affrezen.html</span> en werd nergens gelinkt. Het duplicaat is verwijderd, de echte pagina (kunstnagels-affrezen.html) staat nog gewoon online met zijn checkout-link.'},
@@ -860,6 +860,7 @@ function renderCourses(){
       <td class="cell-url">${c.sales.startsWith('salespaginas')?`<a href="${BASE}${c.sales}" target="_blank" rel="noopener">/${c.sales}</a><button class="copy-btn" data-url="${SITE_ORIGIN}${c.sales}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:`<span class="cell-func">${c.sales}</span>`}</td>
       <td class="cell-url">${c.pay.startsWith('pay/')?`<a href="https://nailcraftplatform.kennis.shop/${c.pay}" target="_blank" rel="noopener">${c.pay}</a><button class="copy-btn" data-url="https://nailcraftplatform.kennis.shop/${c.pay}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:`<span class="cell-func">${c.pay}</span>`}</td>
       <td class="cell-url">${c.bedankt!=='n.v.t.'?`<a href="${BASE}${c.bedankt}" target="_blank" rel="noopener">/${c.bedankt}</a><button class="copy-btn" data-url="${SITE_ORIGIN}${c.bedankt}" title="URL kopiëren" onclick="copyUrl(this)">⧉</button>`:'n.v.t.'}</td>
+      <td class="cell-func">${certCourses.has(c.name)?'<a href="'+BASE+'certificaat.html" target="_blank" rel="noopener">✓ via certificaat.html</a>':'nee'}</td>
     </tr>`).join('');
 }
 

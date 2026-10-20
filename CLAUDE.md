@@ -9,7 +9,9 @@ Statische website voor NailCraft Platform (www.nailcraft.be), online nagelschool
 - Werkmap: `NailCraft-website/` (gekoppeld aan GitHub-repo NailCraftPlatform/NailCraft-website)
 - Afbeeldingen: `images/`
 - Salespagina's: `salespaginas/`
-- Verborgen/interne pagina's (noindex, nergens gelinkt): `tools/kleurapplicatie.html`, `certificaat-the-nailstylist.html`, `sitekaart-intern.html`
+- Verborgen/interne pagina's (noindex, nergens gelinkt): `tools/kleurapplicatie.html`, `tools/snelheidsscan.html`, `nailart/index.html`, `sitekaart-intern.html`, en `certificaat.html` (certificaatgenerator voor alle praktijkcursussen; kies cursus, typ naam en jaar, "Opslaan als PDF"; handtekening staat in `images/handtekening-tabitha.png`)
+- Juridische pagina's: `privacy.html` (privacyverklaring + bedrijfsgegevens), `cookiebeleid.html`, `algemene-voorwaarden.html`. Elke footer linkt naar "Privacy en bedrijfsgegevens". Houd namen van leveranciers (Vercel, enz.) vaag in deze teksten.
+- Lettertypes worden zelf gehost in `fonts/` (nooit Google Fonts laden, privacy).
 
 ## Communicatieregels
 
