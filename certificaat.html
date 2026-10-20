@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="images/Favicon.png">
+<title>Certificaat van voltooiing | NailCraft Platform</title>
+<link href="/fonts/f1.css" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --violet: #9c28b1;
+  --lila:   #b590f1;
+  --amber:  #fe9b00;
+  --plum:   #2d1a3e;
+  --mid:    #5a4270;
+  --rule:        rgba(156, 40, 177, 0.22);
+  --rule-strong: rgba(156, 40, 177, 0.55);
+}
+
+body {
+  background: #f0ecf5;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--plum);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── BEDIENING (enkel op het scherm) ── */
+.panel {
+  max-width: 1122px;
+  margin: 24px auto 16px;
+  padding: 18px 22px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(90,64,112,.12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  align-items: flex-end;
+}
+.panel h1 { width: 100%; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--violet); }
+.panel p.hint { width: 100%; font-size: .85rem; color: var(--mid); margin-top: -8px; }
+.field { display: flex; flex-direction: column; gap: 5px; flex: 1 1 220px; }
+.field.small { flex: 0 0 110px; }
+.field label { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--mid); }
+.field input, .field select {
+  font: inherit; font-size: 1rem; padding: .65rem .8rem;
+  border: 1.5px solid var(--rule-strong); border-radius: 10px; background: #fff; color: var(--plum);
+}
+.field input:focus, .field select:focus { outline: none; border-color: var(--violet); }
+.btn {
+  font: inherit; font-weight: 700; font-size: .95rem; cursor: pointer;
+  background: var(--amber); color: #fff; border: none; border-radius: 50px; padding: .8rem 1.6rem;
+  box-shadow: 0 4px 16px rgba(254,155,0,.35);
+}
+.btn:hover { filter: brightness(.95); }
+
+.stage { max-width: 1122px; margin: 0 auto 40px; }
+
+/* ── CERTIFICAAT: A4 LIGGEND ── */
+.page {
+  width: 297mm;
+  height: 210mm;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  transform-origin: top left;
+  box-shadow: 0 6px 30px rgba(45,26,62,.15);
+}
+.page::before, .page::after, .corner-tr, .corner-bl {
+  content: '';
+  position: absolute;
+  width: 52px; height: 52px;
+  pointer-events: none;
+}
+.page::before { top: 18px; left: 18px; border-top: 2px solid var(--violet); border-left: 2px solid var(--violet); }
+.page::after  { bottom: 18px; right: 18px; border-bottom: 2px solid var(--violet); border-right: 2px solid var(--violet); }
+.corner-tr { top: 18px; right: 18px; border-top: 2px solid var(--violet); border-right: 2px solid var(--violet); }
+.corner-bl { bottom: 18px; left: 18px; border-bottom: 2px solid var(--violet); border-left: 2px solid var(--violet); }
+.border-outer { position: absolute; inset: 14px; border: 1px solid var(--rule-strong); pointer-events: none; }
+.border-inner { position: absolute; inset: 20px; border: 1px solid var(--rule); pointer-events: none; }
+
+.cert-inner {
+  position: relative; z-index: 2;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 30px 72px 40px;
+  text-align: center;
+}
+
+.cert-header { display: flex; align-items: center; justify-content: center; gap: 22px; margin-bottom: 14px; }
+.logo { height: 90px; width: auto; opacity: .9; }
+.cert-header-divider { width: 1px; height: 36px; background: var(--rule-strong); }
+
+.wordmark { font-size: 1.15rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--violet); }
+
+.cert-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.6rem; font-weight: 700; color: var(--violet);
+  line-height: 1.1; margin-bottom: 6px;
+}
+.cert-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem; font-weight: 600; font-style: italic; color: var(--violet);
+  letter-spacing: .03em; line-height: 1.15; margin-bottom: 12px;
+}
+
+.divider { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; width: 100%; max-width: 380px; }
+.divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--rule-strong)); }
+.divider-line.right { background: linear-gradient(to left, transparent, var(--rule-strong)); }
+.divider-star { color: var(--lila); font-size: .72rem; letter-spacing: .25em; }
+.amber-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--amber); display: inline-block; margin: 0 4px; vertical-align: middle; }
+
+.cert-intro { font-size: 1.05rem; color: var(--mid); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
+
+.cert-name-wrap { width: 100%; max-width: 640px; margin-bottom: 10px; }
+.cert-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; font-weight: 400; font-style: italic; color: var(--plum);
+  line-height: 1.1; display: block; white-space: nowrap; overflow: hidden;
+  border-bottom: 1.5px solid var(--violet);
+  padding-bottom: 14px; min-height: 3.3rem; letter-spacing: .02em;
+}
+
+.cert-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; color: var(--plum); line-height: 1.5;
+  margin-bottom: 18px; max-width: 780px; text-wrap: balance;
+}
+.cert-body em { font-style: italic; color: var(--violet); }
+
+.cert-footer { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; max-width: 580px; gap: 40px; }
+.cert-field { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.cert-field-line { width: 170px; height: 1px; background: var(--rule-strong); }
+.cert-field-label { font-size: .72rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--mid); }
+.cert-field-value { font-size: .82rem; font-weight: 600; color: var(--plum); letter-spacing: .04em; }
+.cert-year { font-size: 1.1rem; font-weight: 600; color: var(--plum); letter-spacing: .06em; min-height: 74px; display: flex; align-items: flex-end; padding-bottom: 4px; }
+.sig-wrap { height: 74px; width: 170px; display: flex; align-items: flex-end; justify-content: center; }
+.sig-wrap img { max-height: 80px; max-width: 200px; width: auto; height: auto; margin-bottom: -6px; position: relative; z-index: 2; }
+.avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--lila); margin-top: 4px; }
+
+.cert-note {
+  position: absolute; left: 0; right: 0; bottom: 30px; z-index: 2;
+  text-align: center; font-size: .68rem; letter-spacing: .08em; color: var(--mid); opacity: .8;
+}
+
+/* ── PRINT ── */
+@page { size: A4 landscape; margin: 0; }
+@media print {
+  body { background: #fff; }
+  .panel { display: none; }
+  .stage { max-width: none; margin: 0; height: auto !important; }
+  .page { transform: none !important; box-shadow: none; page-break-after: avoid; break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <h1>Certificaat van voltooiing</h1>
+  <p class="hint">Kies de cursus, typ de naam van de cursist en klik op "Opslaan als PDF". Kies in het printvenster als printer "Opslaan als PDF". Niets wordt opgeslagen of verstuurd, alles blijft in je eigen browser.</p>
+  <div class="field">
+    <label for="cursus">Cursus</label>
+    <select id="cursus"></select>
+  </div>
+  <div class="field">
+    <label for="naam">Naam cursist</label>
+    <input id="naam" type="text" placeholder="Voornaam en achternaam" autocomplete="off">
+  </div>
+  <div class="field small">
+    <label for="jaar">Jaar</label>
+    <input id="jaar" type="text" inputmode="numeric" maxlength="4">
+  </div>
+  <button class="btn" id="print" type="button">Opslaan als PDF</button>
+</div>
+
+<div class="stage" id="stage">
+  <div class="page" id="page">
+    <div class="border-outer"></div>
+    <div class="border-inner"></div>
+    <div class="corner-tr"></div>
+    <div class="corner-bl"></div>
+
+    <div class="cert-inner">
+      <div class="cert-header">
+        <img src="images/logo-lila-nailcraft-platform.png" alt="NailCraft Platform" class="logo">
+        <div class="cert-header-divider"></div>
+        <span class="wordmark" id="wordmark"></span>
+      </div>
+
+      <h1 class="cert-title">Certificaat van voltooiing</h1>
+      <h2 class="cert-subtitle" id="subtitle"></h2>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-star">✦ <span class="amber-dot"></span> ✦</span>
+        <div class="divider-line right"></div>
+      </div>
+
+      <p class="cert-intro">Dit certificaat wordt uitgereikt aan</p>
+      <div class="cert-name-wrap"><span class="cert-name" id="certName">&nbsp;</span></div>
+      <p class="cert-body" id="certBody"></p>
+
+      <div class="cert-footer">
+        <div class="cert-field">
+          <div class="cert-year" id="certYear"></div>
+          <div class="cert-field-line"></div>
+          <div class="cert-field-label">Jaar</div>
+        </div>
+        <div class="cert-field">
+          <div class="sig-wrap"><img id="sig" src="images/handtekening-tabitha.png" alt="" onerror="this.style.display='none'"></div>
+          <div class="cert-field-line"></div>
+          <div class="cert-field-value">Tabitha Windels</div>
+          <div class="cert-field-label">NailCraft Platform</div>
+          <img class="avatar" src="images/Untitled-design-6.webp" alt="Tabitha Windels">
+        </div>
+      </div>
+    </div>
+
+    <p class="cert-note">Bewijs van voltooiing van een online cursus van NailCraft Platform</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var COURSES = [
+    { naam: 'Manicure Pro' },
+    { naam: 'Easy Nails' },
+    { naam: 'Babyboom' },
+    { naam: 'Upperform Pro' },
+    { naam: 'Upperform Master' },
+    { naam: 'Refill Removal Pro' },
+    { naam: 'Perfecte Kleurapplicatie' },
+    { naam: 'Sjabloon Applicatie' },
+    { naam: 'The Nailstylist', traject: true }
+  ];
+
+  var sel = document.getElementById('cursus');
+  var naam = document.getElementById('naam');
+  var jaar = document.getElementById('jaar');
+  var page = document.getElementById('page');
+  var stage = document.getElementById('stage');
+  var certName = document.getElementById('certName');
+
+  COURSES.forEach(function (c, i) {
+    var o = document.createElement('option');
+    o.value = i;
+    o.textContent = c.naam;
+    sel.appendChild(o);
+  });
+  jaar.value = new Date().getFullYear();
+
+  function fitName() {
+    var size = 2.5;
+    certName.style.fontSize = size + 'rem';
+    while (certName.scrollWidth > certName.clientWidth && size > 1.3) {
+      size -= 0.1;
+      certName.style.fontSize = size + 'rem';
+    }
+  }
+
+  function fitStage() {
+    var avail = stage.clientWidth;
+    var w = page.offsetWidth;
+    var s = Math.min(1, avail / w);
+    page.style.transform = 'scale(' + s + ')';
+    stage.style.height = (page.offsetHeight * s) + 'px';
+  }
+
+  function render() {
+    var c = COURSES[sel.value];
+    document.getElementById('wordmark').textContent = c.naam;
+    document.getElementById('subtitle').textContent = c.naam;
+
+    var body = document.getElementById('certBody');
+    body.textContent = '';
+    body.appendChild(document.createTextNode('heeft ' + (c.traject ? 'het volledige nageltraject ' : 'de volledige cursus ')));
+    var em = document.createElement('em');
+    em.textContent = c.naam;
+    body.appendChild(em);
+    body.appendChild(document.createTextNode(' succesvol voltooid.'));
+
+    certName.textContent = naam.value.trim() || ' ';
+    document.getElementById('certYear').textContent = jaar.value.trim();
+    fitName();
+
+    var titel = 'Certificaat ' + c.naam + (naam.value.trim() ? ' - ' + naam.value.trim() : '');
+    document.title = titel;
+  }
+
+  [sel, naam, jaar].forEach(function (el) { el.addEventListener('input', render); });
+  document.getElementById('print').addEventListener('click', function () { render(); window.print(); });
+  window.addEventListener('resize', fitStage);
+
+  render();
+  fitStage();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { fitName(); fitStage(); });
+  }
+})();
+</script>
+</body>
+</html>
