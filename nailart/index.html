@@ -478,7 +478,7 @@
         '<div class="nc-kaart__tekst">' + d.tekst + '</div>' +
         '<div class="nc-kaart__knop">' + knop + '</div></div>';
       if (d.fiche) {
-        return '<a class="nc-kaart nc-fade" style="--kaart-kleur:' + d.kleur + '" href="/nailart/fiches/' + d.slug + '.pdf" download>' + binnen + '</a>';
+        return '<a class="nc-kaart nc-fade" style="--kaart-kleur:' + d.kleur + '" href="/nailart/fiches/' + d.slug + '.pdf" download data-fiche="' + d.slug + '" data-naam="' + d.naam + '" data-nr="' + (d.nr || 'bonus') + '">' + binnen + '</a>';
       }
       return '<div class="nc-kaart nc-kaart--binnenkort nc-fade" style="--kaart-kleur:' + d.kleur + '">' + binnen + '</div>';
     }
@@ -503,6 +503,16 @@
     ncTips.forEach(function (t) { if (t.na >= ncDesigns.length) html += ncTip(t); });
     document.querySelector('.nc-js-raster').innerHTML = html;
     document.querySelector('.nc-js-bonus').innerHTML = ncBonus.map(function (d) { return ncKaart(d, false); }).join('');
+
+    // Meta Pixel: eigen gebeurtenis per fiche-download (enkel actief na cookietoestemming, dan bestaat fbq)
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a[data-fiche]') : null;
+      if (!a || typeof window.fbq !== 'function') return;
+      var slug = a.getAttribute('data-fiche');
+      var info = { design: a.getAttribute('data-naam'), design_nr: a.getAttribute('data-nr'), content_name: slug };
+      fbq('trackCustom', 'Fiche_' + slug.replace(/-/g, '_'), info);
+      fbq('trackCustom', 'FicheDownload', info);
+    });
 
     // Teller: hoogste nummer online + dagen tot kerstavond
     var ncHoogste = ncDesigns.reduce(function (m, d) { return Math.max(m, d.nr); }, 0);
