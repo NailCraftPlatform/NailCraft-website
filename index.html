@@ -1193,7 +1193,7 @@
        BLOK 17: FAQ
   ============================================= -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is de online nagelcursus ook geschikt voor absolute beginners?","acceptedAnswer":{"@type":"Answer","text":"Ja, zeker! Je hebt geen enkele voorkennis nodig. Als absolute beginner raad ik je aan om met Manicure Pro te starten."}},{"@type":"Question","name":"Hoe lang heb ik toegang tot de cursus?","acceptedAnswer":{"@type":"Answer","text":"Levenslang! Geen abonnement, geen vervaldatum."}},{"@type":"Question","name":"Heb ik speciaal materiaal nodig om te starten?","acceptedAnswer":{"@type":"Answer","text":"Dat hangt af van welke cursus je volgt. In elke cursus staat duidelijk welk materiaal je nodig hebt."}},{"@type":"Question","name":"Voor wie zijn de cursussen bedoeld?","acceptedAnswer":{"@type":"Answer","text":"Voor iedereen die met kunstnagels wil werken, hobbyist, starter of professional."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is de online nagelcursus ook geschikt voor absolute beginners?","acceptedAnswer":{"@type":"Answer","text":"Ja, zeker! Je hebt geen enkele voorkennis nodig. Als absolute beginner raad ik je aan om met Manicure Pro te starten."}},{"@type":"Question","name":"Hoe lang heb ik toegang tot de cursus?","acceptedAnswer":{"@type":"Answer","text":"Levenslang! Geen abonnement, geen vervaldatum."}},{"@type":"Question","name":"Heb ik speciaal materiaal nodig om te starten?","acceptedAnswer":{"@type":"Answer","text":"Dat hangt af van welke cursus je volgt. In elke cursus staat duidelijk welk materiaal je nodig hebt."}},{"@type":"Question","name":"Voor wie zijn de cursussen bedoeld?","acceptedAnswer":{"@type":"Answer","text":"Voor iedereen die met kunstnagels wil werken, hobbyist, starter of professional."}},{"@type":"Question","name":"Is online leren iets voor mij?","acceptedAnswer":{"@type":"Answer","text":"Online leren heeft veel voordelen: je leert in je eigen omgeving en je eigen tempo zonder je te verplaatsen, je gebruikt je eigen materialen en producten, je ziet alles in close-up vanuit mijn ogen, ik heb als lesgever meer tijd om technieken uitgebreid te behandelen, en je bekijkt alles zo vaak als je wil. Het enige nadeel is dat ik niet fysiek naast je zit, maar dat vang ik op met persoonlijke begeleiding: je kan me altijd vragen stellen en foto's doorsturen voor feedback."}},{"@type":"Question","name":"Kan ik een certificaat krijgen?","acceptedAnswer":{"@type":"Answer","text":"Ja, voor alle praktijkgerichte cursussen, dus de cursussen met praktijkvideo's waarin je een techniek bekijkt en zelf uitvoert. Na volledige voltooiing van de cursus kan je een certificaat van voltooiing aanvragen. Dit geldt niet voor e-books. Op het einde van elke cursus staat beschreven hoe je je certificaat aanvraagt en wat daarvoor nodig is."}},{"@type":"Question","name":"Kan ik begeleiding krijgen?","acceptedAnswer":{"@type":"Answer","text":"Ja, ik ben steeds beschikbaar. Heb je tijdens de cursus vragen over materialen, technieken of producten, dan mag je me altijd contacteren. Binnen een cursus vind je mijn contactgegevens altijd terug. Heb je een vraag over een bepaalde techniek, dan kan je me ook foto's doorsturen en feedback vragen."}}]}
   </script>
 
   <style>
@@ -1210,9 +1210,12 @@
   .nc-faq-item__icon { width:32px; height:32px; border-radius:50%; flex-shrink:0; background:rgba(156,40,177,.1); color:#9c28b1; display:flex; align-items:center; justify-content:center; font-size:1.2rem; font-weight:300; transition:transform .3s,background .2s; line-height:1; }
   .nc-faq-item.open .nc-faq-item__icon { transform:rotate(45deg); background:#9c28b1; color:#fff; }
   .nc-faq-item__answer { max-height:0; overflow:hidden; transition:max-height .4s ease,padding .3s ease; padding:0 1.6rem; background:#fff; }
-  .nc-faq-item.open .nc-faq-item__answer { max-height:400px; padding:0 1.6rem 1.4rem; }
+  .nc-faq-item.open .nc-faq-item__answer { max-height:1100px; padding:0 1.6rem 1.4rem; }
   .nc-faq-item__answer p { color:#5a4a6e; line-height:1.75; font-size:.95rem; margin:0; border-top:1px solid rgba(156,40,177,.08); padding-top:1rem; background:#fff; }
   .nc-faq-item__answer strong { color:#9c28b1; font-weight:600; }
+  .nc-faq-item__answer ul { margin:.7rem 0 .2rem; padding-left:1.2rem; color:#5a4a6e; font-size:.95rem; line-height:1.7; }
+  .nc-faq-item__answer li { margin-bottom:.45rem; }
+  .nc-faq-item__answer ul + p, .nc-faq-item__answer p + p { border-top:none; padding-top:.6rem; }
   @media(max-width:768px){ .nc-faq-item__question { padding:1.1rem 1.2rem; } .nc-faq-item.open .nc-faq-item__answer { padding:0 1.2rem 1.2rem; } }
   </style>
 
@@ -1242,6 +1245,28 @@
       <div class="nc-faq-item nc-reveal" style="transition-delay:.2s">
         <button class="nc-faq-item__question" aria-expanded="false"><span class="nc-faq-item__question-text">Kan ik de cursus volgen als ik een druk schema heb?</span><span class="nc-faq-item__icon">+</span></button>
         <div class="nc-faq-item__answer"><p><strong>Dat is net het mooie.</strong> Geen vaste lesuren, geen verplichte aanwezigheid. Je leert wanneer het jou past, 's avonds op de zetel, in het weekend. Jij bepaalt het tempo.</p></div>
+      </div>
+      <div class="nc-faq-item nc-reveal" style="transition-delay:.25s">
+        <button class="nc-faq-item__question" aria-expanded="false"><span class="nc-faq-item__question-text">Is online leren iets voor mij?</span><span class="nc-faq-item__icon">+</span></button>
+        <div class="nc-faq-item__answer"><p><strong>Online leren heeft heel wat voordelen.</strong></p>
+          <ul>
+            <li><strong>Je leert in je eigen omgeving</strong> en je eigen tempo. Je hoeft je niet te verplaatsen.</li>
+            <li><strong>Je gebruikt je eigen materialen en producten.</strong></li>
+            <li><strong>Je ziet alles in close-up, vanuit mijn ogen.</strong> Je kijkt dus niet van op een afstand, maar van heel dichtbij mee.</li>
+            <li><strong>Ik heb als lesgever meer tijd</strong> om elke techniek heel uitgebreid te behandelen, zowel theorie als praktijk.</li>
+            <li><strong>Je bekijkt alles zo vaak als je wil.</strong> Terugspoelen, pauzeren of een les opnieuw bekijken kan altijd.</li>
+            <li><strong>Je leert zonder druk,</strong> zonder dat iemand over je schouder meekijkt.</li>
+          </ul>
+          <p>Het enige nadeel is dat ik niet fysiek naast je zit. Dat vang ik op met mijn persoonlijke begeleiding: je kan me altijd vragen stellen en foto's doorsturen voor feedback.</p>
+          <p>Vraag jezelf af: vind ik het belangrijk dat ik kan terugkijken, veel uitleg krijg, theorie en praktijk van dichtbij zie en in mijn eigen tijd en omgeving kan leren? Dan is online leren zeker iets voor jou.</p></div>
+      </div>
+      <div class="nc-faq-item nc-reveal" style="transition-delay:.25s">
+        <button class="nc-faq-item__question" aria-expanded="false"><span class="nc-faq-item__question-text">Kan ik een certificaat krijgen?</span><span class="nc-faq-item__icon">+</span></button>
+        <div class="nc-faq-item__answer"><p><strong>Ja, voor alle praktijkgerichte cursussen.</strong> Dat zijn de cursussen met praktijkvideo's, waarin je een techniek bekijkt en daarna zelf uitvoert. Heb je zo'n cursus volledig afgerond, dan kan je een certificaat van voltooiing aanvragen. Dit geldt <strong>enkel voor de praktijkgerichte cursussen</strong> en dus niet voor e-books. Op het einde van elke cursus staat beschreven hoe je je certificaat aanvraagt en wat daarvoor precies nodig is.</p></div>
+      </div>
+      <div class="nc-faq-item nc-reveal" style="transition-delay:.3s">
+        <button class="nc-faq-item__question" aria-expanded="false"><span class="nc-faq-item__question-text">Kan ik begeleiding krijgen?</span><span class="nc-faq-item__icon">+</span></button>
+        <div class="nc-faq-item__answer"><p><strong>Ja, ik ben steeds beschikbaar.</strong> Heb je tijdens de cursus vragen over materialen, technieken of producten? Dan mag je me altijd contacteren. Binnen een cursus vind je mijn contactgegevens altijd terug. Heb je een vraag over een bepaalde techniek, dan kan je me ook foto's doorsturen en feedback vragen.</p></div>
       </div>
     </div>
   </section>
