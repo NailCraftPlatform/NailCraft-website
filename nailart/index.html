@@ -191,6 +191,19 @@
     .nc-kaart__leeg { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; color: var(--nc-lila); font-size: .85rem; text-align: center; padding: 1rem; background: repeating-linear-gradient(45deg, #f8f2ff, #f8f2ff 12px, #f3e9ff 12px, #f3e9ff 24px); }
     .nc-kaart__leeg span { font-size: 2rem; }
 
+    /* Keuzemenu om naar een design te springen, blijft meescrollen onder de navigatie */
+    .nc-spring { position: sticky; top: 80px; z-index: 30; display: flex; justify-content: center; margin: 0 auto 2rem; pointer-events: none; }
+    .nc-spring__pil { pointer-events: auto; display: flex; align-items: center; gap: .7rem; max-width: 100%; background: #fff; border: 1.5px solid rgba(156,40,177,.25); border-radius: 50px; padding: .4rem .5rem .4rem 1.1rem; box-shadow: 0 8px 24px rgba(156,40,177,.16); }
+    .nc-spring label { font-weight: 700; font-size: .9rem; color: var(--nc-paars); white-space: nowrap; }
+    .nc-spring select { font: inherit; font-size: 16px; font-weight: 600; color: var(--nc-tekst); background: var(--nc-licht); border: none; border-radius: 50px; padding: .5rem .9rem; min-width: 0; max-width: 260px; cursor: pointer; }
+    .nc-kaart--gekozen { animation: nc-gekozen 2s ease-out; }
+    @keyframes nc-gekozen { 0%, 60% { box-shadow: 0 0 0 4px var(--nc-oranje), 0 16px 40px rgba(254,155,0,.35); } 100% { box-shadow: 0 8px 28px rgba(156,40,177,.08); } }
+    @media(max-width:768px) {
+      .nc-spring { margin-bottom: 1.4rem; }
+      .nc-spring label { font-size: .82rem; }
+      .nc-spring select { max-width: 190px; }
+    }
+
     /* Cursustip tussen de designs */
     .nc-tip { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr auto; gap: 1.5rem; align-items: center; background: linear-gradient(120deg, var(--nc-paars) 0%, #6d1a80 100%); color: #fff; border-radius: 22px; padding: 1.6rem 2rem; box-shadow: 0 12px 34px rgba(156,40,177,.25); }
     .nc-tip__icoon { font-size: 2.2rem; }
@@ -374,6 +387,12 @@
 
   <!-- ========== DESIGNS ========== -->
   <section class="nc-designs" id="designs">
+    <div class="nc-spring">
+      <div class="nc-spring__pil">
+        <label for="nc-spring-keuze">🔎 Spring naar</label>
+        <select id="nc-spring-keuze"></select>
+      </div>
+    </div>
     <div class="nc-designs__kop">
       <div>
         <div class="nc-label">✦ De challenge</div>
@@ -495,9 +514,9 @@
         '<div class="nc-kaart__tekst">' + d.tekst + '</div>' +
         '<div class="nc-kaart__knop">' + knop + '</div></div>';
       if (d.fiche) {
-        return '<a class="nc-kaart nc-fade" style="--kaart-kleur:' + d.kleur + '" href="/nailart/fiches/' + d.slug + '.pdf" download data-fiche="' + d.slug + '" data-naam="' + d.naam + '" data-nr="' + (d.nr || 'bonus') + '">' + binnen + '</a>';
+        return '<a id="nc-d-' + d.slug + '" class="nc-kaart nc-fade" style="--kaart-kleur:' + d.kleur + '" href="/nailart/fiches/' + d.slug + '.pdf" download data-fiche="' + d.slug + '" data-naam="' + d.naam + '" data-nr="' + (d.nr || 'bonus') + '">' + binnen + '</a>';
       }
-      return '<div class="nc-kaart nc-kaart--binnenkort nc-fade" style="--kaart-kleur:' + d.kleur + '">' + binnen + '</div>';
+      return '<div id="nc-d-' + d.slug + '" class="nc-kaart nc-kaart--binnenkort nc-fade" style="--kaart-kleur:' + d.kleur + '">' + binnen + '</div>';
     }
 
     function ncTip(t) {
@@ -520,6 +539,29 @@
     ncTips.forEach(function (t) { if (t.na >= ncDesigns.length) html += ncTip(t); });
     document.querySelector('.nc-js-raster').innerHTML = html;
     document.querySelector('.nc-js-bonus').innerHTML = ncBonus.map(function (d) { return ncKaart(d, false); }).join('');
+
+    // Keuzemenu: spring naar een design, de lijst bevat enkel wat al online staat
+    (function () {
+      var keuze = document.getElementById('nc-spring-keuze');
+      keuze.add(new Option('Kies een design', ''));
+      ncDesigns.forEach(function (d) { keuze.add(new Option(d.nr + ' · ' + d.naam, d.slug)); });
+      if (ncBonus.length) {
+        var groep = document.createElement('optgroup');
+        groep.label = 'Bonus';
+        ncBonus.forEach(function (d) { groep.appendChild(new Option(d.naam, d.slug)); });
+        keuze.appendChild(groep);
+      }
+      keuze.addEventListener('change', function () {
+        var kaart = document.getElementById('nc-d-' + keuze.value);
+        keuze.value = '';
+        if (!kaart) return;
+        kaart.classList.add('vis');
+        kaart.classList.remove('nc-kaart--gekozen');
+        void kaart.offsetWidth;
+        kaart.classList.add('nc-kaart--gekozen');
+        kaart.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    })();
 
     // Meta Pixel: eigen gebeurtenis per fiche-download (enkel actief na cookietoestemming, dan bestaat fbq)
     document.addEventListener('click', function (e) {
