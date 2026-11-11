@@ -282,7 +282,6 @@
     .nc-poort input:focus { outline: none; border-color: var(--nc-paars); }
     .nc-poort .nc-btn { width: 100%; font-size: 1rem; padding: .95rem 1.4rem; }
     .nc-poort .nc-btn[disabled] { opacity: .6; cursor: wait; transform: none; }
-    .nc-poort__val { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
     .nc-poort__fout { color: #b3261e; font-size: .88rem; min-height: 1.2em; }
     .nc-poort__klein { font-size: .74rem !important; margin-top: .8rem; line-height: 1.45 !important; }
     .nc-poort__klein a { color: var(--nc-paars); text-decoration: underline; }
@@ -368,7 +367,6 @@
       <form id="nc-poort-form" novalidate>
         <input type="text" name="voornaam" placeholder="Je voornaam" autocomplete="given-name">
         <input type="email" name="email" placeholder="Je e-mailadres" autocomplete="email" required>
-        <div class="nc-poort__val" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
         <button type="submit" class="nc-btn nc-btn--oranje">Geef me toegang ✨</button>
         <div class="nc-poort__fout" id="nc-poort-fout" role="alert"></div>
       </form>
@@ -721,7 +719,7 @@
         fetch('/api/nailart-aanmelden', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email, voornaam: form.voornaam.value, website: form.website.value })
+          body: JSON.stringify({ email: email, voornaam: form.voornaam.value, t: Math.round(performance.now()) })
         }).then(function (r) {
           if (!r.ok) throw new Error('status ' + r.status);
           try { localStorage.setItem('nc_nailart_toegang', '1'); } catch (x) {}

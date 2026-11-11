@@ -9,11 +9,12 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { email, voornaam, website } = req.body || {};
+  const { email, voornaam, t } = req.body || {};
 
-  // Spamval: dit verborgen veld vullen enkel robots in
-  if (website) {
-    res.status(200).json({ ok: true });
+  // Spamcontrole: een mens heeft minstens een seconde nodig om het formulier in te vullen.
+  // (Geen verborgen veld meer: browsers vulden dat soms automatisch in, waardoor echte inschrijvingen wegvielen.)
+  if (typeof t !== 'number' || t < 1000) {
+    res.status(400).json({ error: 'Probeer het nog eens' });
     return;
   }
 
