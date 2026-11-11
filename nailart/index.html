@@ -262,7 +262,54 @@
     #nc-totop.visible { opacity:1; pointer-events:auto; }
     .nc-fade { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .nc-fade.vis { opacity: 1; transform: none; }
+
+    /* =============================================
+       TOEGANG-POP-UP (enkel via /nailart/?via=tiktok, zie script onderaan)
+    ============================================= */
+    html.nc-slot-dicht body { overflow: hidden; }
+    .nc-poort { display: none; position: fixed; inset: 0; z-index: 99990; background: rgba(42,26,62,.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 1.2rem; overflow-y: auto; }
+    html.nc-slot-dicht .nc-poort { display: flex; }
+    .nc-poort__kaart { background: #fff; border-radius: 28px; max-width: 440px; width: 100%; padding: 2.2rem 1.8rem 1.8rem; text-align: center; box-shadow: 0 30px 80px rgba(42,26,62,.35); margin: auto; }
+    .nc-poort__foto { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; object-position: center 20%; margin: 0 auto 1rem; border: 4px solid #f3e6ff; }
+    .nc-poort h2 { font-family: 'Playfair Display', serif; font-size: 1.65rem; line-height: 1.2; margin-bottom: .7rem; }
+    .nc-poort h2 em { color: var(--nc-paars); font-style: italic; }
+    .nc-poort p { color: var(--nc-tekst-zacht); font-size: .95rem; line-height: 1.55; }
+    .nc-poort ul { list-style: none; text-align: left; margin: 1.1rem auto 1.3rem; max-width: 320px; font-size: .92rem; line-height: 1.5; }
+    .nc-poort li { padding: .25rem 0 .25rem 1.7rem; position: relative; }
+    .nc-poort li::before { content: '✓'; position: absolute; left: 0; color: #fff; background: var(--nc-paars); width: 1.2rem; height: 1.2rem; border-radius: 50%; font-size: .72rem; display: flex; align-items: center; justify-content: center; top: .38rem; }
+    .nc-poort form { display: flex; flex-direction: column; gap: .65rem; }
+    .nc-poort input[type=text], .nc-poort input[type=email] { width: 100%; border: 2px solid #e3d4f0; border-radius: 14px; padding: .85rem 1rem; font: inherit; font-size: 1rem; color: var(--nc-tekst); background: #fcf9ff; }
+    .nc-poort input:focus { outline: none; border-color: var(--nc-paars); }
+    .nc-poort .nc-btn { width: 100%; font-size: 1rem; padding: .95rem 1.4rem; }
+    .nc-poort .nc-btn[disabled] { opacity: .6; cursor: wait; transform: none; }
+    .nc-poort__val { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .nc-poort__fout { color: #b3261e; font-size: .88rem; min-height: 1.2em; }
+    .nc-poort__klein { font-size: .74rem !important; margin-top: .8rem; line-height: 1.45 !important; }
+    .nc-poort__klein a { color: var(--nc-paars); text-decoration: underline; }
+    @media (max-width: 600px) {
+      .nc-poort { align-items: flex-start; padding: .8rem .8rem 2rem; }
+      .nc-poort__kaart { padding: 1.3rem 1.2rem 1.2rem; border-radius: 22px; }
+      .nc-poort__foto { width: 64px; height: 64px; margin-bottom: .6rem; border-width: 3px; }
+      .nc-poort h2 { font-size: 1.35rem; margin-bottom: .4rem; }
+      .nc-poort p { font-size: .88rem; }
+      .nc-poort ul { margin: .7rem auto .9rem; font-size: .86rem; }
+      .nc-poort li { padding: .15rem 0 .15rem 1.6rem; }
+      .nc-poort li::before { top: .25rem; }
+      .nc-poort input[type=text], .nc-poort input[type=email] { padding: .7rem .9rem; }
+      .nc-poort form { gap: .5rem; }
+    }
   </style>
+  <script>
+    /* Pop-up meteen klaarzetten (vóór de pagina zichtbaar wordt), zodat niets eerst openflitst */
+    (function () {
+      try {
+        var via = new URLSearchParams(location.search).get('via');
+        if (via === 'tiktok' && localStorage.getItem('nc_nailart_toegang') !== '1') {
+          document.documentElement.classList.add('nc-slot-dicht');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 <!-- NailCraft cookiebanner + Meta Pixel (laadt pas na toestemming) -->
@@ -306,6 +353,28 @@
 })();
 </script>
 <!-- Einde cookiebanner + Meta Pixel -->
+
+  <!-- Toegang-pop-up: enkel zichtbaar via /nailart/?via=tiktok (link in TikTok-bio) -->
+  <div class="nc-poort" role="dialog" aria-modal="true" aria-labelledby="nc-poort-titel">
+    <div class="nc-poort__kaart">
+      <img class="nc-poort__foto" src="/images/kerstfoto.webp" alt="Tabitha Windels">
+      <h2 id="nc-poort-titel">Krijg direct toegang tot <em>alle fiches</em></h2>
+      <p>Laat je e-mailadres achter en je kan meteen aan de slag.</p>
+      <ul>
+        <li>De materialenlijst van elk design</li>
+        <li>Een stap voor stap uitleg als pdf</li>
+        <li>Elke week een greep uit de nieuwe designs in je mailbox</li>
+      </ul>
+      <form id="nc-poort-form" novalidate>
+        <input type="text" name="voornaam" placeholder="Je voornaam" autocomplete="given-name">
+        <input type="email" name="email" placeholder="Je e-mailadres" autocomplete="email" required>
+        <div class="nc-poort__val" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+        <button type="submit" class="nc-btn nc-btn--oranje">Geef me toegang ✨</button>
+        <div class="nc-poort__fout" id="nc-poort-fout" role="alert"></div>
+      </form>
+      <p class="nc-poort__klein">Je krijgt af en toe een mail van mij met nail art en tips. Uitschrijven kan altijd met één klik. Lees hoe ik met je gegevens omga in de <a href="/privacy.html" target="_blank" rel="noopener">privacyverklaring</a>.</p>
+    </div>
+  </div>
 
   <!-- Progress bar -->
   <div id="nc-progress" style="position:fixed;top:70px;left:0;height:1px !important;width:0%;background:#9c28b1;z-index:1001;transition:width .25s linear;pointer-events:none;padding:0 !important;margin:0 !important;display:block;">
@@ -632,6 +701,40 @@
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('vis'); ncObs.unobserve(e.target); } });
     }, { threshold: 0.1 });
     document.querySelectorAll('.nc-fade').forEach(function (el) { ncObs.observe(el); });
+
+    // Toegang-pop-up: e-mail naar Kit (tag BE NAILART start de nail art sequence)
+    (function () {
+      var form = document.getElementById('nc-poort-form');
+      var fout = document.getElementById('nc-poort-fout');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = form.email.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+          fout.textContent = 'Vul een geldig e-mailadres in.';
+          form.email.focus();
+          return;
+        }
+        fout.textContent = '';
+        var knop = form.querySelector('button');
+        knop.disabled = true;
+        knop.textContent = 'Even geduld…';
+        fetch('/api/nailart-aanmelden', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, voornaam: form.voornaam.value, website: form.website.value })
+        }).then(function (r) {
+          if (!r.ok) throw new Error('status ' + r.status);
+          try { localStorage.setItem('nc_nailart_toegang', '1'); } catch (x) {}
+          if (typeof window.fbq === 'function') fbq('track', 'Lead', { content_name: 'Nailart TikTok' });
+          document.documentElement.classList.remove('nc-slot-dicht');
+          window.scrollTo(0, 0);
+        }).catch(function () {
+          fout.textContent = 'Er ging iets mis. Probeer het nog eens.';
+          knop.disabled = false;
+          knop.textContent = 'Geef me toegang ✨';
+        });
+      });
+    })();
   </script>
 </body>
 </html>
