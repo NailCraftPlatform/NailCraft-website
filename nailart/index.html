@@ -196,6 +196,16 @@
     .nc-spring__pil { pointer-events: auto; display: flex; align-items: center; gap: .7rem; max-width: 100%; background: #fff; border: 1.5px solid rgba(156,40,177,.25); border-radius: 50px; padding: .4rem .5rem .4rem 1.1rem; box-shadow: 0 8px 24px rgba(156,40,177,.16); }
     .nc-spring label { font-weight: 700; font-size: .9rem; color: var(--nc-paars); white-space: nowrap; }
     .nc-spring select { font: inherit; font-size: 16px; font-weight: 600; color: var(--nc-tekst); background: var(--nc-licht); border: none; border-radius: 50px; padding: .5rem .9rem; min-width: 0; max-width: 260px; cursor: pointer; }
+    /* Designs met een Engelse fiche (veld en: true): kaart met een tweede knop eronder */
+    .nc-kaart__hoofd { display: flex; flex-direction: column; flex: 1; color: inherit; }
+    .nc-kaart--en:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(156,40,177,.16); }
+    .nc-kaart__hoofd:hover .nc-kaart__foto img { transform: scale(1.04); }
+    .nc-kaart--en .nc-kaart__body { padding-bottom: .7rem; }
+    .nc-kaart__en { display: flex; align-items: center; justify-content: center; gap: .4rem; margin: 0 1.2rem 1.2rem; padding: .5rem .8rem; border: 1.5px solid var(--kaart-kleur, var(--nc-paars)); border-radius: 50px; font-weight: 700; font-size: .8rem; color: var(--kaart-kleur, var(--nc-paars)); transition: background .2s, color .2s; }
+    .nc-kaart__en:hover { background: var(--kaart-kleur, var(--nc-paars)); color: #fff; }
+    .nc-kaart__en svg { width: 14px; height: 14px; }
+    .nc-engels { display: none; max-width: 640px; margin: 0 auto 1.6rem; background: #fff; border: 1.5px solid rgba(156,40,177,.25); border-radius: 18px; padding: .9rem 1.2rem; text-align: center; font-size: .92rem; line-height: 1.5; color: var(--nc-tekst); box-shadow: 0 8px 24px rgba(156,40,177,.08); }
+    html.nc-en .nc-engels { display: block; }
     .nc-kaart--gekozen { animation: nc-gekozen 2s ease-out; }
     @keyframes nc-gekozen { 0%, 60% { box-shadow: 0 0 0 4px var(--nc-oranje), 0 16px 40px rgba(254,155,0,.35); } 100% { box-shadow: 0 8px 28px rgba(156,40,177,.08); } }
     @media(max-width:768px) {
@@ -218,6 +228,8 @@
       .nc-kaart__naam { font-size: 1.05rem; }
       .nc-kaart__tekst { display: none; }
       .nc-kaart__knop { font-size: .78rem; margin-top: .3rem; }
+      .nc-kaart__en { margin: 0 .85rem .9rem; padding: .4rem .5rem; font-size: .72rem; }
+      .nc-kaart--en .nc-kaart__body { padding-bottom: .6rem; }
       .nc-kaart__nr { font-size: .7rem; top: 8px; left: 8px; }
       .nc-kaart__nieuw { font-size: .62rem; top: 8px; right: 8px; }
       .nc-tip { grid-template-columns: 1fr; text-align: center; padding: 1.4rem 1.2rem; gap: .8rem; }
@@ -359,6 +371,7 @@
       <img class="nc-poort__foto" src="/images/kerstfoto.webp" alt="Tabitha Windels">
       <h2 id="nc-poort-titel">Krijg direct toegang tot <em>alle fiches</em></h2>
       <p>Laat je e-mailadres achter en je kan meteen aan de slag.</p>
+      <p lang="en" style="font-size:.85rem;margin-top:.3rem">🇬🇧 Leave your email to get all guides, some also in English.</p>
       <ul>
         <li>De materialenlijst van elk design</li>
         <li>Een stap voor stap uitleg als pdf</li>
@@ -454,6 +467,7 @@
 
   <!-- ========== DESIGNS ========== -->
   <section class="nc-designs" id="designs">
+    <div class="nc-engels" lang="en">🇬🇧 <strong>Welcome!</strong> Designs with an English guide have an extra button: <strong>Download in English</strong>. Tap it and the guide is saved on your device.</div>
     <div class="nc-spring">
       <div class="nc-spring__pil">
         <label for="nc-spring-keuze">🔎 Spring naar</label>
@@ -511,19 +525,20 @@
        { nr: 12, slug: '12-naam-design', foto: '12-naam-design.webp', naam: 'Naam', tekst: 'Korte zin', kleur: '#hex', fiche: true }
        De foto hoort in /images/nailart/ en de fiche in /nailart/fiches/<slug>.pdf
        Geen foto ingevuld = "Foto volgt". fiche: false = "Fiche volgt binnenkort"
+       en: true = extra knop "Download in English" naar /nailart/fiches/<slug>-en.pdf
        Inplannen? Voeg toe: vanaf: '2026-10-16T18:00:00+02:00' (Belgische tijd: +02:00 zomertijd, +01:00 vanaf 25 oktober)
        Dan verschijnt de kaart pas vanaf dat moment, zonder opnieuw te pushen.
     ============================================= */
     var ncDesigns = [
-      { nr: 48, slug: '48-christmas-tree', foto: '48-christmas-tree.webp', naam: 'Christmas Tree', tekst: 'Een kerstboom vol parels en goud op matte bordeaux.', kleur: '#7a1a3a', fiche: true, vanaf: '2026-11-22T17:00:00+01:00' },
-      { nr: 47, slug: '47-christmas-lights', foto: '47-christmas-lights.webp', naam: 'Christmas Lights', tekst: 'Een lichtslinger met lampjes die echt lijken te gloeien.', kleur: '#3a4fb0', fiche: true, vanaf: '2026-11-21T17:00:00+01:00' },
-      { nr: 46, slug: '46-santa-claus', foto: '46-santa-claus.webp', naam: 'Santa Claus', tekst: 'Een kerstman met een glitterbaard in 3D.', kleur: '#b3122e', fiche: true, vanaf: '2026-11-20T17:00:00+01:00' },
-      { nr: 45, slug: '45-stained-xmas', foto: '45-stained-xmas.webp', naam: 'Stained Xmas', tekst: 'Een kerstboom in glas-in-lood met gouden contouren.', kleur: '#2f7a66', fiche: true, vanaf: '2026-11-19T17:00:00+01:00' },
-      { nr: 44, slug: '44-christmas-gnome', foto: '44-christmas-gnome.webp', naam: 'Christmas Gnome', tekst: 'Een glitterende kerstkabouter met een 3D-baard.', kleur: '#1f7a4a', fiche: true, vanaf: '2026-11-18T17:00:00+01:00' },
-      { nr: 43, slug: '43-christmas-sweater', foto: '43-christmas-sweater.webp', naam: 'Christmas Sweater', tekst: 'Een wollige kersttrui met een Noors stempelpatroon.', kleur: '#9a3a2a', fiche: true, vanaf: '2026-11-17T17:00:00+01:00' },
-      { nr: 42, slug: '42-lumberjack', foto: '42-lumberjack.webp', naam: 'Lumberjack', tekst: 'Een houthakkersruit met een echt stofeffect.', kleur: '#b0243a', fiche: true, vanaf: '2026-11-16T17:00:00+01:00' },
-      { nr: 41, slug: '41-plaid-scarf', foto: '41-plaid-scarf.webp', naam: 'Plaid Scarf', tekst: 'Een wollige pastelruit, zacht als een sjaal.', kleur: '#8a5aa8', fiche: true, vanaf: '2026-11-15T17:00:00+01:00' },
-      { nr: 40, slug: '40-knitwear', foto: '40-knitwear.webp', naam: 'Knitwear', tekst: 'Een zacht 3D-breipatroon op een matte pastelkleur.', kleur: '#8a5cc2', fiche: true, vanaf: '2026-11-14T17:00:00+01:00' },
+      { nr: 48, slug: '48-christmas-tree', foto: '48-christmas-tree.webp', naam: 'Christmas Tree', tekst: 'Een kerstboom vol parels en goud op matte bordeaux.', kleur: '#7a1a3a', fiche: true, en: true, vanaf: '2026-11-22T17:00:00+01:00' },
+      { nr: 47, slug: '47-christmas-lights', foto: '47-christmas-lights.webp', naam: 'Christmas Lights', tekst: 'Een lichtslinger met lampjes die echt lijken te gloeien.', kleur: '#3a4fb0', fiche: true, en: true, vanaf: '2026-11-21T17:00:00+01:00' },
+      { nr: 46, slug: '46-santa-claus', foto: '46-santa-claus.webp', naam: 'Santa Claus', tekst: 'Een kerstman met een glitterbaard in 3D.', kleur: '#b3122e', fiche: true, en: true, vanaf: '2026-11-20T17:00:00+01:00' },
+      { nr: 45, slug: '45-stained-xmas', foto: '45-stained-xmas.webp', naam: 'Stained Xmas', tekst: 'Een kerstboom in glas-in-lood met gouden contouren.', kleur: '#2f7a66', fiche: true, en: true, vanaf: '2026-11-19T17:00:00+01:00' },
+      { nr: 44, slug: '44-christmas-gnome', foto: '44-christmas-gnome.webp', naam: 'Christmas Gnome', tekst: 'Een glitterende kerstkabouter met een 3D-baard.', kleur: '#1f7a4a', fiche: true, en: true, vanaf: '2026-11-18T17:00:00+01:00' },
+      { nr: 43, slug: '43-christmas-sweater', foto: '43-christmas-sweater.webp', naam: 'Christmas Sweater', tekst: 'Een wollige kersttrui met een Noors stempelpatroon.', kleur: '#9a3a2a', fiche: true, en: true, vanaf: '2026-11-17T17:00:00+01:00' },
+      { nr: 42, slug: '42-lumberjack', foto: '42-lumberjack.webp', naam: 'Lumberjack', tekst: 'Een houthakkersruit met een echt stofeffect.', kleur: '#b0243a', fiche: true, en: true, vanaf: '2026-11-16T17:00:00+01:00' },
+      { nr: 41, slug: '41-plaid-scarf', foto: '41-plaid-scarf.webp', naam: 'Plaid Scarf', tekst: 'Een wollige pastelruit, zacht als een sjaal.', kleur: '#8a5aa8', fiche: true, en: true, vanaf: '2026-11-15T17:00:00+01:00' },
+      { nr: 40, slug: '40-knitwear', foto: '40-knitwear.webp', naam: 'Knitwear', tekst: 'Een zacht 3D-breipatroon op een matte pastelkleur.', kleur: '#8a5cc2', fiche: true, en: true, vanaf: '2026-11-14T17:00:00+01:00' },
       { nr: 39, slug: '39-glitter-bows', foto: '39-glitter-bows.webp', naam: 'Glitter Bows', tekst: 'Gouden cat eye strikjes, laag per laag opgebouwd.', kleur: '#a57c2c', fiche: true, vanaf: '2026-11-13T17:00:00+01:00' },
       { nr: 38, slug: '38-velvet-stars', foto: '38-velvet-stars.webp', naam: 'Velvet Stars', tekst: 'Fluwelen sterren op een matte gouden cat eye, met dauwdruppels.', kleur: '#9a6a3a', fiche: true, vanaf: '2026-11-12T17:00:00+01:00' },
       { nr: 37, slug: '37-blue-baroque', foto: '37-blue-baroque.webp', naam: 'Blue Baroque', tekst: 'Een fluwelen barokstempel op diep of helder blauw.', kleur: '#1f3f9a', fiche: true, vanaf: '2026-11-11T17:00:00+01:00' },
@@ -594,6 +609,11 @@
         '<div class="nc-kaart__body"><div class="nc-kaart__naam">' + d.naam + '</div>' +
         '<div class="nc-kaart__tekst">' + d.tekst + '</div>' +
         '<div class="nc-kaart__knop">' + knop + '</div></div>';
+      if (d.fiche && d.en) {
+        return '<div id="nc-d-' + d.slug + '" class="nc-kaart nc-kaart--en nc-fade" style="--kaart-kleur:' + d.kleur + '">' +
+          '<a class="nc-kaart__hoofd" href="/nailart/fiches/' + d.slug + '.pdf" download data-fiche="' + d.slug + '" data-naam="' + d.naam + '" data-nr="' + (d.nr || 'bonus') + '">' + binnen + '</a>' +
+          '<a class="nc-kaart__en" lang="en" href="/nailart/fiches/' + d.slug + '-en.pdf" download data-fiche="' + d.slug + '-en" data-naam="' + d.naam + ' (EN)" data-nr="' + (d.nr || 'bonus') + '">🇬🇧 Download in English</a></div>';
+      }
       if (d.fiche) {
         return '<a id="nc-d-' + d.slug + '" class="nc-kaart nc-fade" style="--kaart-kleur:' + d.kleur + '" href="/nailart/fiches/' + d.slug + '.pdf" download data-fiche="' + d.slug + '" data-naam="' + d.naam + '" data-nr="' + (d.nr || 'bonus') + '">' + binnen + '</a>';
       }
@@ -608,6 +628,9 @@
 
     // Ingeplande designs pas tonen vanaf hun tijdstip
     var ncNu = new Date();
+
+    // Engelstalige bezoekers (link met ?lang=en uit ManyChat of de Engelse fiche): welkomstblokje tonen
+    if (/[?&]lang=en\b/.test(location.search)) document.documentElement.classList.add('nc-en');
     function ncZichtbaar(d) { return !d.vanaf || new Date(d.vanaf) <= ncNu; }
     ncDesigns = ncDesigns.filter(ncZichtbaar);
     ncBonus = ncBonus.filter(ncZichtbaar);
